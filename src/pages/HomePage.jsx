@@ -1,0 +1,31 @@
+import HeroSection from '../components/home/HeroSection';
+import ServicesMarquee from '../components/home/ServicesMarquee';
+import ProblemStatement from '../components/home/ProblemStatement';
+import WhyChooseUs from '../components/home/WhyChooseUs';
+import ServicesGrid from '../components/home/ServicesGrid';
+import ProcessSection from '../components/home/ProcessSection';
+import CTABanner from '../components/home/CTABanner';
+import TestimonialsSection from '../components/home/TestimonialsSection';
+import WhoWeServe from '../components/home/WhoWeServe';
+import IndustriesSection from '../components/home/IndustriesSection';
+import FAQSection from '../components/home/FAQSection';
+import BlogPreview from '../components/home/BlogPreview';
+
+export default function HomePage() {
+  return (
+    <main>
+      <HeroSection />
+      <ServicesMarquee />
+      <ProblemStatement />
+      <WhyChooseUs />
+      <ServicesGrid />
+      <ProcessSection />
+      <CTABanner />
+      <TestimonialsSection />
+      <WhoWeServe />
+      <IndustriesSection />
+      <FAQSection />
+      <BlogPreview />
+    </main>
+  );
+}
