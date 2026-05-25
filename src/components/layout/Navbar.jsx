@@ -62,6 +62,9 @@ export default function Navbar() {
                 alt="Novelio Technologies LLC"
                 className="h-10 w-auto object-contain transition-all duration-300"
                 loading="eager"
+                fetchpriority="high"
+                width="160"
+                height="40"
               />
             </Link>
 

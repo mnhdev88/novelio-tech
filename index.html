@@ -6,27 +6,19 @@
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1B3172" />
+
+    <!-- Preconnect: fonts (highest priority — must be before stylesheet request) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload critical font files so browser fetches them immediately -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+
+    <!-- Preconnect: analytics (non-render-blocking) -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://www.clarity.ms" />
-
-    <!-- Microsoft Clarity -->
-    <script async type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "wqm0zhchpy");
-    </script>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D2VRR8SWH2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D2VRR8SWH2');
-    </script>
 
     <!-- Primary SEO -->
     <title>Business Growth Partner for Small Businesses | Novelio Technologies</title>
@@ -50,11 +42,6 @@
     <meta name="twitter:image" content="https://www.noveliotech.com/logo.png" />
 
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
     <!-- Schema: LocalBusiness -->
     <script type="application/ld+json">
@@ -105,7 +92,7 @@
     }
     </script>
 
-    <!-- Schema: WebSite (FAQPage moved to FAQSection.jsx component) -->
+    <!-- Schema: WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -131,5 +118,27 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Analytics deferred to after page load — does not affect LCP/TBT -->
+    <script>
+      window.addEventListener('load', function() {
+        // Microsoft Clarity
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wqm0zhchpy");
+
+        // Google Analytics
+        var s=document.createElement('script');
+        s.async=true;
+        s.src='https://www.googletagmanager.com/gtag/js?id=G-D2VRR8SWH2';
+        document.head.appendChild(s);
+        window.dataLayer=window.dataLayer||[];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js',new Date());
+        gtag('config','G-D2VRR8SWH2');
+      });
+    </script>
   </body>
 </html>
