@@ -10,10 +10,23 @@ RewriteRule ^.*/feed/?$                                          - [G,L]
 # ── 301 — old WordPress tag archives → /blog ───────────────────────────────
 RewriteRule ^tag/.*$                                             /blog [R=301,L]
 
-# ── 301 — old PHP pages → React equivalents ────────────────────────────────
+# ── 301 — old PHP / HTML pages → React equivalents ─────────────────────────
 RewriteRule ^index\.php$                                         / [R=301,L]
 RewriteRule ^about\.php$                                         /about [R=301,L]
+RewriteRule ^contact\.php$                                       /contact [R=301,L]
+RewriteRule ^services\.php$                                      /services [R=301,L]
+RewriteRule ^seo-services\.php$                                  /services/website-seo [R=301,L]
+RewriteRule ^brand-building\.php$                                /services/branding [R=301,L]
+RewriteRule ^target-lead-generation\.php$                        /services/lead-generation [R=301,L]
+RewriteRule ^virtual-assistance\.php$                            /services/tech-ops [R=301,L]
+RewriteRule ^bpo-services\.php$                                  /services [R=301,L]
 RewriteRule ^business-process-outsourcing\.php$                  /services [R=301,L]
+RewriteRule ^knowledge-process-outsourcing\.php$                 /services [R=301,L]
+RewriteRule ^refund\.php$                                        /refund-policy [R=301,L]
+RewriteRule ^policies\.php$                                      /privacy [R=301,L]
+RewriteRule ^privacy\.php$                                       /privacy [R=301,L]
+RewriteRule ^results\.html$                                      /about [R=301,L]
+RewriteRule ^cdn-cgi/.*$                                         /contact [R=301,L]
 
 # ── 301 — old WordPress page slugs ─────────────────────────────────────────
 RewriteRule ^home/?$                                             / [R=301,L]

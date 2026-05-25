@@ -1,10 +1,23 @@
 /best-website-developer-in-newark                              /best-website-developer-newark-nj/  301
 /best-website-developer-in-newark/                             /best-website-developer-newark-nj/  301
 
-# Old PHP pages
-/index.php                                                     /          301
-/about.php                                                     /about     301
-/business-process-outsourcing.php                              /services  301
+# Old PHP / HTML pages
+/index.php                                                     /                          301
+/about.php                                                     /about                     301
+/contact.php                                                   /contact                   301
+/services.php                                                  /services                  301
+/seo-services.php                                              /services/website-seo      301
+/brand-building.php                                            /services/branding         301
+/target-lead-generation.php                                    /services/lead-generation  301
+/virtual-assistance.php                                        /services/tech-ops         301
+/bpo-services.php                                              /services                  301
+/business-process-outsourcing.php                              /services                  301
+/knowledge-process-outsourcing.php                             /services                  301
+/refund.php                                                    /refund-policy             301
+/policies.php                                                  /privacy                   301
+/privacy.php                                                   /privacy                   301
+/results.html                                                  /about                     301
+/cdn-cgi/*                                                     /contact                   301
 
 # Old WordPress page slugs
 /home                                                          /          301
