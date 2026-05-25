@@ -138,8 +138,9 @@ export default function Navbar() {
               </a>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="lg:hidden w-10 h-10 rounded-lg border border-slate-200 bg-white flex items-center justify-center text-[#1B3172]"
-                aria-label="Toggle menu"
+                className="lg:hidden w-10 h-10 rounded-lg border border-slate-200 bg-white flex items-center justify-center text-[#1B3172] cursor-pointer"
+                aria-label="Open menu"
+                aria-expanded={menuOpen}
               >
                 {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -163,7 +164,7 @@ export default function Navbar() {
               className="h-9 w-auto object-contain"
             />
           </Link>
-          <button onClick={() => setMenuOpen(false)} className="w-10 h-10 rounded-lg border border-slate-200 flex items-center justify-center text-[#1B3172]">
+          <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="w-10 h-10 rounded-lg border border-slate-200 flex items-center justify-center text-[#1B3172] cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>

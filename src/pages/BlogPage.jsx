@@ -61,7 +61,8 @@ export default function BlogPage() {
               <input
                 type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search articles..."
-                className="w-full bg-white border border-slate-200 rounded-2xl pl-12 pr-4 py-4 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:border-brand-purple/60 transition-colors text-[15px]"
+                aria-label="Search articles"
+                className="w-full bg-white border border-slate-200 rounded-2xl pl-12 pr-4 py-4 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:border-brand-purple/60 focus:ring-2 focus:ring-brand-purple/20 transition-colors text-[15px]"
               />
             </div>
           </motion.div>
@@ -105,7 +106,7 @@ export default function BlogPage() {
           <div className="flex flex-wrap gap-3 justify-center">
             {CATEGORIES.map((cat) => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${
                   activeCategory === cat
                     ? 'bg-gradient-primary text-white shadow-glow'
                     : 'glass-card text-[#475569] hover:text-[#1B3172] border-slate-200'

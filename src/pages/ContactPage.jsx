@@ -84,8 +84,8 @@ export default function ContactPage() {
   };
 
   const inputClass = (field) =>
-    `w-full bg-white border rounded-xl px-4 py-3.5 text-[#1B3172] placeholder-slate-400 focus:outline-none transition-all text-[15px] ${
-      errors[field] ? 'border-red-500/60 focus:border-red-500' : 'border-slate-200/80 focus:border-brand-purple/60'
+    `w-full bg-white border rounded-xl px-4 py-3.5 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:ring-2 transition-all text-[15px] ${
+      errors[field] ? 'border-red-500/60 focus:border-red-500 focus:ring-red-500/20' : 'border-slate-200/80 focus:border-brand-purple/60 focus:ring-brand-purple/20'
     }`;
 
   return (

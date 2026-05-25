@@ -174,8 +174,8 @@ export default function TestimonialsSection() {
 
         {/* Controls */}
         <div className="flex items-center justify-center gap-4">
-          <button onClick={prev}
-            className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+          <button onClick={prev} aria-label="Previous testimonial"
+            className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
             style={{
               background: 'rgba(255,255,255,0.85)',
               border: '1px solid rgba(29,78,216,0.12)',
@@ -190,7 +190,8 @@ export default function TestimonialsSection() {
           <div className="flex gap-2">
             {TESTIMONIALS.map((_, i) => (
               <button key={i} onClick={() => setCurrent(i)}
-                className="rounded-full transition-all duration-300"
+                aria-label={`Go to testimonial ${i + 1}`}
+                className="rounded-full transition-all duration-300 cursor-pointer"
                 style={{
                   height: '8px',
                   width: i === current ? '28px' : '8px',
@@ -202,8 +203,8 @@ export default function TestimonialsSection() {
             ))}
           </div>
 
-          <button onClick={next}
-            className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+          <button onClick={next} aria-label="Next testimonial"
+            className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
             style={{
               background: 'rgba(255,255,255,0.85)',
               border: '1px solid rgba(29,78,216,0.12)',

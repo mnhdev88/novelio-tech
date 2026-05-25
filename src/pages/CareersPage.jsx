@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SEO from '../components/SEO';
 import ApplyModal from '../components/ApplyModal';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Phone, Globe, Building2, Users, Zap, Star, TrendingUp, DollarSign, Heart, Globe2 } from 'lucide-react';
+import { MapPin, Mail, Phone, Globe, Building2, Users, Zap, Star, TrendingUp, DollarSign, Heart, Globe2, Flame, Sparkles } from 'lucide-react';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -193,7 +193,7 @@ function JobCard({ job, isIndia = false, delay = 0, onApply }) {
         <button
           type="button"
           onClick={() => onApply(job)}
-          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-600 transition-all duration-200 ${job.btnStyle || 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'}`}
+          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-600 transition-all duration-200 cursor-pointer ${job.btnStyle || 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'}`}
         >
           {job.btnLabel || 'Apply Now →'}
         </button>
@@ -222,7 +222,7 @@ export default function CareersPage() {
         <div className="dot-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10 text-center">
           <motion.div {...fadeUp(0)}>
-            <div className="section-label mx-auto mb-4">🔥 We Are Hiring — 9 Open Positions</div>
+            <div className="section-label mx-auto mb-4 inline-flex items-center gap-1.5"><Flame className="w-4 h-4" /> We Are Hiring — 9 Open Positions</div>
           </motion.div>
           <motion.h1 {...fadeUp(0.1)} className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
             Grow Your Career at<br /><span className="gradient-text">Novelio Technologies</span>
@@ -299,7 +299,7 @@ export default function CareersPage() {
 
           {/* India Banner */}
           <motion.div {...fadeUp(0.1)} className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 border-l-4 border-l-green-600 rounded-2xl p-6 mb-6">
-            <h3 className="font-heading font-700 text-green-900 text-base mb-2">🎉 Why Our India Team Powers Our US Clients' Success</h3>
+            <h3 className="font-heading font-700 text-green-900 text-base mb-2 flex items-center gap-1.5"><Sparkles className="w-4 h-4 flex-shrink-0" /> Why Our India Team Powers Our US Clients' Success</h3>
             <p className="text-sm text-green-800 leading-relaxed">
               Our Gurgaon hub is not a back-office — it is the engine. India gives us world-class technical expertise, deep digital knowledge, and an execution speed that delivers outstanding quality for our US clients. This is where strategy gets built, SEO campaigns get executed, and AI-powered growth systems get deployed. If you are sharp, hungry, and want real mentorship — this is the team to be on.
             </p>

@@ -49,7 +49,7 @@ function FAQItem({ faq, index, isOpen, onToggle }) {
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer"
       >
         <span className="font-heading font-600 text-[#1B3172] text-[15px] leading-snug pr-2">
           {faq.q}

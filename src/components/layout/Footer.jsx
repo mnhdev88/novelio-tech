@@ -64,7 +64,7 @@ export default function Footer() {
                 loading="lazy"
               />
             </Link>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6">
+            <p className="text-slate-300 text-sm leading-relaxed mb-6">
               Your end-to-end digital growth partner. We help businesses achieve measurable results through data-driven digital marketing and cutting-edge web development.
             </p>
             <div className="flex gap-3">
@@ -76,7 +76,7 @@ export default function Footer() {
                 { Icon: FaYoutube, href: COMPANY.social.youtube },
               ].map(({ Icon, href }, i) => (
                 <a key={i} href={href} target="_blank" rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-slate-400 hover:text-white hover:border-brand-purple/50 hover:bg-brand-purple/20 transition-all duration-200">
+                  className="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-slate-300 hover:text-white hover:border-brand-purple/50 hover:bg-brand-purple/20 transition-all duration-200">
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
@@ -89,7 +89,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerServices.map((s) => (
                 <li key={s.id}>
-                  <Link to={s.slug} className="text-slate-400 hover:text-white text-sm flex items-center gap-2 group transition-colors">
+                  <Link to={s.slug} className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
                     {s.title}
                   </Link>
@@ -107,7 +107,7 @@ export default function Footer() {
                 { label: 'Bookkeeping & Accounting — Texas', href: '/website-design-texas-bookkeeping-accounting/' },
               ].map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="text-slate-400 hover:text-white text-sm flex items-center gap-2 group transition-colors">
+                  <a href={l.href} className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
                     {l.label}
                   </a>
@@ -132,7 +132,7 @@ export default function Footer() {
                 { label: 'Disclaimer', to: '/disclaimer' },
               ].map((l) => (
                 <li key={l.label}>
-                  <Link to={l.to} className="text-slate-400 hover:text-white text-sm flex items-center gap-2 group transition-colors">
+                  <Link to={l.to} className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
                     {l.label}
                   </Link>
@@ -147,15 +147,15 @@ export default function Footer() {
             <ul className="space-y-4 mb-6">
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-brand-purple mt-0.5 flex-shrink-0" />
-                <a href={`mailto:${COMPANY.email}`} className="text-slate-400 hover:text-white text-sm transition-colors">{COMPANY.email}</a>
+                <a href={`mailto:${COMPANY.email}`} className="text-slate-300 hover:text-white text-sm transition-colors">{COMPANY.email}</a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-brand-purple mt-0.5 flex-shrink-0" />
-                <a href={`tel:${COMPANY.phone}`} className="text-slate-400 hover:text-white text-sm transition-colors">{COMPANY.phone}</a>
+                <a href={`tel:${COMPANY.phone}`} className="text-slate-300 hover:text-white text-sm transition-colors">{COMPANY.phone}</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-brand-purple mt-0.5 flex-shrink-0" />
-                <span className="text-slate-400 text-sm">{COMPANY.address}</span>
+                <span className="text-slate-300 text-sm">{COMPANY.address}</span>
               </li>
             </ul>
 

@@ -141,7 +141,7 @@ export default function ApplyModal({ job, onClose }) {
             </div>
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-[#94a3b8] hover:text-[#1B3172] hover:border-[#1B3172] transition-all shrink-0 ml-4"
+              className="w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-[#94a3b8] hover:text-[#1B3172] hover:border-[#1B3172] transition-all shrink-0 ml-4 cursor-pointer"
               aria-label="Close"
             >
               <X className="w-4 h-4" />
@@ -161,7 +161,7 @@ export default function ApplyModal({ job, onClose }) {
                 <p className="text-[#64748b] text-sm leading-relaxed max-w-xs mx-auto mb-7">
                   Your {isSEO ? 'work profile' : 'application'} for <strong>{job.title}</strong> has been sent to the Novelio team. We'll get back to you within 48 hours.
                 </p>
-                <button onClick={onClose} className="btn-primary px-8 py-3 text-sm">
+                <button onClick={onClose} className="btn-primary px-8 py-3 text-sm cursor-pointer">
                   Done
                 </button>
               </div>
@@ -285,7 +285,7 @@ export default function ApplyModal({ job, onClose }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="px-5 py-2.5 rounded-xl border border-[rgba(29,78,216,0.15)] text-sm font-semibold text-[#64748b] hover:text-[#1B3172] hover:border-[#1B3172] transition-all"
+                className="px-5 py-2.5 rounded-xl border border-[rgba(29,78,216,0.15)] text-sm font-semibold text-[#64748b] hover:text-[#1B3172] hover:border-[#1B3172] transition-all cursor-pointer"
               >
                 Cancel
               </button>
