@@ -52,10 +52,10 @@ export default function Footer() {
       <div className="orb orb-blue w-96 h-96 -bottom-48 -right-48" style={{ opacity: 0.15 }} />
 
       <div className="container-xl relative z-10 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
 
           {/* Brand col */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 md:col-span-2">
             <Link to="/" className="inline-flex mb-5">
               <img
                 src="/logo.png"
@@ -93,6 +93,24 @@ export default function Footer() {
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
                     {s.title}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Industries col */}
+          <div>
+            <h4 className="text-white font-heading font-600 mb-5 text-sm uppercase tracking-widest">Industries</h4>
+            <ul className="space-y-3">
+              {[
+                { label: 'Bookkeeping & Accounting — California', href: '/website-design-california-bookkeeping-accounting/' },
+                { label: 'Bookkeeping & Accounting — Texas', href: '/website-design-texas-bookkeeping-accounting/' },
+              ].map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="text-slate-400 hover:text-white text-sm flex items-center gap-2 group transition-colors">
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
+                    {l.label}
+                  </a>
                 </li>
               ))}
             </ul>
