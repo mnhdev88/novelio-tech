@@ -172,7 +172,7 @@ export default function Footer() {
                     className="flex-1 bg-slate-800 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-purple/60 transition-colors disabled:opacity-50"
                     required
                   />
-                  <button type="submit" disabled={status === 'loading'} className="w-11 h-10 bg-gradient-primary rounded-xl flex items-center justify-center flex-shrink-0 hover:shadow-glow transition-all disabled:opacity-60">
+                  <button type="submit" disabled={status === 'loading'} className="w-11 h-10 bg-brand-purple border border-purple-400/60 rounded-xl flex items-center justify-center flex-shrink-0 hover:bg-purple-500 hover:border-purple-300 hover:shadow-glow transition-all disabled:opacity-60">
                     <Send className="w-4 h-4 text-white" />
                   </button>
                 </form>
