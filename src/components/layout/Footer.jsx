@@ -164,16 +164,22 @@ export default function Footer() {
               <p className="text-emerald-400 text-sm font-medium">Thanks for subscribing!</p>
             ) : (
               <>
-                <form onSubmit={handleSubscribe} className="flex gap-2">
+                <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
                   <input
                     type="email" value={email} onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email address"
                     disabled={status === 'loading'}
-                    className="flex-1 bg-slate-800 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-purple/60 transition-colors disabled:opacity-50"
+                    className="w-full bg-slate-800 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-white/40 transition-colors disabled:opacity-50"
                     required
                   />
-                  <button type="submit" disabled={status === 'loading'} className="w-11 h-10 bg-brand-purple border border-purple-400/60 rounded-xl flex items-center justify-center flex-shrink-0 hover:bg-purple-500 hover:border-purple-300 hover:shadow-glow transition-all disabled:opacity-60">
-                    <Send className="w-4 h-4 text-white" />
+                  <button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    className="w-full flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white transition-all disabled:opacity-60 hover:brightness-110"
+                    style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #2563EB 100%)' }}
+                  >
+                    <Send className="w-4 h-4" />
+                    {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
                   </button>
                 </form>
                 {status === 'error' && (
