@@ -23,6 +23,8 @@
     { "source": "/home-2",                                        "destination": "/",         "permanent": true },
     { "source": "/home-2/",                                       "destination": "/",         "permanent": true },
     { "source": "/tag/:slug",                                     "destination": "/blog",     "permanent": true },
+    { "source": "/blog-grid",                                     "destination": "/blog",     "permanent": true },
+    { "source": "/blog-grid/",                                    "destination": "/blog",     "permanent": true },
     { "source": "/tips-for-remotely-managing-a-team-during-covid-19",    "destination": "/blog", "permanent": true },
     { "source": "/tips-for-remotely-managing-a-team-during-covid-19/",   "destination": "/blog", "permanent": true },
     { "source": "/10-rules-you-should-know-about-ux-writing",            "destination": "/blog", "permanent": true },

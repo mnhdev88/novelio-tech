@@ -7,8 +7,9 @@ RewriteRule ^my-account-2/?$                                     - [G,L]
 RewriteRule ^product/.*$                                         - [G,L]
 RewriteRule ^.*/feed/?$                                          - [G,L]
 
-# ── 301 — old WordPress tag archives → /blog ───────────────────────────────
+# ── 301 — old WordPress tag archives + blog archive → /blog ────────────────
 RewriteRule ^tag/.*$                                             /blog [R=301,L]
+RewriteRule ^blog-grid/?$                                        /blog [R=301,L]
 
 # ── 301 — old PHP / HTML pages → React equivalents ─────────────────────────
 RewriteRule ^index\.php$                                         / [R=301,L]
