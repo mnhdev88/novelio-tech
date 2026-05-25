@@ -1,5 +1,32 @@
 Options -MultiViews
 RewriteEngine On
+
+# ── 410 Gone — WooCommerce / WordPress-only junk, should never exist ────────
+RewriteRule ^cart/?$                                              - [G,L]
+RewriteRule ^my-account-2/?$                                     - [G,L]
+RewriteRule ^product/.*$                                         - [G,L]
+RewriteRule ^.*/feed/?$                                          - [G,L]
+
+# ── 301 — old WordPress tag archives → /blog ───────────────────────────────
+RewriteRule ^tag/.*$                                             /blog [R=301,L]
+
+# ── 301 — old PHP pages → React equivalents ────────────────────────────────
+RewriteRule ^index\.php$                                         / [R=301,L]
+RewriteRule ^about\.php$                                         /about [R=301,L]
+RewriteRule ^business-process-outsourcing\.php$                  /services [R=301,L]
+
+# ── 301 — old WordPress page slugs ─────────────────────────────────────────
+RewriteRule ^home/?$                                             / [R=301,L]
+RewriteRule ^home-2/?$                                           / [R=301,L]
+
+# ── 301 — old WordPress blog posts → /blog ─────────────────────────────────
+RewriteRule ^tips-for-remotely-managing-a-team-during-covid-19/?$         /blog [R=301,L]
+RewriteRule ^10-rules-you-should-know-about-ux-writing/?$                 /blog [R=301,L]
+RewriteRule ^how-to-get-the-most-out-of-your-press-release/?$             /blog [R=301,L]
+RewriteRule ^9-tips-to-start-preparing-for-christmas-this-year/?$         /blog [R=301,L]
+RewriteRule ^how-to-increase-your-youtube-subscribers/?$                  /blog [R=301,L]
+
+# ── SPA fallback (must be last) ─────────────────────────────────────────────
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [QSA,L]

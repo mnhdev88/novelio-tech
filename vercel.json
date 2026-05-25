@@ -1,7 +1,30 @@
 {
   "redirects": [
-    { "source": "/best-website-developer-in-newark", "destination": "/best-website-developer-newark-nj/", "permanent": true },
-    { "source": "/best-website-developer-in-newark/", "destination": "/best-website-developer-newark-nj/", "permanent": true }
+    { "source": "/best-website-developer-in-newark",              "destination": "/best-website-developer-newark-nj/", "permanent": true },
+    { "source": "/best-website-developer-in-newark/",             "destination": "/best-website-developer-newark-nj/", "permanent": true },
+    { "source": "/index.php",                                     "destination": "/",         "permanent": true },
+    { "source": "/about.php",                                     "destination": "/about",    "permanent": true },
+    { "source": "/business-process-outsourcing.php",              "destination": "/services", "permanent": true },
+    { "source": "/home",                                          "destination": "/",         "permanent": true },
+    { "source": "/home/",                                         "destination": "/",         "permanent": true },
+    { "source": "/home-2",                                        "destination": "/",         "permanent": true },
+    { "source": "/home-2/",                                       "destination": "/",         "permanent": true },
+    { "source": "/tag/:slug",                                     "destination": "/blog",     "permanent": true },
+    { "source": "/tips-for-remotely-managing-a-team-during-covid-19",    "destination": "/blog", "permanent": true },
+    { "source": "/tips-for-remotely-managing-a-team-during-covid-19/",   "destination": "/blog", "permanent": true },
+    { "source": "/10-rules-you-should-know-about-ux-writing",            "destination": "/blog", "permanent": true },
+    { "source": "/10-rules-you-should-know-about-ux-writing/",           "destination": "/blog", "permanent": true },
+    { "source": "/how-to-get-the-most-out-of-your-press-release",        "destination": "/blog", "permanent": true },
+    { "source": "/how-to-get-the-most-out-of-your-press-release/",       "destination": "/blog", "permanent": true },
+    { "source": "/9-tips-to-start-preparing-for-christmas-this-year",    "destination": "/blog", "permanent": true },
+    { "source": "/9-tips-to-start-preparing-for-christmas-this-year/",   "destination": "/blog", "permanent": true },
+    { "source": "/how-to-increase-your-youtube-subscribers",              "destination": "/blog", "permanent": true },
+    { "source": "/how-to-increase-your-youtube-subscribers/",            "destination": "/blog", "permanent": true },
+    { "source": "/cart",                                          "destination": "/",         "permanent": true },
+    { "source": "/cart/",                                         "destination": "/",         "permanent": true },
+    { "source": "/my-account-2",                                  "destination": "/",         "permanent": true },
+    { "source": "/my-account-2/",                                 "destination": "/",         "permanent": true },
+    { "source": "/product/:slug",                                 "destination": "/services", "permanent": true }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

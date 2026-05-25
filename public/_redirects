@@ -1,3 +1,40 @@
-/best-website-developer-in-newark    /best-website-developer-newark-nj/  301
-/best-website-developer-in-newark/   /best-website-developer-newark-nj/  301
-/*  /index.html  200
+/best-website-developer-in-newark                              /best-website-developer-newark-nj/  301
+/best-website-developer-in-newark/                             /best-website-developer-newark-nj/  301
+
+# Old PHP pages
+/index.php                                                     /          301
+/about.php                                                     /about     301
+/business-process-outsourcing.php                              /services  301
+
+# Old WordPress page slugs
+/home                                                          /          301
+/home/                                                         /          301
+/home-2                                                        /          301
+/home-2/                                                       /          301
+
+# WordPress tag archives
+/tag/*                                                         /blog      301
+
+# Old blog posts
+/tips-for-remotely-managing-a-team-during-covid-19             /blog      301
+/tips-for-remotely-managing-a-team-during-covid-19/            /blog      301
+/10-rules-you-should-know-about-ux-writing                     /blog      301
+/10-rules-you-should-know-about-ux-writing/                    /blog      301
+/how-to-get-the-most-out-of-your-press-release                 /blog      301
+/how-to-get-the-most-out-of-your-press-release/                /blog      301
+/9-tips-to-start-preparing-for-christmas-this-year             /blog      301
+/9-tips-to-start-preparing-for-christmas-this-year/            /blog      301
+/how-to-increase-your-youtube-subscribers                      /blog      301
+/how-to-increase-your-youtube-subscribers/                     /blog      301
+
+# WooCommerce junk — 410 Gone
+/cart                                                          /          410
+/cart/                                                         /          410
+/my-account-2                                                  /          410
+/my-account-2/                                                 /          410
+/product/*                                                     /          410
+/*/feed                                                        /          410
+/*/feed/                                                       /          410
+
+# SPA fallback
+/*                                                             /index.html  200
