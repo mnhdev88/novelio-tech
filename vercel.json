@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/best-website-developer-in-newark", "destination": "/best-website-developer-newark-nj/", "permanent": true },
+    { "source": "/best-website-developer-in-newark/", "destination": "/best-website-developer-newark-nj/", "permanent": true }
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

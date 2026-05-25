@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Globe, Loader2 } from 'lucide-react';
+import SEO from '../components/SEO';
 import { INDUSTRIES } from '../data/siteData';
 
 // Extracts clean domain label from a URL
@@ -175,6 +176,11 @@ export default function IndustryPage() {
 
   return (
     <main className="pt-20 min-h-screen bg-[#F5F7FF]">
+      <SEO
+        title={`${industry.name} Website Design & Digital Marketing`}
+        description={`See our ${industry.name} website portfolio. Novelio Technologies builds high-converting, SEO-optimized websites for ${industry.name.toLowerCase()} businesses.`}
+        canonical={`/industries/${sector}`}
+      />
 
       {/* Hero */}
       <section

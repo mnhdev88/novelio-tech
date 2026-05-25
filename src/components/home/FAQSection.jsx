@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 
@@ -24,8 +25,8 @@ const FAQS = [
     a: 'Pricing depends on which services you need and your business size. We don\'t believe in locking clients into long-term contracts — our work speaks for itself. Most clients start with a single project or a 3-month engagement, then continue because they see ROI. Pricing is transparent and discussed after your free audit.',
   },
   {
-    q: 'Do you work with businesses outside New Jersey?',
-    a: 'Absolutely. We work with small businesses across all 50 US states. While we started in New Jersey, our team is fully remote and our clients span Texas, Florida, California, and beyond. As long as you\'re a US-based business, we\'re your partner.',
+    q: 'Do you work with businesses remotely?',
+    a: 'Absolutely. We work with small businesses worldwide. Our team is fully remote and our clients span across North America, Europe, the Middle East, South Asia, and beyond. Wherever you are, we\'re your partner.',
   },
 ];
 
@@ -87,8 +88,21 @@ export default function FAQSection() {
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  };
+
   return (
     <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <div className="orb orb-blue w-[480px] h-[480px] -top-48 -right-48 opacity-5" />
       <div className="orb orb-purple w-[320px] h-[320px] -bottom-32 -left-32 opacity-5" />
 

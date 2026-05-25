@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Award, Heart, Lightbulb, Shield, Users, Target, ArrowRight } from 'lucide-react';
@@ -33,6 +34,11 @@ const values = [
 export default function AboutPage() {
   return (
     <main className="pt-20">
+      <SEO
+        title="About Us — Your Dedicated Business Growth Partner"
+        description="Novelio Technologies LLC is a dedicated business growth partner serving 200+ small businesses worldwide. Learn our story, team, and values."
+        canonical="/about"
+      />
       {/* Hero */}
       <section className="section-pad relative overflow-hidden bg-dark">
         <div className="orb orb-purple w-[500px] h-[500px] -top-48 -left-48 opacity-15" />

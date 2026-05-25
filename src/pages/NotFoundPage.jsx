@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Home } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function NotFoundPage() {
   return (
     <main className="min-h-screen bg-dark flex items-center justify-center relative overflow-hidden">
+      <SEO title="Page Not Found" description="The page you are looking for does not exist." noindex />
       <div className="orb orb-purple w-[500px] h-[500px] top-0 left-0 -translate-x-1/2 -translate-y-1/2 opacity-20" />
       <div className="orb orb-blue w-[500px] h-[500px] bottom-0 right-0 translate-x-1/2 translate-y-1/2 opacity-15" />
       <div className="dot-grid absolute inset-0 opacity-40" />

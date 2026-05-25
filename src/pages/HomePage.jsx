@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import HeroSection from '../components/home/HeroSection';
 import ServicesMarquee from '../components/home/ServicesMarquee';
 import ProblemStatement from '../components/home/ProblemStatement';
@@ -14,6 +15,11 @@ import BlogPreview from '../components/home/BlogPreview';
 export default function HomePage() {
   return (
     <main>
+      <SEO
+        title="Business Growth Partner for Small Businesses"
+        description="Novelio is your dedicated business growth partner. We analyze your website, Google listing, leads, automation, and branding — then build and execute a tailored growth plan. Free audit for small businesses."
+        canonical="/"
+      />
       <HeroSection />
       <ServicesMarquee />
       <ProblemStatement />

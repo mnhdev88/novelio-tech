@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Clock, User, ArrowRight, Search } from 'lucide-react';
+import SEO from '../components/SEO';
 import { BLOG_POSTS } from '../data/siteData';
 import CTABanner from '../components/home/CTABanner';
 
@@ -16,12 +17,31 @@ export default function BlogPage() {
     const matchSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     return matchCat && matchSearch;
-  });
+  }).sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const featured = BLOG_POSTS.find((p) => p.featured);
+  const featured = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
   return (
     <main className="pt-20">
+      <SEO
+        title="Blog — Digital Marketing Tips for Small Businesses"
+        description="Expert guides on SEO, Google Ads, web design, email marketing, and social media for small business owners. Free actionable advice from Novelio Technologies."
+        canonical="/blog"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          '@id': 'https://noveliotech.com/blog#collection',
+          name: 'Novelio Technologies Blog',
+          description: 'Expert guides on SEO, Google Ads, web design, email marketing, and social media for small business owners.',
+          url: 'https://noveliotech.com/blog',
+          publisher: { '@type': 'Organization', '@id': 'https://noveliotech.com/#business', name: 'Novelio Technologies LLC' },
+          hasPart: BLOG_POSTS.map((post) => ({
+            '@type': 'BlogPosting',
+            headline: post.title,
+            url: `https://noveliotech.com/blog/${post.slug}`,
+          })),
+        }}
+      />
       {/* Hero */}
       <section className="section-pad relative overflow-hidden bg-dark">
         <div className="orb orb-purple w-[500px] h-[500px] -top-48 -left-48 opacity-15" />

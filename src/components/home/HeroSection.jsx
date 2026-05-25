@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, ChevronDown, Star, TrendingUp, Shield, Award } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Play, ShieldCheck, Check } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 // ── Network constellation data ────────────────────────────────────────────────
@@ -251,7 +251,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* ── Floating stat cards ── */}
-      <FloatCard icon={TrendingUp} value="200+"   label="US Businesses Served" gradient="from-[#6B3FA0] to-[#1D4ED8]"  delay={1.4} className="left-6 top-[36%]" />
+      <FloatCard icon={TrendingUp} value="200+"   label="Businesses Served" gradient="from-[#6B3FA0] to-[#1D4ED8]"  delay={1.4} className="left-6 top-[36%]" />
       <FloatCard icon={Star}       value="Free"  label="Growth Audit"         gradient="from-amber-400 to-orange-500" delay={1.7} className="left-6 top-[58%]" />
       <FloatCard icon={Shield}     value="30min" label="Avg Audit Time"       gradient="from-[#1D4ED8] to-[#0EA5E9]"  delay={1.5} className="right-6 top-[36%]" />
       <FloatCard icon={Award}      value="10+"   label="Years Experience"     gradient="from-emerald-500 to-cyan-500" delay={1.8} className="right-6 top-[58%]" />
@@ -277,7 +277,7 @@ export default function HeroSection() {
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6">
             {['Your', 'Business', 'Deserves', 'a'].map((w, i) => (
               <motion.span key={w}
-                initial={{ opacity: 0, y: 36, filter: 'blur(6px)' }}
+                initial={{ opacity: 0.01, y: 36, filter: 'blur(6px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.55, delay: 0.15 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
@@ -286,22 +286,21 @@ export default function HeroSection() {
               </motion.span>
             ))}
             {' '}
-            <span className="gradient-text">
-              {['Growth', 'Partner,'].map((w, i) => (
-                <motion.span key={w}
-                  initial={{ opacity: 0, y: 36, filter: 'blur(6px)' }}
-                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  transition={{ duration: 0.55, delay: 0.51 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block mr-[0.22em]"
-                >
-                  {w}
-                </motion.span>
-              ))}
-            </span>
+            {['Growth', 'Partner,'].map((w, i) => (
+              <motion.span key={w}
+                initial={{ opacity: 0.01, y: 36, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 0.55, delay: 0.51 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-block mr-[0.22em]"
+                style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+              >
+                {w}
+              </motion.span>
+            ))}
             {' '}
             {['Not', 'Just', 'a', 'Vendor'].map((w, i) => (
               <motion.span key={w}
-                initial={{ opacity: 0, y: 36, filter: 'blur(6px)' }}
+                initial={{ opacity: 0.01, y: 36, filter: 'blur(6px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.55, delay: 0.72 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
@@ -311,11 +310,24 @@ export default function HeroSection() {
             ))}
           </h1>
 
+          {/* Tagline */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.0, ease: 'easeOut' }}
+            className="flex justify-center mb-4"
+          >
+            <div className="section-label">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              Use Before You Trust. Trust Before You Pay.
+            </div>
+          </motion.div>
+
           {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.1, ease: 'easeOut' }}
+            transition={{ duration: 0.7, delay: 1.15, ease: 'easeOut' }}
             className="text-lg sm:text-xl text-[#475569] leading-relaxed max-w-2xl mx-auto mb-10"
           >
             We analyze your digital presence — website, Google listing, leads, automation, branding, and operations — then build and execute a tailored growth plan that drives real revenue.
@@ -326,10 +338,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.25, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
           >
             <a href="tel:+19082012264" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
-              Get Your Free Growth Audit
+              <Rocket className="w-5 h-5" />
+              No Payment. Just Results.
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
@@ -339,20 +352,62 @@ export default function HeroSection() {
               </motion.span>
             </a>
             <a href="#how-it-works" className="btn-ghost text-base px-8 py-4 w-full sm:w-auto justify-center">
-              <ArrowUpRight className="w-4 h-4" />
+              <Play className="w-4 h-4" />
               See How It Works
             </a>
+          </motion.div>
+
+          {/* Promise banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.35, ease: 'easeOut' }}
+            className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-2xl px-6 py-3.5 max-w-xl mx-auto mb-8"
+          >
+            <p className="text-sm font-medium text-[#3730A3] mb-2 flex items-center justify-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-[#4F46E5] flex-shrink-0" />
+              Go Live Today. See the Difference in 15 Days.
+            </p>
+            <div className="flex items-center justify-center gap-2 flex-wrap">
+              {["No lock-in", "No risk", "No charges if you can't see the difference yourself"].map((pill, i) => (
+                <span key={i} className="inline-flex items-center gap-1 text-xs text-[#4338CA] bg-white border border-[#C7D2FE] rounded-full py-1 px-3">
+                  <Check className="w-3 h-3 text-[#16A34A] flex-shrink-0" />
+                  {pill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Star rating */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.45, duration: 0.6 }}
+            className="flex items-center justify-center gap-2 mb-4"
+          >
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <motion.div key={i}
+                  initial={{ opacity: 0, scale: 0, rotate: -45 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ delay: 1.5 + i * 0.07, type: 'spring', stiffness: 400, damping: 14 }}
+                >
+                  <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                </motion.div>
+              ))}
+            </div>
+            <span className="text-sm text-[#475569]">Rated 5/5 by small business owners on Google</span>
           </motion.div>
 
           {/* Trust bar */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
+            transition={{ duration: 0.8, delay: 1.55 }}
             className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm text-[#64748b]"
           >
             {[
-              { icon: '✓', text: 'Serving 200+ US Small Businesses' },
+              { icon: '✓', text: 'Serving 200+ Small Businesses' },
               { icon: '✓', text: 'Dover, DE Registered' },
               { icon: '✓', text: '5-Star Google Reviews' },
             ].map((b, i) => (
@@ -360,7 +415,7 @@ export default function HeroSection() {
                 key={i}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.45 + i * 0.08, duration: 0.4 }}
+                transition={{ delay: 1.6 + i * 0.08, duration: 0.4 }}
                 className="flex items-center gap-1.5"
               >
                 {i > 0 && <span className="text-slate-300 hidden sm:inline">·</span>}
@@ -368,27 +423,6 @@ export default function HeroSection() {
                 {b.text}
               </motion.span>
             ))}
-          </motion.div>
-
-          {/* Star rating */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.6 }}
-            className="flex items-center justify-center gap-2 mt-8"
-          >
-            <div className="flex gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <motion.div key={i}
-                  initial={{ opacity: 0, scale: 0, rotate: -45 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ delay: 1.55 + i * 0.07, type: 'spring', stiffness: 400, damping: 14 }}
-                >
-                  <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                </motion.div>
-              ))}
-            </div>
-            <span className="text-sm text-[#475569]">Rated 5/5 by US small business owners on Google</span>
           </motion.div>
         </div>
       </div>

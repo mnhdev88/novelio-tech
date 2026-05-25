@@ -4,13 +4,40 @@ import { FaLinkedinIn, FaXTwitter, FaInstagram, FaFacebookF, FaYoutube } from 'r
 import { COMPANY, SERVICES } from '../../data/siteData';
 import { useState } from 'react';
 
+async function subscribeNewsletter(email) {
+  const res = await fetch('https://crm.noveliotech.com/api/newsletter', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': import.meta.env.VITE_CRM_API_KEY,
+    },
+    body: JSON.stringify({ email }),
+  });
+  return res.json();
+}
+
 export default function Footer() {
   const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    if (email) { setSubscribed(true); setEmail(''); }
+    setStatus('loading');
+    setErrorMsg('');
+    try {
+      const data = await subscribeNewsletter(email);
+      if (data.success) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setErrorMsg(data.message || 'Something went wrong.');
+        setStatus('error');
+      }
+    } catch {
+      setErrorMsg('Network error. Please try again.');
+      setStatus('error');
+    }
   };
 
   const footerServices = SERVICES.slice(0, 6);
@@ -79,6 +106,7 @@ export default function Footer() {
                 { label: 'About Us', to: '/about' },
                 { label: 'How It Works', to: '/#how-it-works' },
                 { label: 'Blog & Resources', to: '/blog' },
+                { label: 'Careers', to: '/careers' },
                 { label: 'Contact Us', to: '/contact' },
                 { label: 'Privacy Policy', to: '/privacy' },
                 { label: 'Terms of Service', to: '/terms' },
@@ -114,20 +142,26 @@ export default function Footer() {
             </ul>
 
             <h4 className="text-white font-heading font-600 mb-3 text-sm uppercase tracking-widest">Newsletter</h4>
-            {subscribed ? (
+            {status === 'success' ? (
               <p className="text-emerald-400 text-sm font-medium">Thanks for subscribing!</p>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2">
-                <input
-                  type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="flex-1 bg-white/8 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-purple/60 transition-colors"
-                  required
-                />
-                <button type="submit" className="w-11 h-10 bg-gradient-primary rounded-xl flex items-center justify-center flex-shrink-0 hover:shadow-glow transition-all">
-                  <Send className="w-4 h-4 text-white" />
-                </button>
-              </form>
+              <>
+                <form onSubmit={handleSubscribe} className="flex gap-2">
+                  <input
+                    type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your email address"
+                    disabled={status === 'loading'}
+                    className="flex-1 bg-slate-800 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-purple/60 transition-colors disabled:opacity-50"
+                    required
+                  />
+                  <button type="submit" disabled={status === 'loading'} className="w-11 h-10 bg-gradient-primary rounded-xl flex items-center justify-center flex-shrink-0 hover:shadow-glow transition-all disabled:opacity-60">
+                    <Send className="w-4 h-4 text-white" />
+                  </button>
+                </form>
+                {status === 'error' && (
+                  <p className="text-red-400 text-xs mt-2">{errorMsg}</p>
+                )}
+              </>
             )}
           </div>
         </div>
@@ -135,12 +169,12 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © 2025 Novelio Technologies LLC. All rights reserved. | Registered in Delaware, USA.
+            © 2026 Novelio Technologies LLC. All rights reserved. | Registered in Delaware, USA.
           </p>
           <div className="flex items-center gap-6">
             <Link to="/privacy" className="text-slate-500 hover:text-white text-xs transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="text-slate-500 hover:text-white text-xs transition-colors">Terms of Service</Link>
-            <Link to="/sitemap.xml" className="text-slate-500 hover:text-white text-xs transition-colors">Sitemap</Link>
+            <a href="/sitemap.xml" className="text-slate-500 hover:text-white text-xs transition-colors">Sitemap</a>
           </div>
         </div>
       </div>

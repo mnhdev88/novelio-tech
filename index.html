@@ -2,12 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1B3172" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://www.clarity.ms" />
 
     <!-- Microsoft Clarity -->
-    <script type="text/javascript">
+    <script async type="text/javascript">
       (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -32,16 +36,20 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.noveliotech.com/" />
-    <meta property="og:title" content="Stop Guessing. Start Growing. | Novelio Technologies" />
-    <meta property="og:description" content="Free growth audit for US small businesses. We fix websites, GMB, leads, automation &amp; more — as your long-term growth partner, not a one-time vendor." />
-    <meta property="og:image" content="https://www.noveliotech.com/assets/og-image.jpg" />
+    <meta property="og:title" content="Business Growth Partner for Small Businesses | Novelio Technologies" />
+    <meta property="og:description" content="Novelio is your dedicated business growth partner. We analyze your website, Google listing, leads, automation, and branding — then build and execute a tailored growth plan. Free audit for US small businesses." />
+    <meta property="og:image" content="https://www.noveliotech.com/logo.png" />
     <meta property="og:site_name" content="Novelio Technologies LLC" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Stop Guessing. Start Growing. | Novelio Technologies" />
-    <meta name="twitter:description" content="Free growth audit for US small businesses. We fix websites, GMB, leads, automation &amp; more — as your long-term growth partner, not a one-time vendor." />
-    <meta name="twitter:image" content="https://www.noveliotech.com/assets/og-image.jpg" />
+    <meta name="twitter:site" content="@noveliotech" />
+    <meta name="twitter:creator" content="@noveliotech" />
+    <meta name="twitter:title" content="Business Growth Partner for Small Businesses | Novelio Technologies" />
+    <meta name="twitter:description" content="Novelio is your dedicated business growth partner. We analyze your website, Google listing, leads, automation, and branding — then build and execute a tailored growth plan. Free audit for US small businesses." />
+    <meta name="twitter:image" content="https://www.noveliotech.com/logo.png" />
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,17 +61,25 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
+      "@id": "https://www.noveliotech.com/#business",
       "name": "Novelio Technologies LLC",
       "url": "https://www.noveliotech.com",
-      "logo": "https://www.noveliotech.com/assets/logo.png",
-      "image": "https://www.noveliotech.com/assets/og-image.jpg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.noveliotech.com/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://www.noveliotech.com/logo.png",
       "description": "Novelio Technologies is a business growth partner for US small businesses. We analyze and improve websites, Google Business Profiles, lead generation, automation, branding, and operations.",
+      "foundingDate": "2014",
       "telephone": "+19082012264",
       "email": "info@noveliotech.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Dover",
         "addressRegion": "DE",
+        "postalCode": "19901",
         "addressCountry": "US"
       },
       "areaServed": {
@@ -71,98 +87,44 @@
         "name": "United States"
       },
       "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
       "sameAs": [
         "https://www.linkedin.com/company/noveliotech",
-        "https://www.facebook.com/noveliotech"
+        "https://www.facebook.com/noveliotech",
+        "https://twitter.com/noveliotech",
+        "https://instagram.com/noveliotech",
+        "https://youtube.com/@noveliotech"
       ]
     }
     </script>
 
-    <!-- Schema: FAQPage -->
+    <!-- Schema: WebSite (FAQPage moved to FAQSection.jsx component) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What exactly is a Growth Audit and is it really free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, completely free with no obligation. Our Growth Audit is a 30-minute analysis of your website, Google Business Profile, lead capture process, and digital tools. We identify the top gaps costing you customers and present a prioritized action plan — whether you work with us or not."
-          }
+      "@type": "WebSite",
+      "@id": "https://www.noveliotech.com/#website",
+      "url": "https://www.noveliotech.com",
+      "name": "Novelio Technologies LLC",
+      "description": "Business growth partner for US small businesses",
+      "publisher": {
+        "@id": "https://www.noveliotech.com/#business"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.noveliotech.com/blog?q={search_term_string}"
         },
-        {
-          "@type": "Question",
-          "name": "How is Novelio different from a regular web design agency?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A web agency builds you a website and moves on. Novelio acts as your ongoing growth partner — we look at your entire business presence (website, Google listing, leads, automation, branding, and operations tools) and take responsibility for results, not just deliverables."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you only build websites or handle other business problems too?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We cover the full spectrum: website design and SEO, Google Business Profile optimization, lead generation systems, CRM and automation setup, branding, hosting issues, and accounting or operations tool integrations. We find whatever is holding your business back and fix it."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long before I see results?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Many clients see improvements in local search visibility and lead flow within 30–60 days of implementation. We set clear milestones at the start and review progress monthly with you."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does it cost and are there long-term contracts?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Pricing depends on the scope of work identified in your audit. We offer transparent, fixed-price packages with no hidden fees. There are no long-term lock-in contracts — we earn your business every month."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you work with businesses outside New Jersey?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Novelio is a US-registered company (Dover, DE) and we work with small businesses across all 50 states. Our team delivers everything remotely and you'll always have a dedicated point of contact."
-          }
-        }
-      ]
-    }
-    </script>
-
-    <!-- Schema: HowTo -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How Novelio's Growth Partnership Works",
-      "description": "A simple 3-step process to diagnose, plan, and execute your business growth.",
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Free Growth Audit",
-          "text": "We analyze your entire digital presence — website, Google listing, lead capture, automation, and branding — completely free with no obligation."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Custom Growth Plan",
-          "text": "We deliver a prioritized roadmap of fixes and improvements with clear ROI projections so you know exactly what to expect."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Execute & Scale",
-          "text": "We implement the plan, you approve each step, and we track results together in monthly review calls."
-        }
-      ]
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
   </head>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { SERVICES } from '../../data/siteData';
+import TopBar from './TopBar';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,6 +34,7 @@ export default function Navbar() {
     { label: 'How It Works', to: '/#how-it-works', isAnchor: true },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
+    { label: 'Careers', to: '/careers' },
     { label: 'Contact', to: '/contact' },
   ];
 
@@ -40,8 +42,11 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Fixed header: TopBar + Nav stacked together */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <TopBar />
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`transition-all duration-300 ${
           scrolled
             ? 'bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-[0_4px_24px_rgba(27,49,114,0.08)]'
             : 'bg-white/80 backdrop-blur-sm'
@@ -142,6 +147,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+      </div>{/* end fixed header wrapper */}
 
       {/* Mobile overlay menu */}
       <div

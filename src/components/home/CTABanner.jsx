@@ -178,7 +178,7 @@ export default function CTABanner() {
             className="flex flex-wrap items-center justify-center gap-6 mt-10"
           >
             {[
-              { label: '200+', sub: 'US Businesses Served' },
+              { label: '200+', sub: 'Businesses Served' },
               { label: '10+',  sub: 'Years Experience' },
               { label: 'Free', sub: '30-Min Growth Audit' },
             ].map((b, i) => (

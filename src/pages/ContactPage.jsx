@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, MessageCircle, Send, Check, ChevronDown, ChevronUp } from 'lucide-react';
@@ -62,10 +63,19 @@ export default function ContactPage() {
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setSubmitting(true);
-    // Simulate submission — replace with EmailJS/Formspree endpoint
-    await new Promise((r) => setTimeout(r, 1500));
-    setSubmitting(false);
-    setSuccess(true);
+    try {
+      const res = await fetch('https://formspree.io/f/xwpbqpbq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('submission failed');
+      setSuccess(true);
+    } catch {
+      setErrors({ message: 'Something went wrong. Please try again or email us directly at info@noveliotech.com.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (field) => (e) => {
@@ -80,6 +90,11 @@ export default function ContactPage() {
 
   return (
     <main className="pt-20">
+      <SEO
+        title="Contact Us — Get Your Free Growth Audit"
+        description="Book your free 30-minute Growth Audit with Novelio Technologies. No obligation, no credit card. We'll analyze your website, Google listing, leads, and more."
+        canonical="/contact"
+      />
       {/* Hero */}
       <section className="section-pad-sm relative overflow-hidden bg-dark">
         <div className="orb orb-purple w-[500px] h-[500px] -top-48 -left-48 opacity-15" />

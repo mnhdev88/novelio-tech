@@ -1,3 +1,4 @@
+import SEO from '../../components/SEO';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase, ChevronDown, ChevronUp } from 'lucide-react';
@@ -9,26 +10,53 @@ import { useState } from 'react';
 const ICON_MAP = { Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase };
 
 const SERVICE_FAQS = {
-  seo: [
+  'website-seo': [
     { q: 'How long does SEO take to show results?', a: 'SEO is a long-term strategy. Most businesses see meaningful improvements within 3–6 months, with stronger results at 6–12 months. Competitive niches may take longer.' },
     { q: 'What is included in your SEO service?', a: 'Our SEO service includes technical audit, on-page optimization, keyword research and strategy, content recommendations, link building, local SEO (if applicable), and monthly reporting.' },
     { q: 'Do you guarantee #1 rankings?', a: 'No ethical SEO agency can guarantee specific rankings as Google\'s algorithm changes constantly. We do guarantee full transparency, best practices, and a measurable improvement in organic visibility and traffic.' },
-    { q: 'Do you work with small businesses?', a: 'Absolutely. We tailor our SEO strategies to fit your budget and business size, whether you\'re a local business or a growing e-commerce brand.' },
+    { q: 'How long does a website build take?', a: 'A basic site takes 2–4 weeks. A custom multi-page site with advanced features takes 4–8 weeks. We always deliver mobile-first, Core Web Vitals-optimized builds.' },
   ],
-  ppc: [
-    { q: 'What\'s the minimum budget for Google Ads?', a: 'We recommend a minimum ad spend of $500–$1,000/month for meaningful data and results. Our management fee is separate from your ad budget.' },
-    { q: 'How long before I see PPC results?', a: 'Unlike SEO, PPC can generate results immediately. Most campaigns see meaningful data within the first 2–4 weeks, which we use to optimize.' },
-    { q: 'Which ad platforms do you manage?', a: 'We manage Google Ads (Search, Display, Shopping, YouTube), Meta Ads (Facebook & Instagram), Bing Ads, LinkedIn Ads, and TikTok Ads.' },
+  'google-business': [
+    { q: 'What is Google Business Profile optimization?', a: 'GBP optimization covers fully completing your profile, adding photos, setting accurate hours and services, implementing a review generation strategy, posting weekly updates, and building citation consistency so Google ranks you higher in local search.' },
+    { q: 'How long before I see local search improvements?', a: 'Most clients see measurable improvements in local pack rankings and calls within 30–60 days of a full GBP optimization. Review generation typically shows results within 2–4 weeks.' },
+    { q: 'Do you respond to reviews on my behalf?', a: 'Yes. We craft professional, brand-consistent responses to both positive and negative reviews within 48 hours, which Google rewards with higher local ranking signals.' },
+    { q: 'What if my business serves multiple locations?', a: 'We can optimize and manage GBP listings for multiple locations. Each location gets its own optimized profile with location-specific keywords, photos, and review strategy.' },
   ],
-  'social-media': [
-    { q: 'Which social platforms do you manage?', a: 'We manage Instagram, Facebook, LinkedIn, Twitter/X, TikTok, YouTube, Pinterest, and Snapchat.' },
-    { q: 'How often will you post on our accounts?', a: 'Posting frequency depends on your package. Typically 3–7 posts per week per platform, plus Stories and Reels where applicable.' },
-    { q: 'Will you create the content or do we provide it?', a: 'We handle full content creation — copywriting, graphic design, video editing, and scheduling. You just need to approve before publishing.' },
+  'lead-generation': [
+    { q: 'What does your lead generation service include?', a: 'We build the full system: landing pages, lead capture forms, follow-up automation, CRM integration, and tracking dashboards. We also manage paid campaigns (Google, Meta) to drive qualified traffic.' },
+    { q: 'How quickly will I start seeing new leads?', a: 'Paid campaigns can generate leads within days of launch. Organic funnels typically take 30–60 days to build momentum. We set clear expectations at the start based on your budget and market.' },
+    { q: 'Do you handle follow-up automation?', a: 'Yes — we build automated email and SMS follow-up sequences that nurture leads instantly, so you never lose a prospect because of a slow response.' },
+    { q: 'What is a typical cost per lead?', a: 'Cost per lead varies by industry, location, and competition. We analyze your market and set realistic CPA targets before spending any budget. Most clients see CPLs improve 20–40% within 60 days of optimization.' },
   ],
-  'web-development': [
-    { q: 'How long does a website take to build?', a: 'A basic website takes 2–4 weeks. A custom multi-page site with advanced features takes 4–8 weeks. E-commerce stores typically 6–10 weeks.' },
-    { q: 'What platforms do you build on?', a: 'We build on WordPress, Shopify, WooCommerce, React/Next.js, and fully custom stacks depending on your needs.' },
-    { q: 'Will my website be mobile-friendly?', a: 'Absolutely. Every website we build is fully responsive, mobile-first, and tested across all devices and browsers.' },
+  automation: [
+    { q: 'What tools do you integrate and automate?', a: 'We work with CRMs (HubSpot, GoHighLevel, Zoho, Salesforce), email platforms (Mailchimp, ActiveCampaign, Klaviyo), booking systems, accounting tools, and custom workflows via Zapier or Make.' },
+    { q: 'How much time can automation save my business?', a: 'Most clients reclaim 8–15 hours per week after implementing our automation systems — time previously spent on manual follow-ups, data entry, scheduling, and reporting.' },
+    { q: 'Do I need technical knowledge to use the automations?', a: 'Not at all. We build systems that run without technical oversight. We also provide a short onboarding session and documentation so your team can manage day-to-day operations confidently.' },
+    { q: 'Can you integrate my existing tools?', a: 'Yes. We audit your current tech stack first and maximize what you already have before recommending new tools. Most businesses can achieve significant automation gains with tools they already pay for.' },
+  ],
+  branding: [
+    { q: 'What does your branding service include?', a: 'We deliver logo design, full brand identity (colors, typography, visual language), brand guidelines, social media templates, business card and print-ready assets, and brand voice and messaging documentation.' },
+    { q: 'How long does a full branding project take?', a: 'A complete brand identity project typically takes 3–5 weeks including discovery, concepts, revisions, and final delivery of all assets.' },
+    { q: 'Do you also rebrand existing businesses?', a: 'Yes. We work with businesses that need a full rebrand as well as those needing a brand refresh — updating an existing identity to feel more modern and consistent without losing brand equity.' },
+    { q: 'Will I own all the brand assets?', a: 'Absolutely. All files are delivered in print-ready and digital formats (AI, EPS, PDF, PNG, SVG) and you own 100% of the rights to every asset we create.' },
+  ],
+  'tech-ops': [
+    { q: 'What tech problems do you typically fix?', a: 'Common issues we resolve: slow or unreliable hosting, bloated plugin stacks, disconnected tools, overpriced subscriptions, broken integrations, accounting software setup, and email deliverability problems.' },
+    { q: 'Can you migrate my website to a faster host?', a: 'Yes. We audit your current hosting, recommend the right tier and provider for your traffic and budget, handle the migration with zero downtime, and verify performance post-move.' },
+    { q: 'Do you provide ongoing IT support?', a: 'Yes. We offer monthly tech-ops retainers covering routine monitoring, updates, security patches, integration maintenance, and a priority support line for critical issues.' },
+    { q: 'How do you charge for tech ops work?', a: 'We offer both project-based pricing for one-time fixes and monthly retainers for ongoing support. Scope and cost are determined after a free tech audit.' },
+  ],
+  'email-marketing': [
+    { q: 'Which email platforms do you work with?', a: 'We work with Mailchimp, Klaviyo, ActiveCampaign, ConvertKit, HubSpot, and most major platforms. We can migrate between platforms or optimize what you already use.' },
+    { q: 'What does your email marketing service include?', a: 'Strategy, list segmentation, campaign design and copywriting, drip sequence setup, A/B testing, deliverability audit (SPF/DKIM/DMARC), and monthly analytics reporting.' },
+    { q: 'What open rates can I expect?', a: 'With proper segmentation and subject line optimization, most clients achieve 25–40% open rates within 60 days — well above the industry average of 20–22%.' },
+    { q: 'Can you set up automated welcome and nurture sequences?', a: 'Yes — welcome sequences, abandoned cart flows, post-purchase follow-ups, re-engagement campaigns, and custom drip sequences are all part of our automation setup service.' },
+  ],
+  'email-validator': [
+    { q: 'Why does email list validation matter?', a: 'Sending to invalid or inactive addresses causes hard bounces, damages your sender reputation, and can get your account suspended by your ESP. A clean list delivers better open rates and protects your deliverability.' },
+    { q: 'How does the validation process work?', a: 'We run your list through multi-layer verification: syntax checks, domain validation, MX record verification, and real-time SMTP verification to classify each address as valid, risky, or invalid.' },
+    { q: 'How quickly can you validate a large list?', a: 'We can typically validate lists of up to 100,000 addresses within 24–48 hours. Larger lists are scoped individually.' },
+    { q: 'What percentage of addresses are typically removed?', a: 'Most lists that haven\'t been cleaned in 12+ months contain 15–30% invalid or risky addresses. Removing these immediately reduces bounce rates and improves inbox placement.' },
   ],
 };
 
@@ -64,8 +92,42 @@ export default function ServiceDetailPage() {
   const Icon = ICON_MAP[service.icon] || Search;
   const faqs = SERVICE_FAQS[serviceId] || DEFAULT_FAQ;
 
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        name: service.title,
+        description: service.description,
+        provider: {
+          '@type': 'LocalBusiness',
+          '@id': 'https://noveliotech.com/#business',
+          name: 'Novelio Technologies LLC',
+          url: 'https://noveliotech.com',
+        },
+        areaServed: { '@type': 'Country', name: 'United States' },
+        serviceType: service.title,
+        url: `https://noveliotech.com${service.slug}`,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://noveliotech.com' },
+          { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://noveliotech.com/services' },
+          { '@type': 'ListItem', position: 3, name: service.title, item: `https://noveliotech.com${service.slug}` },
+        ],
+      },
+    ],
+  };
+
   return (
     <main className="pt-20">
+      <SEO
+        title={`${service.title} — ${service.tagline}`}
+        description={service.description}
+        canonical={service.slug}
+        schema={serviceSchema}
+      />
       {/* Hero */}
       <section className="section-pad relative overflow-hidden bg-dark">
         <div className="orb orb-purple w-[500px] h-[500px] -top-48 -left-48 opacity-15" />

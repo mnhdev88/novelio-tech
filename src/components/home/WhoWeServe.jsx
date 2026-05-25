@@ -33,11 +33,11 @@ export default function WhoWeServe() {
           >
             <div className="section-label mb-4">Who We Serve</div>
             <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-6 leading-tight">
-              Built for US Small Business Owners{' '}
+              Built for Small Business Owners{' '}
               <span className="gradient-text">Who Are Done Guessing</span>
             </h2>
             <p className="text-[#475569] text-lg leading-relaxed mb-8">
-              We work best with owner-operated service businesses, retail shops, restaurants, and trade businesses across the United States who are ready to invest in growth and want a partner who is accountable for results.
+              We work best with owner-operated service businesses, retail shops, restaurants, and trade businesses who are ready to invest in growth and want a partner who is accountable for results.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
               <a href="tel:+19082012264" className="btn-primary inline-flex group">
@@ -46,7 +46,7 @@ export default function WhoWeServe() {
               </a>
               <div className="flex items-center gap-2 text-sm text-[#64748b]">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
-                US businesses only · No obligation
+                No obligation
               </div>
             </div>
           </motion.div>
@@ -80,7 +80,7 @@ export default function WhoWeServe() {
               ))}
             </div>
             <p className="text-[#94a3b8] text-xs mt-5">
-              Serving all 50 US states · Dover, DE registered company
+              Serving businesses globally · Dover, DE registered company
             </p>
           </motion.div>
         </div>

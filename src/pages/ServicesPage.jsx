@@ -1,3 +1,4 @@
+import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase } from 'lucide-react';
@@ -11,6 +12,27 @@ const ICON_MAP = { Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Pa
 export default function ServicesPage() {
   return (
     <main className="pt-20">
+      <SEO
+        title="Digital Growth Services for Small Businesses"
+        description="Website & SEO, Google Business Profile optimization, lead generation, automation, branding, email marketing and more — all under one roof. Free 30-min audit."
+        canonical="/services"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          '@id': 'https://noveliotech.com/services#list',
+          name: 'Digital Growth Services for Small Businesses',
+          description: 'Website & SEO, Google Business Profile optimization, lead generation, automation, branding, email marketing and more.',
+          url: 'https://noveliotech.com/services',
+          numberOfItems: SERVICES.length,
+          itemListElement: SERVICES.map((service, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: service.title,
+            url: `https://noveliotech.com${service.slug}`,
+            description: service.description,
+          })),
+        }}
+      />
       {/* Hero */}
       <section className="section-pad relative overflow-hidden bg-dark">
         <div className="orb orb-purple w-[500px] h-[500px] -top-48 -left-48 opacity-15" />
