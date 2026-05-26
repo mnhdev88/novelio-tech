@@ -12,7 +12,9 @@ import HomePage from './pages/HomePage';
 // All other pages lazy-loaded — only downloaded when the route is visited
 const AboutPage          = lazy(() => import('./pages/AboutPage'));
 const ServicesPage       = lazy(() => import('./pages/ServicesPage'));
-const ServiceDetailPage  = lazy(() => import('./pages/services/ServiceDetailPage'));
+const ServiceDetailPage              = lazy(() => import('./pages/services/ServiceDetailPage'));
+const WebsiteDevelopmentPage         = lazy(() => import('./pages/services/WebsiteDevelopmentPage'));
+const SearchEngineOptimizationPage   = lazy(() => import('./pages/services/SearchEngineOptimizationPage'));
 const BlogPage           = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage       = lazy(() => import('./pages/BlogPostPage'));
 const ContactPage        = lazy(() => import('./pages/ContactPage'));
@@ -52,7 +54,9 @@ function Layout() {
             <Route path="/"                        element={<HomePage />} />
             <Route path="/about"                   element={<AboutPage />} />
             <Route path="/services"                element={<ServicesPage />} />
-            <Route path="/services/:serviceId"     element={<ServiceDetailPage />} />
+            <Route path="/services/website-development"          element={<WebsiteDevelopmentPage />} />
+            <Route path="/services/search-engine-optimization"  element={<SearchEngineOptimizationPage />} />
+            <Route path="/services/:serviceId"                   element={<ServiceDetailPage />} />
             <Route path="/blog"                    element={<BlogPage />} />
             <Route path="/blog/:slug"              element={<BlogPostPage />} />
             <Route path="/contact"                 element={<ContactPage />} />
