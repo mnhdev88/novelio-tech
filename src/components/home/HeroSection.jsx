@@ -273,12 +273,12 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* H1 — word-by-word reveal */}
+          {/* H1 — word-by-word reveal (opacity stays 1 so LCP registers at FCP) */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6">
             {['Your', 'Business', 'Deserves', 'a'].map((w, i) => (
               <motion.span key={w}
-                initial={{ opacity: 0, y: 36 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 36 }}
+                animate={{ y: 0 }}
                 transition={{ duration: 0.55, delay: 0.15 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
               >
@@ -288,8 +288,8 @@ export default function HeroSection() {
             {' '}
             {['Growth', 'Partner,'].map((w, i) => (
               <motion.span key={w}
-                initial={{ opacity: 0, y: 36 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 36 }}
+                animate={{ y: 0 }}
                 transition={{ duration: 0.55, delay: 0.51 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
                 style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
@@ -300,8 +300,8 @@ export default function HeroSection() {
             {' '}
             {['Not', 'Just', 'a', 'Vendor'].map((w, i) => (
               <motion.span key={w}
-                initial={{ opacity: 0, y: 36 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 36 }}
+                animate={{ y: 0 }}
                 transition={{ duration: 0.55, delay: 0.72 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
               >
