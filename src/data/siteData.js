@@ -24,15 +24,26 @@ export const STATS = [
 
 export const SERVICES = [
   {
-    id: 'website-seo',
-    slug: '/services/website-seo',
+    id: 'website-development',
+    slug: '/services/website-development',
     icon: 'Code2',
-    title: 'Website & SEO',
-    short: 'Website & SEO',
-    tagline: 'Websites Built to Convert. Rankings Built to Last.',
-    description: 'SEO-optimized websites built to convert visitors into customers — fast-loading, mobile-first, and designed around your buyer journey.',
+    title: 'Website Development',
+    short: 'Web Design',
+    tagline: 'Websites Built to Convert. Delivered on Time.',
+    description: 'Custom, fast-loading, mobile-first websites built around your buyer journey — designed to turn visitors into leads and customers from day one.',
     color: 'from-violet-600 to-purple-600',
-    features: ['Custom Web Design', 'Technical SEO Audit', 'On-Page Optimization', 'Local SEO', 'Core Web Vitals', 'Monthly Reporting'],
+    features: ['Custom Web Design', 'Mobile-First Development', 'Core Web Vitals', 'CMS Integration', 'Landing Page Design', 'E-commerce Development'],
+  },
+  {
+    id: 'search-engine-optimization',
+    slug: '/services/search-engine-optimization',
+    icon: 'Search',
+    title: 'Search Engine Optimization',
+    short: 'SEO',
+    tagline: 'Rankings Built to Last. Traffic That Converts.',
+    description: 'Data-driven SEO strategies that grow your organic rankings, drive qualified traffic, and convert search visitors into paying customers — month after month.',
+    color: 'from-indigo-500 to-blue-600',
+    features: ['Technical SEO Audit', 'On-Page Optimization', 'Keyword Research & Strategy', 'Local SEO', 'Link Building', 'Monthly Reporting'],
   },
   {
     id: 'google-business',
@@ -2190,7 +2201,8 @@ export const BLOG_POSTS = [
 
   <h3>Explore Related Services</h3>
   <ul>
-    <li><a href="/services/website-seo">Website Design &amp; SEO Services</a></li>
+    <li><a href="/services/website-development">Website Development Services</a></li>
+    <li><a href="/services/search-engine-optimization">Search Engine Optimization Services</a></li>
     <li><a href="/services/lead-generation">Lead Generation Services</a></li>
     <li><a href="/services/automation">CRM &amp; Business Automation Services</a></li>
     <li><a href="/services">View All Digital Growth Services</a></li>

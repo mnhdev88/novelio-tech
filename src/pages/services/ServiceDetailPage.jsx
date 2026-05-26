@@ -10,11 +10,17 @@ import { useState } from 'react';
 const ICON_MAP = { Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase };
 
 const SERVICE_FAQS = {
-  'website-seo': [
-    { q: 'How long does SEO take to show results?', a: 'SEO is a long-term strategy. Most businesses see meaningful improvements within 3–6 months, with stronger results at 6–12 months. Competitive niches may take longer.' },
-    { q: 'What is included in your SEO service?', a: 'Our SEO service includes technical audit, on-page optimization, keyword research and strategy, content recommendations, link building, local SEO (if applicable), and monthly reporting.' },
-    { q: 'Do you guarantee #1 rankings?', a: 'No ethical SEO agency can guarantee specific rankings as Google\'s algorithm changes constantly. We do guarantee full transparency, best practices, and a measurable improvement in organic visibility and traffic.' },
-    { q: 'How long does a website build take?', a: 'A basic site takes 2–4 weeks. A custom multi-page site with advanced features takes 4–8 weeks. We always deliver mobile-first, Core Web Vitals-optimized builds.' },
+  'website-development': [
+    { q: 'How long does a website build take?', a: 'A basic business site takes 2–4 weeks. A custom multi-page site with advanced features takes 4–8 weeks. We always deliver mobile-first, Core Web Vitals-optimized builds and keep you updated at every milestone.' },
+    { q: 'What platform do you build on?', a: 'We build on modern frameworks (React, Next.js) for high-performance custom sites, or WordPress and Webflow for clients who need easy self-management. We recommend the right platform based on your goals, not our preference.' },
+    { q: 'Will my website be mobile-friendly and fast?', a: 'Absolutely — all our sites are mobile-first by design, tested across devices and browsers, and built to pass Core Web Vitals. Page speed and mobile performance directly impact both rankings and conversions.' },
+    { q: 'Do you provide ongoing website maintenance?', a: 'Yes — we offer monthly maintenance plans covering updates, security patches, backups, performance monitoring, and priority support. Most clients find ongoing maintenance pays for itself by preventing costly downtime or security incidents.' },
+  ],
+  'search-engine-optimization': [
+    { q: 'How long does SEO take to show results?', a: 'SEO is a long-term strategy. Most businesses see meaningful improvements within 3–6 months, with stronger results at 6–12 months. Competitive niches may take longer, but we set clear milestones so you always know where you stand.' },
+    { q: 'What is included in your SEO service?', a: 'Our SEO service includes a technical audit, on-page optimization, keyword research and strategy, content recommendations, link building, local SEO (if applicable), and monthly reporting with transparent metrics.' },
+    { q: 'Do you guarantee #1 rankings?', a: 'No ethical SEO agency can guarantee specific rankings — Google\'s algorithm changes constantly. We do guarantee full transparency, best practices, and a measurable improvement in organic visibility, traffic, and leads.' },
+    { q: 'Do you handle local SEO for businesses targeting nearby customers?', a: 'Yes — local SEO is one of our core specializations. We optimize your on-page signals, Google Business Profile, local citations, and location-specific content to help you rank in local searches and Google Maps.' },
   ],
   'google-business': [
     { q: 'What is Google Business Profile optimization?', a: 'GBP optimization covers fully completing your profile, adding photos, setting accurate hours and services, implementing a review generation strategy, posting weekly updates, and building citation consistency so Google ranks you higher in local search.' },

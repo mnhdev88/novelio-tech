@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code2, MapPin, TrendingUp, Zap, Palette, Settings, Mail, CheckSquare } from 'lucide-react';
+import { ArrowRight, Code2, MapPin, TrendingUp, Zap, Palette, Settings, Mail, CheckSquare, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '../../data/siteData';
 
-const ICON_MAP = { Code2, MapPin, TrendingUp, Zap, Palette, Settings, Mail, CheckSquare };
+const ICON_MAP = { Code2, MapPin, TrendingUp, Zap, Palette, Settings, Mail, CheckSquare, Search };
 
 function ServiceCard({ service, index }) {
   const cardRef = useRef(null);

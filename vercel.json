@@ -6,7 +6,7 @@
     { "source": "/about.php",                                     "destination": "/about",                    "permanent": true },
     { "source": "/contact.php",                                   "destination": "/contact",                  "permanent": true },
     { "source": "/services.php",                                  "destination": "/services",                 "permanent": true },
-    { "source": "/seo-services.php",                              "destination": "/services/website-seo",     "permanent": true },
+    { "source": "/seo-services.php",                              "destination": "/services/search-engine-optimization", "permanent": true },
     { "source": "/brand-building.php",                            "destination": "/services/branding",        "permanent": true },
     { "source": "/target-lead-generation.php",                    "destination": "/services/lead-generation", "permanent": true },
     { "source": "/virtual-assistance.php",                        "destination": "/services/tech-ops",        "permanent": true },

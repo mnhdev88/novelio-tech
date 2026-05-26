@@ -36,8 +36,14 @@
 
   <!-- Service pages -->
   <url>
-    <loc>https://www.noveliotech.com/services/website-seo</loc>
-    <lastmod>2026-05-18</lastmod>
+    <loc>https://www.noveliotech.com/services/website-development</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.noveliotech.com/services/search-engine-optimization</loc>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>

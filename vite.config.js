@@ -11,7 +11,7 @@ try {
     staticDir: path.join(process.cwd(), 'dist'),
     routes: [
       '/', '/about', '/services', '/contact', '/blog',
-      '/services/website-seo', '/services/google-business',
+      '/services/website-development', '/services/search-engine-optimization', '/services/google-business',
       '/services/lead-generation', '/services/automation',
       '/services/branding', '/services/tech-ops',
       '/services/email-marketing', '/services/email-validator',

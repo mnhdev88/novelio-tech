@@ -493,8 +493,8 @@ export default function BestWebDevNewarkPage() {
               Newark, NJ Location Page
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/services/website-seo" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
-              Website & SEO Services
+            <Link to="/services/website-development" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+              Website Development Services
             </Link>
             <span className="text-[#CBD5E1]">·</span>
             <Link to="/services/google-business" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">

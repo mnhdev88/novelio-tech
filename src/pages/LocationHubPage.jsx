@@ -188,9 +188,9 @@ export default function LocationHubPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: 'Local SEO', desc: 'City-specific keyword targeting, on-page optimization, and content that ranks for local searches.', link: '/services/website-seo' },
+              { title: 'Local SEO', desc: 'City-specific keyword targeting, on-page optimization, and content that ranks for local searches.', link: '/services/search-engine-optimization' },
               { title: 'Google Business Profile', desc: 'Full GBP optimization, review strategy, and local citation building to dominate Google Maps.', link: '/services/google-business' },
-              { title: 'Website Design', desc: 'Fast, mobile-first websites built to convert local visitors into leads and customers.', link: '/services/website-seo' },
+              { title: 'Website Design', desc: 'Fast, mobile-first websites built to convert local visitors into leads and customers.', link: '/services/website-development' },
               { title: 'Lead Generation', desc: 'Forms, funnels, and follow-up systems that capture and convert local traffic automatically.', link: '/services/lead-generation' },
               { title: 'Automation & CRM', desc: 'Connect your tools and automate follow-ups so no local lead falls through the cracks.', link: '/services/automation' },
               { title: 'Branding', desc: 'Consistent identity and messaging that builds trust with local customers at every touchpoint.', link: '/services/branding' },
