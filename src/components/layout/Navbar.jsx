@@ -165,6 +165,8 @@ export default function Navbar() {
               src="/logo.png"
               alt="Novelio Technologies LLC"
               className="h-9 w-auto object-contain"
+              width="160"
+              height="36"
             />
           </Link>
           <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="w-10 h-10 rounded-lg border border-slate-200 flex items-center justify-center text-[#1B3172] cursor-pointer">

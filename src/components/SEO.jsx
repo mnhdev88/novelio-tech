@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const BASE_URL = 'https://noveliotech.com';
+const BASE_URL = 'https://www.noveliotech.com';
 const DEFAULT_IMAGE = `${BASE_URL}/logo.png`;
 const SITE_NAME = 'Novelio Technologies LLC';
 

@@ -69,13 +69,13 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: FaLinkedinIn, href: COMPANY.social.linkedin },
-                { Icon: FaXTwitter, href: COMPANY.social.twitter },
-                { Icon: FaInstagram, href: COMPANY.social.instagram },
-                { Icon: FaFacebookF, href: COMPANY.social.facebook },
-                { Icon: FaYoutube, href: COMPANY.social.youtube },
-              ].map(({ Icon, href }, i) => (
-                <a key={i} href={href} target="_blank" rel="noopener noreferrer"
+                { Icon: FaLinkedinIn, href: COMPANY.social.linkedin, label: 'Novelio Technologies on LinkedIn' },
+                { Icon: FaXTwitter, href: COMPANY.social.twitter, label: 'Novelio Technologies on X (Twitter)' },
+                { Icon: FaInstagram, href: COMPANY.social.instagram, label: 'Novelio Technologies on Instagram' },
+                { Icon: FaFacebookF, href: COMPANY.social.facebook, label: 'Novelio Technologies on Facebook' },
+                { Icon: FaYoutube, href: COMPANY.social.youtube, label: 'Novelio Technologies on YouTube' },
+              ].map(({ Icon, href, label }, i) => (
+                <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   className="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-slate-300 hover:text-white hover:border-brand-purple/50 hover:bg-brand-purple/20 transition-all duration-200">
                   <Icon className="w-4 h-4" />
                 </a>
