@@ -234,6 +234,14 @@ const schema = {
         { '@type': 'ListItem', position: 3, name: 'Website Development', item: 'https://noveliotech.com/services/website-development' },
       ],
     },
+    {
+      '@type': 'FAQPage',
+      mainEntity: FAQS.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
   ],
 };
 

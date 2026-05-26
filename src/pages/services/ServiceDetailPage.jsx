@@ -123,6 +123,14 @@ export default function ServiceDetailPage() {
           { '@type': 'ListItem', position: 3, name: service.title, item: `https://noveliotech.com${service.slug}` },
         ],
       },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      },
     ],
   };
 
