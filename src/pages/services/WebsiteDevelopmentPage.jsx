@@ -21,73 +21,94 @@ const fadeUp = (delay = 0) => ({
 
 const PAIN_POINTS = [
   {
-    icon: Zap,
-    title: 'Slow Load Times',
-    desc: 'Visitors leave if your page takes more than 3 seconds to load. Google penalizes slow sites — you lose both traffic and sales.',
-  },
-  {
     icon: Smartphone,
-    title: 'Poor Mobile Experience',
-    desc: '62% of web traffic comes from mobile devices. A site that isn\'t mobile-first is losing more than half its potential audience every day.',
+    title: 'Slow Mobile Speed',
+    desc: 'Most visitors are on mobile. If your site loads slowly, they\'re gone before they read a single word — and Google\'s ranking reflects that.',
   },
   {
     icon: BarChart3,
-    title: 'No Conversions',
-    desc: 'Getting traffic means nothing if visitors don\'t take action. Most business sites convert less than 2% of visitors — ours average 4–8%.',
+    title: 'No Clear Conversion Flow',
+    desc: 'Without a logical path from landing to enquiry, visitors wander and leave. Every page should guide visitors toward one clear next step.',
   },
   {
-    icon: Monitor,
-    title: 'Outdated Design',
-    desc: 'Customers form a judgement about your business in 0.05 seconds. An outdated design destroys trust before you\'ve said a single word.',
-  },
-  {
-    icon: Settings,
-    title: 'Hard to Update',
-    desc: 'If you need a developer to change your hours or add a photo, you\'re wasting time and money every single week. That ends with us.',
-  },
-  {
-    icon: Globe,
-    title: 'Invisible to Google',
-    desc: 'A website with no SEO foundation is invisible to search engines. Without it, you\'re completely dependent on paid ads for every visitor.',
-  },
-];
-
-const WHAT_WE_BUILD = [
-  {
-    icon: Monitor,
-    title: 'Business Websites',
-    desc: 'Professional multi-page sites that establish credibility, communicate your value, and capture leads around the clock. Built to represent your brand at its best.',
-    color: 'from-violet-600 to-purple-600',
+    icon: Shield,
+    title: 'Weak Trust Signals',
+    desc: 'Missing reviews, no team photos, no credentials — visitors can\'t tell if you\'re legitimate. Trust signals are what turn browsers into buyers.',
   },
   {
     icon: Layout,
-    title: 'Landing Pages',
-    desc: 'Single-purpose, high-converting pages for ads, email campaigns, and lead generation. Designed to remove friction and get visitors to take one clear action.',
-    color: 'from-blue-500 to-cyan-500',
+    title: 'No Lead Capture System',
+    desc: 'If your website has no form, no call-to-action, or no follow-up mechanism, you\'re losing warm leads who were ready to enquire.',
   },
   {
-    icon: ShoppingCart,
-    title: 'E-commerce Stores',
-    desc: 'Online shops with inventory management, secure payment processing, and built-in upsell flows. We build stores that sell 24/7 — not just look pretty.',
-    color: 'from-emerald-500 to-teal-600',
+    icon: Globe,
+    title: 'Poor SEO Setup',
+    desc: 'Without meta tags, schema markup, and a proper site structure, you\'re invisible to search engines — even for searches you should be ranking for.',
   },
   {
-    icon: Star,
-    title: 'Portfolio & Service Sites',
-    desc: 'Showcase your work, highlight client results, and let visitors book or contact you directly. Perfect for freelancers, agencies, and service professionals.',
-    color: 'from-amber-500 to-orange-500',
+    icon: Monitor,
+    title: 'No Tracking or Analytics',
+    desc: 'You can\'t improve what you can\'t measure. Without analytics, you have no idea which pages work, which don\'t, or where visitors are dropping off.',
   },
   {
-    icon: RefreshCw,
-    title: 'Website Redesigns',
-    desc: 'Modernize an underperforming site without sacrificing your existing SEO equity. We audit your current site first so nothing gets lost in the transition.',
-    color: 'from-pink-500 to-rose-500',
+    icon: Zap,
+    title: 'Visitors Leave Without Taking Action',
+    desc: 'High bounce rates signal that visitors aren\'t finding what they need — or aren\'t being shown a clear reason to stay and enquire.',
+  },
+  {
+    icon: Clock,
+    title: 'No Follow-Up Automation',
+    desc: 'Every enquiry that doesn\'t get an immediate response loses trust. Automated follow-up sequences keep leads warm while you\'re busy.',
   },
   {
     icon: Layers,
-    title: 'Custom Web Applications',
-    desc: 'Booking systems, pricing calculators, member portals, and interactive tools built to your exact specifications. For when an off-the-shelf solution won\'t cut it.',
+    title: 'Outdated Website Structure',
+    desc: 'An outdated site structure hurts SEO, confuses visitors, and makes it impossible to scale your content or service pages effectively.',
+  },
+];
+
+const GROWTH_BENEFITS = [
+  {
+    icon: Globe,
+    title: 'Rank Better on Google',
+    desc: 'Proper on-page SEO, fast page speeds, clean code, and structured data help your site rank for the searches your customers are actually making.',
+    color: 'from-violet-600 to-purple-600',
+  },
+  {
+    icon: Shield,
+    title: 'Build Trust Instantly',
+    desc: 'Professional design, clear credentials, real testimonials, and trust signals tell visitors you\'re the right choice — before they\'ve even read your services.',
+    color: 'from-blue-500 to-cyan-500',
+  },
+  {
+    icon: ArrowRight,
+    title: 'Convert Visitors into Leads',
+    desc: 'Clear calls-to-action, strategic layout, and conversion-focused copy guide visitors to take action — turning traffic into real business enquiries.',
+    color: 'from-emerald-500 to-teal-600',
+  },
+  {
+    icon: Layout,
+    title: 'Capture Enquiries Automatically',
+    desc: 'Smart lead capture forms, automated email sequences, and CRM integration mean no enquiry falls through the cracks — even at 2am.',
+    color: 'from-amber-500 to-orange-500',
+  },
+  {
+    icon: Star,
+    title: 'Improve Customer Experience',
+    desc: 'Fast load times, intuitive navigation, and mobile-first design make it easy for customers to find what they need and feel confident in your business.',
+    color: 'from-pink-500 to-rose-500',
+  },
+  {
+    icon: BarChart3,
+    title: 'Support Marketing Campaigns',
+    desc: 'Dedicated landing pages, trackable URLs, and conversion tracking make every ad, email, and social campaign measurably more effective.',
     color: 'from-indigo-500 to-blue-600',
+  },
+  {
+    icon: Clock,
+    title: 'Reduce Manual Follow-Up Effort',
+    desc: 'Automation handles the repetitive work — confirmation emails, appointment reminders, follow-up sequences — so your team can focus on closing deals.',
+    color: 'from-violet-600 to-indigo-600',
   },
 ];
 
@@ -272,12 +293,16 @@ export default function WebsiteDevelopmentPage() {
               </div>
               <div className="section-label mb-4">Web Design & Development</div>
               <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
-                Websites Built to <span className="gradient-text">Convert.</span>{' '}
-                Delivered <span className="gradient-text">on Time.</span>
+                We Build <span className="gradient-text">Business Growth Systems</span>{' '}
+                — Not Just Websites
               </h1>
-              <p className="text-[#475569] text-xl leading-relaxed mb-8">
-                We build fast, mobile-first websites designed around your buyer journey — turning
-                visitors into leads and customers from the moment they land on your page.
+              <p className="text-[#475569] text-xl leading-relaxed mb-4">
+                We help small and medium businesses build high-converting online systems designed
+                to generate visibility, trust, leads, and sales — not just an online presence.
+              </p>
+              <p className="text-[#475569] text-base leading-relaxed mb-8">
+                Every website is built with a clear focus on customer experience, lead generation,
+                SEO visibility, and business growth.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {['Custom Web Design', 'Mobile-First Development', 'Core Web Vitals', 'CMS Integration', 'Landing Page Design', 'E-commerce Development'].map((f) => (
@@ -324,11 +349,11 @@ export default function WebsiteDevelopmentPage() {
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">Common Problems</div>
             <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
-              Is Your Website <span className="gradient-text">Costing You Customers?</span>
+              Is Your Website <span className="gradient-text">Quietly Losing Customers?</span>
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              Most small business websites have at least two or three of these problems — and each
-              one is quietly draining revenue every day.
+              Most business websites fail because they were built like digital brochures instead of
+              growth systems. Common issues we find:
             </p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -343,6 +368,11 @@ export default function WebsiteDevelopmentPage() {
               </motion.div>
             ))}
           </div>
+          <motion.div {...fadeUp(0.3)} className="text-center mt-12">
+            <p className="text-[#475569] text-lg font-medium max-w-2xl mx-auto">
+              Every one of these issues can reduce enquiries, conversions, and revenue.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -351,17 +381,16 @@ export default function WebsiteDevelopmentPage() {
         <div className="orb orb-purple w-[400px] h-[400px] -top-32 -right-32 opacity-10" />
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-16">
-            <div className="section-label mx-auto mb-4">Project Types</div>
+            <div className="section-label mx-auto mb-4">Business Growth</div>
             <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
-              What We <span className="gradient-text">Design & Build</span>
+              Built for <span className="gradient-text">Business Growth</span> — Not Just Design
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              From simple brochure sites to complex web applications — we handle every type of
-              web project with the same level of craft and attention.
+              A modern website should help your business:
             </p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {WHAT_WE_BUILD.map((item, i) => (
+            {GROWTH_BENEFITS.map((item, i) => (
               <motion.div key={i} {...fadeUp(i * 0.08)}
                 className="glass-card gradient-border rounded-2xl p-7 group hover:-translate-y-1 hover:shadow-glow transition-all duration-300">
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
@@ -372,6 +401,12 @@ export default function WebsiteDevelopmentPage() {
               </motion.div>
             ))}
           </div>
+          <motion.div {...fadeUp(0.4)} className="text-center mt-12">
+            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+              That's why we focus on building complete business-ready online systems —{' '}
+              <span className="font-semibold text-[#1B3172]">not just webpages.</span>
+            </p>
+          </motion.div>
         </div>
       </section>
 
