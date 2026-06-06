@@ -254,7 +254,7 @@ export default function HeroSection() {
       <FloatCard icon={TrendingUp} value="200+"   label="Businesses Served" gradient="from-[#6B3FA0] to-[#1D4ED8]"  delay={1.4} className="left-6 top-[36%]" />
       <FloatCard icon={Star}       value="Free"  label="Growth Audit"         gradient="from-amber-400 to-orange-500" delay={1.7} className="left-6 top-[58%]" />
       <FloatCard icon={Shield}     value="30min" label="Avg Audit Time"       gradient="from-[#1D4ED8] to-[#0EA5E9]"  delay={1.5} className="right-6 top-[36%]" />
-      <FloatCard icon={Award}      value="10+"   label="Years Experience"     gradient="from-emerald-500 to-cyan-500" delay={1.8} className="right-6 top-[58%]" />
+      <FloatCard icon={Award}      value="12+"   label="Years Experience"     gradient="from-emerald-500 to-cyan-500" delay={1.8} className="right-6 top-[58%]" />
 
       {/* ── Main content ── */}
       <div className="container-xl relative z-10 py-24 lg:py-32">
@@ -309,11 +309,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.25, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3"
           >
-            <a href="tel:+19082012264" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
+            <Link to="/contact" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
               <Rocket className="w-5 h-5" />
-              No Payment. Just Results.
+              Get My Free Growth Audit
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
@@ -321,10 +321,22 @@ export default function HeroSection() {
               >
                 <ArrowRight className="w-5 h-5" />
               </motion.span>
-            </a>
+            </Link>
             <a href="#how-it-works" className="btn-ghost text-base px-8 py-4 w-full sm:w-auto justify-center">
               <Play className="w-4 h-4" />
               See How It Works
+            </a>
+          </motion.div>
+
+          {/* Secondary call option */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.3 }}
+            className="mb-6"
+          >
+            <a href="tel:+19082012264" className="text-sm text-[#64748b] hover:text-[#1B3172] transition-colors">
+              Prefer to talk? <span className="font-600 text-[#1B3172]">Call +1 (908) 201-2264</span>
             </a>
           </motion.div>
 
@@ -367,7 +379,7 @@ export default function HeroSection() {
                 </motion.div>
               ))}
             </div>
-            <span className="text-sm text-[#475569]">Rated 5/5 by small business owners on Google</span>
+            <span className="text-sm text-[#475569]">Rated 4.9/5 by small business owners on Google</span>
           </motion.div>
 
           {/* Trust bar */}
@@ -380,7 +392,7 @@ export default function HeroSection() {
             {[
               { icon: '✓', text: 'Serving 200+ Small Businesses' },
               { icon: '✓', text: 'Dover, DE Registered' },
-              { icon: '✓', text: '5-Star Google Reviews' },
+              { icon: '✓', text: '4.9★ Google Reviews' },
             ].map((b, i) => (
               <motion.span
                 key={i}

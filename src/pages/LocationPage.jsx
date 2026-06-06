@@ -48,15 +48,15 @@ function StatePage({ stateData, cities }) {
     '@type': 'WebPage',
     name: `Digital Marketing Services in ${stateData.state} | Novelio Technologies`,
     description: `Novelio Technologies helps small businesses across ${stateData.state} grow faster with AI-powered websites, local SEO, and lead generation.`,
-    url: `https://noveliotech.com/locations/${stateData.stateSlug}`,
-    publisher: { '@type': 'Organization', name: 'Novelio Technologies LLC', url: 'https://noveliotech.com' },
+    url: `https://www.noveliotech.com/locations/${stateData.stateSlug}`,
+    publisher: { '@type': 'Organization', name: 'Novelio Technologies LLC', url: 'https://www.noveliotech.com' },
   };
 
   return (
     <main className="pt-20">
       <SEO
         title={`Digital Marketing for Small Businesses in ${stateData.state}`}
-        description={`Novelio Technologies helps ${stateData.state} small businesses grow faster with AI-powered websites, local SEO, and lead generation. Free growth audit — no obligation.`}
+        description={`Novelio helps ${stateData.state} small businesses grow with AI-powered websites, local SEO, and lead generation. Free growth audit — no obligation.`}
         canonical={`/locations/${stateData.stateSlug}`}
         keywords={[`digital marketing ${stateData.state}`, `SEO services ${stateData.state}`, `small business ${stateData.state}`, `website design ${stateData.state}`]}
         schema={stateSchema}
@@ -138,9 +138,9 @@ function CityPage({ city }) {
     '@graph': [
       {
         '@type': 'LocalBusiness',
-        '@id': `https://noveliotech.com/locations/${city.stateSlug}/${city.citySlug}#business`,
+        '@id': `https://www.noveliotech.com/locations/${city.stateSlug}/${city.citySlug}#business`,
         name: 'Novelio Technologies',
-        url: 'https://noveliotech.com',
+        url: 'https://www.noveliotech.com',
         telephone: '+1-908-201-2264',
         email: 'info@noveliotech.com',
         address: {

@@ -107,20 +107,20 @@ export default function ServiceDetailPage() {
         description: service.description,
         provider: {
           '@type': 'LocalBusiness',
-          '@id': 'https://noveliotech.com/#business',
+          '@id': 'https://www.noveliotech.com/#business',
           name: 'Novelio Technologies LLC',
-          url: 'https://noveliotech.com',
+          url: 'https://www.noveliotech.com',
         },
         areaServed: { '@type': 'Country', name: 'United States' },
         serviceType: service.title,
-        url: `https://noveliotech.com${service.slug}`,
+        url: `https://www.noveliotech.com${service.slug}`,
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://noveliotech.com' },
-          { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://noveliotech.com/services' },
-          { '@type': 'ListItem', position: 3, name: service.title, item: `https://noveliotech.com${service.slug}` },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.noveliotech.com' },
+          { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.noveliotech.com/services' },
+          { '@type': 'ListItem', position: 3, name: service.title, item: `https://www.noveliotech.com${service.slug}` },
         ],
       },
       {

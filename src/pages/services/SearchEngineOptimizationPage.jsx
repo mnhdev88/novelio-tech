@@ -215,20 +215,20 @@ const schema = {
       description: 'Data-driven SEO strategies that grow your organic rankings, drive qualified traffic, and convert search visitors into paying customers — month after month.',
       provider: {
         '@type': 'LocalBusiness',
-        '@id': 'https://noveliotech.com/#business',
+        '@id': 'https://www.noveliotech.com/#business',
         name: 'Novelio Technologies LLC',
-        url: 'https://noveliotech.com',
+        url: 'https://www.noveliotech.com',
       },
       areaServed: { '@type': 'Country', name: 'United States' },
       serviceType: 'Search Engine Optimization',
-      url: 'https://noveliotech.com/services/search-engine-optimization',
+      url: 'https://www.noveliotech.com/services/search-engine-optimization',
     },
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://noveliotech.com' },
-        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://noveliotech.com/services' },
-        { '@type': 'ListItem', position: 3, name: 'Search Engine Optimization', item: 'https://noveliotech.com/services/search-engine-optimization' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.noveliotech.com' },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.noveliotech.com/services' },
+        { '@type': 'ListItem', position: 3, name: 'Search Engine Optimization', item: 'https://www.noveliotech.com/services/search-engine-optimization' },
       ],
     },
     {
@@ -247,7 +247,7 @@ export default function SearchEngineOptimizationPage() {
     <main className="pt-20">
       <SEO
         title="Search Engine Optimization — Rankings Built to Last. Traffic That Converts."
-        description="Data-driven SEO strategies that grow organic rankings, drive qualified traffic, and convert search visitors into paying customers. Free SEO audit available."
+        description="Data-driven SEO that grows organic rankings, drives qualified traffic, and converts visitors into paying customers. Free SEO audit available."
         canonical="/services/search-engine-optimization"
         schema={schema}
       />

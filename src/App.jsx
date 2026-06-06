@@ -19,6 +19,7 @@ const BlogPage           = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage       = lazy(() => import('./pages/BlogPostPage'));
 const ContactPage        = lazy(() => import('./pages/ContactPage'));
 const IndustryPage       = lazy(() => import('./pages/IndustryPage'));
+const ComparePage        = lazy(() => import('./pages/ComparePage'));
 const PrivacyPage        = lazy(() => import('./pages/PrivacyPage'));
 const TermsPage          = lazy(() => import('./pages/TermsPage'));
 const RefundPolicyPage   = lazy(() => import('./pages/RefundPolicyPage'));
@@ -61,6 +62,7 @@ function Layout() {
             <Route path="/blog/:slug"              element={<BlogPostPage />} />
             <Route path="/contact"                 element={<ContactPage />} />
             <Route path="/industries/:sector"      element={<IndustryPage />} />
+            <Route path="/compare/:slug"           element={<ComparePage />} />
             <Route path="/privacy"                 element={<PrivacyPage />} />
             <Route path="/terms"                   element={<TermsPage />} />
             <Route path="/refund-policy"           element={<RefundPolicyPage />} />

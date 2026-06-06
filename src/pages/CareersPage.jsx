@@ -352,7 +352,7 @@ export default function CareersPage() {
               <a href="https://wa.me/15733270153" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
                 <Phone className="w-4 h-4" /> +1 (573) 327-0153
               </a>
-              <a href="https://noveliotech.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
+              <a href="https://www.noveliotech.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
                 <Globe className="w-4 h-4" /> noveliotech.com
               </a>
             </div>

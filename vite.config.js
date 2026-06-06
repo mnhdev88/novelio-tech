@@ -3,26 +3,10 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import fs from 'fs'
 
-// Dynamic import for prerender (optional — install vite-plugin-prerender to enable)
-let prerenderPlugin = null
-try {
-  const { default: prerender } = await import('vite-plugin-prerender')
-  prerenderPlugin = prerender({
-    staticDir: path.join(process.cwd(), 'dist'),
-    routes: [
-      '/', '/about', '/services', '/contact', '/blog',
-      '/services/website-development', '/services/search-engine-optimization', '/services/google-business',
-      '/services/lead-generation', '/services/automation',
-      '/services/branding', '/services/tech-ops',
-      '/services/email-marketing', '/services/email-validator',
-      '/blog/seo-trends-2025', '/blog/high-converting-landing-page',
-      '/blog/google-ads-small-business', '/blog/social-media-algorithm-2025',
-      '/blog/wordpress-vs-react', '/blog/email-marketing-best-practices',
-    ],
-  })
-} catch {
-  // vite-plugin-prerender not installed — run: npm install vite-plugin-prerender --save-dev
-}
+// Static prerendering is handled as a post-build step, not a Vite plugin:
+//   npm run build:prerender   (vite build && node scripts/prerender.mjs)
+// The crawler in scripts/prerender.mjs renders every sitemap route with headless
+// Chromium and writes dist/<route>/index.html, making the SPA crawler-visible.
 
 // Serves any public/<slug>/index.html file before Vite's SPA fallback intercepts it
 const staticHtmlPlugin = {
@@ -43,7 +27,7 @@ const staticHtmlPlugin = {
 }
 
 export default defineConfig({
-  plugins: [react(), staticHtmlPlugin, prerenderPlugin].filter(Boolean),
+  plugins: [react(), staticHtmlPlugin],
   build: {
     rollupOptions: {
       output: {

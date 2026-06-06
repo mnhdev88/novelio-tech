@@ -5,16 +5,16 @@ import { Mail, Phone, MapPin, MessageCircle, Send, Check, ChevronDown, ChevronUp
 import { COMPANY } from '../data/siteData';
 
 const SERVICES_OPTIONS = [
+  'Website Development',
   'Search Engine Optimization (SEO)',
-  'Pay-Per-Click Advertising (PPC)',
-  'Social Media Marketing',
-  'Web Design & Development',
-  'E-Commerce Development',
-  'Content Marketing',
-  'Graphic Design & Branding',
+  'Google Business Profile',
+  'Lead Generation',
+  'Automation & CRM',
+  'Branding',
+  'Tech & Operations',
   'Email Marketing',
-  'KPO / BPO Services',
-  'Multiple Services',
+  'Email Validator',
+  'Multiple Services / Not Sure',
 ];
 
 const BUDGET_OPTIONS = ['Under $500/mo', '$500 – $1,000/mo', '$1,000 – $5,000/mo', '$5,000+/mo', "Let's Discuss"];
@@ -92,7 +92,7 @@ export default function ContactPage() {
     <main className="pt-20">
       <SEO
         title="Contact Us — Get Your Free Growth Audit"
-        description="Book your free 30-minute Growth Audit with Novelio Technologies. No obligation, no credit card. We'll analyze your website, Google listing, leads, and more."
+        description="Book your free 30-minute Growth Audit with Novelio. No obligation, no credit card. We analyze your website, Google listing, leads, and more."
         canonical="/contact"
       />
       {/* Hero */}

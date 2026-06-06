@@ -25,20 +25,20 @@ export default function BlogPage() {
     <main className="pt-20">
       <SEO
         title="Blog — Digital Marketing Tips for Small Businesses"
-        description="Expert guides on SEO, Google Ads, web design, email marketing, and social media for small business owners. Free actionable advice from Novelio Technologies."
+        description="Expert guides on SEO, Google Ads, web design, email, and social media for small business owners. Free, actionable advice from Novelio."
         canonical="/blog"
         schema={{
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
-          '@id': 'https://noveliotech.com/blog#collection',
+          '@id': 'https://www.noveliotech.com/blog#collection',
           name: 'Novelio Technologies Blog',
           description: 'Expert guides on SEO, Google Ads, web design, email marketing, and social media for small business owners.',
-          url: 'https://noveliotech.com/blog',
-          publisher: { '@type': 'Organization', '@id': 'https://noveliotech.com/#business', name: 'Novelio Technologies LLC' },
+          url: 'https://www.noveliotech.com/blog',
+          publisher: { '@type': 'Organization', '@id': 'https://www.noveliotech.com/#business', name: 'Novelio Technologies LLC' },
           hasPart: BLOG_POSTS.map((post) => ({
             '@type': 'BlogPosting',
             headline: post.title,
-            url: `https://noveliotech.com/blog/${post.slug}`,
+            url: `https://www.noveliotech.com/blog/${post.slug}`,
           })),
         }}
       />

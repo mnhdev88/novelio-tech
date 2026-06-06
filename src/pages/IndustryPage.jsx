@@ -180,6 +180,7 @@ export default function IndustryPage() {
         title={`${industry.name} Website Design & Digital Marketing`}
         description={`See our ${industry.name} website portfolio. Novelio Technologies builds high-converting, SEO-optimized websites for ${industry.name.toLowerCase()} businesses.`}
         canonical={`/industries/${sector}`}
+        noindex={industry.sites.length === 0}
       />
 
       {/* Hero */}

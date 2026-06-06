@@ -239,20 +239,20 @@ const schema = {
       description: 'Custom, fast-loading, mobile-first websites built around your buyer journey — designed to turn visitors into leads and customers from day one.',
       provider: {
         '@type': 'LocalBusiness',
-        '@id': 'https://noveliotech.com/#business',
+        '@id': 'https://www.noveliotech.com/#business',
         name: 'Novelio Technologies LLC',
-        url: 'https://noveliotech.com',
+        url: 'https://www.noveliotech.com',
       },
       areaServed: { '@type': 'Country', name: 'United States' },
       serviceType: 'Website Development',
-      url: 'https://noveliotech.com/services/website-development',
+      url: 'https://www.noveliotech.com/services/website-development',
     },
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://noveliotech.com' },
-        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://noveliotech.com/services' },
-        { '@type': 'ListItem', position: 3, name: 'Website Development', item: 'https://noveliotech.com/services/website-development' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.noveliotech.com' },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.noveliotech.com/services' },
+        { '@type': 'ListItem', position: 3, name: 'Website Development', item: 'https://www.noveliotech.com/services/website-development' },
       ],
     },
     {

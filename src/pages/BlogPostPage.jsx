@@ -65,7 +65,7 @@ export default function BlogPostPage() {
     <>
       <SEO
         title={post.title}
-        description={post.excerpt}
+        description={post.metaDescription || post.excerpt}
         canonical={`/blog/${post.slug}`}
         keywords={post.schema?.['@graph']?.[0]?.keywords}
         image={post.image}

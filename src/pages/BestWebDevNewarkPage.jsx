@@ -97,13 +97,13 @@ const schema = {
     {
       '@type': 'WebPage',
       name: 'Best Website Developer in Newark, NJ',
-      url: 'https://noveliotech.com/best-website-developer-in-newark',
+      url: 'https://www.noveliotech.com/best-website-developer-in-newark',
       description: 'Novelio Technologies builds fast, SEO-ready, lead-generating websites for Newark NJ businesses. Free demo built first — no upfront cost.',
     },
     {
       '@type': 'LocalBusiness',
       name: 'Novelio Technologies LLC',
-      url: 'https://noveliotech.com',
+      url: 'https://www.noveliotech.com',
       telephone: '+19082012264',
       email: 'info@noveliotech.com',
       areaServed: { '@type': 'City', name: 'Newark', containedInPlace: { '@type': 'State', name: 'New Jersey' } },
@@ -125,7 +125,7 @@ export default function BestWebDevNewarkPage() {
     <main className="pt-20">
       <SEO
         title="Best Website Developer in Newark, NJ | Novelio Technologies"
-        description="Looking for the best website developer in Newark NJ? Novelio builds fast, SEO-ready, lead-generating websites for Newark businesses — free demo first, no upfront cost."
+        description="Looking for the best website developer in Newark NJ? Novelio builds fast, SEO-ready, lead-generating websites — free demo first, no upfront cost."
         canonical="/best-website-developer-in-newark"
         keywords={[
           'best website developer in Newark NJ',

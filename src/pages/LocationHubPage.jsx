@@ -17,11 +17,11 @@ const hubSchema = {
   '@type': 'WebPage',
   name: 'Locations — Novelio Technologies',
   description: 'Novelio Technologies serves small businesses across the US. Find your city and see how we can grow your local digital presence.',
-  url: 'https://noveliotech.com/locations',
+  url: 'https://www.noveliotech.com/locations',
   publisher: {
     '@type': 'Organization',
     name: 'Novelio Technologies LLC',
-    url: 'https://noveliotech.com',
+    url: 'https://www.noveliotech.com',
   },
 };
 
@@ -30,7 +30,7 @@ export default function LocationHubPage() {
     <main className="pt-20">
       <SEO
         title="Locations — Digital Growth Services Across the US"
-        description="Novelio Technologies serves small businesses in Austin, Houston, Miami, Tampa, Denver, and more. AI-powered websites, local SEO, and lead generation tailored to your city."
+        description="Novelio serves small businesses in Austin, Houston, Miami, Tampa, Denver, and more — AI-powered websites, local SEO, and lead generation."
         canonical="/locations"
         keywords={['local SEO services', 'small business digital marketing', 'website design near me', 'Novelio Technologies locations']}
         schema={hubSchema}
@@ -219,8 +219,8 @@ export default function LocationHubPage() {
             {[
               '200+ Small Businesses Served',
               'Dover, DE Registered',
-              '5-Star Google Reviews',
-              '10+ Years Experience',
+              '4.9★ Google Reviews',
+              '12+ Years Experience',
               'Free 30-Min Growth Audit',
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2">

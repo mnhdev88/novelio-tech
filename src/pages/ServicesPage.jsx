@@ -14,21 +14,21 @@ export default function ServicesPage() {
     <main className="pt-20">
       <SEO
         title="Digital Growth Services for Small Businesses"
-        description="Website & SEO, Google Business Profile optimization, lead generation, automation, branding, email marketing and more — all under one roof. Free 30-min audit."
+        description="Website & SEO, Google Business Profile, lead generation, automation, branding, and email marketing — all under one roof. Free 30-min audit."
         canonical="/services"
         schema={{
           '@context': 'https://schema.org',
           '@type': 'ItemList',
-          '@id': 'https://noveliotech.com/services#list',
+          '@id': 'https://www.noveliotech.com/services#list',
           name: 'Digital Growth Services for Small Businesses',
           description: 'Website & SEO, Google Business Profile optimization, lead generation, automation, branding, email marketing and more.',
-          url: 'https://noveliotech.com/services',
+          url: 'https://www.noveliotech.com/services',
           numberOfItems: SERVICES.length,
           itemListElement: SERVICES.map((service, i) => ({
             '@type': 'ListItem',
             position: i + 1,
             name: service.title,
-            url: `https://noveliotech.com${service.slug}`,
+            url: `https://www.noveliotech.com${service.slug}`,
             description: service.description,
           })),
         }}
