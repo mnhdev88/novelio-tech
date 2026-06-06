@@ -1,6 +1,14 @@
 Options -MultiViews
 RewriteEngine On
 
+# ── Canonical host: redirect non-www → www (301) ────────────────────────────
+# The whole site canonicalizes to https://www.noveliotech.com, so send the
+# bare apex domain there. Without this, noveliotech.com/<page> and
+# www.noveliotech.com/<page> both resolve, and the non-www version reads as
+# "not indexable" because its canonical tag points at the www version.
+RewriteCond %{HTTP_HOST} ^noveliotech\.com$ [NC]
+RewriteRule ^(.*)$ https://www.noveliotech.com/$1 [R=301,L]
+
 # ── 410 Gone — WooCommerce / WordPress-only junk, should never exist ────────
 RewriteRule ^cart/?$                                              - [G,L]
 RewriteRule ^my-account-2/?$                                     - [G,L]
