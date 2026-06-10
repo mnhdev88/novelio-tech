@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Play, ShieldCheck, Check } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Play, ShieldCheck, Check } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import FreeWebsiteModal from '../FreeWebsiteModal';
 
 // ── Network constellation data ────────────────────────────────────────────────
 const NODES = [
@@ -57,6 +58,7 @@ function FloatCard({ icon: Icon, value, label, gradient, delay, className }) {
 
 // ── Main hero component ───────────────────────────────────────────────────────
 export default function HeroSection() {
+  const [showOffer, setShowOffer] = useState(false);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
   const sx = useSpring(mx, { stiffness: 25, damping: 22 });
@@ -273,9 +275,16 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6">
+          <h1
+            role="button"
+            tabIndex={0}
+            onClick={() => setShowOffer(true)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setShowOffer(true); } }}
+            title="Click for a free website built in 24 hours"
+            className="group cursor-pointer text-5xl sm:text-6xl lg:text-7xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6 transition-transform hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1D4ED8] focus-visible:ring-offset-4 rounded-2xl"
+          >
             Your Business Deserves a{' '}
-            <span style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span className="underline decoration-transparent decoration-2 underline-offset-4 transition-colors group-hover:decoration-[#1D4ED8]/40" style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Growth Partner,
             </span>
             {' '}Not Just a Vendor
@@ -311,7 +320,7 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 1.25, ease: 'easeOut' }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3"
           >
-            <Link to="/contact" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
+            <button type="button" onClick={() => setShowOffer(true)} className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center cursor-pointer">
               <Rocket className="w-5 h-5" />
               Get My Free Growth Audit
               <motion.span
@@ -321,7 +330,7 @@ export default function HeroSection() {
               >
                 <ArrowRight className="w-5 h-5" />
               </motion.span>
-            </Link>
+            </button>
             <a href="#how-it-works" className="btn-ghost text-base px-8 py-4 w-full sm:w-auto justify-center">
               <Play className="w-4 h-4" />
               See How It Works
@@ -425,6 +434,9 @@ export default function HeroSection() {
           <ChevronDown className="w-5 h-5 text-[#94a3b8]" />
         </motion.div>
       </motion.div>
+
+      {/* ── Free Website offer modal (2-step) ── */}
+      {showOffer && <FreeWebsiteModal onClose={() => setShowOffer(false)} />}
     </section>
   );
 }
