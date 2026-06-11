@@ -2304,3 +2304,123 @@ export const PROCESS_STEPS = [
   { step: '02', title: 'Custom Growth Plan', description: 'We build a prioritized action roadmap with clear expected outcomes and transparent pricing. No vague proposals — specific fixes with specific results.' },
   { step: '03', title: 'Execute & Scale', description: 'We implement the plan with your approval at every step. Monthly review calls keep you informed, and we adjust strategy as your business grows.' },
 ];
+
+// ── Subscription plans ─────────────────────────────────────────────────────────
+// Productized "growth partner as a subscription" model. Monthly + yearly billing
+// (yearly = 2 months free, ~17% off). The Free plan is a lead magnet, not free labor.
+// `priceMonthly` / `priceYearly` are the per-month USD figures shown on each tab.
+export const PRICING_PLANS = [
+  {
+    id: 'free',
+    name: 'Free',
+    tagline: 'See what we can do — at zero cost.',
+    priceMonthly: 0,
+    priceYearly: 0,
+    cta: 'Start Free',
+    highlight: false,
+    color: 'from-slate-500 to-slate-700',
+    features: [
+      '1-page starter website on a Novelio subdomain',
+      'Free 30-minute growth audit',
+      'Google Business Profile checkup',
+      'Email Validator — 100 verifications / month',
+      'Email support',
+    ],
+    note: 'No credit card required.',
+  },
+  {
+    id: 'launch',
+    name: 'Launch',
+    tagline: 'Get online and get found.',
+    priceMonthly: 99,
+    priceYearly: 79,
+    cta: 'Choose Launch',
+    highlight: false,
+    color: 'from-blue-500 to-cyan-500',
+    features: [
+      'Up to 5-page custom website + hosting, SSL & maintenance',
+      'Basic on-page SEO',
+      'Google Business Profile setup & optimization',
+      '1 lead-capture form + auto-reply',
+      'Monthly performance snapshot',
+      'Email support',
+    ],
+    note: 'Best for new and solo businesses.',
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
+    tagline: 'More qualified leads, every month.',
+    priceMonthly: 299,
+    priceYearly: 249,
+    cta: 'Choose Growth',
+    highlight: true,
+    badge: 'Most Popular',
+    color: 'from-violet-600 to-blue-600',
+    features: [
+      'Everything in Launch',
+      'Ongoing local + on-page SEO with monthly content',
+      'Active GBP management — posts, reviews & Q&A',
+      'Lead funnel + email/SMS follow-up automation & CRM',
+      '1 email marketing campaign / month',
+      'Monthly strategy call + live reporting dashboard',
+      'Priority support',
+    ],
+    note: 'Best for established small businesses.',
+  },
+  {
+    id: 'scale',
+    name: 'Scale',
+    tagline: 'Dominate your local market.',
+    priceMonthly: 699,
+    priceYearly: 599,
+    cta: 'Choose Scale',
+    highlight: false,
+    color: 'from-amber-500 to-orange-500',
+    features: [
+      'Everything in Growth',
+      'Advanced technical SEO + link building',
+      'Paid ads management — PPC + retargeting',
+      'Branding refresh + tech & ops integrations',
+      'Dedicated growth manager',
+      'Bi-weekly strategy calls',
+    ],
+    note: 'Best for businesses ready to scale fast.',
+  },
+];
+
+// Optional recurring upsells, billed monthly alongside any paid plan.
+export const PRICING_ADDONS = [
+  { id: 'extra-pages', name: 'Extra website pages (5)', price: 39, desc: 'Five additional custom pages on your site.' },
+  { id: 'landing-page', name: 'Additional landing page', price: 49, desc: 'A dedicated, conversion-focused campaign page.' },
+  { id: 'email-credits', name: 'Extra email-validation credits (10k)', price: 19, desc: '10,000 additional verifications every month.' },
+  { id: 'ad-management', name: 'Ad-spend management', price: 199, desc: 'We run and optimize your Google/Meta ads (excl. ad budget).' },
+  { id: 'extra-content', name: 'Additional content (4 articles) / month', price: 99, desc: 'Four extra SEO articles published monthly.' },
+];
+
+export const PRICING_FAQ = [
+  {
+    q: 'Is this software (SaaS) or done-for-you work?',
+    a: 'Both. Tools like the Email Validator and your reporting dashboard are self-serve software, while SEO, Google Business Profile management, ads and branding are done for you by our team. You get a single monthly subscription instead of one-off project invoices.',
+  },
+  {
+    q: 'What is the difference between monthly and yearly billing?',
+    a: 'Yearly billing gives you two months free — roughly a 17% discount versus paying month to month. You can start monthly and switch to yearly at any time.',
+  },
+  {
+    q: 'Can I cancel anytime?',
+    a: 'Yes. Monthly plans can be cancelled at the end of any billing cycle. Yearly plans run for the 12-month term. Your website and assets remain yours.',
+  },
+  {
+    q: 'Is there really a free plan?',
+    a: 'Yes. The Free plan gives you a 1-page starter site, a 30-minute growth audit, a Google Business Profile checkup and 100 email verifications a month — so you can see the quality of our work before paying anything.',
+  },
+  {
+    q: 'Can I upgrade or change plans later?',
+    a: 'Absolutely. Most clients start on Launch or Growth and move up as their results compound. You can upgrade, downgrade or add à-la-carte add-ons whenever you need.',
+  },
+  {
+    q: 'What if my business needs something custom?',
+    a: 'Multi-location brands, e-commerce catalogs and specialized requirements are handled on a custom plan. Tell us what you need and we will scope a tailored monthly package.',
+  },
+];

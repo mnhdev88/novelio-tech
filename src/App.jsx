@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import StickyMobileCTA from './components/layout/StickyMobileCTA';
 import ScrollProgress from './components/layout/ScrollProgress';
+import { AuthProvider, ProtectedRoute } from './portal/AuthContext';
 
 // HomePage is eager — it's the LCP route, no delay wanted
 import HomePage from './pages/HomePage';
@@ -15,6 +16,11 @@ const ServicesPage       = lazy(() => import('./pages/ServicesPage'));
 const ServiceDetailPage              = lazy(() => import('./pages/services/ServiceDetailPage'));
 const WebsiteDevelopmentPage         = lazy(() => import('./pages/services/WebsiteDevelopmentPage'));
 const SearchEngineOptimizationPage   = lazy(() => import('./pages/services/SearchEngineOptimizationPage'));
+const PricingPage        = lazy(() => import('./pages/PricingPage'));
+const AuthPage           = lazy(() => import('./pages/portal/AuthPage'));
+const CheckoutPage       = lazy(() => import('./pages/portal/CheckoutPage'));
+const DashboardPage      = lazy(() => import('./pages/portal/DashboardPage'));
+const AdminPage          = lazy(() => import('./pages/portal/AdminPage'));
 const BlogPage           = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage       = lazy(() => import('./pages/BlogPostPage'));
 const ContactPage        = lazy(() => import('./pages/ContactPage'));
@@ -58,6 +64,15 @@ function Layout() {
             <Route path="/services/website-development"          element={<WebsiteDevelopmentPage />} />
             <Route path="/services/search-engine-optimization"  element={<SearchEngineOptimizationPage />} />
             <Route path="/services/:serviceId"                   element={<ServiceDetailPage />} />
+            <Route path="/pricing"                 element={<PricingPage />} />
+
+            {/* Subscription portal (demo — payment bypassed) */}
+            <Route path="/login"                   element={<AuthPage mode="login" />} />
+            <Route path="/signup"                  element={<AuthPage mode="signup" />} />
+            <Route path="/checkout"                element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+            <Route path="/dashboard"               element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+            <Route path="/admin"                   element={<ProtectedRoute adminOnly><AdminPage /></ProtectedRoute>} />
+
             <Route path="/blog"                    element={<BlogPage />} />
             <Route path="/blog/:slug"              element={<BlogPostPage />} />
             <Route path="/contact"                 element={<ContactPage />} />
@@ -85,8 +100,10 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <BrowserRouter>
-        <ScrollToTop />
-        <Layout />
+        <AuthProvider>
+          <ScrollToTop />
+          <Layout />
+        </AuthProvider>
       </BrowserRouter>
     </MotionConfig>
   );

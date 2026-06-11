@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, LayoutDashboard } from 'lucide-react';
 import { SERVICES } from '../../data/siteData';
+import { useAuth } from '../../portal/AuthContext';
 import TopBar from './TopBar';
 
 export default function Navbar() {
@@ -10,6 +11,7 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef(null);
+  const { user } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -136,9 +138,27 @@ export default function Navbar() {
 
             {/* CTA + Hamburger */}
             <div className="flex items-center gap-3">
-              <a href="tel:+19082012264" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5">
-                Get Free Growth Audit
-              </a>
+              {user ? (
+                <>
+                  {user.role === 'admin' && (
+                    <Link to="/admin" className="hidden lg:inline-flex px-4 py-2 rounded-lg text-[15px] font-medium text-[#475569] hover:text-[#1B3172] transition-all">
+                      Admin
+                    </Link>
+                  )}
+                  <Link to="/dashboard" className="hidden lg:inline-flex items-center gap-2 btn-primary text-sm py-2.5 px-5">
+                    <LayoutDashboard className="w-4 h-4" /> Dashboard
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="hidden lg:inline-flex px-4 py-2 rounded-lg text-[15px] font-medium text-[#475569] hover:text-[#1B3172] transition-all">
+                    Sign In
+                  </Link>
+                  <Link to="/pricing" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5">
+                    Get Started
+                  </Link>
+                </>
+              )}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="lg:hidden w-10 h-10 rounded-lg border border-slate-200 bg-white flex items-center justify-center text-[#1B3172] cursor-pointer"
@@ -193,10 +213,28 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="px-6 pb-8">
-          <a href="tel:+19082012264" className="btn-primary w-full justify-center text-base py-4">
-            Get Free Growth Audit
-          </a>
+        <div className="px-6 pb-8 space-y-3">
+          {user ? (
+            <>
+              {user.role === 'admin' && (
+                <Link to="/admin" className="block w-full text-center px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#475569]">
+                  Admin Back-office
+                </Link>
+              )}
+              <Link to="/dashboard" className="btn-primary w-full justify-center text-base py-4">
+                My Dashboard
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="block w-full text-center px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#475569]">
+                Sign In
+              </Link>
+              <Link to="/pricing" className="btn-primary w-full justify-center text-base py-4">
+                Get Started
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>
