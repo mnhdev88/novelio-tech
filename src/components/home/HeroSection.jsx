@@ -322,7 +322,7 @@ export default function HeroSection() {
           >
             <button type="button" onClick={() => setShowOffer(true)} className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center cursor-pointer">
               <Rocket className="w-5 h-5" />
-              Get My Free Growth Audit
+              Yes, I Want to Grow
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
