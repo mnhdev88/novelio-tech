@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SEO from '../components/SEO';
 import ApplyModal from '../components/ApplyModal';
 import { motion } from 'framer-motion';
@@ -112,6 +112,50 @@ const indiaJobs = [
   },
 ];
 
+// ── Live data from the CRM ────────────────────────────────────────────────────
+// Jobs are managed in the CRM (crm.noveliotech.com → Careers). The hardcoded
+// arrays above are only the fallback when the API is unreachable.
+
+const CRM_JOBS_URL = 'https://crm.noveliotech.com/api/public/careers';
+
+const SHIFT_STYLES = {
+  'Hybrid': 'bg-amber-50 text-amber-700',
+  'Night Shift': 'bg-pink-50 text-pink-700',
+  'Day Shift': 'bg-amber-50 text-amber-700',
+};
+
+function apiJobToCard(job) {
+  const isUS = job.region === 'us';
+  const tags = [
+    isUS
+      ? { label: '🇺🇸 United States', style: 'bg-blue-50 text-blue-700' }
+      : { label: '🇮🇳 India', style: 'bg-green-50 text-green-700' },
+  ];
+  if (job.shift) tags.push({ label: job.shift, style: SHIFT_STYLES[job.shift] || 'bg-amber-50 text-amber-700' });
+  tags.push({
+    label: `${job.openings} Opening${job.openings === 1 ? '' : 's'}`,
+    style: job.openings > 1 ? 'bg-purple-50 text-purple-700' : 'bg-orange-50 text-orange-600',
+  });
+  return {
+    id: job.id,
+    region: job.region,
+    title: job.title,
+    openings: job.openings,
+    openingLabel: job.openings > 1 ? `(${job.openings} Openings)` : undefined,
+    tags,
+    locations: job.job_location,
+    desc: job.description,
+    pills: job.pills || [],
+    applyNote: !!job.apply_note_title,
+    applyNoteTitle: job.apply_note_title,
+    applyNotePoints: job.apply_note_points,
+    applyNoteFooter: job.apply_note_footer,
+    footerNote: job.footer_note,
+    btnLabel: job.btn_label || undefined,
+    subject: `Application: ${job.title}`,
+  };
+}
+
 const whyCards = [
   { icon: Star,       title: 'Real Mentorship',      text: 'Senior leaders who teach, not just manage. You will understand the why behind every task — not just get told what to do.' },
   { icon: TrendingUp, title: 'Fast Growth Path',      text: 'Performers move up quickly here. No waiting 3 years for a title change that means nothing.' },
@@ -206,6 +250,22 @@ function JobCard({ job, isIndia = false, delay = 0, onApply }) {
 
 export default function CareersPage() {
   const [activeJob, setActiveJob] = useState(null);
+  const [liveJobs, setLiveJobs] = useState(null);
+
+  useEffect(() => {
+    fetch(CRM_JOBS_URL)
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d) => {
+        if (Array.isArray(d.jobs) && d.jobs.length) setLiveJobs(d.jobs.map(apiJobToCard));
+      })
+      .catch(() => {}); // keep the hardcoded fallback
+  }, []);
+
+  const usRoles = liveJobs ? liveJobs.filter((j) => j.region === 'us') : usJobs;
+  const indiaRoles = liveJobs ? liveJobs.filter((j) => j.region === 'india') : indiaJobs;
+  const usOpenings = usRoles.reduce((n, j) => n + (j.openings || 1), 0);
+  const indiaOpenings = indiaRoles.reduce((n, j) => n + (j.openings || 1), 0);
+  const totalOpenings = usOpenings + indiaOpenings;
 
   return (
     <main className="pt-20">
@@ -222,7 +282,7 @@ export default function CareersPage() {
         <div className="dot-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10 text-center">
           <motion.div {...fadeUp(0)}>
-            <div className="section-label mx-auto mb-4 inline-flex items-center gap-1.5"><Flame className="w-4 h-4" /> We Are Hiring — 9 Open Positions</div>
+            <div className="section-label mx-auto mb-4 inline-flex items-center gap-1.5"><Flame className="w-4 h-4" /> We Are Hiring — {totalOpenings} Open Position{totalOpenings === 1 ? '' : 's'}</div>
           </motion.div>
           <motion.h1 {...fadeUp(0.1)} className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
             Grow Your Career at<br /><span className="gradient-text">Novelio Technologies</span>
@@ -232,7 +292,7 @@ export default function CareersPage() {
           </motion.p>
           <motion.div {...fadeUp(0.3)} className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto">
             {[
-              { num: '9',      label: 'Open Positions' },
+              { num: String(totalOpenings), label: 'Open Positions' },
               { num: 'US + India', label: 'Team Locations' },
               { num: '1–15',   label: 'Person Businesses We Serve' },
               { num: 'Fast',   label: 'Growth Stage Company' },
@@ -276,11 +336,14 @@ export default function CareersPage() {
             <p className="text-xs font-700 tracking-widest uppercase text-[#64748b] mb-1">United States</p>
             <h2 className="font-heading font-700 text-[#1B3172] text-3xl flex items-center gap-3">
               US Based Roles
-              <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">4 Openings</span>
+              <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">{usOpenings} Opening{usOpenings === 1 ? '' : 's'}</span>
             </h2>
           </motion.div>
           <div className="flex flex-col gap-5">
-            {usJobs.map((job, i) => <JobCard key={i} job={job} delay={i * 0.1} onApply={setActiveJob} />)}
+            {usRoles.map((job, i) => <JobCard key={job.id || i} job={job} delay={i * 0.1} onApply={setActiveJob} />)}
+            {usRoles.length === 0 && (
+              <p className="text-sm text-[#64748b]">No US openings right now — check back soon.</p>
+            )}
           </div>
         </div>
       </section>
@@ -293,7 +356,7 @@ export default function CareersPage() {
             <p className="text-xs font-700 tracking-widest uppercase text-[#64748b] mb-1">India Operations Hub — Gurgaon, Delhi NCR</p>
             <h2 className="font-heading font-700 text-[#1B3172] text-3xl flex items-center gap-3">
               India Based Roles
-              <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">5 Openings</span>
+              <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">{indiaOpenings} Opening{indiaOpenings === 1 ? '' : 's'}</span>
             </h2>
           </motion.div>
 
@@ -306,7 +369,10 @@ export default function CareersPage() {
           </motion.div>
 
           <div className="flex flex-col gap-5">
-            {indiaJobs.map((job, i) => <JobCard key={i} job={job} isIndia delay={i * 0.1} onApply={setActiveJob} />)}
+            {indiaRoles.map((job, i) => <JobCard key={job.id || i} job={job} isIndia delay={i * 0.1} onApply={setActiveJob} />)}
+            {indiaRoles.length === 0 && (
+              <p className="text-sm text-[#64748b]">No India openings right now — check back soon.</p>
+            )}
           </div>
         </div>
       </section>

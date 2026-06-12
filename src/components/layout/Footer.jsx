@@ -9,7 +9,7 @@ async function subscribeNewsletter(email) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': import.meta.env.VITE_CRM_API_KEY,
+      'x-api-key': import.meta.env.VITE_CRM_API_KEY || '059a24cc5a5913069b5a13149f149e62fd48d56edb668d2a35cf29306a442025d5d74d12eefdd36d069f42aa4db6c858',
     },
     body: JSON.stringify({ email }),
   });

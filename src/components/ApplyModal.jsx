@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Upload, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
-const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID || '';
-const ENDPOINT = FORMSPREE_ID ? `https://formspree.io/f/${FORMSPREE_ID}` : '';
+// Applications are stored in the CRM (crm.noveliotech.com → Careers), which
+// also emails the hiring inbox. Same key the newsletter form uses.
+const ENDPOINT = 'https://crm.noveliotech.com/api/public/careers/apply';
+const API_KEY = import.meta.env.VITE_CRM_API_KEY || '059a24cc5a5913069b5a13149f149e62fd48d56edb668d2a35cf29306a442025d5d74d12eefdd36d069f42aa4db6c858';
 
 function Label({ children, required }) {
   return (
@@ -61,43 +63,32 @@ export default function ApplyModal({ job, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!ENDPOINT) {
-      alert('Formspree is not configured yet. Please add VITE_FORMSPREE_ID to your .env file.');
-      return;
-    }
-
     setStatus('submitting');
     try {
       const data = new FormData();
 
-      // Formspree meta fields
-      data.append('_subject', `${job.title} Application — Novelio Technologies`);
-      data.append('_replyto', form.email);
-      data.append('_cc', 'ameet@noveliotech.com');
-
-      // Visible fields always sent
-      data.append('Job Title', job.title);
-      data.append('Full Name', form.name);
-      data.append('Email', form.email);
-      data.append('Phone', form.phone);
+      data.append('job_id', job.id || '');
+      data.append('job_title', job.title);
+      data.append('name', form.name);
+      data.append('email', form.email);
+      data.append('phone', form.phone);
 
       if (isSEO) {
-        data.append('Responsibilities in Current / Last Role', form.responsibilities);
-        data.append('SEO Tasks Personally Executed', form.seoTasks);
-        data.append('Live URLs Worked On (Last 12 Months)', form.liveUrls);
-        data.append('Results Achieved', form.results);
-        data.append('SEO Tools Used', form.tools);
-        if (file) data.append('Resume', file, file.name);
+        data.append('responsibilities', form.responsibilities);
+        data.append('seo_tasks', form.seoTasks);
+        data.append('live_urls', form.liveUrls);
+        data.append('results', form.results);
+        data.append('tools', form.tools);
       } else {
-        if (form.linkedin) data.append('LinkedIn / Portfolio URL', form.linkedin);
-        data.append('Why This Role', form.cover);
-        if (file) data.append('Resume', file, file.name);
+        if (form.linkedin) data.append('linkedin', form.linkedin);
+        data.append('cover', form.cover);
       }
+      if (file) data.append('resume', file, file.name);
 
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         body: data,
-        headers: { Accept: 'application/json' },
+        headers: { 'x-api-key': API_KEY },
       });
 
       setStatus(res.ok ? 'success' : 'error');
