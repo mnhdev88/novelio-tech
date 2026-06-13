@@ -1,12 +1,16 @@
 Options -MultiViews
 RewriteEngine On
 
-# ── Canonical host: redirect non-www → www (301) ────────────────────────────
-# The whole site canonicalizes to https://www.noveliotech.com, so send the
-# bare apex domain there. Without this, noveliotech.com/<page> and
-# www.noveliotech.com/<page> both resolve, and the non-www version reads as
-# "not indexable" because its canonical tag points at the www version.
-RewriteCond %{HTTP_HOST} ^noveliotech\.com$ [NC]
+# ── Canonical host + scheme: force https://www.noveliotech.com in ONE hop ───
+# Every canonical tag points at https://www.noveliotech.com, so any other
+# variant (http/https × www/non-www) must 301 there. Doing it in one combined
+# rule avoids redirect CHAINS (e.g. http://apex → https://apex → https://www) —
+# chains are what made GSC's "Page with redirect" validation fail. The old rule
+# only caught the bare apex, so http://www.noveliotech.com was never forced to
+# HTTPS. On Hostinger/LiteSpeed %{HTTPS} reflects the real scheme; behind a
+# proxy, swap the 2nd cond for %{HTTP:X-Forwarded-Proto} !=https.
+RewriteCond %{HTTP_HOST} !^www\.noveliotech\.com$ [NC,OR]
+RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://www.noveliotech.com/$1 [R=301,L]
 
 # ── 410 Gone — WooCommerce / WordPress-only junk, should never exist ────────
