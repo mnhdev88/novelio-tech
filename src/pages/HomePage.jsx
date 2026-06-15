@@ -1,10 +1,11 @@
 import SEO from '../components/SEO';
 import HeroSection from '../components/home/HeroSection';
 import ServicesMarquee from '../components/home/ServicesMarquee';
-import ProblemStatement from '../components/home/ProblemStatement';
+import GrowthSystem from '../components/home/GrowthSystem';
+import FreeWebsiteCTA from '../components/home/FreeWebsiteCTA';
+import GrowthCycle from '../components/home/GrowthCycle';
+import GrowthFramework from '../components/home/GrowthFramework';
 import WhyChooseUs from '../components/home/WhyChooseUs';
-import ServicesGrid from '../components/home/ServicesGrid';
-import ProcessSection from '../components/home/ProcessSection';
 import CTABanner from '../components/home/CTABanner';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import WhoWeServe from '../components/home/WhoWeServe';
@@ -22,10 +23,11 @@ export default function HomePage() {
       />
       <HeroSection />
       <ServicesMarquee />
-      <ProblemStatement />
+      <GrowthSystem />
+      <FreeWebsiteCTA />
+      <GrowthFramework />
+      <GrowthCycle />
       <WhyChooseUs />
-      <ServicesGrid />
-      <ProcessSection />
       <CTABanner />
       <TestimonialsSection />
       <WhoWeServe />

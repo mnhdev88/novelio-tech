@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, Clock } from 'lucide-react';
 import { FaLinkedinIn, FaXTwitter, FaFacebookF, FaInstagram } from 'react-icons/fa6';
 import { COMPANY } from '../../data/siteData';
 
@@ -24,10 +24,6 @@ export default function TopBar() {
               <Phone className="w-3 h-3" />
               {COMPANY.phone}
             </a>
-            <span className="flex items-center gap-1.5">
-              <MapPin className="w-3 h-3" />
-              {COMPANY.address}
-            </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-3 h-3" />
               Mon – Fri, 9 AM – 6 PM EST

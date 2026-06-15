@@ -95,7 +95,7 @@
     background: linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 100%);
     color: #ffffff;
     box-shadow: 0 4px 24px rgba(107,63,160,0.35);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
   }
@@ -126,7 +126,7 @@
     color: #1B3172;
     border: 1px solid rgba(27, 49, 114, 0.25);
     background: rgba(27, 49, 114, 0.05);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   }
   .btn-ghost:hover {
     border-color: rgba(107,63,160,0.5);
@@ -136,8 +136,8 @@
   }
 
   /* ── Section padding ───────────────────────── */
-  .section-pad { padding: 96px 0; }
-  .section-pad-sm { padding: 64px 0; }
+  .section-pad { padding: 60px 0; }
+  .section-pad-sm { padding: 40px 0; }
   .container-xl { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
   .container-lg { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
@@ -264,3 +264,16 @@
 /* ── Marquee ───────────────────────────────────── */
 .marquee-track { display: flex; width: max-content; }
 .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+/* ── Reduced motion ────────────────────────────── */
+/* Neutralizes CSS keyframe animations (float, marquee, pulse-glow, shimmer),
+   transitions, and smooth scroll for users who request reduced motion.
+   Framer-motion is handled separately via <MotionConfig reducedMotion="user">. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

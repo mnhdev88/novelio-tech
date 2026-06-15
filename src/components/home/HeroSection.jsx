@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Play, ShieldCheck, Check } from 'lucide-react';
+import { ArrowRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Play, Check } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import FreeWebsiteModal from '../FreeWebsiteModal';
 
@@ -118,7 +118,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* ── Infinity + decorations layer (slower parallax) ── */}
-      <motion.div style={{ x: l2x, y: l2y }} className="absolute inset-0 z-0 pointer-events-none">
+      <motion.div style={{ x: l2x, y: l2y }} className="absolute inset-0 z-0 pointer-events-none opacity-40">
         <svg viewBox="0 0 1440 800" className="w-full h-full" preserveAspectRatio="xMidYMid meet" aria-hidden="true" fill="none">
           <defs>
             <linearGradient id="ig1" x1="0%" y1="50%" x2="100%" y2="50%">
@@ -271,20 +271,13 @@ export default function HeroSection() {
           >
             <div className="section-label">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              Trusted Digital Growth Partner Since 2014
+              Trusted Business Growth Partner for SMEs
             </div>
           </motion.div>
 
-          <h1
-            role="button"
-            tabIndex={0}
-            onClick={() => setShowOffer(true)}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setShowOffer(true); } }}
-            title="Click to see your website preview in 24 hours — included free with your growth plan"
-            className="group cursor-pointer text-5xl sm:text-6xl lg:text-7xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6 transition-transform hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1D4ED8] focus-visible:ring-offset-4 rounded-2xl"
-          >
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6">
             Your Business Deserves a{' '}
-            <span className="underline decoration-transparent decoration-2 underline-offset-4 transition-colors group-hover:decoration-[#1D4ED8]/40" style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Growth Partner,
             </span>
             {' '}Not Just a Vendor
@@ -356,10 +349,6 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 1.35, ease: 'easeOut' }}
             className="bg-[#EEF2FF] border border-[#C7D2FE] rounded-2xl px-6 py-3.5 max-w-xl mx-auto mb-8"
           >
-            <p className="text-sm font-medium text-[#3730A3] mb-2 flex items-center justify-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#4F46E5] flex-shrink-0" />
-              Go Live Today. See the Difference in 15 Days.
-            </p>
             <div className="flex items-center justify-center gap-2 flex-wrap">
               {["No lock-in", "No risk", "No charges if you can't see the difference yourself"].map((pill, i) => (
                 <span key={i} className="inline-flex items-center gap-1 text-xs text-[#4338CA] bg-white border border-[#C7D2FE] rounded-full py-1 px-3">
@@ -371,28 +360,6 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Trust bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.55 }}
-            className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm text-[#64748b]"
-          >
-            {[
-              { icon: '✓', text: 'Dover, DE Registered' },
-            ].map((b, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.6 + i * 0.08, duration: 0.4 }}
-                className="flex items-center gap-1.5"
-              >
-                {i > 0 && <span className="text-slate-300 hidden sm:inline">·</span>}
-                <span className="text-emerald-500 font-bold">{b.icon}</span>
-                {b.text}
-              </motion.span>
-            ))}
-          </motion.div>
         </div>
       </div>
 
@@ -403,12 +370,12 @@ export default function HeroSection() {
         transition={{ delay: 2, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
       >
-        <span className="text-[10px] text-[#94a3b8] tracking-[0.25em] uppercase font-medium">Scroll</span>
+        <span className="text-[10px] text-[#64748b] tracking-[0.25em] uppercase font-medium">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ChevronDown className="w-5 h-5 text-[#94a3b8]" />
+          <ChevronDown className="w-5 h-5 text-[#64748b]" />
         </motion.div>
       </motion.div>
 
