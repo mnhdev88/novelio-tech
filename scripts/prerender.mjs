@@ -118,7 +118,19 @@ async function main() {
   let browser
   try {
     await waitForServer(ORIGIN)
-    browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'] })
+    // On constrained/shared Linux hosts, puppeteer's bundled Chromium often can't run
+    // (missing system libs, tiny /dev/shm). Allow pointing at a system/installed Chromium
+    // via PUPPETEER_EXECUTABLE_PATH, and pass the flags such hosts need.
+    browser = await puppeteer.launch({
+      headless: 'new',
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-gpu',
+        '--disable-dev-shm-usage',
+      ],
+    })
 
     const rendered = []
     for (const route of routes) {
