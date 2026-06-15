@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Lock, Mail, User, AlertCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Lock, Mail, User, AlertCircle, ArrowRight } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { useAuth } from '../../portal/AuthContext';
 import { createSubscription } from '../../portal/store';
@@ -64,16 +64,16 @@ export default function AuthPage({ mode = 'login' }) {
             <form onSubmit={handleSubmit} className="space-y-4">
               {isSignup && (
                 <div className="relative">
-                  <User className="w-4 h-4 text-[#94a3b8] absolute left-4 top-1/2 -translate-y-1/2" />
+                  <User className="w-4 h-4 text-[#64748b] absolute left-4 top-1/2 -translate-y-1/2" />
                   <input type="text" required placeholder="Full name" value={form.name} onChange={set('name')} className={inputCls} />
                 </div>
               )}
               <div className="relative">
-                <Mail className="w-4 h-4 text-[#94a3b8] absolute left-4 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-[#64748b] absolute left-4 top-1/2 -translate-y-1/2" />
                 <input type="email" required placeholder="Email address" value={form.email} onChange={set('email')} className={inputCls} />
               </div>
               <div className="relative">
-                <Lock className="w-4 h-4 text-[#94a3b8] absolute left-4 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-[#64748b] absolute left-4 top-1/2 -translate-y-1/2" />
                 <input type="password" required placeholder="Password" value={form.password} onChange={set('password')} className={inputCls} />
               </div>
 
@@ -96,17 +96,6 @@ export default function AuthPage({ mode = 'login' }) {
                 {isSignup ? 'Sign in' : 'Sign up'}
               </Link>
             </p>
-
-            {/* Demo helper */}
-            <div className="mt-7 pt-6 border-t border-slate-100">
-              <p className="flex items-center gap-1.5 text-xs font-semibold text-[#1B3172] mb-2">
-                <ShieldCheck className="w-3.5 h-3.5 text-green-600" /> Demo accounts
-              </p>
-              <div className="text-xs text-[#64748b] space-y-1 leading-relaxed">
-                <p><span className="font-semibold">Customer:</span> demo@noveliotech.com / demo123</p>
-                <p><span className="font-semibold">Admin:</span> admin@noveliotech.com / admin123</p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
