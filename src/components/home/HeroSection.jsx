@@ -301,7 +301,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.15, ease: 'easeOut' }}
-            className="text-lg sm:text-xl text-[#475569] leading-relaxed max-w-2xl mx-auto mb-10"
+            className="text-sm sm:text-base text-[#475569] leading-relaxed max-w-2xl mx-auto mb-10"
           >
             We analyze your digital presence — website, Google listing, leads, automation, branding, and operations — then build and execute a tailored growth plan that drives real revenue.
           </motion.p>

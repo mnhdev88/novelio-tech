@@ -1,6 +1,5 @@
 import SEO from '../components/SEO';
 import HeroSection from '../components/home/HeroSection';
-import ServicesMarquee from '../components/home/ServicesMarquee';
 import GrowthSystem from '../components/home/GrowthSystem';
 import FreeWebsiteCTA from '../components/home/FreeWebsiteCTA';
 import GrowthCycle from '../components/home/GrowthCycle';
@@ -22,7 +21,6 @@ export default function HomePage() {
         canonical="/"
       />
       <HeroSection />
-      <ServicesMarquee />
       <GrowthSystem />
       <FreeWebsiteCTA />
       <GrowthFramework />
