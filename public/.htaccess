@@ -46,7 +46,7 @@ RewriteRule ^home/?$                                             / [R=301,L]
 RewriteRule ^home-2/?$                                           / [R=301,L]
 
 # ── 301 — renamed local landing page ───────────────────────────────────────
-RewriteRule ^best-website-developer-newark-nj/?$                 /best-website-developer-newark [R=301,L]
+RewriteRule ^best-website-developer-newark-nj/?$                 /best-website-developer-in-newark [R=301,L]
 
 # ── 301 — old WordPress blog posts → /blog ─────────────────────────────────
 RewriteRule ^tips-for-remotely-managing-a-team-during-covid-19/?$         /blog [R=301,L]

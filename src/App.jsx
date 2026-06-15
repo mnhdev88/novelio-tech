@@ -87,7 +87,7 @@ function Layout() {
             <Route path="/locations"               element={<LocationHubPage />} />
             <Route path="/locations/:state"        element={<LocationPage type="state" />} />
             <Route path="/locations/:state/:city"  element={<LocationPage type="city" />} />
-            <Route path="/best-website-developer-newark" element={<BestWebDevNewarkPage />} />
+            <Route path="/best-website-developer-in-newark" element={<BestWebDevNewarkPage />} />
             <Route path="*"                        element={<NotFoundPage />} />
           </Routes>
         </Suspense>
