@@ -1,9 +1,8 @@
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Award, Heart, Lightbulb, Shield, Users, Target, ArrowRight } from 'lucide-react';
-import { FaLinkedinIn } from 'react-icons/fa6';
-import { STATS, TEAM } from '../data/siteData';
+import { Award, Heart, Lightbulb, Shield, Users, Target, ArrowRight } from 'lucide-react';
+import { STATS } from '../data/siteData';
 import CTABanner from '../components/home/CTABanner';
 
 const fadeUp = (delay = 0) => ({
@@ -20,6 +19,19 @@ const milestones = [
   { year: '2020', title: 'Global Expansion', desc: 'Expanded service delivery to clients across North America, UK, Middle East, and South Asia.' },
   { year: '2022', title: 'KPO Division Launch', desc: 'Launched our Knowledge Process Outsourcing division, adding research and data services to our portfolio.' },
   { year: '2024', title: '500+ Projects', desc: 'Delivered over 500 projects and counting. 200+ active clients. 50+ specialist team members.' },
+];
+
+// The 9-stage business growth framework we consult and deliver against.
+const FRAMEWORK = [
+  { stage: '01', module: 'Website', purpose: 'Trust and digital presence' },
+  { stage: '02', module: 'SEO + Google Business Profile', purpose: 'Visibility and inquiry generation' },
+  { stage: '03', module: 'Lead Capture + CRM', purpose: 'Track every inquiry' },
+  { stage: '04', module: 'Sales Conversion System', purpose: 'Turn leads into customers' },
+  { stage: '05', module: 'Delivery + SOP System', purpose: 'Deliver consistently' },
+  { stage: '06', module: 'Invoicing + Payment Reminders', purpose: 'Protect cash flow' },
+  { stage: '07', module: 'Customer Retention System', purpose: 'Repeat business' },
+  { stage: '08', module: 'Reviews + Referrals', purpose: 'Trust and new leads' },
+  { stage: '09', module: 'Dashboard + Automation', purpose: 'Scale with control' },
 ];
 
 const values = [
@@ -165,50 +177,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
-        <div className="container-xl relative z-10">
-          <motion.div {...fadeUp()} className="text-center mb-16">
-            <div className="section-label mx-auto mb-4">The People Behind the Results</div>
+      {/* Growth Methodology */}
+      <section className="section-pad bg-white relative overflow-hidden">
+        <div className="dot-grid absolute inset-0 opacity-30" />
+        <div className="container-xl relative z-10 max-w-4xl">
+          <motion.div {...fadeUp()} className="text-center mb-14">
+            <div className="section-label mx-auto mb-4">How We Grow a Business</div>
             <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
-              Meet Our <span className="gradient-text">Expert Team</span>
+              Our 9-Stage <span className="gradient-text">Growth Framework</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-xl mx-auto">
-              50+ specialists dedicated to growing your business.
+            <p className="text-[#475569] text-lg max-w-2xl mx-auto leading-relaxed">
+              We are growth consultants, not just a web shop. A website creates presence — but real
+              growth comes from a complete system: traffic → lead capture → follow-up → conversion →
+              delivery → reviews → repeat sales.
             </p>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
-            {TEAM.map((member, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.08)}
-                className="glass-card gradient-border rounded-2xl p-5 text-center group hover:-translate-y-2 hover:shadow-glow transition-all duration-300">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-primary mx-auto mb-3 flex items-center justify-center text-[#1B3172] font-heading font-700 text-lg shadow-glow">
-                  {member.initials}
-                </div>
-                <h4 className="text-[#1B3172] font-heading font-600 text-sm mb-1 leading-tight">{member.name}</h4>
-                <p className="text-[#64748b] text-xs mb-3">{member.role}</p>
-                <a href={member.linkedin} className="inline-flex items-center gap-1 text-xs text-brand-purple hover:text-white transition-colors">
-                  <FaLinkedinIn className="w-3 h-3" />
-                </a>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {FRAMEWORK.map((f, i) => (
+              <motion.div key={f.stage} {...fadeUp(i * 0.05)}
+                className="rounded-2xl border border-slate-200 bg-[#f8faff] p-5 hover:border-brand-purple/40 hover:-translate-y-1 transition-all duration-300">
+                <span className="gradient-text font-heading font-800 text-2xl">{f.stage}</span>
+                <h4 className="text-[#1B3172] font-heading font-700 text-base mt-2 mb-1 leading-snug">{f.module}</h4>
+                <p className="text-[#64748b] text-sm">{f.purpose}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="section-pad-sm bg-dark">
-        <div className="container-xl">
-          <motion.div {...fadeUp()} className="text-center mb-10">
-            <h3 className="text-2xl font-heading font-700 text-[#1B3172]">Certified & Recognized</h3>
+          <motion.div {...fadeUp(0.2)} className="text-center mt-10">
+            <Link to="/pricing" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-sm font-semibold transition-all">
+              See How Our Plans Cover Every Stage
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
-          <div className="flex flex-wrap items-center justify-center gap-8">
-            {['Google Partner', 'Meta Business Partner', 'HubSpot Certified', 'SEMrush Academy', 'Shopify Partner'].map((cert, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.05)}
-                className="glass-card gradient-border rounded-xl px-6 py-3 text-[#475569] font-medium text-sm hover:text-[#1B3172] transition-colors">
-                {cert}
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 

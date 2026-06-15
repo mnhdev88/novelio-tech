@@ -1,7 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, LayoutDashboard } from 'lucide-react';
+import { Menu, X, ChevronDown, LayoutDashboard, ArrowRight } from 'lucide-react';
 import { SERVICES } from '../../data/siteData';
+
+// The first four services (website dev, SEO, GBP, lead gen) are excluded from
+// the nav dropdown; they remain on /services and in the growth plans.
+const NAV_SERVICES = SERVICES.slice(4);
 import { useAuth } from '../../portal/AuthContext';
 import TopBar from './TopBar';
 
@@ -33,7 +37,6 @@ export default function Navbar() {
   const navLinks = [
     { label: 'Home', to: '/' },
     { label: 'Services', to: '/services', hasDropdown: true },
-    { label: 'How It Works', to: '/#how-it-works', isAnchor: true },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
     { label: 'Careers', to: '/careers' },
@@ -71,14 +74,14 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-2">
               {navLinks.map((link) =>
                 link.hasDropdown ? (
                   <div key={link.label} className="relative" ref={dropdownRef}>
                     <button
                       onMouseEnter={() => setServicesOpen(true)}
                       onMouseLeave={() => setServicesOpen(false)}
-                      className={`flex items-center gap-1 px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 ${
+                      className={`flex items-center gap-1 px-4 py-2.5 rounded-lg text-[17px] font-semibold transition-all duration-200 ${
                         isActive(link.to) ? 'text-[#1B3172]' : 'text-[#475569] hover:text-[#1B3172]'
                       }`}
                     >
@@ -94,21 +97,30 @@ export default function Navbar() {
                         servicesOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
                       }`}
                     >
-                      <div className="bg-white rounded-2xl p-4 w-[580px] grid grid-cols-3 gap-2 border border-slate-200 shadow-[0_8px_32px_rgba(27,49,114,0.12)]">
-                        {SERVICES.map((s) => (
-                          <Link
-                            key={s.id}
-                            to={s.slug}
-                            className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-all group"
-                          >
-                            <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${s.color} flex items-center justify-center flex-shrink-0`}>
-                              <span className="text-white text-xs font-bold">{s.short[0]}</span>
-                            </div>
-                            <span className="text-[13px] font-medium text-[#334155] group-hover:text-[#1B3172] transition-colors leading-tight">
-                              {s.title}
-                            </span>
-                          </Link>
-                        ))}
+                      <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-[0_8px_32px_rgba(27,49,114,0.12)] w-[280px]">
+                        <div className="flex flex-col gap-1">
+                          {NAV_SERVICES.map((s) => (
+                            <Link
+                              key={s.id}
+                              to={s.slug}
+                              className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-all group"
+                            >
+                              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${s.color} flex items-center justify-center flex-shrink-0`}>
+                                <span className="text-white text-sm font-bold">{s.short[0]}</span>
+                              </div>
+                              <span className="text-[15px] font-medium text-[#334155] group-hover:text-[#1B3172] transition-colors leading-tight">
+                                {s.title}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                        <Link
+                          to="/services"
+                          className="mt-2 flex items-center justify-center gap-1.5 px-3 py-3 rounded-xl border-t border-slate-100 text-[14px] font-semibold text-brand-purple hover:bg-slate-50 transition-all"
+                        >
+                          View all services
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -117,7 +129,7 @@ export default function Navbar() {
                   <a
                     key={link.label}
                     href={link.to}
-                    className="px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 text-[#475569] hover:text-[#1B3172]"
+                    className="px-4 py-2.5 rounded-lg text-[17px] font-semibold transition-all duration-200 text-[#475569] hover:text-[#1B3172]"
                   >
                     {link.label}
                   </a>
@@ -125,7 +137,7 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     to={link.to}
-                    className={`px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 ${
+                    className={`px-4 py-2.5 rounded-lg text-[17px] font-semibold transition-all duration-200 ${
                       isActive(link.to) ? 'text-[#1B3172]' : 'text-[#475569] hover:text-[#1B3172]'
                     }`}
                   >
@@ -141,20 +153,20 @@ export default function Navbar() {
               {user ? (
                 <>
                   {user.role === 'admin' && (
-                    <Link to="/admin" className="hidden lg:inline-flex px-4 py-2 rounded-lg text-[15px] font-medium text-[#475569] hover:text-[#1B3172] transition-all">
+                    <Link to="/admin" className="hidden lg:inline-flex px-4 py-2.5 rounded-lg text-[16px] font-semibold text-[#475569] hover:text-[#1B3172] transition-all">
                       Admin
                     </Link>
                   )}
-                  <Link to="/dashboard" className="hidden lg:inline-flex items-center gap-2 btn-primary text-sm py-2.5 px-5">
+                  <Link to="/dashboard" className="hidden lg:inline-flex items-center gap-2 btn-primary text-[15px] py-3 px-6">
                     <LayoutDashboard className="w-4 h-4" /> Dashboard
                   </Link>
                 </>
               ) : (
                 <>
-                  <Link to="/login" className="hidden lg:inline-flex px-4 py-2 rounded-lg text-[15px] font-medium text-[#475569] hover:text-[#1B3172] transition-all">
+                  <Link to="/login" className="hidden lg:inline-flex px-4 py-2.5 rounded-lg text-[16px] font-semibold text-[#475569] hover:text-[#1B3172] transition-all">
                     Sign In
                   </Link>
-                  <Link to="/pricing" className="hidden lg:inline-flex btn-primary text-sm py-2.5 px-5">
+                  <Link to="/pricing" className="hidden lg:inline-flex btn-primary text-[15px] py-3 px-6">
                     Get Started
                   </Link>
                 </>
@@ -203,13 +215,16 @@ export default function Navbar() {
           <div className="pt-4">
             <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-widest px-4 mb-3">Services</p>
             <div className="grid grid-cols-2 gap-2">
-              {SERVICES.map((s) => (
+              {NAV_SERVICES.map((s) => (
                 <Link key={s.id} to={s.slug} className="flex items-center gap-2 p-3 rounded-xl hover:bg-slate-50 transition-all">
                   <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${s.color} flex-shrink-0`} />
                   <span className="text-sm text-[#475569]">{s.short}</span>
                 </Link>
               ))}
             </div>
+            <Link to="/services" className="mt-2 flex items-center gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold text-brand-purple hover:bg-slate-50 transition-all">
+              View all services <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
 

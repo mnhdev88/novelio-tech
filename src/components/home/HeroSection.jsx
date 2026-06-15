@@ -280,7 +280,7 @@ export default function HeroSection() {
             tabIndex={0}
             onClick={() => setShowOffer(true)}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setShowOffer(true); } }}
-            title="Click for a free website built in 24 hours"
+            title="Click to see your website preview in 24 hours — included free with your growth plan"
             className="group cursor-pointer text-5xl sm:text-6xl lg:text-7xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6 transition-transform hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1D4ED8] focus-visible:ring-offset-4 rounded-2xl"
           >
             Your Business Deserves a{' '}
@@ -370,27 +370,6 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Star rating */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.45, duration: 0.6 }}
-            className="flex items-center justify-center gap-2 mb-4"
-          >
-            <div className="flex gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <motion.div key={i}
-                  initial={{ opacity: 0, scale: 0, rotate: -45 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ delay: 1.5 + i * 0.07, type: 'spring', stiffness: 400, damping: 14 }}
-                >
-                  <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                </motion.div>
-              ))}
-            </div>
-            <span className="text-sm text-[#475569]">Rated 4.9/5 by small business owners on Google</span>
-          </motion.div>
-
           {/* Trust bar */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -399,9 +378,7 @@ export default function HeroSection() {
             className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm text-[#64748b]"
           >
             {[
-              { icon: '✓', text: 'Serving 200+ Small Businesses' },
               { icon: '✓', text: 'Dover, DE Registered' },
-              { icon: '✓', text: '4.9★ Google Reviews' },
             ].map((b, i) => (
               <motion.span
                 key={i}
