@@ -33,6 +33,7 @@ const DisclaimerPage     = lazy(() => import('./pages/DisclaimerPage'));
 const CareersPage        = lazy(() => import('./pages/CareersPage'));
 const LocationHubPage    = lazy(() => import('./pages/LocationHubPage'));
 const LocationPage       = lazy(() => import('./pages/LocationPage'));
+const BestWebDevNewarkPage = lazy(() => import('./pages/BestWebDevNewarkPage'));
 const NotFoundPage       = lazy(() => import('./pages/NotFoundPage'));
 
 function ScrollToTop() {
@@ -86,6 +87,7 @@ function Layout() {
             <Route path="/locations"               element={<LocationHubPage />} />
             <Route path="/locations/:state"        element={<LocationPage type="state" />} />
             <Route path="/locations/:state/:city"  element={<LocationPage type="city" />} />
+            <Route path="/best-website-developer-newark" element={<BestWebDevNewarkPage />} />
             <Route path="*"                        element={<NotFoundPage />} />
           </Routes>
         </Suspense>

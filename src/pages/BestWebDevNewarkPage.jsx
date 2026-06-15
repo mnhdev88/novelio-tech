@@ -46,13 +46,13 @@ const STATS = [
   { value: '8,000+', label: 'Small businesses competing in Newark NJ' },
   { value: '23%',    label: 'Have a website that ranks on Google page one locally' },
   { value: '76%',    label: 'Of local searches lead to a visit within 24 hours' },
-  { value: '$600',   label: 'Starting price — demo is always free first' },
+  { value: '$249/mo', label: 'Growth plans — website included free, demo always first' },
 ];
 
 const FAQS = [
   {
     q: 'How much does a website cost for a Newark NJ business?',
-    a: "Novelio builds your demo website completely free — you see the finished site before any payment is discussed. Our packages for Newark businesses start at $600 for a complete, SEO-ready website. There are no hidden fees and no long-term contracts.",
+    a: "Novelio builds your demo website completely free — you see the finished site before any payment is discussed. Your website, SSL, hosting and lead-capture setup are then included free with a monthly growth plan starting at $249/month, so there is no $1,500–$3,000 upfront website cost. No hidden fees.",
   },
   {
     q: 'How long does it take to build a business website in Newark?',
@@ -97,7 +97,7 @@ const schema = {
     {
       '@type': 'WebPage',
       name: 'Best Website Developer in Newark, NJ',
-      url: 'https://www.noveliotech.com/best-website-developer-in-newark',
+      url: 'https://www.noveliotech.com/best-website-developer-newark',
       description: 'Novelio Technologies builds fast, SEO-ready, lead-generating websites for Newark NJ businesses. Free demo built first — no upfront cost.',
     },
     {
@@ -124,9 +124,9 @@ export default function BestWebDevNewarkPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Best Website Developer in Newark, NJ | Novelio Technologies"
+        title="Best Website Developer in Newark, NJ"
         description="Looking for the best website developer in Newark NJ? Novelio builds fast, SEO-ready, lead-generating websites — free demo first, no upfront cost."
-        canonical="/best-website-developer-in-newark"
+        canonical="/best-website-developer-newark"
         keywords={[
           'best website developer in Newark NJ',
           'web developer Newark',
@@ -223,7 +223,7 @@ export default function BestWebDevNewarkPage() {
             {[
               { value: '$0', label: 'Cost to see your demo' },
               { value: '48h', label: 'Demo turnaround' },
-              { value: '$600', label: 'Starting price to go live' },
+              { value: '$249/mo', label: 'Growth plan — website included free' },
               { value: '100%', label: 'Pay only if you love it' },
             ].map((stat, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center backdrop-blur-sm">
@@ -322,7 +322,7 @@ export default function BestWebDevNewarkPage() {
 
                 <div className="flex items-baseline gap-3 mb-6">
                   <span className="text-5xl font-heading font-900 gradient-text">$0</span>
-                  <span className="text-[#64748b] text-sm">to see your demo · packages from $600 to go live</span>
+                  <span className="text-[#64748b] text-sm">to see your demo · growth plans from $249/mo with website included free</span>
                 </div>
 
                 <a
