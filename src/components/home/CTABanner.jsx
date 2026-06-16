@@ -179,7 +179,7 @@ export default function CTABanner() {
           >
             {[
               { label: '200+', sub: 'Businesses Served' },
-              { label: '10+',  sub: 'Years Experience' },
+              { label: '12+',  sub: 'Years Experience' },
               { label: 'Free', sub: '30-Min Growth Audit' },
             ].map((b, i) => (
               <div key={i} className="flex items-center gap-3">

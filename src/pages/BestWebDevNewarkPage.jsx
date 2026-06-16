@@ -332,7 +332,7 @@ export default function BestWebDevNewarkPage() {
                   <Phone className="w-4 h-4" />
                   Call to Start Your Free Demo — (908) 201-2264
                 </a>
-                <p className="text-center text-xs text-[#94a3b8]">
+                <p className="text-center text-xs text-[#64748b]">
                   Or email <a href="mailto:info@noveliotech.com" className="text-[#4338CA] hover:underline">info@noveliotech.com</a> · Response within 2 hours
                 </p>
               </div>

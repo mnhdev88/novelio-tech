@@ -149,7 +149,7 @@ export default function LocationHubPage() {
                             </h3>
                             <p className="text-xs text-[#64748b] mt-0.5">Pop. {city.population}</p>
                           </div>
-                          <ArrowRight className="w-4 h-4 text-[#94a3b8] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                          <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
                         </div>
                         <div className="flex flex-wrap gap-1.5">
                           {city.industries.slice(0, 2).map((ind) => (
@@ -163,7 +163,7 @@ export default function LocationHubPage() {
 
                     {/* Coming soon placeholder */}
                     <div className="bg-[#F8FAFF] border border-dashed border-[#CBD5E1] rounded-2xl p-6 flex items-center justify-center">
-                      <p className="text-sm text-[#94a3b8] text-center">More cities coming soon</p>
+                      <p className="text-sm text-[#64748b] text-center">More cities coming soon</p>
                     </div>
                   </div>
                 </motion.div>
@@ -202,7 +202,7 @@ export default function LocationHubPage() {
                 >
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-lg font-heading font-700 text-[#1B3172] group-hover:text-[#6B3FA0] transition-colors">{s.title}</h3>
-                    <ArrowRight className="w-4 h-4 text-[#94a3b8] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0" />
+                    <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </div>
                   <p className="text-[#475569] text-sm leading-relaxed">{s.desc}</p>
                 </Link>

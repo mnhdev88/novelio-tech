@@ -7,7 +7,6 @@ import GrowthFramework from '../components/home/GrowthFramework';
 import WhyChooseUs from '../components/home/WhyChooseUs';
 import CTABanner from '../components/home/CTABanner';
 import TestimonialsSection from '../components/home/TestimonialsSection';
-import WhoWeServe from '../components/home/WhoWeServe';
 import IndustriesSection from '../components/home/IndustriesSection';
 import FAQSection from '../components/home/FAQSection';
 import BlogPreview from '../components/home/BlogPreview';
@@ -22,13 +21,12 @@ export default function HomePage() {
       />
       <HeroSection />
       <GrowthSystem />
+      <TestimonialsSection />
       <FreeWebsiteCTA />
       <GrowthFramework />
       <GrowthCycle />
       <WhyChooseUs />
       <CTABanner />
-      <TestimonialsSection />
-      <WhoWeServe />
       <IndustriesSection />
       <FAQSection />
       <BlogPreview />

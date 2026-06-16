@@ -218,7 +218,7 @@ export const CITIES = [
     faqs: [
       {
         q: 'How much does a website cost for a Newark NJ small business?',
-        a: "Novelio builds a fully functional demo website for your Newark business at no cost — you see the finished site before any payment is discussed. Our packages start at $600 for a complete, SEO-ready website. There are no hidden fees and no long-term contracts.",
+        a: "Novelio builds a fully functional demo website for your Newark business at no cost — you see the finished site before any payment is discussed. Your website, SSL, hosting and lead-capture setup are then included free with a monthly growth plan starting at $249/month, so there is no heavy upfront website cost. No hidden fees.",
       },
       {
         q: 'How long does it take to build a business website in Newark?',
@@ -253,7 +253,7 @@ export const CITIES = [
       { value: '715K+', label: 'Population' },
       { value: '50K+', label: 'Small Businesses' },
       { value: 'Top 10', label: 'Best US Business City' },
-      { value: '10+', label: 'Years Experience' },
+      { value: '12+', label: 'Years Experience' },
     ],
     testimonial: {
       quote: "Novelio found three critical gaps in our Google listing we never even knew about. Within 60 days we were getting 42% more calls from local search. Best investment we've made.",

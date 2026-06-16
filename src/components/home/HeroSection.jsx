@@ -276,7 +276,7 @@ export default function HeroSection() {
           </motion.div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6">
-            Your Business Deserves a{' '}
+            Your Small Business Deserves a{' '}
             <span style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Growth Partner,
             </span>

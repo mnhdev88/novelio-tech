@@ -1,7 +1,7 @@
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Award, Heart, Lightbulb, Shield, Users, Target, ArrowRight } from 'lucide-react';
+import { Award, Heart, Lightbulb, Shield, Users, Target, Rocket, ArrowRight } from 'lucide-react';
 import { STATS } from '../data/siteData';
 import CTABanner from '../components/home/CTABanner';
 
@@ -79,19 +79,19 @@ export default function AboutPage() {
                 title: 'Democratize Digital Success',
                 desc: 'To make enterprise-level digital marketing expertise accessible to businesses of every size, empowering them to compete and win online through data-driven strategies, transparency, and genuine partnership.',
                 color: 'from-purple-600 to-blue-600',
-                emoji: '🎯',
+                icon: Target,
               },
               {
                 label: 'Our Vision',
                 title: 'The Most Trusted Digital Partner',
                 desc: 'To become the most trusted digital growth partner globally — known not just for results, but for the integrity, innovation, and client-obsession that drives every campaign we run.',
                 color: 'from-pink-600 to-orange-500',
-                emoji: '🚀',
+                icon: Rocket,
               },
             ].map((item, i) => (
               <motion.div key={i} {...fadeUp(i * 0.15)} className="glass-card gradient-border rounded-3xl p-8">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-2xl mb-5 shadow-glow`}>
-                  {item.emoji}
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-glow`}>
+                  <item.icon className="w-7 h-7 text-white" />
                 </div>
                 <div className="section-label mb-3">{item.label}</div>
                 <h3 className="text-[#1B3172] font-heading font-700 text-2xl mb-4">{item.title}</h3>

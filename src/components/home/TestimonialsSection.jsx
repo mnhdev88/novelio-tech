@@ -39,7 +39,7 @@ function TestimonialCard({ t, pos }) {
       {/* Quote icon */}
       <div className="mb-4">
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isCenter ? 'bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8]' : 'bg-slate-100'}`}>
-          <Quote className={`w-5 h-5 ${isCenter ? 'text-white' : 'text-[#94a3b8]'}`} />
+          <Quote className={`w-5 h-5 ${isCenter ? 'text-white' : 'text-[#64748b]'}`} />
         </div>
       </div>
 
@@ -223,7 +223,7 @@ export default function TestimonialsSection() {
             animate={{ opacity: 1 }}
             className="text-center mt-4"
           >
-            <span className="text-xs text-[#94a3b8]">Auto-play paused</span>
+            <span className="text-xs text-[#64748b]">Auto-play paused</span>
           </motion.div>
         )}
       </div>

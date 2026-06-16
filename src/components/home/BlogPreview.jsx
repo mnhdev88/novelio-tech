@@ -79,7 +79,7 @@ function BlogCard({ post, index }) {
                 style={{ width: `${Math.min(parseInt(post.readTime) * 10, 100)}%` }}
               />
             </div>
-            <span className="text-[11px] text-[#94a3b8] flex items-center gap-1 flex-shrink-0">
+            <span className="text-[11px] text-[#64748b] flex items-center gap-1 flex-shrink-0">
               <Clock className="w-3 h-3" />{post.readTime}
             </span>
           </div>
@@ -94,7 +94,7 @@ function BlogCard({ post, index }) {
           <p className="text-[#64748b] text-sm leading-relaxed flex-1 mb-4 line-clamp-2">{post.excerpt}</p>
 
           {/* Footer */}
-          <div className="flex items-center justify-between text-xs text-[#94a3b8] pt-3"
+          <div className="flex items-center justify-between text-xs text-[#64748b] pt-3"
             style={{ borderTop: '1px solid rgba(148,163,184,0.15)' }}>
             <span className="flex items-center gap-1">
               <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center text-white text-[9px] font-700">

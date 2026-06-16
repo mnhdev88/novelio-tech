@@ -61,6 +61,7 @@ export default function TermsPage() {
               <li>Project work will not commence until the agreed deposit or full payment is received.</li>
               <li>All fees are in USD unless otherwise stated.</li>
             </ul>
+            <p><strong>Subscription growth plans.</strong> Paid growth plans (e.g., Start My Growth, Grow My Leads, Scale My Business) are billed monthly, quarterly, or annually and carry a minimum commitment of twelve (12) months unless otherwise agreed in writing. Applicable one-time setup fees are stated at checkout. Because the website, SSL, hosting, and growth setup are included free with the plan, the website and associated assets remain the property of Novelio until the minimum term is completed or an early buyout fee is paid (see Section 5).</p>
           </Section>
 
           <Section title="5. Intellectual Property">
@@ -70,6 +71,7 @@ export default function TermsPage() {
               <li>Novelio retains ownership of any pre-existing tools, templates, frameworks, and proprietary methodologies used in the delivery of services.</li>
               <li>Novelio may use completed work in its portfolio and marketing materials unless the client requests otherwise in writing.</li>
             </ul>
+            <p><strong>Websites included with subscription plans.</strong> For websites provided free as part of a subscription growth plan, full ownership of the website transfers to the client upon completion of the 12-month minimum term, or earlier upon payment of a one-time buyout fee. Until transfer, the client receives a full license to use the website for their business. If a plan is cancelled before the minimum term is completed and no buyout is paid, the website remains with Novelio.</p>
           </Section>
 
           <Section title="6. Client Responsibilities">
@@ -100,6 +102,7 @@ export default function TermsPage() {
             <ul>
               <li>Client is responsible for payment of all services rendered up to the termination date.</li>
               <li>Novelio will deliver all completed work and transfer relevant access credentials to the client within 10 business days.</li>
+              <li>For subscription growth plans terminated before the 12-month minimum term, the remaining term balance or the agreed buyout fee applies before website ownership transfers (see Sections 4 and 5).</li>
             </ul>
           </Section>
 

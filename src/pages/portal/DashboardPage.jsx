@@ -19,7 +19,7 @@ const STATUS_UI = {
 function StatCard({ label, value, sub }) {
   return (
     <div className="bg-white rounded-2xl border border-slate-200 p-5">
-      <p className="text-xs font-semibold uppercase tracking-wide text-[#94a3b8]">{label}</p>
+      <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">{label}</p>
       <p className="font-heading font-800 text-[#1B3172] text-2xl mt-1.5">{value}</p>
       {sub && <p className="text-xs text-[#64748b] mt-0.5">{sub}</p>}
     </div>
@@ -94,7 +94,7 @@ export default function DashboardPage() {
               {/* Stat cards */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <StatCard label="Current plan" value={plan.name} sub={`Billed ${sub.billing}`} />
-                <StatCard label="Recurring" value={`$${sub.monthlyTotal}/mo`} sub={sub.billing === 'yearly' ? `$${sub.monthlyTotal * 12}/yr` : 'Cancel anytime'} />
+                <StatCard label="Recurring" value={`$${sub.monthlyTotal}/mo`} sub={sub.billing === 'yearly' ? `$${sub.monthlyTotal * 12}/yr` : '12-month plan'} />
                 <StatCard label="Next renewal" value={sub.nextRenewal} />
                 <StatCard label="Onboarding" value={`${progress}%`} sub={`${delivered}/${sub.deliverables.length} delivered`} />
               </div>
@@ -157,7 +157,7 @@ export default function DashboardPage() {
                     <div className="space-y-3">
                       {sub.addonIds.length > 0 && (
                         <div className="text-sm">
-                          <p className="text-[#94a3b8] text-xs font-semibold uppercase tracking-wide mb-1.5">Active add-ons</p>
+                          <p className="text-[#64748b] text-xs font-semibold uppercase tracking-wide mb-1.5">Active add-ons</p>
                           <ul className="space-y-1">
                             {sub.addonIds.map((id) => {
                               const a = PRICING_ADDONS.find((x) => x.id === id);

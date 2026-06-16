@@ -190,7 +190,7 @@ function JobCard({ job, isIndia = false, delay = 0, onApply }) {
 
       {/* Location */}
       <div className="flex items-start gap-1.5 text-xs text-[#64748b] mb-3">
-        <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#94a3b8]" />
+        <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#64748b]" />
         <span className="leading-relaxed">{job.locations || job.location}</span>
       </div>
 

@@ -161,8 +161,8 @@ const WHY_US = [
   },
   {
     icon: Clock,
-    title: 'No Long-Term Lock-In',
-    desc: 'We earn your business month to month. We don\'t need 12-month contracts to deliver results — and we don\'t ask for them.',
+    title: 'No Heavy Upfront Cost',
+    desc: 'Your website, hosting and SEO setup are included in one predictable monthly growth plan — no $3,000 project invoice before results start.',
   },
   {
     icon: TrendingUp,

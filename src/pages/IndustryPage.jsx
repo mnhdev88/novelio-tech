@@ -107,13 +107,13 @@ function SiteCard({ site, index, industryColor }) {
                 <Globe className="w-6 h-6 text-white" />
               </div>
               {!blocked && (
-                <div className="flex items-center gap-2 text-xs text-[#94a3b8]">
+                <div className="flex items-center gap-2 text-xs text-[#64748b]">
                   <Loader2 className="w-3 h-3 animate-spin" />
                   Loading preview…
                 </div>
               )}
               {blocked && (
-                <div className="text-xs text-[#94a3b8] text-center px-4">
+                <div className="text-xs text-[#64748b] text-center px-4">
                   Click to open site
                 </div>
               )}
@@ -133,7 +133,7 @@ function SiteCard({ site, index, industryColor }) {
         <div className="px-4 py-3 flex items-center justify-between gap-2">
           <div className="min-w-0">
             <div className="text-[#1B3172] font-heading font-600 text-sm truncate">{site.label}</div>
-            <div className="text-[#94a3b8] text-xs truncate mt-0.5">{domain}</div>
+            <div className="text-[#64748b] text-xs truncate mt-0.5">{domain}</div>
           </div>
           <div
             className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
@@ -218,14 +218,14 @@ export default function IndustryPage() {
           >
             {/* Icon */}
             <div
-              className="w-20 h-20 rounded-3xl flex items-center justify-center text-4xl flex-shrink-0"
+              className="w-20 h-20 rounded-3xl flex items-center justify-center flex-shrink-0"
               style={{
                 background: `linear-gradient(135deg, ${gradColors.a}22, ${gradColors.b}22)`,
                 border: `1.5px solid ${gradColors.a}40`,
                 boxShadow: `0 8px 32px ${gradColors.a}28`,
               }}
             >
-              {industry.icon}
+              <industry.icon className="w-9 h-9" strokeWidth={1.75} style={{ color: gradColors.a }} />
             </div>
             <div>
               <div className="section-label mb-2" style={{ display: 'inline-flex' }}>Industry Portfolio</div>
@@ -258,7 +258,7 @@ export default function IndustryPage() {
             transition={{ duration: 0.5 }}
             className="text-center py-24"
           >
-            <div className="text-6xl mb-6">{industry.icon}</div>
+            <div className="flex justify-center mb-6"><industry.icon className="w-16 h-16" strokeWidth={1.5} style={{ color: gradColors.a }} /></div>
             <h2 className="text-2xl font-heading font-700 text-[#1B3172] mb-3">
               Coming Soon
             </h2>
@@ -296,7 +296,7 @@ export default function IndustryPage() {
             border: `1px solid ${gradColors.a}22`,
           }}
         >
-          <div className="text-2xl mb-3">{industry.icon}</div>
+          <div className="flex justify-center mb-3"><industry.icon className="w-7 h-7" strokeWidth={1.75} style={{ color: gradColors.a }} /></div>
           <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-2">
             Need a Website for Your {industry.name} Business?
           </h3>

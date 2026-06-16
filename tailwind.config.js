@@ -20,6 +20,16 @@ export default {
         heading: ['"Space Grotesk"', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
+      // Numeric font-weight utilities (font-400 … font-800) are used throughout
+      // the codebase. Tailwind doesn't ship these by default, so they must be
+      // declared here or the classes silently emit no CSS.
+      fontWeight: {
+        400: '400',
+        500: '500',
+        600: '600',
+        700: '700',
+        800: '800',
+      },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)',
         'gradient-secondary': 'linear-gradient(135deg, #F97316 0%, #FACC15 50%, #22C55E 100%)',

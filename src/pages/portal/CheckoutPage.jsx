@@ -95,7 +95,7 @@ export default function CheckoutPage() {
 
               {/* Add-ons */}
               <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                <h2 className="font-heading font-700 text-[#1B3172] mb-1">Add-ons <span className="font-normal text-[#94a3b8] text-sm">(optional)</span></h2>
+                <h2 className="font-heading font-700 text-[#1B3172] mb-1">Add-ons <span className="font-normal text-[#64748b] text-sm">(optional)</span></h2>
                 <p className="text-sm text-[#64748b] mb-4">Recurring upsells billed monthly alongside your plan.</p>
                 <div className="space-y-2.5">
                   {PRICING_ADDONS.map((a) => {
@@ -167,8 +167,8 @@ export default function CheckoutPage() {
                   <span className="font-heading font-700 text-[#1B3172]">Due today</span>
                   <span className="font-heading font-800 text-[#1B3172] text-xl">${dueToday}</span>
                 </div>
-                <p className="text-xs text-[#94a3b8] mt-1">
-                  {billing === 'yearly' ? 'Billed once per year (12 months).' : 'Billed monthly. Cancel anytime.'}
+                <p className="text-xs text-[#64748b] mt-1">
+                  {billing === 'yearly' ? 'Billed once per year (12 months).' : 'Billed monthly. 12-month plan.'}
                 </p>
 
                 <button
@@ -181,7 +181,7 @@ export default function CheckoutPage() {
                 </button>
 
                 <ul className="mt-5 space-y-2">
-                  {['Cancel anytime', 'No setup fee', 'Assets remain yours'].map((t) => (
+                  {['Website included free', 'We confirm scope before billing', 'Full ownership after 12 months'].map((t) => (
                     <li key={t} className="flex items-center gap-2 text-xs text-[#64748b]">
                       <Check className="w-3.5 h-3.5 text-green-600 shrink-0" /> {t}
                     </li>

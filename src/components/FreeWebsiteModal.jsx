@@ -29,7 +29,7 @@ function Field({ label, required, type = 'text', placeholder, value, onChange, h
     <div>
       <Label required={required}>
         {label}
-        {hint && <span className="font-normal text-[#94a3b8] text-xs ml-1">{hint}</span>}
+        {hint && <span className="font-normal text-[#64748b] text-xs ml-1">{hint}</span>}
       </Label>
       <input type={type} placeholder={placeholder} value={value} onChange={onChange} required={required} className={inputCls} />
     </div>
@@ -67,7 +67,7 @@ export default function FreeWebsiteModal({ onClose }) {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           _subject: 'Free Website Lead — Novelio Technologies',
-          'Lead Source': 'Hero — Free Website in 24 Hours offer',
+          'Lead Source': 'Hero — Website included with growth plan (24-hour preview) offer',
           'Full Name': form.name,
           Email: form.email,
           Phone: form.phone,
@@ -112,7 +112,7 @@ export default function FreeWebsiteModal({ onClose }) {
           {/* Close button (floating) */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-lg border border-slate-200 bg-white/90 flex items-center justify-center text-[#94a3b8] hover:text-[#1B3172] hover:border-[#1B3172] transition-all cursor-pointer"
+            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-lg border border-slate-200 bg-white/90 flex items-center justify-center text-[#64748b] hover:text-[#1B3172] hover:border-[#1B3172] transition-all cursor-pointer"
             aria-label="Close"
           >
             <X className="w-4 h-4" />
@@ -131,11 +131,15 @@ export default function FreeWebsiteModal({ onClose }) {
                 </span>
                 .
                 <br />
-                Get it in 24 hours.
+                See it live in 24 hours.
               </h2>
+              <p className="text-[#64748b] text-sm leading-relaxed max-w-sm mx-auto mb-6">
+                Your website, SSL, hosting and lead-capture setup are included free with your
+                monthly growth plan — no heavy upfront website cost. We build your preview first.
+              </p>
               {/* Trust benefits */}
               <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 max-w-xs mx-auto mb-8 text-left">
-                {['No credit card', 'No commitment', 'Live preview in 24 hrs', '100% free to start'].map((b) => (
+                {['No credit card', 'Free live preview', 'Preview in 24 hrs', 'Pay only if you love it'].map((b) => (
                   <div key={b} className="flex items-center gap-2 text-sm text-[#475569]">
                     <CheckCircle className="w-4 h-4 text-[#16A34A] shrink-0" />
                     {b}
@@ -167,7 +171,7 @@ export default function FreeWebsiteModal({ onClose }) {
               <div className="px-6 pt-7 pb-4 border-b border-[rgba(29,78,216,0.08)] shrink-0">
                 <p className="text-[10px] font-bold tracking-widest uppercase text-[#64748b] mb-1">Step 2 of 2</p>
                 <h2 className="font-heading font-bold text-[#1B3172] text-lg leading-tight">
-                  📋 Great! Tell us a bit about your business
+                  Great! Tell us a bit about your business
                 </h2>
               </div>
 
@@ -231,7 +235,7 @@ export default function FreeWebsiteModal({ onClose }) {
                   {status === 'submitting' ? (
                     <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</>
                   ) : (
-                    <>Build My Free Website Now <ArrowRight className="w-4 h-4" /></>
+                    <>Get My Free Website Preview <ArrowRight className="w-4 h-4" /></>
                   )}
                 </button>
                 <p className="flex items-center justify-center gap-1.5 text-center text-xs text-[#64748b] mt-3">
@@ -248,10 +252,10 @@ export default function FreeWebsiteModal({ onClose }) {
               <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
                 <CheckCircle className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="font-heading font-bold text-[#1B3172] text-xl mb-2">You're all set! 🎉</h3>
+              <h3 className="font-heading font-bold text-[#1B3172] text-xl mb-2">You're all set!</h3>
               <p className="text-[#64748b] text-sm leading-relaxed max-w-xs mx-auto mb-7">
                 Thanks, <strong>{form.name || 'there'}</strong>! Your request is in. One of our team members
-                will reach out within a few hours to get started on your free website.
+                will reach out within a few hours to get started on your free website preview.
               </p>
               <button onClick={onClose} className="btn-primary px-8 py-3 text-sm cursor-pointer">Done</button>
             </div>

@@ -173,7 +173,7 @@ export default function Navbar() {
               )}
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="lg:hidden w-10 h-10 rounded-lg border border-slate-200 bg-white flex items-center justify-center text-[#1B3172] cursor-pointer"
+                className="lg:hidden w-11 h-11 rounded-lg border border-slate-200 bg-white flex items-center justify-center text-[#1B3172] cursor-pointer"
                 aria-label="Open menu"
                 aria-expanded={menuOpen}
               >
@@ -201,7 +201,7 @@ export default function Navbar() {
               height="36"
             />
           </Link>
-          <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="w-10 h-10 rounded-lg border border-slate-200 flex items-center justify-center text-[#1B3172] cursor-pointer">
+          <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-[#1B3172] cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -213,7 +213,7 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-4">
-            <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-widest px-4 mb-3">Services</p>
+            <p className="text-xs font-semibold text-[#64748b] uppercase tracking-widest px-4 mb-3">Services</p>
             <div className="grid grid-cols-2 gap-2">
               {NAV_SERVICES.map((s) => (
                 <Link key={s.id} to={s.slug} className="flex items-center gap-2 p-3 rounded-xl hover:bg-slate-50 transition-all">

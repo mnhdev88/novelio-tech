@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
-import { BarChart2, Users, Eye, Target } from 'lucide-react';
+import { BarChart2, Users, Eye, Target, ArrowUp } from 'lucide-react';
 
 const pillars = [
   { icon: BarChart2, title: 'Diagnose First',       desc: 'We run a free audit before we propose a single solution. No guessing, no upselling. You see the gaps before we talk about fixes.',            color: 'from-purple-600 to-blue-600',   bar: 100 },
   { icon: Users,     title: 'Full-Spectrum View',   desc: 'Website, Google listing, leads, automation, branding, hosting, and operations — we look at all of it, not just the part we sell.',           color: 'from-pink-600 to-orange-500',  bar: 100 },
   { icon: Eye,       title: 'Accountable Partner',  desc: 'Monthly reviews, clear KPIs, and transparent reporting. You always know what your investment is doing — and we stand behind the numbers.',    color: 'from-cyan-500 to-blue-600',    bar: 100 },
-  { icon: Target,    title: 'No Long-Term Lock-In', desc: 'We offer transparent, fixed-price packages with no hidden fees. We earn your business every month — you\'re never locked into a contract.',   color: 'from-emerald-500 to-cyan-600', bar: 100 },
+  { icon: Target,    title: 'No Heavy Upfront Cost', desc: 'Your website, SSL, hosting and lead capture are included free with one transparent monthly growth plan — no $3,000 project invoice, no hidden fees.',   color: 'from-emerald-500 to-cyan-600', bar: 100 },
 ];
 
 const metrics = [
@@ -82,9 +82,9 @@ export default function WhyChooseUs() {
                       {/* Mini progress bar */}
                       <div className="h-1 bg-slate-200 rounded-full overflow-hidden">
                         <motion.div
-                          className={`h-full bg-gradient-to-r ${p.color} rounded-full`}
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${p.bar}%` }}
+                          className={`h-full w-full origin-left bg-gradient-to-r ${p.color} rounded-full`}
+                          initial={{ scaleX: 0 }}
+                          whileInView={{ scaleX: p.bar / 100 }}
                           transition={{ duration: 1.1, delay: 0.3 + i * 0.1, ease: 'easeOut' }}
                           viewport={{ once: true }}
                         />
@@ -119,7 +119,7 @@ export default function WhyChooseUs() {
                 <div className="w-3 h-3 rounded-full bg-yellow-400" />
                 <div className="w-3 h-3 rounded-full bg-green-400" />
                 <div className="flex-1 ml-3 h-6 rounded-lg bg-slate-100 flex items-center px-3">
-                  <span className="text-xs text-[#94a3b8]">analytics.noveliotech.com</span>
+                  <span className="text-xs text-[#64748b]">analytics.noveliotech.com</span>
                 </div>
               </div>
 
@@ -178,10 +178,10 @@ export default function WhyChooseUs() {
               </div>
 
               <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs text-[#94a3b8]">Average client results after 6 months</span>
+                <span className="text-xs text-[#64748b]">Average client results after 6 months</span>
                 <span className="text-xs font-600 text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Live Data
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Illustrative
                 </span>
               </div>
             </div>
@@ -218,7 +218,7 @@ export default function WhyChooseUs() {
               }}
             >
               <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-xs">↑</span>
+                <ArrowUp className="w-4 h-4 text-white" />
               </div>
               <div>
                 <div className="text-[#1B3172] text-xs font-700">New Lead Converted</div>

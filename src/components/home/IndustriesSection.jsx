@@ -87,11 +87,11 @@ function IndustryCard({ industry, index }) {
 
         {/* Icon */}
         <motion.div
-          className="text-4xl mb-3 block"
+          className="mb-3 flex justify-center"
           animate={{ scale: hovered ? 1.2 : 1, y: hovered ? -3 : 0 }}
           transition={{ duration: 0.25 }}
         >
-          {industry.icon}
+          <industry.icon className="w-9 h-9" strokeWidth={1.75} style={{ color: glowColor }} />
         </motion.div>
 
         <div
@@ -113,11 +113,12 @@ function IndustryCard({ industry, index }) {
 
         {/* Bottom shine bar */}
         <motion.div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full"
+          className="absolute bottom-0 left-1/2 w-4/5 h-0.5 rounded-full origin-center"
           style={{
+            x: '-50%',
             background: `linear-gradient(to right, transparent, ${glowColor}, transparent)`,
           }}
-          animate={{ width: hovered ? '80%' : '0%' }}
+          animate={{ scaleX: hovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
         />
       </Link>

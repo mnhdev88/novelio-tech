@@ -527,9 +527,9 @@ export default function WebsiteDevelopmentPage() {
                   <Shield className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-[#1B3172] font-heading font-600 text-sm mb-1">No Long-Term Lock-In</p>
+                  <p className="text-[#1B3172] font-heading font-600 text-sm mb-1">You Own Your Website</p>
                   <p className="text-[#475569] text-xs leading-relaxed">
-                    You own your website 100% after launch. No proprietary platform lock-in, no hostage hosting, no hidden fees.
+                    Full ownership transfers to you after your plan term — no proprietary platform lock-in, no hostage hosting, no hidden fees.
                   </p>
                 </div>
               </motion.div>

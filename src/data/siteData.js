@@ -1,3 +1,8 @@
+import {
+  HeartPulse, ShoppingCart, Home, GraduationCap, Landmark, Hotel,
+  Laptop, Scale, Factory, ShoppingBag, Wrench, Briefcase,
+} from 'lucide-react';
+
 export const COMPANY = {
   name: 'Novelio Technologies LLC',
   tagline: 'Your Dedicated Business Growth Partner',
@@ -74,9 +79,9 @@ export const SERVICES = [
     title: 'Automation & CRM',
     short: 'Automation',
     tagline: 'Reclaim Your Time. Scale Without Hiring.',
-    description: 'Connect your tools, automate follow-ups, and reclaim 10+ hours a week — so your business grows even when you\'re off the clock.',
+    description: 'Connect your tools, automate follow-ups, payment reminders and retention messages — so leads, sales and cash flow run on a system, not on memory.',
     color: 'from-amber-500 to-orange-500',
-    features: ['CRM Setup & Integration', 'Email Automation', 'Follow-Up Sequences', 'Tool Integration', 'Workflow Automation', 'Reporting Dashboards'],
+    features: ['CRM Setup & Integration', 'Lead Pipeline & Follow-Up Sequences', 'Invoice & Payment Tracking', 'Automated Payment Reminders', 'Customer Retention Messages', 'Review & Referral Automation', 'Workflow Automation', 'Reporting Dashboards', 'Tool Integration'],
   },
   {
     id: 'branding',
@@ -162,7 +167,7 @@ export const TESTIMONIALS = [
 
 export const INDUSTRIES = [
   {
-    name: 'Healthcare', icon: '🏥', slug: 'healthcare',
+    name: 'Healthcare', icon: HeartPulse, slug: 'healthcare',
     color: 'from-rose-500 to-pink-600',
     sites: [
       { url: 'https://akerschiropractic.prodatahub.com',   label: 'Akers Chiropractic' },
@@ -175,7 +180,7 @@ export const INDUSTRIES = [
     ],
   },
   {
-    name: 'E-Commerce', icon: '🛒', slug: 'ecommerce',
+    name: 'E-Commerce', icon: ShoppingCart, slug: 'ecommerce',
     color: 'from-orange-500 to-amber-400',
     sites: [
       { url: 'https://shopcreative.prodatahub.com',        label: 'Shop Creative' },
@@ -184,24 +189,24 @@ export const INDUSTRIES = [
     ],
   },
   {
-    name: 'Real Estate', icon: '🏠', slug: 'real-estate',
+    name: 'Real Estate', icon: Home, slug: 'real-estate',
     color: 'from-emerald-500 to-teal-600',
     sites: [],
   },
   {
-    name: 'Education', icon: '🎓', slug: 'education',
+    name: 'Education', icon: GraduationCap, slug: 'education',
     color: 'from-yellow-500 to-orange-500',
     sites: [],
   },
   {
-    name: 'Finance', icon: '💳', slug: 'finance',
+    name: 'Finance', icon: Landmark, slug: 'finance',
     color: 'from-blue-600 to-indigo-700',
     sites: [
       { url: 'https://lynnchenytax.prodatahub.com', label: 'Lynn Cheney Tax' },
     ],
   },
   {
-    name: 'Hospitality', icon: '🏨', slug: 'hospitality',
+    name: 'Hospitality', icon: Hotel, slug: 'hospitality',
     color: 'from-violet-500 to-purple-600',
     sites: [
       { url: 'https://idoevents.prodatahub.com',            label: 'I Do Events' },
@@ -217,20 +222,19 @@ export const INDUSTRIES = [
     ],
   },
   {
-    name: 'Technology', icon: '💻', slug: 'technology',
+    name: 'Technology', icon: Laptop, slug: 'technology',
     color: 'from-cyan-500 to-blue-600',
     sites: [
-      { url: 'https://novelio.prodatahub.com',   label: 'Novelio' },
       { url: 'https://nprsolutions.prodatahub.com', label: 'NPR Solutions' },
     ],
   },
   {
-    name: 'Legal', icon: '⚖️', slug: 'legal',
+    name: 'Legal', icon: Scale, slug: 'legal',
     color: 'from-slate-600 to-slate-800',
     sites: [],
   },
   {
-    name: 'Manufacturing', icon: '🏭', slug: 'manufacturing',
+    name: 'Manufacturing', icon: Factory, slug: 'manufacturing',
     color: 'from-gray-500 to-zinc-700',
     sites: [
       { url: 'https://sharktruck.prodatahub.com',      label: 'Shark Truck' },
@@ -238,7 +242,7 @@ export const INDUSTRIES = [
     ],
   },
   {
-    name: 'Retail', icon: '🛍️', slug: 'retail',
+    name: 'Retail', icon: ShoppingBag, slug: 'retail',
     color: 'from-pink-500 to-rose-500',
     sites: [
       { url: 'https://victortailors.prodatahub.com',       label: 'Victor Tailors' },
@@ -249,7 +253,7 @@ export const INDUSTRIES = [
     ],
   },
   {
-    name: 'Home Services', icon: '🔧', slug: 'home-services',
+    name: 'Home Services', icon: Wrench, slug: 'home-services',
     color: 'from-amber-600 to-yellow-500',
     sites: [
       { url: 'https://aaaplumber.prodatahub.com',         label: 'AAA Plumber' },
@@ -260,7 +264,7 @@ export const INDUSTRIES = [
     ],
   },
   {
-    name: 'Professional Services', icon: '💼', slug: 'professional-services',
+    name: 'Professional Services', icon: Briefcase, slug: 'professional-services',
     color: 'from-indigo-500 to-blue-700',
     sites: [
       { url: 'https://problemsolvingconsultants.prodatahub.com', label: 'Problem Solving Consultants' },
@@ -284,7 +288,7 @@ export const BLOG_POSTS = [
     date: 'May 5, 2026',
     author: 'Noveliotech Team',
     readTime: '8 min read',
-    image: 'https://www.noveliotech.com/blog/seo-trends-2026.jpg',
+    image: '/blog/seo-trends-2026.jpg',
     featured: true,
     schema: {
       '@context': 'https://schema.org',
@@ -519,7 +523,7 @@ export const BLOG_POSTS = [
     date: 'May 16, 2026',
     author: 'Noveliotech Team',
     readTime: '10 min read',
-    image: 'https://www.noveliotech.com/blog/high-converting-landing-page.jpg',
+    image: '/blog/high-converting-landing-page.jpg',
     featured: false,
     schema: {
       '@context': 'https://schema.org',
@@ -929,7 +933,7 @@ export const BLOG_POSTS = [
     date: 'Apr 15, 2026',
     author: 'Noveliotech Team',
     readTime: '10 min read',
-    image: 'https://www.noveliotech.com/blog/google-ads-small-business.jpg',
+    image: '/blog/google-ads-small-business.jpg',
     featured: false,
     schema: {
       '@context': 'https://schema.org',
@@ -1193,7 +1197,7 @@ export const BLOG_POSTS = [
     date: 'Apr 8, 2026',
     author: 'Noveliotech Team',
     readTime: '7 min read',
-    image: 'https://www.noveliotech.com/blog/social-media-algorithm-2026.jpg',
+    image: '/blog/social-media-algorithm-2026.jpg',
     featured: false,
     schema: {
       '@context': 'https://schema.org',
@@ -1450,7 +1454,7 @@ export const BLOG_POSTS = [
     date: 'Mar 30, 2026',
     author: 'Noveliotech Team',
     readTime: '9 min read',
-    image: 'https://www.noveliotech.com/blog/wordpress-vs-react.jpg',
+    image: '/blog/wordpress-vs-react.jpg',
     featured: false,
     schema: {
       '@context': 'https://schema.org',
@@ -1672,7 +1676,7 @@ export const BLOG_POSTS = [
     date: 'Mar 20, 2026',
     author: 'Noveliotech Team',
     readTime: '8 min read',
-    image: 'https://www.noveliotech.com/blog/email-marketing-best-practices.jpg',
+    image: '/blog/email-marketing-best-practices.jpg',
     featured: false,
     schema: {
       '@context': 'https://schema.org',
@@ -1942,7 +1946,7 @@ export const BLOG_POSTS = [
     date: 'May 18, 2026',
     author: 'Noveliotech Team',
     readTime: '7 min read',
-    image: 'https://www.noveliotech.com/blog/ui-ux-design-for-business-growth.jpg',
+    image: '/blog/ui-ux-design-for-business-growth.jpg',
     featured: false,
     schema: {
       '@context': 'https://schema.org',
@@ -2288,6 +2292,582 @@ export const BLOG_POSTS = [
   </div>
 </div>`,
   },
+  {
+    id: 8,
+    slug: 'why-small-business-needs-website',
+    title: '20 Reasons a Small Business Needs a Website to Grow',
+    excerpt: 'An SMB needs three things to grow: visibility, trust, and conversion. A website supports all three. Here are 20 concrete ways a website grows a small business — and why referrals alone are not enough.',
+    metaDescription: 'An SMB needs visibility, trust, and conversion to grow. Discover 20 concrete ways a website supports all three — from 24/7 presence to lead capture and brand control.',
+    category: 'Business Growth',
+    categoryColor: 'from-emerald-600 to-teal-600',
+    date: 'May 26, 2026',
+    author: 'Noveliotech Team',
+    readTime: '7 min read',
+    image: '/blog/why-small-business-needs-website.jpg',
+    featured: false,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Article',
+          headline: '20 Reasons a Small Business Needs a Website to Grow',
+          description: 'An SMB needs visibility, trust, and conversion to grow. Discover 20 concrete ways a website supports all three.',
+          image: 'https://www.noveliotech.com/blog/why-small-business-needs-website.jpg',
+          author: { '@type': 'Person', name: 'Novelio Technologies Editorial Team', url: 'https://www.noveliotech.com/about' },
+          publisher: { '@type': 'Organization', name: 'Novelio Technologies LLC', logo: { '@type': 'ImageObject', url: 'https://www.noveliotech.com/logo.png' } },
+          datePublished: '2026-05-26',
+          dateModified: '2026-06-12',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.noveliotech.com/blog/why-small-business-needs-website' },
+          keywords: ['small business website', 'SMB growth', 'website benefits', 'lead generation website', 'business credibility'],
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: [
+            { '@type': 'Question', name: 'Does a small business really need a website if it has social media?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Social media platforms can change rules, reach, and algorithms anytime. A website is your own digital property, gives a stronger first impression, and converts social traffic into leads with forms, call buttons, and booking links.' } },
+            { '@type': 'Question', name: 'What are the three things a small business needs to grow?', acceptedAnswer: { '@type': 'Answer', text: 'Visibility (customers can find you), trust (customers believe you are serious and reliable), and conversion (visitors have a clear way to contact or buy from you). A growth-focused website supports all three.' } },
+            { '@type': 'Question', name: 'Is a website enough to grow a business on its own?', acceptedAnswer: { '@type': 'Answer', text: 'No. A website creates presence, but growth comes from a complete system: traffic, lead capture, follow-up, conversion, reviews, and repeat sales — with the website connected to Google, WhatsApp, and a CRM.' } },
+            { '@type': 'Question', name: 'How does a website help win against bigger competitors?', acceptedAnswer: { '@type': 'Answer', text: 'A clean, clear, professional website makes a small business look organized and trustworthy. Combined with local SEO and reviews, it lets small businesses compete for the same searches as much larger players.' } },
+          ],
+        },
+      ],
+    },
+    content: `<header class="hero">
+  <h1>20 Reasons a Small Business Needs a Website to Grow</h1>
+  <p class="meta">By Noveliotech Team &middot; May 26, 2026 &middot; 7 min read &middot; Business Growth</p>
+</header>
+<div class="container">
+  <p style="margin:24px 0 0">
+    <span class="tag">Small Business Website</span>
+    <span class="tag">SMB Growth</span>
+    <span class="tag">Lead Generation</span>
+    <span class="tag">Trust &amp; Credibility</span>
+  </p>
+
+  <p style="margin-top:28px">An SMB needs three things to grow: <strong>visibility, trust, and conversion</strong>. A website supports all three. Without one, the business depends too much on referrals, personal contacts, and social media &mdash; channels you do not fully control and cannot scale on demand.</p>
+
+  <div class="stat-box">
+    <strong>The core idea:</strong> The real benefit is not just &ldquo;having a website.&rdquo; The benefit is connecting <strong>website + Google + WhatsApp + CRM + follow-up system</strong> so leads turn into sales.
+  </div>
+
+  <h2 id="trust">1&ndash;5: A Website Builds Trust</h2>
+  <ul>
+    <li><strong>Builds trust immediately.</strong> When people search your business and find a proper website, they feel you are more serious and reliable.</li>
+    <li><strong>Makes your business look professional.</strong> A good website gives a better first impression than only WhatsApp, Facebook, Instagram, or referrals.</li>
+    <li><strong>Improves customer confidence before buying.</strong> Customers can check your work, testimonials, case studies, pricing, process, and FAQs before contacting you.</li>
+    <li><strong>Helps compete with bigger players.</strong> A clean, clear, professional website makes a small business look organized and trustworthy against larger competitors.</li>
+    <li><strong>Improves recruitment and partnership trust.</strong> Vendors, employees, partners, and investors often check your website before taking your business seriously.</li>
+  </ul>
+
+  <h2 id="visibility">6&ndash;10: A Website Builds Visibility</h2>
+  <ul>
+    <li><strong>Creates a 24/7 business presence.</strong> Your website works even when your office is closed &mdash; services, products, location, and contact details are available anytime.</li>
+    <li><strong>Supports Google search visibility.</strong> An SEO-friendly website gets found when customers search for services like yours.</li>
+    <li><strong>Improves local business growth.</strong> Connected with your Google Business Profile, it helps customers find directions, call, and trust the business faster.</li>
+    <li><strong>Reduces dependency on referrals.</strong> Referrals are good, but not enough for growth. A website attracts customers outside your personal network.</li>
+    <li><strong>Gives you control over your brand.</strong> Social platforms can change rules anytime. Your website is your own digital property.</li>
+  </ul>
+
+  <h2 id="conversion">11&ndash;15: A Website Converts Interest into Leads</h2>
+  <ul>
+    <li><strong>Generates leads.</strong> Inquiry forms, WhatsApp buttons, call buttons, booking forms, and quote request forms capture demand.</li>
+    <li><strong>Converts social media traffic.</strong> When someone sees your Instagram, Facebook, LinkedIn, or an ad, your website gives them a place to learn more and act.</li>
+    <li><strong>Makes ads work better.</strong> Google, Facebook, and LinkedIn ads perform better when traffic lands on a clear website page instead of only a profile or WhatsApp.</li>
+    <li><strong>Explains your services clearly.</strong> Many SMBs lose customers because people do not understand what they offer. A website explains services in a structured way.</li>
+    <li><strong>Showcases products and services properly.</strong> Categories, photos, features, benefits, pricing, packages, and comparisons in one place.</li>
+  </ul>
+
+  <h2 id="system">16&ndash;20: A Website Becomes a Growth System</h2>
+  <ul>
+    <li><strong>Acts as a sales tool.</strong> Your sales team shares website links with prospects instead of explaining everything again and again.</li>
+    <li><strong>Saves time in customer communication.</strong> FAQs, service pages, pricing details, hours, and process pages reduce repeated questions.</li>
+    <li><strong>Helps track customer interest.</strong> With Google Analytics and Meta Pixel, you can see which pages people visit, what they click, and where leads come from.</li>
+    <li><strong>Supports long-term business value.</strong> Content, SEO, blogs, reviews, and landing pages compound &mdash; the website becomes a digital asset.</li>
+    <li><strong>Creates a growth system.</strong> Connected with Google, WhatsApp, a CRM, and a follow-up process, the website becomes the engine that turns visitors into revenue.</li>
+  </ul>
+
+  <h2 id="reality">The Honest Caveat</h2>
+  <p>A normal website is only a brochure. A <strong>growth website</strong> is part of the sales funnel: it attracts, educates, builds trust, and converts visitors into leads. If your website does none of those things, it is decoration &mdash; not growth.</p>
+
+  <div class="cta-box">
+    <h2>Get a growth website without the upfront cost</h2>
+    <p>Your website, SSL, hosting, lead capture, and Google setup are included free with a Novelio monthly growth plan — starting at $249/month.</p>
+    <a href="/pricing" class="cta-btn">See Growth Plans</a>
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Does a small business really need a website if it has social media?</h3>
+    <p>Yes. Social platforms can change rules, reach, and algorithms anytime. A website is your own digital property, gives a stronger first impression, and converts social traffic into leads with forms, call buttons, and booking links.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What are the three things a small business needs to grow?</h3>
+    <p>Visibility (customers can find you), trust (customers believe you are serious and reliable), and conversion (visitors have a clear way to contact or buy from you). A growth-focused website supports all three.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is a website enough to grow a business on its own?</h3>
+    <p>No. A website creates presence, but growth comes from a complete system: traffic &rarr; lead capture &rarr; follow-up &rarr; conversion &rarr; reviews &rarr; repeat sales.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How does a website help win against bigger competitors?</h3>
+    <p>A clean, clear, professional website makes a small business look organized and trustworthy. Combined with local SEO and reviews, it lets you compete for the same searches as much larger players.</p>
+  </div>
+
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="/blog/website-sales-funnel">Where Your Website Fits in Your Sales Funnel</a></li>
+    <li><a href="/blog/after-website-launch-checklist">What To Do After Launching Your Website: The 10-Step Growth Order</a></li>
+    <li><a href="/services/website-development">Website Development Services</a></li>
+  </ul>
+
+  <div class="author-box">
+    <div class="author-avatar">N</div>
+    <div>
+      <strong>Noveliotech Editorial Team</strong><br />
+      <span style="font-size:.9rem;color:#555">The Noveliotech team helps small businesses build complete growth systems — website, Google visibility, lead capture, CRM, and follow-up. <a href="/about">Learn more about us &rarr;</a></span>
+    </div>
+  </div>
+</div>`,
+  },
+  {
+    id: 9,
+    slug: 'website-sales-funnel',
+    title: 'Where Your Website Fits in Your Sales Funnel (Awareness to Retention)',
+    excerpt: 'Your website is not a brochure — it has a specific job at every stage of the funnel: awareness, trust, conversion, and post-sale retention. Here is the complete map.',
+    metaDescription: 'Map your website to the sales funnel: SEO and landing pages for awareness, proof for trust, forms and CRM for conversion, and support pages for retention.',
+    category: 'Business Growth',
+    categoryColor: 'from-emerald-600 to-teal-600',
+    date: 'Jun 2, 2026',
+    author: 'Noveliotech Team',
+    readTime: '8 min read',
+    image: '/blog/website-sales-funnel.jpg',
+    featured: false,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Article',
+          headline: 'Where Your Website Fits in Your Sales Funnel (Awareness to Retention)',
+          description: 'Map your website to the sales funnel: awareness, trust and consideration, lead conversion, and post-sale retention.',
+          image: 'https://www.noveliotech.com/blog/website-sales-funnel.jpg',
+          author: { '@type': 'Person', name: 'Novelio Technologies Editorial Team', url: 'https://www.noveliotech.com/about' },
+          publisher: { '@type': 'Organization', name: 'Novelio Technologies LLC', logo: { '@type': 'ImageObject', url: 'https://www.noveliotech.com/logo.png' } },
+          datePublished: '2026-06-02',
+          dateModified: '2026-06-12',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.noveliotech.com/blog/website-sales-funnel' },
+          keywords: ['website sales funnel', 'marketing funnel website', 'lead conversion website', 'middle of funnel content', 'website lead capture'],
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: [
+            { '@type': 'Question', name: 'What is the most important role of a website in the funnel?', acceptedAnswer: { '@type': 'Answer', text: 'The middle of the funnel: trust and consideration. Prospects who are interested but not ready to buy use your website to answer their doubts — services, about, testimonials, case studies, FAQs, process, and team.' } },
+            { '@type': 'Question', name: 'What should a website include for lead conversion?', acceptedAnswer: { '@type': 'Answer', text: 'Contact forms, WhatsApp and call buttons, meeting booking, quote and audit request forms, lead magnets, CRM integration, and automatic email or WhatsApp follow-up.' } },
+            { '@type': 'Question', name: 'Does a website have a role after the sale?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — support pages, FAQs, knowledge bases, renewal pages, customer logins, referral forms, and repeat order forms keep existing customers connected and buying again.' } },
+            { '@type': 'Question', name: 'What makes a growth website different from a normal website?', acceptedAnswer: { '@type': 'Answer', text: 'A normal website is only a brochure. A growth website is part of the sales funnel — it attracts, educates, builds trust, and converts visitors into leads, with tracking and follow-up connected.' } },
+          ],
+        },
+      ],
+    },
+    content: `<header class="hero">
+  <h1>Where Your Website Fits in Your Sales Funnel</h1>
+  <p class="meta">By Noveliotech Team &middot; Jun 2, 2026 &middot; 8 min read &middot; Business Growth</p>
+</header>
+<div class="container">
+  <p style="margin:24px 0 0">
+    <span class="tag">Sales Funnel</span>
+    <span class="tag">Lead Conversion</span>
+    <span class="tag">Website Strategy</span>
+    <span class="tag">Customer Retention</span>
+  </p>
+
+  <p style="margin-top:28px">Most small businesses think of a website as a one-time project. In reality, a website has a specific job at <strong>every stage of your sales funnel</strong> &mdash; from the moment someone first discovers you, to the moment they become a repeat customer. Here is the complete map.</p>
+
+  <div class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#tofu">1. Top of Funnel &mdash; Awareness</a></li>
+      <li><a href="#mofu">2. Middle of Funnel &mdash; Trust &amp; Consideration</a></li>
+      <li><a href="#bofu">3. Bottom of Funnel &mdash; Lead Conversion</a></li>
+      <li><a href="#postsale">4. Post-Sale &mdash; Retention &amp; Support</a></li>
+      <li><a href="#summary">The Simple Funnel View</a></li>
+      <li><a href="#covers">What Website Development Should Cover</a></li>
+      <li><a href="#faq">FAQs</a></li>
+    </ol>
+  </div>
+
+  <h2 id="tofu">1. Top of Funnel &mdash; Awareness</h2>
+  <p>This is where people first discover your business. Your website covers: Google search visibility, SEO pages, blog pages, local business pages, service pages, landing pages for ads, social media traffic destination, and Google Business Profile support.</p>
+  <p><em>Example: someone searches &ldquo;accounting services near me&rdquo; or clicks your LinkedIn post and lands on your website.</em></p>
+
+  <h2 id="mofu">2. Middle of Funnel &mdash; Trust &amp; Consideration</h2>
+  <p><strong>This is the most important role of a website.</strong> The prospect is interested but not ready to buy. Your website answers their doubts and builds confidence with: clear service explanations, about the company, why choose us, testimonials, case studies, portfolio, FAQs, process explanation, industry experience, team profile, certifications, and pricing or packages where suitable.</p>
+
+  <h2 id="bofu">3. Bottom of Funnel &mdash; Lead Conversion</h2>
+  <p>This is where the visitor takes action. Your website needs: contact forms, WhatsApp and call buttons, book-a-meeting buttons, quote forms, free audit forms, brochure downloads, lead magnets, payment links where needed, CRM integration, and automatic email/WhatsApp follow-up.</p>
+  <p><em>Example: the visitor fills a form, books a call, sends a WhatsApp message, or asks for a quote.</em></p>
+
+  <h2 id="postsale">4. Post-Sale Funnel &mdash; Retention &amp; Support</h2>
+  <p>Often ignored, but valuable for growing SMBs: customer support pages, FAQs, knowledge base, service renewal pages, customer login where needed, updates and news, referral forms, and repeat order forms.</p>
+
+  <h2 id="summary">The Simple Funnel View</h2>
+  <table>
+    <thead><tr><th>Funnel Stage</th><th>Website Role</th></tr></thead>
+    <tbody>
+      <tr><td>Awareness</td><td>Helps people find you</td></tr>
+      <tr><td>Interest</td><td>Explains what you do</td></tr>
+      <tr><td>Trust</td><td>Shows proof and credibility</td></tr>
+      <tr><td>Conversion</td><td>Captures leads and inquiries</td></tr>
+      <tr><td>Follow-up</td><td>Connects with CRM / WhatsApp / email</td></tr>
+      <tr><td>Retention</td><td>Supports existing customers</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="covers">What Growth-Focused Website Development Should Cover</h2>
+  <ul>
+    <li><strong>Brand positioning</strong> &mdash; who you are, what you do, why customers should trust you.</li>
+    <li><strong>Service presentation</strong> &mdash; clear service pages with benefits, not just features.</li>
+    <li><strong>Customer journey</strong> &mdash; a visitor should know what to do next on every page.</li>
+    <li><strong>Lead generation</strong> &mdash; forms, WhatsApp, call buttons, booking links, quote requests.</li>
+    <li><strong>SEO foundation</strong> &mdash; titles, descriptions, keywords, internal linking, speed, mobile readiness.</li>
+    <li><strong>Trust elements</strong> &mdash; reviews, testimonials, certifications, case studies, team, business details.</li>
+    <li><strong>Conversion system</strong> &mdash; strong CTAs, landing pages, thank-you pages, tracking, follow-up connection.</li>
+    <li><strong>Analytics and tracking</strong> &mdash; Google Analytics, Meta Pixel, Search Console, event tracking.</li>
+    <li><strong>Automation support</strong> &mdash; CRM, email auto-reply, WhatsApp follow-up, lead notifications.</li>
+    <li><strong>Business scalability</strong> &mdash; room to add blogs, ads, landing pages, calculators, downloads, portals.</li>
+  </ul>
+
+  <div class="stat-box">
+    <strong>Reasoning:</strong> A normal website is only a brochure. A growth website is part of the sales funnel — it should attract, educate, build trust, and convert visitors into leads.
+  </div>
+
+  <div class="cta-box">
+    <h2>Want a website that works at every funnel stage?</h2>
+    <p>Novelio growth plans include the website free — plus the lead capture, CRM, and follow-up system around it.</p>
+    <a href="/pricing" class="cta-btn">See Growth Plans</a>
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>What is the most important role of a website in the funnel?</h3>
+    <p>The middle of the funnel: trust and consideration. Prospects who are interested but not ready to buy use your website to answer their doubts before they ever contact you.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What should a website include for lead conversion?</h3>
+    <p>Contact forms, WhatsApp and call buttons, meeting booking, quote and audit request forms, lead magnets, CRM integration, and automatic follow-up.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does a website have a role after the sale?</h3>
+    <p>Yes — support pages, FAQs, knowledge bases, renewal pages, referral forms, and repeat order forms keep existing customers connected and buying again.</p>
+  </div>
+
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="/blog/why-small-business-needs-website">20 Reasons a Small Business Needs a Website to Grow</a></li>
+    <li><a href="/blog/after-website-launch-checklist">What To Do After Launching Your Website: The 10-Step Growth Order</a></li>
+    <li><a href="/blog/high-converting-landing-page">High-Converting Landing Page: 12 Proven Strategies</a></li>
+  </ul>
+
+  <div class="author-box">
+    <div class="author-avatar">N</div>
+    <div>
+      <strong>Noveliotech Editorial Team</strong><br />
+      <span style="font-size:.9rem;color:#555">The Noveliotech team helps small businesses build complete growth systems — website, Google visibility, lead capture, CRM, and follow-up. <a href="/about">Learn more about us &rarr;</a></span>
+    </div>
+  </div>
+</div>`,
+  },
+  {
+    id: 10,
+    slug: 'after-website-launch-checklist',
+    title: 'What To Do After Launching Your Website: The 10-Step Growth Order',
+    excerpt: 'A website creates presence — growth comes from the system around it. Here is the exact order: Google Business Profile, SEO basics, lead capture, CRM, follow-up, reviews, content, ads, sales scripts, and a dashboard.',
+    metaDescription: 'Launched your website? Follow this 10-step growth order: Google Business Profile, SEO basics, lead capture, CRM, follow-up process, reviews, content, ads, sales scripts, dashboard.',
+    category: 'Business Growth',
+    categoryColor: 'from-emerald-600 to-teal-600',
+    date: 'Jun 8, 2026',
+    author: 'Noveliotech Team',
+    readTime: '9 min read',
+    image: '/blog/after-website-launch-checklist.jpg',
+    featured: false,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Article',
+          headline: 'What To Do After Launching Your Website: The 10-Step Growth Order',
+          description: 'The exact priority order after launching a website: Google Business Profile, SEO basics, lead capture, CRM, follow-up, reviews, content, ads, sales scripts, and a growth dashboard.',
+          image: 'https://www.noveliotech.com/blog/after-website-launch-checklist.jpg',
+          author: { '@type': 'Person', name: 'Novelio Technologies Editorial Team', url: 'https://www.noveliotech.com/about' },
+          publisher: { '@type': 'Organization', name: 'Novelio Technologies LLC', logo: { '@type': 'ImageObject', url: 'https://www.noveliotech.com/logo.png' } },
+          datePublished: '2026-06-08',
+          dateModified: '2026-06-12',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.noveliotech.com/blog/after-website-launch-checklist' },
+          keywords: ['after website launch', 'small business growth checklist', 'Google Business Profile', 'lead capture system', 'follow-up process', 'CRM for small business'],
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: [
+            { '@type': 'Question', name: 'What is the first priority after launching a website?', acceptedAnswer: { '@type': 'Answer', text: 'For most SMBs, the Google Business Profile: it drives local visibility, Maps ranking, calls, direction requests, reviews, and local lead generation.' } },
+            { '@type': 'Question', name: 'When should a small business start running paid ads?', acceptedAnswer: { '@type': 'Answer', text: 'Only after the website, tracking, lead capture, and follow-up systems are ready. Running ads before fixing the website and follow-up is usually a waste of money.' } },
+            { '@type': 'Question', name: 'Do I need an expensive CRM to track leads?', acceptedAnswer: { '@type': 'Answer', text: 'No. A Google Sheet tracking name, contact, source, requirement, budget, follow-up date, status, and next action is enough in the beginning. The discipline matters more than the tool.' } },
+            { '@type': 'Question', name: 'Why do good leads not convert?', acceptedAnswer: { '@type': 'Answer', text: 'Usually weak follow-up. Most sales do not happen in the first call — a simple day 0/1/3/5/7 follow-up sequence plus weekly nurture dramatically improves conversion.' } },
+          ],
+        },
+      ],
+    },
+    content: `<header class="hero">
+  <h1>What To Do After Launching Your Website: The 10-Step Growth Order</h1>
+  <p class="meta">By Noveliotech Team &middot; Jun 8, 2026 &middot; 9 min read &middot; Business Growth</p>
+</header>
+<div class="container">
+  <p style="margin:24px 0 0">
+    <span class="tag">Growth Checklist</span>
+    <span class="tag">Google Business Profile</span>
+    <span class="tag">Lead Capture</span>
+    <span class="tag">Follow-Up System</span>
+  </p>
+
+  <p style="margin-top:28px">A website creates presence. But growth comes when the business has a complete system: <strong>traffic &rarr; lead capture &rarr; follow-up &rarr; conversion &rarr; review &rarr; repeat sales</strong>. Here is the exact order to build that system after your website goes live.</p>
+
+  <table>
+    <thead><tr><th>Priority</th><th>Next Step</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Google Business Profile</td><td>Local visibility</td></tr>
+      <tr><td>2</td><td>SEO basics</td><td>Search visibility</td></tr>
+      <tr><td>3</td><td>Lead capture</td><td>Convert visitors</td></tr>
+      <tr><td>4</td><td>CRM sheet</td><td>Track every lead</td></tr>
+      <tr><td>5</td><td>Follow-up process</td><td>Increase sales</td></tr>
+      <tr><td>6</td><td>Reviews / testimonials</td><td>Build trust</td></tr>
+      <tr><td>7</td><td>Content</td><td>Long-term growth</td></tr>
+      <tr><td>8</td><td>Ads</td><td>Faster lead generation</td></tr>
+      <tr><td>9</td><td>Sales script</td><td>Better conversion</td></tr>
+      <tr><td>10</td><td>Dashboard</td><td>Control growth</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="step1">1. Google Business Profile</h2>
+  <p>For most SMBs this is the first priority after the website. It drives local visibility, Google Maps ranking, calls and direction requests, reviews, trust, and direct local inquiries. If someone searches &ldquo;CA near me&rdquo; or &ldquo;restaurant near me,&rdquo; your profile can bring inquiries on its own.</p>
+
+  <h2 id="step2">2. Basic SEO Setup</h2>
+  <p>Without SEO basics, the website may look good but remain invisible: page titles, meta descriptions, service and location keywords, image alt text, internal links, fast loading, mobile-friendly pages, Google Search Console setup, and sitemap submission.</p>
+
+  <h2 id="step3">3. Lead Capture System</h2>
+  <p>Every visitor should have a clear action: WhatsApp button, call button, contact form, book-meeting link, quote request form, brochure download, and a thank-you page. The goal is simple: <strong>do not let visitors leave without a way to contact you.</strong></p>
+
+  <h2 id="step4">4. CRM or Lead Tracking Sheet</h2>
+  <p>This is where many SMBs fail — they get leads but do not track them. Track: name, mobile/email, lead source, requirement, budget, follow-up date, status, next action, and closing reason. A Google Sheet CRM is enough in the beginning.</p>
+
+  <h2 id="step5">5. Follow-Up Process</h2>
+  <p>Most sales do not happen in the first call. A simple system: Day 0 first call/message &middot; Day 1 reminder &middot; Day 3 value message &middot; Day 5 objection handling &middot; Day 7 final offer/check-in &middot; then weekly nurture. <strong>Bad follow-up kills good leads.</strong></p>
+
+  <h2 id="step6">6. Review and Testimonial System</h2>
+  <p>Trust converts faster than design. Collect Google reviews, video and written testimonials, before/after results, feedback screenshots, and case studies. This directly improves both website conversion and Google profile trust.</p>
+
+  <h2 id="step7">7. Content System</h2>
+  <p>Blogs, FAQs, LinkedIn posts, short videos, case studies, industry tips, and problem-solution posts bring people into the funnel before they are ready to buy.</p>
+
+  <h2 id="step8">8. Paid Ads</h2>
+  <p>Google Ads, Meta Ads, LinkedIn Ads, and retargeting — but only after the website, tracking, and lead capture are ready. <strong>Running ads before fixing the website and follow-up system is usually a waste of money.</strong></p>
+
+  <h2 id="step9">9. Sales Script and Offer Clarity</h2>
+  <p>Leads do not convert because of a website alone. You need a clear offer, pricing logic, sales pitch, objection answers, proposal format, closing script, and follow-up script. This turns inquiries into revenue.</p>
+
+  <h2 id="step10">10. Dashboard and Review System</h2>
+  <p>Track weekly: website visitors, leads received, calls, lead sources, conversion rate, follow-ups pending, sales closed, revenue, cost per lead, and cost per sale. <strong>What is not measured does not improve.</strong></p>
+
+  <div class="cta-box">
+    <h2>Want this entire system done for you?</h2>
+    <p>Novelio growth plans cover all ten steps — website, Google setup, lead capture, CRM, follow-up, reviews, content, and a growth dashboard — in one monthly subscription.</p>
+    <a href="/pricing" class="cta-btn">See Growth Plans</a>
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>What is the first priority after launching a website?</h3>
+    <p>For most SMBs, the Google Business Profile: it drives local visibility, Maps ranking, calls, direction requests, reviews, and local lead generation.</p>
+  </div>
+  <div class="faq-item">
+    <h3>When should a small business start running paid ads?</h3>
+    <p>Only after the website, tracking, lead capture, and follow-up systems are ready. Ads amplify a working system — they cannot fix a broken one.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I need an expensive CRM to track leads?</h3>
+    <p>No. A Google Sheet tracking name, contact, source, requirement, budget, follow-up date, status, and next action is enough in the beginning.</p>
+  </div>
+
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="/blog/website-sales-funnel">Where Your Website Fits in Your Sales Funnel</a></li>
+    <li><a href="/blog/sales-conversion-system-smb">From Leads to Revenue: Building a Sales Conversion System</a></li>
+    <li><a href="/services/google-business">Google Business Profile Services</a></li>
+  </ul>
+
+  <div class="author-box">
+    <div class="author-avatar">N</div>
+    <div>
+      <strong>Noveliotech Editorial Team</strong><br />
+      <span style="font-size:.9rem;color:#555">The Noveliotech team helps small businesses build complete growth systems — website, Google visibility, lead capture, CRM, and follow-up. <a href="/about">Learn more about us &rarr;</a></span>
+    </div>
+  </div>
+</div>`,
+  },
+  {
+    id: 11,
+    slug: 'sales-conversion-system-smb',
+    title: 'From Leads to Revenue: Building a Sales Conversion System for Your SMB',
+    excerpt: 'More leads do not mean more business — leads only help when your sales process can convert them. Offer clarity, scripts, qualification, proposals, follow-up discipline, payment reminders, and retention.',
+    metaDescription: 'Build a sales conversion system: clear offer, sales scripts, lead qualification, proposal format, follow-up discipline, conversion metrics, invoicing, payment reminders, and customer retention.',
+    category: 'Business Growth',
+    categoryColor: 'from-emerald-600 to-teal-600',
+    date: 'Jun 11, 2026',
+    author: 'Noveliotech Team',
+    readTime: '10 min read',
+    image: '/blog/sales-conversion-system-smb.jpg',
+    featured: false,
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Article',
+          headline: 'From Leads to Revenue: Building a Sales Conversion System for Your SMB',
+          description: 'Build a sales conversion system: clear offer, sales scripts, lead qualification, proposals, follow-up discipline, conversion metrics, invoicing, payment reminders, and retention.',
+          image: 'https://www.noveliotech.com/blog/sales-conversion-system-smb.jpg',
+          author: { '@type': 'Person', name: 'Novelio Technologies Editorial Team', url: 'https://www.noveliotech.com/about' },
+          publisher: { '@type': 'Organization', name: 'Novelio Technologies LLC', logo: { '@type': 'ImageObject', url: 'https://www.noveliotech.com/logo.png' } },
+          datePublished: '2026-06-11',
+          dateModified: '2026-06-12',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.noveliotech.com/blog/sales-conversion-system-smb' },
+          keywords: ['sales conversion system', 'lead qualification', 'sales scripts SMB', 'payment reminders', 'customer retention system', 'invoice tracking small business'],
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: [
+            { '@type': 'Question', name: 'Why do more leads not always mean more business?', acceptedAnswer: { '@type': 'Answer', text: 'More leads only help when the sales process can convert them. Without a clear offer, scripts, qualification, proposals, and follow-up discipline, marketing money gets wasted.' } },
+            { '@type': 'Question', name: 'What should a payment reminder flow look like?', acceptedAnswer: { '@type': 'Answer', text: 'A soft reminder 3 days before the due date, a payment request on the due date, a follow-up 3 days after, an escalation at 7 days, and an owner-level call at 15 days overdue.' } },
+            { '@type': 'Question', name: 'What sales metrics should an SMB track?', acceptedAnswer: { '@type': 'Answer', text: 'Leads received, leads contacted, qualified leads, proposals sent, deals closed, and reasons for lost leads — each reveals a specific improvement area.' } },
+            { '@type': 'Question', name: 'What happens after delivery?', acceptedAnswer: { '@type': 'Answer', text: 'A retention flow: thank-you and confirmation, feedback request after 2 days, review request after 5, check-in after 15, referral request after 30, plus renewal reminders and milestone messages.' } },
+          ],
+        },
+      ],
+    },
+    content: `<header class="hero">
+  <h1>From Leads to Revenue: Building a Sales Conversion System for Your SMB</h1>
+  <p class="meta">By Noveliotech Team &middot; Jun 11, 2026 &middot; 10 min read &middot; Business Growth</p>
+</header>
+<div class="container">
+  <p style="margin:24px 0 0">
+    <span class="tag">Sales Conversion</span>
+    <span class="tag">Lead Qualification</span>
+    <span class="tag">Payment Reminders</span>
+    <span class="tag">Customer Retention</span>
+  </p>
+
+  <p style="margin-top:28px">The biggest mistake in SMB marketing is thinking <strong>&ldquo;more leads = more business.&rdquo;</strong> Not true. More leads only help when the sales process can convert them. Otherwise, marketing money gets wasted. Here is the system that turns inquiries into revenue — and revenue into cash and repeat customers.</p>
+
+  <h2 id="offer">1. Define the Offer Clearly</h2>
+  <p>Be clear on the main service or product, target customer, problem solved, result promised, pricing or package, delivery timeline, and any guarantee. Many SMBs get leads but confuse customers with unclear offers.</p>
+
+  <h2 id="scripts">2. Create a Sales Script</h2>
+  <p>If the pitch changes every time, conversion stays random. Script the first call, the WhatsApp reply, the follow-up message, the price objection, the &ldquo;I will think and tell you,&rdquo; the competitor comparison, and the closing message.</p>
+
+  <h2 id="qualification">3. Qualify Every Lead</h2>
+  <p>Not every lead is a good lead. Check need, budget, urgency, decision-maker, location, business size, and fit. This saves time and focuses energy on serious prospects.</p>
+
+  <h2 id="proposal">4. Use a Proposal Format That Sells</h2>
+  <p>A proposal should not just show a price. Show the customer problem, suggested solution, scope of work, timeline, deliverables, price, payment terms, and the next action. A weak proposal makes even a good lead cold.</p>
+
+  <h2 id="followup">5. Make Follow-Up System-Based, Not Mood-Based</h2>
+  <p>Track who called, when, what the customer said, the next follow-up date, current status, and reason for loss. Most SMBs lose money exactly here.</p>
+
+  <h2 id="metrics">6. Measure Conversion</h2>
+  <table>
+    <thead><tr><th>Metric</th><th>Why It Matters</th></tr></thead>
+    <tbody>
+      <tr><td>Leads received</td><td>Shows demand</td></tr>
+      <tr><td>Leads contacted</td><td>Shows sales discipline</td></tr>
+      <tr><td>Qualified leads</td><td>Shows lead quality</td></tr>
+      <tr><td>Proposals sent</td><td>Shows serious interest</td></tr>
+      <tr><td>Deals closed</td><td>Shows conversion</td></tr>
+      <tr><td>Lost lead reasons</td><td>Shows improvement area</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="cashflow">7. Protect Cash Flow: Invoicing and Payment Reminders</h2>
+  <p><strong>Revenue on paper is not growth. Cash received is growth.</strong> Set up invoice generation with payment terms and due dates, payment links, and pending-invoice reports. Then automate reminders:</p>
+  <table>
+    <thead><tr><th>Timing</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>3 days before due date</td><td>Soft reminder</td></tr>
+      <tr><td>Due date</td><td>Payment request</td></tr>
+      <tr><td>3 days after</td><td>Follow-up</td></tr>
+      <tr><td>7 days after</td><td>Escalation</td></tr>
+      <tr><td>15 days after</td><td>Owner-level call</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="retention">8. Keep Customers After Delivery</h2>
+  <p>After delivery, the business should not disappear. A strong post-delivery flow converts one-time customers into long-term relationships:</p>
+  <table>
+    <thead><tr><th>Stage</th><th>Message</th></tr></thead>
+    <tbody>
+      <tr><td>Delivery completed</td><td>Thank-you + confirmation</td></tr>
+      <tr><td>After 2 days</td><td>Feedback request</td></tr>
+      <tr><td>After 5 days</td><td>Review / testimonial request</td></tr>
+      <tr><td>After 15 days</td><td>Usage / check-in message</td></tr>
+      <tr><td>After 30 days</td><td>Referral request</td></tr>
+      <tr><td>Monthly</td><td>Value message / newsletter</td></tr>
+      <tr><td>Business anniversary</td><td>Relationship message</td></tr>
+      <tr><td>Renewal date</td><td>Renewal / payment reminder</td></tr>
+    </tbody>
+  </table>
+  <p>One caution: relationship messages work only when they feel personal, not like bulk spam. Business opening day and purchase anniversaries are more relevant for B2B than personal occasions.</p>
+
+  <h2 id="sequence">The Complete Growth Sequence</h2>
+  <ol>
+    <li><strong>Website</strong> — builds trust and presence</li>
+    <li><strong>Google / SEO / lead capture</strong> — brings inquiries</li>
+    <li><strong>CRM + follow-up</strong> — tracks leads</li>
+    <li><strong>Sales conversion system</strong> — converts leads into customers</li>
+    <li><strong>Delivery system</strong> — delivers properly</li>
+    <li><strong>Review / referral system</strong> — brings repeat growth</li>
+    <li><strong>Automation &amp; dashboard</strong> — scales the business</li>
+  </ol>
+
+  <div class="cta-box">
+    <h2>Get the whole system, not just a website</h2>
+    <p>The Novelio Business Growth System includes CRM, follow-up automation, invoice tracking, payment reminders, and retention messages — in one monthly plan.</p>
+    <a href="/pricing" class="cta-btn">See Growth Plans</a>
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Why do more leads not always mean more business?</h3>
+    <p>More leads only help when the sales process can convert them. Without a clear offer, scripts, qualification, proposals, and follow-up discipline, marketing money gets wasted.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What should a payment reminder flow look like?</h3>
+    <p>A soft reminder 3 days before the due date, a request on the due date, a follow-up at 3 days overdue, escalation at 7 days, and an owner-level call at 15 days.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What happens after delivery?</h3>
+    <p>A retention flow: thank-you, feedback request after 2 days, review request after 5, check-in after 15, referral request after 30, plus renewal reminders and milestone messages.</p>
+  </div>
+
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="/blog/after-website-launch-checklist">What To Do After Launching Your Website: The 10-Step Growth Order</a></li>
+    <li><a href="/blog/why-small-business-needs-website">20 Reasons a Small Business Needs a Website to Grow</a></li>
+    <li><a href="/services/automation">Automation &amp; CRM Services</a></li>
+  </ul>
+
+  <div class="author-box">
+    <div class="author-avatar">N</div>
+    <div>
+      <strong>Noveliotech Editorial Team</strong><br />
+      <span style="font-size:.9rem;color:#555">The Noveliotech team helps small businesses build complete growth systems — website, Google visibility, lead capture, CRM, and follow-up. <a href="/about">Learn more about us &rarr;</a></span>
+    </div>
+  </div>
+</div>`,
+  },
 ];
 
 export const TEAM = [
@@ -2306,16 +2886,19 @@ export const PROCESS_STEPS = [
 ];
 
 // ── Subscription plans ─────────────────────────────────────────────────────────
-// Productized "growth partner as a subscription" model. Monthly + yearly billing
-// (yearly = 2 months free, ~17% off). The Free plan is a lead magnet, not free labor.
+// "Business growth plan" model: the website is included free with the monthly
+// plan (never positioned as a standalone "free website"). Monthly + yearly
+// billing (yearly = 2 months free, ~17% off). 12-month minimum term on paid
+// plans; site ownership transfers after the term (or via buyout).
 // `priceMonthly` / `priceYearly` are the per-month USD figures shown on each tab.
 export const PRICING_PLANS = [
   {
     id: 'free',
     name: 'Free',
-    tagline: 'See what we can do — at zero cost.',
+    tagline: 'See the quality of our work before you pay anything.',
     priceMonthly: 0,
     priceYearly: 0,
+    setupFee: 0,
     cta: 'Start Free',
     highlight: false,
     color: 'from-slate-500 to-slate-700',
@@ -2330,63 +2913,100 @@ export const PRICING_PLANS = [
   },
   {
     id: 'launch',
-    name: 'Launch',
-    tagline: 'Get online and get found.',
-    priceMonthly: 99,
-    priceYearly: 79,
-    cta: 'Choose Launch',
+    name: 'Start My Growth',
+    tagline: 'Look professional and get ready for leads.',
+    priceMonthly: 249,
+    priceYearly: 208,
+    setupFee: 0,
+    cta: 'Start My Growth',
     highlight: false,
     color: 'from-blue-500 to-cyan-500',
     features: [
-      'Up to 5-page custom website + hosting, SSL & maintenance',
-      'Basic on-page SEO',
+      'Free 5-page website — SSL, hosting & maintenance included',
+      'Contact form + call, email & WhatsApp buttons',
+      'Basic on-page SEO setup',
       'Google Business Profile setup & optimization',
-      '1 lead-capture form + auto-reply',
-      'Monthly performance snapshot',
-      'Email support',
+      'Google Analytics + Search Console setup',
+      'Basic lead-tracking sheet + 3 follow-up templates',
+      '1 content/website update per month',
+      '1 monthly review call · email support',
     ],
-    note: 'Best for new and solo businesses.',
+    note: 'Best for new and small businesses that need a trusted online presence. 12-month plan.',
   },
   {
     id: 'growth',
-    name: 'Growth',
-    tagline: 'More qualified leads, every month.',
-    priceMonthly: 299,
-    priceYearly: 249,
-    cta: 'Choose Growth',
+    name: 'Grow My Leads',
+    tagline: 'Capture and follow up leads better.',
+    priceMonthly: 499,
+    priceYearly: 416,
+    setupFee: 199,
+    cta: 'Grow My Leads',
     highlight: true,
     badge: 'Most Popular',
     color: 'from-violet-600 to-blue-600',
     features: [
-      'Everything in Launch',
-      'Ongoing local + on-page SEO with monthly content',
-      'Active GBP management — posts, reviews & Q&A',
-      'Lead funnel + email/SMS follow-up automation & CRM',
-      '1 email marketing campaign / month',
-      'Monthly strategy call + live reporting dashboard',
-      'Priority support',
+      'Everything in Start My Growth',
+      'Free growth website — up to 8 pages with improved sales copy',
+      'Quote form + booking link + advanced lead capture',
+      '7-day lead follow-up system + call & objection scripts',
+      'Review request flow + proposal template',
+      'Payment reminder templates + basic payment tracker',
+      'GBP optimization + posting support',
+      '2–4 content posts/updates per month',
+      '2 review calls/month · email + WhatsApp support',
     ],
-    note: 'Best for established small businesses.',
+    note: 'Best for SMBs that need more leads and disciplined follow-up. 12-month plan.',
   },
   {
     id: 'scale',
-    name: 'Scale',
-    tagline: 'Dominate your local market.',
-    priceMonthly: 699,
-    priceYearly: 599,
-    cta: 'Choose Scale',
+    name: 'Scale My Business',
+    tagline: 'Run leads, sales, payments and retention in one system.',
+    priceMonthly: 999,
+    priceYearly: 833,
+    setupFee: 499,
+    cta: 'Scale My Business',
     highlight: false,
     color: 'from-amber-500 to-orange-500',
     features: [
-      'Everything in Growth',
-      'Advanced technical SEO + link building',
-      'Paid ads management — PPC + retargeting',
-      'Branding refresh + tech & ops integrations',
-      'Dedicated growth manager',
-      'Bi-weekly strategy calls',
+      'Everything in Grow My Leads',
+      'Free advanced business website — up to 12 pages, funnel-based copy',
+      'Novelio in-house CRM with lead pipeline included',
+      'Automated follow-up workflow + full sales playbook',
+      'Invoice & payment tracking + automated payment reminders',
+      'Customer retention messages — renewals, anniversaries, milestones',
+      'Review, testimonial & referral automation',
+      'Full business growth KPI dashboard',
+      'Weekly/bi-weekly reviews · priority support',
     ],
-    note: 'Best for businesses ready to scale fast.',
+    note: 'Best for SMBs ready for a complete growth operating system. 12-month plan.',
   },
+];
+
+// Feature comparison matrix rendered on the pricing page.
+// `values` are [Start My Growth, Grow My Leads, Scale My Business].
+export const PRICING_COMPARISON = [
+  { feature: 'Website included', values: ['Free basic website', 'Free growth website', 'Free advanced business website'] },
+  { feature: 'Pages included', values: ['Up to 5 pages', 'Up to 8 pages', 'Up to 12 pages'] },
+  { feature: 'SSL + hosting + maintenance', values: ['Included', 'Included', 'Included'] },
+  { feature: 'Website copy', values: ['Basic copy', 'Improved sales copy', 'Funnel-based sales copy'] },
+  { feature: 'Contact form & CTAs (call / email / WhatsApp)', values: ['Yes', 'Yes', 'Advanced forms'] },
+  { feature: 'Booking link', values: ['Basic', 'Yes', 'Yes'] },
+  { feature: 'Google Business Profile', values: ['Setup & optimization', 'Optimization + posting support', 'Full local profile growth system'] },
+  { feature: 'SEO', values: ['Basic setup', 'Basic + ongoing', 'Advanced on-page SEO'] },
+  { feature: 'Google Analytics + Search Console', values: ['Yes', 'Yes', 'Yes'] },
+  { feature: 'Lead tracking', values: ['Basic sheet', 'Advanced lead tracker', 'Novelio in-house CRM'] },
+  { feature: 'Lead follow-up process', values: ['3 basic templates', '7-day follow-up system', 'Automated follow-up workflow'] },
+  { feature: 'Sales scripts', values: ['Basic inquiry reply', 'Call + objection scripts', 'Full sales playbook'] },
+  { feature: 'Proposal format', values: ['—', 'Simple template', 'Proposal + pricing + closing format'] },
+  { feature: 'Review requests', values: ['Basic template', 'Review request flow', 'Review + testimonial + referral system'] },
+  { feature: 'Customer retention messages', values: ['—', 'Thank-you / check-in', 'Renewals, anniversaries & milestone messages'] },
+  { feature: 'Invoice tracking', values: ['—', 'Basic payment tracker', 'CRM-based invoice & payment status'] },
+  { feature: 'Payment reminders', values: ['—', 'Manual templates', 'Automated reminder workflow'] },
+  { feature: 'Post-delivery follow-up', values: ['—', 'Basic follow-up', 'Full customer lifecycle follow-up'] },
+  { feature: 'Monthly content support', values: ['1 update / month', '2–4 posts / month', '4–8 posts / month'] },
+  { feature: 'Reporting', values: ['Basic report', 'Lead + follow-up report', 'Full growth dashboard'] },
+  { feature: 'Review calls', values: ['1 / month', '2 / month', 'Weekly or bi-weekly'] },
+  { feature: 'Support', values: ['Email', 'Email + WhatsApp', 'Priority'] },
 ];
 
 // Optional recurring upsells, billed monthly alongside any paid plan.
@@ -2400,16 +3020,24 @@ export const PRICING_ADDONS = [
 
 export const PRICING_FAQ = [
   {
+    q: 'Is the website really free?',
+    a: 'Yes — your website, SSL, hosting, lead-capture setup and basic growth system are included in the monthly growth plan. Instead of paying $1,500–$3,000 upfront for a website and then paying an agency separately, you get everything as one predictable monthly subscription with no heavy upfront cost.',
+  },
+  {
     q: 'Is this software (SaaS) or done-for-you work?',
-    a: 'Both. Tools like the Email Validator and your reporting dashboard are self-serve software, while SEO, Google Business Profile management, ads and branding are done for you by our team. You get a single monthly subscription instead of one-off project invoices.',
+    a: 'Both. Tools like the Email Validator, the Novelio CRM and your reporting dashboard are self-serve software, while the website, SEO, Google Business Profile management, follow-up systems and content are done for you by our team. You get a single monthly subscription instead of one-off project invoices.',
   },
   {
     q: 'What is the difference between monthly and yearly billing?',
     a: 'Yearly billing gives you two months free — roughly a 17% discount versus paying month to month. You can start monthly and switch to yearly at any time.',
   },
   {
-    q: 'Can I cancel anytime?',
-    a: 'Yes. Monthly plans can be cancelled at the end of any billing cycle. Yearly plans run for the 12-month term. Your website and assets remain yours.',
+    q: 'Is there a minimum commitment?',
+    a: 'Paid growth plans run on a 12-month minimum term. Because your website, hosting, SSL and growth setup are included free with the plan, the website remains with Novelio until the minimum term is completed. After 12 months, full ownership transfers to you — or earlier via a one-time buyout.',
+  },
+  {
+    q: 'What is not included in the plans?',
+    a: 'To keep pricing fair, plans do not include unlimited changes, daily social posting, paid ad spend, full e-commerce builds, custom software from scratch or heavy copywriting projects. Those are available as add-ons or custom-scoped work — just ask.',
   },
   {
     q: 'Is there really a free plan?',
@@ -2417,7 +3045,7 @@ export const PRICING_FAQ = [
   },
   {
     q: 'Can I upgrade or change plans later?',
-    a: 'Absolutely. Most clients start on Launch or Growth and move up as their results compound. You can upgrade, downgrade or add à-la-carte add-ons whenever you need.',
+    a: 'Absolutely. Most clients start on Start My Growth or Grow My Leads and move up as their results compound. You can upgrade or add à-la-carte add-ons whenever you need.',
   },
   {
     q: 'What if my business needs something custom?',

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Check, ArrowRight, Sparkles, ShieldCheck, HelpCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 import CTABanner from '../components/home/CTABanner';
-import { PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ } from '../data/siteData';
+import { PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ, PRICING_COMPARISON } from '../data/siteData';
 
 export default function PricingPage() {
   const [billing, setBilling] = useState('monthly'); // 'monthly' | 'yearly'
@@ -28,8 +28,8 @@ export default function PricingPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Pricing — Subscription Plans for Small Business Growth"
-        description="Simple monthly or yearly subscriptions for websites, SEO, Google Business Profile, lead gen, automation and more. Start free — yearly plans get 2 months free."
+        title="Pricing — Business Growth Plans with Website Included Free"
+        description="Your website, SSL, hosting, lead capture, Google setup and growth system — included in one monthly growth plan starting at $249/month. No heavy upfront website cost."
         canonical="/pricing"
         schema={faqSchema}
       />
@@ -46,8 +46,8 @@ export default function PricingPage() {
               Your Growth Partner, <span className="gradient-text">on a Subscription</span>
             </h1>
             <p className="text-[#475569] text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-              Website, SEO, Google Business Profile, lead generation and automation — bundled into one
-              predictable monthly plan. Start free, upgrade when you're ready, cancel anytime.
+              Your website, SSL, hosting, lead capture, Google setup and growth tracking — included
+              free with one predictable monthly growth plan. No $1,500–$3,000 upfront website cost.
             </p>
 
             {/* Billing toggle */}
@@ -123,8 +123,10 @@ export default function PricingPage() {
                       </div>
                     )}
                     {!isFree && (
-                      <p className="text-xs text-[#94a3b8] mt-1">
-                        {billing === 'yearly' ? `Billed yearly ($${price * 12}/yr)` : 'Billed monthly · cancel anytime'}
+                      <p className="text-xs text-[#64748b] mt-1">
+                        {billing === 'yearly' ? `Billed yearly ($${price * 12}/yr)` : 'Billed monthly · 12-month plan'}
+                        {' · '}
+                        {plan.setupFee > 0 ? `$${plan.setupFee} setup` : 'no setup fee'}
                       </p>
                     )}
                   </div>
@@ -151,7 +153,7 @@ export default function PricingPage() {
                   </ul>
 
                   {plan.note && (
-                    <p className="text-xs text-[#94a3b8] mt-6 pt-5 border-t border-slate-100">{plan.note}</p>
+                    <p className="text-xs text-[#64748b] mt-6 pt-5 border-t border-slate-100">{plan.note}</p>
                   )}
                 </motion.div>
               );
@@ -201,7 +203,7 @@ export default function PricingPage() {
                 <h4 className="font-heading font-700 text-[#1B3172] text-base mb-1">No payment to start</h4>
                 <p className="text-[#64748b] text-sm leading-relaxed">
                   Pick a plan and we'll confirm scope and pricing with you before any billing begins.
-                  Your website and assets always remain yours.
+                  Full website ownership transfers to you after your 12-month term.
                 </p>
               </div>
             </div>
@@ -209,8 +211,48 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* Plan comparison */}
       <section className="section-pad bg-white">
+        <div className="container-xl max-w-5xl">
+          <div className="text-center mb-12">
+            <div className="section-label mx-auto mb-4">Compare Plans</div>
+            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#1B3172]">
+              Everything in Each <span className="gradient-text">Growth Plan</span>
+            </h2>
+            <p className="text-[#64748b] text-base mt-4 max-w-2xl mx-auto">
+              Every plan includes your website free — with SSL, hosting and maintenance.
+              Higher plans add the lead, sales, payment and retention systems that turn a website into a growth engine.
+            </p>
+          </div>
+          <div className="overflow-x-auto rounded-2xl border border-slate-200">
+            <table className="w-full text-sm text-left">
+              <thead>
+                <tr className="bg-[#1B3172] text-white">
+                  <th className="px-5 py-4 font-heading font-700 min-w-[180px]">Feature</th>
+                  <th className="px-5 py-4 font-heading font-700 min-w-[150px]">Start My Growth<span className="block text-xs font-normal text-white/70 mt-0.5">$249/mo</span></th>
+                  <th className="px-5 py-4 font-heading font-700 min-w-[150px] bg-brand-purple/90">Grow My Leads<span className="block text-xs font-normal text-white/70 mt-0.5">$499/mo</span></th>
+                  <th className="px-5 py-4 font-heading font-700 min-w-[150px]">Scale My Business<span className="block text-xs font-normal text-white/70 mt-0.5">$999/mo</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                {PRICING_COMPARISON.map((row, i) => (
+                  <tr key={row.feature} className={i % 2 ? 'bg-[#f8faff]' : 'bg-white'}>
+                    <td className="px-5 py-3.5 font-semibold text-[#1B3172]">{row.feature}</td>
+                    {row.values.map((v, vi) => (
+                      <td key={vi} className={`px-5 py-3.5 text-[#475569] ${vi === 1 ? 'bg-[#EEF2FF]/60' : ''}`}>
+                        {v === '—' ? <span className="text-[#cbd5e1]">—</span> : v}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section-pad bg-[#EEF2FF]">
         <div className="container-xl max-w-3xl">
           <div className="text-center mb-12">
             <div className="section-label mx-auto mb-4">Questions</div>

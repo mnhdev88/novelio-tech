@@ -20,7 +20,7 @@ function Stat({ icon: Icon, label, value }) {
         <Icon className="w-5 h-5" />
       </div>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-[#94a3b8]">{label}</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">{label}</p>
         <p className="font-heading font-800 text-[#1B3172] text-xl">{value}</p>
       </div>
     </div>
@@ -101,7 +101,7 @@ export default function AdminPage() {
                       <div className="hidden sm:block text-sm">
                         {sub && sub.status === 'active'
                           ? <span className="font-semibold text-[#1B3172]">{planName(sub.planId)}</span>
-                          : <span className="text-[#94a3b8]">No active plan</span>}
+                          : <span className="text-[#64748b]">No active plan</span>}
                       </div>
                       <div className="hidden md:block text-sm text-[#475569] w-20 text-right">
                         {sub && sub.status === 'active' ? `$${sub.monthlyTotal}/mo` : '—'}
@@ -109,16 +109,16 @@ export default function AdminPage() {
                       <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${sub?.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-500'}`}>
                         {sub?.status === 'active' ? 'Active' : sub?.status === 'cancelled' ? 'Cancelled' : 'None'}
                       </span>
-                      <ChevronRight className={`w-4 h-4 text-[#94a3b8] transition-transform ${open ? 'rotate-90' : ''}`} />
+                      <ChevronRight className={`w-4 h-4 text-[#64748b] transition-transform ${open ? 'rotate-90' : ''}`} />
                     </button>
 
                     {open && sub && (
                       <div className="px-6 pb-5 bg-slate-50/60">
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 text-sm">
-                          <div><p className="text-[#94a3b8] text-xs">Billing</p><p className="font-semibold text-[#1B3172] capitalize">{sub.billing}</p></div>
-                          <div><p className="text-[#94a3b8] text-xs">Started</p><p className="font-semibold text-[#1B3172]">{sub.createdAt}</p></div>
-                          <div><p className="text-[#94a3b8] text-xs">Next renewal</p><p className="font-semibold text-[#1B3172]">{sub.nextRenewal}</p></div>
-                          <div><p className="text-[#94a3b8] text-xs">Add-ons</p><p className="font-semibold text-[#1B3172]">{sub.addonIds.length}</p></div>
+                          <div><p className="text-[#64748b] text-xs">Billing</p><p className="font-semibold text-[#1B3172] capitalize">{sub.billing}</p></div>
+                          <div><p className="text-[#64748b] text-xs">Started</p><p className="font-semibold text-[#1B3172]">{sub.createdAt}</p></div>
+                          <div><p className="text-[#64748b] text-xs">Next renewal</p><p className="font-semibold text-[#1B3172]">{sub.nextRenewal}</p></div>
+                          <div><p className="text-[#64748b] text-xs">Add-ons</p><p className="font-semibold text-[#1B3172]">{sub.addonIds.length}</p></div>
                         </div>
                         <p className="text-xs font-semibold text-[#1B3172] mb-2">Deliverables — click a status to advance it</p>
                         <ul className="space-y-2">
@@ -143,7 +143,7 @@ export default function AdminPage() {
             </div>
           </div>
 
-          <p className="text-xs text-[#94a3b8] mt-4">
+          <p className="text-xs text-[#64748b] mt-4">
             Demo data lives in your browser (localStorage). “Reset demo” restores the seeded customers and subscriptions.
           </p>
         </div>

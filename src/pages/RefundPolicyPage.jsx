@@ -55,6 +55,12 @@ export default function RefundPolicyPage() {
               <li>You may cancel future months by providing written notice at least 7 days before the next billing date.</li>
               <li>No partial refunds are issued for unused days within a billing period.</li>
             </ul>
+            <p><strong>Subscription growth plans with website included.</strong> Growth plans (Start My Growth, Grow My Leads, Scale My Business) carry a 12-month minimum commitment because the website, SSL, hosting, and growth setup are provided free with the plan:</p>
+            <ul>
+              <li>One-time setup fees are non-refundable once onboarding has begun.</li>
+              <li>If you cancel before the 12-month minimum term is completed, fees already paid are non-refundable, and the included website remains with Novelio unless the agreed buyout fee is paid.</li>
+              <li>After the minimum term, the plan continues month to month and may be cancelled with 7 days notice before the next billing date; website ownership transfers to you in full.</li>
+            </ul>
           </Section>
 
           <Section title="5. Exceptions — When Refunds Are Granted">

@@ -8,7 +8,7 @@ export const COMPARISONS = [
     competitor: 'a Traditional Agency',
     title: 'Novelio vs a Traditional Marketing Agency',
     metaDescription:
-      'Novelio vs a traditional marketing agency — diagnose-first audits, full-spectrum growth, transparent pricing, and no long-term lock-in contracts.',
+      'Novelio vs a traditional marketing agency — diagnose-first audits, full-spectrum growth, transparent pricing, and your website included free with the plan.',
     eyebrow: 'Compare',
     h1Lead: 'Novelio vs a',
     h1Highlight: 'Traditional Agency',
@@ -18,8 +18,8 @@ export const COMPARISONS = [
       { factor: 'Starting point', novelio: { ok: true, text: 'Free 30-min growth audit before any proposal' }, them: { ok: false, text: 'Sales pitch, then a fixed retainer proposal' } },
       { factor: 'Scope', novelio: { ok: true, text: 'Full-spectrum: web, SEO, local, leads, automation, branding, ops' }, them: { ok: false, text: 'Usually billed per channel or per deliverable' } },
       { factor: 'What you pay for', novelio: { ok: true, text: 'Outcomes and growth systems' }, them: { ok: false, text: 'Hours, activity reports, and deliverables' } },
-      { factor: 'Contracts', novelio: { ok: true, text: 'No long-term lock-in — month to month' }, them: { ok: false, text: '6–12 month minimum contracts are common' } },
-      { factor: 'Pricing', novelio: { ok: true, text: 'Transparent, fixed-scope packages' }, them: { ok: false, text: 'Opaque retainers with variable add-ons' } },
+      { factor: 'Upfront cost', novelio: { ok: true, text: 'Website, SSL and hosting included free with the monthly plan' }, them: { ok: false, text: '$1,500–$3,000+ website project billed before any marketing starts' } },
+      { factor: 'Pricing', novelio: { ok: true, text: 'Transparent, fixed-scope monthly plans' }, them: { ok: false, text: 'Opaque retainers with variable add-ons' } },
       { factor: 'Accountability', novelio: { ok: true, text: 'Monthly KPI reviews tied to revenue' }, them: { ok: false, text: 'Vanity dashboards, slow to reach the team' } },
     ],
     themGood: {
@@ -35,13 +35,13 @@ export const COMPARISONS = [
       points: [
         'You run a small business and want one accountable partner, not five vendors.',
         'You want to see the gaps in a free audit before spending a dollar.',
-        'You value transparent pricing and the freedom to leave anytime.',
+        'You value transparent monthly pricing with no heavy upfront project cost.',
         'You care about revenue results, not activity reports.',
       ],
     },
     faqs: [
       { q: 'Is Novelio cheaper than a traditional agency?', a: 'Often, yes — but the bigger difference is what you pay for. Instead of an open-ended retainer billed against hours, you get transparent, fixed-scope packages tied to outcomes, so there are no surprise add-ons.' },
-      { q: 'Do I have to sign a long contract?', a: 'No. Novelio works month to month with no long-term lock-in. We earn your business every month by delivering measurable results, not by trapping you in a 12-month agreement.' },
+      { q: 'Do I have to sign a long contract?', a: 'Growth plans run on a 12-month term — because your website, SSL, hosting and growth setup are included free with the plan instead of being billed as a $1,500–$3,000 upfront project. After the term, the plan is month to month and full website ownership transfers to you.' },
       { q: 'Can Novelio replace my current agency?', a: 'In most cases, yes. Because we cover web, SEO, local, lead generation, automation, branding, and operations under one roof, we can consolidate what several single-channel vendors do today.' },
     ],
   },

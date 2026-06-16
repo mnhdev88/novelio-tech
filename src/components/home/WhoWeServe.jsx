@@ -79,7 +79,7 @@ export default function WhoWeServe() {
                 </motion.div>
               ))}
             </div>
-            <p className="text-[#94a3b8] text-xs mt-5">
+            <p className="text-[#64748b] text-xs mt-5">
               Serving businesses globally · Dover, DE registered company
             </p>
           </motion.div>

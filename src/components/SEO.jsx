@@ -20,6 +20,8 @@ export default function SEO({
 
   const fullCanonical = canonical ? `${BASE_URL}${canonical}` : null;
   const keywordsString = Array.isArray(keywords) ? keywords.join(', ') : keywords;
+  // Social crawlers need absolute image URLs; site-relative paths get the domain prepended.
+  const fullImage = image.startsWith('/') ? `${BASE_URL}${image}` : image;
 
   return (
     <Helmet>
@@ -32,7 +34,7 @@ export default function SEO({
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
       {description && <meta property="og:description" content={description} />}
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={fullImage} />
       <meta property="og:type" content={type} />
       {fullCanonical && <meta property="og:url" content={fullCanonical} />}
       <meta property="og:site_name" content={SITE_NAME} />
@@ -42,7 +44,7 @@ export default function SEO({
       <meta name="twitter:site" content="@noveliotech" />
       <meta name="twitter:title" content={fullTitle} />
       {description && <meta name="twitter:description" content={description} />}
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={fullImage} />
 
       {/* JSON-LD schema */}
       {schema && (

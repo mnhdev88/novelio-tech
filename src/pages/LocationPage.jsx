@@ -111,7 +111,7 @@ function StatePage({ stateData, cities }) {
                     <h3 className="text-xl font-heading font-700 text-[#1B3172] group-hover:text-[#6B3FA0] transition-colors">
                       {city.city}
                     </h3>
-                    <ArrowRight className="w-4 h-4 text-[#94a3b8] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                    <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
                   </div>
                   <p className="text-xs text-[#64748b] mb-3">Pop. {city.population} · {city.smallBusinesses} small businesses</p>
                   <div className="flex flex-wrap gap-1.5">
@@ -340,7 +340,7 @@ function CityPage({ city }) {
                       <h3 className="text-lg font-heading font-700 text-[#1B3172] group-hover:text-[#6B3FA0] transition-colors">
                         {service.title} in {city.city}
                       </h3>
-                      <ArrowRight className="w-4 h-4 text-[#94a3b8] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1 ml-2" />
+                      <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1 ml-2" />
                     </div>
                     <p className="text-[#475569] text-sm leading-relaxed mb-3">{service.description}</p>
                     <div className="flex flex-wrap gap-1.5">

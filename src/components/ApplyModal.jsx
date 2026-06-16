@@ -128,11 +128,11 @@ export default function ApplyModal({ job, onClose }) {
                 {isSEO ? 'Send Work Profile' : 'Apply Now'}
               </p>
               <h2 className="font-heading font-bold text-[#1B3172] text-lg leading-tight">{job.title}</h2>
-              <p className="text-xs text-[#94a3b8] mt-0.5">Novelio Technologies · {isSEO ? 'Gurgaon, India' : 'US / India'}</p>
+              <p className="text-xs text-[#64748b] mt-0.5">Novelio Technologies · {isSEO ? 'Gurgaon, India' : 'US / India'}</p>
             </div>
             <button
               onClick={onClose}
-              className="w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-[#94a3b8] hover:text-[#1B3172] hover:border-[#1B3172] transition-all shrink-0 ml-4 cursor-pointer"
+              className="w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-[#64748b] hover:text-[#1B3172] hover:border-[#1B3172] transition-all shrink-0 ml-4 cursor-pointer"
               aria-label="Close"
             >
               <X className="w-4 h-4" />
@@ -207,9 +207,9 @@ export default function ApplyModal({ job, onClose }) {
                     />
                     {isSEO && (
                       <div>
-                        <Label>Resume / CV <span className="font-normal text-[#94a3b8] text-xs">(Optional · PDF or Word · max 5 MB)</span></Label>
+                        <Label>Resume / CV <span className="font-normal text-[#64748b] text-xs">(Optional · PDF or Word · max 5 MB)</span></Label>
                         <label className="flex items-center gap-3 w-full px-4 py-3 rounded-xl border-2 border-dashed border-[rgba(29,78,216,0.18)] bg-[#f8faff] cursor-pointer hover:border-[#1B3172] hover:bg-blue-50/30 transition-all group">
-                          <Upload className="w-4 h-4 text-[#94a3b8] group-hover:text-[#1B3172] transition-colors shrink-0" />
+                          <Upload className="w-4 h-4 text-[#64748b] group-hover:text-[#1B3172] transition-colors shrink-0" />
                           <span className="text-sm text-[#64748b] group-hover:text-[#1B3172] transition-colors truncate">
                             {file ? file.name : 'Attach your CV if you have one'}
                           </span>
@@ -243,9 +243,9 @@ export default function ApplyModal({ job, onClose }) {
 
                     {/* File upload */}
                     <div>
-                      <Label>Resume / CV <span className="font-normal text-[#94a3b8] text-xs">(PDF or Word · max 5 MB)</span></Label>
+                      <Label>Resume / CV <span className="font-normal text-[#64748b] text-xs">(PDF or Word · max 5 MB)</span></Label>
                       <label className="flex items-center gap-3 w-full px-4 py-3 rounded-xl border-2 border-dashed border-[rgba(29,78,216,0.18)] bg-[#f8faff] cursor-pointer hover:border-[#1B3172] hover:bg-blue-50/30 transition-all group">
-                        <Upload className="w-4 h-4 text-[#94a3b8] group-hover:text-[#1B3172] transition-colors shrink-0" />
+                        <Upload className="w-4 h-4 text-[#64748b] group-hover:text-[#1B3172] transition-colors shrink-0" />
                         <span className="text-sm text-[#64748b] group-hover:text-[#1B3172] transition-colors truncate">
                           {file ? file.name : 'Click to upload your resume'}
                         </span>

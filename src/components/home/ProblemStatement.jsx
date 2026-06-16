@@ -100,7 +100,7 @@ export default function ProblemStatement() {
                 {/* Stat badge */}
                 <div className="flex-shrink-0 text-right">
                   <div className={`text-lg font-heading font-800 bg-gradient-to-r ${p.color} bg-clip-text text-transparent`}>{p.stat}</div>
-                  <div className="text-[#94a3b8] text-[10px] leading-tight">{p.statLabel}</div>
+                  <div className="text-[#64748b] text-[10px] leading-tight">{p.statLabel}</div>
                 </div>
               </motion.div>
             );

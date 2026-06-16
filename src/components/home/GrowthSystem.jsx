@@ -1,65 +1,77 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Megaphone, Workflow, Check, ArrowRight } from 'lucide-react';
+import FreeWebsiteModal from '../FreeWebsiteModal';
 
 // "We fix the 3 areas where most small businesses lose growth."
 const AREAS = [
   {
     num: '01',
     icon: Globe,
-    title: 'Correct Website',
+    title: 'Online Presence',
     color: 'from-blue-500 to-cyan-500',
     accent: '#0EA5E9',
     glow: 'rgba(14,165,233,0.30)',
     tint: 'rgba(14,165,233,0.07)',
-    desc: 'A good website helps customers understand your business, trust you faster, and take the next step without confusion.',
+    mainPain:
+      'Customers search online before they call or buy. If your business is not visible on Google, your website is weak, or your online image does not build trust, they choose someone else.',
     problems: [
-      'Customers visit your website but do not enquire',
-      'People do not clearly understand what you offer',
-      'Your business does not look trustworthy enough online',
-      'Customers leave because they cannot find the right information',
-      'You depend only on phone calls, referrals, or social messages',
+      'Your business is not showing properly on Google',
+      'Customers search for your service, but competitors appear before you',
+      'People nearby do not find your business online',
+      'Customers check your business online and then do not call',
+      'Ads bring visitors, but they do not trust enough to enquire',
+      'Your business depends too much on referrals and old customers',
     ],
-    result: 'More trust, better enquiries, and a clearer path for customers to contact you.',
+    result:
+      'Better visibility, more trust, and more serious enquiries from people who are already looking for your service.',
   },
   {
     num: '02',
     icon: Megaphone,
-    title: 'Digital Presence',
+    title: 'Lead Generation',
     color: 'from-violet-600 to-blue-600',
     accent: '#7C3AED',
     glow: 'rgba(124,58,237,0.30)',
     tint: 'rgba(124,58,237,0.07)',
-    desc: 'Customers check your Google profile, reviews, social media, and website before they decide to contact you.',
+    mainPain:
+      'Either you are not getting enough leads, or you are getting leads that do not convert into paying customers.',
     problems: [
-      'Customers cannot find you easily online',
-      'Your competitors look more active and professional',
-      'Your reviews and proof are not visible enough',
-      'People see your business but do not feel confident',
-      'You spend on ads without enough trust-building support',
+      'New leads are not coming regularly',
+      'You have enough leads, but they are not the right clients',
+      'You are getting price shoppers, not serious buyers',
+      'You paid a lot for campaigns, but sales did not grow',
+      'You do not know who to target or who to send emails to',
+      'Your website, ads, or social media get views but not enquiries',
     ],
-    result: 'Better visibility, stronger trust, and more qualified customer enquiries.',
+    result:
+      'Better quality leads, clearer offers, stronger CTAs, and less wasted money on random marketing.',
   },
   {
     num: '03',
     icon: Workflow,
-    title: 'Automation',
+    title: 'Automation System',
     color: 'from-amber-500 to-orange-500',
     accent: '#F97316',
     glow: 'rgba(249,115,22,0.30)',
     tint: 'rgba(249,115,22,0.07)',
-    desc: 'Automation helps you capture leads, follow up on time, track enquiries, support customers, and bring them back again.',
+    mainPain:
+      'Leads are coming, but sales are still not growing because follow-up, payment reminders, quotes, and customer communication are not managed properly.',
     problems: [
-      'Leads come in but nobody follows up properly',
-      'Quotes are sent but not tracked',
-      'Customer messages get missed on WhatsApp or email',
-      'Reviews are not collected after delivery',
-      'Old customers are not contacted again for repeat sales',
+      'Leads come in, but nobody follows up on time',
+      'Customers say "send details" and then go cold',
+      'Quotes are sent, but nobody tracks them properly',
+      'Payment follow-ups are manual and uncomfortable',
+      'WhatsApp, email, calls, and website leads are scattered',
+      'Old customers are not contacted again for repeat sales or referrals',
     ],
-    result: 'Fewer missed leads, faster follow-up, repeat sales, and referrals.',
+    result:
+      'Faster follow-up, better lead tracking, better payment control, more conversions, repeat sales, and referrals.',
   },
 ];
 
 export default function GrowthSystem() {
+  const [showOffer, setShowOffer] = useState(false);
   return (
     <section className="section-pad bg-[#f6f8ff] relative overflow-hidden">
       {/* Decorative background */}
@@ -77,8 +89,8 @@ export default function GrowthSystem() {
             <span className="gradient-text">Lose Growth</span>
           </h2>
           <p className="text-[#64748b] text-base sm:text-lg mt-5 max-w-3xl mx-auto leading-relaxed">
-            Your website, online presence, and follow-up system should work together. If one area is
-            weak, leads get lost and sales slow down.
+            Business growth does not happen only by having a website or running ads. You need
+            visibility, the right leads, and a system that converts enquiries into sales.
           </p>
         </div>
 
@@ -114,13 +126,17 @@ export default function GrowthSystem() {
                 <a.icon className="w-7 h-7 text-white" />
               </div>
 
-              <h3 className="text-[#1B3172] font-heading font-800 text-xl mb-2">{a.title}</h3>
-              <p className="text-[#64748b] text-sm leading-relaxed mb-6">{a.desc}</p>
+              <h3 className="text-[#1B3172] font-heading font-800 text-xl mb-4">{a.title}</h3>
+
+              <div className="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-sm leading-relaxed text-[#475569] mb-6">
+                <span className="font-bold text-[#1B3172]">Main Pain: </span>
+                {a.mainPain}
+              </div>
 
               <div className="h-px bg-slate-100 mb-5" />
 
               <p className="text-[11px] font-bold tracking-widest uppercase mb-3" style={{ color: a.accent }}>
-                Problems it solves
+                Real Business Pains It Fixes
               </p>
               <div className="space-y-3 mb-7">
                 {a.problems.map((p) => (
@@ -154,7 +170,23 @@ export default function GrowthSystem() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <div className="text-center mt-12">
+          <button
+            type="button"
+            onClick={() => setShowOffer(true)}
+            className="btn-primary inline-flex text-base px-8 py-4 cursor-pointer"
+          >
+            Get Your Free Optimized Website Setup
+          </button>
+          <p className="text-[#64748b] text-sm mt-4">
+            Start with your website, then connect lead generation and automation.
+          </p>
+        </div>
       </div>
+
+      {showOffer && <FreeWebsiteModal onClose={() => setShowOffer(false)} />}
     </section>
   );
 }
