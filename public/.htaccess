@@ -18,6 +18,10 @@ RewriteRule ^cart/?$                                              - [G,L]
 RewriteRule ^my-account-2/?$                                     - [G,L]
 RewriteRule ^product/.*$                                         - [G,L]
 RewriteRule ^.*/feed/?$                                          - [G,L]
+# WooCommerce AJAX placeholder URL (?wc-ajax=...) — pure junk, 410 it before
+# the SPA fallback can serve a 200. Matches the query string, not the path.
+RewriteCond %{QUERY_STRING} (^|&)wc-ajax= [NC]
+RewriteRule ^ - [G,L]
 
 # ── 301 — old WordPress tag archives + blog archive → /blog ────────────────
 RewriteRule ^tag/.*$                                             /blog [R=301,L]
@@ -44,6 +48,8 @@ RewriteRule ^cdn-cgi/.*$                                         /contact [R=301
 # ── 301 — old WordPress page slugs ─────────────────────────────────────────
 RewriteRule ^home/?$                                             / [R=301,L]
 RewriteRule ^home-2/?$                                           / [R=301,L]
+# Old WP cookie-policy page → /privacy (PrivacyPage covers cookies; no React route exists)
+RewriteRule ^cookie-policy/?$                                    /privacy [R=301,L]
 
 # ── 301 — renamed local landing page ───────────────────────────────────────
 RewriteRule ^best-website-developer-newark-nj/?$                 /best-website-developer-in-newark [R=301,L]
