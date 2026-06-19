@@ -21,13 +21,13 @@ export default function HomePage() {
       />
       <HeroSection />
       <GrowthSystem />
-      <TestimonialsSection />
       <FreeWebsiteCTA />
       <GrowthFramework />
       <GrowthCycle />
       <WhyChooseUs />
       <CTABanner />
       <IndustriesSection />
+      <TestimonialsSection />
       <FAQSection />
       <BlogPreview />
     </main>

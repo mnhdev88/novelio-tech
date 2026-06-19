@@ -129,10 +129,6 @@ export default function Footer() {
                 { label: 'Novelio vs Agencies', to: '/compare/traditional-agency' },
                 { label: 'Novelio vs Freelancers', to: '/compare/freelancer' },
                 { label: 'Novelio vs DIY Builders', to: '/compare/diy-website-builders' },
-                { label: 'Privacy Policy', to: '/privacy' },
-                { label: 'Terms of Service', to: '/terms' },
-                { label: 'Refund Policy', to: '/refund-policy' },
-                { label: 'Disclaimer', to: '/disclaimer' },
               ].map((l) => (
                 <li key={l.label}>
                   <Link to={l.to} className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
@@ -198,9 +194,11 @@ export default function Footer() {
           <p className="text-slate-500 text-sm">
             © 2026 Novelio Technologies LLC. All rights reserved. | Registered in Delaware, USA.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center flex-wrap justify-center gap-x-6 gap-y-2">
             <Link to="/privacy" className="text-slate-500 hover:text-white text-xs transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="text-slate-500 hover:text-white text-xs transition-colors">Terms of Service</Link>
+            <Link to="/refund-policy" className="text-slate-500 hover:text-white text-xs transition-colors">Refund Policy</Link>
+            <Link to="/disclaimer" className="text-slate-500 hover:text-white text-xs transition-colors">Disclaimer</Link>
             <a href="/sitemap.xml" className="text-slate-500 hover:text-white text-xs transition-colors">Sitemap</a>
           </div>
         </div>

@@ -97,18 +97,18 @@ export default function Navbar() {
                         servicesOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'
                       }`}
                     >
-                      <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-[0_8px_32px_rgba(27,49,114,0.12)] w-[280px]">
-                        <div className="flex flex-col gap-1">
+                      <div className="bg-white rounded-2xl p-2 border border-slate-200 shadow-[0_8px_32px_rgba(27,49,114,0.12)] w-[260px]">
+                        <div className="flex flex-col gap-0.5">
                           {NAV_SERVICES.map((s) => (
                             <Link
                               key={s.id}
                               to={s.slug}
-                              className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-all group"
+                              className="flex items-center gap-2.5 w-full px-2.5 py-1.5 rounded-lg hover:bg-slate-50 transition-all group"
                             >
-                              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${s.color} flex items-center justify-center flex-shrink-0`}>
-                                <span className="text-white text-sm font-bold">{s.short[0]}</span>
+                              <div className={`w-8 h-8 rounded-md bg-gradient-to-br ${s.color} flex items-center justify-center flex-shrink-0`}>
+                                <span className="text-white text-xs font-bold">{s.short[0]}</span>
                               </div>
-                              <span className="text-[15px] font-medium text-[#334155] group-hover:text-[#1B3172] transition-colors leading-tight">
+                              <span className="text-[14px] font-medium text-[#334155] group-hover:text-[#1B3172] transition-colors leading-tight">
                                 {s.title}
                               </span>
                             </Link>
@@ -116,7 +116,7 @@ export default function Navbar() {
                         </div>
                         <Link
                           to="/services"
-                          className="mt-2 flex items-center justify-center gap-1.5 px-3 py-3 rounded-xl border-t border-slate-100 text-[14px] font-semibold text-brand-purple hover:bg-slate-50 transition-all"
+                          className="mt-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border-t border-slate-100 text-[13px] font-semibold text-brand-purple hover:bg-slate-50 transition-all"
                         >
                           View all services
                           <ArrowRight className="w-4 h-4" />

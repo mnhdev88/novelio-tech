@@ -1,23 +1,8 @@
 import SEO from '../components/SEO';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, MessageCircle, Send, Check, ChevronDown, ChevronUp } from 'lucide-react';
+import { Mail, Phone, MessageCircle, Send, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { COMPANY } from '../data/siteData';
-
-const SERVICES_OPTIONS = [
-  'Website Development',
-  'Search Engine Optimization (SEO)',
-  'Google Business Profile',
-  'Lead Generation',
-  'Automation & CRM',
-  'Branding',
-  'Tech & Operations',
-  'Email Marketing',
-  'Email Validator',
-  'Multiple Services / Not Sure',
-];
-
-const BUDGET_OPTIONS = ['Under $500/mo', '$500 – $1,000/mo', '$1,000 – $5,000/mo', '$5,000+/mo', "Let's Discuss"];
 
 const faqs = [
   { q: 'How long does it take to get started?', a: 'After our initial consultation and contract signing, most projects kick off within 3–5 business days.' },
@@ -44,7 +29,7 @@ function FAQItem({ q, a }) {
 }
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', service: '', budget: '', source: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', source: '' });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -54,7 +39,6 @@ export default function ContactPage() {
     if (!form.name.trim()) e.name = 'Name is required';
     if (!form.email.trim()) e.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(form.email)) e.email = 'Enter a valid email';
-    if (!form.message.trim()) e.message = 'Please describe your project';
     return e;
   };
 
@@ -72,7 +56,7 @@ export default function ContactPage() {
       if (!res.ok) throw new Error('submission failed');
       setSuccess(true);
     } catch {
-      setErrors({ message: 'Something went wrong. Please try again or email us directly at info@noveliotech.com.' });
+      setErrors({ submit: 'Something went wrong. Please try again or email us directly at info@noveliotech.com.' });
     } finally {
       setSubmitting(false);
     }
@@ -224,29 +208,7 @@ export default function ContactPage() {
                         </div>
                       </div>
 
-                      <div>
-                        <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Service Interested In</label>
-                        <select value={form.service} onChange={handleChange('service')} className={`${inputClass('service')} appearance-none`}>
-                          <option value="" className="bg-white">Select a service...</option>
-                          {SERVICES_OPTIONS.map((s) => <option key={s} value={s} className="bg-white">{s}</option>)}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Monthly Budget</label>
-                        <select value={form.budget} onChange={handleChange('budget')} className={`${inputClass('budget')} appearance-none`}>
-                          <option value="" className="bg-white">Select budget range...</option>
-                          {BUDGET_OPTIONS.map((b) => <option key={b} value={b} className="bg-white">{b}</option>)}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Project Details *</label>
-                        <textarea value={form.message} onChange={handleChange('message')} rows={4}
-                          placeholder="Tell us about your business, current challenges, and goals..."
-                          className={`${inputClass('message')} resize-none`} />
-                        {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
-                      </div>
+                      {errors.submit && <p className="text-red-400 text-sm">{errors.submit}</p>}
 
                       <button type="submit" disabled={submitting}
                         className="btn-primary w-full justify-center text-base py-4 disabled:opacity-60 disabled:cursor-not-allowed">
