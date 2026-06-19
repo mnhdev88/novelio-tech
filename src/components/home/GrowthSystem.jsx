@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Users, Phone, Repeat, Check, ArrowRight } from 'lucide-react';
 import FreeWebsiteModal from '../FreeWebsiteModal';
@@ -91,15 +91,14 @@ const AREAS = [
   },
 ];
 
-function AreaCard({ area, index }) {
+function AreaCard({ area, index, onCountChange }) {
   const [checked, setChecked] = useState(() => new Set());
 
   const toggle = (i) => {
-    setChecked((prev) => {
-      const next = new Set(prev);
-      next.has(i) ? next.delete(i) : next.add(i);
-      return next;
-    });
+    const next = new Set(checked);
+    next.has(i) ? next.delete(i) : next.add(i);
+    setChecked(next);
+    onCountChange?.(index, next.size);
   };
 
   const count = checked.size;
@@ -216,8 +215,26 @@ function AreaCard({ area, index }) {
   );
 }
 
+// Opens the lead form once a visitor has tapped this many pains across all cards.
+const TRIGGER_AT = 5;
+
 export default function GrowthSystem() {
   const [showOffer, setShowOffer] = useState(false);
+  const countsRef = useRef(AREAS.map(() => 0));
+  const firedRef = useRef(false);
+
+  const handleCountChange = (index, count) => {
+    countsRef.current[index] = count;
+    const total = countsRef.current.reduce((sum, n) => sum + n, 0);
+    if (total >= TRIGGER_AT && !firedRef.current) {
+      firedRef.current = true;
+      setShowOffer(true);
+    } else if (total < TRIGGER_AT) {
+      // re-arm so it can fire again if they uncheck then re-cross the threshold
+      firedRef.current = false;
+    }
+  };
+
   return (
     <section className="section-pad bg-[#f6f8ff] relative overflow-hidden">
       {/* Decorative background */}
@@ -243,7 +260,7 @@ export default function GrowthSystem() {
         {/* Four areas — 2 up, 2 down */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
           {AREAS.map((a, i) => (
-            <AreaCard key={a.title} area={a} index={i} />
+            <AreaCard key={a.title} area={a} index={i} onCountChange={handleCountChange} />
           ))}
         </div>
 

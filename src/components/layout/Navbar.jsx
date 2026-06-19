@@ -35,7 +35,6 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const navLinks = [
-    { label: 'Home', to: '/' },
     { label: 'Services', to: '/services', hasDropdown: true },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },

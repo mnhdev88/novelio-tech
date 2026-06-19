@@ -21,9 +21,9 @@ export default function HomePage() {
       />
       <HeroSection />
       <GrowthSystem />
-      <FreeWebsiteCTA />
-      <GrowthFramework />
       <GrowthCycle />
+      <GrowthFramework />
+      <FreeWebsiteCTA />
       <WhyChooseUs />
       <CTABanner />
       <IndustriesSection />

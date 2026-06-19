@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Play, Check } from 'lucide-react';
+import { ArrowRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Check } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import FreeWebsiteModal from '../FreeWebsiteModal';
 
@@ -328,10 +328,6 @@ export default function HeroSection() {
               >
                 <ArrowRight className="w-5 h-5" />
               </motion.span>
-            </button>
-            <button type="button" onClick={() => setShowOffer(true)} className="btn-ghost text-base px-8 py-4 w-full sm:w-auto justify-center cursor-pointer">
-              <Play className="w-4 h-4" />
-              See How It Works
             </button>
           </motion.div>
 

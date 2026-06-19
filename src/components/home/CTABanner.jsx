@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { COMPANY } from '../../data/siteData';
 
@@ -164,8 +164,8 @@ export default function CTABanner() {
                 boxShadow: '0 8px 32px rgba(255,255,255,0.2)',
               }}
             >
-              Book Your Free Growth Audit — No Obligation
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Phone className="w-5 h-5" />
+              Call Us Now
             </a>
           </motion.div>
 
