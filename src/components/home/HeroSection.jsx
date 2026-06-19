@@ -277,9 +277,14 @@ export default function HeroSection() {
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6">
             Your Small Business Deserves a{' '}
-            <span style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <button
+              type="button"
+              onClick={() => setShowOffer(true)}
+              className="inline bg-transparent border-0 p-0 cursor-pointer hover:underline decoration-2 underline-offset-4 transition-all"
+              style={{ font: 'inherit', letterSpacing: 'inherit', background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textDecorationColor: '#1D4ED8' }}
+            >
               Growth Partner,
-            </span>
+            </button>
             {' '}Not Just a Vendor
           </h1>
 
@@ -324,10 +329,10 @@ export default function HeroSection() {
                 <ArrowRight className="w-5 h-5" />
               </motion.span>
             </button>
-            <a href="#how-it-works" className="btn-ghost text-base px-8 py-4 w-full sm:w-auto justify-center">
+            <button type="button" onClick={() => setShowOffer(true)} className="btn-ghost text-base px-8 py-4 w-full sm:w-auto justify-center cursor-pointer">
               <Play className="w-4 h-4" />
               See How It Works
-            </a>
+            </button>
           </motion.div>
 
           {/* Secondary call option */}
