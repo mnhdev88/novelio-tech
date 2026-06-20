@@ -19,7 +19,6 @@
     <!-- Preconnect: analytics (non-render-blocking) -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.clarity.ms" />
-    <link rel="preconnect" href="https://s3-us-west-2.amazonaws.com" />
 
     <!-- Title, description, canonical, Open Graph & Twitter tags are injected per-route
          by react-helmet-async (see src/components/SEO.jsx) and baked into each page by
@@ -132,9 +131,6 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-
-    <!-- Third-party widget -->
-    <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
 
     <!-- Analytics loaded during idle time after TTI — minimises TBT impact -->
     <script>
