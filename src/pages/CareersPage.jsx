@@ -152,13 +152,17 @@ const SHIFT_STYLES = {
   'Day Shift': 'bg-amber-50 text-amber-700',
 };
 
+const REGION_TAGS = {
+  us:    [{ label: '🇺🇸 United States', style: 'bg-blue-50 text-blue-700' }],
+  india: [{ label: '🇮🇳 India', style: 'bg-green-50 text-green-700' }],
+  freelance: [
+    { label: '🌐 Remote / Worldwide', style: 'bg-blue-50 text-blue-700' },
+    { label: 'Freelance / Project-Based', style: 'bg-pink-50 text-pink-700' },
+  ],
+};
+
 function apiJobToCard(job) {
-  const isUS = job.region === 'us';
-  const tags = [
-    isUS
-      ? { label: '🇺🇸 United States', style: 'bg-blue-50 text-blue-700' }
-      : { label: '🇮🇳 India', style: 'bg-green-50 text-green-700' },
-  ];
+  const tags = [...(REGION_TAGS[job.region] || REGION_TAGS.india)];
   if (job.shift) tags.push({ label: job.shift, style: SHIFT_STYLES[job.shift] || 'bg-amber-50 text-amber-700' });
   tags.push({
     label: `${job.openings} Opening${job.openings === 1 ? '' : 's'}`,
@@ -171,6 +175,7 @@ function apiJobToCard(job) {
     openings: job.openings,
     openingLabel: job.openings > 1 ? `(${job.openings} Openings)` : undefined,
     tags,
+    accentColor: job.region === 'freelance' ? 'border-l-purple-500' : undefined,
     locations: job.job_location,
     desc: job.description,
     pills: job.pills || [],
