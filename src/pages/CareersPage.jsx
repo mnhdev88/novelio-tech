@@ -112,6 +112,34 @@ const indiaJobs = [
   },
 ];
 
+const freelanceJobs = [
+  {
+    title: 'Video & Image Creator',
+    openings: 1,
+    tags: [
+      { label: '🌐 Remote / Worldwide', style: 'bg-blue-50 text-blue-700' },
+      { label: 'Freelance / Project-Based', style: 'bg-pink-50 text-pink-700' },
+      { label: '1 Opening', style: 'bg-orange-50 text-orange-600' },
+    ],
+    location: 'Remote / Hybrid | Project-wise / Part-time Association',
+    desc: 'Turn our products and services into clean, professional, easy-to-understand content. You will create short reels, explainer videos, product demos, and social creatives for our CRM, websites, apps, and AI tools — content that looks polished but stays simple enough for any small business owner to get. You will work with the content and business team to shape the message, and you are encouraged to suggest ideas, not just execute them.',
+    pills: ['Video Editing', 'Reels & Shorts', 'Canva / Photoshop / Illustrator', 'CapCut / Premiere Pro / DaVinci', 'Basic Motion Graphics', 'Thumbnail Design', 'AI Video & Image Tools'],
+    accentColor: 'border-l-purple-500',
+    applyNote: true,
+    applyNoteTitle: '⚠ How to Apply — Please Share With Your Application',
+    applyNotePoints: [
+      'Your portfolio / sample work — reels, explainer videos, or product demos.',
+      'Social media creatives you have already made (posts, carousels, thumbnails, banners).',
+      'The tools you use (e.g. Premiere Pro, CapCut, DaVinci, Canva, Photoshop, AI video/image tools).',
+    ],
+    applyNoteFooter: 'A CV is optional — your work samples matter most. Experience creating content for software, SaaS, CRM, or digital-marketing brands is a plus.',
+    subject: 'Application: Video & Image Creator – Freelance',
+    btnLabel: 'Send Portfolio →',
+    btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
+    footerNote: 'Send your portfolio to: ajay@noveliotech.com',
+  },
+];
+
 // ── Live data from the CRM ────────────────────────────────────────────────────
 // Jobs are managed in the CRM (crm.noveliotech.com → Careers). The hardcoded
 // arrays above are only the fallback when the API is unreachable.
@@ -263,15 +291,18 @@ export default function CareersPage() {
 
   const usRoles = liveJobs ? liveJobs.filter((j) => j.region === 'us') : usJobs;
   const indiaRoles = liveJobs ? liveJobs.filter((j) => j.region === 'india') : indiaJobs;
+  const liveFreelance = liveJobs ? liveJobs.filter((j) => j.region === 'freelance') : [];
+  const freelanceRoles = liveFreelance.length ? liveFreelance : freelanceJobs;
   const usOpenings = usRoles.reduce((n, j) => n + (j.openings || 1), 0);
   const indiaOpenings = indiaRoles.reduce((n, j) => n + (j.openings || 1), 0);
-  const totalOpenings = usOpenings + indiaOpenings;
+  const freelanceOpenings = freelanceRoles.reduce((n, j) => n + (j.openings || 1), 0);
+  const totalOpenings = usOpenings + indiaOpenings + freelanceOpenings;
 
   return (
     <main className="pt-20">
       <SEO
         title="Careers — Join Novelio Technologies"
-        description="We're hiring across US and India. Sales, SEO, and operations roles at a fast-growing AI-powered digital agency. 9 open positions."
+        description="We're hiring across the US, India, and remote. Sales, SEO, content/video, and operations roles at a fast-growing AI-powered digital agency."
         canonical="/careers"
       />
 
@@ -372,6 +403,29 @@ export default function CareersPage() {
             {indiaRoles.map((job, i) => <JobCard key={job.id || i} job={job} isIndia delay={i * 0.1} onApply={setActiveJob} />)}
             {indiaRoles.length === 0 && (
               <p className="text-sm text-[#64748b]">No India openings right now — check back soon.</p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Freelance / Remote Roles ── */}
+      <section className="section-pad bg-white relative overflow-hidden" id="freelance-roles">
+        <div className="dot-grid absolute inset-0 opacity-20" />
+        <div className="container-xl relative z-10">
+          <motion.div {...fadeUp()} className="mb-8">
+            <p className="text-xs font-700 tracking-widest uppercase text-[#64748b] mb-1">Remote · Worldwide</p>
+            <h2 className="font-heading font-700 text-[#1B3172] text-3xl flex items-center gap-3">
+              Freelance &amp; Project-Based Roles
+              <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">{freelanceOpenings} Opening{freelanceOpenings === 1 ? '' : 's'}</span>
+            </h2>
+            <p className="text-[#475569] text-sm mt-3 max-w-2xl leading-relaxed">
+              Work with us on a project or part-time basis from anywhere. Ideal for creative professionals who want flexible, high-impact work with a fast-growing, US-focused tech brand.
+            </p>
+          </motion.div>
+          <div className="flex flex-col gap-5">
+            {freelanceRoles.map((job, i) => <JobCard key={job.id || i} job={job} delay={i * 0.1} onApply={setActiveJob} />)}
+            {freelanceRoles.length === 0 && (
+              <p className="text-sm text-[#64748b]">No freelance openings right now — check back soon.</p>
             )}
           </div>
         </div>
