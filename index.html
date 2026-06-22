@@ -7,14 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1B3172" />
 
-    <!-- Preconnect: fonts (highest priority — must be before stylesheet request) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Preload critical font files so browser fetches them immediately -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+    <!-- Self-hosted fonts: preload the latin woff2 files so they fetch immediately.
+         @font-face rules live in src/index.css. No fonts.gstatic.com dependency. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk-latin.woff2" crossorigin />
 
     <!-- Preconnect: analytics (non-render-blocking) -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />

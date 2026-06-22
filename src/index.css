@@ -1,3 +1,23 @@
+/* Self-hosted fonts (latin subset, variable woff2) — replaces the Google Fonts
+   CDN <link> that used to live in index.html. Removes the third-party
+   fonts.gstatic.com dependency Google Search Console kept flagging, and drops a
+   cross-origin handshake on first paint. font-weight is a RANGE because these
+   are variable fonts: one file covers every weight we use. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

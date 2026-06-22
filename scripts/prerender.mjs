@@ -137,7 +137,12 @@ async function main() {
       const page = await browser.newPage()
       await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }])
       await page.setViewport({ width: 1366, height: 1200 })
-      await page.goto(`${ORIGIN}${route}`, { waitUntil: 'networkidle0', timeout: 45000 })
+      // domcontentloaded (not networkidle0): the third-party analytics scripts
+      // (GTM, Clarity) loaded on idle keep connections open long enough that
+      // networkidle0 randomly never settles within the timeout, failing a
+      // different route each run. SPA-readiness is enforced by the
+      // waitForFunction below, so first-party content is fully captured anyway.
+      await page.goto(`${ORIGIN}${route}`, { waitUntil: 'domcontentloaded', timeout: 45000 })
       // Wait until React has populated #root and a real <h1> (or article) exists
       await page.waitForFunction(
         () => {

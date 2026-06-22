@@ -52,11 +52,13 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Self-hosted fonts (latin subset, variable woff2) — no fonts.gstatic.com dependency -->
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk-latin.woff2" crossorigin>
 
 <style>
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 300 600; font-display: swap; src: url('/fonts/inter-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/fonts/space-grotesk-latin.woff2') format('woff2'); }
 /* ─── RESET & BASE ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
