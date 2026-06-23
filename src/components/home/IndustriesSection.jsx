@@ -18,6 +18,9 @@ const GLOW_COLORS = {
   'from-pink-500 to-rose-500':     '#EC4899',
   'from-amber-600 to-yellow-500':  '#D97706',
   'from-indigo-500 to-blue-700':   '#6366F1',
+  'from-fuchsia-500 to-pink-600':  '#D946EF',
+  'from-red-500 to-rose-600':      '#EF4444',
+  'from-lime-500 to-green-600':    '#84CC16',
 };
 
 function IndustryCard({ industry, index }) {
@@ -49,10 +52,11 @@ function IndustryCard({ industry, index }) {
       onMouseLeave={() => { setHovered(false); setMagnetic({ x: 0, y: 0 }); }}
       animate={{ x: hovered ? magnetic.x : 0, y: hovered ? magnetic.y : 0 }}
       transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+      className="h-full"
     >
       <Link
         to={`/industries/${industry.slug}`}
-        className="relative rounded-2xl p-5 text-center cursor-pointer overflow-hidden block"
+        className="relative h-full min-h-[148px] rounded-2xl p-5 text-center cursor-pointer overflow-hidden flex flex-col items-center justify-center"
         style={{
           background: hovered ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.82)',
           border: hovered ? `1px solid ${glowColor}44` : '1px solid rgba(29,78,216,0.11)',
@@ -165,7 +169,7 @@ export default function IndustriesSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
           {INDUSTRIES.map((industry, i) => (
             <IndustryCard key={industry.slug} industry={industry} index={i} />
           ))}

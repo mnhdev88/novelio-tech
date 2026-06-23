@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Users, Phone, Repeat, Check, ArrowRight } from 'lucide-react';
 import FreeWebsiteModal from '../FreeWebsiteModal';
+import { trackEvent } from '../../utils/analytics';
 
 // "We fix the 4 areas where most small businesses lose growth."
 const AREAS = [
@@ -216,7 +217,7 @@ function AreaCard({ area, index, onCountChange }) {
 }
 
 // Opens the lead form once a visitor has tapped this many pains across all cards.
-const TRIGGER_AT = 5;
+const TRIGGER_AT = 4;
 
 export default function GrowthSystem() {
   const [showOffer, setShowOffer] = useState(false);
@@ -228,6 +229,11 @@ export default function GrowthSystem() {
     const total = countsRef.current.reduce((sum, n) => sum + n, 0);
     if (total >= TRIGGER_AT && !firedRef.current) {
       firedRef.current = true;
+      trackEvent('growth_audit_form_open', {
+        location: 'growth_system',
+        trigger: 'pain_threshold',
+        pains_selected: total,
+      });
       setShowOffer(true);
     } else if (total < TRIGGER_AT) {
       // re-arm so it can fire again if they uncheck then re-cross the threshold
@@ -268,7 +274,13 @@ export default function GrowthSystem() {
         <div className="text-center mt-12">
           <button
             type="button"
-            onClick={() => setShowOffer(true)}
+            onClick={() => {
+              trackEvent('growth_audit_form_open', {
+                location: 'growth_system',
+                trigger: 'cta_button',
+              });
+              setShowOffer(true);
+            }}
             className="btn-primary inline-flex text-base px-8 py-4 cursor-pointer"
           >
             Get Your Free Growth Audit

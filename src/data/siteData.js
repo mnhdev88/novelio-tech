@@ -1,6 +1,7 @@
 import {
-  HeartPulse, ShoppingCart, Home, GraduationCap, Landmark, Hotel,
-  Laptop, Scale, Factory, ShoppingBag, Wrench, Briefcase,
+  HeartPulse, ShoppingCart, Landmark, Hotel,
+  Laptop, Factory, ShoppingBag, Wrench, Briefcase, Truck,
+  Flower2, UtensilsCrossed, Car, PawPrint,
 } from 'lucide-react';
 
 export const COMPANY = {
@@ -177,6 +178,22 @@ export const INDUSTRIES = [
       { url: 'https://mortimerchiropractic.prodatahub.com',label: 'Mortimer Chiropractic' },
       { url: 'https://alliantwelness.prodatahub.com',      label: 'Alliant Wellness' },
       { url: 'https://checkupsports.prodatahub.com',       label: 'Checkup Sports' },
+      { url: 'https://houston.prodatahub.com',             label: 'Houston' },
+    ],
+  },
+  {
+    name: 'Beauty & Spa', icon: Flower2, slug: 'beauty-spa',
+    color: 'from-fuchsia-500 to-pink-600',
+    sites: [
+      { url: 'https://kurhealthspa.prodatahub.com', label: 'KÚR Health Spa' },
+      { url: 'https://vivadayspa.prodatahub.com',   label: 'Viva Day Spa' },
+      { url: 'https://aesthetica.prodatahub.com',   label: 'Aesthetica Med Spa' },
+      { url: 'https://facetoface.prodatahub.com',   label: 'Face to Face Spa' },
+      { url: 'https://livmedspa.prodatahub.com',    label: 'LIV Med Spa' },
+      { url: 'https://spa7austin.prodatahub.com',   label: 'Spa 7 Austin' },
+      { url: 'https://woodstock.prodatahub.com',    label: 'Woodhouse Spa' },
+      { url: 'https://cupidspa.prodatahub.com',     label: 'Cupid Spa' },
+      { url: 'https://moodhouse.prodatahub.com',    label: 'Mood House' },
     ],
   },
   {
@@ -186,17 +203,8 @@ export const INDUSTRIES = [
       { url: 'https://shopcreative.prodatahub.com',        label: 'Shop Creative' },
       { url: 'https://orchardexpress.prodatahub.com',      label: 'Orchard Express' },
       { url: 'https://highcountryhealtfood.prodatahub.com',label: 'High Country Health Food' },
+      { url: 'https://sharron.prodatahub.com',             label: 'Morbid Mystique' },
     ],
-  },
-  {
-    name: 'Real Estate', icon: Home, slug: 'real-estate',
-    color: 'from-emerald-500 to-teal-600',
-    sites: [],
-  },
-  {
-    name: 'Education', icon: GraduationCap, slug: 'education',
-    color: 'from-yellow-500 to-orange-500',
-    sites: [],
   },
   {
     name: 'Finance', icon: Landmark, slug: 'finance',
@@ -222,23 +230,37 @@ export const INDUSTRIES = [
     ],
   },
   {
+    name: 'Food & Beverage', icon: UtensilsCrossed, slug: 'food-beverage',
+    color: 'from-yellow-500 to-orange-500',
+    sites: [
+      { url: 'https://85bakery.prodatahub.com',     label: '85°C Bakery' },
+      { url: 'https://auvilfruit.prodatahub.com',   label: 'Auvil Fruit Co' },
+      { url: 'https://nextterrawine.prodatahub.com',label: 'NexTerra Wine' },
+    ],
+  },
+  {
     name: 'Technology', icon: Laptop, slug: 'technology',
     color: 'from-cyan-500 to-blue-600',
     sites: [
       { url: 'https://nprsolutions.prodatahub.com', label: 'NPR Solutions' },
+      { url: 'https://samplesites.prodatahub.com',  label: 'Sample Sites' },
     ],
-  },
-  {
-    name: 'Legal', icon: Scale, slug: 'legal',
-    color: 'from-slate-600 to-slate-800',
-    sites: [],
   },
   {
     name: 'Manufacturing', icon: Factory, slug: 'manufacturing',
     color: 'from-gray-500 to-zinc-700',
     sites: [
-      { url: 'https://sharktruck.prodatahub.com',      label: 'Shark Truck' },
       { url: 'https://newriverengineers.prodatahub.com',label: 'New River Engineers' },
+      { url: 'https://pascalvalve.prodatahub.com',      label: 'Pascal Valve' },
+      { url: 'https://vogtpower.prodatahub.com',        label: 'Vogt Power' },
+    ],
+  },
+  {
+    name: 'Logistics', icon: Truck, slug: 'logistics',
+    color: 'from-emerald-500 to-teal-600',
+    sites: [
+      { url: 'https://sharktruck.prodatahub.com',       label: 'Shark Truck' },
+      { url: 'https://austintransport.prodatahub.com',  label: 'Austin Transport' },
     ],
   },
   {
@@ -250,6 +272,8 @@ export const INDUSTRIES = [
       { url: 'https://capricleaners.prodatahub.com',       label: 'Capri Cleaners' },
       { url: 'https://andyelectrictatoo.prodatahub.com',   label: 'Andy Electric Tattoo' },
       { url: 'https://cccopies.prodatahub.com',            label: 'CC Copies' },
+      { url: 'https://voguishfurniture.prodatahub.com',    label: 'Voguish Furniture' },
+      { url: 'https://theathletefoot.prodatahub.com',      label: "The Athlete's Foot" },
     ],
   },
   {
@@ -261,6 +285,21 @@ export const INDUSTRIES = [
       { url: 'https://grplumbing.prodatahub.com',         label: 'GR Plumbing' },
       { url: 'https://bestcleaningtampa.prodatahub.com',  label: 'Best Cleaning Tampa' },
       { url: 'https://homecleaningcenters.prodatahub.com',label: 'Home Cleaning Centers' },
+      { url: 'https://miamishoresplumbing.prodatahub.com',label: 'Miami Shores Plumbing' },
+      { url: 'https://magicool.prodatahub.com',           label: 'Magicool Mechanical' },
+      { url: 'https://aircontrolsystem.prodatahub.com',   label: 'Air Control Systems' },
+      { url: 'https://aircontrolsys.prodatahub.com',      label: 'Air Control Systems' },
+      { url: 'https://customdoor.prodatahub.com',         label: 'Custom Door' },
+      { url: 'https://customdoors.prodatahub.com',        label: 'Custom Windows & Doors' },
+    ],
+  },
+  {
+    name: 'Automotive', icon: Car, slug: 'automotive',
+    color: 'from-red-500 to-rose-600',
+    sites: [
+      { url: 'https://mobileauto.prodatahub.com', label: 'Mobile Auto Detailing' },
+      { url: 'https://enluxeauto.prodatahub.com', label: 'Enluxe Detailing' },
+      { url: 'https://wrapfactory.prodatahub.com',label: 'The Wrap Factory' },
     ],
   },
   {
@@ -271,7 +310,14 @@ export const INDUSTRIES = [
       { url: 'https://ciccusctomerconsulting.prodatahub.com',    label: 'Ciccus Customer Consulting' },
       { url: 'https://epiphanyconsulting.prodatahub.com',        label: 'Epiphany Consulting' },
       { url: 'https://mmmconsulting.prodatahub.com',             label: 'MMM Consulting' },
-      { url: 'https://houston.prodatahub.com',                   label: 'Houston' },
+      { url: 'https://thelittleshop.prodatahub.com',             label: 'The Little Psychic Shop' },
+    ],
+  },
+  {
+    name: 'Pet Care', icon: PawPrint, slug: 'pet-care',
+    color: 'from-lime-500 to-green-600',
+    sites: [
+      { url: 'https://dogspa.prodatahub.com', label: 'The Grooming Lounge' },
     ],
   },
 ];

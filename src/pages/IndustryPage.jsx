@@ -164,6 +164,9 @@ const GRADIENT_COLORS = {
   'from-pink-500 to-rose-500':      { a: '#EC4899', b: '#F43F5E' },
   'from-amber-600 to-yellow-500':   { a: '#D97706', b: '#EAB308' },
   'from-indigo-500 to-blue-700':    { a: '#6366F1', b: '#1D4ED8' },
+  'from-fuchsia-500 to-pink-600':   { a: '#D946EF', b: '#DB2777' },
+  'from-red-500 to-rose-600':       { a: '#EF4444', b: '#E11D48' },
+  'from-lime-500 to-green-600':     { a: '#84CC16', b: '#16A34A' },
 };
 
 export default function IndustryPage() {

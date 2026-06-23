@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, ArrowRight, Send } from 'lucide-react';
 import { FaLinkedinIn, FaXTwitter, FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa6';
 import { COMPANY, SERVICES } from '../../data/siteData';
 import { useState } from 'react';
+import { trackEvent } from '../../utils/analytics';
 
 async function subscribeNewsletter(email) {
   const res = await fetch('https://crm.noveliotech.com/api/newsletter', {
@@ -28,6 +29,7 @@ export default function Footer() {
     try {
       const data = await subscribeNewsletter(email);
       if (data.success) {
+        trackEvent('newsletter_signup', { location: 'footer' });
         setStatus('success');
         setEmail('');
       } else {

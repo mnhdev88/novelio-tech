@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MessageCircle, Send, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { COMPANY } from '../data/siteData';
+import { trackEvent } from '../utils/analytics';
 
 const faqs = [
   { q: 'How long does it take to get started?', a: 'After our initial consultation and contract signing, most projects kick off within 3–5 business days.' },
@@ -54,6 +55,7 @@ export default function ContactPage() {
         body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error('submission failed');
+      trackEvent('generate_lead', { form: 'contact' });
       setSuccess(true);
     } catch {
       setErrors({ submit: 'Something went wrong. Please try again or email us directly at info@noveliotech.com.' });

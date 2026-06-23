@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Upload, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 // Applications are stored in the CRM (crm.noveliotech.com → Careers), which
 // also emails the hiring inbox. Same key the newsletter form uses.
@@ -91,6 +92,9 @@ export default function ApplyModal({ job, onClose }) {
         headers: { 'x-api-key': API_KEY },
       });
 
+      if (res.ok) {
+        trackEvent('submit_application', { job_title: job.title, job_id: job.id || '' });
+      }
       setStatus(res.ok ? 'success' : 'error');
     } catch {
       setStatus('error');

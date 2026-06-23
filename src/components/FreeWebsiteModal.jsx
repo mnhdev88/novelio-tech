@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Rocket, CheckCircle, AlertCircle, Loader2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
 
 // Reuses the same Formspree form as the contact page; tagged with a distinct
 // subject so these leads can be filtered. Override via VITE_FORMSPREE_LEAD_ID.
@@ -79,6 +80,9 @@ export default function FreeWebsiteModal({ onClose }) {
           'Consent to be contacted': 'Yes',
         }),
       });
+      if (res.ok) {
+        trackEvent('generate_lead', { form: 'free_website', industry: form.industry || 'unspecified' });
+      }
       setStatus(res.ok ? 'success' : 'error');
     } catch {
       setStatus('error');

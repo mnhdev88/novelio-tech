@@ -5,12 +5,14 @@ import { Check, ArrowRight, Sparkles, ShieldCheck, HelpCircle } from 'lucide-rea
 import SEO from '../components/SEO';
 import CTABanner from '../components/home/CTABanner';
 import { PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ, PRICING_COMPARISON } from '../data/siteData';
+import { trackEvent } from '../utils/analytics';
 
 export default function PricingPage() {
   const [billing, setBilling] = useState('monthly'); // 'monthly' | 'yearly'
   const navigate = useNavigate();
 
   const choosePlan = (plan) => {
+    trackEvent('select_plan', { plan_id: plan.id, plan_name: plan.name, billing });
     if (plan.id === 'free') navigate('/signup?plan=free');
     else navigate(`/checkout?plan=${plan.id}&billing=${billing}`);
   };
