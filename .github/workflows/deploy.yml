@@ -57,3 +57,8 @@ jobs:
             .well-known/**
             cgi-bin/**
             .htpasswd
+
+      # Tell IndexNow engines (Bing, Yandex, Seznam, …) to re-crawl the live URLs.
+      # Runs only after a successful FTPS deploy so the key file + pages are already live.
+      - name: Ping IndexNow
+        run: npm run indexnow

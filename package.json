@@ -9,6 +9,7 @@
     "prerender": "node scripts/prerender.mjs",
     "gen:og": "node scripts/gen-og-image.mjs",
     "build:prerender": "vite build && node scripts/prerender.mjs",
+    "indexnow": "node scripts/indexnow-submit.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
