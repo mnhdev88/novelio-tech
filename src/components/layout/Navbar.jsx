@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, LayoutDashboard, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Handshake } from 'lucide-react';
 import { SERVICES } from '../../data/siteData';
 
 // Website dev, SEO, GBP, and lead gen stay out of the nav dropdown; they remain on
@@ -153,27 +153,9 @@ export default function Navbar() {
 
             {/* CTA + Hamburger */}
             <div className="flex items-center gap-3">
-              {user ? (
-                <>
-                  {user.role === 'admin' && (
-                    <Link to="/admin" className="hidden lg:inline-flex px-4 py-2.5 rounded-lg text-[16px] font-semibold text-[#475569] hover:text-[#1B3172] transition-all">
-                      Admin
-                    </Link>
-                  )}
-                  <Link to="/dashboard" className="hidden lg:inline-flex items-center gap-2 btn-primary text-[15px] py-3 px-6">
-                    <LayoutDashboard className="w-4 h-4" /> Dashboard
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link to="/login" className="hidden lg:inline-flex px-4 py-2.5 rounded-lg text-[16px] font-semibold text-[#475569] hover:text-[#1B3172] transition-all">
-                    Sign In
-                  </Link>
-                  <Link to="/pricing" className="hidden lg:inline-flex btn-primary text-[15px] py-3 px-6">
-                    Get Started
-                  </Link>
-                </>
-              )}
+              <Link to="/partners" className="hidden lg:inline-flex items-center gap-2 btn-primary text-[15px] py-3 px-6">
+                <Handshake className="w-4 h-4" /> Become a Partner
+              </Link>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="lg:hidden w-11 h-11 rounded-lg border border-slate-200 bg-white flex items-center justify-center text-[#1B3172] cursor-pointer"
@@ -232,6 +214,9 @@ export default function Navbar() {
         </div>
 
         <div className="px-6 pb-8 space-y-3">
+          <Link to="/partners" className="flex w-full items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#1B3172]">
+            <Handshake className="w-4 h-4" /> Become a Partner
+          </Link>
           {user ? (
             <>
               {user.role === 'admin' && (
