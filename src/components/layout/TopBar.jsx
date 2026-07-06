@@ -1,5 +1,6 @@
-import { Mail, Phone, Clock } from 'lucide-react';
+import { Mail, Phone, Clock, Handshake } from 'lucide-react';
 import { FaLinkedinIn, FaXTwitter, FaFacebookF, FaInstagram } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import { COMPANY } from '../../data/siteData';
 
 export default function TopBar() {
@@ -30,8 +31,16 @@ export default function TopBar() {
             </span>
           </div>
 
-          {/* Right — social icons */}
+          {/* Right — partner link + social icons */}
           <div className="flex items-center gap-3">
+            <Link
+              to="/partners"
+              className="flex items-center gap-1.5 text-white/65 hover:text-white transition-colors font-medium"
+            >
+              <Handshake className="w-3 h-3" />
+              Become a Partner
+            </Link>
+            <span className="w-px h-3.5 bg-white/20" aria-hidden="true" />
             {[
               { Icon: FaLinkedinIn, href: COMPANY.social.linkedin, label: 'LinkedIn' },
               { Icon: FaXTwitter,   href: COMPANY.social.twitter,  label: 'Twitter'  },

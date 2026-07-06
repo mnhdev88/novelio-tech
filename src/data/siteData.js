@@ -41,6 +41,17 @@ export const SERVICES = [
     features: ['Custom Web Design', 'Mobile-First Development', 'Core Web Vitals', 'CMS Integration', 'Landing Page Design', 'E-commerce Development'],
   },
   {
+    id: 'mobile-app-development',
+    slug: '/services/mobile-app-development',
+    icon: 'Smartphone',
+    title: 'Mobile App Development',
+    short: 'Mobile Apps',
+    tagline: 'Native-Quality Apps. Built to Scale.',
+    description: 'iOS, Android, and cross-platform mobile apps that customers actually use — fast, secure, and designed around your business goals, from MVP to App Store launch.',
+    color: 'from-fuchsia-600 to-indigo-600',
+    features: ['iOS & Android Development', 'Cross-Platform (React Native)', 'UI/UX App Design', 'API & Backend Integration', 'App Store Deployment', 'Maintenance & Support'],
+  },
+  {
     id: 'search-engine-optimization',
     slug: '/services/search-engine-optimization',
     icon: 'Search',

@@ -15,6 +15,7 @@ const AboutPage          = lazy(() => import('./pages/AboutPage'));
 const ServicesPage       = lazy(() => import('./pages/ServicesPage'));
 const ServiceDetailPage              = lazy(() => import('./pages/services/ServiceDetailPage'));
 const WebsiteDevelopmentPage         = lazy(() => import('./pages/services/WebsiteDevelopmentPage'));
+const MobileAppDevelopmentPage       = lazy(() => import('./pages/services/MobileAppDevelopmentPage'));
 const SearchEngineOptimizationPage   = lazy(() => import('./pages/services/SearchEngineOptimizationPage'));
 const PricingPage        = lazy(() => import('./pages/PricingPage'));
 const AuthPage           = lazy(() => import('./pages/portal/AuthPage'));
@@ -31,6 +32,7 @@ const TermsPage          = lazy(() => import('./pages/TermsPage'));
 const RefundPolicyPage   = lazy(() => import('./pages/RefundPolicyPage'));
 const DisclaimerPage     = lazy(() => import('./pages/DisclaimerPage'));
 const CareersPage        = lazy(() => import('./pages/CareersPage'));
+const PartnerPage        = lazy(() => import('./pages/PartnerPage'));
 const LocationHubPage    = lazy(() => import('./pages/LocationHubPage'));
 const LocationPage       = lazy(() => import('./pages/LocationPage'));
 const BestWebDevNewarkPage = lazy(() => import('./pages/BestWebDevNewarkPage'));
@@ -63,6 +65,7 @@ function Layout() {
             <Route path="/about"                   element={<AboutPage />} />
             <Route path="/services"                element={<ServicesPage />} />
             <Route path="/services/website-development"          element={<WebsiteDevelopmentPage />} />
+            <Route path="/services/mobile-app-development"        element={<MobileAppDevelopmentPage />} />
             <Route path="/services/search-engine-optimization"  element={<SearchEngineOptimizationPage />} />
             <Route path="/services/:serviceId"                   element={<ServiceDetailPage />} />
             <Route path="/pricing"                 element={<PricingPage />} />
@@ -84,6 +87,7 @@ function Layout() {
             <Route path="/refund-policy"           element={<RefundPolicyPage />} />
             <Route path="/disclaimer"              element={<DisclaimerPage />} />
             <Route path="/careers"                 element={<CareersPage />} />
+            <Route path="/partners"                element={<PartnerPage />} />
             <Route path="/locations"               element={<LocationHubPage />} />
             <Route path="/locations/:state"        element={<LocationPage type="state" />} />
             <Route path="/locations/:state/:city"  element={<LocationPage type="city" />} />

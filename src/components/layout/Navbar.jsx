@@ -3,9 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, LayoutDashboard, ArrowRight } from 'lucide-react';
 import { SERVICES } from '../../data/siteData';
 
-// The first four services (website dev, SEO, GBP, lead gen) are excluded from
-// the nav dropdown; they remain on /services and in the growth plans.
-const NAV_SERVICES = SERVICES.slice(4);
+// Website dev, SEO, GBP, and lead gen stay out of the nav dropdown; they remain on
+// /services and in the growth plans. Mobile App Development is featured at the top of
+// the dropdown, followed by the remaining supporting services.
+const NAV_SERVICES = [
+  ...SERVICES.filter((s) => s.id === 'mobile-app-development'),
+  ...SERVICES.slice(5),
+];
 import { useAuth } from '../../portal/AuthContext';
 import TopBar from './TopBar';
 

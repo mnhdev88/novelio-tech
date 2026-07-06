@@ -1,13 +1,13 @@
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase } from 'lucide-react';
+import { ArrowRight, Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase, Smartphone } from 'lucide-react';
 import { SERVICES } from '../data/siteData';
 import ProcessSection from '../components/home/ProcessSection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import CTABanner from '../components/home/CTABanner';
 
-const ICON_MAP = { Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase };
+const ICON_MAP = { Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase, Smartphone };
 
 export default function ServicesPage() {
   return (

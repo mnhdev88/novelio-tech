@@ -127,6 +127,7 @@ export default function Footer() {
                 { label: 'How It Works', to: '/#how-it-works' },
                 { label: 'Blog & Resources', to: '/blog' },
                 { label: 'Careers', to: '/careers' },
+                { label: 'Become a Partner', to: '/partners' },
                 { label: 'Contact Us', to: '/contact' },
                 { label: 'Novelio vs Agencies', to: '/compare/traditional-agency' },
                 { label: 'Novelio vs Freelancers', to: '/compare/freelancer' },

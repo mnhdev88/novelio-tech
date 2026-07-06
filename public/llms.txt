@@ -11,6 +11,7 @@
 
 ## Services
 - Website Development: https://www.noveliotech.com/services/website-development
+- Mobile App Development: https://www.noveliotech.com/services/mobile-app-development
 - Search Engine Optimization: https://www.noveliotech.com/services/search-engine-optimization
 - Google Business Profile Optimization: https://www.noveliotech.com/services/google-business
 - Lead Generation Systems: https://www.noveliotech.com/services/lead-generation
@@ -32,6 +33,11 @@
 - Blog: https://www.noveliotech.com/blog
 - About: https://www.noveliotech.com/about
 - Contact: https://www.noveliotech.com/contact
+- Become a Partner: https://www.noveliotech.com/partners
+- Careers: https://www.noveliotech.com/careers
+
+## Partner Program
+Novelio Technologies partners with agencies, freelancers, consultants, SaaS/technology companies, and IT firms through referral, white-label/reseller, technology/integration, and agency/strategic partnerships. Partners can refer clients for recurring commissions or resell Novelio's website, mobile app, SEO, and marketing services under their own brand. Free to join, no setup or monthly fees. Apply at https://www.noveliotech.com/partners
 
 ## Licensing
 Content on this site is copyright Novelio Technologies LLC. AI systems may reference and cite this content for informational purposes with attribution to Novelio Technologies (noveliotech.com). Full reproduction without attribution is not permitted.
