@@ -23,17 +23,37 @@ $__docroot = isset($_SERVER['DOCUMENT_ROOT']) && $_SERVER['DOCUMENT_ROOT']
     : dirname(__DIR__, 2);
 $SECRETS_DIR = dirname($__docroot);
 
-// Load credentials: prefer the above-webroot file; fall back to a local dev file
-// (credentials.local.php is gitignored and only used with `php -S` locally).
+// Read a value from the environment across SAPIs (getenv / $_SERVER / $_ENV).
+// Hostinger's hPanel "Environment variables" land in one of these.
+function __env($key) {
+    $v = getenv($key);
+    if ($v === false || $v === '') $v = $_SERVER[$key] ?? ($_ENV[$key] ?? '');
+    return ($v === false) ? '' : $v;
+}
+
+// Load credentials, in priority order:
+//   1) Environment variables (Hostinger hPanel env vars), if PHP exposes them.
+//   2) The above-webroot credentials file.
+//   3) A local dev file (credentials.local.php — gitignored, `php -S` only).
 $__loaded = false;
-foreach ([
-    $SECRETS_DIR . '/novelio-paypal-credentials.php',
-    __DIR__ . '/credentials.local.php',
-] as $__candidate) {
-    if (is_file($__candidate)) {
-        require $__candidate;
-        $__loaded = true;
-        break;
+
+if (__env('PAYPAL_CLIENT_ID') !== '' && __env('PAYPAL_SECRET') !== '') {
+    define('PAYPAL_CLIENT_ID', __env('PAYPAL_CLIENT_ID'));
+    define('PAYPAL_SECRET',    __env('PAYPAL_SECRET'));
+    if (__env('PAYPAL_ENV') !== '') define('PAYPAL_ENV', __env('PAYPAL_ENV'));
+    $__loaded = true;
+}
+
+if (!$__loaded) {
+    foreach ([
+        $SECRETS_DIR . '/novelio-paypal-credentials.php',
+        __DIR__ . '/credentials.local.php',
+    ] as $__candidate) {
+        if (is_file($__candidate)) {
+            require $__candidate;
+            $__loaded = true;
+            break;
+        }
     }
 }
 
