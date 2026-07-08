@@ -1,6 +1,24 @@
 Options -MultiViews
 RewriteEngine On
 
+# ── 301 — legacy / dead URLs → live pages (SINGLE hop from ANY host variant) ────
+# Placed BEFORE the host-canonical rule and using ABSOLUTE https://www targets so
+# even the non-www / http variant lands on the final URL in ONE hop — no host-fix
+# then path-fix chain. 2-hop chains are what stall GSC's "Page with redirect"
+# validation; a single 301 straight to a live 200 page is what clears it fast.
+#
+# Soft-404 legacy pages (were SPA-fallback 200s, or IndustryPage's client-side
+# <Navigate to="/"> for an unknown sector — neither is a redirect GSC will pass):
+RewriteRule ^industries/salon-beauty-newark-nj/?$                 https://www.noveliotech.com/best-website-developer-in-newark [R=301,L,NC]
+RewriteRule ^smb-business-growth/?$                               https://www.noveliotech.com/blog/why-small-business-needs-website [R=301,L,NC]
+RewriteRule ^website-design-california-bookkeeping-accounting/?$  https://www.noveliotech.com/services/website-development [R=301,L,NC]
+#
+# Old home / index aliases — indexed as non-www, so host-fix→path-fix chained to
+# 2 hops before; absolute target here collapses them to one:
+RewriteRule ^index\.php$                                          https://www.noveliotech.com/ [R=301,L,NC]
+RewriteRule ^home/?$                                             https://www.noveliotech.com/ [R=301,L,NC]
+RewriteRule ^home-2/?$                                           https://www.noveliotech.com/ [R=301,L,NC]
+
 # ── Canonical host + scheme: force https://www.noveliotech.com in ONE hop ───
 # Every canonical tag points at https://www.noveliotech.com, so any other
 # variant (http/https × www/non-www) must 301 there. Doing it in one combined
@@ -28,7 +46,7 @@ RewriteRule ^tag/.*$                                             /blog [R=301,L]
 RewriteRule ^blog-grid/?$                                        /blog [R=301,L]
 
 # ── 301 — old PHP / HTML pages → React equivalents ─────────────────────────
-RewriteRule ^index\.php$                                         / [R=301,L]
+# (index.php is handled single-hop in the absolute block at the top of this file)
 RewriteRule ^about\.php$                                         /about [R=301,L]
 RewriteRule ^contact\.php$                                       /contact [R=301,L]
 RewriteRule ^services\.php$                                      /services [R=301,L]
@@ -46,8 +64,7 @@ RewriteRule ^results\.html$                                      /about [R=301,L
 RewriteRule ^cdn-cgi/.*$                                         /contact [R=301,L]
 
 # ── 301 — old WordPress page slugs ─────────────────────────────────────────
-RewriteRule ^home/?$                                             / [R=301,L]
-RewriteRule ^home-2/?$                                           / [R=301,L]
+# (home + home-2 are handled single-hop in the absolute block at the top of this file)
 # Old WP cookie-policy page → /privacy (PrivacyPage covers cookies; no React route exists)
 RewriteRule ^cookie-policy/?$                                    /privacy [R=301,L]
 
