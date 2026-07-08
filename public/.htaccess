@@ -7,11 +7,15 @@ RewriteEngine On
 # then path-fix chain. 2-hop chains are what stall GSC's "Page with redirect"
 # validation; a single 301 straight to a live 200 page is what clears it fast.
 #
-# Soft-404 legacy pages (were SPA-fallback 200s, or IndustryPage's client-side
-# <Navigate to="/"> for an unknown sector — neither is a redirect GSC will pass):
+# Soft-404 legacy pages: the SPA fallback served the shell and React's NotFound
+# set a client-side noindex (GSC "Excluded by noindex tag"), or IndustryPage did
+# <Navigate to="/"> for an unknown sector. None is a real page, so 301 each to the
+# closest live one. NOTE: /website-design-*-bookkeeping-accounting/ are NOT here —
+# those are real hand-authored landing pages (public/…/index.html); do not redirect.
 RewriteRule ^industries/salon-beauty-newark-nj/?$                 https://www.noveliotech.com/best-website-developer-in-newark [R=301,L,NC]
 RewriteRule ^smb-business-growth/?$                               https://www.noveliotech.com/blog/why-small-business-needs-website [R=301,L,NC]
-RewriteRule ^website-design-california-bookkeeping-accounting/?$  https://www.noveliotech.com/services/website-development [R=301,L,NC]
+RewriteRule ^what-we-do\.html$                                    https://www.noveliotech.com/services [R=301,L,NC]
+RewriteRule ^kpo-services\.php$                                   https://www.noveliotech.com/services [R=301,L,NC]
 #
 # Old home / index aliases — indexed as non-www, so host-fix→path-fix chained to
 # 2 hops before; absolute target here collapses them to one:
@@ -85,6 +89,17 @@ RewriteRule ^how-to-increase-your-youtube-subscribers/?$                  /blog 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
 RewriteRule ^(.+?)/?$ /$1/index.html [L]
+
+# ── Real directory with no index.html → SPA shell (avoid Apache 403) ─────────
+# /blog/ physically exists only to hold post hero images (public/blog/*.jpg) and
+# ships no index.html of its own, so the server returns 403 (Options -Indexes) and
+# the SPA fallback below skips it (its !-d guard refuses directories). Serve the
+# shell here so React renders the blog listing client-side. Directories that DO
+# ship an index.html (the static bookkeeping landing pages) match the prerender
+# rule above and never reach this rule.
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html !-f
+RewriteRule ^ index.html [L]
 
 # ── SPA fallback (must be last) ─────────────────────────────────────────────
 RewriteCond %{REQUEST_FILENAME} !-f
