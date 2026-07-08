@@ -20,6 +20,7 @@ const SearchEngineOptimizationPage   = lazy(() => import('./pages/services/Searc
 const PricingPage        = lazy(() => import('./pages/PricingPage'));
 const AuthPage           = lazy(() => import('./pages/portal/AuthPage'));
 const CheckoutPage       = lazy(() => import('./pages/portal/CheckoutPage'));
+const CustomPaymentPage  = lazy(() => import('./pages/portal/CustomPaymentPage'));
 const DashboardPage      = lazy(() => import('./pages/portal/DashboardPage'));
 const AdminPage          = lazy(() => import('./pages/portal/AdminPage'));
 const BlogPage           = lazy(() => import('./pages/BlogPage'));
@@ -74,6 +75,7 @@ function Layout() {
             <Route path="/login"                   element={<AuthPage mode="login" />} />
             <Route path="/signup"                  element={<AuthPage mode="signup" />} />
             <Route path="/checkout"                element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+            <Route path="/pay"                     element={<CustomPaymentPage />} />
             <Route path="/dashboard"               element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
             <Route path="/admin"                   element={<ProtectedRoute adminOnly><AdminPage /></ProtectedRoute>} />
 

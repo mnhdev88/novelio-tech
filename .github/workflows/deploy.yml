@@ -38,6 +38,12 @@ jobs:
       # /usr/bin/google-chrome (preinstalled on the runner).
       - name: Build + prerender
         run: npm run build:prerender
+        env:
+          # PUBLIC PayPal client id — Vite inlines VITE_* vars at build time.
+          # Add these as repo secrets (Settings → Secrets and variables → Actions).
+          # Leaving VITE_PAYPAL_CLIENT_ID empty keeps checkout in Demo mode.
+          VITE_PAYPAL_CLIENT_ID: ${{ secrets.VITE_PAYPAL_CLIENT_ID }}
+          VITE_PAYPAL_ENV: ${{ secrets.VITE_PAYPAL_ENV }}
 
       - name: Deploy dist/ to Hostinger over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -57,6 +63,9 @@ jobs:
             .well-known/**
             cgi-bin/**
             .htpasswd
+            # Local-dev PayPal secret — must never reach the server (prod uses the
+            # credentials file ABOVE public_html). Blocked by api/.htaccess too.
+            **/credentials.local.php
 
       # Tell IndexNow engines (Bing, Yandex, Seznam, …) to re-crawl the live URLs.
       # Runs only after a successful FTPS deploy so the key file + pages are already live.

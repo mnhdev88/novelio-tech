@@ -17,6 +17,10 @@ dist-ssr
 .env.*
 !.env.example
 
+# PayPal secrets — real credentials never go in git (see PAYPAL-SETUP.md)
+public/api/paypal/credentials.local.php
+novelio-paypal-credentials.php
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

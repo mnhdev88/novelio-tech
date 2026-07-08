@@ -1,11 +1,12 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Lock, ArrowRight, ArrowLeft, ShieldCheck, CreditCard, Loader2 } from 'lucide-react';
+import { Check, Lock, ArrowRight, ArrowLeft, ShieldCheck, CreditCard, Loader2, AlertCircle } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { useAuth } from '../../portal/AuthContext';
 import { createSubscription } from '../../portal/store';
 import { PRICING_PLANS, PRICING_ADDONS } from '../../data/siteData';
+import { loadPayPalSdk, paypalEnabled, PAYPAL_ENV } from '../../utils/paypal';
 
 export default function CheckoutPage() {
   const { user } = useAuth();
@@ -19,6 +20,7 @@ export default function CheckoutPage() {
   const [addonIds, setAddonIds] = useState([]);
   const [card, setCard] = useState({ name: '', number: '', exp: '', cvc: '' });
   const [status, setStatus] = useState('idle'); // idle | processing
+  const [payError, setPayError] = useState('');
 
   const base = billing === 'yearly' ? plan.priceYearly : plan.priceMonthly;
   const addonTotal = useMemo(
@@ -45,6 +47,87 @@ export default function CheckoutPage() {
     }, 1100);
   };
 
+  // ── Real PayPal flow (active when VITE_PAYPAL_CLIENT_ID is set) ──────────────
+  // The button reads the LATEST selection via a ref so we never have to re-render
+  // the SDK button when the user toggles billing/add-ons.
+  const paypalRef = useRef(null);
+  const selectionRef = useRef({ planId, billing, addonIds });
+  useEffect(() => {
+    selectionRef.current = { planId, billing, addonIds };
+  }, [planId, billing, addonIds]);
+  const usePayPal = paypalEnabled && Boolean(user);
+
+  useEffect(() => {
+    if (!usePayPal) return;
+    let cancelled = false;
+    let buttons;
+
+    loadPayPalSdk()
+      .then((paypal) => {
+        if (cancelled || !paypalRef.current) return;
+        paypalRef.current.innerHTML = '';
+        buttons = paypal.Buttons({
+          style: { layout: 'vertical', color: 'gold', shape: 'pill', label: 'paypal', height: 48 },
+
+          // Server sets the amount — the browser can't tamper with the price.
+          createOrder: async () => {
+            setPayError('');
+            const sel = selectionRef.current;
+            const res = await fetch('/api/paypal/create-order.php', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(sel),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.id) throw new Error(data.error || 'Could not start payment');
+            return data.id;
+          },
+
+          // Capture + verify server-side before we trust the payment.
+          onApprove: async (data) => {
+            setStatus('processing');
+            const sel = selectionRef.current;
+            try {
+              const res = await fetch('/api/paypal/capture-order.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  orderID: data.orderID,
+                  ...sel,
+                  customer: { id: user.id, name: user.name, email: user.email },
+                }),
+              });
+              const result = await res.json();
+              if (!res.ok || result.status !== 'COMPLETED') {
+                setStatus('idle');
+                setPayError(result.error || 'Payment could not be confirmed.');
+                return;
+              }
+              createSubscription({ userId: user.id, planId: sel.planId, billing: sel.billing, addonIds: sel.addonIds });
+              navigate('/dashboard?welcome=1', { replace: true });
+            } catch {
+              setStatus('idle');
+              setPayError('Something went wrong confirming your payment. Please contact us before retrying.');
+            }
+          },
+
+          onCancel: () => setStatus('idle'),
+          onError: (err) => {
+            console.error('[paypal]', err);
+            setStatus('idle');
+            setPayError('Payment error. Please try again.');
+          },
+        });
+        buttons.render(paypalRef.current);
+      })
+      .catch(() => setPayError('Could not load PayPal. Refresh the page and try again.'));
+
+    return () => {
+      cancelled = true;
+      try { buttons?.close(); } catch { /* ignore */ }
+    };
+  }, [usePayPal, user, navigate]);
+
   return (
     <main className="pt-20">
       <SEO title={`Checkout — ${plan.name} plan`} canonical="/checkout" noindex />
@@ -55,11 +138,23 @@ export default function CheckoutPage() {
             <ArrowLeft className="w-4 h-4" /> Back to plans
           </Link>
 
-          {/* Demo banner */}
-          <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
-            <ShieldCheck className="w-4 h-4 shrink-0" />
-            <span><strong>Demo mode:</strong> no real payment is processed. Enter any details to complete the flow.</span>
-          </div>
+          {/* Payment-mode banner */}
+          {!paypalEnabled ? (
+            <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
+              <ShieldCheck className="w-4 h-4 shrink-0" />
+              <span><strong>Demo mode:</strong> no real payment is processed. Enter any details to complete the flow.</span>
+            </div>
+          ) : PAYPAL_ENV === 'sandbox' ? (
+            <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
+              <ShieldCheck className="w-4 h-4 shrink-0" />
+              <span><strong>Sandbox test mode:</strong> use a PayPal sandbox account — no real money moves.</span>
+            </div>
+          ) : (
+            <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-green-800 text-sm">
+              <ShieldCheck className="w-4 h-4 shrink-0" />
+              <span>Secure checkout. Your payment is processed by PayPal — we never see your card details.</span>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
             {/* Left — config + payment */}
@@ -116,24 +211,45 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              {/* Payment (demo) */}
-              <form id="pay-form" onSubmit={handlePay} className="bg-white rounded-2xl border border-slate-200 p-6">
-                <h2 className="font-heading font-700 text-[#1B3172] mb-4 flex items-center gap-2">
-                  <CreditCard className="w-5 h-5 text-brand-purple" /> Payment details
-                </h2>
-                <div className="space-y-3">
-                  <input required placeholder="Name on card" value={card.name} onChange={setCardField('name')}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
-                  <input required placeholder="Card number — e.g. 4242 4242 4242 4242" value={card.number} onChange={setCardField('number')}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
-                  <div className="grid grid-cols-2 gap-3">
-                    <input required placeholder="MM / YY" value={card.exp} onChange={setCardField('exp')}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
-                    <input required placeholder="CVC" value={card.cvc} onChange={setCardField('cvc')}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
-                  </div>
+              {/* Payment */}
+              {paypalEnabled ? (
+                <div className="bg-white rounded-2xl border border-slate-200 p-6">
+                  <h2 className="font-heading font-700 text-[#1B3172] mb-2 flex items-center gap-2">
+                    <Lock className="w-5 h-5 text-brand-purple" /> Payment
+                  </h2>
+                  {user ? (
+                    <p className="text-sm text-[#64748b]">
+                      Review your order on the right, then complete your payment securely with PayPal
+                      (or a debit/credit card via PayPal). You’ll confirm the exact amount before paying.
+                    </p>
+                  ) : (
+                    <p className="text-sm text-[#64748b]">
+                      <Link to={`/login?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`} className="text-brand-purple font-semibold underline">Sign in</Link>{' '}
+                      or{' '}
+                      <Link to={`/signup?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`} className="text-brand-purple font-semibold underline">create an account</Link>{' '}
+                      to complete your payment.
+                    </p>
+                  )}
                 </div>
-              </form>
+              ) : (
+                <form id="pay-form" onSubmit={handlePay} className="bg-white rounded-2xl border border-slate-200 p-6">
+                  <h2 className="font-heading font-700 text-[#1B3172] mb-4 flex items-center gap-2">
+                    <CreditCard className="w-5 h-5 text-brand-purple" /> Payment details
+                  </h2>
+                  <div className="space-y-3">
+                    <input required placeholder="Name on card" value={card.name} onChange={setCardField('name')}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                    <input required placeholder="Card number — e.g. 4242 4242 4242 4242" value={card.number} onChange={setCardField('number')}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                    <div className="grid grid-cols-2 gap-3">
+                      <input required placeholder="MM / YY" value={card.exp} onChange={setCardField('exp')}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                      <input required placeholder="CVC" value={card.cvc} onChange={setCardField('cvc')}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                    </div>
+                  </div>
+                </form>
+              )}
             </motion.div>
 
             {/* Right — order summary */}
@@ -171,14 +287,42 @@ export default function CheckoutPage() {
                   {billing === 'yearly' ? 'Billed once per year (12 months).' : 'Billed monthly. 12-month plan.'}
                 </p>
 
-                <button
-                  type="submit" form="pay-form" disabled={status === 'processing'}
-                  className="w-full mt-5 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-                >
-                  {status === 'processing'
-                    ? <><Loader2 className="w-4 h-4 animate-spin" /> Processing…</>
-                    : <><Lock className="w-4 h-4" /> Pay ${dueToday} <ArrowRight className="w-4 h-4" /></>}
-                </button>
+                {paypalEnabled ? (
+                  <div className="mt-5">
+                    {!user ? (
+                      <Link
+                        to={`/login?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`}
+                        className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all cursor-pointer"
+                      >
+                        <Lock className="w-4 h-4" /> Sign in to pay ${dueToday} <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    ) : (
+                      <>
+                        {status === 'processing' && (
+                          <div className="mb-3 flex items-center justify-center gap-2 text-sm text-[#475569]">
+                            <Loader2 className="w-4 h-4 animate-spin" /> Confirming your payment…
+                          </div>
+                        )}
+                        {/* PayPal renders its Smart Buttons here */}
+                        <div ref={paypalRef} />
+                      </>
+                    )}
+                    {payError && (
+                      <div className="mt-3 flex items-start gap-2 rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-xs text-red-700">
+                        <AlertCircle className="w-4 h-4 shrink-0 mt-px" /> <span>{payError}</span>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    type="submit" form="pay-form" disabled={status === 'processing'}
+                    className="w-full mt-5 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                  >
+                    {status === 'processing'
+                      ? <><Loader2 className="w-4 h-4 animate-spin" /> Processing…</>
+                      : <><Lock className="w-4 h-4" /> Pay ${dueToday} <ArrowRight className="w-4 h-4" /></>}
+                  </button>
+                )}
 
                 <ul className="mt-5 space-y-2">
                   {['Website included free', 'We confirm scope before billing', 'Full ownership after 12 months'].map((t) => (

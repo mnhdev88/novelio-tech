@@ -1,0 +1,12 @@
+# Defense in depth for the PayPal API folder.
+# The order endpoints (create-order.php / capture-order.php) are the only files
+# meant to be reached over the web. Everything else here is internal.
+
+# The site-wide RewriteEngine also applies inside this folder; leave real .php
+# files alone (the parent .htaccess only rewrites requests for MISSING files).
+
+# Block direct access to includes, templates, credentials and any logs, even if
+# one is ever mistakenly copied into the web root.
+<FilesMatch "^(_.*\.php|credentials(\.example|\.local)?\.php|.*\.log)$">
+    Require all denied
+</FilesMatch>
