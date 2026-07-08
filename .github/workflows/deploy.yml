@@ -12,7 +12,9 @@ on:
 
 concurrency:
   group: deploy-main
-  cancel-in-progress: true
+  # false: never cancel a running deploy mid-FTP-upload (that leaves the server
+  # sync in a bad state). Queued pushes wait and run in order instead.
+  cancel-in-progress: false
 
 jobs:
   build-deploy:
@@ -39,11 +41,12 @@ jobs:
       - name: Build + prerender
         run: npm run build:prerender
         env:
-          # PUBLIC PayPal client id — Vite inlines VITE_* vars at build time.
-          # Add these as repo secrets (Settings → Secrets and variables → Actions).
-          # Leaving VITE_PAYPAL_CLIENT_ID empty keeps checkout in Demo mode.
-          VITE_PAYPAL_CLIENT_ID: ${{ secrets.VITE_PAYPAL_CLIENT_ID }}
-          VITE_PAYPAL_ENV: ${{ secrets.VITE_PAYPAL_ENV }}
+          # PUBLIC PayPal client id — safe to commit (it's sent to every browser).
+          # Baked in directly so the build no longer depends on a GitHub secret.
+          # Vite inlines VITE_* vars at build time. To go back to sandbox, change
+          # these two values (client id + 'sandbox') and push.
+          VITE_PAYPAL_CLIENT_ID: AQDadamNsJxxUrmtABEFN6k7n2JF88aJcqOYVFq3WBvebApo7wQElW0mIPCKQnM9MMyqDRPv8Vmrhxmo
+          VITE_PAYPAL_ENV: live
 
       - name: Deploy dist/ to Hostinger over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
