@@ -1,7 +1,7 @@
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Award, Heart, Lightbulb, Shield, Users, Target, Rocket, ArrowRight } from 'lucide-react';
+import { Award, Lightbulb, Shield, Users, Target, Rocket, ArrowRight } from 'lucide-react';
 import { STATS } from '../data/siteData';
 import CTABanner from '../components/home/CTABanner';
 
@@ -11,15 +11,6 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay },
   viewport: { once: true },
 });
-
-const milestones = [
-  { year: '2014', title: 'Founded', desc: 'Novelio Technologies was founded with a vision to make enterprise-level digital marketing accessible to every business.' },
-  { year: '2016', title: 'First 100 Clients', desc: 'Crossed the milestone of 100 satisfied clients across SEO, PPC, and web development services.' },
-  { year: '2018', title: 'Google Partner', desc: 'Achieved Google Partner certification, recognizing our PPC expertise and client performance standards.' },
-  { year: '2020', title: 'Global Expansion', desc: 'Expanded service delivery to clients across North America, UK, Middle East, and South Asia.' },
-  { year: '2022', title: 'KPO Division Launch', desc: 'Launched our Knowledge Process Outsourcing division, adding research and data services to our portfolio.' },
-  { year: '2024', title: '500+ Projects', desc: 'Delivered over 500 projects and counting. 200+ active clients. 50+ specialist team members.' },
-];
 
 // The 9-stage business growth framework we consult and deliver against.
 const FRAMEWORK = [
@@ -35,12 +26,11 @@ const FRAMEWORK = [
 ];
 
 const values = [
-  { icon: Shield, title: 'Integrity', desc: 'We operate with complete transparency. What we promise, we deliver.' },
-  { icon: Lightbulb, title: 'Innovation', desc: 'Staying ahead of algorithms and trends to give our clients a competitive edge.' },
-  { icon: Target, title: 'Results', desc: 'Every strategy is designed around measurable outcomes that impact your bottom line.' },
-  { icon: Users, title: 'Collaboration', desc: 'We work as an extension of your team, not as an external vendor.' },
-  { icon: Heart, title: 'Client-First', desc: 'Your success is our success. Your goals define our priorities.' },
-  { icon: Award, title: 'Excellence', desc: 'We hold ourselves to the highest standards in every deliverable.' },
+  { icon: Shield, title: 'Integrity', desc: 'Complete transparency. What we promise, we deliver.' },
+  { icon: Lightbulb, title: 'Innovation', desc: 'Staying ahead of trends to keep our clients competitive.' },
+  { icon: Target, title: 'Results', desc: 'Every strategy is built around measurable outcomes.' },
+  { icon: Users, title: 'Collaboration', desc: 'We work as an extension of your team, not a vendor.' },
+  { icon: Award, title: 'Excellence', desc: 'The highest standard in every deliverable.' },
 ];
 
 export default function AboutPage() {
@@ -59,11 +49,14 @@ export default function AboutPage() {
         <div className="container-xl relative z-10 text-center">
           <motion.div {...fadeUp(0)}>
             <div className="section-label mx-auto mb-4">About Us</div>
+            <div className="inline-flex items-center gap-2 mx-auto mb-5 px-4 py-1.5 rounded-full border border-brand-purple/30 bg-white/60 backdrop-blur text-sm font-heading font-700 gradient-text">
+              Use Before You Trust. Trust Before You Pay.
+            </div>
             <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
-              Building Digital <span className="gradient-text">Success Stories</span>
+              Building Business <span className="gradient-text">Growth Systems</span>
             </h1>
             <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed">
-              We're more than a digital marketing agency. We're strategic partners committed to building sustainable digital growth for businesses that want to lead their markets.
+              We're not a marketing agency. We're growth consultants — strategic partners committed to building complete, sustainable growth systems for businesses that want to lead their markets. You see results before you commit financially — no leap of faith required.
             </p>
           </motion.div>
         </div>
@@ -76,15 +69,15 @@ export default function AboutPage() {
             {[
               {
                 label: 'Our Mission',
-                title: 'Democratize Digital Success',
-                desc: 'To make enterprise-level digital marketing expertise accessible to businesses of every size, empowering them to compete and win online through data-driven strategies, transparency, and genuine partnership.',
+                title: 'Democratize Business Growth',
+                desc: 'To make enterprise-level growth strategy accessible to businesses of every size — empowering them to compete and win through data-driven systems, transparency, and genuine partnership.',
                 color: 'from-purple-600 to-blue-600',
                 icon: Target,
               },
               {
                 label: 'Our Vision',
-                title: 'The Most Trusted Digital Partner',
-                desc: 'To become the most trusted digital growth partner globally — known not just for results, but for the integrity, innovation, and client-obsession that drives every campaign we run.',
+                title: 'The Most Trusted Growth Partner',
+                desc: 'To become the most trusted growth partner globally — known not just for results, but for the integrity, innovation, and client-obsession behind every system we build.',
                 color: 'from-pink-600 to-orange-500',
                 icon: Rocket,
               },
@@ -117,40 +110,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story Timeline */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
-        <div className="line-grid absolute inset-0 opacity-30" />
-        <div className="container-xl relative z-10">
-          <motion.div {...fadeUp()} className="text-center mb-16">
-            <div className="section-label mx-auto mb-4">Our Journey</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
-              A Decade of <span className="gradient-text">Digital Excellence</span>
-            </h2>
-          </motion.div>
-
-          <div className="relative max-w-3xl mx-auto">
-            {/* Vertical line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-brand-purple via-brand-blue to-brand-cyan-bright opacity-40" />
-            <div className="space-y-8">
-              {milestones.map((m, i) => (
-                <motion.div key={i} {...fadeUp(i * 0.1)} className="pl-20 relative">
-                  <div className="absolute left-5 top-3 w-7 h-7 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow text-xs font-800 text-white">
-                    ✦
-                  </div>
-                  <div className="glass-card gradient-border rounded-2xl p-6">
-                    <span className="gradient-text font-heading font-800 text-2xl">{m.year}</span>
-                    <h4 className="text-[#1B3172] font-heading font-700 text-xl mt-1 mb-2">{m.title}</h4>
-                    <p className="text-[#64748b] text-sm leading-relaxed">{m.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Core Values */}
-      <section className="section-pad bg-dark relative overflow-hidden">
+      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
         <div className="orb orb-pink w-96 h-96 -top-48 right-0 opacity-10" />
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-16">
