@@ -61,7 +61,10 @@ jobs:
           protocol: ftps
           port: 21
           local-dir: ./dist/
-          server-dir: public_html/
+          # This FTP account's home IS the web root (it directly contains
+          # index.html, assets/, etc.), so deploy to home — NOT public_html/,
+          # which would bury the build in an unserved subfolder.
+          server-dir: ./
           # Protect Hostinger-managed paths from the sync's delete step.
           exclude: |
             **/.git*
@@ -70,6 +73,10 @@ jobs:
             .well-known/**
             cgi-bin/**
             .htpasswd
+            # Hostinger internal build/deploy metadata — never touch.
+            .builds/**
+            # Stray earlier deploy that landed in a subfolder; leave it be.
+            public_html/**
             # Local-dev PayPal secret — must never reach the server (prod uses the
             # credentials file ABOVE public_html). Blocked by api/.htaccess too.
             **/credentials.local.php
