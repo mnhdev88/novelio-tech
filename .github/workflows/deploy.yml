@@ -51,13 +51,17 @@ jobs:
       - name: Deploy dist/ to Hostinger over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          # Non-secret and error-prone as inputs, so baked in directly:
+          #  - server is the Hostinger FTP IP (public via DNS), NO ftp:// prefix.
+          #  - server-dir MUST end with a trailing slash or the action fails.
+          # Only username + password stay as encrypted GitHub secrets.
+          server: 145.223.104.32
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
           local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: public_html/
           # Protect Hostinger-managed paths from the sync's delete step.
           exclude: |
             **/.git*
