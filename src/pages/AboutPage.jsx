@@ -2,8 +2,37 @@ import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Award, Lightbulb, Shield, Users, Target, Rocket, ArrowRight } from 'lucide-react';
-import { STATS } from '../data/siteData';
+import { FaLinkedinIn } from 'react-icons/fa6';
+import { STATS, COMPANY } from '../data/siteData';
 import CTABanner from '../components/home/CTABanner';
+
+// Real leadership — verifiable person, title, and LinkedIn (E-E-A-T signal).
+const FOUNDER = {
+  name: 'Ajay Tyagi',
+  title: 'Executive Director',
+  linkedin: 'https://in.linkedin.com/in/ak-tyagi',
+  initials: 'AT',
+  // TODO: replace initials avatar with a real headshot at /public/team/ajay-tyagi.jpg — a real photo is a strong trust signal.
+  photo: null,
+};
+
+// Organization + founder Person schema so Google can attribute the site to a real, named individual.
+const ABOUT_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: COMPANY.name,
+  url: COMPANY.website,
+  email: COMPANY.email,
+  telephone: COMPANY.phone,
+  founder: {
+    '@type': 'Person',
+    name: FOUNDER.name,
+    jobTitle: FOUNDER.title,
+    worksFor: { '@type': 'Organization', name: COMPANY.name },
+    sameAs: [FOUNDER.linkedin],
+  },
+  sameAs: Object.values(COMPANY.social),
+};
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -40,6 +69,7 @@ export default function AboutPage() {
         title="About Us — Your Dedicated Business Growth Partner"
         description="Novelio Technologies LLC is a dedicated business growth partner serving 200+ small businesses worldwide. Learn our story, team, and values."
         canonical="/about"
+        schema={ABOUT_SCHEMA}
       />
       {/* Hero */}
       <section className="section-pad relative overflow-hidden bg-dark">
@@ -58,6 +88,55 @@ export default function AboutPage() {
             <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed">
               We're not a marketing agency. We're growth consultants — strategic partners committed to building complete, sustainable growth systems for businesses that want to lead their markets. You see results before you commit financially — no leap of faith required.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Meet the Founder — real, named leadership (E-E-A-T) */}
+      <section className="section-pad bg-white relative overflow-hidden">
+        <div className="dot-grid absolute inset-0 opacity-30" />
+        <div className="container-xl relative z-10 max-w-4xl">
+          <motion.div {...fadeUp()} className="text-center mb-12">
+            <div className="section-label mx-auto mb-4">Who's Behind Novelio</div>
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172]">
+              Meet the <span className="gradient-text">Founder</span>
+            </h2>
+          </motion.div>
+
+          <motion.div {...fadeUp(0.1)}
+            className="glass-card gradient-border rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+            {/* Avatar — swap for a real headshot when available */}
+            <div className="flex-shrink-0 text-center">
+              {FOUNDER.photo ? (
+                <img src={FOUNDER.photo} alt={`${FOUNDER.name}, ${FOUNDER.title} of ${COMPANY.name}`}
+                  className="w-32 h-32 rounded-2xl object-cover shadow-glow mx-auto" />
+              ) : (
+                <div className="w-32 h-32 rounded-2xl bg-gradient-primary flex items-center justify-center shadow-glow mx-auto">
+                  <span className="text-white font-heading font-800 text-4xl">{FOUNDER.initials}</span>
+                </div>
+              )}
+              <a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-4 text-sm font-600 text-[#1D4ED8] hover:text-[#1B3172] transition-colors">
+                <FaLinkedinIn className="w-4 h-4" />
+                Connect on LinkedIn
+              </a>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="text-[#1B3172] font-heading font-800 text-2xl">{FOUNDER.name}</h3>
+              <div className="section-label mt-2 mb-5">{FOUNDER.title} · {COMPANY.name}</div>
+              <p className="text-[#475569] leading-relaxed mb-4">
+                Ajay Tyagi leads Novelio Technologies as Executive Director. He built the company
+                around a principle most agencies won't offer a small business: prove it first.
+                Novelio designs and builds your website, Google presence, and follow-up systems up
+                front — so you can see the work, and the difference it makes, before you pay for any of it.
+              </p>
+              {/* TODO (Ajay): add 1–2 true sentences of origin story here, e.g. "I started Novelio after…". Keep it specific and real. */}
+              <p className="text-[#64748b] text-sm leading-relaxed">
+                That's the standard behind everything the team ships: real results you can verify,
+                not promises you have to take on faith.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
