@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Lock, ShieldCheck, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { loadPayPalSdk, paypalEnabled, PAYPAL_ENV } from '../../utils/paypal';
+import { payoneerEnabled, PAYONEER_ENV, startPayoneerCustom } from '../../utils/payoneer';
 
 // A custom / one-off payment page for invoices, quotes, deposits and buyouts.
 // Send a client a ready link, e.g. /pay?amount=2222&ref=Invoice-014&desc=Website%20build
@@ -22,6 +23,8 @@ export default function CustomPaymentPage() {
   const [status, setStatus] = useState('idle'); // idle | processing | paid
   const [payError, setPayError] = useState('');
   const [paid, setPaid] = useState(null); // { amount, captureId }
+  const [payoneerBusy, setPayoneerBusy] = useState(false);
+  const [payMethod, setPayMethod] = useState('paypal'); // paypal | payoneer
 
   const amountNum = useMemo(() => {
     const n = Number(amount);
@@ -38,6 +41,34 @@ export default function CustomPaymentPage() {
 
   const validRef = useRef(detailsValid);
   useEffect(() => { validRef.current = detailsValid; }, [detailsValid]);
+
+  const anyGatewayEnabled = paypalEnabled || payoneerEnabled;
+  const sandboxMode =
+    (paypalEnabled && PAYPAL_ENV === 'sandbox') || (payoneerEnabled && PAYONEER_ENV === 'sandbox');
+
+  // Payoneer is a full-page redirect: create the LIST server-side (bounded amount),
+  // then send the buyer to the hosted page. The receipt shows at /payoneer/return.
+  const startPayoneer = async () => {
+    if (!validRef.current) {
+      setPayError('Please enter a valid amount, your name and a valid email first.');
+      return;
+    }
+    setPayError('');
+    setPayoneerBusy(true);
+    try {
+      const f = fieldsRef.current;
+      const { redirectUrl } = await startPayoneerCustom({
+        amount: f.amount,
+        reference: f.reference,
+        description: f.description,
+        customer: { name: f.name, email: f.email },
+      });
+      window.location.href = redirectUrl;
+    } catch (e) {
+      setPayoneerBusy(false);
+      setPayError(e.message || 'Could not start the Payoneer payment. Please try again.');
+    }
+  };
 
   const paypalRef = useRef(null);
 
@@ -134,7 +165,7 @@ export default function CustomPaymentPage() {
         <div className="container-xl relative z-10 max-w-lg">
           <h1 className="font-heading font-800 text-[#1B3172] text-2xl sm:text-3xl mb-2">Make a payment</h1>
           <p className="text-[#64748b] text-sm mb-6">
-            Securely pay an invoice, deposit or custom quote. Processed by PayPal — we never see your card details.
+            Securely pay an invoice, deposit or custom quote. Processed by PayPal or Payoneer — we never see your card details.
           </p>
 
           {status === 'paid' && paid ? (
@@ -152,14 +183,14 @@ export default function CustomPaymentPage() {
             </div>
           ) : (
             <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_8px_32px_rgba(27,49,114,0.08)]">
-              {!paypalEnabled ? (
+              {!anyGatewayEnabled ? (
                 <div className="flex items-start gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
                   <AlertCircle className="w-4 h-4 shrink-0 mt-px" />
                   <span>Online payments aren’t configured yet. Please contact us to complete your payment.</span>
                 </div>
               ) : (
                 <>
-                  {PAYPAL_ENV === 'sandbox' && (
+                  {sandboxMode && (
                     <div className="mb-4 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-2.5 text-amber-800 text-xs">
                       <ShieldCheck className="w-4 h-4 shrink-0" />
                       <span><strong>Sandbox test mode</strong> — no real money moves.</span>
@@ -201,8 +232,43 @@ export default function CustomPaymentPage() {
                     </div>
                   )}
 
-                  {/* PayPal Smart Buttons render here */}
-                  <div ref={paypalRef} className={detailsValid ? '' : 'opacity-60'} />
+                  {/* Payment-method tabs (only when both gateways are on) */}
+                  {paypalEnabled && payoneerEnabled && (
+                    <div className="grid grid-cols-2 gap-1 mb-4 p-1 bg-slate-100 rounded-xl">
+                      {[['paypal', 'PayPal'], ['payoneer', 'Payoneer']].map(([m, label]) => (
+                        <button
+                          key={m}
+                          type="button"
+                          onClick={() => { setPayMethod(m); setPayError(''); }}
+                          className={`py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${payMethod === m ? 'bg-white text-[#1B3172] shadow-sm' : 'text-[#64748b] hover:text-[#1B3172]'}`}
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* PayPal Smart Buttons — kept mounted so they render even when hidden */}
+                  {paypalEnabled && (
+                    <div className={paypalEnabled && payoneerEnabled && payMethod !== 'paypal' ? 'hidden' : ''}>
+                      <div ref={paypalRef} className={detailsValid ? '' : 'opacity-60'} />
+                    </div>
+                  )}
+
+                  {payoneerEnabled && (
+                    <div className={paypalEnabled && payoneerEnabled && payMethod !== 'payoneer' ? 'hidden' : ''}>
+                      <button
+                        type="button"
+                        onClick={startPayoneer}
+                        disabled={payoneerBusy || !detailsValid}
+                        className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF4800] hover:bg-[#e64100] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                      >
+                        {payoneerBusy
+                          ? <><Loader2 className="w-4 h-4 animate-spin" /> Redirecting to Payoneer…</>
+                          : <>Pay with Payoneer</>}
+                      </button>
+                    </div>
+                  )}
 
                   {payError && (
                     <div className="mt-3 flex items-start gap-2 rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-xs text-red-700">
@@ -211,7 +277,7 @@ export default function CustomPaymentPage() {
                   )}
 
                   <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-[#94a3b8]">
-                    <Lock className="w-3.5 h-3.5" /> Secured by PayPal
+                    <Lock className="w-3.5 h-3.5" /> Secured by {paypalEnabled && payoneerEnabled ? 'PayPal & Payoneer' : payoneerEnabled ? 'Payoneer' : 'PayPal'}
                   </p>
                 </>
               )}

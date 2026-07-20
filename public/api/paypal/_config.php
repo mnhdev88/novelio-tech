@@ -91,20 +91,10 @@ if (!defined('PAYPAL_NOTIFY_EMAIL')) {
 }
 
 // ── Authoritative price table ────────────────────────────────────────────────
-// Mirrors PRICING_PLANS / PRICING_ADDONS in src/data/siteData.js. The server
-// computes the charge from THIS table so the amount can never be tampered with in
-// the browser. KEEP IN SYNC with siteData.js when prices change.
-$GLOBALS['PAYPAL_PLANS'] = [
-    // id      => [monthly, yearly-per-month]
-    'free'   => ['name' => 'Free',              'monthly' => 0,   'yearly' => 0],
-    'launch' => ['name' => 'Start My Growth',   'monthly' => 249, 'yearly' => 208],
-    'growth' => ['name' => 'Grow My Leads',     'monthly' => 499, 'yearly' => 416],
-    'scale'  => ['name' => 'Scale My Business', 'monthly' => 999, 'yearly' => 833],
-];
-$GLOBALS['PAYPAL_ADDONS'] = [
-    'extra-pages'   => ['name' => 'Extra website pages (5)',                  'price' => 39],
-    'landing-page'  => ['name' => 'Additional landing page',                  'price' => 49],
-    'email-credits' => ['name' => 'Extra email-validation credits (10k)',     'price' => 19],
-    'ad-management' => ['name' => 'Ad-spend management',                      'price' => 199],
-    'extra-content' => ['name' => 'Additional content (4 articles) / month',  'price' => 99],
-];
+// The server computes the charge from this table so the amount can never be
+// tampered with in the browser. It's the SHARED source of truth (also used by the
+// Payoneer integration) — edit prices in ../_pricing.php, which mirrors
+// PRICING_PLANS / PRICING_ADDONS in src/data/siteData.js.
+require __DIR__ . '/../_pricing.php';
+$GLOBALS['PAYPAL_PLANS']  = $GLOBALS['NOVELIO_PLANS'];
+$GLOBALS['PAYPAL_ADDONS'] = $GLOBALS['NOVELIO_ADDONS'];

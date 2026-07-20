@@ -7,6 +7,7 @@ import { useAuth } from '../../portal/AuthContext';
 import { createSubscription } from '../../portal/store';
 import { PRICING_PLANS, PRICING_ADDONS } from '../../data/siteData';
 import { loadPayPalSdk, paypalEnabled, PAYPAL_ENV } from '../../utils/paypal';
+import { payoneerEnabled, PAYONEER_ENV, startPayoneerPlan } from '../../utils/payoneer';
 
 export default function CheckoutPage() {
   const { user } = useAuth();
@@ -21,6 +22,8 @@ export default function CheckoutPage() {
   const [card, setCard] = useState({ name: '', number: '', exp: '', cvc: '' });
   const [status, setStatus] = useState('idle'); // idle | processing
   const [payError, setPayError] = useState('');
+  const [payoneerBusy, setPayoneerBusy] = useState(false);
+  const [payMethod, setPayMethod] = useState('paypal'); // paypal | payoneer
 
   const base = billing === 'yearly' ? plan.priceYearly : plan.priceMonthly;
   const addonTotal = useMemo(
@@ -56,6 +59,36 @@ export default function CheckoutPage() {
     selectionRef.current = { planId, billing, addonIds };
   }, [planId, billing, addonIds]);
   const usePayPal = paypalEnabled && Boolean(user);
+
+  // Either gateway being configured takes checkout out of demo mode.
+  const anyGatewayEnabled = paypalEnabled || payoneerEnabled;
+  const sandboxMode =
+    (paypalEnabled && PAYPAL_ENV === 'sandbox') || (payoneerEnabled && PAYONEER_ENV === 'sandbox');
+
+  // Payoneer is a full-page redirect: create the LIST server-side (server sets the
+  // amount), then send the buyer to Payoneer's hosted page. Verification happens
+  // on the way back at /payoneer/return.
+  const startPayoneer = async () => {
+    if (!user) {
+      navigate(`/signup?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`);
+      return;
+    }
+    setPayError('');
+    setPayoneerBusy(true);
+    try {
+      const sel = selectionRef.current;
+      const { redirectUrl } = await startPayoneerPlan({
+        planId: sel.planId,
+        billing: sel.billing,
+        addonIds: sel.addonIds,
+        customer: { id: user.id, name: user.name, email: user.email },
+      });
+      window.location.href = redirectUrl;
+    } catch (e) {
+      setPayoneerBusy(false);
+      setPayError(e.message || 'Could not start the Payoneer payment. Please try again.');
+    }
+  };
 
   useEffect(() => {
     if (!usePayPal) return;
@@ -139,20 +172,20 @@ export default function CheckoutPage() {
           </Link>
 
           {/* Payment-mode banner */}
-          {!paypalEnabled ? (
+          {!anyGatewayEnabled ? (
             <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
               <ShieldCheck className="w-4 h-4 shrink-0" />
               <span><strong>Demo mode:</strong> no real payment is processed. Enter any details to complete the flow.</span>
             </div>
-          ) : PAYPAL_ENV === 'sandbox' ? (
+          ) : sandboxMode ? (
             <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
               <ShieldCheck className="w-4 h-4 shrink-0" />
-              <span><strong>Sandbox test mode:</strong> use a PayPal sandbox account — no real money moves.</span>
+              <span><strong>Sandbox test mode:</strong> use a test account — no real money moves.</span>
             </div>
           ) : (
             <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-green-800 text-sm">
               <ShieldCheck className="w-4 h-4 shrink-0" />
-              <span>Secure checkout. Your payment is processed by PayPal — we never see your card details.</span>
+              <span>Secure checkout. Your payment is processed by PayPal or Payoneer — we never see your card details.</span>
             </div>
           )}
 
@@ -212,15 +245,16 @@ export default function CheckoutPage() {
               </div>
 
               {/* Payment */}
-              {paypalEnabled ? (
+              {anyGatewayEnabled ? (
                 <div className="bg-white rounded-2xl border border-slate-200 p-6">
                   <h2 className="font-heading font-700 text-[#1B3172] mb-2 flex items-center gap-2">
                     <Lock className="w-5 h-5 text-brand-purple" /> Payment
                   </h2>
                   {user ? (
                     <p className="text-sm text-[#64748b]">
-                      Review your order on the right, then complete your payment securely with PayPal
-                      (or a debit/credit card via PayPal). You’ll confirm the exact amount before paying.
+                      Review your order on the right, then complete your payment securely with
+                      {paypalEnabled && payoneerEnabled ? ' PayPal or Payoneer' : payoneerEnabled ? ' Payoneer' : ' PayPal'}
+                      {' '}(debit/credit cards accepted). You’ll confirm the exact amount before paying.
                     </p>
                   ) : (
                     <p className="text-sm text-[#64748b]">
@@ -287,7 +321,7 @@ export default function CheckoutPage() {
                   {billing === 'yearly' ? 'Billed once per year (12 months).' : 'Billed monthly. 12-month plan.'}
                 </p>
 
-                {paypalEnabled ? (
+                {anyGatewayEnabled ? (
                   <div className="mt-5">
                     {!user ? (
                       <Link
@@ -303,8 +337,44 @@ export default function CheckoutPage() {
                             <Loader2 className="w-4 h-4 animate-spin" /> Confirming your payment…
                           </div>
                         )}
-                        {/* PayPal renders its Smart Buttons here */}
-                        <div ref={paypalRef} />
+
+                        {/* Payment-method tabs (only when both gateways are on) */}
+                        {paypalEnabled && payoneerEnabled && (
+                          <div className="grid grid-cols-2 gap-1 mb-4 p-1 bg-slate-100 rounded-xl">
+                            {[['paypal', 'PayPal'], ['payoneer', 'Payoneer']].map(([m, label]) => (
+                              <button
+                                key={m}
+                                type="button"
+                                onClick={() => { setPayMethod(m); setPayError(''); }}
+                                className={`py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${payMethod === m ? 'bg-white text-[#1B3172] shadow-sm' : 'text-[#64748b] hover:text-[#1B3172]'}`}
+                              >
+                                {label}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* PayPal Smart Buttons — kept mounted so they render even when hidden */}
+                        {paypalEnabled && (
+                          <div className={paypalEnabled && payoneerEnabled && payMethod !== 'paypal' ? 'hidden' : ''}>
+                            <div ref={paypalRef} />
+                          </div>
+                        )}
+
+                        {payoneerEnabled && (
+                          <div className={paypalEnabled && payoneerEnabled && payMethod !== 'payoneer' ? 'hidden' : ''}>
+                            <button
+                              type="button"
+                              onClick={startPayoneer}
+                              disabled={payoneerBusy}
+                              className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF4800] hover:bg-[#e64100] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                            >
+                              {payoneerBusy
+                                ? <><Loader2 className="w-4 h-4 animate-spin" /> Redirecting to Payoneer…</>
+                                : <>Pay ${dueToday} with Payoneer <ArrowRight className="w-4 h-4" /></>}
+                            </button>
+                          </div>
+                        )}
                       </>
                     )}
                     {payError && (

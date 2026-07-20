@@ -1,0 +1,7 @@
+# Defense in depth for the shared /api includes.
+# Only the per-gateway endpoint files (api/paypal/*.php, api/payoneer/*.php that
+# don't start with "_") are meant to be reached over the web. Block any shared
+# include (leading underscore) and any stray credentials/log copies.
+<FilesMatch "^(_.*\.php|credentials(\.example|\.local)?\.php|.*\.log)$">
+    Require all denied
+</FilesMatch>

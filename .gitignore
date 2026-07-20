@@ -21,6 +21,10 @@ dist-ssr
 public/api/paypal/credentials.local.php
 novelio-paypal-credentials.php
 
+# Payoneer secrets — real credentials never go in git (see PAYONEER-SETUP.md)
+public/api/payoneer/credentials.local.php
+novelio-payoneer-credentials.php
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
