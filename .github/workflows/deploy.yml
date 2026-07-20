@@ -48,10 +48,10 @@ jobs:
           VITE_PAYPAL_CLIENT_ID: AQDadamNsJxxUrmtABEFN6k7n2JF88aJcqOYVFq3WBvebApo7wQElW0mIPCKQnM9MMyqDRPv8Vmrhxmo
           VITE_PAYPAL_ENV: live
           # Payoneer Checkout (hosted redirect). No public key — the merchant token
-          # is server-side only (see PAYONEER-SETUP.md). Keep ENABLED blank to hide
-          # the button; set to '1' ONLY AFTER uploading novelio-payoneer-credentials.php
+          # is server-side only (see PAYONEER-SETUP.md). '1' shows the Payoneer tab;
+          # the button only WORKS once novelio-payoneer-credentials.php is uploaded
           # to the server. Set ENV to 'sandbox' while testing, then 'live'.
-          VITE_PAYONEER_ENABLED: ''
+          VITE_PAYONEER_ENABLED: '1'
           VITE_PAYONEER_ENV: sandbox
 
       - name: Deploy dist/ to Hostinger over FTPS
