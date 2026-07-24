@@ -145,7 +145,7 @@ export default function CTABanner() {
             viewport={{ once: true }}
             className="text-white/50 text-sm mb-10"
           >
-            Call us directly: <a href="tel:+19082012264" className="text-white/80 hover:text-white font-medium transition-colors">(908) 201-2264</a>
+            Call us directly: <a href="tel:+18887384655" className="text-white/80 hover:text-white font-medium transition-colors">(888) 738-4655</a>
           </motion.p>
 
           {/* CTA buttons */}
@@ -156,7 +156,7 @@ export default function CTABanner() {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a href="tel:+19082012264"
+            <a href="tel:+18887384655"
               className="inline-flex items-center gap-2 font-heading font-700 px-8 py-4 rounded-full text-[15px] w-full sm:w-auto justify-center group transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: 'white',

@@ -40,7 +40,7 @@ export default function WhoWeServe() {
               We work best with owner-operated service businesses, retail shops, restaurants, and trade businesses who are ready to invest in growth and want a partner who is accountable for results.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-              <a href="tel:+19082012264" className="btn-primary inline-flex group">
+              <a href="tel:+18887384655" className="btn-primary inline-flex group">
                 Get My Free Audit
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>

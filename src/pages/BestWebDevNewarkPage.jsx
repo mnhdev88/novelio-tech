@@ -104,7 +104,7 @@ const schema = {
       '@type': 'LocalBusiness',
       name: 'Novelio Technologies LLC',
       url: 'https://www.noveliotech.com',
-      telephone: '+19082012264',
+      telephone: '+18887384655',
       email: 'info@noveliotech.com',
       areaServed: { '@type': 'City', name: 'Newark', containedInPlace: { '@type': 'State', name: 'New Jersey' } },
       serviceType: ['Website Design', 'Web Development', 'Local SEO', 'Lead Generation'],
@@ -198,7 +198,7 @@ export default function BestWebDevNewarkPage() {
             transition={{ duration: 0.6, delay: 1.08 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
-            <a href="tel:+19082012264" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
+            <a href="tel:+18887384655" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
               Get Your Free Demo Site
               <motion.span
                 animate={{ x: [0, 5, 0] }}
@@ -326,11 +326,11 @@ export default function BestWebDevNewarkPage() {
                 </div>
 
                 <a
-                  href="tel:+19082012264"
+                  href="tel:+18887384655"
                   className="btn-primary w-full justify-center text-base py-4 mb-3"
                 >
                   <Phone className="w-4 h-4" />
-                  Call to Start Your Free Demo — (908) 201-2264
+                  Call to Start Your Free Demo — (888) 738-4655
                 </a>
                 <p className="text-center text-xs text-[#64748b]">
                   Or email <a href="mailto:info@noveliotech.com" className="text-[#4338CA] hover:underline">info@noveliotech.com</a> · Response within 2 hours

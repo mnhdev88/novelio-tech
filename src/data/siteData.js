@@ -8,8 +8,8 @@ export const COMPANY = {
   name: 'Novelio Technologies LLC',
   tagline: 'Your Dedicated Business Growth Partner',
   email: 'info@noveliotech.com',
-  phone: '+1 (908) 201-2264',
-  whatsapp: '+19082012264',
+  phone: '+1 (888) 738-4655',
+  whatsapp: '+18887384655',
   address: 'Dover, Delaware, USA',
   website: 'https://www.noveliotech.com',
   social: {

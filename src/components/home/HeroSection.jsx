@@ -338,8 +338,8 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 1.3 }}
             className="mb-6"
           >
-            <a href="tel:+19082012264" className="text-sm text-[#64748b] hover:text-[#1B3172] transition-colors">
-              Prefer to talk? <span className="font-600 text-[#1B3172]">Call +1 (908) 201-2264</span>
+            <a href="tel:+18887384655" className="text-sm text-[#64748b] hover:text-[#1B3172] transition-colors">
+              Prefer to talk? <span className="font-600 text-[#1B3172]">Call +1 (888) 738-4655</span>
             </a>
           </motion.div>
 

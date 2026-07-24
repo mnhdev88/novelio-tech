@@ -125,7 +125,7 @@ function ContactBlock() {
       <p><strong>Novelio Technologies LLC</strong></p>
       <p>Dover, Delaware, USA</p>
       <p>Email: <a href="mailto:info@noveliotech.com" className="text-[#1D4ED8] hover:underline">info@noveliotech.com</a></p>
-      <p>Phone: <a href="tel:+19082012264" className="text-[#1D4ED8] hover:underline">(908) 201-2264</a></p>
+      <p>Phone: <a href="tel:+18887384655" className="text-[#1D4ED8] hover:underline">(888) 738-4655</a></p>
     </div>
   );
 }

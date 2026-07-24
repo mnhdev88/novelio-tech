@@ -145,10 +145,10 @@ export default function FAQSection() {
         >
           <p className="text-[#64748b] text-sm mb-4">Still have questions?</p>
           <a
-            href="tel:+19082012264"
+            href="tel:+18887384655"
             className="btn-primary inline-flex"
           >
-            Call Us — (908) 201-2264
+            Call Us — (888) 738-4655
           </a>
         </motion.div>
       </div>

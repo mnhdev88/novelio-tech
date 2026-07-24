@@ -81,7 +81,7 @@ function StatePage({ stateData, cities }) {
               {stateData.description} We build and execute tailored digital growth plans — websites, local SEO, lead generation, and automation — that drive real revenue.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="tel:+19082012264" className="btn-primary text-base px-8 py-4">
+              <a href="tel:+18887384655" className="btn-primary text-base px-8 py-4">
                 Get a Free Growth Audit
                 <ArrowRight className="w-5 h-5" />
               </a>
@@ -141,7 +141,7 @@ function CityPage({ city }) {
         '@id': `https://www.noveliotech.com/locations/${city.stateSlug}/${city.citySlug}#business`,
         name: 'Novelio Technologies',
         url: 'https://www.noveliotech.com',
-        telephone: '+1-908-201-2264',
+        telephone: '+1-888-738-4655',
         email: 'info@noveliotech.com',
         address: {
           '@type': 'PostalAddress',
@@ -248,7 +248,7 @@ function CityPage({ city }) {
             transition={{ duration: 0.6, delay: 0.96 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
-            <a href="tel:+19082012264" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
+            <a href="tel:+18887384655" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
               Get Your Free {city.city} Audit
               <motion.span
                 animate={{ x: [0, 5, 0] }}
