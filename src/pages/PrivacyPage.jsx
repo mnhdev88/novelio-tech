@@ -109,7 +109,18 @@ export default function PrivacyPage() {
             <p>We may update this Privacy Policy periodically. We will notify you of significant changes by updating the "Last updated" date at the top of this page. Continued use of our website after changes constitutes acceptance.</p>
           </Section>
 
-          <Section title="12. Contact Us">
+          <Section title="12. SMS / Text Messaging Program">
+            <p>When you provide your mobile phone number and opt in through one of our forms (such as our contact form or free website request form), you consent to receive text messages (SMS) from Novelio Technologies related to your inquiry. These messages may include replies to your questions, appointment scheduling and reminders, quote and proposal follow-ups, and project updates.</p>
+            <ul>
+              <li><strong>Message frequency:</strong> varies based on your interaction with us.</li>
+              <li><strong>Message and data rates:</strong> may apply, depending on your mobile carrier and plan.</li>
+              <li><strong>Opt out:</strong> reply <strong>STOP</strong> at any time to unsubscribe from text messages.</li>
+              <li><strong>Help:</strong> reply <strong>HELP</strong> for assistance, or email <strong>info@noveliotech.com</strong>.</li>
+            </ul>
+            <p><strong>We do not sell, rent, or share your mobile phone number or SMS opt-in information with any third parties or affiliates for their own marketing or promotional purposes.</strong> Consent to receive text messages is not a condition of purchasing any product or service. You may opt out at any time without affecting our other services.</p>
+          </Section>
+
+          <Section title="13. Contact Us">
             <p>If you have questions about this Privacy Policy, please contact us:</p>
             <ContactBlock />
           </Section>

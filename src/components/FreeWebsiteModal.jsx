@@ -214,8 +214,11 @@ export default function FreeWebsiteModal({ onClose }) {
                       className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#1B3172] focus:ring-[#1B3172] cursor-pointer shrink-0"
                     />
                     <span className="text-xs text-[#64748b] leading-relaxed">
-                      I agree that someone from Novelio Technologies may call me to understand my requirements
-                      and present the website. <span className="text-red-500">*</span>
+                      I agree to receive phone calls and text messages (SMS) from Novelio Technologies about my
+                      inquiry and website preview. Message frequency varies; message and data rates may apply.
+                      Reply STOP to opt out, HELP for help. See our{' '}
+                      <a href="/privacy" className="underline text-[#1B3172]">Privacy Policy</a> and{' '}
+                      <a href="/terms" className="underline text-[#1B3172]">Terms</a>. <span className="text-red-500">*</span>
                     </span>
                   </label>
 

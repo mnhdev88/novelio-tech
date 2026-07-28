@@ -34,6 +34,7 @@ export default function ContactPage() {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   const validate = () => {
     const e = {};
@@ -46,6 +47,7 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
+    if (!consent) errs.consent = 'Please agree to be contacted to continue.';
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setSubmitting(true);
     try {
@@ -212,7 +214,22 @@ export default function ContactPage() {
 
                       {errors.submit && <p className="text-red-400 text-sm">{errors.submit}</p>}
 
-                      <button type="submit" disabled={submitting}
+                      <label className="flex items-start gap-2.5 cursor-pointer select-none">
+                        <input
+                          type="checkbox"
+                          checked={consent}
+                          onChange={(e) => { setConsent(e.target.checked); if (errors.consent) setErrors((er) => ({ ...er, consent: '' })); }}
+                          className="mt-0.5 w-4 h-4 rounded border-slate-300 text-brand-purple focus:ring-brand-purple cursor-pointer shrink-0"
+                        />
+                        <span className="text-xs text-[#64748b] leading-relaxed">
+                          I agree to receive phone calls and text messages (SMS) from Novelio Technologies about my
+                          inquiry. Message frequency varies; message and data rates may apply. Reply STOP to opt out,
+                          HELP for help. *
+                        </span>
+                      </label>
+                      {errors.consent && <p className="text-red-400 text-xs">{errors.consent}</p>}
+
+                      <button type="submit" disabled={submitting || !consent}
                         className="btn-primary w-full justify-center text-base py-4 disabled:opacity-60 disabled:cursor-not-allowed">
                         {submitting ? (
                           <>
@@ -229,8 +246,9 @@ export default function ContactPage() {
 
                       <p className="text-center text-xs text-[#64748b]">
                         By submitting this form you agree to our{' '}
-                        <a href="/privacy" className="text-brand-purple hover:underline">Privacy Policy</a>.
-                        We never share your information.
+                        <a href="/privacy" className="text-brand-purple hover:underline">Privacy Policy</a> and{' '}
+                        <a href="/terms" className="text-brand-purple hover:underline">Terms</a>. We never sell or
+                        share your information — including your mobile number — with third parties for marketing.
                       </p>
                     </form>
                   )}
