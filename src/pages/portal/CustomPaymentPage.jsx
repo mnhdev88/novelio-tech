@@ -43,8 +43,14 @@ export default function CustomPaymentPage() {
   useEffect(() => { validRef.current = detailsValid; }, [detailsValid]);
 
   const anyGatewayEnabled = paypalEnabled || payoneerEnabled;
-  const sandboxMode =
-    (paypalEnabled && PAYPAL_ENV === 'sandbox') || (payoneerEnabled && PAYONEER_ENV === 'sandbox');
+  // Per-gateway, not ORed: PayPal can be live while Payoneer is still in sandbox.
+  // The banner must reflect the method the buyer is actually about to use.
+  // Falls back to the only gateway that's on, so the banner can't go stale if
+  // PayPal is disabled while payMethod still holds its 'paypal' default.
+  const activeMethod = !paypalEnabled ? 'payoneer' : !payoneerEnabled ? 'paypal' : payMethod;
+  const sandboxMode = activeMethod === 'payoneer'
+    ? (payoneerEnabled && PAYONEER_ENV === 'sandbox')
+    : (paypalEnabled && PAYPAL_ENV === 'sandbox');
 
   // Payoneer is a full-page redirect: create the LIST server-side (bounded amount),
   // then send the buyer to the hosted page. The receipt shows at /payoneer/return.
