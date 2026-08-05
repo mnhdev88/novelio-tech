@@ -171,7 +171,16 @@ export default function DashboardPage() {
                         Change plan / add-ons <ArrowUpRight className="w-4 h-4" />
                       </Link>
                       <button onClick={doToggleBilling} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-[#475569] hover:text-[#1B3172] hover:border-[#1B3172] transition-all cursor-pointer">
-                        Switch to {sub.billing === 'monthly' ? 'yearly (save ~17%)' : 'monthly'}
+                        {sub.billing === 'monthly'
+                          ? (() => {
+                              // Savings vary per plan, so derive rather than hardcode.
+                              const p = PRICING_PLANS.find((x) => x.id === sub.planId);
+                              const saving = p?.termTotal
+                                ? p.termTotal - (p.priceYearlyTotal ?? p.priceYearly * 12)
+                                : 0;
+                              return saving > 0 ? `Switch to yearly (save $${saving})` : 'Switch to yearly';
+                            })()
+                          : 'Switch to monthly'}
                       </button>
                       <button onClick={doCancel} className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-red-200 text-sm font-semibold text-red-600 hover:bg-red-50 transition-all cursor-pointer">
                         <X className="w-4 h-4" /> Cancel subscription

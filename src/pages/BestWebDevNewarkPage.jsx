@@ -46,13 +46,13 @@ const STATS = [
   { value: '8,000+', label: 'Small businesses competing in Newark NJ' },
   { value: '23%',    label: 'Have a website that ranks on Google page one locally' },
   { value: '76%',    label: 'Of local searches lead to a visit within 24 hours' },
-  { value: '$249/mo', label: 'Growth plans — website included free, demo always first' },
+  { value: '$150/mo', label: 'Growth plans — website included, demo always first' },
 ];
 
 const FAQS = [
   {
     q: 'How much does a website cost for a Newark NJ business?',
-    a: "Novelio builds your demo website completely free — you see the finished site before any payment is discussed. Your website, SSL, hosting and lead-capture setup are then included free with a monthly growth plan starting at $249/month, so there is no $1,500–$3,000 upfront website cost. No hidden fees.",
+    a: "Novelio builds your demo website completely free — you see the finished site before any payment is discussed. Your website, SSL, hosting and lead-capture setup are then included with a growth plan starting at $150/month, so there is no $1,500–$3,000 upfront website cost. No hidden fees.",
   },
   {
     q: 'How long does it take to build a business website in Newark?',
@@ -223,7 +223,7 @@ export default function BestWebDevNewarkPage() {
             {[
               { value: '$0', label: 'Cost to see your demo' },
               { value: '48h', label: 'Demo turnaround' },
-              { value: '$249/mo', label: 'Growth plan — website included free' },
+              { value: '$150/mo', label: 'Growth plan — website included' },
               { value: '100%', label: 'Pay only if you love it' },
             ].map((stat, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center backdrop-blur-sm">
@@ -322,7 +322,7 @@ export default function BestWebDevNewarkPage() {
 
                 <div className="flex items-baseline gap-3 mb-6">
                   <span className="text-5xl font-heading font-900 gradient-text">$0</span>
-                  <span className="text-[#64748b] text-sm">to see your demo · growth plans from $249/mo with website included free</span>
+                  <span className="text-[#64748b] text-sm">to see your demo · growth plans from $150/mo with website included</span>
                 </div>
 
                 <a

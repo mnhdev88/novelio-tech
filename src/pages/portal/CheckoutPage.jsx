@@ -25,13 +25,22 @@ export default function CheckoutPage() {
   const [payoneerBusy, setPayoneerBusy] = useState(false);
   const [payMethod, setPayMethod] = useState('paypal'); // paypal | payoneer
 
+  // MUST mirror compute_charge() in public/api/{paypal,payoneer}/_lib.php —
+  // if these diverge the gateway rejects the order on an amount mismatch.
+  const isTermPlan = Boolean(plan.termTotal);
+  const upfrontMonths = plan.upfrontMonths ?? 1;
   const base = billing === 'yearly' ? plan.priceYearly : plan.priceMonthly;
   const addonTotal = useMemo(
     () => addonIds.reduce((s, id) => s + (PRICING_ADDONS.find((a) => a.id === id)?.price || 0), 0),
     [addonIds],
   );
   const monthlyTotal = base + addonTotal;
-  const dueToday = billing === 'yearly' ? monthlyTotal * 12 : monthlyTotal;
+  // Plan portion due today; add-ons are always a single month on top.
+  const planDue =
+    billing === 'yearly'
+      ? (plan.priceYearlyTotal ?? plan.priceYearly * 12)
+      : plan.priceMonthly * upfrontMonths;
+  const dueToday = planDue + addonTotal;
 
   const toggleAddon = (id) =>
     setAddonIds((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
@@ -49,6 +58,12 @@ export default function CheckoutPage() {
       navigate('/dashboard?welcome=1', { replace: true });
     }, 1100);
   };
+
+  // Phone-sold plans have no public price and are quoted on a call, so they must
+  // never be self-serve checked out via a hand-typed /checkout?plan=… URL.
+  useEffect(() => {
+    if (plan.ctaPhone) navigate('/contact', { replace: true });
+  }, [plan.ctaPhone, navigate]);
 
   // ── Real PayPal flow (active when VITE_PAYPAL_CLIENT_ID is set) ──────────────
   // The button reads the LATEST selection via a ref so we never have to re-render
@@ -202,8 +217,9 @@ export default function CheckoutPage() {
                 <h2 className="font-heading font-700 text-[#1B3172] mb-4">Billing cycle</h2>
                 <div className="grid grid-cols-2 gap-3">
                   {['monthly', 'yearly'].map((b) => {
-                    const p = b === 'yearly' ? plan.priceYearly : plan.priceMonthly;
                     const active = billing === b;
+                    const yearTotal = plan.priceYearlyTotal ?? plan.priceYearly * 12;
+                    const saving = isTermPlan ? plan.termTotal - yearTotal : 0;
                     return (
                       <button
                         key={b}
@@ -212,9 +228,17 @@ export default function CheckoutPage() {
                       >
                         <span className="flex items-center justify-between">
                           <span className="font-semibold text-[#1B3172] capitalize">{b}</span>
-                          {b === 'yearly' && <span className="text-[11px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">2 mo free</span>}
+                          {b === 'yearly' && saving > 0 && (
+                            <span className="text-[11px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">Save ${saving}</span>
+                          )}
                         </span>
-                        <span className="block text-sm text-[#64748b] mt-1">${p}/mo</span>
+                        <span className="block text-sm text-[#64748b] mt-1">
+                          {b === 'yearly'
+                            ? `$${yearTotal.toLocaleString()} for 12 months`
+                            : isTermPlan
+                              ? `$${plan.priceMonthly}/mo · ${upfrontMonths} months upfront`
+                              : `$${plan.priceMonthly}/mo`}
+                        </span>
                       </button>
                     );
                   })}
@@ -295,8 +319,15 @@ export default function CheckoutPage() {
                 <h2 className="font-heading font-700 text-[#1B3172] mb-4">Order summary</h2>
 
                 <div className="flex items-center justify-between text-sm mb-2">
-                  <span className="text-[#475569]">{plan.name} plan ({billing})</span>
-                  <span className="font-semibold text-[#1B3172]">${base}/mo</span>
+                  <span className="text-[#475569]">
+                    {plan.name} plan
+                    {billing === 'yearly'
+                      ? ' (12 months)'
+                      : isTermPlan
+                        ? ` (${upfrontMonths} months upfront)`
+                        : ' (monthly)'}
+                  </span>
+                  <span className="font-semibold text-[#1B3172]">${planDue.toLocaleString()}</span>
                 </div>
                 {addonIds.map((id) => {
                   const a = PRICING_ADDONS.find((x) => x.id === id);
@@ -310,15 +341,25 @@ export default function CheckoutPage() {
 
                 <div className="border-t border-slate-100 my-4" />
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[#475569] text-sm">Recurring</span>
-                  <span className="font-semibold text-[#1B3172]">${monthlyTotal}/mo</span>
+                  <span className="text-[#475569] text-sm">
+                    {billing === 'yearly' ? 'Then recurring' : 'Then monthly'}
+                  </span>
+                  <span className="font-semibold text-[#1B3172]">
+                    {billing === 'yearly'
+                      ? (addonTotal > 0 ? `$${addonTotal}/mo` : '—')
+                      : `$${monthlyTotal}/mo`}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-heading font-700 text-[#1B3172]">Due today</span>
-                  <span className="font-heading font-800 text-[#1B3172] text-xl">${dueToday}</span>
+                  <span className="font-heading font-800 text-[#1B3172] text-xl">${dueToday.toLocaleString()}</span>
                 </div>
-                <p className="text-xs text-[#64748b] mt-1">
-                  {billing === 'yearly' ? 'Billed once per year (12 months).' : 'Billed monthly. 12-month plan.'}
+                <p className="text-xs text-[#64748b] mt-1 leading-relaxed">
+                  {billing === 'yearly'
+                    ? `Your full 12 months, paid once.${addonTotal > 0 ? ' Add-ons continue billing monthly.' : ''}`
+                    : isTermPlan
+                      ? `Covers your first ${upfrontMonths} months. The remaining ${12 - upfrontMonths} months are billed at $${monthlyTotal}/mo — $${(plan.termTotal + addonTotal * 12).toLocaleString()} total over 12 months.`
+                      : 'Billed monthly. 12-month plan.'}
                 </p>
 
                 {anyGatewayEnabled ? (
@@ -395,7 +436,7 @@ export default function CheckoutPage() {
                 )}
 
                 <ul className="mt-5 space-y-2">
-                  {['Website included free', 'We confirm scope before billing', 'Full ownership after 12 months'].map((t) => (
+                  {['Website included in your plan', 'We confirm scope before billing', 'Full ownership after 12 months'].map((t) => (
                     <li key={t} className="flex items-center gap-2 text-xs text-[#64748b]">
                       <Check className="w-3.5 h-3.5 text-green-600 shrink-0" /> {t}
                     </li>

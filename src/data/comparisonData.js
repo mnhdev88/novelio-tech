@@ -8,7 +8,7 @@ export const COMPARISONS = [
     competitor: 'a Traditional Agency',
     title: 'Novelio vs a Traditional Marketing Agency',
     metaDescription:
-      'Novelio vs a traditional marketing agency — diagnose-first audits, full-spectrum growth, transparent pricing, and your website included free with the plan.',
+      'Novelio vs a traditional marketing agency — diagnose-first audits, full-spectrum growth, transparent pricing, and your website included with the plan.',
     eyebrow: 'Compare',
     h1Lead: 'Novelio vs a',
     h1Highlight: 'Traditional Agency',

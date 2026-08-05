@@ -2447,7 +2447,7 @@ export const BLOG_POSTS = [
 
   <div class="cta-box">
     <h2>Get a growth website without the upfront cost</h2>
-    <p>Your website, SSL, hosting, lead capture, and Google setup are included free with a Novelio monthly growth plan — starting at $249/month.</p>
+    <p>Your website, SSL, hosting, lead capture, and Google setup are included with a Novelio growth plan — starting at $150/month.</p>
     <a href="/pricing" class="cta-btn">See Growth Plans</a>
   </div>
 
@@ -2598,7 +2598,7 @@ export const BLOG_POSTS = [
 
   <div class="cta-box">
     <h2>Want a website that works at every funnel stage?</h2>
-    <p>Novelio growth plans include the website free — plus the lead capture, CRM, and follow-up system around it.</p>
+    <p>Novelio growth plans include the website — plus the lead capture, CRM, and follow-up system around it.</p>
     <a href="/pricing" class="cta-btn">See Growth Plans</a>
   </div>
 
@@ -2943,11 +2943,20 @@ export const PROCESS_STEPS = [
 ];
 
 // ── Subscription plans ─────────────────────────────────────────────────────────
-// "Business growth plan" model: the website is included free with the monthly
-// plan (never positioned as a standalone "free website"). Monthly + yearly
-// billing (yearly = 2 months free, ~17% off). 12-month minimum term on paid
+// "Business growth plan" model: the website is included with the monthly plan
+// (never positioned as a standalone website purchase). 12-month term on paid
 // plans; site ownership transfers after the term (or via buyout).
-// `priceMonthly` / `priceYearly` are the per-month USD figures shown on each tab.
+//
+// Two ways to pay, on a 12-month term:
+//   • Monthly — `upfrontMonths` months are collected at checkout, then the
+//     remaining months are billed at `priceMonthly`. `termTotal` is the full
+//     12-month cost (priceMonthly × 12).
+//   • Yearly  — one payment of `priceYearlyTotal`, a flat discounted figure.
+//     It is NOT priceMonthly × 12 and must never be derived by multiplication.
+// `priceYearly` is the per-month equivalent, shown for comparison only.
+//
+// Plans without `termTotal` (Free, Scale) keep the older behaviour: monthly
+// checkout charges one month, yearly charges 12 × priceYearly.
 export const PRICING_PLANS = [
   {
     id: 'free',
@@ -2972,14 +2981,17 @@ export const PRICING_PLANS = [
     id: 'launch',
     name: 'Start My Growth',
     tagline: 'Look professional and get ready for leads.',
-    priceMonthly: 249,
-    priceYearly: 208,
+    priceMonthly: 150,
+    priceYearly: 117,          // $1,400 ÷ 12, for per-month comparison only
+    priceYearlyTotal: 1400,    // flat one-payment price — never priceMonthly × 12
+    termTotal: 1800,           // 150 × 12
+    upfrontMonths: 3,          // $450 collected at checkout, then 9 × $150
     setupFee: 0,
     cta: 'Start My Growth',
     highlight: false,
     color: 'from-blue-500 to-cyan-500',
     features: [
-      'Free 5-page website — SSL, hosting & maintenance included',
+      '5-page website — SSL, hosting & maintenance included',
       'Contact form + call, email & WhatsApp buttons',
       'Basic on-page SEO setup',
       'Google Business Profile setup & optimization',
@@ -2988,14 +3000,17 @@ export const PRICING_PLANS = [
       '1 content/website update per month',
       '1 monthly review call · email support',
     ],
-    note: 'Best for new and small businesses that need a trusted online presence. 12-month plan.',
+    note: 'Best for new and small businesses that need a trusted online presence. 12-month plan — 3 months upfront, then 9 monthly payments.',
   },
   {
     id: 'growth',
     name: 'Grow My Leads',
     tagline: 'Capture and follow up leads better.',
-    priceMonthly: 499,
-    priceYearly: 416,
+    priceMonthly: 300,
+    priceYearly: 242,          // $2,900 ÷ 12, for per-month comparison only
+    priceYearlyTotal: 2900,    // flat one-payment price — never priceMonthly × 12
+    termTotal: 3600,           // 300 × 12
+    upfrontMonths: 3,          // $900 collected at checkout, then 9 × $300
     setupFee: 199,
     cta: 'Grow My Leads',
     highlight: true,
@@ -3003,7 +3018,7 @@ export const PRICING_PLANS = [
     color: 'from-violet-600 to-blue-600',
     features: [
       'Everything in Start My Growth',
-      'Free growth website — up to 8 pages with improved sales copy',
+      'Growth website — up to 8 pages with improved sales copy',
       'Quote form + booking link + advanced lead capture',
       '7-day lead follow-up system + call & objection scripts',
       'Review request flow + proposal template',
@@ -3012,7 +3027,7 @@ export const PRICING_PLANS = [
       '2–4 content posts/updates per month',
       '2 review calls/month · email + WhatsApp support',
     ],
-    note: 'Best for SMBs that need more leads and disciplined follow-up. 12-month plan.',
+    note: 'Best for SMBs that need more leads and disciplined follow-up. 12-month plan — 3 months upfront, then 9 monthly payments.',
   },
   {
     id: 'scale',
@@ -3021,12 +3036,15 @@ export const PRICING_PLANS = [
     priceMonthly: 999,
     priceYearly: 833,
     setupFee: 499,
-    cta: 'Scale My Business',
+    cta: 'Call Now',
+    // Sold over the phone rather than self-serve checkout: the CTA dials us
+    // instead of routing to /checkout.
+    ctaPhone: true,
     highlight: false,
     color: 'from-amber-500 to-orange-500',
     features: [
       'Everything in Grow My Leads',
-      'Free advanced business website — up to 12 pages, funnel-based copy',
+      'Advanced business website — up to 12 pages, funnel-based copy',
       'Novelio in-house CRM with lead pipeline included',
       'Automated follow-up workflow + full sales playbook',
       'Invoice & payment tracking + automated payment reminders',
@@ -3035,14 +3053,14 @@ export const PRICING_PLANS = [
       'Full business growth KPI dashboard',
       'Weekly/bi-weekly reviews · priority support',
     ],
-    note: 'Best for SMBs ready for a complete growth operating system. 12-month plan.',
+    note: 'Best for SMBs ready for a complete growth operating system. Call us and we will scope the plan and pricing around your business.',
   },
 ];
 
 // Feature comparison matrix rendered on the pricing page.
 // `values` are [Start My Growth, Grow My Leads, Scale My Business].
 export const PRICING_COMPARISON = [
-  { feature: 'Website included', values: ['Free basic website', 'Free growth website', 'Free advanced business website'] },
+  { feature: 'Website included', values: ['Basic website', 'Growth website', 'Advanced business website'] },
   { feature: 'Pages included', values: ['Up to 5 pages', 'Up to 8 pages', 'Up to 12 pages'] },
   { feature: 'SSL + hosting + maintenance', values: ['Included', 'Included', 'Included'] },
   { feature: 'Website copy', values: ['Basic copy', 'Improved sales copy', 'Funnel-based sales copy'] },
@@ -3077,8 +3095,8 @@ export const PRICING_ADDONS = [
 
 export const PRICING_FAQ = [
   {
-    q: 'Is the website really free?',
-    a: 'Yes — your website, SSL, hosting, lead-capture setup and basic growth system are included in the monthly growth plan. Instead of paying $1,500–$3,000 upfront for a website and then paying an agency separately, you get everything as one predictable monthly subscription with no heavy upfront cost.',
+    q: 'Is the website included in the plan?',
+    a: 'Yes — your website, SSL, hosting, lead-capture setup and basic growth system are all included in your growth plan at no extra charge. Instead of paying $1,500–$3,000 upfront for a website and then paying an agency separately, you get everything in one predictable plan with no heavy upfront cost.',
   },
   {
     q: 'Is this software (SaaS) or done-for-you work?',
@@ -3086,11 +3104,15 @@ export const PRICING_FAQ = [
   },
   {
     q: 'What is the difference between monthly and yearly billing?',
-    a: 'Yearly billing gives you two months free — roughly a 17% discount versus paying month to month. You can start monthly and switch to yearly at any time.',
+    a: 'Both options cover the same 12-month plan. On monthly billing you pay your first 3 months upfront and then make 9 monthly payments — $450 upfront then $150/month ($1,800 total) on Start My Growth, or $900 upfront then $300/month ($3,600 total) on Grow My Leads. Paying for the year in one payment costs less: $1,400 on Start My Growth (a $400 saving) or $2,900 on Grow My Leads (a $700 saving).',
+  },
+  {
+    q: 'Why do I pay 3 months upfront?',
+    a: 'The first months carry the heaviest work — building your website, setting up hosting and SSL, configuring your Google Business Profile, and putting your lead-capture and follow-up systems in place. The 3-month upfront payment covers that build phase, and the remaining 9 months are spread as equal monthly payments. If you would rather avoid the upfront amount entirely, paying for the full year at once costs less overall.',
   },
   {
     q: 'Is there a minimum commitment?',
-    a: 'Paid growth plans run on a 12-month minimum term. Because your website, hosting, SSL and growth setup are included free with the plan, the website remains with Novelio until the minimum term is completed. After 12 months, full ownership transfers to you — or earlier via a one-time buyout.',
+    a: 'Paid growth plans run on a 12-month term. Because your website, hosting, SSL and growth setup are included in the plan rather than billed as a separate project, the website remains with Novelio until the term is completed. After 12 months, full ownership transfers to you — or earlier via a one-time buyout.',
   },
   {
     q: 'What is not included in the plans?',

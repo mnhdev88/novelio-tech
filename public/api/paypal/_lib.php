@@ -68,7 +68,8 @@ function paypal_access_token() {
 
 /**
  * Compute the authoritative charge from a plan + billing cycle + add-ons.
- * Mirrors the CheckoutPage math: monthly total, and (yearly) × 12 due today.
+ * Mirrors the CheckoutPage math: yearly pays the flat yearly_total, monthly
+ * collects upfront_months at checkout (or one month on legacy plans).
  * Returns [amountFloat, description, breakdown[]] or respond()s with an error.
  */
 function compute_charge($planId, $billing, $addonIds) {
@@ -80,7 +81,6 @@ function compute_charge($planId, $billing, $addonIds) {
     }
     $billing = ($billing === 'yearly') ? 'yearly' : 'monthly';
     $plan = $plans[$planId];
-    $base = ($billing === 'yearly') ? $plan['yearly'] : $plan['monthly'];
 
     $addonTotal = 0;
     $breakdown = [];
@@ -91,14 +91,31 @@ function compute_charge($planId, $billing, $addonIds) {
         }
     }
 
-    $monthlyTotal = $base + $addonTotal;
-    $dueToday = ($billing === 'yearly') ? $monthlyTotal * 12 : $monthlyTotal;
+    // Plan portion due today. Add-ons are always billed monthly and are never
+    // multiplied into a yearly or upfront total.
+    if ($billing === 'yearly') {
+        // A flat yearly_total is authoritative; otherwise fall back to 12x.
+        $planDue = isset($plan['yearly_total'])
+            ? $plan['yearly_total']
+            : $plan['yearly'] * 12;
+        $cycle = 'yearly (12 months, paid in full)';
+    } elseif (isset($plan['upfront_months'])) {
+        // 3 months upfront at checkout; the remaining 9 are billed monthly.
+        $months  = (int) $plan['upfront_months'];
+        $planDue = $plan['monthly'] * $months;
+        $cycle = $months . ' months upfront, then ' . (12 - $months)
+            . ' x $' . $plan['monthly'] . '/mo';
+    } else {
+        $planDue = $plan['monthly'];
+        $cycle = 'monthly';
+    }
+
+    $dueToday = $planDue + $addonTotal;
 
     if ($dueToday <= 0) {
         respond(['error' => 'This plan does not require a payment.'], 400);
     }
 
-    $cycle = ($billing === 'yearly') ? 'yearly (12 months)' : 'monthly';
     $desc = $plan['name'] . ' plan — ' . $cycle;
 
     return [(float) $dueToday, $desc, $breakdown];

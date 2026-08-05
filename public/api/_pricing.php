@@ -9,11 +9,19 @@
 // and it holds no secrets — only the public price list). Included server-side.
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Plan fields:
+//   monthly        per-month price on the monthly option
+//   yearly         per-month equivalent of the yearly price (display only)
+//   yearly_total   flat one-payment price for 12 months. When present it is the
+//                  authoritative yearly charge — do NOT compute monthly * 12.
+//   upfront_months months collected at checkout on the monthly option; the
+//                  remaining (12 - upfront_months) are billed later.
+// Plans without yearly_total/upfront_months keep the legacy behaviour:
+// monthly charges one month, yearly charges yearly * 12.
 $GLOBALS['NOVELIO_PLANS'] = [
-    // id      => [name, monthly, yearly-per-month]
     'free'   => ['name' => 'Free',              'monthly' => 0,   'yearly' => 0],
-    'launch' => ['name' => 'Start My Growth',   'monthly' => 249, 'yearly' => 208],
-    'growth' => ['name' => 'Grow My Leads',     'monthly' => 499, 'yearly' => 416],
+    'launch' => ['name' => 'Start My Growth',   'monthly' => 150, 'yearly' => 117, 'yearly_total' => 1400, 'upfront_months' => 3],
+    'growth' => ['name' => 'Grow My Leads',     'monthly' => 300, 'yearly' => 242, 'yearly_total' => 2900, 'upfront_months' => 3],
     'scale'  => ['name' => 'Scale My Business', 'monthly' => 999, 'yearly' => 833],
 ];
 

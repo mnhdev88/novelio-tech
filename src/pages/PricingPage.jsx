@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, ArrowRight, Sparkles, ShieldCheck, HelpCircle } from 'lucide-react';
+import { Check, ArrowRight, Sparkles, ShieldCheck, HelpCircle, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
 import CTABanner from '../components/home/CTABanner';
-import { PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ, PRICING_COMPARISON } from '../data/siteData';
+import { COMPANY, PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ, PRICING_COMPARISON } from '../data/siteData';
 import { trackEvent } from '../utils/analytics';
 
 export default function PricingPage() {
@@ -30,8 +30,8 @@ export default function PricingPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Pricing — Business Growth Plans with Website Included Free"
-        description="Your website, SSL, hosting, lead capture, Google setup and growth system — included in one monthly growth plan starting at $249/month. No heavy upfront website cost."
+        title="Pricing — Business Growth Plans with Website Included"
+        description="Your website, SSL, hosting, lead capture, Google setup and growth system — included in one growth plan starting at $150/month. No heavy upfront website cost."
         canonical="/pricing"
         schema={faqSchema}
       />
@@ -48,8 +48,8 @@ export default function PricingPage() {
               Your Growth Partner, <span className="gradient-text">on a Subscription</span>
             </h1>
             <p className="text-[#475569] text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-              Your website, SSL, hosting, lead capture, Google setup and growth tracking — included
-              free with one predictable monthly growth plan. No $1,500–$3,000 upfront website cost.
+              Your website, SSL, hosting, lead capture, Google setup and growth tracking — all
+              included in one predictable growth plan. No $1,500–$3,000 upfront website cost.
             </p>
 
             {/* Billing toggle */}
@@ -68,11 +68,11 @@ export default function PricingPage() {
                   billing === 'yearly' ? 'bg-[#1B3172] text-white' : 'text-[#475569] hover:text-[#1B3172]'
                 }`}
               >
-                Yearly
+                Pay Yearly
                 <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
                   billing === 'yearly' ? 'bg-white/20 text-white' : 'bg-green-100 text-green-700'
                 }`}>
-                  2 months free
+                  Save up to $700
                 </span>
               </button>
             </div>
@@ -86,8 +86,18 @@ export default function PricingPage() {
         <div className="container-xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
             {PRICING_PLANS.map((plan, i) => {
+              const isFree = plan.priceMonthly === 0;
+              // Plans on the 3-upfront + 9-EMI term carry an explicit yearly total
+              // and never derive it by multiplying the monthly price.
+              const isTermPlan = Boolean(plan.termTotal);
+              const yearlyTotal = plan.priceYearlyTotal ?? plan.priceYearly * 12;
+              const upfront = isTermPlan ? plan.priceMonthly * plan.upfrontMonths : 0;
+              const remainingMonths = isTermPlan ? 12 - plan.upfrontMonths : 0;
+              const savings = isTermPlan ? plan.termTotal - yearlyTotal : 0;
+              // Headline number: the monthly rate on the monthly tab; on the
+              // yearly tab, term plans show the flat yearly total instead.
+              const showYearlyTotal = billing === 'yearly' && isTermPlan;
               const price = billing === 'yearly' ? plan.priceYearly : plan.priceMonthly;
-              const isFree = price === 0;
               return (
                 <motion.div
                   key={plan.id}
@@ -115,35 +125,88 @@ export default function PricingPage() {
                   <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-1">{plan.name}</h3>
                   <p className="text-[#64748b] text-sm leading-relaxed mb-5 min-h-[40px]">{plan.tagline}</p>
 
-                  <div className="mb-6">
-                    {isFree ? (
+                  <div className="mb-6 min-h-[104px]">
+                    {plan.ctaPhone ? (
+                      /* Phone-sold plan: no price shown — pricing is quoted on the call. */
+                      <div>
+                        <span className="text-3xl font-heading font-800 text-[#1B3172]">Custom pricing</span>
+                        <p className="text-xs text-[#64748b] mt-1.5 leading-relaxed">
+                          Scoped to your business on a quick call.
+                        </p>
+                      </div>
+                    ) : isFree ? (
                       <span className="text-4xl font-heading font-800 text-[#1B3172]">Free</span>
+                    ) : showYearlyTotal ? (
+                      <div className="flex items-end gap-1">
+                        <span className="text-4xl font-heading font-800 text-[#1B3172]">
+                          ${yearlyTotal.toLocaleString()}
+                        </span>
+                        <span className="text-[#64748b] text-sm mb-1.5">/year</span>
+                      </div>
                     ) : (
                       <div className="flex items-end gap-1">
                         <span className="text-4xl font-heading font-800 text-[#1B3172]">${price}</span>
                         <span className="text-[#64748b] text-sm mb-1.5">/mo</span>
                       </div>
                     )}
-                    {!isFree && (
+
+                    {!isFree && isTermPlan && (
+                      showYearlyTotal ? (
+                        <div className="mt-2">
+                          <span className="inline-block text-[11px] font-bold px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                            Save ${savings} vs monthly
+                          </span>
+                          <p className="text-xs text-[#64748b] mt-1.5 leading-relaxed">
+                            One payment for the full 12 months · {plan.setupFee > 0 ? `$${plan.setupFee} setup` : 'no setup fee'}
+                          </p>
+                        </div>
+                      ) : (
+                        <p className="text-xs text-[#64748b] mt-1.5 leading-relaxed">
+                          <span className="font-semibold text-[#1B3172]">
+                            ${upfront} upfront ({plan.upfrontMonths} months)
+                          </span>
+                          , then {remainingMonths} monthly payments of ${plan.priceMonthly}
+                          <br />
+                          ${plan.termTotal.toLocaleString()} total over 12 months · {plan.setupFee > 0 ? `$${plan.setupFee} setup` : 'no setup fee'}
+                        </p>
+                      )
+                    )}
+
+                    {!isFree && !isTermPlan && !plan.ctaPhone && (
                       <p className="text-xs text-[#64748b] mt-1">
-                        {billing === 'yearly' ? `Billed yearly ($${price * 12}/yr)` : 'Billed monthly · 12-month plan'}
+                        {billing === 'yearly' ? `Billed yearly ($${yearlyTotal.toLocaleString()}/yr)` : 'Billed monthly · 12-month plan'}
                         {' · '}
                         {plan.setupFee > 0 ? `$${plan.setupFee} setup` : 'no setup fee'}
                       </p>
                     )}
                   </div>
 
-                  <button
-                    onClick={() => choosePlan(plan)}
-                    className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer mb-6 ${
-                      plan.highlight
-                        ? 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'
-                        : 'border border-[rgba(29,78,216,0.2)] text-[#1B3172] hover:bg-[#1B3172] hover:text-white'
-                    }`}
-                  >
-                    {plan.cta}
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  {plan.ctaPhone ? (
+                    <a
+                      href={`tel:${COMPANY.phone.replace(/[\s()-]/g, '')}`}
+                      onClick={() => trackEvent('select_plan', { plan_id: plan.id, plan_name: plan.name, billing, cta: 'call' })}
+                      className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer mb-6 ${
+                        plan.highlight
+                          ? 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'
+                          : 'border border-[rgba(29,78,216,0.2)] text-[#1B3172] hover:bg-[#1B3172] hover:text-white'
+                      }`}
+                    >
+                      <Phone className="w-4 h-4" />
+                      {plan.cta}
+                    </a>
+                  ) : (
+                    <button
+                      onClick={() => choosePlan(plan)}
+                      className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer mb-6 ${
+                        plan.highlight
+                          ? 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'
+                          : 'border border-[rgba(29,78,216,0.2)] text-[#1B3172] hover:bg-[#1B3172] hover:text-white'
+                      }`}
+                    >
+                      {plan.cta}
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  )}
 
                   <ul className="space-y-3 flex-1">
                     {plan.features.map((f, fi) => (
@@ -202,7 +265,7 @@ export default function PricingPage() {
                 <ShieldCheck className="w-6 h-6 text-green-600" />
               </div>
               <div>
-                <h4 className="font-heading font-700 text-[#1B3172] text-base mb-1">No payment to start</h4>
+                <h4 className="font-heading font-700 text-[#1B3172] text-base mb-1">Nothing charged until scope is agreed</h4>
                 <p className="text-[#64748b] text-sm leading-relaxed">
                   Pick a plan and we'll confirm scope and pricing with you before any billing begins.
                   Full website ownership transfers to you after your 12-month term.
@@ -222,7 +285,7 @@ export default function PricingPage() {
               Everything in Each <span className="gradient-text">Growth Plan</span>
             </h2>
             <p className="text-[#64748b] text-base mt-4 max-w-2xl mx-auto">
-              Every plan includes your website free — with SSL, hosting and maintenance.
+              Every plan includes your website — with SSL, hosting and maintenance.
               Higher plans add the lead, sales, payment and retention systems that turn a website into a growth engine.
             </p>
           </div>
@@ -231,9 +294,9 @@ export default function PricingPage() {
               <thead>
                 <tr className="bg-[#1B3172] text-white">
                   <th className="px-5 py-4 font-heading font-700 min-w-[180px]">Feature</th>
-                  <th className="px-5 py-4 font-heading font-700 min-w-[150px]">Start My Growth<span className="block text-xs font-normal text-white/70 mt-0.5">$249/mo</span></th>
-                  <th className="px-5 py-4 font-heading font-700 min-w-[150px] bg-brand-purple/90">Grow My Leads<span className="block text-xs font-normal text-white/70 mt-0.5">$499/mo</span></th>
-                  <th className="px-5 py-4 font-heading font-700 min-w-[150px]">Scale My Business<span className="block text-xs font-normal text-white/70 mt-0.5">$999/mo</span></th>
+                  <th className="px-5 py-4 font-heading font-700 min-w-[150px]">Start My Growth<span className="block text-xs font-normal text-white/70 mt-0.5">$150/mo · $1,800 total</span></th>
+                  <th className="px-5 py-4 font-heading font-700 min-w-[150px] bg-brand-purple/90">Grow My Leads<span className="block text-xs font-normal text-white/70 mt-0.5">$300/mo · $3,600 total</span></th>
+                  <th className="px-5 py-4 font-heading font-700 min-w-[150px]">Scale My Business<span className="block text-xs font-normal text-white/70 mt-0.5">Custom pricing</span></th>
                 </tr>
               </thead>
               <tbody>
