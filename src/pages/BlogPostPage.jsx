@@ -38,6 +38,10 @@ const ARTICLE_CSS = `
 .blog-article-root .author-box{display:flex;align-items:center;gap:20px;background:#f8f9ff;border:1px solid #e0e7ff;border-radius:8px;padding:20px 24px;margin:40px 0}
 .blog-article-root .author-avatar{width:64px;height:64px;border-radius:50%;background:#0057d9;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;font-weight:700;flex-shrink:0}
 .blog-article-root .tag{display:inline-block;background:#e8f0fe;color:#0057d9;font-size:.8rem;padding:4px 10px;border-radius:20px;margin:0 4px 8px 0;font-weight:600}
+.blog-article-root img{max-width:100%;height:auto}
+.blog-article-root figure{margin:36px 0}
+.blog-article-root figure img{width:100%;display:block;border-radius:10px;border:1px solid #e0e7ff;box-shadow:0 4px 16px rgba(15,23,42,.08)}
+.blog-article-root figcaption{font-size:.85rem;color:#64748b;text-align:center;margin-top:10px;line-height:1.5}
 @media(max-width:600px){.blog-article-root header.hero h1{font-size:1.6rem}.blog-article-root h2{font-size:1.3rem}}
 `;
 
