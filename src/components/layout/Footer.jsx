@@ -93,6 +93,12 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to="/services/seo-plans" className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
+                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
+                  SEO, AEO &amp; GEO Plans
+                </Link>
+              </li>
             </ul>
           </div>
 

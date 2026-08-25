@@ -494,6 +494,33 @@ export default function SearchEngineOptimizationPage() {
         </div>
       </section>
 
+      {/* ── SEO plans ── */}
+      <section className="section-pad-sm bg-white">
+        <div className="container-xl">
+          <motion.div
+            {...fadeUp()}
+            className="rounded-2xl bg-gradient-to-br from-[#1B3172] to-[#091830] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+          >
+            <div>
+              <h3 className="text-white font-heading font-700 text-2xl mb-2">
+                See the SEO, AEO &amp; GEO plans
+              </h3>
+              <p className="text-white/70 text-sm sm:text-base max-w-2xl leading-relaxed">
+                Three monthly engagement tiers from $299 — with every line of scope published, from
+                keyword mapping and technical health to answer-engine and AI-search visibility.
+              </p>
+            </div>
+            <Link
+              to="/services/seo-plans"
+              className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#1B3172] text-sm font-semibold hover:bg-slate-100 transition-all"
+            >
+              Compare SEO Plans
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Other Services ── */}
       <section className="section-pad-sm bg-[#EEF2FF]">
         <div className="container-xl">

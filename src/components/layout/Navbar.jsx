@@ -118,6 +118,17 @@ export default function Navbar() {
                           ))}
                         </div>
                         <Link
+                          to="/services/seo-plans"
+                          className="mt-1 flex items-center gap-2.5 w-full px-2.5 py-1.5 rounded-lg border-t border-slate-100 hover:bg-slate-50 transition-all group"
+                        >
+                          <div className="w-8 h-8 rounded-md bg-gradient-to-br from-violet-600 to-blue-600 flex items-center justify-center flex-shrink-0">
+                            <span className="text-white text-xs font-bold">S</span>
+                          </div>
+                          <span className="text-[14px] font-medium text-[#334155] group-hover:text-[#1B3172] transition-colors leading-tight">
+                            SEO, AEO &amp; GEO Plans
+                          </span>
+                        </Link>
+                        <Link
                           to="/services"
                           className="mt-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border-t border-slate-100 text-[13px] font-semibold text-brand-purple hover:bg-slate-50 transition-all"
                         >
@@ -207,6 +218,10 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
+            <Link to="/services/seo-plans" className="mt-2 flex items-center gap-2 p-3 rounded-xl hover:bg-slate-50 transition-all">
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-blue-600 flex-shrink-0" />
+              <span className="text-sm text-[#475569]">SEO, AEO &amp; GEO Plans</span>
+            </Link>
             <Link to="/services" className="mt-2 flex items-center gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold text-brand-purple hover:bg-slate-50 transition-all">
               View all services <ArrowRight className="w-4 h-4" />
             </Link>
