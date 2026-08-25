@@ -18,6 +18,7 @@ const WebsiteDevelopmentPage         = lazy(() => import('./pages/services/Websi
 const MobileAppDevelopmentPage       = lazy(() => import('./pages/services/MobileAppDevelopmentPage'));
 const SearchEngineOptimizationPage   = lazy(() => import('./pages/services/SearchEngineOptimizationPage'));
 const SeoPlansPage                   = lazy(() => import('./pages/services/SeoPlansPage'));
+const SeoPricePage                   = lazy(() => import('./pages/services/SeoPricePage'));
 const PricingPage        = lazy(() => import('./pages/PricingPage'));
 const AuthPage           = lazy(() => import('./pages/portal/AuthPage'));
 const CheckoutPage       = lazy(() => import('./pages/portal/CheckoutPage'));
@@ -71,6 +72,7 @@ function Layout() {
             <Route path="/services/mobile-app-development"        element={<MobileAppDevelopmentPage />} />
             <Route path="/services/search-engine-optimization"  element={<SearchEngineOptimizationPage />} />
             <Route path="/services/seo-plans"                    element={<SeoPlansPage />} />
+            <Route path="/services/seo-price"                    element={<SeoPricePage />} />
             <Route path="/services/:serviceId"                   element={<ServiceDetailPage />} />
             <Route path="/pricing"                 element={<PricingPage />} />
 

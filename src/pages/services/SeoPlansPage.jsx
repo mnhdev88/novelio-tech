@@ -508,6 +508,14 @@ export default function SeoPlansPage() {
               </motion.div>
             ))}
           </div>
+
+          {/* Deep-scope companion page — noindex, sent to prospects during scoping */}
+          <motion.p {...fadeUp(0.15)} className="text-center text-[#64748b] text-sm mt-10 leading-relaxed">
+            Want the line-by-line version?{' '}
+            <Link to="/services/seo-price" className="text-brand-purple font-semibold hover:underline">
+              See the complete scope of work, tier by tier →
+            </Link>
+          </motion.p>
         </div>
       </section>
 
