@@ -113,6 +113,7 @@ of the team from **Settings → Team** in the panel.
 | Section | What the client can do |
 |---|---|
 | **Overview** | Post count, unpublished changes, new leads, last publish. |
+| **Unpublished** | Everything edited but not yet live, described in plain language, with the Publish button and an optional note. A count badge sits on this item in the sidebar. |
 | **Home page** | Hero (badge, three-part headline, tagline, paragraph, button), the four growth areas with their symptom lists, the 12-stage growth cycle, three pillars, the 10-point website checklist, offer benefits, why-choose-us reasons and result bars, and the homepage FAQ. |
 | **Blog** | Write, edit, reorder, delete. Draft / published / scheduled per post. Block editor with rich text, headings, stat callouts, CTA boxes, highlights, FAQ blocks, images and tables. Image upload. Article + FAQ schema generated automatically. Google result preview. |
 | **Pages & SEO** | Title, description and "hide from Google" for any of the 55 routes, with a live Google preview. Blank keeps the page's built-in wording. |

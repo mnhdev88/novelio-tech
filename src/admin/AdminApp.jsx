@@ -19,6 +19,7 @@ const FooterPage     = lazy(() => import('./pages/FooterPage'));
 const ContactPage    = lazy(() => import('./pages/ContactPage'));
 const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
 const FaqPage        = lazy(() => import('./pages/FaqPage'));
+const UnpublishedPage = lazy(() => import('./pages/UnpublishedPage'));
 const PricingPage    = lazy(() => import('./pages/PricingPage'));
 const LeadsPage      = lazy(() => import('./pages/LeadsPage'));
 const TeamPage       = lazy(() => import('./pages/TeamPage'));
@@ -45,6 +46,8 @@ export default function AdminApp() {
             <Route path="blog/:slug" element={<BlogEditorPage />} />
 
             <Route path="home" element={<HomePageEditor />} />
+            <Route path="unpublished" element={<UnpublishedPage />} />
+
             <Route path="pages" element={<PagesSeoPage />} />
             <Route path="testimonials" element={<TestimonialsPage />} />
             <Route path="faq" element={<FaqPage />} />

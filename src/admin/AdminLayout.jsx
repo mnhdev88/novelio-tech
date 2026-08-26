@@ -1,15 +1,15 @@
-// Panel shell: sidebar, publish bar, and the routed page.
+// Panel shell: header (with the publish control), sidebar, and the routed page.
 
 import { useState } from 'react';
 import { NavLink, useNavigate, Outlet } from 'react-router-dom';
 import {
   FileText, LayoutTemplate, DollarSign, Inbox, Users, ScrollText, House,
   Home, LogOut, Menu, X, ExternalLink, MessageSquareQuote, HelpCircle,
-  PanelTop, PanelBottom, Phone,
+  PanelTop, PanelBottom, Phone, CloudUpload,
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import { useAdmin } from './AdminContext';
-import PublishBar from './PublishBar';
+import PublishButton from './PublishButton';
 
 // Grouped rather than one flat list: ten equal-weight links give no sense of
 // where anything lives, and the two halves behave differently — editing content
@@ -40,6 +40,12 @@ const NAV = [
     ],
   },
   {
+    title: 'Publishing',
+    items: [
+      { to: '/admin/unpublished', icon: CloudUpload, label: 'Unpublished', badge: 'pending' },
+    ],
+  },
+  {
     title: 'Business',
     items: [
       { to: '/admin/leads',    icon: Inbox,      label: 'Leads',    cap: 'leads.read' },
@@ -50,7 +56,7 @@ const NAV = [
 ];
 
 export default function AdminLayout() {
-  const { user, logout, can } = useAdmin();
+  const { user, logout, can, pending } = useAdmin();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -102,6 +108,8 @@ export default function AdminLayout() {
             View site <ExternalLink className="w-3.5 h-3.5" />
           </a>
 
+          <PublishButton />
+
           <span className="hidden sm:block w-px h-5 bg-slate-200" />
 
           <div className="flex items-center gap-2.5">
@@ -141,7 +149,7 @@ export default function AdminLayout() {
                   </p>
                 )}
                 <div className="space-y-0.5">
-                  {group.items.map(({ to, end, icon: Icon, label }) => (
+                  {group.items.map(({ to, end, icon: Icon, label, badge }) => (
                     <NavLink key={to} to={to} end={end} className={linkClass} onClick={() => setMenuOpen(false)}>
                       {({ isActive }) => (
                         <>
@@ -153,7 +161,12 @@ export default function AdminLayout() {
                             }`}
                           />
                           <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#1B3172]' : 'text-[#94a3b8] group-hover:text-[#1B3172]'}`} />
-                          <span className="truncate">{label}</span>
+                          <span className="truncate flex-1">{label}</span>
+                          {badge === 'pending' && pending.length > 0 && (
+                            <span className="inline-grid place-items-center min-w-[18px] h-[18px] px-1 rounded-full bg-amber-100 text-amber-700 text-[11px] font-bold leading-none">
+                              {pending.length}
+                            </span>
+                          )}
                         </>
                       )}
                     </NavLink>
@@ -175,9 +188,6 @@ export default function AdminLayout() {
 
         {/* ── Page ──────────────────────────────────────────────────────── */}
         <main className="flex-1 min-w-0 p-4 sm:p-6">
-          <div className="mb-5">
-            <PublishBar />
-          </div>
           <Outlet />
         </main>
       </div>

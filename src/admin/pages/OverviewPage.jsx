@@ -62,6 +62,7 @@ export default function OverviewPage() {
         <Tile icon={FileText} label="Blog posts" value={posts ?? '…'} to="/admin/blog" />
         <Tile
           icon={Clock} label="Unpublished" value={pending.length}
+          to="/admin/unpublished"
           hint={pending.length ? 'Waiting to go live' : 'All published'}
         />
         {can('leads.read') && (
