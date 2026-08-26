@@ -2,33 +2,10 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
+import { HOMEPAGE } from '../../data/siteData';
 
-const FAQS = [
-  {
-    q: 'What exactly is a Growth Audit and is it really free?',
-    a: 'Yes — completely free, no strings attached. A Growth Audit is a 30-minute deep-dive into your business\'s digital presence. We review your website, Google Business Profile, online reviews, social media, competitor positioning, and lead capture systems. At the end, you get a prioritized action list you can implement yourself or hire us to execute. No credit card, no sales pressure.',
-  },
-  {
-    q: 'How is Novelio different from a regular web design agency?',
-    a: 'Most agencies hand you a website and disappear. We diagnose your entire growth picture first — website, local SEO, lead follow-up, automation, branding — then build a system that works together. We measure success by leads and revenue generated, not just deliverables handed off. Think of us as a growth partner, not a vendor.',
-  },
-  {
-    q: 'Do you only build websites or handle other business problems too?',
-    a: 'We handle the full spectrum: website design and development, Google Business Profile optimization, local SEO, lead generation funnels, marketing automation, branding, tech-ops integrations, email marketing, and email list validation. If it impacts how customers find, trust, and buy from you — we cover it.',
-  },
-  {
-    q: 'How long before I see results?',
-    a: 'Most clients see measurable improvements within 30–60 days. Quick wins like Google profile optimization and review generation can show results in days. SEO and lead nurture systems typically compound over 60–90 days. We set realistic timelines in your Growth Plan so there are no surprises.',
-  },
-  {
-    q: 'What does it cost and are there long-term contracts?',
-    a: 'Pricing depends on which services you need and your business size. We don\'t believe in locking clients into long-term contracts — our work speaks for itself. Most clients start with a single project or a 3-month engagement, then continue because they see ROI. Pricing is transparent and discussed after your free audit.',
-  },
-  {
-    q: 'Do you work with businesses remotely?',
-    a: 'Absolutely. We work with small businesses worldwide. Our team is fully remote and our clients span across North America, Europe, the Middle East, South Asia, and beyond. Wherever you are, we\'re your partner.',
-  },
-];
+const FAQS = HOMEPAGE.faq.items;
+
 
 function FAQItem({ faq, index, isOpen, onToggle }) {
   return (

@@ -1,10 +1,9 @@
 import { ArrowRight } from 'lucide-react';
+import { HOMEPAGE } from '../../data/siteData';
+
+const CYCLE = HOMEPAGE.growthCycle.steps;
 
 // "A customer does not buy in one step — they move through a journey."
-const CYCLE = [
-  'Branding', 'Visibility', 'Website Visit', 'Trust', 'Lead', 'Follow-up',
-  'Sale', 'Delivery', 'Support', 'Review', 'Resale', 'Referral',
-];
 
 export default function GrowthCycle() {
   return (

@@ -1,0 +1,5 @@
+# Only the non-underscore endpoint files here are meant to be reached over the web.
+# Shared includes, credential copies and logs are blocked outright.
+<FilesMatch "^(_.*\.php|credentials(\.example|\.local)?\.php|.*\.log)$">
+    Require all denied
+</FilesMatch>

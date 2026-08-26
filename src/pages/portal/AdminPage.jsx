@@ -44,7 +44,7 @@ export default function AdminPage() {
 
   return (
     <main className="pt-20">
-      <SEO title="Admin — Back office" canonical="/admin" noindex />
+      <SEO title="Admin — Back office" canonical="/portal/admin" noindex />
       <section className="section-pad-sm bg-[#EEF2FF] relative overflow-hidden min-h-[80vh]">
         <div className="line-grid absolute inset-0 opacity-30" />
         <div className="container-xl relative z-10">

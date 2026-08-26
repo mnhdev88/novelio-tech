@@ -1,19 +1,9 @@
 import { motion } from 'framer-motion';
-import { BarChart2, Users, Eye, Target, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+import { HOMEPAGE } from '../../data/siteData';
 
-const pillars = [
-  { icon: BarChart2, title: 'Diagnose First',       desc: 'We run a free audit before we propose a single solution. No guessing, no upselling. You see the gaps before we talk about fixes.',            color: 'from-purple-600 to-blue-600',   bar: 100 },
-  { icon: Users,     title: 'Full-Spectrum View',   desc: 'Website, Google listing, leads, automation, branding, hosting, and operations — we look at all of it, not just the part we sell.',           color: 'from-pink-600 to-orange-500',  bar: 100 },
-  { icon: Eye,       title: 'Accountable Partner',  desc: 'Monthly reviews, clear KPIs, and transparent reporting. You always know what your investment is doing — and we stand behind the numbers.',    color: 'from-cyan-500 to-blue-600',    bar: 100 },
-  { icon: Target,    title: 'No Heavy Upfront Cost', desc: 'Your website, SSL, hosting and lead capture are included free with one transparent monthly growth plan — no $3,000 project invoice, no hidden fees.',   color: 'from-emerald-500 to-cyan-600', bar: 100 },
-];
-
-const metrics = [
-  { label: 'Organic Traffic',  pct: 85,  color: 'from-[#6B3FA0] to-[#0EA5E9]', val: '+85%' },
-  { label: 'Conversions',      pct: 72,  color: 'from-[#EC4899] to-[#F97316]', val: '+72%' },
-  { label: 'Revenue Growth',   pct: 93,  color: 'from-[#22C55E] to-[#0EA5E9]', val: '+93%' },
-  { label: 'ROI',              pct: 96,  color: 'from-[#F59E0B] to-[#F97316]', val: '+340%' },
-];
+const pillars = HOMEPAGE.whyChooseUs.pillars;
+const metrics = HOMEPAGE.whyChooseUs.metrics;
 
 export default function WhyChooseUs() {
   return (

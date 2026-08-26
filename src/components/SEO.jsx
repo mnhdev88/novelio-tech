@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import SEO_OVERRIDES from '../../content/seo/pages.json';
 
 const BASE_URL = 'https://www.noveliotech.com';
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
@@ -14,6 +15,17 @@ export default function SEO({
   schema,
   noindex = false,
 }) {
+  // Per-page overrides edited in the admin panel, keyed by canonical path.
+  // Every page component still ships a sensible default; an override only
+  // replaces the fields the client actually filled in. This is what makes all
+  // ~40 routes editable without touching a single page component.
+  const override = (canonical && SEO_OVERRIDES[canonical]) || {};
+  if (override.title) title = override.title;
+  if (override.description) description = override.description;
+  if (override.keywords) keywords = override.keywords;
+  if (override.image) image = override.image;
+  if (override.noindex !== undefined) noindex = override.noindex;
+
   const fullTitle = title
     ? `${title} | Novelio Technologies`
     : 'Business Growth Partner for Small Businesses | Novelio Technologies';

@@ -1,0 +1,349 @@
+{
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "tagline": "See the quality of our work before you pay anything.",
+      "priceMonthly": 0,
+      "priceYearly": 0,
+      "setupFee": 0,
+      "cta": "Start Free",
+      "highlight": false,
+      "color": "from-slate-500 to-slate-700",
+      "features": [
+        "1-page starter website on a Novelio subdomain",
+        "Free 30-minute growth audit",
+        "Google Business Profile checkup",
+        "Email Validator — 100 verifications / month",
+        "Email support"
+      ],
+      "note": "No credit card required."
+    },
+    {
+      "id": "launch",
+      "name": "Start My Growth",
+      "tagline": "Look professional and get ready for leads.",
+      "priceMonthly": 150,
+      "priceYearly": 117,
+      "priceYearlyTotal": 1400,
+      "termTotal": 1800,
+      "upfrontMonths": 3,
+      "setupFee": 0,
+      "cta": "Start My Growth",
+      "highlight": false,
+      "color": "from-blue-500 to-cyan-500",
+      "features": [
+        "5-page website — SSL, hosting & maintenance included",
+        "Contact form + call, email & WhatsApp buttons",
+        "Basic on-page SEO setup",
+        "Google Business Profile setup & optimization",
+        "Google Analytics + Search Console setup",
+        "Basic lead-tracking sheet + 3 follow-up templates",
+        "1 content/website update per month",
+        "1 monthly review call · email support"
+      ],
+      "note": "Best for new and small businesses that need a trusted online presence. 12-month plan — 3 months upfront, then 9 monthly payments.",
+      "yearlyTotal": 1400
+    },
+    {
+      "id": "growth",
+      "name": "Grow My Leads",
+      "tagline": "Capture and follow up leads better.",
+      "priceMonthly": 300,
+      "priceYearly": 242,
+      "priceYearlyTotal": 2900,
+      "termTotal": 3600,
+      "upfrontMonths": 3,
+      "setupFee": 199,
+      "cta": "Grow My Leads",
+      "highlight": true,
+      "badge": "Most Popular",
+      "color": "from-violet-600 to-blue-600",
+      "features": [
+        "Everything in Start My Growth",
+        "Growth website — up to 8 pages with improved sales copy",
+        "Quote form + booking link + advanced lead capture",
+        "7-day lead follow-up system + call & objection scripts",
+        "Review request flow + proposal template",
+        "Payment reminder templates + basic payment tracker",
+        "GBP optimization + posting support",
+        "2–4 content posts/updates per month",
+        "2 review calls/month · email + WhatsApp support"
+      ],
+      "note": "Best for SMBs that need more leads and disciplined follow-up. 12-month plan — 3 months upfront, then 9 monthly payments.",
+      "yearlyTotal": 2900
+    },
+    {
+      "id": "scale",
+      "name": "Scale My Business",
+      "tagline": "Run leads, sales, payments and retention in one system.",
+      "priceMonthly": 999,
+      "priceYearly": 833,
+      "setupFee": 499,
+      "cta": "Call Now",
+      "ctaPhone": true,
+      "highlight": false,
+      "color": "from-amber-500 to-orange-500",
+      "features": [
+        "Everything in Grow My Leads",
+        "Advanced business website — up to 12 pages, funnel-based copy",
+        "Novelio in-house CRM with lead pipeline included",
+        "Automated follow-up workflow + full sales playbook",
+        "Invoice & payment tracking + automated payment reminders",
+        "Customer retention messages — renewals, anniversaries, milestones",
+        "Review, testimonial & referral automation",
+        "Full business growth KPI dashboard",
+        "Weekly/bi-weekly reviews · priority support"
+      ],
+      "note": "Best for SMBs ready for a complete growth operating system. Call us and we will scope the plan and pricing around your business."
+    }
+  ],
+  "comparison": [
+    {
+      "feature": "Website included",
+      "values": [
+        "Basic website",
+        "Growth website",
+        "Advanced business website"
+      ]
+    },
+    {
+      "feature": "Pages included",
+      "values": [
+        "Up to 5 pages",
+        "Up to 8 pages",
+        "Up to 12 pages"
+      ]
+    },
+    {
+      "feature": "SSL + hosting + maintenance",
+      "values": [
+        "Included",
+        "Included",
+        "Included"
+      ]
+    },
+    {
+      "feature": "Website copy",
+      "values": [
+        "Basic copy",
+        "Improved sales copy",
+        "Funnel-based sales copy"
+      ]
+    },
+    {
+      "feature": "Contact form & CTAs (call / email / WhatsApp)",
+      "values": [
+        "Yes",
+        "Yes",
+        "Advanced forms"
+      ]
+    },
+    {
+      "feature": "Booking link",
+      "values": [
+        "Basic",
+        "Yes",
+        "Yes"
+      ]
+    },
+    {
+      "feature": "Google Business Profile",
+      "values": [
+        "Setup & optimization",
+        "Optimization + posting support",
+        "Full local profile growth system"
+      ]
+    },
+    {
+      "feature": "SEO",
+      "values": [
+        "Basic setup",
+        "Basic + ongoing",
+        "Advanced on-page SEO"
+      ]
+    },
+    {
+      "feature": "Google Analytics + Search Console",
+      "values": [
+        "Yes",
+        "Yes",
+        "Yes"
+      ]
+    },
+    {
+      "feature": "Lead tracking",
+      "values": [
+        "Basic sheet",
+        "Advanced lead tracker",
+        "Novelio in-house CRM"
+      ]
+    },
+    {
+      "feature": "Lead follow-up process",
+      "values": [
+        "3 basic templates",
+        "7-day follow-up system",
+        "Automated follow-up workflow"
+      ]
+    },
+    {
+      "feature": "Sales scripts",
+      "values": [
+        "Basic inquiry reply",
+        "Call + objection scripts",
+        "Full sales playbook"
+      ]
+    },
+    {
+      "feature": "Proposal format",
+      "values": [
+        "—",
+        "Simple template",
+        "Proposal + pricing + closing format"
+      ]
+    },
+    {
+      "feature": "Review requests",
+      "values": [
+        "Basic template",
+        "Review request flow",
+        "Review + testimonial + referral system"
+      ]
+    },
+    {
+      "feature": "Customer retention messages",
+      "values": [
+        "—",
+        "Thank-you / check-in",
+        "Renewals, anniversaries & milestone messages"
+      ]
+    },
+    {
+      "feature": "Invoice tracking",
+      "values": [
+        "—",
+        "Basic payment tracker",
+        "CRM-based invoice & payment status"
+      ]
+    },
+    {
+      "feature": "Payment reminders",
+      "values": [
+        "—",
+        "Manual templates",
+        "Automated reminder workflow"
+      ]
+    },
+    {
+      "feature": "Post-delivery follow-up",
+      "values": [
+        "—",
+        "Basic follow-up",
+        "Full customer lifecycle follow-up"
+      ]
+    },
+    {
+      "feature": "Monthly content support",
+      "values": [
+        "1 update / month",
+        "2–4 posts / month",
+        "4–8 posts / month"
+      ]
+    },
+    {
+      "feature": "Reporting",
+      "values": [
+        "Basic report",
+        "Lead + follow-up report",
+        "Full growth dashboard"
+      ]
+    },
+    {
+      "feature": "Review calls",
+      "values": [
+        "1 / month",
+        "2 / month",
+        "Weekly or bi-weekly"
+      ]
+    },
+    {
+      "feature": "Support",
+      "values": [
+        "Email",
+        "Email + WhatsApp",
+        "Priority"
+      ]
+    }
+  ],
+  "addons": [
+    {
+      "id": "extra-pages",
+      "name": "Extra website pages (5)",
+      "price": 39,
+      "desc": "Five additional custom pages on your site."
+    },
+    {
+      "id": "landing-page",
+      "name": "Additional landing page",
+      "price": 49,
+      "desc": "A dedicated, conversion-focused campaign page."
+    },
+    {
+      "id": "email-credits",
+      "name": "Extra email-validation credits (10k)",
+      "price": 19,
+      "desc": "10,000 additional verifications every month."
+    },
+    {
+      "id": "ad-management",
+      "name": "Ad-spend management",
+      "price": 199,
+      "desc": "We run and optimize your Google/Meta ads (excl. ad budget)."
+    },
+    {
+      "id": "extra-content",
+      "name": "Additional content (4 articles) / month",
+      "price": 99,
+      "desc": "Four extra SEO articles published monthly."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the website included in the plan?",
+      "a": "Yes — your website, SSL, hosting, lead-capture setup and basic growth system are all included in your growth plan at no extra charge. Instead of paying $1,500–$3,000 upfront for a website and then paying an agency separately, you get everything in one predictable plan with no heavy upfront cost."
+    },
+    {
+      "q": "Is this software (SaaS) or done-for-you work?",
+      "a": "Both. Tools like the Email Validator, the Novelio CRM and your reporting dashboard are self-serve software, while the website, SEO, Google Business Profile management, follow-up systems and content are done for you by our team. You get a single monthly subscription instead of one-off project invoices."
+    },
+    {
+      "q": "What is the difference between monthly and yearly billing?",
+      "a": "Both options cover the same 12-month plan. On monthly billing you pay your first 3 months upfront and then make 9 monthly payments — $450 upfront then $150/month ($1,800 total) on Start My Growth, or $900 upfront then $300/month ($3,600 total) on Grow My Leads. Paying for the year in one payment costs less: $1,400 on Start My Growth (a $400 saving) or $2,900 on Grow My Leads (a $700 saving)."
+    },
+    {
+      "q": "Why do I pay 3 months upfront?",
+      "a": "The first months carry the heaviest work — building your website, setting up hosting and SSL, configuring your Google Business Profile, and putting your lead-capture and follow-up systems in place. The 3-month upfront payment covers that build phase, and the remaining 9 months are spread as equal monthly payments. If you would rather avoid the upfront amount entirely, paying for the full year at once costs less overall."
+    },
+    {
+      "q": "Is there a minimum commitment?",
+      "a": "Paid growth plans run on a 12-month term. Because your website, hosting, SSL and growth setup are included in the plan rather than billed as a separate project, the website remains with Novelio until the term is completed. After 12 months, full ownership transfers to you — or earlier via a one-time buyout."
+    },
+    {
+      "q": "What is not included in the plans?",
+      "a": "To keep pricing fair, plans do not include unlimited changes, daily social posting, paid ad spend, full e-commerce builds, custom software from scratch or heavy copywriting projects. Those are available as add-ons or custom-scoped work — just ask."
+    },
+    {
+      "q": "Is there really a free plan?",
+      "a": "Yes. The Free plan gives you a 1-page starter site, a 30-minute growth audit, a Google Business Profile checkup and 100 email verifications a month — so you can see the quality of our work before paying anything."
+    },
+    {
+      "q": "Can I upgrade or change plans later?",
+      "a": "Absolutely. Most clients start on Start My Growth or Grow My Leads and move up as their results compound. You can upgrade or add à-la-carte add-ons whenever you need."
+    },
+    {
+      "q": "What if my business needs something custom?",
+      "a": "Multi-location brands, e-commerce catalogs and specialized requirements are handled on a custom plan. Tell us what you need and we will scope a tailored monthly package."
+    }
+  ]
+}

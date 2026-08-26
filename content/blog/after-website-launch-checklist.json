@@ -1,0 +1,90 @@
+{
+  "id": 10,
+  "slug": "after-website-launch-checklist",
+  "title": "What To Do After Launching Your Website: The 10-Step Growth Order",
+  "excerpt": "A website creates presence — growth comes from the system around it. Here is the exact order: Google Business Profile, SEO basics, lead capture, CRM, follow-up, reviews, content, ads, sales scripts, and a dashboard.",
+  "metaDescription": "Launched your website? Follow this 10-step growth order: Google Business Profile, SEO basics, lead capture, CRM, follow-up process, reviews, content, ads, sales scripts, dashboard.",
+  "category": "Business Growth",
+  "categoryColor": "from-emerald-600 to-teal-600",
+  "date": "Jun 8, 2026",
+  "author": "Noveliotech Team",
+  "readTime": "9 min read",
+  "image": "/blog/after-website-launch-checklist.jpg",
+  "featured": false,
+  "schema": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "What To Do After Launching Your Website: The 10-Step Growth Order",
+        "description": "The exact priority order after launching a website: Google Business Profile, SEO basics, lead capture, CRM, follow-up, reviews, content, ads, sales scripts, and a growth dashboard.",
+        "image": "https://www.noveliotech.com/blog/after-website-launch-checklist.jpg",
+        "author": {
+          "@type": "Person",
+          "name": "Novelio Technologies Editorial Team",
+          "url": "https://www.noveliotech.com/about"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Novelio Technologies LLC",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.noveliotech.com/logo.png"
+          }
+        },
+        "datePublished": "2026-06-08",
+        "dateModified": "2026-06-12",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.noveliotech.com/blog/after-website-launch-checklist"
+        },
+        "keywords": [
+          "after website launch",
+          "small business growth checklist",
+          "Google Business Profile",
+          "lead capture system",
+          "follow-up process",
+          "CRM for small business"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the first priority after launching a website?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For most SMBs, the Google Business Profile: it drives local visibility, Maps ranking, calls, direction requests, reviews, and local lead generation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should a small business start running paid ads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Only after the website, tracking, lead capture, and follow-up systems are ready. Running ads before fixing the website and follow-up is usually a waste of money."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need an expensive CRM to track leads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. A Google Sheet tracking name, contact, source, requirement, budget, follow-up date, status, and next action is enough in the beginning. The discipline matters more than the tool."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do good leads not convert?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Usually weak follow-up. Most sales do not happen in the first call — a simple day 0/1/3/5/7 follow-up sequence plus weekly nurture dramatically improves conversion."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "content": "<header class=\"hero\">\n  <h1>What To Do After Launching Your Website: The 10-Step Growth Order</h1>\n  <p class=\"meta\">By Noveliotech Team &middot; Jun 8, 2026 &middot; 9 min read &middot; Business Growth</p>\n</header>\n<div class=\"container\">\n  <p style=\"margin:24px 0 0\">\n    <span class=\"tag\">Growth Checklist</span>\n    <span class=\"tag\">Google Business Profile</span>\n    <span class=\"tag\">Lead Capture</span>\n    <span class=\"tag\">Follow-Up System</span>\n  </p>\n\n  <p style=\"margin-top:28px\">A website creates presence. But growth comes when the business has a complete system: <strong>traffic &rarr; lead capture &rarr; follow-up &rarr; conversion &rarr; review &rarr; repeat sales</strong>. Here is the exact order to build that system after your website goes live.</p>\n\n  <table>\n    <thead><tr><th>Priority</th><th>Next Step</th><th>Purpose</th></tr></thead>\n    <tbody>\n      <tr><td>1</td><td>Google Business Profile</td><td>Local visibility</td></tr>\n      <tr><td>2</td><td>SEO basics</td><td>Search visibility</td></tr>\n      <tr><td>3</td><td>Lead capture</td><td>Convert visitors</td></tr>\n      <tr><td>4</td><td>CRM sheet</td><td>Track every lead</td></tr>\n      <tr><td>5</td><td>Follow-up process</td><td>Increase sales</td></tr>\n      <tr><td>6</td><td>Reviews / testimonials</td><td>Build trust</td></tr>\n      <tr><td>7</td><td>Content</td><td>Long-term growth</td></tr>\n      <tr><td>8</td><td>Ads</td><td>Faster lead generation</td></tr>\n      <tr><td>9</td><td>Sales script</td><td>Better conversion</td></tr>\n      <tr><td>10</td><td>Dashboard</td><td>Control growth</td></tr>\n    </tbody>\n  </table>\n\n  <h2 id=\"step1\">1. Google Business Profile</h2>\n  <p>For most SMBs this is the first priority after the website. It drives local visibility, Google Maps ranking, calls and direction requests, reviews, trust, and direct local inquiries. If someone searches &ldquo;CA near me&rdquo; or &ldquo;restaurant near me,&rdquo; your profile can bring inquiries on its own.</p>\n\n  <h2 id=\"step2\">2. Basic SEO Setup</h2>\n  <p>Without SEO basics, the website may look good but remain invisible: page titles, meta descriptions, service and location keywords, image alt text, internal links, fast loading, mobile-friendly pages, Google Search Console setup, and sitemap submission.</p>\n\n  <h2 id=\"step3\">3. Lead Capture System</h2>\n  <p>Every visitor should have a clear action: WhatsApp button, call button, contact form, book-meeting link, quote request form, brochure download, and a thank-you page. The goal is simple: <strong>do not let visitors leave without a way to contact you.</strong></p>\n\n  <h2 id=\"step4\">4. CRM or Lead Tracking Sheet</h2>\n  <p>This is where many SMBs fail — they get leads but do not track them. Track: name, mobile/email, lead source, requirement, budget, follow-up date, status, next action, and closing reason. A Google Sheet CRM is enough in the beginning.</p>\n\n  <h2 id=\"step5\">5. Follow-Up Process</h2>\n  <p>Most sales do not happen in the first call. A simple system: Day 0 first call/message &middot; Day 1 reminder &middot; Day 3 value message &middot; Day 5 objection handling &middot; Day 7 final offer/check-in &middot; then weekly nurture. <strong>Bad follow-up kills good leads.</strong></p>\n\n  <h2 id=\"step6\">6. Review and Testimonial System</h2>\n  <p>Trust converts faster than design. Collect Google reviews, video and written testimonials, before/after results, feedback screenshots, and case studies. This directly improves both website conversion and Google profile trust.</p>\n\n  <h2 id=\"step7\">7. Content System</h2>\n  <p>Blogs, FAQs, LinkedIn posts, short videos, case studies, industry tips, and problem-solution posts bring people into the funnel before they are ready to buy.</p>\n\n  <h2 id=\"step8\">8. Paid Ads</h2>\n  <p>Google Ads, Meta Ads, LinkedIn Ads, and retargeting — but only after the website, tracking, and lead capture are ready. <strong>Running ads before fixing the website and follow-up system is usually a waste of money.</strong></p>\n\n  <h2 id=\"step9\">9. Sales Script and Offer Clarity</h2>\n  <p>Leads do not convert because of a website alone. You need a clear offer, pricing logic, sales pitch, objection answers, proposal format, closing script, and follow-up script. This turns inquiries into revenue.</p>\n\n  <h2 id=\"step10\">10. Dashboard and Review System</h2>\n  <p>Track weekly: website visitors, leads received, calls, lead sources, conversion rate, follow-ups pending, sales closed, revenue, cost per lead, and cost per sale. <strong>What is not measured does not improve.</strong></p>\n\n  <div class=\"cta-box\">\n    <h2>Want this entire system done for you?</h2>\n    <p>Novelio growth plans cover all ten steps — website, Google setup, lead capture, CRM, follow-up, reviews, content, and a growth dashboard — in one monthly subscription.</p>\n    <a href=\"/pricing\" class=\"cta-btn\">See Growth Plans</a>\n  </div>\n\n  <h2 id=\"faq\">Frequently Asked Questions</h2>\n  <div class=\"faq-item\">\n    <h3>What is the first priority after launching a website?</h3>\n    <p>For most SMBs, the Google Business Profile: it drives local visibility, Maps ranking, calls, direction requests, reviews, and local lead generation.</p>\n  </div>\n  <div class=\"faq-item\">\n    <h3>When should a small business start running paid ads?</h3>\n    <p>Only after the website, tracking, lead capture, and follow-up systems are ready. Ads amplify a working system — they cannot fix a broken one.</p>\n  </div>\n  <div class=\"faq-item\">\n    <h3>Do I need an expensive CRM to track leads?</h3>\n    <p>No. A Google Sheet tracking name, contact, source, requirement, budget, follow-up date, status, and next action is enough in the beginning.</p>\n  </div>\n\n  <h2>Related Articles</h2>\n  <ul>\n    <li><a href=\"/blog/website-sales-funnel\">Where Your Website Fits in Your Sales Funnel</a></li>\n    <li><a href=\"/blog/sales-conversion-system-smb\">From Leads to Revenue: Building a Sales Conversion System</a></li>\n    <li><a href=\"/services/google-business\">Google Business Profile Services</a></li>\n  </ul>\n\n  <div class=\"author-box\">\n    <div class=\"author-avatar\">N</div>\n    <div>\n      <strong>Noveliotech Editorial Team</strong><br />\n      <span style=\"font-size:.9rem;color:#555\">The Noveliotech team helps small businesses build complete growth systems — website, Google visibility, lead capture, CRM, and follow-up. <a href=\"/about\">Learn more about us &rarr;</a></span>\n    </div>\n  </div>\n</div>"
+}

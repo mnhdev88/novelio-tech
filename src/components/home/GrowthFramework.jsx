@@ -1,46 +1,14 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {
-  Eye, ShieldCheck, MousePointerClick, ArrowRight,
-  Search, Compass, Layers, Map as MapIcon,
-  FormInput, LineChart, Zap, Star, Rocket,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { HOMEPAGE } from '../../data/siteData';
+
+const PILLARS = HOMEPAGE.growthFramework.pillars;
+const COVERS = HOMEPAGE.growthFramework.covers;
 
 // "An SMB needs three things to grow: visibility, trust, and conversion."
-const PILLARS = [
-  {
-    icon: Eye,
-    title: 'Visibility',
-    desc: 'Customers can find you on Google, Maps and social media — instead of your business depending only on referrals and personal contacts.',
-    color: 'from-blue-500 to-cyan-500',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Trust',
-    desc: 'A proper website with reviews, case studies, your process and your team makes prospects feel you are serious and reliable — before they ever call.',
-    color: 'from-violet-600 to-blue-600',
-  },
-  {
-    icon: MousePointerClick,
-    title: 'Conversion',
-    desc: 'Every visitor gets a clear next step — forms, call buttons, WhatsApp, booking links — connected to a CRM and follow-up system so leads turn into sales.',
-    color: 'from-amber-500 to-orange-500',
-  },
-];
 
 // What growth-focused website development must cover.
-const COVERS = [
-  { icon: Compass, title: 'Brand positioning', desc: 'Who you are, what you do, and why customers should trust you.' },
-  { icon: Layers, title: 'Service presentation', desc: 'Clear service pages with benefits, not just features.' },
-  { icon: MapIcon, title: 'Customer journey', desc: 'A visitor should know what to do next on every page.' },
-  { icon: FormInput, title: 'Lead generation', desc: 'Forms, WhatsApp, call buttons, booking links, and quote requests.' },
-  { icon: Search, title: 'SEO foundation', desc: 'Titles, descriptions, keywords, internal linking, speed, and mobile readiness.' },
-  { icon: Star, title: 'Trust elements', desc: 'Reviews, testimonials, certifications, case studies, team, and business details.' },
-  { icon: MousePointerClick, title: 'Conversion system', desc: 'Strong CTAs, landing pages, thank-you pages, tracking, and follow-up connection.' },
-  { icon: LineChart, title: 'Analytics & tracking', desc: 'Google Analytics, Meta Pixel, Google Search Console, and event tracking.' },
-  { icon: Zap, title: 'Automation support', desc: 'CRM, email auto-reply, WhatsApp follow-up, and lead notifications.' },
-  { icon: Rocket, title: 'Business scalability', desc: 'Room to add blogs, ads, landing pages, calculators, downloads, and customer portals.' },
-];
 
 export default function GrowthFramework() {
   return (

@@ -1,0 +1,52 @@
+{
+  "header": {
+    "links": [
+      {
+        "label": "Services",
+        "to": "/services",
+        "hasDropdown": true
+      },
+      {
+        "label": "About",
+        "to": "/about"
+      },
+      {
+        "label": "Blog",
+        "to": "/blog"
+      },
+      {
+        "label": "Careers",
+        "to": "/careers"
+      },
+      {
+        "label": "Contact",
+        "to": "/contact"
+      }
+    ]
+  },
+  "footer": {
+    "legal": [
+      {
+        "label": "Privacy Policy",
+        "to": "/privacy"
+      },
+      {
+        "label": "Terms of Service",
+        "to": "/terms"
+      },
+      {
+        "label": "Refund Policy",
+        "to": "/refund-policy"
+      },
+      {
+        "label": "Disclaimer",
+        "to": "/disclaimer"
+      },
+      {
+        "label": "Sitemap",
+        "href": "/sitemap.xml"
+      }
+    ],
+    "copyright": "© 2026 Novelio Technologies LLC. All rights reserved. | Registered in Delaware, USA."
+  }
+}

@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { ArrowRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Check } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import FreeWebsiteModal from '../FreeWebsiteModal';
+import { HOMEPAGE, COMPANY } from '../../data/siteData';
+
+const HERO = HOMEPAGE.hero;
 
 // ── Network constellation data ────────────────────────────────────────────────
 const NODES = [
@@ -271,21 +274,21 @@ export default function HeroSection() {
           >
             <div className="section-label">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              Trusted Business Growth Partner for SMEs
+              {HERO.badge}
             </div>
           </motion.div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] leading-[1.1] tracking-[-0.03em] mb-6">
-            Your Small Business Deserves a{' '}
+            {HERO.headlineBefore}{' '}
             <button
               type="button"
               onClick={() => setShowOffer(true)}
               className="inline bg-transparent border-0 p-0 cursor-pointer hover:underline decoration-2 underline-offset-4 transition-all"
               style={{ font: 'inherit', letterSpacing: 'inherit', background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textDecorationColor: '#1D4ED8' }}
             >
-              Growth Partner,
+              {HERO.headlineHighlight}
             </button>
-            {' '}Not Just a Vendor
+            {' '}{HERO.headlineAfter}
           </h1>
 
           {/* Tagline */}
@@ -297,7 +300,7 @@ export default function HeroSection() {
           >
             <div className="section-label">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              Use Before You Trust. Trust Before You Pay.
+              {HERO.tagline}
             </div>
           </motion.div>
 
@@ -308,7 +311,7 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 1.15, ease: 'easeOut' }}
             className="text-sm sm:text-base text-[#475569] leading-relaxed max-w-2xl mx-auto mb-10"
           >
-            We analyze your digital presence — website, Google listing, leads, automation, branding, and operations — then build and execute a tailored growth plan that drives real revenue.
+            {HERO.subheadline}
           </motion.p>
 
           {/* CTA row */}
@@ -320,7 +323,7 @@ export default function HeroSection() {
           >
             <button type="button" onClick={() => setShowOffer(true)} className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center cursor-pointer">
               <Rocket className="w-5 h-5" />
-              Yes, I Want to Grow
+              {HERO.ctaLabel}
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
@@ -338,8 +341,8 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 1.3 }}
             className="mb-6"
           >
-            <a href="tel:+18887384655" className="text-sm text-[#64748b] hover:text-[#1B3172] transition-colors">
-              Prefer to talk? <span className="font-600 text-[#1B3172]">Call +1 (888) 738-4655</span>
+            <a href={`tel:+${COMPANY.whatsapp.replace(/[^0-9]/g, '')}`} className="text-sm text-[#64748b] hover:text-[#1B3172] transition-colors">
+              {HERO.callPrompt} <span className="font-600 text-[#1B3172]">Call {COMPANY.phone}</span>
             </a>
           </motion.div>
 

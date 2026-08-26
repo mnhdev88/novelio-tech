@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Alex Thompson",
+    "role": "CEO & Founder",
+    "initials": "AT",
+    "linkedin": "#"
+  },
+  {
+    "name": "Priya Mehta",
+    "role": "Head of SEO",
+    "initials": "PM",
+    "linkedin": "#"
+  },
+  {
+    "name": "James Rodriguez",
+    "role": "Lead Developer",
+    "initials": "JR",
+    "linkedin": "#"
+  },
+  {
+    "name": "Sarah Lee",
+    "role": "Creative Director",
+    "initials": "SL",
+    "linkedin": "#"
+  },
+  {
+    "name": "Omar Hassan",
+    "role": "PPC Specialist",
+    "initials": "OH",
+    "linkedin": "#"
+  },
+  {
+    "name": "Emily Watson",
+    "role": "Social Media Lead",
+    "initials": "EW",
+    "linkedin": "#"
+  }
+]

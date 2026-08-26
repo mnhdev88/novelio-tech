@@ -30,7 +30,7 @@ export default function TopBar() {
             </a>
             <span className="flex items-center gap-1.5">
               <Clock className="w-3 h-3" />
-              Mon – Fri, 9 AM – 6 PM EST
+              {COMPANY.hours}
             </span>
           </div>
 
@@ -58,7 +58,7 @@ export default function TopBar() {
               <div className="flex items-center gap-3">
                 {user.role === 'admin' && (
                   <Link
-                    to="/admin"
+                    to="/portal/admin"
                     className="text-white/65 hover:text-white transition-colors font-medium"
                   >
                     Admin

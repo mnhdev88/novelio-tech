@@ -1,0 +1,278 @@
+{
+  "hero": {
+    "badge": "Trusted Business Growth Partner for SMEs",
+    "headlineBefore": "Your Small Business Deserves a",
+    "headlineHighlight": "Growth Partner,",
+    "headlineAfter": "Not Just a Vendor",
+    "tagline": "Use Before You Trust. Trust Before You Pay.",
+    "subheadline": "We analyze your digital presence — website, Google listing, leads, automation, branding, and operations — then build and execute a tailored growth plan that drives real revenue.",
+    "ctaLabel": "Yes, I Want to Grow",
+    "callPrompt": "Prefer to talk?"
+  },
+  "growthSystem": {
+    "areas": [
+      {
+        "num": "01",
+        "icon": "Globe",
+        "title": "Online Presence",
+        "color": "from-blue-500 to-cyan-500",
+        "accent": "#0EA5E9",
+        "glow": "rgba(14,165,233,0.30)",
+        "tint": "rgba(14,165,233,0.07)",
+        "mainPain": "People search you up before they ever call. If they cannot find you, do not trust what they see, or land on a site that looks abandoned, they pick someone else — even if you do better work.",
+        "problems": [
+          "Your business barely shows up when people search on Google",
+          "Your logo and website don't clearly say who you are or who you serve",
+          "Competitors with weaker work rank above you on Google",
+          "People check your profile, see no reviews or old photos, and leave",
+          "Your website looks like a brochure, not an active business",
+          "You're stuck depending on referrals because no one finds you cold"
+        ],
+        "result": "People find you first, trust you faster, and reach out before they call a competitor."
+      },
+      {
+        "num": "02",
+        "icon": "Users",
+        "title": "Lead Capture & CRM",
+        "color": "from-violet-600 to-blue-600",
+        "accent": "#7C3AED",
+        "glow": "rgba(124,58,237,0.30)",
+        "tint": "rgba(124,58,237,0.07)",
+        "mainPain": "Even when people show interest, nothing is actually catching them. A form goes to an inbox no one checks. A WhatsApp message gets answered two days late. Every gap is a lead you paid for and lost.",
+        "problems": [
+          "Website visitors leave without a clear way to enquire",
+          "Leads land in email, WhatsApp and calls — nothing in one place",
+          "No one owns follow-up, so leads just sit there untouched",
+          "You can't tell which leads are serious and which are browsing",
+          "Good enquiries go cold because no one replied fast enough",
+          "No record exists of what was promised to which customer"
+        ],
+        "result": "Every enquiry lands somewhere, gets owned, and gets answered — before it disappears."
+      },
+      {
+        "num": "03",
+        "icon": "Phone",
+        "title": "Sales & Follow-up",
+        "color": "from-amber-500 to-orange-500",
+        "accent": "#F97316",
+        "glow": "rgba(249,115,22,0.30)",
+        "tint": "rgba(249,115,22,0.07)",
+        "mainPain": "Most sales happen on the third or fourth follow-up, not the first call. With no script, no quote process and no easy way to pay, the deal stalls right when the customer was ready to say yes.",
+        "problems": [
+          "\"Send me details\" turns into silence — no one follows up",
+          "Quotes go out but nobody tracks if they were accepted",
+          "Pricing isn't clear, so every deal turns into a negotiation",
+          "Payment follow-up feels awkward, so it gets delayed or skipped",
+          "No consistent script, so results depend on who picks up the call",
+          "Deals that were 90% closed quietly die for no clear reason"
+        ],
+        "result": "A repeatable way to follow up, quote, and close — so deals stop dying from silence."
+      },
+      {
+        "num": "04",
+        "icon": "Repeat",
+        "title": "Customer Growth",
+        "color": "from-emerald-500 to-teal-500",
+        "accent": "#10B981",
+        "glow": "rgba(16,185,129,0.30)",
+        "tint": "rgba(16,185,129,0.07)",
+        "mainPain": "Winning a customer once is the expensive part. Most businesses do it and then never ask for more — no repeat orders, no referrals, no relationship after the invoice is paid.",
+        "problems": [
+          "Customers finish the job and you never hear from them again",
+          "No one asks for a review, so your online trust never grows",
+          "Past customers don't know you offer anything else to buy",
+          "Referrals happen by luck, not because anyone ever asked",
+          "Complaints aren't tracked, so the same mistakes repeat",
+          "Nothing gives a past customer a reason to think of you again"
+        ],
+        "result": "Past customers come back, refer others, and become your cheapest source of new business."
+      }
+    ]
+  },
+  "growthCycle": {
+    "steps": [
+      "Branding",
+      "Visibility",
+      "Website Visit",
+      "Trust",
+      "Lead",
+      "Follow-up",
+      "Sale",
+      "Delivery",
+      "Support",
+      "Review",
+      "Resale",
+      "Referral"
+    ]
+  },
+  "growthFramework": {
+    "pillars": [
+      {
+        "icon": "Eye",
+        "title": "Visibility",
+        "desc": "Customers can find you on Google, Maps and social media — instead of your business depending only on referrals and personal contacts.",
+        "color": "from-blue-500 to-cyan-500"
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Trust",
+        "desc": "A proper website with reviews, case studies, your process and your team makes prospects feel you are serious and reliable — before they ever call.",
+        "color": "from-violet-600 to-blue-600"
+      },
+      {
+        "icon": "MousePointerClick",
+        "title": "Conversion",
+        "desc": "Every visitor gets a clear next step — forms, call buttons, WhatsApp, booking links — connected to a CRM and follow-up system so leads turn into sales.",
+        "color": "from-amber-500 to-orange-500"
+      }
+    ],
+    "covers": [
+      {
+        "icon": "Compass",
+        "title": "Brand positioning",
+        "desc": "Who you are, what you do, and why customers should trust you."
+      },
+      {
+        "icon": "Layers",
+        "title": "Service presentation",
+        "desc": "Clear service pages with benefits, not just features."
+      },
+      {
+        "icon": "Map",
+        "title": "Customer journey",
+        "desc": "A visitor should know what to do next on every page."
+      },
+      {
+        "icon": "FormInput",
+        "title": "Lead generation",
+        "desc": "Forms, WhatsApp, call buttons, booking links, and quote requests."
+      },
+      {
+        "icon": "Search",
+        "title": "SEO foundation",
+        "desc": "Titles, descriptions, keywords, internal linking, speed, and mobile readiness."
+      },
+      {
+        "icon": "Star",
+        "title": "Trust elements",
+        "desc": "Reviews, testimonials, certifications, case studies, team, and business details."
+      },
+      {
+        "icon": "MousePointerClick",
+        "title": "Conversion system",
+        "desc": "Strong CTAs, landing pages, thank-you pages, tracking, and follow-up connection."
+      },
+      {
+        "icon": "ChartLine",
+        "title": "Analytics & tracking",
+        "desc": "Google Analytics, Meta Pixel, Google Search Console, and event tracking."
+      },
+      {
+        "icon": "Zap",
+        "title": "Automation support",
+        "desc": "CRM, email auto-reply, WhatsApp follow-up, and lead notifications."
+      },
+      {
+        "icon": "Rocket",
+        "title": "Business scalability",
+        "desc": "Room to add blogs, ads, landing pages, calculators, downloads, and customer portals."
+      }
+    ]
+  },
+  "freeWebsiteCTA": {
+    "benefits": [
+      "Helps customers understand your business quickly",
+      "Builds trust before the first call",
+      "Makes it easy for customers to enquire",
+      "Connects website visitors to your sales process",
+      "Creates a base for CRM and follow-up automation",
+      "Supports reviews, resale, and referral campaigns"
+    ]
+  },
+  "whyChooseUs": {
+    "pillars": [
+      {
+        "icon": "BarChart2",
+        "title": "Diagnose First",
+        "desc": "We run a free audit before we propose a single solution. No guessing, no upselling. You see the gaps before we talk about fixes.",
+        "color": "from-purple-600 to-blue-600",
+        "bar": 100
+      },
+      {
+        "icon": "Users",
+        "title": "Full-Spectrum View",
+        "desc": "Website, Google listing, leads, automation, branding, hosting, and operations — we look at all of it, not just the part we sell.",
+        "color": "from-pink-600 to-orange-500",
+        "bar": 100
+      },
+      {
+        "icon": "Eye",
+        "title": "Accountable Partner",
+        "desc": "Monthly reviews, clear KPIs, and transparent reporting. You always know what your investment is doing — and we stand behind the numbers.",
+        "color": "from-cyan-500 to-blue-600",
+        "bar": 100
+      },
+      {
+        "icon": "Target",
+        "title": "No Heavy Upfront Cost",
+        "desc": "Your website, SSL, hosting and lead capture are included free with one transparent monthly growth plan — no $3,000 project invoice, no hidden fees.",
+        "color": "from-emerald-500 to-cyan-600",
+        "bar": 100
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Organic Traffic",
+        "pct": 85,
+        "color": "from-[#6B3FA0] to-[#0EA5E9]",
+        "val": "+85%"
+      },
+      {
+        "label": "Conversions",
+        "pct": 72,
+        "color": "from-[#EC4899] to-[#F97316]",
+        "val": "+72%"
+      },
+      {
+        "label": "Revenue Growth",
+        "pct": 93,
+        "color": "from-[#22C55E] to-[#0EA5E9]",
+        "val": "+93%"
+      },
+      {
+        "label": "ROI",
+        "pct": 96,
+        "color": "from-[#F59E0B] to-[#F97316]",
+        "val": "+340%"
+      }
+    ]
+  },
+  "faq": {
+    "items": [
+      {
+        "q": "What exactly is a Growth Audit and is it really free?",
+        "a": "Yes — completely free, no strings attached. A Growth Audit is a 30-minute deep-dive into your business's digital presence. We review your website, Google Business Profile, online reviews, social media, competitor positioning, and lead capture systems. At the end, you get a prioritized action list you can implement yourself or hire us to execute. No credit card, no sales pressure."
+      },
+      {
+        "q": "How is Novelio different from a regular web design agency?",
+        "a": "Most agencies hand you a website and disappear. We diagnose your entire growth picture first — website, local SEO, lead follow-up, automation, branding — then build a system that works together. We measure success by leads and revenue generated, not just deliverables handed off. Think of us as a growth partner, not a vendor."
+      },
+      {
+        "q": "Do you only build websites or handle other business problems too?",
+        "a": "We handle the full spectrum: website design and development, Google Business Profile optimization, local SEO, lead generation funnels, marketing automation, branding, tech-ops integrations, email marketing, and email list validation. If it impacts how customers find, trust, and buy from you — we cover it."
+      },
+      {
+        "q": "How long before I see results?",
+        "a": "Most clients see measurable improvements within 30–60 days. Quick wins like Google profile optimization and review generation can show results in days. SEO and lead nurture systems typically compound over 60–90 days. We set realistic timelines in your Growth Plan so there are no surprises."
+      },
+      {
+        "q": "What does it cost and are there long-term contracts?",
+        "a": "Pricing depends on which services you need and your business size. We don't believe in locking clients into long-term contracts — our work speaks for itself. Most clients start with a single project or a 3-month engagement, then continue because they see ROI. Pricing is transparent and discussed after your free audit."
+      },
+      {
+        "q": "Do you work with businesses remotely?",
+        "a": "Absolutely. We work with small businesses worldwide. Our team is fully remote and our clients span across North America, Europe, the Middle East, South Asia, and beyond. Wherever you are, we're your partner."
+      }
+    ]
+  }
+}

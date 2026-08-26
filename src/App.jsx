@@ -26,6 +26,9 @@ const CustomPaymentPage  = lazy(() => import('./pages/portal/CustomPaymentPage')
 const PayoneerReturnPage = lazy(() => import('./pages/portal/PayoneerReturnPage'));
 const DashboardPage      = lazy(() => import('./pages/portal/DashboardPage'));
 const AdminPage          = lazy(() => import('./pages/portal/AdminPage'));
+// The CMS. One lazy chunk for the whole panel, so a normal visitor never
+// downloads the editor.
+const AdminApp           = lazy(() => import('./admin/AdminApp'));
 const BlogPage           = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage       = lazy(() => import('./pages/BlogPostPage'));
 const ContactPage        = lazy(() => import('./pages/ContactPage'));
@@ -83,7 +86,9 @@ function Layout() {
             <Route path="/pay"                     element={<CustomPaymentPage />} />
             <Route path="/payoneer/return"         element={<PayoneerReturnPage />} />
             <Route path="/dashboard"               element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
-            <Route path="/admin"                   element={<ProtectedRoute adminOnly><AdminPage /></ProtectedRoute>} />
+            {/* Demo customer/subscription back-office (localStorage). Moved off
+                /admin so the real content panel can live there. */}
+            <Route path="/portal/admin"            element={<ProtectedRoute adminOnly><AdminPage /></ProtectedRoute>} />
 
             <Route path="/blog"                    element={<BlogPage />} />
             <Route path="/blog/:slug"              element={<BlogPostPage />} />
@@ -116,7 +121,16 @@ export default function App() {
       <BrowserRouter>
         <AuthProvider>
           <ScrollToTop />
-          <Layout />
+          <Routes>
+            {/* The CMS renders bare: it brings its own header, sidebar and
+                scroll behaviour, so it must sit OUTSIDE the site chrome
+                (navbar, footer, sticky mobile CTA) rather than inside it. */}
+            <Route
+              path="/admin/*"
+              element={<Suspense fallback={<PageLoader />}><AdminApp /></Suspense>}
+            />
+            <Route path="*" element={<Layout />} />
+          </Routes>
         </AuthProvider>
       </BrowserRouter>
     </MotionConfig>

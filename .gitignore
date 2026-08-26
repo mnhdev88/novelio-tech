@@ -25,6 +25,14 @@ novelio-paypal-credentials.php
 public/api/payoneer/credentials.local.php
 novelio-payoneer-credentials.php
 
+# Admin panel secrets — DB + GitHub PAT never go in git (see ADMIN-SETUP.md)
+public/api/admin/credentials.local.php
+# Any other filled-in copy. The .example file is tracked and must only ever
+# contain placeholders — a real token was pasted into it once.
+public/api/admin/credentials.real.php
+public/api/admin/novelio-admin-credentials.php
+novelio-admin-credentials.php
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -35,3 +43,6 @@ novelio-payoneer-credentials.php
 *.njsproj
 *.sln
 *.sw?
+
+# Admin panel local test data (real data lives above the web root on the server)
+novelio-admin-data/

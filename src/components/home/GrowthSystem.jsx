@@ -1,96 +1,13 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Globe, Users, Phone, Repeat, Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import FreeWebsiteModal from '../FreeWebsiteModal';
 import { trackEvent } from '../../utils/analytics';
+import { HOMEPAGE } from '../../data/siteData';
+
+const AREAS = HOMEPAGE.growthSystem.areas;
 
 // "We fix the 4 areas where most small businesses lose growth."
-const AREAS = [
-  {
-    num: '01',
-    icon: Globe,
-    title: 'Online Presence',
-    color: 'from-blue-500 to-cyan-500',
-    accent: '#0EA5E9',
-    glow: 'rgba(14,165,233,0.30)',
-    tint: 'rgba(14,165,233,0.07)',
-    mainPain:
-      'People search you up before they ever call. If they cannot find you, do not trust what they see, or land on a site that looks abandoned, they pick someone else — even if you do better work.',
-    problems: [
-      'Your business barely shows up when people search on Google',
-      "Your logo and website don't clearly say who you are or who you serve",
-      'Competitors with weaker work rank above you on Google',
-      'People check your profile, see no reviews or old photos, and leave',
-      'Your website looks like a brochure, not an active business',
-      "You're stuck depending on referrals because no one finds you cold",
-    ],
-    result:
-      'People find you first, trust you faster, and reach out before they call a competitor.',
-  },
-  {
-    num: '02',
-    icon: Users,
-    title: 'Lead Capture & CRM',
-    color: 'from-violet-600 to-blue-600',
-    accent: '#7C3AED',
-    glow: 'rgba(124,58,237,0.30)',
-    tint: 'rgba(124,58,237,0.07)',
-    mainPain:
-      'Even when people show interest, nothing is actually catching them. A form goes to an inbox no one checks. A WhatsApp message gets answered two days late. Every gap is a lead you paid for and lost.',
-    problems: [
-      'Website visitors leave without a clear way to enquire',
-      'Leads land in email, WhatsApp and calls — nothing in one place',
-      'No one owns follow-up, so leads just sit there untouched',
-      "You can't tell which leads are serious and which are browsing",
-      'Good enquiries go cold because no one replied fast enough',
-      'No record exists of what was promised to which customer',
-    ],
-    result:
-      'Every enquiry lands somewhere, gets owned, and gets answered — before it disappears.',
-  },
-  {
-    num: '03',
-    icon: Phone,
-    title: 'Sales & Follow-up',
-    color: 'from-amber-500 to-orange-500',
-    accent: '#F97316',
-    glow: 'rgba(249,115,22,0.30)',
-    tint: 'rgba(249,115,22,0.07)',
-    mainPain:
-      'Most sales happen on the third or fourth follow-up, not the first call. With no script, no quote process and no easy way to pay, the deal stalls right when the customer was ready to say yes.',
-    problems: [
-      '"Send me details" turns into silence — no one follows up',
-      'Quotes go out but nobody tracks if they were accepted',
-      "Pricing isn't clear, so every deal turns into a negotiation",
-      'Payment follow-up feels awkward, so it gets delayed or skipped',
-      'No consistent script, so results depend on who picks up the call',
-      'Deals that were 90% closed quietly die for no clear reason',
-    ],
-    result:
-      'A repeatable way to follow up, quote, and close — so deals stop dying from silence.',
-  },
-  {
-    num: '04',
-    icon: Repeat,
-    title: 'Customer Growth',
-    color: 'from-emerald-500 to-teal-500',
-    accent: '#10B981',
-    glow: 'rgba(16,185,129,0.30)',
-    tint: 'rgba(16,185,129,0.07)',
-    mainPain:
-      'Winning a customer once is the expensive part. Most businesses do it and then never ask for more — no repeat orders, no referrals, no relationship after the invoice is paid.',
-    problems: [
-      'Customers finish the job and you never hear from them again',
-      'No one asks for a review, so your online trust never grows',
-      "Past customers don't know you offer anything else to buy",
-      'Referrals happen by luck, not because anyone ever asked',
-      "Complaints aren't tracked, so the same mistakes repeat",
-      'Nothing gives a past customer a reason to think of you again',
-    ],
-    result:
-      'Past customers come back, refer others, and become your cheapest source of new business.',
-  },
-];
 
 function AreaCard({ area, index, onCountChange }) {
   const [checked, setChecked] = useState(() => new Set());

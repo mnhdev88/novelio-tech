@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight, Handshake } from 'lucide-react';
-import { SERVICES } from '../../data/siteData';
+import { SERVICES, NAVIGATION } from '../../data/siteData';
 
 // Website dev, SEO, GBP, and lead gen stay out of the nav dropdown; they remain on
 // /services and in the growth plans. Mobile App Development is featured at the top of
@@ -38,13 +38,7 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const navLinks = [
-    { label: 'Services', to: '/services', hasDropdown: true },
-    { label: 'About', to: '/about' },
-    { label: 'Blog', to: '/blog' },
-    { label: 'Careers', to: '/careers' },
-    { label: 'Contact', to: '/contact' },
-  ];
+  const navLinks = NAVIGATION.header.links;
 
   const isActive = (to) => location.pathname === to || (to !== '/' && location.pathname.startsWith(to));
 
@@ -235,7 +229,7 @@ export default function Navbar() {
           {user ? (
             <>
               {user.role === 'admin' && (
-                <Link to="/admin" className="block w-full text-center px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#475569]">
+                <Link to="/portal/admin" className="block w-full text-center px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#475569]">
                   Admin Back-office
                 </Link>
               )}

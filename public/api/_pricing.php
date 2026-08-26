@@ -1,14 +1,16 @@
 <?php
 // ─────────────────────────────────────────────────────────────────────────────
-// SINGLE SOURCE OF TRUTH for server-side pricing.
-// Shared by BOTH payment integrations (paypal/ and payoneer/) so a price can
-// never differ between gateways. Mirrors PRICING_PLANS / PRICING_ADDONS in
-// src/data/siteData.js — KEEP IN SYNC with siteData.js when prices change.
+// GENERATED FILE — DO NOT EDIT BY HAND.
+// Written by scripts/gen-derived.mjs from content/pricing.json on every build.
+// Edit prices in the admin panel (or content/pricing.json); this file follows.
+//
+// SINGLE SOURCE OF TRUTH for server-side pricing. Shared by BOTH payment
+// integrations (paypal/ and payoneer/) so a price can never differ between
+// gateways, and so the amount charged can never be set by the browser.
 //
 // Never web-served directly (leading-underscore files are denied in .htaccess,
 // and it holds no secrets — only the public price list). Included server-side.
-// ─────────────────────────────────────────────────────────────────────────────
-
+//
 // Plan fields:
 //   monthly        per-month price on the monthly option
 //   yearly         per-month equivalent of the yearly price (display only)
@@ -16,8 +18,8 @@
 //                  authoritative yearly charge — do NOT compute monthly * 12.
 //   upfront_months months collected at checkout on the monthly option; the
 //                  remaining (12 - upfront_months) are billed later.
-// Plans without yearly_total/upfront_months keep the legacy behaviour:
-// monthly charges one month, yearly charges yearly * 12.
+// ─────────────────────────────────────────────────────────────────────────────
+
 $GLOBALS['NOVELIO_PLANS'] = [
     'free'   => ['name' => 'Free',              'monthly' => 0,   'yearly' => 0],
     'launch' => ['name' => 'Start My Growth',   'monthly' => 150, 'yearly' => 117, 'yearly_total' => 1400, 'upfront_months' => 3],

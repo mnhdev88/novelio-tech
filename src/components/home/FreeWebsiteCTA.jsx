@@ -2,16 +2,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight } from 'lucide-react';
 import FreeWebsiteModal from '../FreeWebsiteModal';
+import { HOMEPAGE } from '../../data/siteData';
+
+const BENEFITS = HOMEPAGE.freeWebsiteCTA.benefits;
 
 // Benefits of starting with the free optimized website setup.
-const BENEFITS = [
-  'Helps customers understand your business quickly',
-  'Builds trust before the first call',
-  'Makes it easy for customers to enquire',
-  'Connects website visitors to your sales process',
-  'Creates a base for CRM and follow-up automation',
-  'Supports reviews, resale, and referral campaigns',
-];
 
 export default function FreeWebsiteCTA() {
   const [showOffer, setShowOffer] = useState(false);

@@ -1,0 +1,185 @@
+[
+  {
+    "id": "website-development",
+    "slug": "/services/website-development",
+    "icon": "Code2",
+    "title": "Website Development",
+    "short": "Web Design",
+    "tagline": "Websites Built to Convert. Delivered on Time.",
+    "description": "Custom, fast-loading, mobile-first websites built around your buyer journey — designed to turn visitors into leads and customers from day one.",
+    "color": "from-violet-600 to-purple-600",
+    "features": [
+      "Custom Web Design",
+      "Mobile-First Development",
+      "Core Web Vitals",
+      "CMS Integration",
+      "Landing Page Design",
+      "E-commerce Development"
+    ]
+  },
+  {
+    "id": "mobile-app-development",
+    "slug": "/services/mobile-app-development",
+    "icon": "Smartphone",
+    "title": "Mobile App Development",
+    "short": "Mobile Apps",
+    "tagline": "Native-Quality Apps. Built to Scale.",
+    "description": "iOS, Android, and cross-platform mobile apps that customers actually use — fast, secure, and designed around your business goals, from MVP to App Store launch.",
+    "color": "from-fuchsia-600 to-indigo-600",
+    "features": [
+      "iOS & Android Development",
+      "Cross-Platform (React Native)",
+      "UI/UX App Design",
+      "API & Backend Integration",
+      "App Store Deployment",
+      "Maintenance & Support"
+    ]
+  },
+  {
+    "id": "search-engine-optimization",
+    "slug": "/services/search-engine-optimization",
+    "icon": "Search",
+    "title": "Search Engine Optimization",
+    "short": "SEO",
+    "tagline": "Rankings Built to Last. Traffic That Converts.",
+    "description": "Data-driven SEO strategies that grow your organic rankings, drive qualified traffic, and convert search visitors into paying customers — month after month.",
+    "color": "from-indigo-500 to-blue-600",
+    "features": [
+      "Technical SEO Audit",
+      "On-Page Optimization",
+      "Keyword Research & Strategy",
+      "Local SEO",
+      "Link Building",
+      "Monthly Reporting"
+    ]
+  },
+  {
+    "id": "google-business",
+    "slug": "/services/google-business",
+    "icon": "MapPin",
+    "title": "Google Business Profile",
+    "short": "Google Business",
+    "tagline": "Dominate Local Search. Fill Your Calendar.",
+    "description": "GMB optimization, review strategy, and local search dominance — so customers find you before they find your competitors.",
+    "color": "from-blue-500 to-cyan-500",
+    "features": [
+      "GBP Setup & Optimization",
+      "Review Generation Strategy",
+      "Local Keyword Targeting",
+      "Photo & Post Management",
+      "Q&A Management",
+      "Citation Building"
+    ]
+  },
+  {
+    "id": "lead-generation",
+    "slug": "/services/lead-generation",
+    "icon": "TrendingUp",
+    "title": "Lead Generation",
+    "short": "Lead Gen",
+    "tagline": "Fill Your Pipeline. Grow Your Revenue.",
+    "description": "Forms, funnels, and follow-up systems that fill your pipeline — so you never miss a customer who raised their hand.",
+    "color": "from-emerald-500 to-teal-600",
+    "features": [
+      "Landing Page Design",
+      "Lead Capture Forms",
+      "Funnel Strategy",
+      "PPC Campaigns",
+      "Retargeting",
+      "Lead Tracking & Reporting"
+    ]
+  },
+  {
+    "id": "automation",
+    "slug": "/services/automation",
+    "icon": "Zap",
+    "title": "Automation & CRM",
+    "short": "Automation",
+    "tagline": "Reclaim Your Time. Scale Without Hiring.",
+    "description": "Connect your tools, automate follow-ups, payment reminders and retention messages — so leads, sales and cash flow run on a system, not on memory.",
+    "color": "from-amber-500 to-orange-500",
+    "features": [
+      "CRM Setup & Integration",
+      "Lead Pipeline & Follow-Up Sequences",
+      "Invoice & Payment Tracking",
+      "Automated Payment Reminders",
+      "Customer Retention Messages",
+      "Review & Referral Automation",
+      "Workflow Automation",
+      "Reporting Dashboards",
+      "Tool Integration"
+    ]
+  },
+  {
+    "id": "branding",
+    "slug": "/services/branding",
+    "icon": "Palette",
+    "title": "Branding",
+    "short": "Branding",
+    "tagline": "Look Like the Business You Want to Be.",
+    "description": "Consistent identity, messaging, and visual presence across every channel — so customers recognize and trust you instantly.",
+    "color": "from-pink-500 to-purple-600",
+    "features": [
+      "Logo & Brand Identity",
+      "Brand Guidelines",
+      "Social Media Visuals",
+      "Business Card & Print",
+      "Brand Voice & Messaging",
+      "Website Rebrand"
+    ]
+  },
+  {
+    "id": "tech-ops",
+    "slug": "/services/tech-ops",
+    "icon": "Settings",
+    "title": "Tech & Operations",
+    "short": "Tech & Ops",
+    "tagline": "Fix the Tech Holding Your Business Back.",
+    "description": "Fix hosting issues, integrate accounting tools, and streamline your tech stack — so your business runs without the daily firefighting.",
+    "color": "from-slate-500 to-blue-600",
+    "features": [
+      "Hosting Audit & Migration",
+      "Software Integration",
+      "Accounting Tool Setup",
+      "Tech Stack Review",
+      "Process Automation",
+      "IT Support"
+    ]
+  },
+  {
+    "id": "email-marketing",
+    "slug": "/services/email-marketing",
+    "icon": "Mail",
+    "title": "Email Marketing",
+    "short": "Email",
+    "tagline": "Campaigns That Nurture, Convert & Retain.",
+    "description": "Automated email sequences, newsletters, and drip campaigns that turn subscribers into customers and customers into loyal advocates.",
+    "color": "from-blue-600 to-cyan-500",
+    "features": [
+      "Email Strategy",
+      "Campaign Design",
+      "Drip Sequences",
+      "List Segmentation",
+      "A/B Testing",
+      "Analytics & Reporting"
+    ]
+  },
+  {
+    "id": "email-validator",
+    "slug": "/services/email-validator",
+    "icon": "CheckSquare",
+    "title": "Email Validator",
+    "short": "Email Validator",
+    "tagline": "Clean Lists. Better Deliverability. More Revenue.",
+    "description": "Verify and clean your email lists to eliminate bounces, protect your sender reputation, and maximize every campaign's ROI.",
+    "color": "from-teal-500 to-emerald-600",
+    "features": [
+      "Bulk Email Verification",
+      "Bounce Detection",
+      "Spam Trap Removal",
+      "Domain Validation",
+      "Deliverability Audit",
+      "List Hygiene Reports"
+    ]
+  }
+]

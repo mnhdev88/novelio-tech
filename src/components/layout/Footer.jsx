@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, Send } from 'lucide-react';
 import { FaLinkedinIn } from 'react-icons/fa6';
-import { COMPANY, SERVICES } from '../../data/siteData';
+import { COMPANY, SERVICES, NAVIGATION } from '../../data/siteData';
 import { useState } from 'react';
 import { trackEvent } from '../../utils/analytics';
+import { captureLead } from '../../utils/leadCapture';
 
 async function subscribeNewsletter(email) {
   const res = await fetch('https://crm.noveliotech.com/api/newsletter', {
@@ -28,6 +29,8 @@ export default function Footer() {
     setErrorMsg('');
     try {
       const data = await subscribeNewsletter(email);
+      // Mirror into the panel's subscriber list; failures here are ignored.
+      captureLead('newsletter', { email, source: 'footer' });
       if (data.success) {
         trackEvent('newsletter_signup', { location: 'footer' });
         setStatus('success');
@@ -197,14 +200,16 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © 2026 Novelio Technologies LLC. All rights reserved. | Registered in Delaware, USA.
+            {NAVIGATION.footer.copyright}
           </p>
           <div className="flex items-center flex-wrap justify-center gap-x-6 gap-y-2">
-            <Link to="/privacy" className="text-slate-500 hover:text-white text-xs transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-slate-500 hover:text-white text-xs transition-colors">Terms of Service</Link>
-            <Link to="/refund-policy" className="text-slate-500 hover:text-white text-xs transition-colors">Refund Policy</Link>
-            <Link to="/disclaimer" className="text-slate-500 hover:text-white text-xs transition-colors">Disclaimer</Link>
-            <a href="/sitemap.xml" className="text-slate-500 hover:text-white text-xs transition-colors">Sitemap</a>
+            {/* An entry with `href` is an external/static file (the sitemap);
+                everything else is an in-app route. */}
+            {NAVIGATION.footer.legal.map((item) => (item.href ? (
+              <a key={item.label} href={item.href} className="text-slate-500 hover:text-white text-xs transition-colors">{item.label}</a>
+            ) : (
+              <Link key={item.label} to={item.to} className="text-slate-500 hover:text-white text-xs transition-colors">{item.label}</Link>
+            )))}
           </div>
         </div>
       </div>

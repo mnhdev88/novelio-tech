@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MessageCircle, Send, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { COMPANY } from '../data/siteData';
 import { trackEvent } from '../utils/analytics';
+import { captureLead } from '../utils/leadCapture';
 
 const faqs = [
   { q: 'How long does it take to get started?', a: 'After our initial consultation and contract signing, most projects kick off within 3–5 business days.' },
@@ -57,6 +58,9 @@ export default function ContactPage() {
         body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error('submission failed');
+      // Also record it locally so it appears in the admin panel's Leads inbox.
+      // Never awaited into the success path — Formspree delivery is what counts.
+      captureLead('lead', { ...form, source: 'contact' });
       trackEvent('generate_lead', { form: 'contact' });
       setSuccess(true);
     } catch {
