@@ -14,7 +14,11 @@ const BlogListPage   = lazy(() => import('./pages/BlogListPage'));
 const BlogEditorPage = lazy(() => import('./pages/BlogEditorPage'));
 const HomePageEditor = lazy(() => import('./pages/HomePageEditor'));
 const PagesSeoPage   = lazy(() => import('./pages/PagesSeoPage'));
-const SitePage       = lazy(() => import('./pages/SitePage'));
+const HeaderPage     = lazy(() => import('./pages/HeaderPage'));
+const FooterPage     = lazy(() => import('./pages/FooterPage'));
+const ContactPage    = lazy(() => import('./pages/ContactPage'));
+const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
+const FaqPage        = lazy(() => import('./pages/FaqPage'));
 const PricingPage    = lazy(() => import('./pages/PricingPage'));
 const LeadsPage      = lazy(() => import('./pages/LeadsPage'));
 const TeamPage       = lazy(() => import('./pages/TeamPage'));
@@ -42,7 +46,14 @@ export default function AdminApp() {
 
             <Route path="home" element={<HomePageEditor />} />
             <Route path="pages" element={<PagesSeoPage />} />
-            <Route path="site" element={<SitePage />} />
+            <Route path="testimonials" element={<TestimonialsPage />} />
+            <Route path="faq" element={<FaqPage />} />
+
+            <Route path="header"  element={<HeaderPage />} />
+            <Route path="footer"  element={<FooterPage />} />
+            <Route path="contact" element={<ContactPage />} />
+            {/* Header, footer and contact used to share one page. */}
+            <Route path="site" element={<Navigate to="/admin/header" replace />} />
 
             <Route path="pricing"  element={<RequireAdmin cap="pricing.write"><PricingPage /></RequireAdmin>} />
             <Route path="leads"    element={<RequireAdmin cap="leads.read"><LeadsPage /></RequireAdmin>} />

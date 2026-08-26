@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ChevronDown, Plus, Trash2, ChevronUp, GripVertical } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ChevronDown, Plus, Trash2, ChevronUp, GripVertical, ArrowRight } from 'lucide-react';
 import useContentFile from '../useContentFile';
 import { Text, Field, inputCls, SaveState, ErrorNote, Spinner, PageHeader } from '../ui';
 
@@ -324,20 +325,24 @@ export default function HomePageEditor() {
         </div>
       </Section>
 
-      <Section title="Frequently asked questions" description="Also feeds the FAQ markup Google reads."
-        count={h.faq.items.length}>
-        <CardList
-          items={h.faq.items}
-          onChange={(items) => setPart('faq', { items })}
-          titleKey="q"
-          allowAdd
-          blank={{ q: '', a: '' }}
-          fields={[
-            { key: 'q', label: 'Question' },
-            { key: 'a', label: 'Answer', type: 'textarea', rows: 5 },
-          ]}
-        />
-      </Section>
+      {/* The home page FAQ is edited under "Questions & answers", alongside the
+          pricing FAQ. Two editors writing the same data would let one overwrite
+          the other, so this only points at it. */}
+      <section className="bg-white rounded-2xl border border-slate-200 px-5 py-4 flex flex-wrap items-center gap-3">
+        <div className="min-w-0">
+          <h2 className="font-heading font-800 text-[#1B3172]">Frequently asked questions</h2>
+          <p className="text-xs text-[#64748b]">
+            {h.faq.items.length} question{h.faq.items.length === 1 ? '' : 's'} on the home page.
+          </p>
+        </div>
+        <div className="flex-1" />
+        <Link
+          to="/admin/faq"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-[#475569] hover:border-[#1B3172] hover:text-[#1B3172]"
+        >
+          Edit questions <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </section>
 
       <p className="text-xs text-[#94a3b8]">
         Icons and colours are set in the design and are not editable here, so changing wording can

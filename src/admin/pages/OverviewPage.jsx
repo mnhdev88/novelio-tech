@@ -77,7 +77,8 @@ export default function OverviewPage() {
             {[
               { to: '/admin/blog/new', label: 'Write a new blog post' },
               { to: '/admin/pages', label: 'Edit a page title or description for Google' },
-              { to: '/admin/site', label: 'Change the menu, footer or phone number' },
+              { to: '/admin/contact', label: 'Update a phone number or email address' },
+              { to: '/admin/testimonials', label: 'Add a customer review' },
             ].map((t) => (
               <Link
                 key={t.to} to={t.to}

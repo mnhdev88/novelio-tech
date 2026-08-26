@@ -116,7 +116,11 @@ of the team from **Settings → Team** in the panel.
 | **Home page** | Hero (badge, three-part headline, tagline, paragraph, button), the four growth areas with their symptom lists, the 12-stage growth cycle, three pillars, the 10-point website checklist, offer benefits, why-choose-us reasons and result bars, and the homepage FAQ. |
 | **Blog** | Write, edit, reorder, delete. Draft / published / scheduled per post. Block editor with rich text, headings, stat callouts, CTA boxes, highlights, FAQ blocks, images and tables. Image upload. Article + FAQ schema generated automatically. Google result preview. |
 | **Pages & SEO** | Title, description and "hide from Google" for any of the 55 routes, with a live Google preview. Blank keeps the page's built-in wording. |
-| **Header, footer & contact** | Phone, email, WhatsApp, address, office hours, social links, main menu (add / rename / reorder / remove), footer legal links and copyright line. |
+| **Testimonials** | Add, edit, reorder and remove customer reviews — quote, name, business, star rating, result. |
+| **Questions & answers** | The home page and pricing FAQs. The home set also feeds the FAQ markup Google reads. |
+| **Header** | The main menu: add, rename, reorder, remove items. |
+| **Footer** | Legal links and the copyright line. |
+| **Contact details** | Phone, email, WhatsApp, address, office hours and social profiles — changed once, applied everywhere they appear. |
 | **Pricing** | Plans, prices, yearly totals, upfront months, features, add-ons. Admin only. |
 | **Leads** | Enquiries, newsletter subscribers, job applications. Status tracking and CSV export. |
 | **Team** | Add people, set roles, disable accounts, set passwords. Admin only. |
@@ -137,6 +141,15 @@ so editing a question there updates what Google reads.
 
 Verified after extraction: the prerendered homepage's visible text is identical
 to before, character for character.
+
+### Page titles and descriptions
+
+Each page's title and description live in that page's own component, not in
+`content/`, so the panel has no stored value to show for them. Rather than
+refactor ~40 page components, **Pages & SEO** fetches the live page and reads its
+`<title>` and meta description straight out of the prerendered HTML — the panel
+is same-origin with the site, so this needs no API. The client sees what Google
+sees today, and typing in a field creates an override in `content/seo/pages.json`.
 
 ### The blog body editor
 

@@ -4,17 +4,51 @@ import * as api from '../api';
 import useContentFile from '../useContentFile';
 import { inputCls, SaveState, ErrorNote, Spinner, PageHeader } from '../ui';
 
+// A page's real title and description live in that page's own component, not in
+// content/ — so the panel had nothing to show and every field looked empty, as
+// if the pages had no SEO at all. Rather than refactor 40 page components, read
+// what the live page actually serves: the panel is same-origin with the site and
+// every route is prerendered, so the <title> and description are right there in
+// the HTML. This shows the client exactly what Google sees today.
+const SUFFIX = ' | Novelio Technologies';
+
+async function fetchLiveSeo(path) {
+  const res = await fetch(path, { headers: { Accept: 'text/html' } });
+  if (!res.ok) throw new Error('could not load page');
+  const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+
+  const raw = doc.querySelector('title')?.textContent || '';
+  return {
+    // The Title field holds the part BEFORE the site name, which the SEO
+    // component appends — strip it so it matches what the client would type.
+    title: raw.endsWith(SUFFIX) ? raw.slice(0, -SUFFIX.length) : raw,
+    description: doc.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+  };
+}
+
 export default function PagesSeoPage() {
   const overrides = useContentFile('content/seo/pages.json');
   const [routes, setRoutes] = useState(null);
   const [filter, setFilter] = useState('');
   const [open, setOpen] = useState(null);
+  const [live, setLive] = useState({});     // path -> { title, description } | 'error'
 
   useEffect(() => {
     api.content.get('content/seo/routes.json')
       .then((r) => setRoutes(r.payload || []))
       .catch(() => setRoutes([]));
   }, []);
+
+  // Fetched per row as it opens — pulling all 55 pages up front would be a lot
+  // of traffic for data most of which is never looked at.
+  useEffect(() => {
+    if (!open || live[open]) return;
+    let cancelled = false;
+    fetchLiveSeo(open)
+      .then((v) => { if (!cancelled) setLive((l) => ({ ...l, [open]: v })); })
+      .catch(() => { if (!cancelled) setLive((l) => ({ ...l, [open]: 'error' })); });
+    return () => { cancelled = true; };
+  }, [open, live]);
 
   if (!overrides.data || !routes) return <Spinner />;
 
@@ -81,34 +115,69 @@ export default function PagesSeoPage() {
                 <span className="text-xs text-[#94a3b8]">{isOpen ? 'Close' : 'Edit'}</span>
               </button>
 
-              {isOpen && (
+              {isOpen && (() => {
+                const cur = live[path];
+                const loading = !cur;
+                const failed = cur === 'error';
+                const curTitle = (loading || failed) ? '' : cur.title;
+                const curDesc  = (loading || failed) ? '' : cur.description;
+
+                // What the page shows right now: the override if one is set,
+                // otherwise the wording built into the page itself.
+                const shownTitle = o.title || curTitle;
+                const shownDesc  = o.description || curDesc;
+
+                return (
                 <div className="px-4 pb-4 space-y-3 bg-[#F8FAFC]">
                   <div>
                     <span className="block text-xs font-semibold text-[#475569] mb-1.5">Page title</span>
                     <input
                       value={o.title || ''} onChange={(e) => setRoute(path, { title: e.target.value })}
-                      placeholder="Leave blank to keep the current title" className={inputCls}
+                      placeholder={loading ? 'Loading the current title…' : (curTitle || 'Add a title')}
+                      className={inputCls}
                     />
+                    {!o.title && curTitle && (
+                      <p className="text-[11px] text-[#94a3b8] mt-1">
+                        Currently: &ldquo;{curTitle}&rdquo; — type here to replace it.
+                      </p>
+                    )}
                   </div>
 
                   <div>
                     <span className="block text-xs font-semibold text-[#475569] mb-1.5">
-                      Description <span className="font-normal text-[#94a3b8]">({(o.description || '').length} characters — aim for under 155)</span>
+                      Description{' '}
+                      <span className="font-normal text-[#94a3b8]">
+                        ({(o.description || curDesc || '').length} characters — aim for under 155)
+                      </span>
                     </span>
                     <textarea
                       value={o.description || ''} rows={3}
                       onChange={(e) => setRoute(path, { description: e.target.value })}
-                      placeholder="Leave blank to keep the current description" className={inputCls}
+                      placeholder={loading ? 'Loading the current description…' : (curDesc || 'Add a description')}
+                      className={inputCls}
                     />
+                    {!o.description && curDesc && (
+                      <p className="text-[11px] text-[#94a3b8] mt-1">Currently in use — type here to replace it.</p>
+                    )}
                   </div>
 
+                  {failed && (
+                    <p className="text-[11px] text-amber-700">
+                      Could not read this page&rsquo;s current wording. You can still set a new
+                      title and description here.
+                    </p>
+                  )}
+
                   <div className="rounded-xl border border-slate-200 bg-white p-3">
+                    <p className="text-[10px] font-semibold uppercase tracking-wide text-[#94a3b8] mb-1.5">
+                      How this looks in Google
+                    </p>
                     <p className="text-[#1a0dab] leading-snug truncate">
-                      {o.title ? `${o.title} | Novelio Technologies` : 'The page’s own title'}
+                      {shownTitle ? `${shownTitle}${SUFFIX}` : 'The page’s own title'}
                     </p>
                     <p className="text-[#006621] text-xs">https://www.noveliotech.com{path}</p>
                     <p className="text-[#545454] text-sm mt-0.5 line-clamp-2">
-                      {o.description || 'The page’s own description'}
+                      {shownDesc || 'The page’s own description'}
                     </p>
                   </div>
 
@@ -137,7 +206,8 @@ export default function PagesSeoPage() {
                     )}
                   </div>
                 </div>
-              )}
+                );
+              })()}
             </div>
           );
         })}
