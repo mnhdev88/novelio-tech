@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import {
   ArrowLeft, Loader2, AlertTriangle, Check, Trash2, Code2, LayoutList, Search, Upload, Eye,
+  UploadCloud, ExternalLink,
 } from 'lucide-react';
 import * as api from '../api';
 import { useAdmin } from '../AdminContext';
@@ -41,7 +42,7 @@ function Field({ label, hint, children }) {
 export default function BlogEditorPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { refreshPending } = useAdmin();
+  const { refreshPending, publishAll, pending, deploy, can } = useAdmin();
   const isNew = !slug;
 
   // A new post starts from a template; an existing one loads in the effect below.
@@ -53,6 +54,8 @@ export default function BlogEditorPage() {
   const [tab, setTab] = useState('content');
   const [error, setError] = useState(null);
   const [saveState, setSaveState] = useState('idle');    // idle | saving | saved
+  const [publishing, setPublishing] = useState(false);
+  const [justPublished, setJustPublished] = useState(false);
   const timer = useRef(null);
   const dirty = useRef(false);
 
@@ -162,6 +165,44 @@ export default function BlogEditorPage() {
     }
   }
 
+  // ── Publish just this post ────────────────────────────────────────────────
+  // Two things have to happen for a post to appear: its status in index.json
+  // flips to "published", and the site redeploys. Doing only one is the obvious
+  // trap here — a published status that never deployed looks live in the panel
+  // and is invisible on the site — so this button always does both.
+  async function publishPost() {
+    setPublishing(true);
+    setError(null);
+    try {
+      clearTimeout(timer.current);
+      if (dirty.current) await save(post, body);
+
+      const postPath = `content/blog/${post.slug}.json`;
+      const paths = [postPath];
+
+      const idx = await api.content.get(INDEX_PATH);
+      const entry = (idx.payload || []).find((e) => e.slug === post.slug);
+
+      // index.json only needs committing when the status actually changes, or
+      // when someone else already left a pending edit in it.
+      if (entry && entry.status !== 'published') {
+        const next = (idx.payload || []).map((e) =>
+          e.slug === post.slug ? { ...e, status: 'published', publishAt: null } : e);
+        await api.content.save(INDEX_PATH, next, idx.base_sha);
+        paths.push(INDEX_PATH);
+      } else if (pending.some((p) => p.path === INDEX_PATH)) {
+        paths.push(INDEX_PATH);
+      }
+
+      await publishAll(`Publish blog post: ${post.title || post.slug}`, false, paths);
+      setJustPublished(true);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setPublishing(false);
+    }
+  }
+
   async function uploadImage(onDone) {
     const input = document.createElement('input');
     input.type = 'file';
@@ -192,6 +233,7 @@ export default function BlogEditorPage() {
   }
 
   const metaLen = (post.metaDescription || '').length;
+  const deployRunning = deploy && (deploy.status === 'building' || deploy.status === 'committed');
 
   return (
     <div className="max-w-4xl">
@@ -232,6 +274,18 @@ export default function BlogEditorPage() {
           </button>
         )}
 
+        {!isNew && can('content.publish') && (
+          <button
+            onClick={publishPost}
+            disabled={publishing || deployRunning}
+            title={deployRunning ? 'A publish is already running' : 'Publish just this post'}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-blue text-white text-sm font-semibold disabled:opacity-60 cursor-pointer"
+          >
+            {publishing ? <Loader2 className="w-4 h-4 animate-spin" /> : <UploadCloud className="w-4 h-4" />}
+            Publish post
+          </button>
+        )}
+
         {isNew ? (
           <button onClick={createPost} disabled={saveState === 'saving'}
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-blue text-white text-sm font-semibold disabled:opacity-60 cursor-pointer">
@@ -249,6 +303,30 @@ export default function BlogEditorPage() {
         <div className="flex items-start gap-2 rounded-xl bg-red-50 border border-red-200 px-4 py-3 mb-4">
           <AlertTriangle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
           <p className="text-sm text-red-800 flex-1">{error}</p>
+        </div>
+      )}
+
+      {justPublished && deployRunning && (
+        <div className="flex items-start gap-2 rounded-xl bg-[#EEF2FF] border border-[#c7d2fe] px-4 py-3 mb-4">
+          <Loader2 className="w-4 h-4 text-[#1B3172] shrink-0 mt-0.5 animate-spin" />
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-[#1B3172]">This post is going live</p>
+            <p className="text-xs text-[#475569] mt-0.5">
+              The site is rebuilding — about four minutes. Anything you edit from now on will need
+              publishing again.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {justPublished && !deployRunning && deploy?.status === 'live' && (
+        <div className="flex items-start gap-2 rounded-xl bg-green-50 border border-green-200 px-4 py-3 mb-4">
+          <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
+          <p className="text-sm text-green-900 flex-1">This post is live.</p>
+          <a href={`/blog/${post.slug}`} target="_blank" rel="noreferrer"
+             className="inline-flex items-center gap-1 text-xs font-semibold text-green-900 hover:underline">
+            View it <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
       )}
 

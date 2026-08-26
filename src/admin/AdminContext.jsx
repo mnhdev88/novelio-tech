@@ -97,9 +97,11 @@ export function AdminProvider({ children }) {
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { refreshDeploy(); }, [refreshDeploy]);
 
-  const publishAll = useCallback(async (message, force = false) => {
-    const res = await api.publish.run(message, force);
-    setPending([]);
+  /** `paths` publishes only those files and leaves the rest pending. */
+  const publishAll = useCallback(async (message, force = false, paths = null) => {
+    const res = await api.publish.run(message, force, paths);
+    // A subset publish leaves the other drafts alone, so drop only what went out.
+    setPending((rows) => (paths ? rows.filter((r) => !paths.includes(r.path)) : []));
     // Seed the bar from the response so it appears immediately, before the first poll.
     setDeploy({
       status: 'building',

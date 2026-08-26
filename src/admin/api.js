@@ -130,8 +130,12 @@ export const content = {
 // ── Publish ──────────────────────────────────────────────────────────────────
 
 export const publish = {
-  /** Commit every pending draft as ONE commit and start the deploy. */
-  run: (message, force = false) => request('publish.php', { method: 'POST', body: { message, force } }),
+  /**
+   * Commit pending drafts as ONE commit and start the deploy.
+   * `paths` limits it to those files; omit it to publish everything pending.
+   */
+  run: (message, force = false, paths = null) =>
+    request('publish.php', { method: 'POST', body: { message, force, ...(paths ? { paths } : {}) } }),
 
   /** State of the most recent publish, for polling the progress bar. */
   status: () => request('publish.php'),

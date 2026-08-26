@@ -152,6 +152,23 @@ refactor ~40 page components, **Pages & SEO** fetches the live page and reads it
 is same-origin with the site, so this needs no API. The client sees what Google
 sees today, and typing in a field creates an override in `content/seo/pages.json`.
 
+### Publishing one post
+
+The post editor has its own **Publish post** button. It commits only that post
+(plus `content/blog/index.json` when the post's status changes) and leaves every
+other pending edit as a draft, so a finished article can go live without
+dragging along half-written changes to other pages. `publish.php` takes an
+optional `paths` array for this and clears only the drafts it committed.
+
+It always does *both* halves of publishing — flips the status to `published`
+**and** deploys. Doing only one is the trap: a post marked published that never
+deployed looks live in the panel and is invisible on the site.
+
+Note that `index.json` is a single file holding every post's status and order,
+so publishing one post also carries any other pending status or ordering changes
+in it. The whole site still rebuilds either way — there is no such thing as
+deploying one page of a static site.
+
 ### Previewing a draft
 
 The editor's **Preview** button opens `/blog/<slug>?preview=1`, which renders the

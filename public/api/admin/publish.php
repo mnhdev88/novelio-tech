@@ -3,7 +3,8 @@
 // Publish: turn every pending draft into ONE commit, which the existing
 // deploy.yml picks up and turns into a full build + prerender + FTPS deploy.
 //
-//   POST  { message?: "..." }   -> commit and start the deploy
+//   POST  { message?, paths?: [...] }  -> commit and start the deploy
+//                                       paths limits it to those files
 //   GET   ?status=1             -> state of the most recent publish (for polling)
 //
 // One commit per publish is deliberate: committing on every save would queue a
@@ -49,6 +50,20 @@ $in = a_body();
 $drafts = draft_all();
 usort($drafts, function ($a, $b) { return strcmp($a['path'], $b['path']); });
 if (!$drafts) a_fail('There are no unpublished changes.', 400, 'nothing_to_publish');
+
+// Optional subset: publish only these paths and leave the rest pending. Used by
+// the "Publish this post" button, so one finished article can go live without
+// dragging along half-written edits to other pages.
+$only = null;
+if (!empty($in['paths']) && is_array($in['paths'])) {
+    $only = array_values(array_unique(array_map('strval', $in['paths'])));
+    $drafts = array_values(array_filter($drafts, function ($d) use ($only) {
+        return in_array($d['path'], $only, true);
+    }));
+    if (!$drafts) {
+        a_fail('Those changes have already been published.', 400, 'nothing_to_publish');
+    }
+}
 
 // Refuse to publish over someone else's newer version rather than clobbering it.
 // base_sha is what the editor loaded; if the file has moved on since, the two
@@ -101,8 +116,13 @@ store_append(A_PUBLISH_LOG, $record);
 $publishId = $record['id'];
 
 // Only clear drafts after the commit lands, so a GitHub failure leaves the
-// client's work exactly where it was.
-draft_clear_all();
+// client's work exactly where it was. A subset publish clears just what it
+// committed — anything else stays pending and still shows in the panel.
+if ($only === null) {
+    draft_clear_all();
+} else {
+    foreach ($drafts as $d) draft_delete($d['path']);
+}
 
 a_audit('content.publish', $sha, ['paths' => $paths, 'count' => count($paths)]);
 
