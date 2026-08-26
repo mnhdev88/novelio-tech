@@ -272,6 +272,10 @@
       {
         "q": "Do you work with businesses remotely?",
         "a": "Absolutely. We work with small businesses worldwide. Our team is fully remote and our clients span across North America, Europe, the Middle East, South Asia, and beyond. Wherever you are, we're your partner."
+      },
+      {
+        "q": "",
+        "a": ""
       }
     ]
   }
