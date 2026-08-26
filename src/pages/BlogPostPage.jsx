@@ -1,5 +1,6 @@
-import { useParams, Link } from 'react-router-dom';
-import { Clock, ArrowRight, Phone, MessageCircle, CheckCircle, ChevronRight, Tag } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useParams, useLocation, Link } from 'react-router-dom';
+import { Clock, ArrowRight, Phone, MessageCircle, CheckCircle, ChevronRight, Tag, Eye } from 'lucide-react';
 import SEO from '../components/SEO';
 import { BLOG_POSTS, COMPANY, SERVICES } from '../data/siteData';
 import NotFoundPage from './NotFoundPage';
@@ -54,7 +55,45 @@ const CTA_ITEMS = [
 
 export default function BlogPostPage() {
   const { slug } = useParams();
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const published = BLOG_POSTS.find((p) => p.slug === slug);
+
+  // ?preview=1 renders the unpublished draft instead of the built version, so
+  // the client can see exactly how a post will look — real navbar, real footer,
+  // real article styling — before committing to a 4-minute deploy.
+  //
+  // The draft comes from the admin API, which requires a signed-in session, so
+  // a stranger following a preview link just gets the normal page (or a 404 for
+  // a post that was never published). Nothing unpublished leaks.
+  const isPreview = new URLSearchParams(useLocation().search).get('preview') === '1';
+  const [draft, setDraft] = useState(null);
+  const [draftState, setDraftState] = useState(isPreview ? 'loading' : 'off');
+
+  useEffect(() => {
+    if (!isPreview) return undefined;
+    let cancelled = false;
+
+    fetch(`/api/admin/content.php?path=${encodeURIComponent(`content/blog/${slug}.json`)}`,
+      { credentials: 'same-origin', headers: { Accept: 'application/json' } })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error('no draft'))))
+      .then((d) => {
+        if (cancelled) return;
+        setDraft(d.payload);
+        setDraftState('ready');
+      })
+      .catch(() => { if (!cancelled) setDraftState('denied'); });
+
+    return () => { cancelled = true; };
+  }, [isPreview, slug]);
+
+  const post = (isPreview && draft) ? draft : published;
+
+  if (isPreview && draftState === 'loading') {
+    return (
+      <main className="pt-32 pb-32 grid place-items-center">
+        <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#1B3172] animate-spin" />
+      </main>
+    );
+  }
 
   if (!post?.content) return <NotFoundPage />;
 
@@ -74,11 +113,37 @@ export default function BlogPostPage() {
         keywords={post.schema?.['@graph']?.[0]?.keywords}
         image={post.image}
         type="article"
-        schema={post.schema}
+        schema={isPreview ? undefined : post.schema}
+        // A preview must never be indexed: it is a draft at a URL that may not
+        // exist yet, and its schema would describe a page Google cannot fetch.
+        noindex={isPreview}
       />
       <style>{ARTICLE_CSS}</style>
 
-      <main className="pt-20 bg-white">
+      {isPreview && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#1B3172] text-white px-4 py-2.5">
+          <div className="max-w-[1320px] mx-auto flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span className="inline-flex items-center gap-2 text-sm font-semibold">
+              <Eye className="w-4 h-4" />
+              Preview
+            </span>
+            <span className="text-xs text-white/70">
+              {draft
+                ? 'This is your unpublished draft. Visitors still see the published version.'
+                : 'Showing the published version — no unsaved draft was found.'}
+            </span>
+            <div className="flex-1" />
+            <Link
+              to={`/admin/blog/${slug}`}
+              className="text-xs font-semibold underline underline-offset-2 hover:text-white/80"
+            >
+              Back to editing
+            </Link>
+          </div>
+        </div>
+      )}
+
+      <main className={`pt-20 bg-white ${isPreview ? 'pb-16' : ''}`}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-10 xl:gap-14 items-start">
 

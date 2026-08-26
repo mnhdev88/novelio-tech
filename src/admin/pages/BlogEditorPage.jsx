@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import {
-  ArrowLeft, Loader2, AlertTriangle, Check, Trash2, Code2, LayoutList, Search, Upload,
+  ArrowLeft, Loader2, AlertTriangle, Check, Trash2, Code2, LayoutList, Search, Upload, Eye,
 } from 'lucide-react';
 import * as api from '../api';
 import { useAdmin } from '../AdminContext';
@@ -214,6 +214,22 @@ export default function BlogEditorPage() {
             {saveState === 'saving' && <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Saving…</>}
             {saveState === 'saved' && <><Check className="w-3.5 h-3.5 text-green-600" /> Saved as draft</>}
           </span>
+        )}
+
+        {!isNew && (
+          // Opens the real blog page in preview mode, so what the client checks
+          // is the actual rendered post — not a lookalike that could drift.
+          // Flush any queued autosave first, or they would preview stale text.
+          <button
+            onClick={async () => {
+              clearTimeout(timer.current);
+              if (dirty.current) await save(post, body);
+              window.open(`/blog/${post.slug}?preview=1`, '_blank', 'noopener');
+            }}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-[#475569] hover:text-[#1B3172] hover:border-[#1B3172] cursor-pointer"
+          >
+            <Eye className="w-4 h-4" /> Preview
+          </button>
         )}
 
         {isNew ? (

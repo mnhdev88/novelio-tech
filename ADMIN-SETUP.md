@@ -152,6 +152,18 @@ refactor ~40 page components, **Pages & SEO** fetches the live page and reads it
 is same-origin with the site, so this needs no API. The client sees what Google
 sees today, and typing in a field creates an override in `content/seo/pages.json`.
 
+### Previewing a draft
+
+The editor's **Preview** button opens `/blog/<slug>?preview=1`, which renders the
+*real* blog page with the draft content pulled from the admin API — real navbar,
+footer, article CSS and layout, so what the client checks cannot drift from what
+ships. Any queued autosave is flushed first so the preview is never stale.
+
+The draft only appears for a signed-in session. Anyone else following the link
+gets the published version (or a 404 for a post that was never published), so
+nothing unpublished leaks. Preview pages are always `noindex,nofollow` and their
+Article/FAQ schema is suppressed — a draft URL must never reach Google.
+
 ### The blog body editor
 
 Posts are edited as a list of blocks rather than one WYSIWYG box. That is a
