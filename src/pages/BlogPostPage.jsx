@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { Clock, ArrowRight, Phone, MessageCircle, CheckCircle, ChevronRight, Tag, Eye } from 'lucide-react';
 import SEO from '../components/SEO';
-import { BLOG_POSTS, COMPANY, SERVICES } from '../data/siteData';
+import { BLOG_POSTS, COMPANY, SERVICES, PHONE_TEL } from '../data/siteData';
 import NotFoundPage from './NotFoundPage';
 
 const ARTICLE_CSS = `
@@ -186,7 +186,7 @@ export default function BlogPostPage() {
                 </div>
                 <div className="bg-[#f8f9ff] border border-t-0 border-slate-200 p-4 flex gap-3">
                   <a
-                    href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
+                    href={PHONE_TEL}
                     className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-slate-200 rounded-xl py-2.5 text-xs font-semibold text-[#1B3172] hover:border-[#4f46e5] hover:text-[#4f46e5] transition-all"
                   >
                     <Phone className="w-3.5 h-3.5" /> Call Us
@@ -306,7 +306,7 @@ export default function BlogPostPage() {
                 <div className="space-y-2 text-xs text-white/80 mb-4">
                   <div className="flex items-center gap-2">
                     <Phone className="w-3.5 h-3.5 text-[#818cf8] shrink-0" />
-                    <a href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`} className="hover:text-white transition-colors">
+                    <a href={PHONE_TEL} className="hover:text-white transition-colors">
                       {COMPANY.phone}
                     </a>
                   </div>

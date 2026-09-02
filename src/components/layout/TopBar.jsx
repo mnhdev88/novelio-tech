@@ -1,7 +1,7 @@
 import { Mail, Phone, Clock, LayoutDashboard } from 'lucide-react';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
-import { COMPANY } from '../../data/siteData';
+import { COMPANY, PHONE_TEL } from '../../data/siteData';
 import { useAuth } from '../../portal/AuthContext';
 
 export default function TopBar() {
@@ -22,7 +22,7 @@ export default function TopBar() {
               {COMPANY.email}
             </a>
             <a
-              href={`tel:${COMPANY.phone}`}
+              href={PHONE_TEL}
               className="flex items-center gap-1.5 hover:text-white transition-colors"
             >
               <Phone className="w-3 h-3" />

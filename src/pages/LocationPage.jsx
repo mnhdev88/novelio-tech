@@ -5,7 +5,7 @@ import { useState } from 'react';
 import SEO from '../components/SEO';
 import CTABanner from '../components/home/CTABanner';
 import { getCityData, getStateData, getCitiesForState } from '../data/locationData';
-import { SERVICES } from '../data/siteData';
+import { SERVICES, PHONE_TEL } from '../data/siteData';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -81,7 +81,7 @@ function StatePage({ stateData, cities }) {
               {stateData.description} We build and execute tailored digital growth plans — websites, local SEO, lead generation, and automation — that drive real revenue.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="tel:+18887384655" className="btn-primary text-base px-8 py-4">
+              <a href={PHONE_TEL} className="btn-primary text-base px-8 py-4">
                 Get a Free Growth Audit
                 <ArrowRight className="w-5 h-5" />
               </a>
@@ -141,7 +141,7 @@ function CityPage({ city }) {
         '@id': `https://www.noveliotech.com/locations/${city.stateSlug}/${city.citySlug}#business`,
         name: 'Novelio Technologies',
         url: 'https://www.noveliotech.com',
-        telephone: '+1-888-738-4655',
+        telephone: '+1-908-639-5666',
         email: 'info@noveliotech.com',
         address: {
           '@type': 'PostalAddress',
@@ -248,7 +248,7 @@ function CityPage({ city }) {
             transition={{ duration: 0.6, delay: 0.96 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
-            <a href="tel:+18887384655" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
+            <a href={PHONE_TEL} className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
               Get Your Free {city.city} Audit
               <motion.span
                 animate={{ x: [0, 5, 0] }}

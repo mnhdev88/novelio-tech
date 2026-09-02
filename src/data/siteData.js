@@ -43,6 +43,11 @@ const INDUSTRY_ICONS = {
 };
 
 export const COMPANY = companyJson;
+
+// The phone is stored the way it should be displayed ("+1 (908) 639-5666"),
+// which is not a valid `tel:` target. Every call link uses this instead of
+// re-deriving it with a slightly different regex each time.
+export const PHONE_TEL = `tel:${companyJson.phone.replace(/[^\d+]/g, '')}`;
 export const STATS = statsJson;
 export const SERVICES = servicesJson;
 export const TESTIMONIALS = testimonialsJson;

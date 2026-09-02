@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, Send } from 'lucide-react';
 import { FaLinkedinIn } from 'react-icons/fa6';
-import { COMPANY, SERVICES, NAVIGATION } from '../../data/siteData';
+import { COMPANY, SERVICES, NAVIGATION, PHONE_TEL } from '../../data/siteData';
 import { US_ENTITY, INDIA_ENTITY } from '../shared/LegalEntities';
 import { useState } from 'react';
 import { trackEvent } from '../../utils/analytics';
@@ -159,7 +159,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-brand-purple mt-0.5 flex-shrink-0" />
-                <a href={`tel:${COMPANY.phone}`} className="text-slate-300 hover:text-white text-sm transition-colors">{COMPANY.phone}</a>
+                <a href={PHONE_TEL} className="text-slate-300 hover:text-white text-sm transition-colors">{COMPANY.phone}</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-brand-purple mt-0.5 flex-shrink-0" />

@@ -2,7 +2,7 @@ import SEO from '../components/SEO';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MessageCircle, Send, Check, ChevronDown, ChevronUp } from 'lucide-react';
-import { COMPANY } from '../data/siteData';
+import { COMPANY, PHONE_TEL } from '../data/siteData';
 import { US_ENTITY, INDIA_ENTITY } from '../components/shared/LegalEntities';
 import { trackEvent } from '../utils/analytics';
 import { captureLead } from '../utils/leadCapture';
@@ -110,7 +110,7 @@ export default function ContactPage() {
         <div className="container-xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { icon: Phone, label: 'Call Us', value: COMPANY.phone, sub: 'Mon–Fri, 9am–6pm EST', href: `tel:${COMPANY.phone}`, color: 'from-brand-purple to-brand-blue' },
+              { icon: Phone, label: 'Call Us', value: COMPANY.phone, sub: 'Mon–Fri, 9am–6pm EST', href: PHONE_TEL, color: 'from-brand-purple to-brand-blue' },
               { icon: MessageCircle, label: 'WhatsApp', value: 'Chat with us 24/7', sub: 'Instant response', href: `https://wa.me/${COMPANY.whatsapp}`, color: 'from-[#128C7E] to-[#25D366]' },
               { icon: Mail, label: 'Email Us', value: COMPANY.email, sub: 'Response within 24 hrs', href: `mailto:${COMPANY.email}`, color: 'from-brand-blue to-brand-cyan' },
             ].map((item, i) => {

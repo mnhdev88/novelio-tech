@@ -4,6 +4,7 @@ import { MapPin, ArrowRight, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 import CTABanner from '../components/home/CTABanner';
 import { STATES, getCitiesForState } from '../data/locationData';
+import { PHONE_TEL } from '../data/siteData';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -55,7 +56,7 @@ export default function LocationHubPage() {
               We help small businesses across the US rank higher on Google, generate more leads, and grow faster — with strategies built specifically for their city and market.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="tel:+18887384655" className="btn-primary text-base px-8 py-4">
+              <a href={PHONE_TEL} className="btn-primary text-base px-8 py-4">
                 Get Your Free Local Audit
                 <ArrowRight className="w-5 h-5" />
               </a>

@@ -35,7 +35,7 @@ export default function ContactPage() {
           <Text label="Email" value={data.email} onChange={(v) => set({ email: v })} />
           <Text
             label="Phone"
-            hint="Shown exactly as typed, e.g. +1 (888) 738-4655"
+            hint="Shown exactly as typed, e.g. +1 (908) 639-5666"
             value={data.phone}
             onChange={(v) => set({ phone: v })}
           />

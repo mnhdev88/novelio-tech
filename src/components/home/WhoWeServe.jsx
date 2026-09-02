@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { PHONE_TEL } from '../../data/siteData';
 
 const PILLS = [
   { label: 'Plumbers',        color: '#2563EB', bg: 'rgba(37,99,235,0.1)',  border: 'rgba(37,99,235,0.25)' },
@@ -40,7 +41,7 @@ export default function WhoWeServe() {
               We work best with owner-operated service businesses, retail shops, restaurants, and trade businesses who are ready to invest in growth and want a partner who is accountable for results.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-              <a href="tel:+18887384655" className="btn-primary inline-flex group">
+              <a href={PHONE_TEL} className="btn-primary inline-flex group">
                 Get My Free Audit
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>

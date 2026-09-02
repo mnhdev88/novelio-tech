@@ -1,5 +1,5 @@
 import { Phone, MessageCircle } from 'lucide-react';
-import { COMPANY } from '../../data/siteData';
+import { COMPANY, PHONE_TEL } from '../../data/siteData';
 import { useEffect, useState } from 'react';
 
 export default function StickyMobileCTA() {
@@ -18,7 +18,7 @@ export default function StickyMobileCTA() {
     >
       <div className="flex">
         <a
-          href={`tel:${COMPANY.phone}`}
+          href={PHONE_TEL}
           className="flex-1 flex items-center justify-center gap-2.5 h-14 bg-gradient-to-r from-brand-blue to-brand-cyan text-white font-heading font-600 text-[15px] active:scale-95 transition-transform"
         >
           <Phone className="w-5 h-5" />

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Check, ArrowRight, Sparkles, ShieldCheck, HelpCircle, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
 import CTABanner from '../components/home/CTABanner';
-import { COMPANY, PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ, PRICING_COMPARISON } from '../data/siteData';
+import { PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ, PRICING_COMPARISON, PHONE_TEL } from '../data/siteData';
 import { trackEvent } from '../utils/analytics';
 
 export default function PricingPage() {
@@ -183,7 +183,7 @@ export default function PricingPage() {
 
                   {plan.ctaPhone ? (
                     <a
-                      href={`tel:${COMPANY.phone.replace(/[\s()-]/g, '')}`}
+                      href={PHONE_TEL}
                       onClick={() => trackEvent('select_plan', { plan_id: plan.id, plan_name: plan.name, billing, cta: 'call' })}
                       className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer mb-6 ${
                         plan.highlight

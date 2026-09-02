@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, ArrowRight, Star, ChevronDown, ChevronUp, CheckCircle, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
 import CTABanner from '../components/home/CTABanner';
+import { PHONE_TEL } from '../data/siteData';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -104,7 +105,7 @@ const schema = {
       '@type': 'LocalBusiness',
       name: 'Novelio Technologies LLC',
       url: 'https://www.noveliotech.com',
-      telephone: '+18887384655',
+      telephone: '+19086395666',
       email: 'info@noveliotech.com',
       areaServed: { '@type': 'City', name: 'Newark', containedInPlace: { '@type': 'State', name: 'New Jersey' } },
       serviceType: ['Website Design', 'Web Development', 'Local SEO', 'Lead Generation'],
@@ -198,7 +199,7 @@ export default function BestWebDevNewarkPage() {
             transition={{ duration: 0.6, delay: 1.08 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
-            <a href="tel:+18887384655" className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
+            <a href={PHONE_TEL} className="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
               Get Your Free Demo Site
               <motion.span
                 animate={{ x: [0, 5, 0] }}
@@ -326,11 +327,11 @@ export default function BestWebDevNewarkPage() {
                 </div>
 
                 <a
-                  href="tel:+18887384655"
+                  href={PHONE_TEL}
                   className="btn-primary w-full justify-center text-base py-4 mb-3"
                 >
                   <Phone className="w-4 h-4" />
-                  Call to Start Your Free Demo — (888) 738-4655
+                  Call to Start Your Free Demo — (908) 639-5666
                 </a>
                 <p className="text-center text-xs text-[#64748b]">
                   Or email <a href="mailto:info@noveliotech.com" className="text-[#4338CA] hover:underline">info@noveliotech.com</a> · Response within 2 hours

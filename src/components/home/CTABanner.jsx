@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { COMPANY } from '../../data/siteData';
+import { COMPANY, PHONE_TEL } from '../../data/siteData';
 
 // Particle positions (deterministic so no hydration mismatch)
 const PARTICLES = Array.from({ length: 28 }, (_, i) => ({
@@ -145,7 +145,7 @@ export default function CTABanner() {
             viewport={{ once: true }}
             className="text-white/50 text-sm mb-10"
           >
-            Call us directly: <a href="tel:+18887384655" className="text-white/80 hover:text-white font-medium transition-colors">(888) 738-4655</a>
+            Call us directly: <a href={PHONE_TEL} className="text-white/80 hover:text-white font-medium transition-colors">(908) 639-5666</a>
           </motion.p>
 
           {/* CTA buttons */}
@@ -156,7 +156,7 @@ export default function CTABanner() {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <a href="tel:+18887384655"
+            <a href={PHONE_TEL}
               className="inline-flex items-center gap-2 font-heading font-700 px-8 py-4 rounded-full text-[15px] w-full sm:w-auto justify-center group transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: 'white',

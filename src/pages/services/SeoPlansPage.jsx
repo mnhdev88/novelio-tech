@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import CTABanner from '../../components/home/CTABanner';
-import { COMPANY } from '../../data/siteData';
+import { COMPANY, PHONE_TEL } from '../../data/siteData';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -244,7 +244,7 @@ const schema = {
 };
 
 export default function SeoPlansPage() {
-  const telHref = `tel:${COMPANY.phone.replace(/[\s()-]/g, '')}`;
+  const telHref = PHONE_TEL;
 
   return (
     <main className="pt-20">

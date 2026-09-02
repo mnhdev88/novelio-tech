@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
-import { HOMEPAGE } from '../../data/siteData';
+import { HOMEPAGE, PHONE_TEL } from '../../data/siteData';
 
 const FAQS = HOMEPAGE.faq.items;
 
@@ -122,10 +122,10 @@ export default function FAQSection() {
         >
           <p className="text-[#64748b] text-sm mb-4">Still have questions?</p>
           <a
-            href="tel:+18887384655"
+            href={PHONE_TEL}
             className="btn-primary inline-flex"
           >
-            Call Us — (888) 738-4655
+            Call Us — (908) 639-5666
           </a>
         </motion.div>
       </div>

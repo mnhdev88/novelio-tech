@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, ChevronDown, Star, TrendingUp, Shield, Award, Rocket, Check } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import FreeWebsiteModal from '../FreeWebsiteModal';
-import { HOMEPAGE, COMPANY } from '../../data/siteData';
+import { HOMEPAGE, COMPANY, PHONE_TEL } from '../../data/siteData';
 
 const HERO = HOMEPAGE.hero;
 
@@ -341,7 +341,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 1.3 }}
             className="mb-6"
           >
-            <a href={`tel:+${COMPANY.whatsapp.replace(/[^0-9]/g, '')}`} className="text-sm text-[#64748b] hover:text-[#1B3172] transition-colors">
+            <a href={PHONE_TEL} className="text-sm text-[#64748b] hover:text-[#1B3172] transition-colors">
               {HERO.callPrompt} <span className="font-600 text-[#1B3172]">Call {COMPANY.phone}</span>
             </a>
           </motion.div>

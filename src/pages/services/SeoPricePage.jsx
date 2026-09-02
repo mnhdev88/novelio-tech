@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import CTABanner from '../../components/home/CTABanner';
-import { COMPANY } from '../../data/siteData';
+import { COMPANY, PHONE_TEL } from '../../data/siteData';
 
 // Deep scope companion to /services/seo-plans. Same commercial offer, every
 // line item published — sent to prospects during scoping rather than indexed,
@@ -264,7 +264,7 @@ function ScopeValue({ value }) {
 }
 
 export default function SeoPricePage() {
-  const telHref = `tel:${COMPANY.phone.replace(/[\s()-]/g, '')}`;
+  const telHref = PHONE_TEL;
 
   return (
     <main className="pt-20">
