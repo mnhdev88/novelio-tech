@@ -2,8 +2,9 @@ import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FileText } from 'lucide-react';
+import { EntityContactBlock, GrievanceBlock, US_ENTITY, INDIA_ENTITY } from '../components/shared/LegalEntities';
 
-const LAST_UPDATED = 'July 10, 2026';
+const LAST_UPDATED = 'September 2, 2026';
 
 export default function TermsPage() {
   return (
@@ -38,7 +39,16 @@ export default function TermsPage() {
             <p>These Terms apply to all website visitors, prospects, clients, subscribers, partners, and users of our services.</p>
           </Section>
 
-          <Section title="2. Services">
+          <Section title="2. Two Contracting Entities">
+            <p>These Terms are issued jointly by:</p>
+            <ul>
+              <li><strong>{US_ENTITY.legalName}</strong>, {US_ENTITY.address} ("Novelio US"), for clients billed in USD and services delivered from the United States; and</li>
+              <li><strong>{INDIA_ENTITY.legalName}</strong>, {INDIA_ENTITY.address}, GSTIN {INDIA_ENTITY.gstin}, PAN {INDIA_ENTITY.pan} ("Novelio India"), for clients billed in INR and services delivered from India.</li>
+            </ul>
+            <p>The entity you are contracting with is determined by the currency and payment method shown on your invoice, proposal, or checkout page. References to "Novelio," "we," "us," or "our" below apply to whichever entity you are contracting with, unless a clause is stated to apply to one entity only.</p>
+          </Section>
+
+          <Section title="3. Services">
             <p>Novelio Technologies LLC provides digital growth and technology services, including but not limited to:</p>
             <ul>
               <li>Website design and development</li>
@@ -59,14 +69,14 @@ export default function TermsPage() {
             <p>If there is any conflict between these Terms and a signed Service Agreement or Statement of Work, the signed agreement will control for that specific engagement.</p>
           </Section>
 
-          <Section title="3. Free Growth Audit">
+          <Section title="4. Free Growth Audit">
             <p>Novelio may offer a free growth audit, consultation, discovery call, website review, marketing review, or similar advisory session.</p>
             <p>The Free 30-Minute Growth Audit is provided at no cost and with no obligation. It is for informational and educational purposes only.</p>
             <p>The audit does not create a client relationship unless both parties agree to proceed with a paid service. It also does not guarantee specific results, rankings, leads, traffic, sales, revenue, approvals, or business outcomes.</p>
             <p>Novelio reserves the right to accept, decline, reschedule, or cancel audit requests at its discretion.</p>
           </Section>
 
-          <Section title="4. Payment Terms">
+          <Section title="5. Payment Terms">
             <p>Payment terms are specified in each individual proposal, Service Agreement, Statement of Work, checkout page, invoice, subscription plan, or approved written communication.</p>
             <p>Unless otherwise agreed in writing:</p>
             <ul>
@@ -78,9 +88,10 @@ export default function TermsPage() {
               <li>The client is responsible for all taxes, bank charges, processor fees, currency conversion charges, and payment-related fees unless otherwise stated in writing.</li>
             </ul>
             <p>In some approved cases, Novelio may offer a preview-first website model where a draft or demo website is created before full payment, and payment becomes due after client approval and fifteen (15) days from the website going live. This option applies only when confirmed by Novelio in writing.</p>
+            <p>For clients contracting with <strong>Novelio India</strong>: all fees are quoted and payable in INR. Payments are processed via Razorpay or other RBI-authorized payment aggregators. GST is charged in addition to quoted fees at the applicable rate and reflected on a GST-compliant tax invoice. Invoices are due within seven (7) days of issuance unless otherwise agreed in writing.</p>
           </Section>
 
-          <Section title="5. Accepted Payment Methods">
+          <Section title="6. Accepted Payment Methods">
             <p>Novelio Technologies LLC may accept payments through approved methods including credit card, debit card, ACH bank transfer, wire transfer, online invoice, payment link, or other payment methods made available by Novelio.</p>
             <p>For ACH bank transfer payments, clients must use only the official payment instructions provided by Novelio through an approved invoice, secure payment link, payment processor, or written company communication.</p>
             <p>Novelio does not publish full bank account details or routing details on its website for security reasons.</p>
@@ -98,9 +109,10 @@ export default function TermsPage() {
               <li>Termination of access to unpaid services</li>
             </ul>
             <p>If a payment is reversed, charged back, disputed, or returned after services have been delivered, the client remains responsible for the unpaid amount and any related charges permitted by law.</p>
+            <p>For <strong>Novelio India</strong>: accepted payment methods include UPI, net banking, debit/credit card, and other methods made available through our payment aggregator (Razorpay). Novelio India does not store your card, UPI, or net-banking credentials; these are processed directly by the payment aggregator under its own security and compliance standards.</p>
           </Section>
 
-          <Section title="6. Subscription Growth Plans">
+          <Section title="7. Subscription Growth Plans">
             <p>Novelio may offer paid subscription growth plans, including but not limited to plans such as Start My Growth, Grow My Leads, Scale My Business, or similar plans.</p>
             <p>Subscription plans may be billed monthly, quarterly, annually, or as otherwise agreed in writing.</p>
             <p>Unless otherwise agreed in writing, subscription growth plans carry a minimum commitment of twelve (12) months.</p>
@@ -110,7 +122,7 @@ export default function TermsPage() {
             <p>If the client cancels, pauses, defaults, or fails to complete the minimum subscription term, Novelio may retain ownership and control of the website, hosting environment, templates, CRM configuration, automation setup, and related assets until all outstanding amounts, remaining term balances, or applicable buyout fees are paid.</p>
           </Section>
 
-          <Section title="7. Intellectual Property">
+          <Section title="8. Intellectual Property">
             <p>Upon full payment of all applicable fees, the client owns the final deliverables created specifically for the client, such as final website content, approved custom copy, approved graphics, and final design assets, unless otherwise stated in the Service Agreement or Statement of Work.</p>
             <p>Novelio retains ownership of all pre-existing tools, templates, code libraries, frameworks, processes, methods, automation flows, strategy documents, internal systems, training materials, and proprietary methodologies used to deliver services.</p>
             <p>Novelio may use completed work, screenshots, project summaries, results, testimonials, and case studies in its portfolio, website, presentations, and marketing materials unless the client requests otherwise in writing.</p>
@@ -118,7 +130,7 @@ export default function TermsPage() {
             <p>Until ownership transfer is complete, the client receives a limited license to use the website for normal business use, subject to payment compliance and these Terms.</p>
           </Section>
 
-          <Section title="8. Client Responsibilities">
+          <Section title="9. Client Responsibilities">
             <p>The client agrees to:</p>
             <ul>
               <li>Provide accurate business information, approvals, content, images, access credentials, brand assets, and required materials in a timely manner.</li>
@@ -132,7 +144,7 @@ export default function TermsPage() {
             <p>Novelio is not responsible for delays, missed deadlines, poor performance, rejected campaigns, suspended accounts, or incomplete work caused by delayed client responses, missing materials, inaccurate information, denied access, third-party restrictions, or client-side non-cooperation.</p>
           </Section>
 
-          <Section title="9. Third-Party Platforms and Tools">
+          <Section title="10. Third-Party Platforms and Tools">
             <p>Novelio may use or integrate third-party platforms such as hosting providers, domain registrars, website builders, CRM tools, email platforms, advertising platforms, analytics tools, payment processors, automation tools, social media platforms, and other technology providers.</p>
             <p>The client understands that third-party platforms are governed by their own terms, policies, pricing, limits, restrictions, review processes, and availability.</p>
             <p>Novelio is not responsible for:</p>
@@ -151,14 +163,14 @@ export default function TermsPage() {
             <p>Where required, the client is responsible for maintaining active subscriptions, licenses, renewals, payment methods, and account ownership for third-party tools.</p>
           </Section>
 
-          <Section title="10. Confidentiality">
+          <Section title="11. Confidentiality">
             <p>Both parties agree to keep confidential any proprietary, sensitive, financial, technical, operational, strategic, or business information shared during the course of the engagement.</p>
             <p>Confidential information may include but is not limited to login credentials, business plans, financial information, client lists, marketing data, payment details, internal processes, pricing, technical configurations, and unpublished materials.</p>
             <p>This obligation continues even after the service relationship ends.</p>
             <p>Confidentiality does not apply to information that is publicly available, already known before disclosure, independently developed, or required to be disclosed by law.</p>
           </Section>
 
-          <Section title="11. No Guarantee of Results">
+          <Section title="12. No Guarantee of Results">
             <p>Novelio works to deliver measurable improvements, but digital growth depends on many factors outside our control.</p>
             <p>Novelio does not guarantee specific:</p>
             <ul>
@@ -179,14 +191,14 @@ export default function TermsPage() {
             <p>Any examples, projections, estimates, case studies, audits, or performance references are for illustration only and do not guarantee future results.</p>
           </Section>
 
-          <Section title="12. Limitation of Liability">
+          <Section title="13. Limitation of Liability">
             <p>To the fullest extent permitted by law, Novelio Technologies LLC shall not be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages.</p>
             <p>This includes but is not limited to loss of revenue, loss of profits, loss of data, loss of goodwill, loss of business opportunities, website downtime, advertising loss, search ranking changes, account suspension, payment delay, or third-party platform issues.</p>
             <p>Our total liability in connection with any service shall not exceed the total fees paid by the client to Novelio in the three (3) months preceding the claim.</p>
             <p>The client agrees that Novelio is not liable for issues caused by third-party tools, client-provided content, client delays, unauthorized access, policy violations, payment processor decisions, hosting outages, or platform changes outside Novelio's control.</p>
           </Section>
 
-          <Section title="13. Refunds and Cancellations">
+          <Section title="14. Refunds and Cancellations">
             <p>Refund terms may vary depending on the service, subscription plan, project stage, or Service Agreement.</p>
             <p>Unless otherwise agreed in writing:</p>
             <ul>
@@ -197,10 +209,10 @@ export default function TermsPage() {
               <li>Third-party costs, hosting fees, domain fees, software fees, advertising spend, payment processor fees, and purchased tools are non-refundable.</li>
             </ul>
             <p>Approved refunds, if any, may be processed through the original payment method where possible. Processing timelines may depend on the bank, payment processor, or payment method used.</p>
-            <p>For detailed refund rules, please refer to Novelio's <Link to="/refund-policy" className="text-[#1D4ED8] hover:underline">Refund Policy</Link>, if published separately.</p>
+            <p>For detailed refund rules, please refer to Novelio's <Link to="/refund-policy" className="text-[#1D4ED8] hover:underline">Refund &amp; Cancellation Policy</Link>. For Novelio India clients, refund timelines and mechanics follow the India-specific terms of that policy, including timelines aligned with Razorpay's settlement cycle.</p>
           </Section>
 
-          <Section title="14. Termination">
+          <Section title="15. Termination">
             <p>Either party may terminate a service engagement with thirty (30) days' written notice unless a different termination process is stated in the applicable Service Agreement, Statement of Work, subscription plan, or approved written communication.</p>
             <p>Upon termination:</p>
             <ul>
@@ -214,7 +226,7 @@ export default function TermsPage() {
             <p>If a payment is returned, reversed, disputed, or charged back after cancellation or termination, the client remains responsible for the unpaid amount, applicable bank or processor fees, and any reasonable recovery costs permitted by law.</p>
           </Section>
 
-          <Section title="15. Service Suspension">
+          <Section title="16. Service Suspension">
             <p>Novelio may suspend services, access, delivery, hosting, support, advertising management, CRM support, automation, or other work if:</p>
             <ul>
               <li>Payment is overdue</li>
@@ -228,7 +240,7 @@ export default function TermsPage() {
             <p>Service suspension does not remove the client's responsibility to pay outstanding amounts.</p>
           </Section>
 
-          <Section title="16. Website Hosting, Domains, and Access">
+          <Section title="17. Website Hosting, Domains, and Access">
             <p>If Novelio provides hosting, domain support, SSL, email setup, or technical access as part of a service or subscription plan, the exact terms will be stated in the applicable proposal, invoice, Service Agreement, or Statement of Work.</p>
             <p>Unless otherwise agreed in writing:</p>
             <ul>
@@ -240,39 +252,45 @@ export default function TermsPage() {
             </ul>
           </Section>
 
-          <Section title="17. Advertising and Marketing Accounts">
+          <Section title="18. Advertising and Marketing Accounts">
             <p>If Novelio manages or supports advertising, SEO, Google Business Profile, email marketing, social media, or lead generation, the client remains responsible for the accuracy and legality of all claims, offers, promotions, prices, service descriptions, testimonials, images, and business information.</p>
             <p>Novelio is not responsible for ad disapprovals, account restrictions, suspended profiles, rejected listings, keyword competition, review removals, algorithm changes, policy changes, or platform decisions outside Novelio's control.</p>
             <p>Advertising spend is separate from Novelio's service fees unless specifically included in writing.</p>
           </Section>
 
-          <Section title="18. Compliance and Prohibited Use">
+          <Section title="19. Compliance and Prohibited Use">
             <p>The client agrees not to use Novelio's website, services, systems, payment methods, marketing support, automation, or technology for any unlawful, deceptive, abusive, fraudulent, high-risk, restricted, or harmful activity.</p>
             <p>Novelio may refuse, pause, or terminate services if we believe the client's business, content, payment activity, product, service, or conduct creates legal, compliance, payment processor, platform, security, or reputational risk.</p>
             <p>The client is responsible for complying with all applicable laws, regulations, platform policies, advertising rules, privacy laws, payment rules, tax obligations, and industry requirements.</p>
           </Section>
 
-          <Section title="19. Privacy">
+          <Section title="20. Privacy">
             <p>Your use of our website and services may involve the collection and processing of personal information, business information, billing information, and payment-related information.</p>
             <p>Please review our <Link to="/privacy" className="text-[#1D4ED8] hover:underline">Privacy Policy</Link> to understand how we collect, use, protect, and share information.</p>
             <p>For security reasons, clients should not send full bank account details, card details, passwords, or sensitive access credentials through unsecured email, chat, WhatsApp, or social media unless specifically requested through an approved secure method.</p>
           </Section>
 
-          <Section title="20. Changes to Services or Terms">
+          <Section title="21. Changes to Services or Terms">
             <p>Novelio may update its services, pricing, plans, inclusions, policies, and Terms from time to time.</p>
             <p>Changes take effect when posted on the website or communicated to the client, unless a different effective date is stated.</p>
             <p>Continued use of our website or services after changes are posted means you accept the updated Terms.</p>
             <p>For existing paid engagements, material changes will not override a signed Service Agreement unless both parties agree in writing.</p>
           </Section>
 
-          <Section title="21. Governing Law">
-            <p>These Terms are governed by the laws of the State of Delaware, USA, without regard to conflict of law principles.</p>
-            <p>Any disputes shall be resolved in the state or federal courts located in Delaware, unless otherwise agreed in writing.</p>
+          <Section title="22. Governing Law and Jurisdiction">
+            <p>For engagements contracted with <strong>{US_ENTITY.legalName}</strong>: these Terms are governed by the laws of the State of Delaware, USA, without regard to conflict of law principles, and disputes are resolved in the state or federal courts located in Delaware, unless otherwise agreed in writing.</p>
+            <p>For engagements contracted with <strong>{INDIA_ENTITY.legalName}</strong>: these Terms are governed by the laws of India, and disputes are subject to the exclusive jurisdiction of the courts at New Delhi, India, unless otherwise agreed in writing.</p>
           </Section>
 
-          <Section title="22. Contact Us">
+          <Section title="23. Grievance Redressal (India)">
+            <p>In accordance with applicable Indian law, the Grievance Officer for {INDIA_ENTITY.legalName} is:</p>
+            <GrievanceBlock />
+            <p>The Grievance Officer will acknowledge complaints within 48 hours and endeavor to resolve them within one month of receipt.</p>
+          </Section>
+
+          <Section title="24. Contact Us">
             <p>Questions about these Terms, invoices, payment methods, ACH payment instructions, service plans, billing, or subscriptions? Please contact us:</p>
-            <ContactBlock />
+            <EntityContactBlock showTaxIds />
             <p>For security reasons, ACH bank account details are shared only through approved invoices, secure payment links, payment processors, or official written communication from Novelio Technologies LLC.</p>
           </Section>
 
@@ -293,14 +311,3 @@ function Section({ title, children }) {
   );
 }
 
-function ContactBlock() {
-  return (
-    <div className="mt-3 p-5 rounded-2xl space-y-1 text-sm"
-      style={{ background: '#F8FAFF', border: '1px solid rgba(29,78,216,0.1)' }}>
-      <p><strong>Novelio Technologies LLC</strong></p>
-      <p>Dover, Delaware, USA</p>
-      <p>Email: <a href="mailto:info@noveliotech.com" className="text-[#1D4ED8] hover:underline">info@noveliotech.com</a></p>
-      <p>Phone: <a href="tel:+18887384655" className="text-[#1D4ED8] hover:underline">(888) 738-4655</a></p>
-    </div>
-  );
-}

@@ -1,8 +1,9 @@
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { AlertTriangle } from 'lucide-react';
+import { EntityContactBlock } from '../components/shared/LegalEntities';
 
-const LAST_UPDATED = 'May 15, 2025';
+const LAST_UPDATED = 'September 2, 2026';
 
 export default function DisclaimerPage() {
   return (
@@ -75,7 +76,7 @@ export default function DisclaimerPage() {
 
           <Section title="10. Contact Us">
             <p>If you have questions about this Disclaimer, please contact us:</p>
-            <ContactBlock />
+            <EntityContactBlock showTaxIds />
           </Section>
 
         </motion.div>
@@ -95,14 +96,3 @@ function Section({ title, children }) {
   );
 }
 
-function ContactBlock() {
-  return (
-    <div className="mt-3 p-5 rounded-2xl space-y-1 text-sm"
-      style={{ background: '#F8FAFF', border: '1px solid rgba(29,78,216,0.1)' }}>
-      <p><strong>Novelio Technologies LLC</strong></p>
-      <p>Dover, Delaware, USA</p>
-      <p>Email: <a href="mailto:info@noveliotech.com" className="text-[#1D4ED8] hover:underline">info@noveliotech.com</a></p>
-      <p>Phone: <a href="tel:+18887384655" className="text-[#1D4ED8] hover:underline">(888) 738-4655</a></p>
-    </div>
-  );
-}

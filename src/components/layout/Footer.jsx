@@ -197,8 +197,33 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Registered-entity block. Razorpay and Twilio reviewers check the
+            sitewide footer, not just /terms, so both entities appear on every
+            page. Values come from content/settings.json. */}
+        <div className="pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-slate-400 text-xs leading-relaxed">
+          <div className="space-y-0.5">
+            <p className="text-slate-300 font-600">{COMPANY.entities.us.legalName}</p>
+            <p>{COMPANY.entities.us.address}</p>
+            <p>
+              Email: <a href={`mailto:${COMPANY.entities.us.email}`} className="hover:text-white transition-colors">{COMPANY.entities.us.email}</a>
+              {' | '}
+              Phone: <a href={`tel:${COMPANY.entities.us.phoneHref}`} className="hover:text-white transition-colors">{COMPANY.entities.us.phone}</a>
+            </p>
+          </div>
+          <div className="space-y-0.5">
+            <p className="text-slate-300 font-600">{COMPANY.entities.india.legalName}</p>
+            <p>{COMPANY.entities.india.address}</p>
+            <p>GSTIN: {COMPANY.entities.india.gstin} | PAN: {COMPANY.entities.india.pan}</p>
+            <p>
+              Email: <a href={`mailto:${COMPANY.entities.india.email}`} className="hover:text-white transition-colors">{COMPANY.entities.india.email}</a>
+              {' | '}
+              Phone: <a href={`tel:${COMPANY.entities.india.phoneHref}`} className="hover:text-white transition-colors">{COMPANY.entities.india.phone}</a>
+            </p>
+          </div>
+        </div>
+
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
             {NAVIGATION.footer.copyright}
           </p>

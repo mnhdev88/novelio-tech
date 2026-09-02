@@ -1,8 +1,9 @@
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Shield } from 'lucide-react';
+import { EntityContactBlock, GrievanceBlock, INDIA_ENTITY } from '../components/shared/LegalEntities';
 
-const LAST_UPDATED = 'May 15, 2025';
+const LAST_UPDATED = 'September 2, 2026';
 
 export default function PrivacyPage() {
   return (
@@ -33,7 +34,7 @@ export default function PrivacyPage() {
         >
 
           <Section title="1. Introduction">
-            <p>Novelio Technologies LLC ("Novelio," "we," "us," or "our") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at <strong>www.noveliotech.com</strong> or engage our services.</p>
+            <p>Novelio Technologies LLC (US) and Novelio Technologies LLC (India) (together, "Novelio," "we," "us," or "our") are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at <strong>www.noveliotech.com</strong> or engage our services, whichever Novelio entity you are dealing with.</p>
             <p>By using our website or services, you agree to the collection and use of information in accordance with this policy.</p>
           </Section>
 
@@ -71,10 +72,11 @@ export default function PrivacyPage() {
           <Section title="5. Sharing Your Information">
             <p>We do not sell, trade, or rent your personal information to third parties. We may share data with:</p>
             <ul>
-              <li><strong>Service Providers:</strong> Trusted tools and platforms (e.g., email providers, CRM, analytics) used to operate our business, bound by confidentiality agreements.</li>
+              <li><strong>Service Providers:</strong> Trusted tools and platforms (e.g., email providers, CRM, analytics, and payment processors such as Razorpay and payment/communication platforms such as Twilio) used to operate our business, bound by confidentiality agreements.</li>
               <li><strong>Legal Requirements:</strong> When required by law, court order, or governmental authority.</li>
               <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets.</li>
             </ul>
+            <p>Where Novelio India and Novelio US share underlying systems (such as a common CRM), personal information is used only for the purpose it was collected for and is not merged across entities beyond what is needed to operate that shared system.</p>
           </Section>
 
           <Section title="6. Data Retention">
@@ -90,6 +92,7 @@ export default function PrivacyPage() {
               <li>Opt-out of marketing communications at any time</li>
               <li>Data portability</li>
             </ul>
+            <p>Clients of Novelio India additionally have rights under India's Digital Personal Data Protection Act, 2023, including the right to grievance redressal via the Grievance Officer named in Section 14 below.</p>
             <p>To exercise any right, contact us at <strong>info@noveliotech.com</strong>.</p>
           </Section>
 
@@ -117,12 +120,23 @@ export default function PrivacyPage() {
               <li><strong>Opt out:</strong> reply <strong>STOP</strong> at any time to unsubscribe from text messages.</li>
               <li><strong>Help:</strong> reply <strong>HELP</strong> for assistance, or email <strong>info@noveliotech.com</strong>.</li>
             </ul>
-            <p><strong>We do not sell, rent, or share your mobile phone number or SMS opt-in information with any third parties or affiliates for their own marketing or promotional purposes.</strong> Consent to receive text messages is not a condition of purchasing any product or service. You may opt out at any time without affecting our other services.</p>
+            <p><strong>No mobile information collected as part of this SMS program will be shared or sold to third parties or affiliates, or used for lead generation, under any circumstances.</strong> Consent to receive text messages is not a condition of purchasing any product or service. You may opt out at any time without affecting our other services.</p>
           </Section>
 
-          <Section title="13. Contact Us">
+          <Section title="13. India-Specific Data Processing">
+            <p>For users and clients contracting with {INDIA_ENTITY.legalName}, we process personal data in accordance with the Digital Personal Data Protection Act, 2023, and other applicable Indian law, in addition to the practices described above.</p>
+            <p>Payment data for India transactions is processed by our payment aggregator (Razorpay) under its own PCI-DSS-compliant systems; Novelio India does not store full card, UPI, or bank account credentials.</p>
+          </Section>
+
+          <Section title="14. Grievance Officer (India)">
+            <p>In accordance with the Information Technology Act, 2000 and rules made thereunder, and the Digital Personal Data Protection Act, 2023, the Grievance Officer for {INDIA_ENTITY.legalName} is:</p>
+            <GrievanceBlock />
+            <p>Complaints will be acknowledged within 48 hours and resolved within one month of receipt.</p>
+          </Section>
+
+          <Section title="15. Contact Us">
             <p>If you have questions about this Privacy Policy, please contact us:</p>
-            <ContactBlock />
+            <EntityContactBlock showTaxIds />
           </Section>
 
         </motion.div>
@@ -142,14 +156,3 @@ function Section({ title, children }) {
   );
 }
 
-function ContactBlock() {
-  return (
-    <div className="mt-3 p-5 rounded-2xl space-y-1 text-sm"
-      style={{ background: '#F8FAFF', border: '1px solid rgba(29,78,216,0.1)' }}>
-      <p><strong>Novelio Technologies LLC</strong></p>
-      <p>Dover, Delaware, USA</p>
-      <p>Email: <a href="mailto:info@noveliotech.com" className="text-[#1D4ED8] hover:underline">info@noveliotech.com</a></p>
-      <p>Phone: <a href="tel:+18887384655" className="text-[#1D4ED8] hover:underline">(888) 738-4655</a></p>
-    </div>
-  );
-}

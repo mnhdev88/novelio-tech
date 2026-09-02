@@ -308,6 +308,16 @@ export default function CheckoutPage() {
                   </div>
                 </form>
               )}
+
+              {/* Payment aggregators (Razorpay in particular) require the terms
+                  and refund policy to be reachable from the payment page itself,
+                  not only from the footer. */}
+              <p className="text-xs text-[#64748b] text-center">
+                By completing this payment you agree to our{' '}
+                <Link to="/terms" className="text-brand-purple underline">Terms of Service</Link>{' '}
+                and{' '}
+                <Link to="/refund-policy" className="text-brand-purple underline">Refund &amp; Cancellation Policy</Link>.
+              </p>
             </motion.div>
 
             {/* Right — order summary */}

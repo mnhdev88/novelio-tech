@@ -13,5 +13,34 @@
     "facebook": "https://www.facebook.com/noveliotech",
     "youtube": "https://youtube.com/@noveliotech"
   },
-  "hours": "Mon – Fri, 9 AM – 6 PM EST"
+  "hours": "Mon – Fri, 9 AM – 6 PM EST",
+  "entities": {
+    "us": {
+      "legalName": "Novelio Technologies LLC (US)",
+      "shortName": "Novelio US",
+      "address": "Dover, Delaware, USA",
+      "email": "info@noveliotech.com",
+      "phone": "+1 (888) 738-4655",
+      "phoneHref": "+18887384655"
+    },
+    "india": {
+      "legalName": "Novelio Technologies LLC (India)",
+      "shortName": "Novelio India",
+      "address": "2nd Floor, House No. 204, Vivekanand Puri Road, Vivekanand Puri, New Delhi, North Delhi, Delhi – 110007, India",
+      "addressShort": "New Delhi, Delhi, India",
+      "gstin": "07ABAFN1275B1ZQ",
+      "pan": "ABAFN1275B",
+      "email": "info@noveliotech.com",
+      "phone": "+91 99111 50505",
+      "phoneHref": "+919911150505",
+      "grievanceOfficer": {
+        "name": "Ajay Tyagi",
+        "title": "Director",
+        "email": "ajay@noveliotech.com",
+        "phone": "+91 99111 50505",
+        "phoneHref": "+919911150505",
+        "address": "2nd Floor, House No. 204, Vivekanand Puri Road, Vivekanand Puri, New Delhi, North Delhi, Delhi – 110007, India"
+      }
+    }
+  }
 }

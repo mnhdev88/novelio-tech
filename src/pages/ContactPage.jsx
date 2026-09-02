@@ -176,6 +176,34 @@ export default function ContactPage() {
                     <div className="flex justify-between"><span>WhatsApp Support</span><span className="text-emerald-400">24/7</span></div>
                   </div>
                 </div>
+
+                {/* Registered offices. India details (address, GSTIN, phone) are
+                    required on the contact page itself for Razorpay review — the
+                    footer alone is not enough. */}
+                <div className="glass-card gradient-border rounded-2xl p-5 mt-5">
+                  <h4 className="text-[#1B3172] font-heading font-600 mb-3">Our Offices</h4>
+                  <div className="space-y-4 text-sm text-[#475569]">
+                    <div>
+                      <div className="text-[#1B3172] font-600">{COMPANY.entities.us.legalName}</div>
+                      <p>{COMPANY.entities.us.address}</p>
+                      <p>
+                        <a href={`tel:${COMPANY.entities.us.phoneHref}`} className="hover:text-[#1D4ED8] transition-colors">{COMPANY.entities.us.phone}</a>
+                        {' · '}
+                        <a href={`mailto:${COMPANY.entities.us.email}`} className="hover:text-[#1D4ED8] transition-colors">{COMPANY.entities.us.email}</a>
+                      </p>
+                    </div>
+                    <div>
+                      <div className="text-[#1B3172] font-600">{COMPANY.entities.india.legalName}</div>
+                      <p>{COMPANY.entities.india.address}</p>
+                      <p>GSTIN: {COMPANY.entities.india.gstin} · PAN: {COMPANY.entities.india.pan}</p>
+                      <p>
+                        <a href={`tel:${COMPANY.entities.india.phoneHref}`} className="hover:text-[#1D4ED8] transition-colors">{COMPANY.entities.india.phone}</a>
+                        {' · '}
+                        <a href={`mailto:${COMPANY.entities.india.email}`} className="hover:text-[#1D4ED8] transition-colors">{COMPANY.entities.india.email}</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             </div>
 
