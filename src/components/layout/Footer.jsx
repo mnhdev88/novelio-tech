@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, Send } from 'lucide-react';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { COMPANY, SERVICES, NAVIGATION } from '../../data/siteData';
+import { US_ENTITY, INDIA_ENTITY } from '../shared/LegalEntities';
 import { useState } from 'react';
 import { trackEvent } from '../../utils/analytics';
 import { captureLead } from '../../utils/leadCapture';
@@ -202,22 +203,22 @@ export default function Footer() {
             page. Values come from content/settings.json. */}
         <div className="pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-slate-400 text-xs leading-relaxed">
           <div className="space-y-0.5">
-            <p className="text-slate-300 font-600">{COMPANY.entities.us.legalName}</p>
-            <p>{COMPANY.entities.us.address}</p>
+            <p className="text-slate-300 font-600">{US_ENTITY.legalName}</p>
+            <p>{US_ENTITY.address}</p>
             <p>
-              Email: <a href={`mailto:${COMPANY.entities.us.email}`} className="hover:text-white transition-colors">{COMPANY.entities.us.email}</a>
+              Email: <a href={`mailto:${US_ENTITY.email}`} className="hover:text-white transition-colors">{US_ENTITY.email}</a>
               {' | '}
-              Phone: <a href={`tel:${COMPANY.entities.us.phoneHref}`} className="hover:text-white transition-colors">{COMPANY.entities.us.phone}</a>
+              Phone: <a href={`tel:${US_ENTITY.phoneHref}`} className="hover:text-white transition-colors">{US_ENTITY.phone}</a>
             </p>
           </div>
           <div className="space-y-0.5">
-            <p className="text-slate-300 font-600">{COMPANY.entities.india.legalName}</p>
-            <p>{COMPANY.entities.india.address}</p>
-            <p>GSTIN: {COMPANY.entities.india.gstin} | PAN: {COMPANY.entities.india.pan}</p>
+            <p className="text-slate-300 font-600">{INDIA_ENTITY.legalName}</p>
+            <p>{INDIA_ENTITY.address}</p>
+            <p>GSTIN: {INDIA_ENTITY.gstin} | PAN: {INDIA_ENTITY.pan}</p>
             <p>
-              Email: <a href={`mailto:${COMPANY.entities.india.email}`} className="hover:text-white transition-colors">{COMPANY.entities.india.email}</a>
+              Email: <a href={`mailto:${INDIA_ENTITY.email}`} className="hover:text-white transition-colors">{INDIA_ENTITY.email}</a>
               {' | '}
-              Phone: <a href={`tel:${COMPANY.entities.india.phoneHref}`} className="hover:text-white transition-colors">{COMPANY.entities.india.phone}</a>
+              Phone: <a href={`tel:${INDIA_ENTITY.phoneHref}`} className="hover:text-white transition-colors">{INDIA_ENTITY.phone}</a>
             </p>
           </div>
         </div>

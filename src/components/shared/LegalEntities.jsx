@@ -10,7 +10,11 @@
 
 import { COMPANY } from '../../data/siteData';
 
-const { us: US, india: IN } = COMPANY.entities;
+// The US entity deliberately has no phone of its own: the number is edited from
+// the admin panel as COMPANY.phone, and a second copy here would let the footer
+// show two different US numbers. India keeps its own, since it isn't in the panel yet.
+const US = { ...COMPANY.entities.us, phone: COMPANY.phone, phoneHref: COMPANY.phone.replace(/[^\d+]/g, '') };
+const IN = COMPANY.entities.india;
 
 const linkClass = 'text-[#1D4ED8] hover:underline';
 

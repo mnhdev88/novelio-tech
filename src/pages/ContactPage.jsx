@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MessageCircle, Send, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { COMPANY } from '../data/siteData';
+import { US_ENTITY, INDIA_ENTITY } from '../components/shared/LegalEntities';
 import { trackEvent } from '../utils/analytics';
 import { captureLead } from '../utils/leadCapture';
 
@@ -184,22 +185,22 @@ export default function ContactPage() {
                   <h4 className="text-[#1B3172] font-heading font-600 mb-3">Our Offices</h4>
                   <div className="space-y-4 text-sm text-[#475569]">
                     <div>
-                      <div className="text-[#1B3172] font-600">{COMPANY.entities.us.legalName}</div>
-                      <p>{COMPANY.entities.us.address}</p>
+                      <div className="text-[#1B3172] font-600">{US_ENTITY.legalName}</div>
+                      <p>{US_ENTITY.address}</p>
                       <p>
-                        <a href={`tel:${COMPANY.entities.us.phoneHref}`} className="hover:text-[#1D4ED8] transition-colors">{COMPANY.entities.us.phone}</a>
+                        <a href={`tel:${US_ENTITY.phoneHref}`} className="hover:text-[#1D4ED8] transition-colors">{US_ENTITY.phone}</a>
                         {' · '}
-                        <a href={`mailto:${COMPANY.entities.us.email}`} className="hover:text-[#1D4ED8] transition-colors">{COMPANY.entities.us.email}</a>
+                        <a href={`mailto:${US_ENTITY.email}`} className="hover:text-[#1D4ED8] transition-colors">{US_ENTITY.email}</a>
                       </p>
                     </div>
                     <div>
-                      <div className="text-[#1B3172] font-600">{COMPANY.entities.india.legalName}</div>
-                      <p>{COMPANY.entities.india.address}</p>
-                      <p>GSTIN: {COMPANY.entities.india.gstin} · PAN: {COMPANY.entities.india.pan}</p>
+                      <div className="text-[#1B3172] font-600">{INDIA_ENTITY.legalName}</div>
+                      <p>{INDIA_ENTITY.address}</p>
+                      <p>GSTIN: {INDIA_ENTITY.gstin} · PAN: {INDIA_ENTITY.pan}</p>
                       <p>
-                        <a href={`tel:${COMPANY.entities.india.phoneHref}`} className="hover:text-[#1D4ED8] transition-colors">{COMPANY.entities.india.phone}</a>
+                        <a href={`tel:${INDIA_ENTITY.phoneHref}`} className="hover:text-[#1D4ED8] transition-colors">{INDIA_ENTITY.phone}</a>
                         {' · '}
-                        <a href={`mailto:${COMPANY.entities.india.email}`} className="hover:text-[#1D4ED8] transition-colors">{COMPANY.entities.india.email}</a>
+                        <a href={`mailto:${INDIA_ENTITY.email}`} className="hover:text-[#1D4ED8] transition-colors">{INDIA_ENTITY.email}</a>
                       </p>
                     </div>
                   </div>
