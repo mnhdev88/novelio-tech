@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, Send } from 'lucide-react';
-import { FaLinkedinIn } from 'react-icons/fa6';
+import { FaLinkedinIn, FaYoutube } from 'react-icons/fa6';
 import { COMPANY, SERVICES, NAVIGATION, PHONE_TEL } from '../../data/siteData';
 import { US_ENTITY, INDIA_ENTITY } from '../shared/LegalEntities';
 import { useState } from 'react';
@@ -76,6 +76,7 @@ export default function Footer() {
             <div className="flex gap-3">
               {[
                 { Icon: FaLinkedinIn, href: COMPANY.social.linkedin, label: 'Novelio Technologies on LinkedIn' },
+                { Icon: FaYoutube, href: COMPANY.social.youtube, label: 'Novelio Technologies on YouTube' },
               ].map(({ Icon, href, label }, i) => (
                 <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   className="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-slate-300 hover:text-white hover:border-brand-purple/50 hover:bg-brand-purple/20 transition-all duration-200">

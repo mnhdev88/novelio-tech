@@ -1,5 +1,5 @@
 import { Mail, Phone, Clock, LayoutDashboard } from 'lucide-react';
-import { FaLinkedinIn } from 'react-icons/fa6';
+import { FaLinkedinIn, FaYoutube } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { COMPANY, PHONE_TEL } from '../../data/siteData';
 import { useAuth } from '../../portal/AuthContext';
@@ -38,6 +38,7 @@ export default function TopBar() {
           <div className="flex items-center gap-3">
             {[
               { Icon: FaLinkedinIn, href: COMPANY.social.linkedin, label: 'LinkedIn' },
+              { Icon: FaYoutube, href: COMPANY.social.youtube, label: 'YouTube' },
             ].map(({ Icon, href, label }) => (
               <a
                 key={label}
