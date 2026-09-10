@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { Clock, ArrowRight, Phone, MessageCircle, CheckCircle, ChevronRight, Tag, Eye } from 'lucide-react';
 import SEO from '../components/SEO';
-import { BLOG_POSTS, COMPANY, SERVICES, PHONE_TEL } from '../data/siteData';
+import { BLOG_POSTS, COMPANY, SERVICES, PHONE_TEL, WHATSAPP_URL } from '../data/siteData';
 import NotFoundPage from './NotFoundPage';
 
 const ARTICLE_CSS = `
@@ -192,7 +192,7 @@ export default function BlogPostPage() {
                     <Phone className="w-3.5 h-3.5" /> Call Us
                   </a>
                   <a
-                    href={`https://wa.me/${COMPANY.whatsapp}`}
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] text-white rounded-xl py-2.5 text-xs font-semibold hover:bg-[#1ebe5d] transition-all"
@@ -313,7 +313,7 @@ export default function BlogPostPage() {
                   <div className="flex items-center gap-2">
                     <MessageCircle className="w-3.5 h-3.5 text-[#4ade80] shrink-0" />
                     <a
-                      href={`https://wa.me/${COMPANY.whatsapp}`}
+                      href={WHATSAPP_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-white transition-colors"

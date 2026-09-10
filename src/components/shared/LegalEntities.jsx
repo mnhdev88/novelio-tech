@@ -10,10 +10,16 @@
 
 import { COMPANY } from '../../data/siteData';
 
-// The US entity deliberately has no phone of its own: the number is edited from
-// the admin panel as COMPANY.phone, and a second copy here would let the footer
-// show two different US numbers. India keeps its own, since it isn't in the panel yet.
-const US = { ...COMPANY.entities.us, phone: COMPANY.phone, phoneHref: COMPANY.phone.replace(/[^\d+]/g, '') };
+// The US entity deliberately has no phone or address of its own: both are edited
+// from the admin panel as COMPANY.phone / COMPANY.address, and a second copy here
+// would let the footer show two different US numbers or two different registered
+// offices in the same block. India keeps its own, since it isn't in the panel yet.
+const US = {
+  ...COMPANY.entities.us,
+  address: COMPANY.entities.us.address || COMPANY.address,
+  phone: COMPANY.phone,
+  phoneHref: COMPANY.phone.replace(/[^\d+]/g, ''),
+};
 const IN = COMPANY.entities.india;
 
 const linkClass = 'text-[#1D4ED8] hover:underline';

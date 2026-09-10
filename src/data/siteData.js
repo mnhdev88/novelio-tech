@@ -48,6 +48,10 @@ export const COMPANY = companyJson;
 // which is not a valid `tel:` target. Every call link uses this instead of
 // re-deriving it with a slightly different regex each time.
 export const PHONE_TEL = `tel:${companyJson.phone.replace(/[^\d+]/g, '')}`;
+
+// wa.me only accepts bare digits, so strip anything the panel may have picked up
+// (a leading "+", spaces, brackets) rather than trusting the field to be clean.
+export const WHATSAPP_URL = `https://wa.me/${companyJson.whatsapp.replace(/\D/g, '')}`;
 export const STATS = statsJson;
 export const SERVICES = servicesJson;
 export const TESTIMONIALS = testimonialsJson;

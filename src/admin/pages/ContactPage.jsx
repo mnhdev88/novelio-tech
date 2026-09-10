@@ -20,7 +20,7 @@ export default function ContactPage() {
     <div className="max-w-3xl space-y-4">
       <PageHeader
         title="Contact details"
-        subtitle="Used in the top bar, the footer, the contact page and your Google listing."
+        subtitle="Used in the top bar, the footer, the contact page, the legal pages and your Google listing."
       >
         <SaveState state={state} />
       </PageHeader>
@@ -41,12 +41,17 @@ export default function ContactPage() {
           />
           <Text
             label="WhatsApp number"
-            hint="Digits and country code only, no spaces or brackets — it becomes a link."
+            hint="Country code first, no leading zero. Spaces and a leading + are stripped automatically."
             value={data.whatsapp}
             onChange={(v) => set({ whatsapp: v })}
           />
           <Text label="Office hours" value={data.hours} onChange={(v) => set({ hours: v })} />
-          <Text label="Address" value={data.address} onChange={(v) => set({ address: v })} />
+          <Text
+            label="US registered address"
+            hint="Also shown as the US entity address in the footer and on every legal page."
+            value={data.address}
+            onChange={(v) => set({ address: v })}
+          />
           <Text label="Tagline" value={data.tagline} onChange={(v) => set({ tagline: v })} />
         </div>
       </Card>

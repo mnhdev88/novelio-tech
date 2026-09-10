@@ -1,5 +1,5 @@
 import { Phone, MessageCircle } from 'lucide-react';
-import { COMPANY, PHONE_TEL } from '../../data/siteData';
+import { PHONE_TEL, WHATSAPP_URL } from '../../data/siteData';
 import { useEffect, useState } from 'react';
 
 export default function StickyMobileCTA() {
@@ -26,7 +26,7 @@ export default function StickyMobileCTA() {
         </a>
         <div className="w-px bg-white/20" />
         <a
-          href={`https://wa.me/${COMPANY.whatsapp}`}
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 flex items-center justify-center gap-2.5 h-14 bg-gradient-to-r from-[#128C7E] to-[#25D366] text-white font-heading font-600 text-[15px] active:scale-95 transition-transform"

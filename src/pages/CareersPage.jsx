@@ -3,6 +3,7 @@ import SEO from '../components/SEO';
 import ApplyModal from '../components/ApplyModal';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Globe, Building2, Users, Zap, Star, TrendingUp, DollarSign, Heart, Globe2, Flame, Sparkles } from 'lucide-react';
+import { WHATSAPP_URL } from '../data/siteData';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -474,7 +475,7 @@ export default function CareersPage() {
               <a href="mailto:ajay@noveliotech.com" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
                 <Mail className="w-4 h-4" /> ajay@noveliotech.com
               </a>
-              <a href="https://wa.me/15733270153" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
+              <a href={WHATSAPP_URL} className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
                 <Phone className="w-4 h-4" /> +1 (573) 327-0153
               </a>
               <a href="https://www.noveliotech.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
