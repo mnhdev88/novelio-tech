@@ -70,5 +70,11 @@
     "id": 12,
     "status": "published",
     "publishAt": null
+  },
+  {
+    "slug": "seo-vs-google-ads",
+    "id": 13,
+    "status": "published",
+    "publishAt": null
   }
 ]

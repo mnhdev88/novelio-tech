@@ -107,7 +107,9 @@ export default function BlogPostPage() {
   return (
     <>
       <SEO
-        title={post.title}
+        // metaTitle lets the <title> target the search query while the H1 and
+        // blog cards keep the shorter headline.
+        title={post.metaTitle || post.title}
         description={post.metaDescription || post.excerpt}
         canonical={`/blog/${post.slug}`}
         keywords={post.schema?.['@graph']?.[0]?.keywords}
