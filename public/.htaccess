@@ -35,6 +35,15 @@ RewriteCond %{HTTP_HOST} !^www\.noveliotech\.com$ [NC,OR]
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://www.noveliotech.com/$1 [R=301,L]
 
+# ── Deploy bookkeeping must never be public ─────────────────────────────────
+# The FTPS deploy action keeps .ftp-deploy-sync-state.json at the web root to
+# diff the last upload. It is a complete inventory of every file on the server —
+# an attacker's map of the install — and nothing should ever fetch it over HTTP.
+# It is written BY the deploy, so it can't simply be removed; deny it instead.
+<FilesMatch "^\.ftp-deploy-sync-state\.json$">
+    Require all denied
+</FilesMatch>
+
 # ── 410 Gone — WooCommerce / WordPress-only junk, should never exist ────────
 RewriteRule ^cart/?$                                              - [G,L]
 RewriteRule ^my-account-2/?$                                     - [G,L]
