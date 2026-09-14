@@ -9,11 +9,14 @@
 //   · the shared price table loaded and the INR placeholder guard is armed
 //   · the includes and the credentials template are NOT web-reachable
 //
-// It creates one real, UNPAID order on the last check. That is free and harmless
-// — an order nobody pays is just a row in the dashboard that expires. It is the
-// only way to prove the secret works, short of paying.
+// The last check creates one real, UNPAID order — free and harmless, an order
+// nobody pays just expires — and it is the only way to prove the secret works
+// short of paying. But against LIVE keys every run leaves another row in the
+// dashboard, so pass --no-order to re-run the cheap checks without adding one.
 
-const BASE = (process.argv[2] || 'https://www.noveliotech.com').replace(/\/+$/, '')
+const args = process.argv.slice(2)
+const SKIP_ORDER = args.includes('--no-order')
+const BASE = (args.find((a) => !a.startsWith('--')) || 'https://www.noveliotech.com').replace(/\/+$/, '')
 
 let failures = 0
 const pass = (m) => console.log('  [32m✓[0m ' + m)
@@ -95,11 +98,13 @@ if (inr.missing) {
 }
 
 // ── 4. The key pair itself ──────────────────────────────────────────────────
-const usd = await post('/api/razorpay/create-order.php', {
+const usd = SKIP_ORDER ? null : await post('/api/razorpay/create-order.php', {
   planId: 'growth', billing: 'monthly', addonIds: [], currency: 'USD',
   customer: { id: 'smoke', name: 'Smoke Test', email: 'smoke@example.com' },
 })
-if (usd.missing) {
+if (SKIP_ORDER) {
+  console.log('  [33m-[0m key-pair check skipped (--no-order), so no order was added to the dashboard')
+} else if (usd.missing) {
   fail('key-pair check skipped — ' + NOT_DEPLOYED)
 } else if (usd.status === 200 && /^order_/.test(usd.json?.orderId || '')) {
   pass(`key pair works — Razorpay opened order ${usd.json.orderId} for $${usd.json.total}`)
