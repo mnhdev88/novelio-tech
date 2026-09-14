@@ -96,16 +96,15 @@ jobs:
             # Local-dev gateway secrets — must never reach the server (prod uses
             # the credentials files ABOVE public_html). Blocked by api/.htaccess too.
             **/credentials.local.php
-            # Stale Payoneer install, left on the server after the Razorpay swap.
-            # The sync tried to delete it and died with `550 /api/payoneer: No such
-            # file or directory`, which aborted the run BEFORE it wrote its state
-            # file — so every later push retried the same failing delete. Excluding
-            # it takes the folder out of the diff entirely. The files are inert (no
-            # credentials, so every endpoint 500s) but they are dead code on a live
-            # server: delete api/payoneer/ and assets/payoneer-*.js by hand in the
-            # Hostinger File Manager, then these two lines can go.
-            api/payoneer
-            api/payoneer/**
+            # NOTE for whoever next deletes a folder from public/: this sync's
+            # delete step uses an ABSOLUTE server path, which only resolves if the
+            # FTP user is chrooted to its home — it is not. Removing
+            # public/api/payoneer/ therefore failed the whole run with
+            # `550 /api/payoneer: No such file or directory` even though the files
+            # were plainly there, and it aborted BEFORE writing the sync state, so
+            # every later push replayed the same doomed delete. If you drop a
+            # folder, add it here in the same commit, clear it by hand in the
+            # Hostinger File Manager, then remove the line again.
 
       # Tell IndexNow engines (Bing, Yandex, Seznam, …) to re-crawl the live URLs.
       # Runs only after a successful FTPS deploy so the key file + pages are already live.
