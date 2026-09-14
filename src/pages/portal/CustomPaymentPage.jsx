@@ -13,6 +13,7 @@ import {
   verifyRazorpayPayment,
 } from '../../utils/razorpay';
 import { CURRENCIES, gstPercentFor, toMinor, formatMinor } from '../../utils/pricing';
+import { INR_PRICES_CONFIRMED } from '../../data/siteData';
 
 // A custom / one-off payment page for invoices, quotes, deposits and buyouts.
 // Send a client a ready link, e.g. /pay?amount=2222&ref=Invoice-014&desc=Website%20build
@@ -33,8 +34,9 @@ export default function CustomPaymentPage() {
   const urlCurrency = (params.get('currency') || '').toUpperCase();
   const gstMode = params.get('gst') === 'inclusive' ? 'inclusive' : 'add';
 
+  const inrOffered = razorpayEnabled && INR_PRICES_CONFIRMED;
   const [currency, setCurrency] = useState(
-    urlCurrency === 'INR' && razorpayEnabled ? 'INR' : 'USD',
+    urlCurrency === 'INR' && inrOffered ? 'INR' : 'USD',
   );
   const [amount, setAmount] = useState(urlAmount ? String(urlAmount) : '');
   const [name, setName] = useState('');
@@ -84,9 +86,10 @@ export default function CustomPaymentPage() {
   const paypalAvailable = paypalEnabled && currency === 'USD';
   const razorpayAvailable = razorpayEnabled && razorpayCurrencies.includes(currency);
   const anyGatewayEnabled = paypalEnabled || razorpayEnabled;
-  const currencyOptions = razorpayEnabled
-    ? (paypalEnabled || razorpayUsdEnabled ? ['USD', 'INR'] : ['INR'])
-    : ['USD'];
+  const currencyOptions = [
+    (paypalEnabled || razorpayUsdEnabled) && 'USD',
+    inrOffered && 'INR',
+  ].filter(Boolean);
 
   const bothMethods = paypalAvailable && razorpayAvailable;
 

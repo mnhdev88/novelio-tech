@@ -95,6 +95,12 @@ export const PRICING_COMPARISON = pricingJson.comparison;
 export const PRICING_ADDONS = pricingJson.addons;
 export const PRICING_FAQ = pricingJson.faq;
 
+// The rupee prices ship as placeholders converted from USD, and the payment
+// endpoints refuse an INR charge until a human confirms them (Admin → Pricing).
+// The checkout reads the same flag so it never OFFERS a currency the server will
+// reject — otherwise the buyer picks ₹, fills the form, and only then is told no.
+export const INR_PRICES_CONFIRMED = pricingJson.inrPricing?.confirmed === true;
+
 // ── Blog ─────────────────────────────────────────────────────────────────────
 // One file per post; blog/index.json owns ordering and publish state so the
 // panel can reorder or unpublish without rewriting post bodies.

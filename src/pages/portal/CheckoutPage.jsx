@@ -5,7 +5,7 @@ import { Check, Lock, ArrowRight, ArrowLeft, ShieldCheck, CreditCard, Loader2, A
 import SEO from '../../components/SEO';
 import { useAuth } from '../../portal/AuthContext';
 import { createSubscription } from '../../portal/store';
-import { PRICING_PLANS, PRICING_ADDONS } from '../../data/siteData';
+import { PRICING_PLANS, PRICING_ADDONS, INR_PRICES_CONFIRMED } from '../../data/siteData';
 import { loadPayPalSdk, paypalEnabled, PAYPAL_ENV } from '../../utils/paypal';
 import {
   razorpayEnabled,
@@ -28,8 +28,9 @@ export default function CheckoutPage() {
 
   // PayPal only ever charges USD, so USD stays the default and INR is opt-in.
   const urlCurrency = (params.get('currency') || '').toUpperCase();
+  const inrOffered = razorpayEnabled && INR_PRICES_CONFIRMED;
   const [currency, setCurrency] = useState(
-    urlCurrency === 'INR' && razorpayEnabled ? 'INR' : 'USD',
+    urlCurrency === 'INR' && inrOffered ? 'INR' : 'USD',
   );
   const [billing, setBilling] = useState(params.get('billing') === 'yearly' ? 'yearly' : 'monthly');
   const [addonIds, setAddonIds] = useState([]);
@@ -45,9 +46,10 @@ export default function CheckoutPage() {
   const razorpayAvailable = razorpayEnabled && razorpayCurrencies.includes(currency);
   const anyGatewayEnabled = paypalEnabled || razorpayEnabled;
   // Offer the currency switch only when something can actually charge in rupees.
-  const currencyOptions = razorpayEnabled
-    ? (paypalEnabled || razorpayUsdEnabled ? ['USD', 'INR'] : ['INR'])
-    : ['USD'];
+  const currencyOptions = [
+    (paypalEnabled || razorpayUsdEnabled) && 'USD',
+    inrOffered && 'INR',
+  ].filter(Boolean);
 
   const [payMethod, setPayMethod] = useState(paypalEnabled ? 'paypal' : 'razorpay');
   // Keep the selected method legal for the selected currency.
