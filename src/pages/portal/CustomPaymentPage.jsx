@@ -93,14 +93,19 @@ export default function CustomPaymentPage() {
 
   const bothMethods = paypalAvailable && razorpayAvailable;
 
+  // Tabs rather than both button sets at once: PayPal's buttons carry their own
+  // branding, so a bare "Pay $500 with Card" beside them reads as an unnamed
+  // second option. The tab is what puts Razorpay's name on it.
+  const [payMethod, setPayMethod] = useState('paypal');
+  // Keep the choice legal for the selected currency — PayPal cannot take rupees.
+  const activeMethod = !paypalAvailable ? 'razorpay' : !razorpayAvailable ? 'paypal' : payMethod;
+
   // Test mode is per-gateway, never ORed into one flag: PayPal can be live while
-  // Razorpay is still on test keys. With both buttons on screen at once the
-  // banner has to name which one is not taking real money, or it is a lie about
-  // the other.
-  const testGateways = [
-    paypalAvailable && PAYPAL_ENV === 'sandbox' ? 'PayPal' : null,
-    razorpayAvailable && RAZORPAY_ENV !== 'live' ? 'Razorpay' : null,
-  ].filter(Boolean);
+  // Razorpay is still on test keys, so the banner must describe the gateway the
+  // buyer is actually looking at.
+  const activeInTestMode = activeMethod === 'razorpay'
+    ? (razorpayAvailable && RAZORPAY_ENV !== 'live')
+    : (paypalAvailable && PAYPAL_ENV === 'sandbox');
 
   // ── Razorpay Standard Checkout (overlay, no redirect) ───────────────────────
   const startRazorpay = async () => {
@@ -279,12 +284,12 @@ export default function CustomPaymentPage() {
                 </div>
               ) : (
                 <>
-                  {testGateways.length > 0 && (
+                  {activeInTestMode && (
                     <div className="mb-4 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-2.5 text-amber-800 text-xs">
                       <ShieldCheck className="w-4 h-4 shrink-0" />
                       <span>
-                        <strong>{testGateways.join(' and ')} {testGateways.length > 1 ? 'are' : 'is'} in test mode</strong>
-                        {' '}— no real money moves{testGateways.length === 1 && bothMethods ? ' through it' : ''}.
+                        <strong>{activeMethod === 'razorpay' ? 'Razorpay' : 'PayPal'} is in test mode</strong>
+                        {' '}— no real money moves.
                       </span>
                     </div>
                   )}
@@ -365,41 +370,59 @@ export default function CustomPaymentPage() {
                     </div>
                   )}
 
-                  {/* Both gateways are offered side by side rather than behind
-                      tabs: with only two options, a tab hides half of what the
-                      payer can do and costs a click to discover. */}
+                  {/* Named tabs. PayPal's own buttons are branded, so the second
+                      option needs its provider's name somewhere or it reads as an
+                      anonymous "Pay with Card" button of unknown origin — which is
+                      exactly the thing people hesitate over on a payment page. */}
                   {bothMethods && (
-                    <p className="text-xs font-semibold text-[#475569] mb-2.5">Choose how to pay</p>
+                    <>
+                      <p className="text-xs font-semibold text-[#475569] mb-1.5">Choose how to pay</p>
+                      <div className="grid grid-cols-2 gap-1 mb-4 p-1 bg-slate-100 rounded-xl">
+                        {[
+                          ['paypal', 'PayPal', 'PayPal balance or card'],
+                          ['razorpay', 'Razorpay', currency === 'INR' ? 'Card, UPI, netbanking' : 'Debit or credit card'],
+                        ].map(([m, label, hint]) => (
+                          <button
+                            key={m}
+                            type="button"
+                            onClick={() => { setPayMethod(m); setPayError(''); }}
+                            className={`py-2 px-2 rounded-lg transition-all cursor-pointer ${activeMethod === m ? 'bg-white shadow-sm' : 'hover:bg-white/50'}`}
+                          >
+                            <span className={`block text-sm font-semibold ${activeMethod === m ? 'text-[#1B3172]' : 'text-[#64748b]'}`}>{label}</span>
+                            <span className="block text-[11px] text-[#94a3b8] mt-0.5">{hint}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </>
                   )}
 
                   {/* PayPal Smart Buttons stay mounted whenever PayPal is
                       configured — the SDK renders into this node once, and
-                      re-mounting it on a currency switch would re-fetch the SDK. */}
+                      re-mounting it on a tab switch would re-fetch the SDK. */}
                   {paypalEnabled && (
-                    <div className={paypalAvailable ? '' : 'hidden'}>
+                    <div className={paypalAvailable && activeMethod === 'paypal' ? '' : 'hidden'}>
                       <div ref={paypalRef} className={detailsValid ? '' : 'opacity-60'} />
                     </div>
                   )}
 
-                  {bothMethods && (
-                    <div className="flex items-center gap-3 my-3">
-                      <span className="h-px flex-1 bg-slate-200" />
-                      <span className="text-xs text-[#94a3b8] font-medium">or</span>
-                      <span className="h-px flex-1 bg-slate-200" />
-                    </div>
-                  )}
-
-                  {razorpayAvailable && (
-                    <button
-                      type="button"
-                      onClick={startRazorpay}
-                      disabled={razorpayBusy || !detailsValid}
-                      className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0C2451] hover:bg-[#081a3c] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-                    >
-                      {razorpayBusy
-                        ? <><Loader2 className="w-4 h-4 animate-spin" /> Opening secure checkout…</>
-                        : <>Pay {amountNum > 0 ? formatMinor(totalMinor, currency, { decimals: true }) : 'securely'} with {currency === 'INR' ? 'Card / UPI / Netbanking' : 'Card'}</>}
-                    </button>
+                  {razorpayAvailable && activeMethod === 'razorpay' && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={startRazorpay}
+                        disabled={razorpayBusy || !detailsValid}
+                        className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0C2451] hover:bg-[#081a3c] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                      >
+                        {razorpayBusy
+                          ? <><Loader2 className="w-4 h-4 animate-spin" /> Opening secure checkout…</>
+                          : <>Pay {amountNum > 0 ? formatMinor(totalMinor, currency, { decimals: true }) : 'securely'} with Razorpay</>}
+                      </button>
+                      {/* Named here too, because when only Razorpay can take the
+                          chosen currency there are no tabs to carry the name. */}
+                      <p className="mt-2 text-[11px] text-[#94a3b8] text-center">
+                        Secure checkout by Razorpay — {currency === 'INR' ? 'card, UPI, netbanking and wallets' : 'debit and credit cards'}
+                      </p>
+                    </>
                   )}
 
                   {/* PayPal cannot settle rupees, so say why it vanished rather

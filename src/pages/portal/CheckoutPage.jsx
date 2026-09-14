@@ -499,7 +499,10 @@ export default function CheckoutPage() {
                         {/* Payment-method tabs (only when both can take this currency) */}
                         {bothMethods && (
                           <div className="grid grid-cols-2 gap-1 mb-4 p-1 bg-slate-100 rounded-xl">
-                            {[['paypal', 'PayPal'], ['razorpay', 'Card / UPI']].map(([m, label]) => (
+                            {/* Name the provider, not just the instruments: next
+                                to PayPal's branded buttons a "Card / UPI" tab read
+                                as an anonymous option of unknown origin. */}
+                            {[['paypal', 'PayPal'], ['razorpay', 'Razorpay']].map(([m, label]) => (
                               <button
                                 key={m}
                                 type="button"
@@ -520,16 +523,23 @@ export default function CheckoutPage() {
                         )}
 
                         {razorpayAvailable && activeMethod === 'razorpay' && (
-                          <button
-                            type="button"
-                            onClick={startRazorpay}
-                            disabled={razorpayBusy}
-                            className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0C2451] hover:bg-[#081a3c] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-                          >
-                            {razorpayBusy
-                              ? <><Loader2 className="w-4 h-4 animate-spin" /> Opening secure checkout…</>
-                              : <>Pay {formatMinor(charge.totalMinor, currency)} <ArrowRight className="w-4 h-4" /></>}
-                          </button>
+                          <>
+                            <button
+                              type="button"
+                              onClick={startRazorpay}
+                              disabled={razorpayBusy}
+                              className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0C2451] hover:bg-[#081a3c] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                            >
+                              {razorpayBusy
+                                ? <><Loader2 className="w-4 h-4 animate-spin" /> Opening secure checkout…</>
+                                : <>Pay {formatMinor(charge.totalMinor, currency)} with Razorpay <ArrowRight className="w-4 h-4" /></>}
+                            </button>
+                            {/* Named here too: with only one gateway able to take
+                                the chosen currency there are no tabs to carry it. */}
+                            <p className="mt-2 text-[11px] text-[#94a3b8] text-center">
+                              Secure checkout by Razorpay — {currency === 'INR' ? 'card, UPI, netbanking and wallets' : 'debit and credit cards'}
+                            </p>
+                          </>
                         )}
                       </>
                     )}
