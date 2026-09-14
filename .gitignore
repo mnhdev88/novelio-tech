@@ -21,9 +21,9 @@ dist-ssr
 public/api/paypal/credentials.local.php
 novelio-paypal-credentials.php
 
-# Payoneer secrets — real credentials never go in git (see PAYONEER-SETUP.md)
-public/api/payoneer/credentials.local.php
-novelio-payoneer-credentials.php
+# Razorpay secrets — real credentials never go in git (see RAZORPAY-SETUP.md)
+public/api/razorpay/credentials.local.php
+novelio-razorpay-credentials.php
 
 # Admin panel secrets — DB + GitHub PAT never go in git (see ADMIN-SETUP.md)
 public/api/admin/credentials.local.php

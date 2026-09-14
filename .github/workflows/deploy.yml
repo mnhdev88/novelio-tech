@@ -47,12 +47,19 @@ jobs:
           # these two values (client id + 'sandbox') and push.
           VITE_PAYPAL_CLIENT_ID: AQDadamNsJxxUrmtABEFN6k7n2JF88aJcqOYVFq3WBvebApo7wQElW0mIPCKQnM9MMyqDRPv8Vmrhxmo
           VITE_PAYPAL_ENV: live
-          # Payoneer Checkout (hosted redirect). No public key — the merchant token
-          # is server-side only (see PAYONEER-SETUP.md). '1' shows the Payoneer tab;
-          # the button only WORKS once novelio-payoneer-credentials.php is uploaded
-          # to the server. Set ENV to 'sandbox' while testing, then 'live'.
-          VITE_PAYONEER_ENABLED: '1'
-          VITE_PAYONEER_ENV: sandbox
+          # PUBLIC Razorpay Key ID — safe to commit (it's sent to every browser).
+          # The key SECRET and the webhook secret are server-side only, in
+          # novelio-razorpay-credentials.php ABOVE public_html (RAZORPAY-SETUP.md).
+          # Blank = the Razorpay option is hidden and PayPal is the only gateway.
+          # Paste the rzp_test_… key to test, then swap to rzp_live_… and set
+          # VITE_RAZORPAY_ENV to 'live'.
+          VITE_RAZORPAY_KEY_ID: ''
+          VITE_RAZORPAY_ENV: test
+          # USD on Razorpay needs "International Payments" approved on the account.
+          VITE_RAZORPAY_USD_ENABLED: '1'
+          # GST added to INR payments. The server recomputes it from
+          # RAZORPAY_GST_PERCENT — this only drives the on-page breakdown.
+          VITE_GST_PERCENT: '18'
 
       - name: Deploy dist/ to Hostinger over FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -83,8 +90,8 @@ jobs:
             .builds/**
             # Stray earlier deploy that landed in a subfolder; leave it be.
             public_html/**
-            # Local-dev PayPal secret — must never reach the server (prod uses the
-            # credentials file ABOVE public_html). Blocked by api/.htaccess too.
+            # Local-dev gateway secrets — must never reach the server (prod uses
+            # the credentials files ABOVE public_html). Blocked by api/.htaccess too.
             **/credentials.local.php
 
       # Tell IndexNow engines (Bing, Yandex, Seznam, …) to re-crawl the live URLs.

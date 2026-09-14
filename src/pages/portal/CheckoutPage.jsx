@@ -7,7 +7,16 @@ import { useAuth } from '../../portal/AuthContext';
 import { createSubscription } from '../../portal/store';
 import { PRICING_PLANS, PRICING_ADDONS } from '../../data/siteData';
 import { loadPayPalSdk, paypalEnabled, PAYPAL_ENV } from '../../utils/paypal';
-import { payoneerEnabled, PAYONEER_ENV, startPayoneerPlan } from '../../utils/payoneer';
+import {
+  razorpayEnabled,
+  razorpayUsdEnabled,
+  razorpayCurrencies,
+  RAZORPAY_ENV,
+  createRazorpayPlanOrder,
+  openRazorpayCheckout,
+  verifyRazorpayPayment,
+} from '../../utils/razorpay';
+import { computeCharge, formatMinor, formatAmount, addonPrice } from '../../utils/pricing';
 
 export default function CheckoutPage() {
   const { user } = useAuth();
@@ -17,30 +26,43 @@ export default function CheckoutPage() {
   const planId = params.get('plan') || 'growth';
   const plan = PRICING_PLANS.find((p) => p.id === planId) || PRICING_PLANS[2];
 
+  // PayPal only ever charges USD, so USD stays the default and INR is opt-in.
+  const urlCurrency = (params.get('currency') || '').toUpperCase();
+  const [currency, setCurrency] = useState(
+    urlCurrency === 'INR' && razorpayEnabled ? 'INR' : 'USD',
+  );
   const [billing, setBilling] = useState(params.get('billing') === 'yearly' ? 'yearly' : 'monthly');
   const [addonIds, setAddonIds] = useState([]);
   const [card, setCard] = useState({ name: '', number: '', exp: '', cvc: '' });
   const [status, setStatus] = useState('idle'); // idle | processing
   const [payError, setPayError] = useState('');
-  const [payoneerBusy, setPayoneerBusy] = useState(false);
-  const [payMethod, setPayMethod] = useState('paypal'); // paypal | payoneer
+  const [razorpayBusy, setRazorpayBusy] = useState(false);
 
-  // MUST mirror compute_charge() in public/api/{paypal,payoneer}/_lib.php —
-  // if these diverge the gateway rejects the order on an amount mismatch.
-  const isTermPlan = Boolean(plan.termTotal);
-  const upfrontMonths = plan.upfrontMonths ?? 1;
-  const base = billing === 'yearly' ? plan.priceYearly : plan.priceMonthly;
-  const addonTotal = useMemo(
-    () => addonIds.reduce((s, id) => s + (PRICING_ADDONS.find((a) => a.id === id)?.price || 0), 0),
-    [addonIds],
+  // ── Which gateways can take THIS currency ───────────────────────────────────
+  // PayPal is USD-only. Razorpay always takes INR, and USD only where the account
+  // has International Payments approved.
+  const paypalAvailable = paypalEnabled && currency === 'USD';
+  const razorpayAvailable = razorpayEnabled && razorpayCurrencies.includes(currency);
+  const anyGatewayEnabled = paypalEnabled || razorpayEnabled;
+  // Offer the currency switch only when something can actually charge in rupees.
+  const currencyOptions = razorpayEnabled
+    ? (paypalEnabled || razorpayUsdEnabled ? ['USD', 'INR'] : ['INR'])
+    : ['USD'];
+
+  const [payMethod, setPayMethod] = useState(paypalEnabled ? 'paypal' : 'razorpay');
+  // Keep the selected method legal for the selected currency.
+  const activeMethod = !paypalAvailable ? 'razorpay' : !razorpayAvailable ? 'paypal' : payMethod;
+  const bothMethods = paypalAvailable && razorpayAvailable;
+
+  const sandboxMode = activeMethod === 'razorpay'
+    ? (razorpayEnabled && RAZORPAY_ENV !== 'live')
+    : (paypalEnabled && PAYPAL_ENV === 'sandbox');
+
+  // ── Order maths — mirrors the server (see src/utils/pricing.js) ─────────────
+  const charge = useMemo(
+    () => computeCharge({ plan, billing, addonIds, addons: PRICING_ADDONS, currency }),
+    [plan, billing, addonIds, currency],
   );
-  const monthlyTotal = base + addonTotal;
-  // Plan portion due today; add-ons are always a single month on top.
-  const planDue =
-    billing === 'yearly'
-      ? (plan.priceYearlyTotal ?? plan.priceYearly * 12)
-      : plan.priceMonthly * upfrontMonths;
-  const dueToday = planDue + addonTotal;
 
   const toggleAddon = (id) =>
     setAddonIds((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
@@ -69,39 +91,66 @@ export default function CheckoutPage() {
   // The button reads the LATEST selection via a ref so we never have to re-render
   // the SDK button when the user toggles billing/add-ons.
   const paypalRef = useRef(null);
-  const selectionRef = useRef({ planId, billing, addonIds });
+  const selectionRef = useRef({ planId, billing, addonIds, currency });
   useEffect(() => {
-    selectionRef.current = { planId, billing, addonIds };
-  }, [planId, billing, addonIds]);
+    selectionRef.current = { planId, billing, addonIds, currency };
+  }, [planId, billing, addonIds, currency]);
   const usePayPal = paypalEnabled && Boolean(user);
 
-  // Either gateway being configured takes checkout out of demo mode.
-  const anyGatewayEnabled = paypalEnabled || payoneerEnabled;
-  const sandboxMode =
-    (paypalEnabled && PAYPAL_ENV === 'sandbox') || (payoneerEnabled && PAYONEER_ENV === 'sandbox');
-
-  // Payoneer is a full-page redirect: create the LIST server-side (server sets the
-  // amount), then send the buyer to Payoneer's hosted page. Verification happens
-  // on the way back at /payoneer/return.
-  const startPayoneer = async () => {
+  // ── Razorpay Standard Checkout (overlay, no redirect) ───────────────────────
+  // The server prices the order and opens it; the overlay collects the payment;
+  // verify-payment.php checks the signature against Razorpay's own record before
+  // the subscription is created. The browser never asserts an amount.
+  const startRazorpay = async () => {
     if (!user) {
       navigate(`/signup?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`);
       return;
     }
     setPayError('');
-    setPayoneerBusy(true);
+    setRazorpayBusy(true);
     try {
       const sel = selectionRef.current;
-      const { redirectUrl } = await startPayoneerPlan({
+      const order = await createRazorpayPlanOrder({
         planId: sel.planId,
         billing: sel.billing,
         addonIds: sel.addonIds,
+        currency: sel.currency,
         customer: { id: user.id, name: user.name, email: user.email },
       });
-      window.location.href = redirectUrl;
+
+      await openRazorpayCheckout(order, {
+        customer: { name: user.name, email: user.email },
+        onDismiss: () => { setRazorpayBusy(false); setStatus('idle'); },
+        onError: (message) => { setRazorpayBusy(false); setStatus('idle'); setPayError(message); },
+        onSuccess: async (response) => {
+          setStatus('processing');
+          try {
+            const result = await verifyRazorpayPayment(response);
+            if (result.status === 'COMPLETED') {
+              createSubscription({
+                userId: user.id,
+                planId: result.planId || sel.planId,
+                billing: result.billing || sel.billing,
+                addonIds: result.addonIds?.length ? result.addonIds : sel.addonIds,
+              });
+              navigate('/dashboard?welcome=1', { replace: true });
+              return;
+            }
+            setRazorpayBusy(false);
+            setStatus('idle');
+            setPayError(result.status === 'PENDING'
+              ? 'Your payment is still being confirmed. If it went through you’ll get an email shortly — please don’t pay again.'
+              : (result.error || 'Payment could not be confirmed.'));
+          } catch {
+            setRazorpayBusy(false);
+            setStatus('idle');
+            setPayError('Something went wrong confirming your payment. Please contact us before retrying.');
+          }
+        },
+      });
     } catch (e) {
-      setPayoneerBusy(false);
-      setPayError(e.message || 'Could not start the Payoneer payment. Please try again.');
+      setRazorpayBusy(false);
+      setPayError(e.message || 'Could not start the payment. Please try again.');
     }
   };
 
@@ -176,6 +225,10 @@ export default function CheckoutPage() {
     };
   }, [usePayPal, user, navigate]);
 
+  const gatewayNames = paypalEnabled && razorpayEnabled
+    ? 'PayPal or Razorpay'
+    : razorpayEnabled ? 'Razorpay' : 'PayPal';
+
   return (
     <main className="pt-20">
       <SEO title={`Checkout — ${plan.name} plan`} canonical="/checkout" noindex />
@@ -195,12 +248,12 @@ export default function CheckoutPage() {
           ) : sandboxMode ? (
             <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
               <ShieldCheck className="w-4 h-4 shrink-0" />
-              <span><strong>Sandbox test mode:</strong> use a test account — no real money moves.</span>
+              <span><strong>Test mode:</strong> use a test account or test card — no real money moves.</span>
             </div>
           ) : (
             <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-green-800 text-sm">
               <ShieldCheck className="w-4 h-4 shrink-0" />
-              <span>Secure checkout. Your payment is processed by PayPal or Payoneer — we never see your card details.</span>
+              <span>Secure checkout. Your payment is processed by {gatewayNames} — we never see your card details.</span>
             </div>
           )}
 
@@ -212,14 +265,45 @@ export default function CheckoutPage() {
             >
               <h1 className="font-heading font-800 text-[#1B3172] text-2xl sm:text-3xl">Complete your subscription</h1>
 
+              {/* Currency — only shown when a gateway can actually take rupees */}
+              {currencyOptions.length > 1 && (
+                <div className="bg-white rounded-2xl border border-slate-200 p-6">
+                  <h2 className="font-heading font-700 text-[#1B3172] mb-1">Currency</h2>
+                  <p className="text-sm text-[#64748b] mb-4">
+                    Pay in rupees to Novelio India (GST applies) or in dollars to Novelio Technologies LLC.
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {currencyOptions.map((c) => {
+                      const active = currency === c;
+                      return (
+                        <button
+                          key={c}
+                          type="button"
+                          onClick={() => { setCurrency(c); setPayError(''); }}
+                          className={`text-left p-4 rounded-xl border-2 transition-all cursor-pointer ${active ? 'border-brand-purple bg-[#f5f3ff]' : 'border-slate-200 hover:border-slate-300'}`}
+                        >
+                          <span className="font-semibold text-[#1B3172]">
+                            {c === 'INR' ? '₹ Indian Rupee' : '$ US Dollar'}
+                          </span>
+                          <span className="block text-sm text-[#64748b] mt-1">
+                            {c === 'INR' ? 'Cards, UPI, net banking · +18% GST' : 'Cards & PayPal balance'}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
               {/* Billing cycle */}
               <div className="bg-white rounded-2xl border border-slate-200 p-6">
                 <h2 className="font-heading font-700 text-[#1B3172] mb-4">Billing cycle</h2>
                 <div className="grid grid-cols-2 gap-3">
                   {['monthly', 'yearly'].map((b) => {
                     const active = billing === b;
-                    const yearTotal = plan.priceYearlyTotal ?? plan.priceYearly * 12;
-                    const saving = isTermPlan ? plan.termTotal - yearTotal : 0;
+                    const saving = charge.termTotalMinor
+                      ? charge.termTotalMinor - charge.yearlyTotalMinor
+                      : 0;
                     return (
                       <button
                         key={b}
@@ -229,15 +313,17 @@ export default function CheckoutPage() {
                         <span className="flex items-center justify-between">
                           <span className="font-semibold text-[#1B3172] capitalize">{b}</span>
                           {b === 'yearly' && saving > 0 && (
-                            <span className="text-[11px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">Save ${saving}</span>
+                            <span className="text-[11px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">
+                              Save {formatMinor(saving, currency)}
+                            </span>
                           )}
                         </span>
                         <span className="block text-sm text-[#64748b] mt-1">
                           {b === 'yearly'
-                            ? `$${yearTotal.toLocaleString()} for 12 months`
-                            : isTermPlan
-                              ? `$${plan.priceMonthly}/mo · ${upfrontMonths} months upfront`
-                              : `$${plan.priceMonthly}/mo`}
+                            ? `${formatMinor(charge.yearlyTotalMinor, currency)} for 12 months`
+                            : charge.isTermPlan
+                              ? `${formatAmount(charge.price.monthly, currency)}/mo · ${charge.upfrontMonths} months upfront`
+                              : `${formatAmount(charge.price.monthly, currency)}/mo`}
                         </span>
                       </button>
                     );
@@ -258,7 +344,7 @@ export default function CheckoutPage() {
                         <span className="flex-1">
                           <span className="flex items-center justify-between gap-2">
                             <span className="font-semibold text-[#334155] text-sm">{a.name}</span>
-                            <span className="font-bold text-[#1B3172] text-sm whitespace-nowrap">+${a.price}/mo</span>
+                            <span className="font-bold text-[#1B3172] text-sm whitespace-nowrap">+{formatAmount(addonPrice(a, currency), currency)}/mo</span>
                           </span>
                           <span className="block text-xs text-[#64748b] mt-0.5">{a.desc}</span>
                         </span>
@@ -277,8 +363,9 @@ export default function CheckoutPage() {
                   {user ? (
                     <p className="text-sm text-[#64748b]">
                       Review your order on the right, then complete your payment securely with
-                      {paypalEnabled && payoneerEnabled ? ' PayPal or Payoneer' : payoneerEnabled ? ' Payoneer' : ' PayPal'}
-                      {' '}(debit/credit cards accepted). You’ll confirm the exact amount before paying.
+                      {bothMethods ? ' PayPal or Razorpay' : activeMethod === 'razorpay' ? ' Razorpay' : ' PayPal'}
+                      {currency === 'INR' ? ' (cards, UPI and net banking accepted)' : ' (debit/credit cards accepted)'}
+                      . You’ll confirm the exact amount before paying.
                     </p>
                   ) : (
                     <p className="text-sm text-[#64748b]">
@@ -331,45 +418,63 @@ export default function CheckoutPage() {
                 <div className="flex items-center justify-between text-sm mb-2">
                   <span className="text-[#475569]">
                     {plan.name} plan
-                    {billing === 'yearly'
+                    {charge.isYearly
                       ? ' (12 months)'
-                      : isTermPlan
-                        ? ` (${upfrontMonths} months upfront)`
+                      : charge.isTermPlan
+                        ? ` (${charge.upfrontMonths} months upfront)`
                         : ' (monthly)'}
                   </span>
-                  <span className="font-semibold text-[#1B3172]">${planDue.toLocaleString()}</span>
+                  <span className="font-semibold text-[#1B3172]">{formatMinor(charge.planDueMinor, currency)}</span>
                 </div>
                 {addonIds.map((id) => {
                   const a = PRICING_ADDONS.find((x) => x.id === id);
                   return (
                     <div key={id} className="flex items-center justify-between text-sm mb-2 text-[#64748b]">
                       <span>{a.name}</span>
-                      <span>+${a.price}/mo</span>
+                      <span>+{formatAmount(addonPrice(a, currency), currency)}/mo</span>
                     </div>
                   );
                 })}
 
+                {/* GST is charged in addition to the quoted fee for Novelio India
+                    (see /terms) — it has to be a visible line, not a surprise on
+                    the Razorpay overlay. */}
+                {charge.gstMinor > 0 && (
+                  <>
+                    <div className="border-t border-slate-100 my-3" />
+                    <div className="flex items-center justify-between text-sm mb-2 text-[#64748b]">
+                      <span>Subtotal</span>
+                      <span>{formatMinor(charge.subtotalMinor, currency)}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm mb-2 text-[#64748b]">
+                      <span>GST ({charge.gstPercent}%)</span>
+                      <span>+{formatMinor(charge.gstMinor, currency)}</span>
+                    </div>
+                  </>
+                )}
+
                 <div className="border-t border-slate-100 my-4" />
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-[#475569] text-sm">
-                    {billing === 'yearly' ? 'Then recurring' : 'Then monthly'}
+                    {charge.isYearly ? 'Then recurring' : 'Then monthly'}
                   </span>
                   <span className="font-semibold text-[#1B3172]">
-                    {billing === 'yearly'
-                      ? (addonTotal > 0 ? `$${addonTotal}/mo` : '—')
-                      : `$${monthlyTotal}/mo`}
+                    {charge.isYearly
+                      ? (charge.addonMinor > 0 ? `${formatMinor(charge.addonMinor, currency)}/mo` : '—')
+                      : `${formatMinor(charge.monthlyMinor, currency)}/mo`}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-heading font-700 text-[#1B3172]">Due today</span>
-                  <span className="font-heading font-800 text-[#1B3172] text-xl">${dueToday.toLocaleString()}</span>
+                  <span className="font-heading font-800 text-[#1B3172] text-xl">{formatMinor(charge.totalMinor, currency)}</span>
                 </div>
                 <p className="text-xs text-[#64748b] mt-1 leading-relaxed">
-                  {billing === 'yearly'
-                    ? `Your full 12 months, paid once.${addonTotal > 0 ? ' Add-ons continue billing monthly.' : ''}`
-                    : isTermPlan
-                      ? `Covers your first ${upfrontMonths} months. The remaining ${12 - upfrontMonths} months are billed at $${monthlyTotal}/mo — $${(plan.termTotal + addonTotal * 12).toLocaleString()} total over 12 months.`
+                  {charge.isYearly
+                    ? `Your full 12 months, paid once.${charge.addonMinor > 0 ? ' Add-ons continue billing monthly.' : ''}`
+                    : charge.isTermPlan
+                      ? `Covers your first ${charge.upfrontMonths} months. The remaining ${12 - charge.upfrontMonths} months are billed at ${formatMinor(charge.monthlyMinor, currency)}/mo — ${formatMinor(charge.termTotalMinor + charge.addonMinor * 12, currency)} total over 12 months${charge.gstMinor > 0 ? ', plus GST' : ''}.`
                       : 'Billed monthly. 12-month plan.'}
+                  {charge.gstMinor > 0 && ' Prices are exclusive of GST.'}
                 </p>
 
                 {anyGatewayEnabled ? (
@@ -379,7 +484,7 @@ export default function CheckoutPage() {
                         to={`/login?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`}
                         className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all cursor-pointer"
                       >
-                        <Lock className="w-4 h-4" /> Sign in to pay ${dueToday} <ArrowRight className="w-4 h-4" />
+                        <Lock className="w-4 h-4" /> Sign in to pay {formatMinor(charge.totalMinor, currency)} <ArrowRight className="w-4 h-4" />
                       </Link>
                     ) : (
                       <>
@@ -389,15 +494,15 @@ export default function CheckoutPage() {
                           </div>
                         )}
 
-                        {/* Payment-method tabs (only when both gateways are on) */}
-                        {paypalEnabled && payoneerEnabled && (
+                        {/* Payment-method tabs (only when both can take this currency) */}
+                        {bothMethods && (
                           <div className="grid grid-cols-2 gap-1 mb-4 p-1 bg-slate-100 rounded-xl">
-                            {[['paypal', 'PayPal'], ['payoneer', 'Payoneer']].map(([m, label]) => (
+                            {[['paypal', 'PayPal'], ['razorpay', 'Card / UPI']].map(([m, label]) => (
                               <button
                                 key={m}
                                 type="button"
                                 onClick={() => { setPayMethod(m); setPayError(''); }}
-                                className={`py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${payMethod === m ? 'bg-white text-[#1B3172] shadow-sm' : 'text-[#64748b] hover:text-[#1B3172]'}`}
+                                className={`py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${activeMethod === m ? 'bg-white text-[#1B3172] shadow-sm' : 'text-[#64748b] hover:text-[#1B3172]'}`}
                               >
                                 {label}
                               </button>
@@ -407,24 +512,22 @@ export default function CheckoutPage() {
 
                         {/* PayPal Smart Buttons — kept mounted so they render even when hidden */}
                         {paypalEnabled && (
-                          <div className={paypalEnabled && payoneerEnabled && payMethod !== 'paypal' ? 'hidden' : ''}>
+                          <div className={paypalAvailable && activeMethod === 'paypal' ? '' : 'hidden'}>
                             <div ref={paypalRef} />
                           </div>
                         )}
 
-                        {payoneerEnabled && (
-                          <div className={paypalEnabled && payoneerEnabled && payMethod !== 'payoneer' ? 'hidden' : ''}>
-                            <button
-                              type="button"
-                              onClick={startPayoneer}
-                              disabled={payoneerBusy}
-                              className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF4800] hover:bg-[#e64100] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-                            >
-                              {payoneerBusy
-                                ? <><Loader2 className="w-4 h-4 animate-spin" /> Redirecting to Payoneer…</>
-                                : <>Pay ${dueToday} with Payoneer <ArrowRight className="w-4 h-4" /></>}
-                            </button>
-                          </div>
+                        {razorpayAvailable && activeMethod === 'razorpay' && (
+                          <button
+                            type="button"
+                            onClick={startRazorpay}
+                            disabled={razorpayBusy}
+                            className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0C2451] hover:bg-[#081a3c] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                          >
+                            {razorpayBusy
+                              ? <><Loader2 className="w-4 h-4 animate-spin" /> Opening secure checkout…</>
+                              : <>Pay {formatMinor(charge.totalMinor, currency)} <ArrowRight className="w-4 h-4" /></>}
+                          </button>
                         )}
                       </>
                     )}
@@ -441,7 +544,7 @@ export default function CheckoutPage() {
                   >
                     {status === 'processing'
                       ? <><Loader2 className="w-4 h-4 animate-spin" /> Processing…</>
-                      : <><Lock className="w-4 h-4" /> Pay ${dueToday} <ArrowRight className="w-4 h-4" /></>}
+                      : <><Lock className="w-4 h-4" /> Pay {formatMinor(charge.totalMinor, currency)} <ArrowRight className="w-4 h-4" /></>}
                   </button>
                 )}
 

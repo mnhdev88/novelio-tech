@@ -1,4 +1,9 @@
 {
+  "inrPricing": {
+    "confirmed": false,
+    "seededFromUsdRate": 88,
+    "note": "PLACEHOLDER INR PRICES — seeded from the USD figures at ₹88/$ and rounded to ₹100. Confirm every value in Admin → Pricing (or here) and set confirmed:true BEFORE switching Razorpay to live keys. GST is added on top at checkout, so these are ex-GST."
+  },
   "plans": [
     {
       "id": "free",
@@ -17,7 +22,9 @@
         "Email Validator — 100 verifications / month",
         "Email support"
       ],
-      "note": "No credit card required."
+      "note": "No credit card required.",
+      "priceMonthlyINR": 0,
+      "priceYearlyINR": 0
     },
     {
       "id": "launch",
@@ -43,7 +50,11 @@
         "1 monthly review call · email support"
       ],
       "note": "Best for new and small businesses that need a trusted online presence. 12-month plan — 3 months upfront, then 9 monthly payments.",
-      "yearlyTotal": 1400
+      "yearlyTotal": 1400,
+      "priceMonthlyINR": 13200,
+      "priceYearlyTotalINR": 123200,
+      "priceYearlyINR": 10267,
+      "termTotalINR": 158400
     },
     {
       "id": "growth",
@@ -71,7 +82,11 @@
         "2 review calls/month · email + WhatsApp support"
       ],
       "note": "Best for SMBs that need more leads and disciplined follow-up. 12-month plan — 3 months upfront, then 9 monthly payments.",
-      "yearlyTotal": 2900
+      "yearlyTotal": 2900,
+      "priceMonthlyINR": 26400,
+      "priceYearlyTotalINR": 255200,
+      "priceYearlyINR": 21267,
+      "termTotalINR": 316800
     },
     {
       "id": "scale",
@@ -95,7 +110,9 @@
         "Full business growth KPI dashboard",
         "Weekly/bi-weekly reviews · priority support"
       ],
-      "note": "Best for SMBs ready for a complete growth operating system. Call us and we will scope the plan and pricing around your business."
+      "note": "Best for SMBs ready for a complete growth operating system. Call us and we will scope the plan and pricing around your business.",
+      "priceMonthlyINR": 87900,
+      "priceYearlyINR": 73300
     }
   ],
   "comparison": [
@@ -281,31 +298,36 @@
       "id": "extra-pages",
       "name": "Extra website pages (5)",
       "price": 39,
-      "desc": "Five additional custom pages on your site."
+      "desc": "Five additional custom pages on your site.",
+      "priceINR": 3400
     },
     {
       "id": "landing-page",
       "name": "Additional landing page",
       "price": 49,
-      "desc": "A dedicated, conversion-focused campaign page."
+      "desc": "A dedicated, conversion-focused campaign page.",
+      "priceINR": 4300
     },
     {
       "id": "email-credits",
       "name": "Extra email-validation credits (10k)",
       "price": 19,
-      "desc": "10,000 additional verifications every month."
+      "desc": "10,000 additional verifications every month.",
+      "priceINR": 1700
     },
     {
       "id": "ad-management",
       "name": "Ad-spend management",
       "price": 199,
-      "desc": "We run and optimize your Google/Meta ads (excl. ad budget)."
+      "desc": "We run and optimize your Google/Meta ads (excl. ad budget).",
+      "priceINR": 17500
     },
     {
       "id": "extra-content",
       "name": "Additional content (4 articles) / month",
       "price": 99,
-      "desc": "Four extra SEO articles published monthly."
+      "desc": "Four extra SEO articles published monthly.",
+      "priceINR": 8700
     }
   ],
   "faq": [

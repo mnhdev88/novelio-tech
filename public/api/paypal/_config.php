@@ -93,8 +93,9 @@ if (!defined('PAYPAL_NOTIFY_EMAIL')) {
 // ── Authoritative price table ────────────────────────────────────────────────
 // The server computes the charge from this table so the amount can never be
 // tampered with in the browser. It's the SHARED source of truth (also used by the
-// Payoneer integration) — edit prices in ../_pricing.php, which mirrors
-// PRICING_PLANS / PRICING_ADDONS in src/data/siteData.js.
+// Razorpay integration) — edit prices in ../_pricing.php, which mirrors
+// PRICING_PLANS / PRICING_ADDONS in src/data/siteData.js. PayPal reads only the
+// flat USD fields; the parallel 'inr' fields there are Razorpay's.
 require __DIR__ . '/../_pricing.php';
 $GLOBALS['PAYPAL_PLANS']  = $GLOBALS['NOVELIO_PLANS'];
 $GLOBALS['PAYPAL_ADDONS'] = $GLOBALS['NOVELIO_ADDONS'];

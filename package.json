@@ -13,7 +13,9 @@
     "indexnow": "node scripts/indexnow-submit.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:blocks": "node scripts/test-blockmodel.mjs"
+    "test:blocks": "node scripts/test-blockmodel.mjs",
+    "test:pricing": "node scripts/test-pricing-parity.mjs",
+    "smoke:razorpay": "node scripts/smoke-razorpay.mjs"
   },
   "dependencies": {
     "@tiptap/extension-image": "^3.30.3",

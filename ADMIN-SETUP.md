@@ -1,7 +1,7 @@
 # Admin panel — setup
 
 How the client-facing admin panel is wired, and what has to exist on the server
-before it works. Companion to `PAYPAL-SETUP.md` / `PAYONEER-SETUP.md`, and it
+before it works. Companion to `PAYPAL-SETUP.md` / `RAZORPAY-SETUP.md`, and it
 follows the same credential conventions.
 
 ---

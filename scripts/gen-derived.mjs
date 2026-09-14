@@ -135,6 +135,9 @@ const planKeyW  = pad(pricing.plans.map((p) => `'${p.id}'`))
 const planNameW = pad(pricing.plans.map((p) => `'${php(p.name)}',`))
 const planMonW  = pad(pricing.plans.map((p) => `'monthly' => ${p.priceMonthly},`))
 
+// USD stays in flat top-level keys because the PayPal integration has read them
+// that way since day one; INR hangs off an 'inr' sub-array. Two currencies, one
+// table — a plan can never be priced differently per gateway.
 const planLines = pricing.plans.map((p) => {
   const cells = [
     `'name' => ${`'${php(p.name)}',`.padEnd(planNameW)}`,
@@ -145,15 +148,31 @@ const planLines = pricing.plans.map((p) => {
   if (p.yearlyTotal !== undefined) tail.push(`'yearly_total' => ${p.yearlyTotal}`)
   if (p.upfrontMonths !== undefined) tail.push(`'upfront_months' => ${p.upfrontMonths}`)
 
+  const inr = [`'monthly' => ${p.priceMonthlyINR ?? 0}`, `'yearly' => ${p.priceYearlyINR ?? 0}`]
+  if (p.priceYearlyTotalINR !== undefined) inr.push(`'yearly_total' => ${p.priceYearlyTotalINR}`)
+  tail.push(`'inr' => [${inr.join(', ')}]`)
+
   const body = cells.join(' ') + (tail.length ? ', ' + tail.join(', ') : '')
   return `    ${`'${p.id}'`.padEnd(planKeyW)} => [${body}],`
 }).join('\n')
 
 const addonKeyW  = pad(pricing.addons.map((a) => `'${a.id}'`))
 const addonNameW = pad(pricing.addons.map((a) => `'${php(a.name)}',`)) + 2
+const addonPriceW = pad(pricing.addons.map((a) => `'price' => ${a.price},`))
 const addonLines = pricing.addons.map((a) =>
-  `    ${`'${a.id}'`.padEnd(addonKeyW)} => ['name' => ${`'${php(a.name)}',`.padEnd(addonNameW)}'price' => ${a.price}],`
+  `    ${`'${a.id}'`.padEnd(addonKeyW)} => ['name' => ${`'${php(a.name)}',`.padEnd(addonNameW)}${`'price' => ${a.price},`.padEnd(addonPriceW)} 'price_inr' => ${a.priceINR ?? 0}],`
 ).join('\n')
+
+// Razorpay refuses to charge INR while the seeded placeholder prices are still
+// unconfirmed, so the flag has to travel with the table rather than live in a doc.
+const inrConfirmed = pricing.inrPricing?.confirmed === true
+const inrBanner = inrConfirmed ? '' : `
+// ⚠ INR PRICES ARE UNCONFIRMED PLACEHOLDERS.
+//   ${pricing.inrPricing?.note || 'Seeded from USD — confirm before charging in INR.'}
+//   While inrPricing.confirmed is false in content/pricing.json, the Razorpay
+//   endpoints REFUSE every INR charge (USD is unaffected). Set it to true once
+//   the numbers are right.
+//`
 
 fs.writeFileSync(path.join(ROOT, 'public/api/_pricing.php'), `<?php
 // ─────────────────────────────────────────────────────────────────────────────
@@ -162,19 +181,21 @@ fs.writeFileSync(path.join(ROOT, 'public/api/_pricing.php'), `<?php
 // Edit prices in the admin panel (or content/pricing.json); this file follows.
 //
 // SINGLE SOURCE OF TRUTH for server-side pricing. Shared by BOTH payment
-// integrations (paypal/ and payoneer/) so a price can never differ between
+// integrations (paypal/ and razorpay/) so a price can never differ between
 // gateways, and so the amount charged can never be set by the browser.
 //
 // Never web-served directly (leading-underscore files are denied in .htaccess,
 // and it holds no secrets — only the public price list). Included server-side.
 //
-// Plan fields:
+// Plan fields (top level = USD, the currency PayPal has always charged):
 //   monthly        per-month price on the monthly option
 //   yearly         per-month equivalent of the yearly price (display only)
 //   yearly_total   flat one-payment price for 12 months. When present it is the
 //                  authoritative yearly charge — do NOT compute monthly * 12.
 //   upfront_months months collected at checkout on the monthly option; the
 //                  remaining (12 - upfront_months) are billed later.
+//   inr            the same three price fields in rupees, EX-GST. Razorpay adds
+//                  GST on top at checkout; PayPal never reads this.${inrBanner}
 // ─────────────────────────────────────────────────────────────────────────────
 
 $GLOBALS['NOVELIO_PLANS'] = [
@@ -184,5 +205,9 @@ ${planLines}
 $GLOBALS['NOVELIO_ADDONS'] = [
 ${addonLines}
 ];
+
+// False until a human has confirmed the rupee figures above. Razorpay checks it
+// before accepting an INR charge.
+$GLOBALS['NOVELIO_INR_CONFIRMED'] = ${inrConfirmed ? 'true' : 'false'};
 `)
 console.log(`[gen-derived] _pricing.php — ${pricing.plans.length} plans, ${pricing.addons.length} add-ons`)

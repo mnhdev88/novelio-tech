@@ -1,7 +1,7 @@
-# Defense in depth for the Payoneer API folder.
-# Only the endpoint files (create-list.php / create-custom-list.php /
-# confirm.php / notify.php) are meant to be reached over the web. Everything
-# else here is internal.
+# Defense in depth for the Razorpay API folder.
+# Only the endpoint files (create-order.php / create-custom-order.php /
+# verify-payment.php / webhook.php) are meant to be reached over the web.
+# Everything else here is internal.
 
 # The site-wide RewriteEngine also applies inside this folder; leave real .php
 # files alone (the parent .htaccess only rewrites requests for MISSING files).
