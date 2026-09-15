@@ -46,3 +46,7 @@ novelio-admin-credentials.php
 
 # Admin panel local test data (real data lives above the web root on the server)
 novelio-admin-data/
+
+# SEO audit tool secrets — the PageSpeed key never goes in git (see SEO-AUDIT-SETUP.md)
+public/api/audit/credentials.local.php
+novelio-audit-credentials.php

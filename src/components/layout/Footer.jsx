@@ -132,6 +132,7 @@ export default function Footer() {
               {[
                 { label: 'About Us', to: '/about' },
                 { label: 'How It Works', to: '/#how-it-works' },
+                { label: 'Free SEO Audit Tool', to: '/free-seo-audit' },
                 { label: 'Blog & Resources', to: '/blog' },
                 { label: 'Careers', to: '/careers' },
                 { label: 'Become a Partner', to: '/partners' },

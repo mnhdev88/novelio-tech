@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Download, Search, Mail, Phone } from 'lucide-react';
+import { Download, Search, Mail, Phone, ExternalLink, ArrowDownWideNarrow } from 'lucide-react';
 import * as api from '../api';
 import { inputCls, ErrorNote, Spinner, PageHeader } from '../ui';
 
@@ -7,7 +7,16 @@ const TABS = [
   { id: 'leads',        label: 'Enquiries',   statuses: ['new', 'contacted', 'won', 'lost', 'spam'] },
   { id: 'newsletter',   label: 'Subscribers', statuses: ['subscribed', 'unsubscribed'] },
   { id: 'applications', label: 'Job applications', statuses: ['new', 'reviewing', 'rejected', 'hired'] },
+  { id: 'audits',       label: 'SEO audits',   statuses: ['new', 'contacted', 'won', 'lost', 'spam'] },
 ];
+
+// The worse the score, the easier the call: there is more obviously wrong to
+// talk about, and they have already seen it themselves.
+function scoreClass(score) {
+  if (score >= 75) return 'bg-green-100 text-green-700';
+  if (score >= 55) return 'bg-amber-100 text-amber-700';
+  return 'bg-red-100 text-red-700';
+}
 
 const STATUS_STYLE = {
   new: 'bg-blue-100 text-blue-700',
@@ -26,6 +35,7 @@ export default function LeadsPage() {
   const [type, setType] = useState('leads');
   const [q, setQ] = useState('');
   const [status, setStatus] = useState('');
+  const [sortByScore, setSortByScore] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -34,11 +44,11 @@ export default function LeadsPage() {
   const load = useCallback(async () => {
     setData(null);
     try {
-      setData(await api.leads.list(type, { q, status }));
+      setData(await api.leads.list(type, { q, status, sort: sortByScore ? 'score' : '' }));
     } catch (e) {
       setError(e.message);
     }
-  }, [type, q, status]);
+  }, [type, q, status, sortByScore]);
 
   // Debounced so typing in the search box does not fire a query per keystroke.
   useEffect(() => {
@@ -73,7 +83,7 @@ export default function LeadsPage() {
         {TABS.map((t) => (
           <button
             key={t.id}
-            onClick={() => { setType(t.id); setStatus(''); }}
+            onClick={() => { setType(t.id); setStatus(''); setSortByScore(false); }}
             className={`px-3.5 py-2 rounded-xl text-sm font-semibold cursor-pointer ${
               type === t.id ? 'bg-[#1B3172] text-white' : 'bg-white border border-slate-200 text-[#475569]'
             }`}
@@ -86,12 +96,28 @@ export default function LeadsPage() {
       <div className="flex flex-wrap gap-2 mb-4">
         <div className="relative flex-1 min-w-[200px]">
           <Search className="w-4 h-4 text-[#94a3b8] absolute left-3 top-1/2 -translate-y-1/2" />
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name, email or phone…" className={`${inputCls} pl-9`} />
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder={type === 'audits' ? 'Search name, email, company or site…' : 'Search name, email or phone…'}
+            className={`${inputCls} pl-9`}
+          />
         </div>
         <select value={status} onChange={(e) => setStatus(e.target.value)} className={`${inputCls} w-auto`}>
           <option value="">All statuses</option>
           {tab.statuses.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
+        {type === 'audits' && (
+          <button
+            onClick={() => setSortByScore((v) => !v)}
+            title="Worst-scoring sites first"
+            className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold cursor-pointer border ${
+              sortByScore ? 'bg-[#1B3172] text-white border-[#1B3172]' : 'bg-white border-slate-200 text-[#475569]'
+            }`}
+          >
+            <ArrowDownWideNarrow className="w-4 h-4" /> Worst first
+          </button>
+        )}
       </div>
 
       {!data ? <Spinner /> : data.items.length === 0 ? (
@@ -128,6 +154,12 @@ export default function LeadsPage() {
                     </div>
                   </div>
 
+                  {typeof row.score === 'number' && row.url && (
+                    <span className={`text-xs font-semibold rounded-lg px-2 py-1 ${scoreClass(row.score)}`}>
+                      {row.score}/100
+                    </span>
+                  )}
+
                   <select
                     value={row.status}
                     onChange={(e) => setRowStatus(row.id, e.target.value)}
@@ -136,6 +168,25 @@ export default function LeadsPage() {
                     {tab.statuses.map((s) => <option key={s} value={s}>{s}</option>)}
                   </select>
                 </div>
+
+                {row.url && (
+                  <div className="mt-2 pl-3 border-l-2 border-slate-200">
+                    <a
+                      href={row.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center gap-1.5 text-sm text-[#1B3172] font-medium hover:underline break-all"
+                    >
+                      {row.url} <ExternalLink className="w-3 h-3 flex-shrink-0" />
+                    </a>
+                    {row.top_issues?.length > 0 && (
+                      // The opening line for the call, already written.
+                      <p className="text-xs text-[#64748b] mt-1">
+                        Worst findings: {row.top_issues.join(' · ')}
+                      </p>
+                    )}
+                  </div>
+                )}
 
                 {row.message && (
                   <p className="text-sm text-[#475569] mt-2 whitespace-pre-wrap border-l-2 border-slate-200 pl-3">

@@ -25,6 +25,10 @@ const LEAD_TYPES = [
     'leads'        => ['new', 'contacted', 'won', 'lost', 'spam'],
     'newsletter'   => ['subscribed', 'unsubscribed'],
     'applications' => ['new', 'reviewing', 'rejected', 'hired'],
+    // Written by ../audit/unlock.php when someone trades an email address for
+    // their full SEO audit. Same statuses as an ordinary enquiry because that is
+    // what one of these is — only with the prospect's own URL and score attached.
+    'audits'       => ['new', 'contacted', 'won', 'lost', 'spam'],
 ];
 
 function lead_store($type) { return $type . '.jsonl'; }
@@ -78,9 +82,18 @@ if ($status !== '' && in_array($status, LEAD_TYPES[$type], true)) {
     }));
 }
 
+// Audits sort worst-score-first on request: the site with the most wrong with it
+// is the easiest conversation to open, so it is the one to call first.
+if ($type === 'audits' && ($_GET['sort'] ?? '') === 'score') {
+    usort($rows, function ($a, $b) {
+        return ((int) ($a['score'] ?? 100)) <=> ((int) ($b['score'] ?? 100));
+    });
+}
+
 $q = a_clean_line($_GET['q'] ?? '', 80);
 if ($q !== '') {
-    $cols = $type === 'newsletter' ? ['email'] : ['name', 'email', 'phone'];
+    $cols = $type === 'newsletter' ? ['email']
+        : ($type === 'audits' ? ['name', 'email', 'company', 'url', 'host'] : ['name', 'email', 'phone']);
     $needle = mb_strtolower($q);
     $rows = array_values(array_filter($rows, function ($r) use ($cols, $needle) {
         foreach ($cols as $c) {
