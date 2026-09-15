@@ -68,6 +68,42 @@ Put the same `define()` line in `public/api/audit/credentials.local.php`. That
 file is gitignored **and** excluded from the deploy (`**/credentials.local.php`
 is in the workflow's exclude list), so it stays on your machine.
 
+**`npm run dev` alone cannot run this tool.** Vite does not execute PHP, and its
+SPA fallback answers `/api/audit/run.php` with `index.html` — so the page loads,
+you click *Run my free audit*, and it says "something went wrong" with no clue
+why. Two terminals:
+
+```
+npm run dev        # the site, on :5173
+npm run dev:api    # PHP serving public/, on :8000
+```
+
+Vite proxies `/api` to the second one (see `server.proxy` in `vite.config.js`).
+If you forget the second terminal, the page now says so in as many words.
+
+#### If every site comes back as "broken SSL certificate"
+
+Then it is your PHP, not their websites. A PHP install with no CA bundle fails
+every HTTPS request the same way a genuinely expired certificate does. The tool
+checks for this — before blaming an audited site it tries two known-good hosts,
+and if neither verifies it reports the problem as ours instead. You will see
+this in the PHP log:
+
+```
+[audit] this server cannot verify any SSL certificate — set curl.cainfo in php.ini
+```
+
+Fix it by downloading <https://curl.se/ca/cacert.pem> and pointing `php.ini` at
+it:
+
+```ini
+curl.cainfo = "C:/path/to/cacert.pem"
+openssl.cafile = "C:/path/to/cacert.pem"
+```
+
+Hostinger's PHP ships with a CA bundle already, so this is a local-machine
+problem only.
+
 ### Checking it worked
 
 Run an audit on the live site. If the Speed card says *"Speed data unavailable"*,

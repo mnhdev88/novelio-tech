@@ -19,9 +19,13 @@ au_method('POST');
 
 $in = au_body();
 
-// Bots get a 200 with a plausible-looking failure rather than a validation
-// error, so a scripted submitter learns nothing about which signal caught it.
-if (!au_check_bot_signals($in)) {
+// Honeypot only, with no minimum fill time: this is one field, and someone who
+// arrives with the address already in their clipboard can paste and submit in
+// well under a second. Rejecting them would be indistinguishable, from their
+// side, from the tool being broken. The per-IP rate limit below is what bounds
+// abuse of this endpoint; the timing test still guards the gate in unlock.php,
+// where the visitor has demonstrably been on the page for a while.
+if (!au_check_bot_signals($in, 0)) {
     au_fail('We could not audit that address just now. Please try again.', 400, 'rejected');
 }
 
@@ -175,6 +179,10 @@ function au_fetch_message(array $page, $url) {
             return "$host took too long to respond, so we could not audit it. That is itself worth knowing — if it is that slow for us, it is that slow for Google. Try again in a moment.";
         case 'ssl':
             return "$host has a broken or expired SSL certificate, so we could not connect securely. Visitors are seeing a full-page browser warning before they reach the site — fixing that comes before any SEO work.";
+        case 'no_ca':
+            // Our fault, and it must read that way. The alternative is telling a
+            // stranger their certificate is broken when it is not.
+            return 'The audit server cannot currently verify SSL certificates, so we could not check that site. This is a problem at our end, not with your website — please try again shortly.';
         case 'no_curl':
             return 'The audit tool is not fully set up on this server yet.';
         case 'too_many_redirects':

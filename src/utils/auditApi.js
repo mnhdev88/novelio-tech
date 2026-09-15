@@ -32,12 +32,26 @@ async function post(path, body) {
     throw new AuditError('We could not reach the audit service. Check your connection and try again.', 'network');
   }
 
+  const raw = await res.text();
+
   let data;
   try {
-    data = await res.json();
+    data = JSON.parse(raw);
   } catch {
-    // A PHP fatal error or an HTML error page from the host — either way the
-    // response is not the JSON we were promised.
+    // Not JSON. The overwhelmingly likely cause is that PHP never ran and the
+    // SPA's own index.html came back instead — the endpoint is missing on the
+    // server, or this is `npm run dev` with no API behind it. The visitor does
+    // not need to know that; whoever is looking at the console does, because
+    // the symptom on screen looks identical to a genuine audit failure.
+    if (/^\s*<(!doctype|html)/i.test(raw)) {
+      console.error(
+        `[audit] ${BASE}/${path} returned HTML, not JSON — PHP did not run.\n` +
+        'In local development, start the API with `npm run dev:api`. ' +
+        'On a server, check that public/api/audit/ actually deployed.'
+      );
+    } else {
+      console.error(`[audit] ${BASE}/${path} returned an unreadable response:`, raw.slice(0, 300));
+    }
     throw new AuditError('Something went wrong running the audit. Please try again in a moment.', 'bad_response');
   }
 

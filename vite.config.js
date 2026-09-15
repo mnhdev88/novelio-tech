@@ -28,6 +28,38 @@ const staticHtmlPlugin = {
 
 export default defineConfig({
   plugins: [react(), staticHtmlPlugin],
+  server: {
+    proxy: {
+      // Vite cannot execute PHP, and its SPA fallback answers /api/anything.php
+      // with index.html. A front-end calling the API in `npm run dev` therefore
+      // gets a page of HTML where it expected JSON, and reports a mystery
+      // failure — which is a confusing way to discover there is no backend.
+      //
+      // So point /api at a PHP server running the same public/ directory:
+      //     npm run dev:api        (in a second terminal)
+      //
+      // Deployment is unaffected: on the real host, PHP serves these files
+      // directly and this proxy does not exist.
+      '/api': {
+        // Matches the port in the `dev:api` script. Change both together if
+        // 8000 is taken.
+        target: 'http://127.0.0.1:8000',
+        changeOrigin: true,
+        configure(proxy) {
+          // Without this, a stopped PHP server surfaces as an empty 500 and the
+          // page says "something went wrong" again. Say the actual thing.
+          proxy.on('error', (err, req, res) => {
+            if (!res || res.headersSent) return
+            res.writeHead(502, { 'Content-Type': 'application/json' })
+            res.end(JSON.stringify({
+              error: 'The local PHP API is not running. Start it with `npm run dev:api` in a second terminal.',
+              code: 'api_down',
+            }))
+          })
+        },
+      },
+    },
+  },
   build: {
     rollupOptions: {
       output: {

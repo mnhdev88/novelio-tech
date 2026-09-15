@@ -63,11 +63,20 @@ function au_clean($s, $max = 200) {
  * The honeypot + minimum-fill-time pair used by capture.php. A bot that fills
  * every field, or a script that posts the instant the page loads, is answered
  * with a plausible-looking success rather than an error, so it learns nothing.
+ *
+ * $minFillMs is how long after the page rendered a submission is still treated
+ * as too fast to be human. Pass 0 to skip that test — it is the right guard for
+ * a form someone fills in, and the wrong one for a single field they may well
+ * paste into and submit in under a second.
  */
-function au_check_bot_signals(array $in) {
+function au_check_bot_signals(array $in, $minFillMs = 1200) {
     if (!empty($in['website'])) return false;              // honeypot
-    $renderedAt = (int) ($in['t'] ?? 0);
-    if ($renderedAt > 0 && (time() * 1000 - $renderedAt) < 1200) return false;
+
+    if ($minFillMs > 0) {
+        $renderedAt = (int) ($in['t'] ?? 0);
+        if ($renderedAt > 0 && (time() * 1000 - $renderedAt) < $minFillMs) return false;
+    }
+
     return true;
 }
 
@@ -317,8 +326,18 @@ function au_fetch_once($url, $method = 'GET') {
     // A body aborted by the size guard still has usable headers and a status,
     // and the first 3 MB is far more HTML than any check needs.
     if ($body === false && $errno !== CURLE_ABORTED_BY_CALLBACK) {
-        $out['error'] = $errno === CURLE_OPERATION_TIMEDOUT ? 'timeout'
-            : (($errno === CURLE_SSL_CACERT || $errno === CURLE_SSL_PEER_CERTIFICATE) ? 'ssl' : 'unreachable');
+        if ($errno === CURLE_OPERATION_TIMEDOUT) {
+            $out['error'] = 'timeout';
+        } elseif ($errno === CURLE_SSL_CACERT || $errno === CURLE_SSL_PEER_CERTIFICATE) {
+            // Do NOT accept this at face value. A PHP install with no CA bundle
+            // fails exactly this way on every HTTPS request, and reporting that
+            // as "your certificate is broken" tells a prospect their site is
+            // broken when ours is. Ask a site we know is fine before accusing
+            // anyone: if that fails too, the fault is at this end.
+            $out['error'] = au_ca_bundle_broken() ? 'no_ca' : 'ssl';
+        } else {
+            $out['error'] = 'unreachable';
+        }
         return $out;
     }
 
@@ -326,6 +345,64 @@ function au_fetch_once($url, $method = 'GET') {
     $out['headers'] = $headers;
     $out['body']    = is_string($body) ? substr($body, 0, AUDIT_MAX_BODY_BYTES) : '';
     return $out;
+}
+
+/**
+ * Is it THIS server that cannot verify certificates, rather than the audited
+ * site that has a bad one?
+ *
+ * Asked only after an SSL failure, and answered by connecting to a host whose
+ * certificate is beyond doubt. If that fails the same way, no CA bundle is
+ * configured here and every HTTPS site on the internet would "fail" this audit.
+ *
+ * Cached for the request: one control connection per audit, not one per fetch.
+ */
+function au_ca_bundle_broken() {
+    static $broken = null;
+    if ($broken !== null) return $broken;
+
+    // Two controls, from different issuers. One host can fail for its own
+    // reasons — a blocked route, a root this machine has not fetched yet — and
+    // treating that as proof would mean excusing a genuinely broken certificate
+    // on the audited site as "our problem". Only a verification failure against
+    // BOTH says the fault is here.
+    $sslFailures = 0;
+    $tried = 0;
+
+    foreach (['https://www.google.com/generate_204', 'https://www.cloudflare.com/'] as $control) {
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL            => $control,
+            CURLOPT_NOBODY         => true,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 8,
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_SSL_VERIFYHOST => 2,
+            CURLOPT_USERAGENT      => AUDIT_USER_AGENT,
+        ]);
+        curl_exec($ch);
+        $errno = curl_errno($ch);
+        curl_close($ch);
+
+        // A control that is simply unreachable proves nothing either way, so it
+        // is not counted — only one that connects and fails to verify.
+        if ($errno === CURLE_SSL_CACERT || $errno === CURLE_SSL_PEER_CERTIFICATE) {
+            $sslFailures++;
+            $tried++;
+        } elseif ($errno === 0) {
+            $broken = false;         // our TLS demonstrably works; stop asking
+            return $broken;
+        } else {
+            $tried++;
+        }
+    }
+
+    $broken = $tried > 0 && $sslFailures === $tried;
+    if ($broken) {
+        @error_log('[audit] this server cannot verify any SSL certificate — set curl.cainfo in php.ini');
+    }
+    return $broken;
 }
 
 /** Resolve a Location header (which may be relative) against the URL it came from. */
