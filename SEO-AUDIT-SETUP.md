@@ -122,7 +122,8 @@ Each unlocked report appends one line to **`novelio-admin-data/audits.jsonl`**,
 beside the admin panel's other data, above the web root. The panel reads it under
 **Leads → SEO audits**, where each row shows:
 
-- the email, name and company they gave,
+- the email and phone they gave (both required), plus name and company if they
+  chose to fill those in,
 - **the URL they audited** — the valuable half, since it tells you their
   industry, their platform and what is broken before you call,
 - their score out of 100, and

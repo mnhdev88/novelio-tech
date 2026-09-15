@@ -2,8 +2,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Free SEO Audit — exchange an email address for the full report.
 //
-//   POST { token, email, name, company, consent, t, website }
+//   POST { token, email, phone, name, company, consent, t, website }
 //        -> { issues: [ ...every finding, with impact and fix... ] }
+//
+// email and phone are both required; name and company are not.
 //
 // This is the endpoint the whole tool exists for. Two rules shape it:
 //
@@ -47,10 +49,21 @@ if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     au_fail('Please enter a valid email address so we can send the report.');
 }
 
+// Phone is required, and it has to be required HERE as well as in the form —
+// anything enforced only in the browser is enforced only on people who use the
+// browser. Checked by digit count for the reason given in UnlockGate.jsx: the
+// punctuation in a real phone number is not something worth policing, and a
+// stricter rule on a mandatory field turns genuine leads away over formatting.
+$phone = au_clean($in['phone'] ?? '', 60);
+$phoneDigits = preg_replace('/\D/', '', $phone);
+if (strlen($phoneDigits) < 7 || strlen($phoneDigits) > 20) {
+    au_fail('Please enter a phone number we can reach you on, including the country code.');
+}
+
 // Record the lead, then hand over the report. Wrapped because rule 1 above is
 // the whole point: nothing that happens in here may cost the visitor the report.
 try {
-    au_record_lead($in, $report, $email);
+    au_record_lead($in, $report, $email, $phone);
 } catch (Throwable $e) {
     @error_log('[audit] could not record lead: ' . $e->getMessage());
 }
@@ -79,14 +92,14 @@ au_respond([
 
 // ── Recording the lead ───────────────────────────────────────────────────────
 
-function au_record_lead(array $in, array $report, $email) {
+function au_record_lead(array $in, array $report, $email, $phone) {
     $record = [
         'id'          => bin2hex(random_bytes(12)),
         'created_at'  => gmdate('c'),
         'email'       => $email,
         'name'        => au_clean($in['name'] ?? '', 190),
         'company'     => au_clean($in['company'] ?? '', 190),
-        'phone'       => au_clean($in['phone'] ?? '', 60),
+        'phone'       => $phone,   // already cleaned and checked above
         // The audited URL is the valuable half of this record. It says what the
         // business does, what it is built on, and what is broken — before anyone
         // picks up the phone.
