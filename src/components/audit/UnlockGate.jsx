@@ -14,7 +14,7 @@ import { trackEvent } from '../../utils/analytics';
  * devtools trick that reveals it.
  */
 export default function UnlockGate({ token, lockedIssues, lockedCount, host, onUnlocked }) {
-  const [form, setForm] = useState({ email: '', name: '', company: '' });
+  const [form, setForm] = useState({ email: '', name: '', phone: '', company: '' });
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState('');   // honeypot — real people never see it
   const [error, setError] = useState('');
@@ -46,14 +46,16 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
     }
   };
 
-  const field = (name, placeholder, type = 'text', required = false) => (
+  const field = (name, placeholder, type = 'text', required = false, extra = {}) => (
     <input
       type={type}
       required={required}
       value={form[name]}
       onChange={(e) => { setForm((f) => ({ ...f, [name]: e.target.value })); if (error) setError(''); }}
       placeholder={placeholder}
+      aria-label={placeholder}
       className="w-full bg-white border border-slate-200/80 rounded-xl px-4 py-3 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-brand-purple/60 focus:ring-brand-purple/20 transition-all text-[15px]"
+      {...extra}
     />
   );
 
@@ -95,12 +97,19 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
         </p>
 
         <form onSubmit={submit} className="space-y-3">
-          {field('email', 'you@company.com', 'email', true)}
+          {field('email', 'you@company.com', 'email', true, { autoComplete: 'email' })}
 
           <div className="grid sm:grid-cols-2 gap-3">
-            {field('name', 'Your name (optional)')}
-            {field('company', 'Company (optional)')}
+            {field('name', 'Your name (optional)', 'text', false, { autoComplete: 'name' })}
+            {/* type="tel" is what gets a phone keypad instead of a keyboard on a
+                phone, which is where most of these are filled in. Deliberately
+                unvalidated beyond that: numbers arrive with country codes,
+                spaces, brackets and extensions, and a regex strict enough to be
+                worth having would reject real numbers. */}
+            {field('phone', 'Phone (optional)', 'tel', false, { autoComplete: 'tel', inputMode: 'tel' })}
           </div>
+
+          {field('company', 'Company (optional)', 'text', false, { autoComplete: 'organization' })}
 
           {/* Honeypot. Hidden from people, irresistible to form bots. */}
           <input

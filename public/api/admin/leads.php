@@ -93,7 +93,7 @@ if ($type === 'audits' && ($_GET['sort'] ?? '') === 'score') {
 $q = a_clean_line($_GET['q'] ?? '', 80);
 if ($q !== '') {
     $cols = $type === 'newsletter' ? ['email']
-        : ($type === 'audits' ? ['name', 'email', 'company', 'url', 'host'] : ['name', 'email', 'phone']);
+        : ($type === 'audits' ? ['name', 'email', 'phone', 'company', 'url', 'host'] : ['name', 'email', 'phone']);
     $needle = mb_strtolower($q);
     $rows = array_values(array_filter($rows, function ($r) use ($cols, $needle) {
         foreach ($cols as $c) {
