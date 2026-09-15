@@ -1,4 +1,4 @@
-import { AlertTriangle, XCircle, CheckCircle2, Lock } from 'lucide-react';
+import { AlertTriangle, XCircle, Lock } from 'lucide-react';
 
 const CATEGORY_LABELS = {
   technical: 'Technical',
@@ -88,19 +88,6 @@ export function LockedIssueRow({ issue }) {
         {CATEGORY_LABELS[issue.cat] || issue.cat}
       </span>
       <Lock className="w-3.5 h-3.5 text-[#94a3b8] flex-shrink-0" aria-hidden="true" />
-    </div>
-  );
-}
-
-/** A check that passed — the reassuring half of the report. */
-export function PassedRow({ item }) {
-  return (
-    <div className="flex items-center gap-2.5 py-1.5">
-      <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" aria-hidden="true" />
-      <span className="text-[14px] text-[#475569]">{item.title}</span>
-      {item.evidence && (
-        <span className="text-[12px] text-[#94a3b8] truncate hidden sm:inline">— {item.evidence}</span>
-      )}
     </div>
   );
 }

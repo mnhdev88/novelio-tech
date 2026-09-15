@@ -55,6 +55,22 @@ if (!defined('AUDIT_CACHE_TTL'))     define('AUDIT_CACHE_TTL', 86400);   // 24h
 if (!defined('AUDIT_RATE_PER_HOUR')) define('AUDIT_RATE_PER_HOUR', 10);
 if (!defined('AUDIT_NOTIFY_EMAIL'))  define('AUDIT_NOTIFY_EMAIL', 'ajay@noveliotech.com');
 
+// The address the visitor's report is sent FROM. It must be a real mailbox on
+// this domain: the host's SPF record covers its own mail servers, so a From
+// address anywhere else fails the check outright, and an address here that does
+// not exist means bounces vanish and providers start distrusting the domain.
+if (!defined('AUDIT_FROM_EMAIL')) define('AUDIT_FROM_EMAIL', 'info@noveliotech.com');
+if (!defined('AUDIT_FROM_NAME'))  define('AUDIT_FROM_NAME',  'Novelio Technologies');
+// Where a reply lands. Different from the sender on purpose — the report comes
+// from a general address, the conversation goes to a person.
+if (!defined('AUDIT_REPLY_TO'))   define('AUDIT_REPLY_TO', AUDIT_NOTIFY_EMAIL);
+
+// Links inside the email. Absolute, because an email client has no site to be
+// relative to.
+if (!defined('AUDIT_SITE_URL'))    define('AUDIT_SITE_URL', 'https://www.noveliotech.com');
+if (!defined('AUDIT_CTA_URL'))     define('AUDIT_CTA_URL', AUDIT_SITE_URL . '/contact');
+if (!defined('AUDIT_COMPANY_PHONE')) define('AUDIT_COMPANY_PHONE', '+1 (908) 639-5666');
+
 // Cached audit results. Sits beside the admin panel's data, above the web root,
 // for the same reason: the FTPS deploy wipes anything under public_html that
 // isn't part of the build.

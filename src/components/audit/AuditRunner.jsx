@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Loader2, AlertCircle, Gauge, RotateCcw, ArrowRight } from 'lucide-react';
+import { Search, Loader2, AlertCircle, Gauge, RotateCcw, ArrowRight, MailCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScoreRing from './ScoreRing';
 import { scoreColor } from './scoreScale';
-import IssueCard, { PassedRow } from './IssueCard';
+import IssueCard from './IssueCard';
 import UnlockGate from './UnlockGate';
 import { runAudit, fetchSpeed } from '../../utils/auditApi';
 import { trackEvent } from '../../utils/analytics';
@@ -143,12 +143,13 @@ export default function AuditRunner() {
   const [step, setStep] = useState(0);
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
-  const [unlocked, setUnlocked] = useState(null);   // { issues, passed }
+  // Set once the details are handed over. Holds { sent, email } — never any
+  // part of the report, because the report is emailed rather than shown.
+  const [submitted, setSubmitted] = useState(null);
   const [website, setWebsite] = useState('');       // honeypot
 
   const resultsRef = useRef(null);
   const timers = useRef([]);
-  const unlockedRef = useRef(false);
 
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
 
@@ -166,8 +167,7 @@ export default function AuditRunner() {
 
     setError('');
     setResult(null);
-    setUnlocked(null);
-    unlockedRef.current = false;
+    setSubmitted(null);
     setPhase('running');
     setStep(0);
     trackEvent('audit_started', { site: typed });
@@ -204,21 +204,15 @@ export default function AuditRunner() {
                 speed_state: speedData.speed_state,
                 overall: speedData.overall ?? prev.overall,
                 categories: speedData.categories ?? prev.categories,
-                // While still gated, the free/locked split may have changed —
-                // a failing speed metric can outrank what was shown before.
-                free: unlockedRef.current ? prev.free : (speedData.free ?? prev.free),
-                locked: unlockedRef.current ? [] : (speedData.locked ?? prev.locked),
-                locked_count: unlockedRef.current ? 0 : (speedData.locked_count ?? prev.locked_count),
+                // The free/locked split can change when speed lands: a failing
+                // Core Web Vital often outranks whatever was shown before.
+                free: speedData.free ?? prev.free,
+                locked: speedData.locked ?? prev.locked,
+                locked_count: speedData.locked_count ?? prev.locked_count,
                 fail_count: speedData.fail_count ?? prev.fail_count,
                 warn_count: speedData.warn_count ?? prev.warn_count,
               };
             });
-
-            // If the visitor unlocked while Google was still working, the server
-            // sends the speed findings in full — fold them into the open report.
-            if (speedData.unlocked && speedData.free?.length) {
-              setUnlocked({ issues: speedData.free, passed: speedData.passed || [] });
-            }
           })
           .catch(() => {
             setResult((prev) => (prev ? { ...prev, speed_state: 'unavailable' } : prev));
@@ -236,13 +230,12 @@ export default function AuditRunner() {
     clearTimers();
     setPhase('idle');
     setResult(null);
-    setUnlocked(null);
-    unlockedRef.current = false;
+    setSubmitted(null);
     setStep(0);
     setError('');
   };
 
-  const shownIssues = unlocked ? unlocked.issues : (result?.free || []);
+  const shownIssues = result?.free || [];
 
   return (
     <div>
@@ -343,16 +336,15 @@ export default function AuditRunner() {
             <SpeedCard state={result.speed_state} speed={result.speed} />
           </div>
 
-          {/* Findings. Three of them before the gate, all of them after it. */}
+          {/* The three worst findings, free, before and after the form alike.
+              Nothing further is ever revealed here — the rest goes by email. */}
           {shownIssues.length > 0 && (
             <div className="mt-8">
               <h3 className="font-heading font-700 text-[#1B3172] text-[20px] sm:text-[23px] mb-1">
-                {unlocked ? 'Everything we found' : 'The three biggest problems'}
+                The three biggest problems
               </h3>
               <p className="text-[14.5px] text-[#64748b] mb-5">
-                {unlocked
-                  ? 'Ordered by how much each one is costing you. Work down the list.'
-                  : 'Ranked by impact. Each one is explained in full below.'}
+                Ranked by impact. Each one is explained in full below.
               </p>
 
               <div className="space-y-4">
@@ -375,57 +367,68 @@ export default function AuditRunner() {
             </div>
           )}
 
-          {/* ── The gate ─────────────────────────────────────────────── */}
-          {!unlocked && (
+          {/* ── The form ─────────────────────────────────────────────── */}
+          {!submitted && (
             <div className="mt-8">
               <UnlockGate
                 token={result.token}
                 lockedIssues={result.locked || []}
                 lockedCount={result.locked_count || 0}
                 host={result.host}
-                onUnlocked={(data) => {
-                  unlockedRef.current = true;
-                  setUnlocked(data);
-                }}
+                onUnlocked={setSubmitted}
               />
             </div>
           )}
 
-          {/* ── After unlocking ──────────────────────────────────────── */}
-          {unlocked && (
-            <>
-              {unlocked.passed?.length > 0 && (
-                <div className="mt-8 glass-card rounded-2xl p-6 sm:p-7">
-                  <h3 className="font-heading font-700 text-[#1B3172] text-[18px] mb-1">
-                    What this site already gets right
-                  </h3>
-                  <p className="text-[13.5px] text-[#64748b] mb-4">
-                    {unlocked.passed.length} checks passed. Worth knowing what not to touch.
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-x-8">
-                    {unlocked.passed.map((p) => <PassedRow key={p.id} item={p} />)}
+          {/* ── After the form ───────────────────────────────────────── */}
+          {submitted && (
+            <motion.div
+              initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
+              className="mt-8 glass-card gradient-border rounded-2xl p-7 sm:p-9 text-center"
+            >
+              {submitted.sent === false ? (
+                // The lead was captured but the mail server refused it. Saying
+                // "check your inbox" here would send them to look at nothing.
+                <>
+                  <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
+                    <AlertCircle className="w-6 h-6 text-amber-600" aria-hidden="true" />
                   </div>
-                </div>
+                  <h3 className="font-heading font-700 text-[#1B3172] text-[21px] sm:text-[24px] mb-2">
+                    We have your details, but the email did not go through
+                  </h3>
+                  <p className="text-[15px] text-[#475569] max-w-lg mx-auto mb-6 leading-relaxed">
+                    Your audit is saved and someone will send it over personally. If you would rather
+                    not wait, book a call and we will walk you through it.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                    <MailCheck className="w-6 h-6 text-green-700" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-heading font-700 text-[#1B3172] text-[21px] sm:text-[24px] mb-2">
+                    Your report is on its way
+                  </h3>
+                  <p className="text-[15px] text-[#475569] max-w-lg mx-auto mb-2 leading-relaxed">
+                    We have sent the full summary for <strong className="text-[#1B3172]">{result.host}</strong>
+                    {submitted.email ? <> to <strong className="text-[#1B3172]">{submitted.email}</strong></> : null}.
+                    It should arrive within a minute.
+                  </p>
+                  <p className="text-[13.5px] text-[#94a3b8] max-w-lg mx-auto mb-6">
+                    Not there? Check your spam folder — and add us to your contacts so the next one is not missed.
+                  </p>
+                </>
               )}
 
-              <div className="mt-8 glass-card gradient-border rounded-2xl p-7 sm:p-9 text-center">
-                <h3 className="font-heading font-700 text-[#1B3172] text-[21px] sm:text-[25px] mb-2">
-                  Want these fixed rather than listed?
-                </h3>
-                <p className="text-[15px] text-[#475569] max-w-xl mx-auto mb-6 leading-relaxed">
-                  This report tells you what is wrong and how to fix it — you are welcome to hand it to
-                  whoever built your site. If you would rather it were simply handled, that is what we do.
-                </p>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  <Link to="/contact" className="btn-primary">
-                    Book a free 30-minute call <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </Link>
-                  <Link to="/services/search-engine-optimization" className="btn-ghost">
-                    See how we work
-                  </Link>
-                </div>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <Link to="/contact" className="btn-primary">
+                  Book a free 30-minute call <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
+                <Link to="/services/search-engine-optimization" className="btn-ghost">
+                  See how we work
+                </Link>
               </div>
-            </>
+            </motion.div>
           )}
 
           <div className="mt-6 text-center">

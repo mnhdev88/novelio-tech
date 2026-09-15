@@ -313,22 +313,16 @@ function au_speed_issues(array $psi) {
 function au_speed_view(array $r) {
     $problems = au_rank_problems($r['issues']);
 
-    // Someone who already paid the email price gets the speed findings in full,
-    // however late Google answered. See the note in unlock.php.
-    $unlocked = !empty($r['unlocked']);
-    $free = $unlocked ? $problems : array_slice($problems, 0, 3);
-    $rest = $unlocked ? []        : array_slice($problems, 3);
+    // Always the gated split, unlocked or not. The full findings are emailed and
+    // never rendered, so handing them to the page here would put every fix one
+    // devtools panel away for anyone who submitted the form.
+    $free = array_slice($problems, 0, 3);
+    $rest = array_slice($problems, 3);
 
     return [
         'ok'          => true,
-        'unlocked'    => $unlocked,
         'speed_state' => $r['speed_state'],
         'speed'       => $r['speed'],
-        // Only meaningful once unlocked; the free view lists passing checks from
-        // run.php already and does not need them restated.
-        'passed'      => $unlocked ? array_values(array_map(function ($i) {
-            return ['id' => $i['id'], 'cat' => $i['cat'], 'title' => $i['title'], 'evidence' => $i['evidence']];
-        }, array_filter($r['issues'], function ($i) { return $i['state'] === 'pass'; }))) : [],
         'overall'     => $r['overall'],
         'categories'  => $r['categories'],
         'free'        => array_map(function ($i) {

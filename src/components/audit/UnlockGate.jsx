@@ -12,6 +12,11 @@ import { trackEvent } from '../../utils/analytics';
  * named but unreadable. The server has never sent their explanations, so the
  * list is honest about there being something behind it — and there is no
  * devtools trick that reveals it.
+ *
+ * Crossing it sends the summary by email rather than revealing it here, so every
+ * promise in this component has to say inbox, not page. Copy that still said
+ * "opens on this page" would be a lie told at the exact moment someone hands
+ * over their details.
  */
 export default function UnlockGate({ token, lockedIssues, lockedCount, host, onUnlocked }) {
   const [form, setForm] = useState({ email: '', name: '', phone: '', company: '' });
@@ -25,7 +30,7 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
     if (submitting) return;
 
     if (!/\S+@\S+\.\S+/.test(form.email)) {
-      setError('Enter a valid email address so we can show you the rest.');
+      setError('Enter a valid email address so we can send your report there.');
       return;
     }
     // Count digits and nothing else. Real numbers arrive as +91 98765 43210,
@@ -48,7 +53,9 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
     try {
       const data = await unlockReport({ ...form, website, consent, token });
       trackEvent('generate_lead', { form: 'seo_audit', site: host });
-      onUnlocked(data);
+      // `sent` false means the lead was captured but the mail server refused it.
+      // The parent says so plainly rather than pointing at an empty inbox.
+      onUnlocked({ ...data, email: form.email });
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
       setSubmitting(false);
@@ -95,14 +102,12 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
 
       <div className="p-5 sm:p-7 bg-gradient-to-br from-brand-purple/[0.04] to-brand-blue/[0.04]">
         <h3 className="font-heading font-700 text-[#1B3172] text-[19px] sm:text-[21px] mb-1.5">
-          {lockedCount > 0
-            ? 'Unlock the full report'
-            : 'Get the complete report'}
+          Get your report by email
         </h3>
         <p className="text-[14.5px] text-[#475569] leading-relaxed mb-5">
           {lockedCount > 0
-            ? 'See every issue above explained in plain English, with the specific fix for each one — and everything your site is already getting right.'
-            : `${host} scored well, which is rare. The full report shows every check we ran, what passed, and where the remaining upside is.`}
+            ? `We will send the full summary for ${host} — your score, every category, and the problems we found — straight to your inbox.`
+            : `${host} scored well, which is rare. We will email you the full summary so you have it on record, along with where the remaining upside is.`}
         </p>
 
         <form onSubmit={submit} className="space-y-3">
@@ -144,14 +149,14 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
 
           <button type="submit" disabled={submitting} className="btn-primary w-full justify-center disabled:opacity-60">
             {submitting ? (
-              <><Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" /> Opening your report…</>
+              <><Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" /> Sending your report…</>
             ) : (
-              <>Show me the full report <ArrowRight className="w-4 h-4" aria-hidden="true" /></>
+              <>Email me the report <ArrowRight className="w-4 h-4" aria-hidden="true" /></>
             )}
           </button>
 
           <p className="text-[12px] text-[#94a3b8] text-center">
-            The report opens on this page immediately. Nothing is emailed to you.
+            One email with your results. No newsletter, and we never sell your details.
           </p>
         </form>
       </div>

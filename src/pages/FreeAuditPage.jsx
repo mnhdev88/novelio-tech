@@ -36,15 +36,15 @@ const CHECK_GROUPS = [
 const FAQS = [
   {
     q: 'Is this really free?',
-    a: 'Yes. There is no trial, no card and no call booked before you see anything. You run the audit, you see your score and the biggest problems, and you give us an email address only if you want the rest of the findings explained.',
+    a: 'Yes. There is no trial, no card and no call booked before you see anything. You run the audit and your score and the three biggest problems appear straight away. If you want the full summary, you give us an email address and phone number and we send it over.',
   },
   {
-    q: 'What do you do with my email address?',
-    a: 'We use it to follow up about this audit, once. You are not added to a newsletter or a marketing list, and we do not sell or share it. If you would rather not hear from us, say so in your reply and that is the end of it.',
+    q: 'What do you do with my email address and phone number?',
+    a: 'We email your report to the address you give, and we use the details to follow up about this audit. You are not added to a newsletter or a marketing list, and we do not sell or share them. If you would rather not hear from us, say so in your reply and that is the end of it.',
   },
   {
     q: 'How long does it take?',
-    a: 'The page checks take a few seconds. The speed section takes another 20–40 because Google loads your page in a real browser to measure it, so the whole audit is usually done inside a minute.',
+    a: 'The page checks take a few seconds. The speed section takes another 20–40 because Google loads your page in a real browser to measure it, so the whole audit is usually done inside a minute. The emailed summary arrives within a minute of you submitting the form.',
   },
   {
     q: 'Does it check my whole site or just one page?',
@@ -55,8 +55,8 @@ const FAQS = [
     a: 'It tells you what is wrong and how to fix each thing. Technical and on-page problems are the part of SEO that is genuinely fixable in an afternoon; rankings also depend on content depth and authority, which take longer. The audit is honest about which is which.',
   },
   {
-    q: 'Can I give this report to my own developer?',
-    a: 'Please do. Every finding includes the specific fix, written so a developer can act on it without needing us. If they handle it, we have still been useful to you.',
+    q: 'Do I have to talk to someone to get the fixes?',
+    a: 'The emailed summary names every problem we found and what your score is. The fix for each one is what we go through on a call, which takes about half an hour and costs nothing — it is faster than reading thirty pages, and you can hand what you learn to your own developer afterwards. The three problems shown on this page come with their fixes written out, no email needed.',
   },
 ];
 

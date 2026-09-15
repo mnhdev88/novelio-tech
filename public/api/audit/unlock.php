@@ -3,17 +3,24 @@
 // Free SEO Audit — exchange an email address for the full report.
 //
 //   POST { token, email, phone, name, company, consent, t, website }
-//        -> { issues: [ ...every finding, with impact and fix... ] }
+//        -> { ok, sent }        ...and the summary goes out by email.
 //
 // email and phone are both required; name and company are not.
 //
+// NOTHING ABOUT THE REPORT COMES BACK IN THIS RESPONSE. The findings are emailed
+// instead, and the page says so. That is a deliberate reversal of how this
+// started: the report on screen was instant gratification, but a summary in the
+// inbox is a thing the recipient keeps, forwards to a partner, and can reply to
+// — and a reply is the point of the whole tool.
+//
 // This is the endpoint the whole tool exists for. Two rules shape it:
 //
-//   1. THE REPORT ALWAYS GOES OUT. If recording the lead fails — the data
-//      directory is not writable, the disk is full — the visitor still gets what
-//      they were promised. A lead we failed to log is a bad day; a visitor who
-//      handed over their email and got an error page is a worse one, and it is
-//      the version they tell people about.
+//   1. THE EMAIL STILL GOES OUT IF LOGGING FAILS. If the data directory is not
+//      writable or the disk is full, the visitor still gets what they were
+//      promised. A lead we failed to log is a bad day; a visitor who handed over
+//      their details and got an error page is a worse one, and it is the version
+//      they tell people about. Sending, by contrast, is NOT swallowed — if the
+//      email did not go, saying so is the only honest answer.
 //
 //   2. It writes audits.jsonl straight into the admin panel's data directory
 //      rather than loading the panel's own store. That store pulls in
@@ -23,15 +30,16 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 require_once __DIR__ . '/_checks.php';
+require_once __DIR__ . '/_mail.php';
 
 au_method('POST');
 
 $in = au_body();
 
 if (!au_check_bot_signals($in)) {
-    // Looks successful, returns nothing. A bot gets no report and no error to
+    // Looks successful, sends nothing. A bot gets no report and no error to
     // learn from; no real visitor ever lands here.
-    au_respond(['ok' => true, 'issues' => []]);
+    au_respond(['ok' => true, 'sent' => true]);
 }
 
 $token = (string) ($in['token'] ?? '');
@@ -68,26 +76,21 @@ try {
     @error_log('[audit] could not record lead: ' . $e->getMessage());
 }
 
-// Mark the audit paid for. PageSpeed can still be running when someone unlocks,
-// and its findings are appended to this report afterwards by speed.php — which
-// checks this flag so those findings arrive in full rather than gated. Without
-// it the visitor would unlock the report and then watch a fresh locked section
-// appear underneath it.
+// Mark the audit converted. Nothing reads this today — the report is emailed
+// rather than revealed, so there is no second request to unseal — but it is the
+// record that these details were handed over for this particular audit.
 $report['unlocked'] = true;
 au_cache_put('t' . $token, $report);
 
+// Send the summary. This is now the deliverable, so unlike recording the lead it
+// is NOT swallowed on failure — a visitor told "check your inbox" when nothing
+// was sent is worse off than one told plainly that it did not go.
+$sent = au_send_report($report, $email, au_clean($in['name'] ?? '', 190));
+
 au_respond([
-    'ok'     => true,
-    'issues' => array_map(function ($i) {
-        return [
-            'id' => $i['id'], 'cat' => $i['cat'], 'state' => $i['state'],
-            'title' => $i['title'], 'impact' => $i['impact'],
-            'detail' => $i['detail'], 'evidence' => $i['evidence'],
-        ];
-    }, au_rank_problems($report['issues'])),
-    'passed' => array_values(array_map(function ($i) {
-        return ['id' => $i['id'], 'cat' => $i['cat'], 'title' => $i['title'], 'evidence' => $i['evidence']];
-    }, array_filter($report['issues'], function ($i) { return $i['state'] === 'pass'; }))),
+    'ok'    => true,
+    'sent'  => $sent,
+    'email' => $email,
 ]);
 
 // ── Recording the lead ───────────────────────────────────────────────────────
@@ -149,9 +152,9 @@ function au_append_lead(array $record) {
 }
 
 /**
- * Tell the team, immediately. This is an internal notification to our own
- * domain — the visitor is never emailed by this tool, so there is no
- * deliverability question to answer here.
+ * Tell the team, immediately. Internal, to our own domain, and separate from the
+ * summary the visitor receives — this one carries the phone number and the lead
+ * context, which is not something to put in the copy going out to them.
  */
 function au_notify(array $r) {
     $to = AUDIT_NOTIFY_EMAIL;

@@ -1,9 +1,10 @@
 # Free SEO Audit tool — setup
 
 The lead magnet at **/free-seo-audit**. A visitor enters a URL, the server audits
-it, and the score plus the three worst findings appear immediately. The rest of
-the report unlocks in exchange for an email address, which lands in the admin
-panel under **Leads → SEO audits**.
+it, and the score plus the three worst findings appear immediately. A summary of
+the rest is emailed in exchange for an email address and a phone number, which
+land in the admin panel under **Leads → SEO audits**. Nothing further appears on
+the page once the form is submitted — the report goes to the inbox.
 
 It works with no setup at all — except the Speed section, which needs a Google
 API key. Everything below is about that key and about where the leads go.
@@ -134,16 +135,62 @@ conversation than one scoring 88 — they already saw the number.
 
 Ajay also gets a plain-text email per lead at `AUDIT_NOTIFY_EMAIL`.
 
-### No email is sent to the visitor
+### What the visitor receives
 
-By design, for now. The report opens on the page and nothing is mailed out, so
-there is no deliverability question to answer and no spam-folder problem.
+One email, sent the moment they submit the form: their score, the five category
+scores, how many checks failed, and the names of the worst problems — followed by
+a button to book a call.
 
-The trade-off: **the email address is unverified.** Someone can type
-`a@b.com` to unlock. You still capture the audited URL, which is the part worth
-having. If you later want verified addresses, either send the report by
-authenticated SMTP from a real `@noveliotech.com` mailbox, or add a six-digit
-code before unlocking — neither requires rebuilding the tool.
+**It deliberately contains no fixes.** The problems are named; what each one is
+costing them and how to repair it is the conversation. An email carrying every
+answer gives the recipient no reason to reply, which is the only thing this tool
+is built to produce.
+
+The three worst findings still appear on the page in full, fixes included, before
+the form. That is what makes the tool worth using rather than a form with a score
+attached — and it is the proof that the emailed list is real.
+
+#### If the emails do not arrive
+
+They are sent with PHP `mail()` from `AUDIT_FROM_EMAIL`, which defaults to
+`info@noveliotech.com`. Four things do the work of keeping them out of spam, and
+all four are in `_mail.php`: a From address on this domain so SPF passes, an
+envelope sender (`-f`) so the bounce path matches it, a real plaintext part
+alongside the HTML, and a Message-ID and Date.
+
+If deliverability is still poor — check a Gmail and an Outlook address, spam
+folders included, before deciding — the fix is authenticated SMTP rather than
+more headers. Point `au_send_report()` at your own mailbox over SMTP; everything
+else about the flow stays as it is.
+
+Override the sender if you want a different mailbox, but keep it on this domain:
+
+```php
+define('AUDIT_FROM_EMAIL', 'reports@noveliotech.com');
+define('AUDIT_FROM_NAME',  'Novelio Technologies');
+define('AUDIT_REPLY_TO',   'ajay@noveliotech.com');
+define('AUDIT_CTA_URL',    'https://www.noveliotech.com/contact');
+```
+
+A send failure is **not** hidden. The page says the details were captured but the
+email did not go, so nobody is sent to stare at an empty inbox, and the lead is
+recorded either way.
+
+### The details are not verified
+
+Someone can type `a@b.com` and `1234567` to submit — though with the report going
+by email, a fake address now means they simply never receive it, which is its own
+deterrent. You still capture the audited URL, which is the part worth having. If
+you want details you can trust, send a six-digit code before the report; nothing
+here would need rebuilding.
+
+Both fields are validated loosely on purpose. Phone numbers are checked by digit
+count (7–20) and nothing else: real ones arrive as `+91 98765 43210`,
+`(908) 639-5666` and `020 7946 0958 x214`, and any rule strict enough to police
+the punctuation rejects somebody's genuine number — which, on a mandatory field,
+means turning away a lead over formatting. The check is enforced in `unlock.php`,
+not only in the form, because a rule that lives only in the browser applies only
+to people using a browser.
 
 ---
 
@@ -153,7 +200,8 @@ code before unlocking — neither requires rebuilding the tool.
 public/api/audit/
   run.php       POST {url} -> score, categories, 3 worst findings, locked titles
   speed.php     POST {token} -> the PageSpeed card (a second call; Google is slow)
-  unlock.php    POST {token,email} -> every finding in full; records the lead
+  unlock.php    POST {token,email,phone} -> records the lead, emails the summary
+  _mail.php     the summary email: what goes in it, and the deliverability bits
   _checks.php   the ~30 checks, each with its own "why it matters" and "how to fix"
   _lib.php      URL safety, fetching, caching
   _config.php   credential loading
@@ -161,10 +209,11 @@ public/api/audit/
 
 Three things in here are load-bearing and should not be "simplified" later:
 
-**The locked half of the report is never sent to the browser.** `run.php` returns
-the three free findings with their explanations and the rest as bare titles.
-Hiding the full report behind a CSS blur instead would put the whole lead magnet
-one devtools panel away from being free.
+**The locked half of the report is never sent to the browser — before or after
+the form.** `run.php` returns the three free findings with their explanations and
+the rest as bare titles; `unlock.php` returns no findings at all. Hiding a full
+payload behind a CSS blur instead would put the whole lead magnet one devtools
+panel away from being free.
 
 **Redirects are followed by hand.** The tool fetches a URL an anonymous stranger
 supplied, which makes it a server-side request forgery engine unless it is
