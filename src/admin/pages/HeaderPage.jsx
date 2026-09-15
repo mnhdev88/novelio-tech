@@ -24,7 +24,8 @@ export default function HeaderPage() {
           addLabel="Add menu item"
         />
         <p className="text-[11px] text-[#94a3b8] mt-3">
-          The Services item opens the services dropdown — removing it removes the dropdown too.
+          The Services and Tools items open dropdowns — removing one removes its dropdown too,
+          and what is inside each is set in the code rather than here.
           Addresses starting with <code>/</code> are pages on your own site.
         </p>
       </Card>
