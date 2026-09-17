@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ArrowRight, Handshake, Gauge } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Handshake, Gauge, ListChecks } from 'lucide-react';
 import { SERVICES, NAVIGATION } from '../../data/siteData';
 
 // Which services appear in the header dropdown, in this order. SEO, Google
@@ -24,9 +24,8 @@ const NAV_SERVICES = NAV_SERVICE_IDS
   .map((id) => SERVICES.find((s) => s.id === id))
   .filter(Boolean);
 
-// Free tools that earn a top-level menu of their own. One so far, which is why
-// the dropdown exists now rather than later: adding the second tool should be
-// one entry here, not a nav rebuild.
+// Free tools that earn a top-level menu of their own. Adding one is a single
+// entry here — both the desktop dropdown and the mobile menu read this array.
 const TOOLS = [
   {
     to: '/free-seo-audit',
@@ -34,6 +33,16 @@ const TOOLS = [
     blurb: 'Score any website in about a minute',
     Icon: Gauge,
     color: 'from-violet-600 to-blue-600',
+  },
+  {
+    // Deep link to the self-check on the website development page. ScrollToTop
+    // in App.jsx is hash-aware, which is what makes this land on the section
+    // rather than the top of the page.
+    to: '/services/website-development#website-check',
+    title: 'Check My Website',
+    blurb: 'Six questions, an instant score',
+    Icon: ListChecks,
+    color: 'from-emerald-500 to-teal-600',
   },
 ];
 import { useAuth } from '../../portal/AuthContext';
@@ -129,7 +138,7 @@ export default function Navbar() {
   useEffect(() => {
     setMenuOpen(false);
     setOpenMenu(null);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     if (menuOpen) document.body.style.overflow = 'hidden';

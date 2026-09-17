@@ -46,8 +46,26 @@ const FreeAuditPage      = lazy(() => import('./pages/FreeAuditPage'));
 const NotFoundPage       = lazy(() => import('./pages/NotFoundPage'));
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (!hash) { window.scrollTo(0, 0); return; }
+
+    // Cross-route hash links (e.g. the Tools menu's "Check My Website" pointing
+    // at /services/website-development#website-check) land here before the lazy
+    // route chunk has rendered, so the anchor usually isn't in the DOM yet.
+    // Retry across a few frames instead of silently leaving the visitor at the
+    // top of a page they were deep-linked into.
+    let frames = 0;
+    let raf = requestAnimationFrame(function find() {
+      const el = document.getElementById(hash.slice(1));
+      // No behavior option: the global `scroll-behavior` handles smoothness and
+      // is already neutralized under prefers-reduced-motion.
+      if (el) return el.scrollIntoView({ block: 'start' });
+      if (frames++ < 90) raf = requestAnimationFrame(find);
+      else window.scrollTo(0, 0);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [pathname, hash]);
   return null;
 }
 
