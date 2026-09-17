@@ -13,6 +13,11 @@ const ARTICLE_CSS = `
 .blog-article-root header.hero{background:linear-gradient(135deg,#0057d9 0%,#00b4d8 100%);color:#fff;padding:60px 24px;text-align:center}
 .blog-article-root header.hero h1{font-size:2.2rem;line-height:1.3;max-width:720px;margin:0 auto 16px}
 .blog-article-root header.hero .meta{font-size:.9rem;opacity:.85}
+/* Posts that lead with the featured image instead of the blue hero band put the
+   h1 and byline inside .container, so both need styles of their own. */
+.blog-article-root figure.featured{margin:0 0 20px}
+.blog-article-root h1{font-size:2.3rem;line-height:1.25;letter-spacing:-.5px;color:#0f172a;margin:0 0 12px}
+.blog-article-root .container > .meta{font-size:.9rem;color:#64748b;margin-bottom:20px}
 .blog-article-root .toc{background:#f0f7ff;border-left:4px solid #0057d9;padding:20px 24px;border-radius:6px;margin:32px 0}
 .blog-article-root .toc h2{font-size:1.1rem;margin-bottom:12px;color:#0057d9}
 .blog-article-root .toc ol{padding-left:20px}
@@ -43,7 +48,7 @@ const ARTICLE_CSS = `
 .blog-article-root figure{margin:36px 0}
 .blog-article-root figure img{width:100%;display:block;border-radius:10px;border:1px solid #e0e7ff;box-shadow:0 4px 16px rgba(15,23,42,.08)}
 .blog-article-root figcaption{font-size:.85rem;color:#64748b;text-align:center;margin-top:10px;line-height:1.5}
-@media(max-width:600px){.blog-article-root header.hero h1{font-size:1.6rem}.blog-article-root h2{font-size:1.3rem}}
+@media(max-width:600px){.blog-article-root header.hero h1{font-size:1.6rem}.blog-article-root h1{font-size:1.65rem}.blog-article-root h2{font-size:1.3rem}}
 `;
 
 const CTA_ITEMS = [
