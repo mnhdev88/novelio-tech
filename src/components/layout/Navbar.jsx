@@ -3,13 +3,26 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight, Handshake, Gauge } from 'lucide-react';
 import { SERVICES, NAVIGATION } from '../../data/siteData';
 
-// Website dev, SEO, GBP, and lead gen stay out of the nav dropdown; they remain on
-// /services and in the growth plans. Mobile App Development is featured at the top of
-// the dropdown, followed by the remaining supporting services.
-const NAV_SERVICES = [
-  ...SERVICES.filter((s) => s.id === 'mobile-app-development'),
-  ...SERVICES.slice(5),
+// Which services appear in the header dropdown, in this order. SEO, Google
+// Business, and Lead Gen stay out — they remain on /services and in the growth
+// plans — as do Email Marketing and the Email Validator.
+//
+// This is an explicit id list rather than a positional slice: content/services.json
+// is reorderable from the admin panel, so a slice would silently pull the wrong
+// entries the first time someone drags a row.
+const NAV_SERVICE_IDS = [
+  'website-development',
+  'mobile-app-development',
+  'automation',
+  'branding',
+  'tech-ops',
 ];
+
+// filter(Boolean) guards the case where a service is deleted in the admin panel
+// but its id is still listed above.
+const NAV_SERVICES = NAV_SERVICE_IDS
+  .map((id) => SERVICES.find((s) => s.id === id))
+  .filter(Boolean);
 
 // Free tools that earn a top-level menu of their own. One so far, which is why
 // the dropdown exists now rather than later: adding the second tool should be
