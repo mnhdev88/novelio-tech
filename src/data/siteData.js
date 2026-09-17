@@ -52,6 +52,20 @@ export const PHONE_TEL = `tel:${companyJson.phone.replace(/[^\d+]/g, '')}`;
 // wa.me only accepts bare digits, so strip anything the panel may have picked up
 // (a leading "+", spaces, brackets) rather than trusting the field to be clean.
 export const WHATSAPP_URL = `https://wa.me/${companyJson.whatsapp.replace(/\D/g, '')}`;
+
+// Where every "book a call / free consultation / free audit" CTA points. The
+// fallback matters: settings.json is admin-editable, and a cleared field would
+// otherwise render href="undefined" on ~20 of the site's primary CTAs.
+export const CALENDLY_URL = companyJson.calendly || 'https://calendly.com/noveliotech-sales/30min';
+
+// Booking CTAs open in a new tab so an abandoned booking doesn't cost us the
+// visitor — they still have the site behind them. Spread onto an <a> so the
+// three attributes can never drift apart across the files that use them.
+export const CALENDLY_LINK = {
+  href: CALENDLY_URL,
+  target: '_blank',
+  rel: 'noopener noreferrer',
+};
 export const STATS = statsJson;
 export const SERVICES = servicesJson;
 export const TESTIMONIALS = testimonialsJson;
