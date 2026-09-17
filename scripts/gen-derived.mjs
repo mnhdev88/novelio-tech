@@ -86,7 +86,7 @@ const blogBlocks = livePosts.map((post) => `  <url>
 let out = ''
 let cursor = 0
 let insertAt = null
-for (const m of original.matchAll(/[ \t]*<url>[\s\S]*?<\/url>\n?/g)) {
+for (const m of original.matchAll(/[ \t]*<url>[\s\S]*?<\/url>\r?\n?/g)) {
   if (!isPost(m[0])) continue
   out += original.slice(cursor, m.index)
   if (insertAt === null) insertAt = out.length
