@@ -10,7 +10,7 @@ import {
 import CTABanner from '../../components/home/CTABanner';
 import TestimonialsSection from '../../components/home/TestimonialsSection';
 import { useState } from 'react';
-import { SERVICES } from '../../data/siteData';
+import { SERVICES, CALENDLY_LINK } from '../../data/siteData';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -285,11 +285,11 @@ export default function SearchEngineOptimizationPage() {
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="btn-primary">
+                <a {...CALENDLY_LINK} className="btn-primary">
                   Get a Free SEO Audit
                   <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link to="/contact" className="btn-ghost">Talk to Our Team</Link>
+                </a>
+                <a {...CALENDLY_LINK} className="btn-ghost">Talk to Our Team</a>
               </div>
             </motion.div>
 

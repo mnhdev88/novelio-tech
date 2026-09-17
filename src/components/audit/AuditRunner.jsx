@@ -8,6 +8,7 @@ import IssueCard from './IssueCard';
 import UnlockGate from './UnlockGate';
 import { runAudit, fetchSpeed } from '../../utils/auditApi';
 import { trackEvent } from '../../utils/analytics';
+import { CALENDLY_LINK } from '../../data/siteData';
 
 // The visible steps while the audit runs. These are honest about what the server
 // is doing rather than a fake loading bar — the last one genuinely waits on
@@ -421,9 +422,9 @@ export default function AuditRunner() {
               )}
 
               <div className="flex flex-wrap gap-3 justify-center">
-                <Link to="/contact" className="btn-primary">
+                <a {...CALENDLY_LINK} className="btn-primary">
                   Book a free 30-minute call <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Link>
+                </a>
                 <Link to="/services/search-engine-optimization" className="btn-ghost">
                   See how we work
                 </Link>

@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Globe, Loader2 } from 'lucide-react';
 import SEO from '../components/SEO';
-import { INDUSTRIES } from '../data/siteData';
+import { INDUSTRIES, CALENDLY_LINK } from '../data/siteData';
 
 // Extracts clean domain label from a URL
 function getDomain(url) {
@@ -306,9 +306,9 @@ export default function IndustryPage() {
           <p className="text-[#64748b] mb-6 max-w-md mx-auto text-sm">
             We build high-converting, SEO-optimized websites tailored specifically for the {industry.name} sector.
           </p>
-          <Link to="/contact" className="btn-primary inline-flex">
+          <a {...CALENDLY_LINK} className="btn-primary inline-flex">
             Get a Free Quote
-          </Link>
+          </a>
         </motion.div>
       </section>
     </main>

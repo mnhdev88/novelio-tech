@@ -2,7 +2,7 @@ import SEO from '../../components/SEO';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase, ChevronDown, ChevronUp } from 'lucide-react';
-import { SERVICES } from '../../data/siteData';
+import { SERVICES, CALENDLY_LINK } from '../../data/siteData';
 import CTABanner from '../../components/home/CTABanner';
 import TestimonialsSection from '../../components/home/TestimonialsSection';
 import { useState } from 'react';
@@ -180,11 +180,11 @@ export default function ServiceDetailPage() {
                 ))}
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="btn-primary">
+                <a {...CALENDLY_LINK} className="btn-primary">
                   Get Started Today
                   <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link to="/contact" className="btn-ghost">Request Free Audit</Link>
+                </a>
+                <a {...CALENDLY_LINK} className="btn-ghost">Request Free Audit</a>
               </div>
             </motion.div>
 

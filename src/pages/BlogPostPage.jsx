@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { Clock, ArrowRight, Phone, MessageCircle, CheckCircle, ChevronRight, Tag, Eye } from 'lucide-react';
 import SEO from '../components/SEO';
-import { BLOG_POSTS, COMPANY, SERVICES, PHONE_TEL, WHATSAPP_URL } from '../data/siteData';
+import { BLOG_POSTS, COMPANY, SERVICES, PHONE_TEL, WHATSAPP_URL, CALENDLY_LINK } from '../data/siteData';
 import NotFoundPage from './NotFoundPage';
 
 const ARTICLE_CSS = `
@@ -179,12 +179,12 @@ export default function BlogPostPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to="/contact"
+                  <a
+                    {...CALENDLY_LINK}
                     className="block w-full text-center bg-white text-[#4f46e5] font-bold text-sm py-3 px-4 rounded-xl hover:bg-white/90 transition-all hover:shadow-lg"
                   >
                     Book Your Free Audit →
-                  </Link>
+                  </a>
                 </div>
                 <div className="bg-[#f8f9ff] border border-t-0 border-slate-200 p-4 flex gap-3">
                   <a

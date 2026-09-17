@@ -7,7 +7,7 @@ import {
   Rocket, Building2, Megaphone, Headphones, BarChart3, ShieldCheck,
   ChevronDown, ChevronUp, FileText, PhoneCall, Settings,
 } from 'lucide-react';
-import { COMPANY } from '../data/siteData';
+import { COMPANY, CALENDLY_LINK } from '../data/siteData';
 import { trackEvent } from '../utils/analytics';
 
 const fadeUp = (delay = 0) => ({
@@ -269,7 +269,7 @@ export default function PartnerPage() {
                   Become a Partner
                   <ArrowRight className="w-5 h-5" />
                 </a>
-                <Link to="/contact" className="btn-ghost">Talk to Our Team</Link>
+                <a {...CALENDLY_LINK} className="btn-ghost">Talk to Our Team</a>
               </div>
             </motion.div>
 

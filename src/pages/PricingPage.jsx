@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, Sparkles, ShieldCheck, HelpCircle, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
 import CTABanner from '../components/home/CTABanner';
-import { PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ, PRICING_COMPARISON, PHONE_TEL } from '../data/siteData';
+import { PRICING_PLANS, PRICING_ADDONS, PRICING_FAQ, PRICING_COMPARISON, PHONE_TEL, CALENDLY_LINK } from '../data/siteData';
 import { trackEvent } from '../utils/analytics';
 
 export default function PricingPage() {
@@ -239,13 +239,13 @@ export default function PricingPage() {
                 Multi-location, e-commerce or specialized needs? We'll scope a tailored monthly package around exactly what your business needs.
               </p>
             </div>
-            <Link
-              to="/contact"
+            <a
+              {...CALENDLY_LINK}
               className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#1B3172] text-sm font-semibold hover:bg-slate-100 transition-all cursor-pointer"
             >
               Talk to Us
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
           </motion.div>
 
           {/* Add-ons + reassurance */}
@@ -338,7 +338,7 @@ export default function PricingPage() {
           </div>
           <p className="text-center text-[#64748b] text-sm mt-10">
             Still not sure which plan fits?{' '}
-            <Link to="/contact" className="text-brand-purple font-semibold hover:underline">Get a free 30-min growth audit →</Link>
+            <a {...CALENDLY_LINK} className="text-brand-purple font-semibold hover:underline">Get a free 30-min growth audit →</a>
           </p>
         </div>
       </section>

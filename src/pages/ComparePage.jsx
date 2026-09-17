@@ -5,6 +5,7 @@ import { ArrowRight, Check, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 import { COMPARISONS } from '../data/comparisonData';
 import CTABanner from '../components/home/CTABanner';
+import { CALENDLY_LINK } from '../data/siteData';
 
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -87,10 +88,10 @@ export default function ComparePage() {
             </h1>
             <p className="text-[#475569] text-xl leading-relaxed mb-8">{data.intro}</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="btn-primary">
+              <a {...CALENDLY_LINK} className="btn-primary">
                 Get My Free Growth Audit
                 <ArrowRight className="w-5 h-5" />
-              </Link>
+              </a>
               <Link to="/services" className="btn-ghost">See What We Do</Link>
             </div>
           </motion.div>

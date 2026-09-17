@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import {
   ChevronDown, ChevronUp, Search, Gauge, FileText, MapPin, ShieldCheck, ArrowRight,
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import AuditRunner from '../components/audit/AuditRunner';
+import { CALENDLY_LINK } from '../data/siteData';
 
 // What the tool checks, in the visitor's language rather than ours. This section
 // is also the page's substance for search: it is what makes /free-seo-audit a
@@ -191,9 +191,9 @@ export default function FreeAuditPage() {
               your Google listing, where your leads actually come from, and what your competitors are
               doing that you are not.
             </p>
-            <Link to="/contact" className="btn-primary">
+            <a {...CALENDLY_LINK} className="btn-primary">
               Book a free Growth Audit <ArrowRight className="w-4 h-4" aria-hidden="true" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

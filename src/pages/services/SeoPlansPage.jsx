@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import CTABanner from '../../components/home/CTABanner';
-import { COMPANY, PHONE_TEL } from '../../data/siteData';
+import { COMPANY, PHONE_TEL, CALENDLY_LINK } from '../../data/siteData';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -291,10 +291,10 @@ export default function SeoPlansPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="btn-primary">
+              <a {...CALENDLY_LINK} className="btn-primary">
                 Get a Free SEO Audit
                 <ArrowRight className="w-5 h-5" />
-              </Link>
+              </a>
               <a href={telHref} className="btn-ghost">
                 <Phone className="w-4 h-4" /> {COMPANY.phone}
               </a>
@@ -386,8 +386,8 @@ export default function SeoPlansPage() {
                   </p>
                 </div>
 
-                <Link
-                  to="/contact"
+                <a
+                  {...CALENDLY_LINK}
                   className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer mb-6 ${
                     plan.highlight
                       ? 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'
@@ -396,7 +396,7 @@ export default function SeoPlansPage() {
                 >
                   Start With {plan.name}
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
 
                 <ul className="space-y-3 flex-1">
                   {plan.highlights.map((h) => (
