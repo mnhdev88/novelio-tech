@@ -9,22 +9,27 @@ import CTABanner from '../components/home/CTABanner';
 
 const ICON_MAP = { Search, TrendingUp, Share2, Code2, ShoppingCart, FileText, Palette, Mail, Briefcase, Smartphone };
 
+// Email Marketing and the Email Validator stay in content/services.json (their
+// detail pages remain reachable from blog links) but are no longer listed here.
+const HIDDEN_SERVICE_IDS = ['email-marketing', 'email-validator'];
+const LISTED_SERVICES = SERVICES.filter((s) => !HIDDEN_SERVICE_IDS.includes(s.id));
+
 export default function ServicesPage() {
   return (
     <main className="pt-20">
       <SEO
         title="Digital Growth Services for Small Businesses"
-        description="Website & SEO, Google Business Profile, lead generation, automation, branding, and email marketing — all under one roof. Free 30-min audit."
+        description="Website & SEO, Google Business Profile, lead generation, automation, branding, and tech ops — all under one roof. Free 30-min audit."
         canonical="/services"
         schema={{
           '@context': 'https://schema.org',
           '@type': 'ItemList',
           '@id': 'https://www.noveliotech.com/services#list',
           name: 'Digital Growth Services for Small Businesses',
-          description: 'Website & SEO, Google Business Profile optimization, lead generation, automation, branding, email marketing and more.',
+          description: 'Website & SEO, Google Business Profile optimization, lead generation, automation, branding and more.',
           url: 'https://www.noveliotech.com/services',
-          numberOfItems: SERVICES.length,
-          itemListElement: SERVICES.map((service, i) => ({
+          numberOfItems: LISTED_SERVICES.length,
+          itemListElement: LISTED_SERVICES.map((service, i) => ({
             '@type': 'ListItem',
             position: i + 1,
             name: service.title,
@@ -56,7 +61,7 @@ export default function ServicesPage() {
         <div className="line-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SERVICES.map((service, i) => {
+            {LISTED_SERVICES.map((service, i) => {
               const Icon = ICON_MAP[service.icon] || Search;
               return (
                 <motion.div key={service.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
