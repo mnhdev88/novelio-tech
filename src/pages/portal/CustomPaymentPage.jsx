@@ -32,6 +32,11 @@ import { INR_PRICES_CONFIRMED } from '../../data/siteData';
 //   9 monthly from three months on. Without upfront, month 1 is charged today
 //   and the rest monthly. Only a link can make a subscription, and it must carry
 //   the amount — the client can't turn a one-off into a recurring charge.
+//
+// Or a separate down payment instead of upfront months:
+//   /pay?amount=3000&months=6&deposit=10000&currency=INR
+//   deposit is charged today with the authorisation, then `months` EMIs of
+//   `amount` from one month on. GST (INR) applies to the deposit the same way.
 const SUB_MAX_MONTHS = 60; // mirrors RAZORPAY_SUB_MAX_MONTHS
 
 const isWholeNumber = (s) => /^\d+$/.test(s || '');
@@ -50,12 +55,17 @@ export default function CustomPaymentPage() {
   const isSubscription = params.has('months');
   const months = Number(params.get('months'));
   const upfront = params.has('upfront') ? Number(params.get('upfront')) : 0;
+  const depositRaw = params.get('deposit');
+  const deposit = depositRaw !== null ? Math.round(Number(depositRaw) * 100) / 100 : 0;
+  const hasDeposit = depositRaw !== null;
   // A broken subscription link must not quietly fall back to a one-off payment.
   const subLinkValid = !isSubscription || (
     urlAmount !== null
-    && isWholeNumber(params.get('months')) && months >= 2 && months <= SUB_MAX_MONTHS
+    && isWholeNumber(params.get('months')) && months >= (hasDeposit ? 1 : 2) && months <= SUB_MAX_MONTHS
     && (!params.has('upfront') || isWholeNumber(params.get('upfront')))
     && upfront < months
+    // A down payment replaces upfront months; the two can't be combined.
+    && (!hasDeposit || (Number.isFinite(deposit) && deposit > 0 && upfront === 0))
   );
 
   const inrOffered = razorpayEnabled && INR_PRICES_CONFIRMED;
@@ -82,24 +92,30 @@ export default function CustomPaymentPage() {
   // GST breakdown, mirroring create-custom-order.php so the buyer sees exactly
   // what the overlay will charge.
   const gstPercent = gstPercentFor(currency);
-  const entered = toMinor(amountNum);
-  const subtotalMinor = gstPercent === 0
-    ? entered
-    : gstMode === 'inclusive'
-      ? Math.round((entered * 100) / (100 + gstPercent))
-      : entered;
-  const gstMinor = gstPercent === 0 ? 0 : (gstMode === 'inclusive' ? entered - subtotalMinor : Math.round((subtotalMinor * gstPercent) / 100));
+  // Mirrors rzp_custom_split() in _lib.php: [subtotal, gst] in minor units.
+  const split = (enteredMinor) => {
+    if (gstPercent === 0) return [enteredMinor, 0];
+    if (gstMode === 'inclusive') {
+      const sub = Math.round((enteredMinor * 100) / (100 + gstPercent));
+      return [sub, enteredMinor - sub];
+    }
+    return [enteredMinor, Math.round((enteredMinor * gstPercent) / 100)];
+  };
+  const [subtotalMinor, gstMinor] = split(toMinor(amountNum));
   const totalMinor = subtotalMinor + gstMinor;
+  const depositTotalMinor = hasDeposit ? split(toMinor(deposit)).reduce((a, b) => a + b, 0) : 0;
 
   // Subscription schedule, mirroring create-subscription.php: totalMinor is one
-  // month; the upfront months are collected together today.
-  const firstChargeMinor = upfront > 0 ? totalMinor * upfront : totalMinor;
-  const laterCharges = months - Math.max(upfront, 1);
+  // month. Today is either the down payment, the upfront months, or month 1.
+  const firstChargeMinor = hasDeposit ? depositTotalMinor : upfront > 0 ? totalMinor * upfront : totalMinor;
+  const laterCharges = hasDeposit ? months : months - Math.max(upfront, 1);
+  const firstGapMonths = hasDeposit ? 1 : Math.max(upfront, 1);
   const nextChargeDate = useMemo(() => {
     const d = new Date();
-    d.setMonth(d.getMonth() + Math.max(upfront, 1));
+    d.setMonth(d.getMonth() + firstGapMonths);
     return d.toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' });
-  }, [upfront]);
+  }, [firstGapMonths]);
+  const scheduleTotalMinor = hasDeposit ? depositTotalMinor + totalMinor * months : totalMinor * months;
 
   // Latest values for the gateway callbacks without re-rendering the buttons.
   const fieldsRef = useRef({});
@@ -163,7 +179,7 @@ export default function CustomPaymentPage() {
         customer: { name: f.name, email: f.email },
       };
       const order = isSubscription
-        ? await createRazorpaySubscription({ ...common, months, upfront })
+        ? await createRazorpaySubscription({ ...common, months, upfront, ...(hasDeposit ? { deposit } : {}) })
         : await createRazorpayCustomOrder(common);
 
       await openRazorpayCheckout(order, {
@@ -429,18 +445,21 @@ export default function CustomPaymentPage() {
                   {isSubscription && amountNum > 0 && (
                     <div className="mb-4 rounded-xl bg-[#f8faff] border border-slate-200 px-4 py-3 text-sm">
                       <div className="flex items-center justify-between font-semibold text-[#1B3172] mb-1">
-                        <span>Due today{upfront > 1 ? ` (first ${upfront} months)` : ''}</span>
+                        <span>
+                          {hasDeposit ? 'Down payment today' : `Due today${upfront > 1 ? ` (first ${upfront} months)` : ''}`}
+                          {hasDeposit && gstPercent > 0 ? ` (incl. ${gstPercent}% GST)` : ''}
+                        </span>
                         <span>{formatMinor(firstChargeMinor, currency, { decimals: true })}</span>
                       </div>
                       {laterCharges > 0 && (
                         <div className="flex items-start justify-between gap-3 text-[#64748b]">
-                          <span>Then {laterCharges} monthly {laterCharges === 1 ? 'payment' : 'payments'}, from {nextChargeDate}</span>
+                          <span>Then {laterCharges} monthly {hasDeposit ? (laterCharges === 1 ? 'instalment' : 'instalments') : (laterCharges === 1 ? 'payment' : 'payments')}, from {nextChargeDate}</span>
                           <span className="shrink-0">{formatMinor(totalMinor, currency, { decimals: true })}/mo</span>
                         </div>
                       )}
                       <div className="flex items-center justify-between text-[#64748b] pt-1.5 mt-1.5 border-t border-slate-200">
-                        <span>Total over {months} months</span>
-                        <span>{formatMinor(totalMinor * months, currency, { decimals: true })}</span>
+                        <span>Total{hasDeposit ? '' : ` over ${months} months`}</span>
+                        <span>{formatMinor(scheduleTotalMinor, currency, { decimals: true })}</span>
                       </div>
                     </div>
                   )}

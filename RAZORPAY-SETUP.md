@@ -183,6 +183,10 @@ the **monthly** figure (ex-GST for INR unless `gst=inclusive`).
 |---|---|
 | `months` | whole term, 2–60 |
 | `upfront` | months collected today with the authorisation (default 0 = month 1 only) |
+| `deposit` | OR a separate down payment collected today; `months` is then the number of EMIs (1–60), starting one month later. Can't be combined with `upfront`. |
+
+`?amount=3000&months=6&deposit=10000&currency=INR` = ₹10,000 + GST today, then
+6 × ₹3,000 + GST monthly from next month.
 
 `?amount=150&months=12&upfront=3` = one charge of $450 today, then 9 × $150
 starting three months from now. Upfront months go in as a Razorpay *add-on*

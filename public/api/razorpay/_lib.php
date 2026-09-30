@@ -444,6 +444,9 @@ function rzp_subscription_schedule(array $notes, $currency) {
     $months  = (int) ($notes['total_months'] ?? 0);
     $upfront = (int) ($notes['upfront_months'] ?? 0);
     $per     = $sym . rzp_money_minor($cycle) . '/mo';
+    if (isset($notes['deposit_minor'])) {
+        return $sym . rzp_money_minor((int) $notes['deposit_minor']) . ' down payment, then ' . $months . ' x ' . $per;
+    }
     return $upfront > 0
         ? $upfront . ' months upfront, then ' . ($months - $upfront) . ' x ' . $per . ' (' . $months . ' months)'
         : $months . ' x ' . $per;
@@ -462,14 +465,21 @@ function rzp_finalize_subscription_charge(array $sub, array $payment) {
     $currency  = (string) ($payment['currency'] ?? 'INR');
     $paidMinor = (int) ($payment['amount'] ?? 0);
 
-    // Every charge is a whole number of cycles (1, or the upfront N), so the GST
-    // inside it is that many cycles' GST — exact, no rounding drift.
+    // When the first charge is an add-on (deposit or upfront months), the regular
+    // cycles start a month or more later, so paid_count is still 0 while it is
+    // being recorded. Otherwise the authorisation is cycle 1 itself.
+    $addonFirst = isset($notes['deposit_minor']) || (int) ($notes['upfront_months'] ?? 0) > 0;
+    $isFirst = $paidMinor === (int) ($notes['first_charge_minor'] ?? -1)
+        && (int) ($sub['paid_count'] ?? 0) <= ($addonFirst ? 0 : 1);
+
+    // Every regular charge is a whole number of cycles (1, or the upfront N), so
+    // the GST inside it is that many cycles' GST — exact, no rounding drift. A
+    // down payment carries its own GST figure, stored when it was quoted.
     $cycleMinor = (int) ($notes['cycle_subtotal_minor'] ?? 0) + (int) ($notes['cycle_gst_minor'] ?? 0);
     $cycleGst   = (int) ($notes['cycle_gst_minor'] ?? 0);
-    $gstMinor   = $cycleMinor > 0 ? (int) round($paidMinor * $cycleGst / $cycleMinor) : 0;
-
-    $isFirst = $paidMinor === (int) ($notes['first_charge_minor'] ?? -1)
-        && (int) ($sub['paid_count'] ?? 0) <= 1;
+    $gstMinor   = $isFirst && isset($notes['deposit_gst_minor'])
+        ? (int) $notes['deposit_gst_minor']
+        : ($cycleMinor > 0 ? (int) round($paidMinor * $cycleGst / $cycleMinor) : 0);
 
     $record = [
         'ts'                  => gmdate('c'),

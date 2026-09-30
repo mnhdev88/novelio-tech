@@ -122,8 +122,9 @@ export default function SubscriptionsPage() {
                     )}
                     <span>
                       {sym(row.currency)}{row.cycle}/mo{row.gst_percent ? ` incl. ${row.gst_percent}% GST` : ''}
-                      {' · '}{row.total_months} months
-                      {row.upfront_months > 0 ? ` (${row.upfront_months} upfront)` : ''}
+                      {row.deposit
+                        ? <>{' · '}{sym(row.currency)}{row.deposit} down, then {row.total_months} EMIs</>
+                        : <>{' · '}{row.total_months} months{row.upfront_months > 0 ? ` (${row.upfront_months} upfront)` : ''}</>}
                     </span>
                     <span>{row.paid_count} of {row.total_count} monthly charges paid</span>
                     {['active', 'authenticated', 'pending'].includes(row.status) && row.charge_at && !row.cancel && (
@@ -165,17 +166,21 @@ export default function SubscriptionsPage() {
 
 /** Builds a /pay subscription link so nobody has to hand-assemble the query string. */
 function LinkBuilder() {
-  const [f, setF] = useState({ amount: '', currency: 'USD', months: '12', upfront: '3', ref: '', desc: '', gst: 'add' });
+  const [f, setF] = useState({ amount: '', currency: 'USD', months: '12', upfront: '3', deposit: '', ref: '', desc: '', gst: 'add' });
   const [copied, setCopied] = useState(false);
   const set = (k) => (e) => { setF((v) => ({ ...v, [k]: e.target.value })); setCopied(false); };
 
   const months = Number(f.months);
-  const upfront = Number(f.upfront || 0);
-  const valid = Number(f.amount) > 0 && Number.isInteger(months) && months >= 2 && months <= 60
-    && Number.isInteger(upfront) && upfront >= 0 && upfront < months;
+  // A down payment replaces upfront months, so filling one in switches the other off.
+  const hasDeposit = f.deposit.trim() !== '';
+  const upfront = hasDeposit ? 0 : Number(f.upfront || 0);
+  const valid = Number(f.amount) > 0 && Number.isInteger(months) && months >= (hasDeposit ? 1 : 2) && months <= 60
+    && Number.isInteger(upfront) && upfront >= 0 && upfront < months
+    && (!hasDeposit || Number(f.deposit) > 0);
 
   const qs = new URLSearchParams({ amount: f.amount, months: f.months });
-  if (upfront > 0) qs.set('upfront', String(upfront));
+  if (hasDeposit) qs.set('deposit', f.deposit.trim());
+  else if (upfront > 0) qs.set('upfront', String(upfront));
   if (f.currency === 'INR') {
     qs.set('currency', 'INR');
     if (f.gst === 'inclusive') qs.set('gst', 'inclusive');
@@ -194,7 +199,7 @@ function LinkBuilder() {
   return (
     <Card
       title="Create a subscription link"
-      description="The client opens the link, pays the upfront months today and authorises the rest to be collected monthly."
+      description="The client opens the link, pays today (upfront months or a down payment) and authorises the rest to be collected monthly."
     >
       <div className="grid sm:grid-cols-3 gap-3 mb-3">
         <Field label="Monthly amount">
@@ -214,11 +219,14 @@ function LinkBuilder() {
             </select>
           </Field>
         ) : <div />}
-        <Field label="Term (months)" hint="2–60">
-          <input type="number" min="2" max="60" value={f.months} onChange={set('months')} className={inputCls} />
+        <Field label={hasDeposit ? 'Number of EMIs' : 'Term (months)'} hint={hasDeposit ? '1–60, starting next month' : '2–60'}>
+          <input type="number" min="1" max="60" value={f.months} onChange={set('months')} className={inputCls} />
         </Field>
-        <Field label="Paid upfront (months)" hint="0 = just the first month today">
-          <input type="number" min="0" value={f.upfront} onChange={set('upfront')} className={inputCls} />
+        <Field label="Down payment (optional)" hint="A separate amount paid today; replaces upfront months">
+          <input type="number" min="1" step="0.01" value={f.deposit} onChange={set('deposit')} className={inputCls} placeholder="e.g. 10000" />
+        </Field>
+        <Field label="Paid upfront (months)" hint={hasDeposit ? 'Not used with a down payment' : '0 = just the first month today'}>
+          <input type="number" min="0" value={hasDeposit ? '0' : f.upfront} onChange={set('upfront')} disabled={hasDeposit} className={`${inputCls} disabled:bg-slate-50 disabled:text-[#94a3b8]`} />
         </Field>
         <Field label="Reference">
           <input value={f.ref} onChange={set('ref')} className={inputCls} placeholder="Client name or invoice" />
@@ -230,7 +238,9 @@ function LinkBuilder() {
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <code className={`flex-1 min-w-0 break-all text-xs rounded-xl px-3 py-2.5 border ${valid ? 'bg-[#f8faff] border-slate-200 text-[#1B3172]' : 'bg-slate-50 border-slate-100 text-[#94a3b8]'}`}>
-          {valid ? link : 'Fill in the amount, a term of 2–60 months, and fewer upfront months than the term.'}
+          {valid ? link : hasDeposit
+            ? 'Fill in the monthly amount, the down payment, and 1–60 EMIs.'
+            : 'Fill in the amount, a term of 2–60 months, and fewer upfront months than the term.'}
         </code>
         <button
           onClick={copy}

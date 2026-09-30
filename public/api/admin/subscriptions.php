@@ -107,6 +107,7 @@ for ($page = 0; $page < 5; $page++) {
             'first_charge'   => rzp_money_minor((int) ($n['first_charge_minor'] ?? 0)),
             'total_months'   => (int) ($n['total_months'] ?? 0),
             'upfront_months' => (int) ($n['upfront_months'] ?? 0),
+            'deposit'        => isset($n['deposit_minor']) ? rzp_money_minor((int) $n['deposit_minor']) : null,
             'paid_count'     => (int) ($sub['paid_count'] ?? 0),
             'total_count'    => (int) ($sub['total_count'] ?? 0),
             'remaining_count'=> isset($sub['remaining_count']) ? (int) $sub['remaining_count'] : null,

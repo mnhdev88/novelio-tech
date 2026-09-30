@@ -1,13 +1,15 @@
 <?php
 // ─────────────────────────────────────────────────────────────────────────────
 // POST /api/razorpay/create-subscription.php
-// Body: { amount, currency, gstMode?, months, upfront?, reference?, description?,
-//         customer:{name,email} }
+// Body: { amount, currency, gstMode?, months, upfront?, deposit?, reference?,
+//         description?, customer:{name,email} }
 // Creates a Razorpay Subscription for a /pay link carrying ?months=.
 //
 //   amount   — the MONTHLY amount you quoted (ex-GST unless gstMode=inclusive)
 //   months   — the whole term, e.g. 12
 //   upfront  — months collected today with the authorisation (0 = just month 1)
+//   deposit  — OR a separate down payment collected today (same GST mode);
+//              then `months` is the number of EMIs, starting one month on
 //
 // months=12&upfront=3 → one charge of 3 × monthly today, then 9 monthly charges
 // starting three months from now. See the Subscriptions notes in _lib.php.
@@ -36,7 +38,17 @@ if ($amount < $min || $amount > $max) {
 
 $months  = (int) ($in['months'] ?? 0);
 $upfront = (int) ($in['upfront'] ?? 0);
-if ($months < 2 || $months > RAZORPAY_SUB_MAX_MONTHS) {
+$deposit = isset($in['deposit']) ? round((float) $in['deposit'], 2) : 0.0;
+$hasDeposit = isset($in['deposit']);
+if ($hasDeposit && ($deposit < $min || $deposit > $max)) {
+    rzp_respond(['error' => 'The down payment must be between ' . $sym . number_format($min)
+        . ' and ' . $sym . number_format($max) . '.'], 400);
+}
+// A down payment replaces upfront months — combining them has no clear meaning.
+if ($hasDeposit && $upfront !== 0) {
+    rzp_respond(['error' => 'This payment link has an invalid upfront period. Please ask us for a new link.'], 400);
+}
+if ($months < ($hasDeposit ? 1 : 2) || $months > RAZORPAY_SUB_MAX_MONTHS) {
     rzp_respond(['error' => 'This payment link has an invalid term. Please ask us for a new link.'], 400);
 }
 // At least one month must be left to bill monthly, or it's just a one-off payment.
@@ -49,11 +61,21 @@ $gstPercent = rzp_gst_percent($currency);
 [$cycleSub, $cycleGst] = rzp_custom_split(rzp_minor($amount, $currency), $currency, $gstMode);
 $cycleMinor = $cycleSub + $cycleGst;
 
-// What the authorisation collects today.
-$firstMinor = $upfront > 0 ? $cycleMinor * $upfront : $cycleMinor;
+// What the authorisation collects today: the down payment, the upfront months,
+// or (neither) month 1 itself.
+$depSub = $depGst = 0;
+if ($hasDeposit) {
+    [$depSub, $depGst] = rzp_custom_split(rzp_minor($deposit, $currency), $currency, $gstMode);
+    $firstMinor = $depSub + $depGst;
+} else {
+    $firstMinor = $upfront > 0 ? $cycleMinor * $upfront : $cycleMinor;
+}
 // Regular cycles Razorpay bills itself. With no upfront, the authorisation IS
-// cycle 1, so all $months are regular cycles.
+// cycle 1, so all $months are regular cycles; with a deposit, every one of the
+// $months EMIs is a regular cycle.
 $totalCount = $months - $upfront;
+// Months until the first regular cycle (0 = charge it with the authorisation).
+$delayMonths = $hasDeposit ? 1 : $upfront;
 
 $reference   = rzp_clean_text($in['reference'] ?? '', 100);
 $description = rzp_clean_text($in['description'] ?? '', 120);
@@ -70,7 +92,7 @@ if (!$planId) {
     rzp_respond(['error' => 'Could not start the subscription. Please try again or contact us.'], 502);
 }
 
-// Razorpay allows at most 15 notes of 256 chars each; this is 13.
+// Razorpay allows at most 15 notes of 256 chars each; this is at most 15.
 $notes = [
     'type'                 => 'subscription',
     'currency'             => $currency,
@@ -86,6 +108,10 @@ $notes = [
     'customer_name'        => $custName,
     'customer_email'       => $custEmail,
 ];
+if ($hasDeposit) {
+    $notes['deposit_minor']     = (string) $firstMinor;
+    $notes['deposit_gst_minor'] = (string) $depGst;
+}
 
 $payload = [
     'plan_id'         => $planId,
@@ -97,13 +123,13 @@ $payload = [
 ];
 
 $firstCycleAt = null;
-if ($upfront > 0) {
+if ($delayMonths > 0) {
     $firstCycleAt = (new DateTimeImmutable('now', new DateTimeZone('UTC')))
-        ->modify('+' . $upfront . ' months')->getTimestamp();
+        ->modify('+' . $delayMonths . ' months')->getTimestamp();
     $payload['start_at'] = $firstCycleAt;
     $payload['addons'] = [[
         'item' => [
-            'name'     => 'First ' . $upfront . ' months, paid upfront',
+            'name'     => $hasDeposit ? 'Down payment' : 'First ' . $upfront . ' months, paid upfront',
             'amount'   => $firstMinor,
             'currency' => $currency,
         ],
@@ -132,6 +158,7 @@ rzp_respond([
     'firstCharge'    => rzp_money_minor($firstMinor),
     'months'         => $months,
     'upfront'        => $upfront,
+    'deposit'        => $hasDeposit ? rzp_money_minor($firstMinor) : null,
     'firstCycleAt'   => $firstCycleAt,
     'name'           => $custName,
     'email'          => $custEmail,
