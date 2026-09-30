@@ -33,19 +33,7 @@ if ($amount < $min || $amount > $max) {
 
 $gstPercent = rzp_gst_percent($currency);
 $gstMode    = ($in['gstMode'] ?? 'add') === 'inclusive' ? 'inclusive' : 'add';
-$entered    = rzp_minor($amount, $currency);
-
-if ($gstPercent === 0) {
-    $subtotal = $entered;
-    $gst      = 0;
-} elseif ($gstMode === 'inclusive') {
-    // Back out the tax already inside the figure: sub = total * 100 / (100 + p).
-    $subtotal = (int) round($entered * 100 / (100 + $gstPercent));
-    $gst      = $entered - $subtotal;
-} else {
-    $subtotal = $entered;
-    $gst      = (int) round($subtotal * $gstPercent / 100);
-}
+[$subtotal, $gst] = rzp_custom_split(rzp_minor($amount, $currency), $currency, $gstMode);
 $total = $subtotal + $gst;
 
 // Labels only — trimmed and length-capped.

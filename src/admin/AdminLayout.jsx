@@ -5,7 +5,7 @@ import { NavLink, useNavigate, Outlet } from 'react-router-dom';
 import {
   FileText, LayoutTemplate, DollarSign, Inbox, Users, ScrollText, House,
   Home, LogOut, Menu, X, ExternalLink, MessageSquareQuote, HelpCircle,
-  PanelTop, PanelBottom, Phone, CloudUpload,
+  PanelTop, PanelBottom, Phone, CloudUpload, Repeat,
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import { useAdmin } from './AdminContext';
@@ -49,6 +49,7 @@ const NAV = [
     title: 'Business',
     items: [
       { to: '/admin/leads',    icon: Inbox,      label: 'Leads',    cap: 'leads.read' },
+      { to: '/admin/subscriptions', icon: Repeat, label: 'Subscriptions', cap: 'payments.read' },
       { to: '/admin/team',     icon: Users,      label: 'Team',     cap: 'users.manage' },
       { to: '/admin/activity', icon: ScrollText, label: 'Activity', cap: 'audit.read' },
     ],

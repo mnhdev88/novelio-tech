@@ -69,8 +69,11 @@ directly and set `inrPricing.confirmed` to `true`.) The flag is generated into
 | `public/api/razorpay/create-order.php` | plan orders (`/checkout`) |
 | `public/api/razorpay/create-custom-order.php` | one-off orders (`/pay`) |
 | `public/api/razorpay/verify-payment.php` | the only place a payment becomes real |
-| `public/api/razorpay/webhook.php` | records payments the browser never reported |
-| `src/utils/razorpay.js` | SDK loader + the three fetch helpers |
+| `public/api/razorpay/create-subscription.php` | monthly subscriptions (`/pay?months=`) |
+| `public/api/razorpay/verify-subscription.php` | confirms a subscription's first charge |
+| `public/api/razorpay/webhook.php` | records payments the browser never reported, every later subscription charge, and subscription status emails |
+| `public/api/admin/subscriptions.php` | Admin → Subscriptions: list + cancel |
+| `src/utils/razorpay.js` | SDK loader + the fetch helpers |
 | `src/utils/pricing.js` | the browser's copy of the price maths |
 | `public/api/_pricing.php` | generated price table, shared with PayPal |
 
@@ -125,7 +128,12 @@ Dashboard → **Settings → Webhooks → Add New Webhook**.
 - URL: `https://www.noveliotech.com/api/razorpay/webhook.php`
 - Secret: any strong random string — the same one you put in
   `RAZORPAY_WEBHOOK_SECRET`
-- Events: `payment.captured` (and optionally `order.paid`)
+- Events: `payment.captured` (and optionally `order.paid`), plus for
+  subscriptions: `subscription.charged`, `subscription.pending`,
+  `subscription.halted`, `subscription.cancelled`, `subscription.completed`
+
+For subscriptions the webhook is not a safety net but the **only** way months
+2, 3, … get recorded and emailed — Razorpay charges them with nobody on the page.
 
 This is the safety net for a buyer who pays and then closes the tab before the
 browser reports back. Without the secret, `webhook.php` rejects every event and
@@ -142,6 +150,9 @@ Run through both pages:
 - `/pay?amount=500&ref=Invoice-001` — one-off payment
 - `/pay?amount=500&currency=INR` — the GST line should appear
 - `/pay?amount=590&currency=INR&gst=inclusive` — GST backed out of the total
+- `/pay?amount=150&months=12&upfront=3&ref=Test` — subscription: 3 months today,
+  then 9 monthly (Admin → Subscriptions → "Create a subscription link" builds these)
+- `/pay?amount=150&months=6` — subscription with no upfront: month 1 today
 
 Then confirm each one:
 
@@ -160,6 +171,41 @@ Then confirm each one:
 4. Re-create the webhook against the live account (the secret is per-mode).
 5. Confirm the INR prices in Admin → Pricing, or INR stays blocked.
 6. Do one real ₹1–₹100 payment and refund it from the dashboard.
+
+---
+
+## Subscriptions (`/pay?months=`)
+
+A link with `months` turns `/pay` into a Razorpay subscription. `amount` is then
+the **monthly** figure (ex-GST for INR unless `gst=inclusive`).
+
+| Param | Meaning |
+|---|---|
+| `months` | whole term, 2–60 |
+| `upfront` | months collected today with the authorisation (default 0 = month 1 only) |
+
+`?amount=150&months=12&upfront=3` = one charge of $450 today, then 9 × $150
+starting three months from now. Upfront months go in as a Razorpay *add-on*
+charged with the authorisation; `start_at` pushes the first regular cycle out.
+
+- **Link-only.** The amount must be in the URL; a broken link shows an error,
+  never a one-off fallback. PayPal is hidden on subscription links.
+- **Currencies.** Same rules as one-off `/pay`: USD needs
+  `VITE_RAZORPAY_USD_ENABLED=1` (and international *recurring* enabled on the
+  account); INR stays blocked until the rupee prices are confirmed.
+- **Plans** are created once per (mode, currency, monthly amount) and reused,
+  cached in `novelio-razorpay-plans.json` above the web root. Delete that file
+  and they are simply re-created.
+- **Every charge** lands in `novelio-orders.log` with `"type":"subscription"`,
+  and emails both the team and the client. A failed charge, halt, cancellation
+  or completion emails both too (deduped via `novelio-razorpay-events.log`).
+- **Admin → Subscriptions** (admin role only) lists them live from Razorpay.
+  **Cancel** stops future charges: an active subscription runs to the end of
+  the month already paid; one still in its upfront period, or with a failing
+  charge, stops now. Nothing is refunded — do refunds in the Razorpay dashboard.
+- Indian card/UPI mandates: RBI rules cap auto-debits without re-authentication
+  (₹15,000 per debit for most cards and UPI AutoPay). Above that, Razorpay asks
+  the client to approve each charge, or they can use a bank e-mandate.
 
 ---
 

@@ -9,8 +9,10 @@ import {
   razorpayCurrencies,
   RAZORPAY_ENV,
   createRazorpayCustomOrder,
+  createRazorpaySubscription,
   openRazorpayCheckout,
   verifyRazorpayPayment,
+  verifyRazorpaySubscription,
 } from '../../utils/razorpay';
 import { CURRENCIES, gstPercentFor, toMinor, formatMinor } from '../../utils/pricing';
 import { INR_PRICES_CONFIRMED } from '../../data/siteData';
@@ -23,6 +25,17 @@ import { INR_PRICES_CONFIRMED } from '../../data/siteData';
 //   ?currency=INR        — open on rupees instead of dollars
 //   ?gst=inclusive       — the amount you sent ALREADY contains GST
 // Default for INR is to ADD 18% on top, matching the Terms page.
+//
+// Subscriptions (Razorpay only) — add months, and optionally upfront:
+//   /pay?amount=150&months=12&upfront=3&ref=ClientX
+//   amount is then the MONTHLY figure; 3 months are charged today and the other
+//   9 monthly from three months on. Without upfront, month 1 is charged today
+//   and the rest monthly. Only a link can make a subscription, and it must carry
+//   the amount — the client can't turn a one-off into a recurring charge.
+const SUB_MAX_MONTHS = 60; // mirrors RAZORPAY_SUB_MAX_MONTHS
+
+const isWholeNumber = (s) => /^\d+$/.test(s || '');
+
 export default function CustomPaymentPage() {
   const [params] = useSearchParams();
 
@@ -34,9 +47,22 @@ export default function CustomPaymentPage() {
   const urlCurrency = (params.get('currency') || '').toUpperCase();
   const gstMode = params.get('gst') === 'inclusive' ? 'inclusive' : 'add';
 
+  const isSubscription = params.has('months');
+  const months = Number(params.get('months'));
+  const upfront = params.has('upfront') ? Number(params.get('upfront')) : 0;
+  // A broken subscription link must not quietly fall back to a one-off payment.
+  const subLinkValid = !isSubscription || (
+    urlAmount !== null
+    && isWholeNumber(params.get('months')) && months >= 2 && months <= SUB_MAX_MONTHS
+    && (!params.has('upfront') || isWholeNumber(params.get('upfront')))
+    && upfront < months
+  );
+
   const inrOffered = razorpayEnabled && INR_PRICES_CONFIRMED;
+  // Subscriptions run on Razorpay alone, so USD needs Razorpay's USD, not PayPal.
+  const usdOffered = isSubscription ? razorpayUsdEnabled : (paypalEnabled || razorpayUsdEnabled);
   const [currency, setCurrency] = useState(
-    urlCurrency === 'INR' && inrOffered ? 'INR' : 'USD',
+    (urlCurrency === 'INR' && inrOffered) || (!usdOffered && inrOffered) ? 'INR' : 'USD',
   );
   const [amount, setAmount] = useState(urlAmount ? String(urlAmount) : '');
   const [name, setName] = useState('');
@@ -65,6 +91,16 @@ export default function CustomPaymentPage() {
   const gstMinor = gstPercent === 0 ? 0 : (gstMode === 'inclusive' ? entered - subtotalMinor : Math.round((subtotalMinor * gstPercent) / 100));
   const totalMinor = subtotalMinor + gstMinor;
 
+  // Subscription schedule, mirroring create-subscription.php: totalMinor is one
+  // month; the upfront months are collected together today.
+  const firstChargeMinor = upfront > 0 ? totalMinor * upfront : totalMinor;
+  const laterCharges = months - Math.max(upfront, 1);
+  const nextChargeDate = useMemo(() => {
+    const d = new Date();
+    d.setMonth(d.getMonth() + Math.max(upfront, 1));
+    return d.toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' });
+  }, [upfront]);
+
   // Latest values for the gateway callbacks without re-rendering the buttons.
   const fieldsRef = useRef({});
   useEffect(() => {
@@ -83,11 +119,12 @@ export default function CustomPaymentPage() {
   useEffect(() => { validRef.current = detailsValid; }, [detailsValid]);
 
   // PayPal is USD-only; Razorpay takes INR always and USD where approved.
-  const paypalAvailable = paypalEnabled && currency === 'USD';
+  // Subscriptions are Razorpay-only: PayPal here is a one-off charge.
+  const paypalAvailable = paypalEnabled && currency === 'USD' && !isSubscription;
   const razorpayAvailable = razorpayEnabled && razorpayCurrencies.includes(currency);
-  const anyGatewayEnabled = paypalEnabled || razorpayEnabled;
+  const anyGatewayEnabled = isSubscription ? razorpayEnabled : (paypalEnabled || razorpayEnabled);
   const currencyOptions = [
-    (paypalEnabled || razorpayUsdEnabled) && 'USD',
+    usdOffered && 'USD',
     inrOffered && 'INR',
   ].filter(Boolean);
 
@@ -117,14 +154,17 @@ export default function CustomPaymentPage() {
     setRazorpayBusy(true);
     try {
       const f = fieldsRef.current;
-      const order = await createRazorpayCustomOrder({
+      const common = {
         amount: f.amount,
         currency: f.currency,
         gstMode: f.gstMode,
         reference: f.reference,
         description: f.description,
         customer: { name: f.name, email: f.email },
-      });
+      };
+      const order = isSubscription
+        ? await createRazorpaySubscription({ ...common, months, upfront })
+        : await createRazorpayCustomOrder(common);
 
       await openRazorpayCheckout(order, {
         customer: { name: f.name, email: f.email },
@@ -133,9 +173,16 @@ export default function CustomPaymentPage() {
         onSuccess: async (response) => {
           setStatus('processing');
           try {
-            const result = await verifyRazorpayPayment(response);
+            const result = isSubscription
+              ? await verifyRazorpaySubscription(response)
+              : await verifyRazorpayPayment(response);
             if (result.status === 'COMPLETED') {
-              setPaid({ amount: result.amount, currency: result.currency, paymentId: result.paymentId });
+              setPaid({
+                amount: result.amount,
+                currency: result.currency,
+                paymentId: result.paymentId,
+                subscriptionId: result.subscriptionId,
+              });
               setStatus('paid');
               return;
             }
@@ -257,27 +304,48 @@ export default function CustomPaymentPage() {
       <section className="section-pad bg-[#EEF2FF] relative overflow-hidden min-h-[80vh]">
         <div className="line-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10 max-w-lg">
-          <h1 className="font-heading font-800 text-[#1B3172] text-2xl sm:text-3xl mb-2">Make a payment</h1>
+          <h1 className="font-heading font-800 text-[#1B3172] text-2xl sm:text-3xl mb-2">
+            {isSubscription ? 'Set up your monthly payments' : 'Make a payment'}
+          </h1>
           <p className="text-[#64748b] text-sm mb-6">
-            Securely pay an invoice, deposit or custom quote. Processed by {gatewayList(' or ')} — we never see your card details.
+            {isSubscription
+              ? <>Authorise your monthly plan once and each payment is collected automatically. Processed by Razorpay — we never see your card or bank details.</>
+              : <>Securely pay an invoice, deposit or custom quote. Processed by {gatewayList(' or ')} — we never see your card details.</>}
           </p>
 
           {status === 'paid' && paid ? (
             <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center shadow-[0_8px_32px_rgba(27,49,114,0.08)]">
               <CheckCircle2 className="w-14 h-14 text-green-600 mx-auto mb-4" />
-              <h2 className="font-heading font-800 text-[#1B3172] text-xl mb-1">Payment received</h2>
+              <h2 className="font-heading font-800 text-[#1B3172] text-xl mb-1">
+                {paid.subscriptionId ? 'Subscription set up' : 'Payment received'}
+              </h2>
               <p className="text-[#475569] text-sm">
                 Thank you — we’ve received <strong>{formatMinor(toMinor(paid.amount), paid.currency || currency, { decimals: true })}</strong>
                 {reference ? <> for <strong>{reference}</strong></> : null}.
               </p>
-              <p className="text-xs text-[#94a3b8] mt-2">Confirmation: {paid.paymentId}</p>
+              {paid.subscriptionId && laterCharges > 0 && (
+                <p className="text-[#475569] text-sm mt-2">
+                  The next {laterCharges === 1 ? 'payment' : `${laterCharges} payments`} of{' '}
+                  <strong>{formatMinor(totalMinor, paid.currency || currency, { decimals: true })}</strong> will be collected
+                  monthly from {nextChargeDate}. A receipt is emailed each time.
+                </p>
+              )}
+              <p className="text-xs text-[#94a3b8] mt-2">
+                Confirmation: {paid.paymentId}
+                {paid.subscriptionId ? <> · Subscription: {paid.subscriptionId}</> : null}
+              </p>
               <Link to="/" className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-sm font-semibold">
                 Back to home
               </Link>
             </div>
           ) : (
             <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_8px_32px_rgba(27,49,114,0.08)]">
-              {!anyGatewayEnabled ? (
+              {!subLinkValid ? (
+                <div className="flex items-start gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
+                  <AlertCircle className="w-4 h-4 shrink-0 mt-px" />
+                  <span>This payment link is incomplete or has expired. Please ask us for a new one — you have not been charged.</span>
+                </div>
+              ) : !anyGatewayEnabled || currencyOptions.length === 0 ? (
                 <div className="flex items-start gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
                   <AlertCircle className="w-4 h-4 shrink-0 mt-px" />
                   <span>Online payments aren’t configured yet. Please contact us to complete your payment.</span>
@@ -321,7 +389,7 @@ export default function CustomPaymentPage() {
                   )}
 
                   <label className="block text-sm font-semibold text-[#334155] mb-1.5">
-                    Amount ({currency}){gstPercent > 0 && gstMode === 'add' ? ' — before GST' : ''}
+                    {isSubscription ? 'Monthly amount' : 'Amount'} ({currency}){gstPercent > 0 && gstMode === 'add' ? ' — before GST' : ''}
                   </label>
                   <div className="relative mb-4">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748b] font-semibold">{symbol}</span>
@@ -349,8 +417,30 @@ export default function CustomPaymentPage() {
                         <span>{gstMode === 'inclusive' ? '' : '+'}{formatMinor(gstMinor, currency, { decimals: true })}</span>
                       </div>
                       <div className="flex items-center justify-between font-semibold text-[#1B3172] pt-1.5 border-t border-slate-200">
-                        <span>Total charged</span>
+                        <span>{isSubscription ? 'Each month' : 'Total charged'}</span>
                         <span>{formatMinor(totalMinor, currency, { decimals: true })}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* The whole schedule, up front. A mandate the client didn't
+                      understand becomes a chargeback, so nothing about when or
+                      how much is left for the overlay to explain. */}
+                  {isSubscription && amountNum > 0 && (
+                    <div className="mb-4 rounded-xl bg-[#f8faff] border border-slate-200 px-4 py-3 text-sm">
+                      <div className="flex items-center justify-between font-semibold text-[#1B3172] mb-1">
+                        <span>Due today{upfront > 1 ? ` (first ${upfront} months)` : ''}</span>
+                        <span>{formatMinor(firstChargeMinor, currency, { decimals: true })}</span>
+                      </div>
+                      {laterCharges > 0 && (
+                        <div className="flex items-start justify-between gap-3 text-[#64748b]">
+                          <span>Then {laterCharges} monthly {laterCharges === 1 ? 'payment' : 'payments'}, from {nextChargeDate}</span>
+                          <span className="shrink-0">{formatMinor(totalMinor, currency, { decimals: true })}/mo</span>
+                        </div>
+                      )}
+                      <div className="flex items-center justify-between text-[#64748b] pt-1.5 mt-1.5 border-t border-slate-200">
+                        <span>Total over {months} months</span>
+                        <span>{formatMinor(totalMinor * months, currency, { decimals: true })}</span>
                       </div>
                     </div>
                   )}
@@ -415,19 +505,23 @@ export default function CustomPaymentPage() {
                       >
                         {razorpayBusy
                           ? <><Loader2 className="w-4 h-4 animate-spin" /> Opening secure checkout…</>
-                          : <>Pay {amountNum > 0 ? formatMinor(totalMinor, currency, { decimals: true }) : 'securely'} with Razorpay</>}
+                          : isSubscription
+                            ? <>Authorise &amp; pay {amountNum > 0 ? formatMinor(firstChargeMinor, currency, { decimals: true }) : ''} today</>
+                            : <>Pay {amountNum > 0 ? formatMinor(totalMinor, currency, { decimals: true }) : 'securely'} with Razorpay</>}
                       </button>
                       {/* Named here too, because when only Razorpay can take the
                           chosen currency there are no tabs to carry the name. */}
                       <p className="mt-2 text-[11px] text-[#94a3b8] text-center">
-                        Secure checkout by Razorpay — {currency === 'INR' ? 'card, UPI, netbanking and wallets' : 'debit and credit cards'}
+                        {isSubscription
+                          ? <>Secure recurring checkout by Razorpay — {currency === 'INR' ? 'card, UPI AutoPay or bank mandate' : 'debit and credit cards'}</>
+                          : <>Secure checkout by Razorpay — {currency === 'INR' ? 'card, UPI, netbanking and wallets' : 'debit and credit cards'}</>}
                       </p>
                     </>
                   )}
 
                   {/* PayPal cannot settle rupees, so say why it vanished rather
                       than letting it silently disappear on a currency switch. */}
-                  {paypalEnabled && !paypalAvailable && razorpayAvailable && (
+                  {paypalEnabled && !paypalAvailable && razorpayAvailable && !isSubscription && (
                     <p className="mt-2.5 text-xs text-[#94a3b8] text-center">
                       PayPal is available for USD payments — switch the currency above to use it.
                     </p>
@@ -446,6 +540,13 @@ export default function CustomPaymentPage() {
                   {/* Aggregators require terms + refund policy to be reachable
                       from the payment page itself, not only from the footer. */}
                   <p className="mt-3 text-xs text-[#64748b] text-center">
+                    {isSubscription && amountNum > 0 && laterCharges > 0 && (
+                      <>
+                        You authorise Novelio Technologies to collect{' '}
+                        {formatMinor(totalMinor, currency, { decimals: true })} every month, {laterCharges}{' '}
+                        {laterCharges === 1 ? 'time' : 'times'}, starting {nextChargeDate}.{' '}
+                      </>
+                    )}
                     By paying you agree to our{' '}
                     <Link to="/terms" className="text-brand-purple underline">Terms of Service</Link>{' '}
                     and{' '}

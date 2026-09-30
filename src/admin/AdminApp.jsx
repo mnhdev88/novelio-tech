@@ -22,6 +22,7 @@ const FaqPage        = lazy(() => import('./pages/FaqPage'));
 const UnpublishedPage = lazy(() => import('./pages/UnpublishedPage'));
 const PricingPage    = lazy(() => import('./pages/PricingPage'));
 const LeadsPage      = lazy(() => import('./pages/LeadsPage'));
+const SubscriptionsPage = lazy(() => import('./pages/SubscriptionsPage'));
 const TeamPage       = lazy(() => import('./pages/TeamPage'));
 const ActivityPage   = lazy(() => import('./pages/ActivityPage'));
 
@@ -60,6 +61,7 @@ export default function AdminApp() {
 
             <Route path="pricing"  element={<RequireAdmin cap="pricing.write"><PricingPage /></RequireAdmin>} />
             <Route path="leads"    element={<RequireAdmin cap="leads.read"><LeadsPage /></RequireAdmin>} />
+            <Route path="subscriptions" element={<RequireAdmin cap="payments.read"><SubscriptionsPage /></RequireAdmin>} />
             <Route path="team"     element={<RequireAdmin cap="users.manage"><TeamPage /></RequireAdmin>} />
             <Route path="activity" element={<RequireAdmin cap="audit.read"><ActivityPage /></RequireAdmin>} />
 

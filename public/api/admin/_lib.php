@@ -165,6 +165,7 @@ const A_CAPS = [
         'content.read', 'content.write', 'content.publish',
         'media.upload', 'leads.read', 'leads.write',
         'pricing.write', 'users.manage', 'audit.read',
+        'payments.read', 'payments.write',
     ],
     'editor' => [
         'content.read', 'content.write', 'content.publish',

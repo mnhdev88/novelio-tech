@@ -171,6 +171,13 @@ export const leads = {
   },
 };
 
+export const subscriptions = {
+  /** Live from Razorpay. `all` also includes checkouts that were never completed. */
+  list: (all = false) => request('subscriptions.php', { params: { all: all ? 1 : '' } }),
+  /** Stops future charges (at cycle end when a paid month is running). No refund. */
+  cancel: (id) => request('subscriptions.php', { method: 'POST', body: { id } }),
+};
+
 export const users = {
   list: () => request('users.php'),
   create: (data) => request('users.php', { method: 'POST', body: data }),

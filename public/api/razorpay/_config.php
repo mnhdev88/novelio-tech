@@ -98,6 +98,13 @@ if (!defined('RAZORPAY_CUSTOM_MAX_INR')) define('RAZORPAY_CUSTOM_MAX_INR', 40000
 if (!defined('RAZORPAY_ORDER_LOG')) {
     define('RAZORPAY_ORDER_LOG', $SECRETS_DIR . '/novelio-orders.log');
 }
+// Subscriptions: plan-id cache (one Razorpay plan per amount, reused) and the
+// webhook event ids already acted on, so a retried event can't email twice.
+if (!defined('RAZORPAY_PLAN_CACHE')) define('RAZORPAY_PLAN_CACHE', $SECRETS_DIR . '/novelio-razorpay-plans.json');
+if (!defined('RAZORPAY_EVENT_LOG'))  define('RAZORPAY_EVENT_LOG', $SECRETS_DIR . '/novelio-razorpay-events.log');
+// Longest term a subscription link may ask for, in months.
+if (!defined('RAZORPAY_SUB_MAX_MONTHS')) define('RAZORPAY_SUB_MAX_MONTHS', 60);
+
 if (!defined('RAZORPAY_NOTIFY_EMAIL')) {
     define('RAZORPAY_NOTIFY_EMAIL', 'ajay@noveliotech.com');
 }

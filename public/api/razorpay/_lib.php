@@ -232,6 +232,23 @@ function rzp_guard_inr_ready($currency) {
     }
 }
 
+/**
+ * Split a quoted custom amount (minor units) into [subtotal, gst] per the /pay
+ * ?gst= mode. 'add' (default): the amount is ex-GST and GST goes on top.
+ * 'inclusive': the amount already contains GST, so it is backed out.
+ * Shared by one-off custom orders and subscriptions so the two never drift.
+ */
+function rzp_custom_split($enteredMinor, $currency, $gstMode) {
+    $gstPercent = rzp_gst_percent($currency);
+    if ($gstPercent === 0) return [$enteredMinor, 0];
+    if ($gstMode === 'inclusive') {
+        // sub = total * 100 / (100 + p)
+        $subtotal = (int) round($enteredMinor * 100 / (100 + $gstPercent));
+        return [$subtotal, $enteredMinor - $subtotal];
+    }
+    return [$enteredMinor, (int) round($enteredMinor * $gstPercent / 100)];
+}
+
 /** Trim, strip control/newline chars, and length-cap a free-text label. */
 function rzp_clean_text($s, $max = 120) {
     $s = is_string($s) ? $s : '';
@@ -329,4 +346,288 @@ function rzp_notify_team(array $order) {
     ];
     $headers = 'From: no-reply@noveliotech.com' . "\r\n" . 'Content-Type: text/plain; charset=UTF-8';
     @mail($to, $subject, implode("\n", $lines), $headers);
+}
+
+// ── Subscriptions (/pay links with ?months=) ─────────────────────────────────
+//
+// A subscription is a Plan (amount + period) plus a Subscription on it. The
+// buyer authorises a card / UPI / e-mandate in the same overlay, and Razorpay
+// then charges each cycle on its own — every charge reaches us as a webhook.
+//
+// "Upfront + monthly" is Razorpay's upfront-amount pattern: the first N months
+// go in as an add-on, which is collected WITH the authorisation, and start_at
+// pushes the first regular cycle N months out. So months=12&upfront=3 is one
+// charge of 3x today, then 9 monthly charges starting in three months.
+
+/**
+ * Find or create the monthly plan for this exact amount. Plans cannot be deleted
+ * in Razorpay, so one is reused per (mode, currency, amount) instead of minting
+ * a new one on every click and burying the dashboard in duplicates.
+ */
+function rzp_monthly_plan_id($cycleMinor, $currency) {
+    $key   = RAZORPAY_ENV . '|' . $currency . '|' . (int) $cycleMinor;
+    $cache = [];
+    if (is_file(RAZORPAY_PLAN_CACHE)) {
+        $cache = json_decode((string) @file_get_contents(RAZORPAY_PLAN_CACHE), true);
+        if (!is_array($cache)) $cache = [];
+    }
+    if (!empty($cache[$key])) return $cache[$key];
+
+    [$code, $body] = rzp_http('POST', '/plans', json_encode([
+        'period'   => 'monthly',
+        'interval' => 1,
+        'item'     => [
+            'name'     => RAZORPAY_BRAND_NAME . ' — monthly payment',
+            'amount'   => (int) $cycleMinor,
+            'currency' => $currency,
+        ],
+        'notes'    => ['source' => 'noveliotech.com/pay'],
+    ]));
+    if ($code !== 200 || empty($body['id'])) {
+        error_log('[razorpay] plan create failed (' . $code . '): ' . json_encode($body));
+        return null;
+    }
+
+    // Re-read under the lock so two first-time buyers can't drop each other's entry.
+    $fh = @fopen(RAZORPAY_PLAN_CACHE, 'c+');
+    if ($fh && flock($fh, LOCK_EX)) {
+        $current = json_decode((string) stream_get_contents($fh), true);
+        if (!is_array($current)) $current = [];
+        $current[$key] = $body['id'];
+        ftruncate($fh, 0);
+        rewind($fh);
+        fwrite($fh, json_encode($current, JSON_PRETTY_PRINT));
+        flock($fh, LOCK_UN);
+    }
+    if ($fh) fclose($fh);
+
+    return $body['id'];
+}
+
+function rzp_create_subscription(array $payload) { return rzp_http('POST', '/subscriptions', json_encode($payload)); }
+function rzp_get_subscription($id)               { return rzp_http('GET', '/subscriptions/' . rawurlencode($id)); }
+function rzp_get_invoice($id)                    { return rzp_http('GET', '/invoices/' . rawurlencode($id)); }
+
+/**
+ * Cancel. At cycle end, the cycle already paid for runs out and nothing more is
+ * charged; immediately, nothing more is charged from now. Neither refunds.
+ */
+function rzp_cancel_subscription($id, $atCycleEnd) {
+    return rzp_http('POST', '/subscriptions/' . rawurlencode($id) . '/cancel',
+        json_encode(['cancel_at_cycle_end' => $atCycleEnd ? 1 : 0]));
+}
+
+/** List subscriptions, newest first. Razorpay pages at most 100 per call. */
+function rzp_list_subscriptions($count = 100, $skip = 0) {
+    return rzp_http('GET', '/subscriptions?count=' . (int) $count . '&skip=' . (int) $skip);
+}
+
+/**
+ * Subscription checkout signature: HMAC-SHA256 of "payment_id|subscription_id"
+ * — note the order is the reverse of the one-off order signature.
+ */
+function rzp_verify_subscription_signature($paymentId, $subscriptionId, $signature) {
+    if ($paymentId === '' || $subscriptionId === '' || !is_string($signature) || $signature === '') return false;
+    $expected = hash_hmac('sha256', $paymentId . '|' . $subscriptionId, RAZORPAY_KEY_SECRET);
+    return hash_equals($expected, $signature);
+}
+
+/** True for subscriptions created by create-subscription.php (not the dashboard). */
+function rzp_is_our_subscription(array $sub) {
+    return (($sub['notes']['type'] ?? '') === 'subscription');
+}
+
+/** Human schedule line, e.g. "3 months upfront, then 9 x $150.00/mo (12 months)". */
+function rzp_subscription_schedule(array $notes, $currency) {
+    $sym     = rzp_symbol($currency);
+    $cycle   = (int) ($notes['cycle_subtotal_minor'] ?? 0) + (int) ($notes['cycle_gst_minor'] ?? 0);
+    $months  = (int) ($notes['total_months'] ?? 0);
+    $upfront = (int) ($notes['upfront_months'] ?? 0);
+    $per     = $sym . rzp_money_minor($cycle) . '/mo';
+    return $upfront > 0
+        ? $upfront . ' months upfront, then ' . ($months - $upfront) . ' x ' . $per . ' (' . $months . ' months)'
+        : $months . ' x ' . $per;
+}
+
+/**
+ * Record one subscription charge — the upfront/first one or any later cycle —
+ * once. Context comes from the SUBSCRIPTION's notes as stored at creation, never
+ * from the browser or the webhook body. Idempotent on the payment id, shared
+ * with rzp_finalize(), so the browser and webhook can race harmlessly.
+ * Returns [record, wasNewlyWritten].
+ */
+function rzp_finalize_subscription_charge(array $sub, array $payment) {
+    $notes     = is_array($sub['notes'] ?? null) ? $sub['notes'] : [];
+    $paymentId = (string) ($payment['id'] ?? '');
+    $currency  = (string) ($payment['currency'] ?? 'INR');
+    $paidMinor = (int) ($payment['amount'] ?? 0);
+
+    // Every charge is a whole number of cycles (1, or the upfront N), so the GST
+    // inside it is that many cycles' GST — exact, no rounding drift.
+    $cycleMinor = (int) ($notes['cycle_subtotal_minor'] ?? 0) + (int) ($notes['cycle_gst_minor'] ?? 0);
+    $cycleGst   = (int) ($notes['cycle_gst_minor'] ?? 0);
+    $gstMinor   = $cycleMinor > 0 ? (int) round($paidMinor * $cycleGst / $cycleMinor) : 0;
+
+    $isFirst = $paidMinor === (int) ($notes['first_charge_minor'] ?? -1)
+        && (int) ($sub['paid_count'] ?? 0) <= 1;
+
+    $record = [
+        'ts'                  => gmdate('c'),
+        'env'                 => RAZORPAY_ENV,
+        'gateway'             => 'razorpay',
+        'type'                => 'subscription',
+        'charge'              => $isFirst ? 'first' : 'recurring',
+        'rzp_subscription_id' => (string) ($sub['id'] ?? ''),
+        'rzp_payment_id'      => $paymentId,
+        'method'              => (string) ($payment['method'] ?? ''),
+        'amount'              => (float) rzp_money_minor($paidMinor),
+        'currency'            => $currency,
+        'subtotal'            => (float) rzp_money_minor($paidMinor - $gstMinor),
+        'gst'                 => (float) rzp_money_minor($gstMinor),
+        'gst_percent'         => (int) ($notes['gst_percent'] ?? 0),
+        'plan_id'             => 'custom',
+        'billing'             => 'subscription',
+        'schedule'            => rzp_subscription_schedule($notes, $currency),
+        'paid_count'          => (int) ($sub['paid_count'] ?? 0),
+        'total_count'         => (int) ($sub['total_count'] ?? 0),
+        'description'         => $notes['description'] ?? '',
+        'breakdown'           => [],
+        'reference'           => $notes['reference'] ?? '',
+        'customer_name'       => $notes['customer_name'] ?? '',
+        'customer_email'      => $notes['customer_email'] ?? ($payment['email'] ?? ''),
+    ];
+
+    if (rzp_already_finalized($paymentId)) {
+        return [$record, false];
+    }
+    rzp_log_order($record);
+    rzp_notify_subscription_charge($record);
+    return [$record, true];
+}
+
+/**
+ * Status events (failed charge, halted, cancelled, completed) carry no payment id
+ * to dedupe on, and Razorpay retries webhooks — so the event id is remembered
+ * instead, keeping a retry from emailing the client twice.
+ */
+function rzp_event_seen($eventId) {
+    if ($eventId === '' || !is_file(RAZORPAY_EVENT_LOG)) return false;
+    $contents = @file_get_contents(RAZORPAY_EVENT_LOG);
+    return $contents !== false && strpos($contents, '"event_id":"' . $eventId . '"') !== false;
+}
+
+function rzp_log_event($eventId, $name, $subscriptionId) {
+    $line = json_encode([
+        'ts' => gmdate('c'), 'event_id' => $eventId, 'event' => $name, 'subscription' => $subscriptionId,
+    ]) . "\n";
+    @file_put_contents(RAZORPAY_EVENT_LOG, $line, FILE_APPEND | LOCK_EX);
+}
+
+/** Plain-text email, best effort. */
+function rzp_mail($to, $subject, array $lines) {
+    if (!is_string($to) || !filter_var($to, FILTER_VALIDATE_EMAIL)) return;
+    $headers = 'From: no-reply@noveliotech.com' . "\r\n"
+        . 'Reply-To: ' . RAZORPAY_NOTIFY_EMAIL . "\r\n"
+        . 'Content-Type: text/plain; charset=UTF-8';
+    @mail($to, $subject, implode("\n", $lines), $headers);
+}
+
+/** Team + client emails for a successful subscription charge. */
+function rzp_notify_subscription_charge(array $r) {
+    $sym    = rzp_symbol($r['currency']);
+    $amount = $sym . number_format($r['amount'], 2) . ' ' . $r['currency'];
+    $label  = $r['description'] . ($r['reference'] ? ' (' . $r['reference'] . ')' : '');
+    $first  = $r['charge'] === 'first';
+    $tax    = $r['gst'] > 0
+        ? 'Subtotal ' . $sym . number_format($r['subtotal'], 2) . ' + GST (' . $r['gst_percent'] . '%) ' . $sym . number_format($r['gst'], 2)
+        : null;
+
+    rzp_mail(RAZORPAY_NOTIFY_EMAIL,
+        ($first ? 'Subscription started (Razorpay): ' : 'Subscription charge (Razorpay): ') . $label . ' — ' . $amount,
+        array_values(array_filter([
+            ($first ? 'A client set up a subscription' : 'A subscription renewed') . ' via Razorpay (' . RAZORPAY_ENV . ').',
+            '',
+            'Amount:       ' . $amount,
+            $tax ? 'Tax:          ' . $tax : null,
+            'Schedule:     ' . $r['schedule'],
+            'Charges paid: ' . $r['paid_count'] . ' of ' . $r['total_count'] . ' monthly cycles',
+            'Method:       ' . ($r['method'] ?: '—'),
+            'Customer:     ' . ($r['customer_name'] ?: '—') . ' <' . ($r['customer_email'] ?: '—') . '>',
+            'Subscription: ' . $r['rzp_subscription_id'],
+            'Payment:      ' . $r['rzp_payment_id'],
+            'Reference:    ' . ($r['reference'] ?: '—'),
+        ], 'is_string')));
+
+    rzp_mail($r['customer_email'],
+        ($first ? 'Your subscription with Novelio Technologies is set up' : 'Payment received — Novelio Technologies'),
+        array_values(array_filter([
+            'Hi ' . ($r['customer_name'] ?: 'there') . ',',
+            '',
+            $first
+                ? 'Thank you — your subscription is set up and your first payment of ' . $amount . ' has been received.'
+                : 'We have received your scheduled payment of ' . $amount . '.',
+            $tax,
+            '',
+            'For:       ' . $label,
+            'Schedule:  ' . $r['schedule'],
+            'Payment ID: ' . $r['rzp_payment_id'],
+            '',
+            'Payments are collected automatically by Razorpay on our behalf. Reply to this',
+            'email if you have any question about your billing.',
+            '',
+            '— Novelio Technologies',
+        ], 'is_string')));
+}
+
+/**
+ * Team + client emails for a subscription status change. Only the events worth
+ * interrupting someone for are handled; everything else is ignored.
+ */
+function rzp_notify_subscription_status($event, array $sub) {
+    $notes    = is_array($sub['notes'] ?? null) ? $sub['notes'] : [];
+    $label    = ($notes['description'] ?? 'Subscription') . (!empty($notes['reference']) ? ' (' . $notes['reference'] . ')' : '');
+    $customer = ($notes['customer_name'] ?? '') ?: 'there';
+    $email    = $notes['customer_email'] ?? '';
+    $id       = (string) ($sub['id'] ?? '');
+    $progress = (int) ($sub['paid_count'] ?? 0) . ' of ' . (int) ($sub['total_count'] ?? 0) . ' monthly cycles paid';
+
+    $copy = [
+        'subscription.pending' => [
+            'team'   => 'A scheduled charge FAILED. Razorpay will retry automatically.',
+            'client' => 'We could not collect your scheduled payment. Razorpay will retry it automatically over the next few days — please make sure your card or bank mandate is active and has sufficient funds.',
+        ],
+        'subscription.halted' => [
+            'team'   => 'All retries FAILED — the subscription is halted and will not charge again until it is fixed. Contact the client.',
+            'client' => 'We were unable to collect your scheduled payment after several attempts, so the subscription is on hold. Please reply to this email and we will help you update your payment method.',
+        ],
+        'subscription.cancelled' => [
+            'team'   => 'The subscription was cancelled. No further charges will be made.',
+            'client' => 'Your subscription has been cancelled. No further payments will be collected.',
+        ],
+        'subscription.completed' => [
+            'team'   => 'The subscription completed its final cycle.',
+            'client' => 'Your final scheduled payment has been collected and your subscription is now complete. Thank you!',
+        ],
+    ];
+    if (!isset($copy[$event])) return;
+
+    $short = substr($event, strlen('subscription.'));
+    rzp_mail(RAZORPAY_NOTIFY_EMAIL, 'Subscription ' . $short . ' (Razorpay): ' . $label, [
+        $copy[$event]['team'],
+        '',
+        'Subscription: ' . $id . ' (' . RAZORPAY_ENV . ')',
+        'Progress:     ' . $progress,
+        'Customer:     ' . ($notes['customer_name'] ?? '—') . ' <' . ($email ?: '—') . '>',
+        'Reference:    ' . (($notes['reference'] ?? '') ?: '—'),
+    ]);
+
+    rzp_mail($email, 'Your subscription with Novelio Technologies — ' . $short, [
+        'Hi ' . $customer . ',',
+        '',
+        $copy[$event]['client'],
+        '',
+        'For: ' . $label,
+        '',
+        '— Novelio Technologies',
+    ]);
 }

@@ -45,14 +45,14 @@ export function loadRazorpaySdk() {
   return sdkPromise;
 }
 
-async function postJson(endpoint, payload) {
+async function postJson(endpoint, payload, idKey = 'orderId') {
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok || !data.orderId) {
+  if (!res.ok || !data[idKey]) {
     throw new Error(data.error || 'Could not start the payment. Please try again.');
   }
   return data;
@@ -67,19 +67,17 @@ export const createRazorpayCustomOrder = (fields) =>
   postJson('/api/razorpay/create-custom-order.php', fields);
 
 /**
- * Verify a completed payment. Returns { status: 'COMPLETED' | 'PENDING' | 'FAILED', … }.
- * Only the three Razorpay identifiers are sent — the server re-reads everything
- * else from the API, so nothing here can influence what gets recorded.
+ * /pay subscription link. `fields` = { amount (monthly), currency, gstMode, months,
+ * upfront, reference, description, customer }. Resolves with { subscriptionId, … }.
  */
-export async function verifyRazorpayPayment(response) {
-  const res = await fetch('/api/razorpay/verify-payment.php', {
+export const createRazorpaySubscription = (fields) =>
+  postJson('/api/razorpay/create-subscription.php', fields, 'subscriptionId');
+
+async function verify(endpoint, body) {
+  const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      razorpay_order_id: response.razorpay_order_id,
-      razorpay_payment_id: response.razorpay_payment_id,
-      razorpay_signature: response.razorpay_signature,
-    }),
+    body: JSON.stringify(body),
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok && !data.status) {
@@ -89,17 +87,46 @@ export async function verifyRazorpayPayment(response) {
 }
 
 /**
- * Open the Razorpay overlay for an order created by one of the helpers above.
- * `onSuccess` receives the raw Razorpay response — pass it to verifyRazorpayPayment.
+ * Verify a completed payment. Returns { status: 'COMPLETED' | 'PENDING' | 'FAILED', … }.
+ * Only the three Razorpay identifiers are sent — the server re-reads everything
+ * else from the API, so nothing here can influence what gets recorded.
+ */
+export const verifyRazorpayPayment = (response) =>
+  verify('/api/razorpay/verify-payment.php', {
+    razorpay_order_id: response.razorpay_order_id,
+    razorpay_payment_id: response.razorpay_payment_id,
+    razorpay_signature: response.razorpay_signature,
+  });
+
+/** Subscription twin of verifyRazorpayPayment — the overlay returns a subscription id instead of an order id. */
+export const verifyRazorpaySubscription = (response) =>
+  verify('/api/razorpay/verify-subscription.php', {
+    razorpay_payment_id: response.razorpay_payment_id,
+    razorpay_subscription_id: response.razorpay_subscription_id,
+    razorpay_signature: response.razorpay_signature,
+  });
+
+/**
+ * Open the Razorpay overlay for an order or subscription created by one of the
+ * helpers above. `onSuccess` receives the raw Razorpay response — pass it to
+ * verifyRazorpayPayment / verifyRazorpaySubscription.
  */
 export async function openRazorpayCheckout(order, { customer = {}, onSuccess, onDismiss, onError }) {
   const Razorpay = await loadRazorpaySdk();
 
+  // A subscription's amount lives on its plan and add-ons, so Razorpay takes
+  // only the id — passing an amount alongside it is rejected.
+  const target = order.subscriptionId
+    ? { subscription_id: order.subscriptionId }
+    : {
+        order_id: order.orderId,
+        amount: order.amount,    // minor units — display only; the order is authoritative
+        currency: order.currency,
+      };
+
   const rzp = new Razorpay({
     key: order.keyId || RAZORPAY_KEY_ID,
-    order_id: order.orderId,
-    amount: order.amount,        // minor units — display only; the order is authoritative
-    currency: order.currency,
+    ...target,
     name: 'Novelio Technologies',
     description: order.description,
     prefill: {
