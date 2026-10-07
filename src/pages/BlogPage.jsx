@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Clock, User, ArrowRight, Search } from 'lucide-react';
+import { Clock, Search } from 'lucide-react';
 import SEO from '../components/SEO';
 import { BLOG_POSTS } from '../data/siteData';
 import CTABanner from '../components/home/CTABanner';
@@ -18,8 +18,6 @@ export default function BlogPage() {
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     return matchCat && matchSearch;
   }).sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const featured = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
   return (
     <main className="pt-20">
@@ -69,37 +67,6 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Featured post */}
-      {featured && (
-        <section className="pb-0 pt-4 bg-[#EEF2FF]">
-          <div className="container-xl">
-            <Link to={`/blog/${featured.slug}`} className="group block glass-card gradient-border rounded-3xl overflow-hidden grid md:grid-cols-2 hover:shadow-glow transition-all duration-300">
-              <div className="relative h-64 md:h-auto overflow-hidden">
-                <img src={featured.image} alt={featured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-                <span className={`absolute top-5 left-5 text-xs font-600 text-white px-3 py-1.5 rounded-full bg-gradient-to-r ${featured.categoryColor}`}>
-                  Featured • {featured.category}
-                </span>
-              </div>
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className="flex items-center gap-4 text-xs text-[#64748b] mb-4">
-                  <span className="flex items-center gap-1"><User className="w-3 h-3" />{featured.author}</span>
-                  <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{featured.readTime}</span>
-                  <span>{featured.date}</span>
-                </div>
-                <h2 className="text-[#1B3172] font-heading font-700 text-2xl md:text-3xl mb-4 leading-snug group-hover:gradient-text transition-all">
-                  {featured.title}
-                </h2>
-                <p className="text-[#475569] mb-6 leading-relaxed">{featured.excerpt}</p>
-                <div className="flex items-center gap-2 text-brand-purple font-medium text-sm group-hover:gap-3 transition-all">
-                  Read Article <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            </Link>
-          </div>
-        </section>
-      )}
-
       {/* Category filter */}
       <section className="py-10 bg-[#EEF2FF]">
         <div className="container-xl">
@@ -130,7 +97,7 @@ export default function BlogPage() {
                   transition={{ duration: 0.5, delay: (i % 3) * 0.1 }} viewport={{ once: true }}>
                   <Link to={`/blog/${post.slug}`}
                     className="group glass-card gradient-border rounded-2xl overflow-hidden flex flex-col hover:-translate-y-2 transition-all duration-300 hover:shadow-glow block h-full">
-                    <div className="relative overflow-hidden h-48">
+                    <div className="relative overflow-hidden aspect-video">
                       <img src={post.image} alt={post.title} loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
