@@ -22,7 +22,7 @@ const SERVICE_FAQS = {
     { q: 'Do you guarantee #1 rankings?', a: 'No ethical SEO agency can guarantee specific rankings — Google\'s algorithm changes constantly. We do guarantee full transparency, best practices, and a measurable improvement in organic visibility, traffic, and leads.' },
     { q: 'Do you handle local SEO for businesses targeting nearby customers?', a: 'Yes — local SEO is one of our core specializations. We optimize your on-page signals, Google Business Profile, local citations, and location-specific content to help you rank in local searches and Google Maps.' },
   ],
-  'google-business': [
+  'google-business-profile': [
     { q: 'What is Google Business Profile optimization?', a: 'GBP optimization covers fully completing your profile, adding photos, setting accurate hours and services, implementing a review generation strategy, posting weekly updates, and building citation consistency so Google ranks you higher in local search.' },
     { q: 'How long before I see local search improvements?', a: 'Most clients see measurable improvements in local pack rankings and calls within 30–60 days of a full GBP optimization. Review generation typically shows results within 2–4 weeks.' },
     { q: 'Do you respond to reviews on my behalf?', a: 'Yes. We craft professional, brand-consistent responses to both positive and negative reviews within 48 hours, which Google rewards with higher local ranking signals.' },

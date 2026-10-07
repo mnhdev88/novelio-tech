@@ -54,8 +54,8 @@
     ]
   },
   {
-    "id": "google-business",
-    "slug": "/services/google-business",
+    "id": "google-business-profile",
+    "slug": "/services/google-business-profile",
     "icon": "MapPin",
     "title": "Google Business Profile",
     "short": "Google Business",

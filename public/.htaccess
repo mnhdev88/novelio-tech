@@ -17,6 +17,9 @@ RewriteRule ^smb-business-growth/?$                               https://www.no
 RewriteRule ^what-we-do\.html$                                    https://www.noveliotech.com/services [R=301,L,NC]
 RewriteRule ^kpo-services\.php$                                   https://www.noveliotech.com/services [R=301,L,NC]
 #
+# Renamed service slug (was /services/google-business):
+RewriteRule ^services/google-business/?$                          https://www.noveliotech.com/services/google-business-profile [R=301,L,NC]
+#
 # Old home / index aliases — indexed as non-www, so host-fix→path-fix chained to
 # 2 hops before; absolute target here collapses them to one:
 RewriteRule ^index\.php$                                          https://www.noveliotech.com/ [R=301,L,NC]

@@ -169,7 +169,7 @@ function CityPage({ city }) {
   };
 
   const featuredServices = SERVICES.filter(s =>
-    ['website-development', 'search-engine-optimization', 'google-business', 'lead-generation'].includes(s.id)
+    ['website-development', 'search-engine-optimization', 'google-business-profile', 'lead-generation'].includes(s.id)
   );
 
   return (
@@ -484,7 +484,7 @@ function CityPage({ city }) {
               Website Development
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/services/google-business" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to="/services/google-business-profile" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
               Google Business Profile
             </Link>
             <span className="text-[#CBD5E1]">·</span>
