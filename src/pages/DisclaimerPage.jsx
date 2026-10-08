@@ -8,7 +8,7 @@ const LAST_UPDATED = 'September 2, 2026';
 export default function DisclaimerPage() {
   return (
     <main className="pt-28 pb-20 bg-[#F8FAFF] min-h-screen">
-      <SEO title="Disclaimer" description="Novelio Technologies LLC disclaimer — limitations on results, professional advice, and third-party content." canonical="/disclaimer" noindex />
+      <SEO title="Disclaimer" description="Novelio Technologies LLC disclaimer: limitations on results, professional advice, and third-party content." canonical="/disclaimer" noindex />
       <div className="bg-[#0E1E38] py-16 mb-12">
         <div className="container-xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -38,7 +38,7 @@ export default function DisclaimerPage() {
 
           <Section title="2. No Guarantee of Results">
             <p>Any results, case studies, testimonials, or statistics mentioned on our website represent the experiences of specific clients under specific conditions. They are not typical results and should not be interpreted as a guarantee that you will achieve similar outcomes.</p>
-            <p>Digital marketing performance depends on numerous factors including industry, competition, geographic location, budget, implementation quality, market conditions, and search engine algorithm changes — many of which are outside Novelio's control.</p>
+            <p>Digital marketing performance depends on numerous factors including industry, competition, geographic location, budget, implementation quality, market conditions, and search engine algorithm changes, many of which are outside Novelio's control.</p>
           </Section>
 
           <Section title="3. Professional Advice Disclaimer">
@@ -67,7 +67,7 @@ export default function DisclaimerPage() {
           </Section>
 
           <Section title="8. Limitation of Liability">
-            <p>To the maximum extent permitted by applicable law, Novelio Technologies LLC shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of, or inability to use, this website or our services — even if we have been advised of the possibility of such damages.</p>
+            <p>To the maximum extent permitted by applicable law, Novelio Technologies LLC shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of, or inability to use, this website or our services, even if we have been advised of the possibility of such damages.</p>
           </Section>
 
           <Section title="9. Fair Use">

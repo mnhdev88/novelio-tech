@@ -26,7 +26,7 @@ function AreaCard({ area, index, onCountChange }) {
     count === 0
       ? 'Tap what sounds familiar'
       : isGap
-        ? `${count} of ${total} — that’s a real gap`
+        ? `${count} of ${total}: that’s a real gap`
         : `${count} of ${total}`;
 
   return (
@@ -176,7 +176,7 @@ export default function GrowthSystem() {
           </h2>
           <p className="text-[#64748b] text-base sm:text-lg mt-5 max-w-3xl mx-auto leading-relaxed">
             A website alone does not grow a business. Visibility, capture, conversion and retention
-            all have to work together — miss one and the others leak revenue. Tap what sounds like you.
+            all have to work together. Miss one and the others leak revenue. Tap what sounds like you.
           </p>
         </div>
 
@@ -203,7 +203,7 @@ export default function GrowthSystem() {
             Get Your Free Growth Audit
           </button>
           <p className="text-[#64748b] text-sm mt-4">
-            See which of the 4 areas is costing you the most — before you spend on any of them.
+            See which of the 4 areas is costing you the most, before you spend on any of them.
           </p>
         </div>
       </div>

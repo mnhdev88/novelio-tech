@@ -21,7 +21,7 @@ const FRAMEWORK = [
     tag: 'SEO',
     icon: Search,
     title: 'Search Engine Optimisation',
-    desc: 'Getting found through Google and traditional search — the technical and on-page foundation everything else builds on.',
+    desc: 'Getting found through Google and traditional search: the technical and on-page foundation everything else builds on.',
     color: 'from-indigo-500 to-blue-600',
   },
   {
@@ -133,7 +133,7 @@ const COMPARISON = [
   { group: 'Content, AEO & GEO' },
   {
     feature: 'Content Strategy',
-    note: 'Blog topics, briefs, buying guides — writing quoted separately',
+    note: 'Blog topics, briefs, buying guides (writing quoted separately)',
     values: [
       '2 topics/month, basic briefs',
       '4 topics/month, detailed briefs, limited guide input',
@@ -141,21 +141,21 @@ const COMPARISON = [
     ],
   },
   {
-    feature: 'AEO — Answer Engine Optimisation',
+    feature: 'AEO (Answer Engine Optimisation)',
     note: 'FAQ, snippets, People Also Ask, question research',
     values: [
-      'Foundational — FAQ optimisation, basic snippet targeting',
-      'Advanced — expanded snippet and PAA targeting, detailed research',
-      'Comprehensive — site-wide opportunities, extensive research',
+      'Foundational: FAQ optimisation, basic snippet targeting',
+      'Advanced: expanded snippet and PAA targeting, detailed research',
+      'Comprehensive: site-wide opportunities, extensive research',
     ],
   },
   {
-    feature: 'GEO — Generative Engine Optimisation',
+    feature: 'GEO (Generative Engine Optimisation)',
     note: 'AI structuring, entity clarity, AI visibility tracking',
     values: [
-      'Foundation — AI-readable structuring, basic entity clarity',
-      'Growth — advanced entity clarity, monthly AI tracking',
-      'Advanced — comprehensive entity strategy, detailed monthly tracking',
+      'Foundation: AI-readable structuring, basic entity clarity',
+      'Growth: advanced entity clarity, monthly AI tracking',
+      'Advanced: comprehensive entity strategy, detailed monthly tracking',
     ],
   },
 
@@ -212,7 +212,7 @@ const schema = {
         name: 'SEO, AEO & GEO Growth Plans',
         itemListElement: PLANS.map((p) => ({
           '@type': 'Offer',
-          name: p.name + ' — ' + p.strategy,
+          name: p.name + ': ' + p.strategy,
           description: p.bestFor,
           price: p.price,
           priceCurrency: 'USD',
@@ -249,8 +249,8 @@ export default function SeoPlansPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="SEO, AEO & GEO Growth Plans — Pricing from $299/month"
-        description="Three monthly SEO plans for e-commerce brands — $299, $499 and $799 — covering search engine, answer engine and generative (AI) search optimisation. Full scope comparison included."
+        title="SEO, AEO & GEO Growth Plans: Pricing from $299/month"
+        description="Three monthly SEO plans for e-commerce brands ($299, $499 and $799), covering search engine, answer engine and generative (AI) search optimisation. Full scope comparison included."
         canonical="/services/seo-plans"
         keywords={['SEO pricing', 'SEO packages', 'AEO', 'GEO', 'AI search optimisation', 'ecommerce SEO plans']}
         schema={schema}
@@ -279,7 +279,7 @@ export default function SeoPlansPage() {
             </h1>
             <p className="text-[#475569] text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
               Three engagement tiers for e-commerce brands building visibility across Google,
-              answer engines, and AI search — with the full scope of every tier published below.
+              answer engines, and AI search, with the full scope of every tier published below.
             </p>
 
             <div className="flex flex-wrap gap-3 mb-9">
@@ -313,7 +313,7 @@ export default function SeoPlansPage() {
               Search Isn't Just <span className="gradient-text">Google</span> Anymore
             </h2>
             <p className="text-[#64748b] text-base mt-4 max-w-2xl mx-auto leading-relaxed">
-              Your customers now find answers in three places — classic search results, answer boxes,
+              Your customers now find answers in three places: classic search results, answer boxes,
               and AI assistants. Every plan below works all three at once.
             </p>
           </motion.div>
@@ -422,7 +422,7 @@ export default function SeoPlansPage() {
             <p className="text-[#475569] text-sm leading-relaxed max-w-2xl">
               <span className="font-semibold text-[#1B3172]">Need a website first?</span>{' '}
               These SEO plans are a separate service line for brands that already have a site to optimise.
-              If you need the website itself — with hosting, SSL and lead capture included — that lives in our growth plans.
+              If you need the website itself, with hosting, SSL and lead capture included, that lives in our growth plans.
             </p>
             <Link
               to="/pricing"
@@ -562,7 +562,7 @@ export default function SeoPlansPage() {
           </motion.div>
 
           <motion.p {...fadeUp(0.15)} className="text-center text-[#64748b] text-sm mt-8 leading-relaxed">
-            <span className="font-semibold text-[#1B3172]">Scope note</span> — content writing and major
+            <span className="font-semibold text-[#1B3172]">Scope note</span>: content writing and major
             development work remain outside the monthly fee and are quoted separately.{' '}
             <Link to="/contact" className="text-brand-purple font-semibold hover:underline">
               Ask us for a written quote →

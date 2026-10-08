@@ -67,7 +67,7 @@ export default function FreeWebsiteModal({ onClose }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _subject: 'Free Website Lead — Novelio Technologies',
+          _subject: 'Free Website Lead | Novelio Technologies',
           'Lead Source': 'Hero — Website included with growth plan (24-hour preview) offer',
           'Full Name': form.name,
           Email: form.email,
@@ -139,7 +139,7 @@ export default function FreeWebsiteModal({ onClose }) {
               </h2>
               <p className="text-[#64748b] text-sm leading-relaxed max-w-sm mx-auto mb-6">
                 Your website, SSL, hosting and lead-capture setup are included free with your
-                monthly growth plan — no heavy upfront website cost. We build your preview first.
+                monthly growth plan, with no heavy upfront website cost. We build your preview first.
               </p>
               {/* Trust benefits */}
               <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 max-w-xs mx-auto mb-8 text-left">

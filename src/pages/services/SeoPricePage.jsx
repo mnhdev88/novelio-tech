@@ -135,7 +135,7 @@ const SCOPE = [
   {
     id: 'aeo',
     icon: MessageSquareQuote,
-    title: 'AEO — Answer Engine Optimisation',
+    title: 'AEO (Answer Engine Optimisation)',
     intro:
       'Designed to help search engines and answer engines understand and surface clear answers to customer questions.',
     rows: [
@@ -151,7 +151,7 @@ const SCOPE = [
   {
     id: 'geo',
     icon: BrainCircuit,
-    title: 'GEO — Generative Engine Optimisation',
+    title: 'GEO (Generative Engine Optimisation)',
     intro:
       'Improves the clarity, authority and structure of your content for AI-driven search and discovery experiences.',
     rows: [
@@ -271,7 +271,7 @@ export default function SeoPricePage() {
       {/* Deliberately noindex + canonicalised to /services/seo-plans: this page
           carries the same offer in full detail and must not compete with it. */}
       <SEO
-        title="SEO, AEO & GEO Plans — Full Scope & Pricing"
+        title="SEO, AEO & GEO Plans: Full Scope & Pricing"
         description="The complete line-by-line scope behind our $299, $499 and $799 monthly SEO, AEO and GEO plans for e-commerce brands."
         canonical="/services/seo-plans"
         noindex
@@ -300,7 +300,7 @@ export default function SeoPricePage() {
             </h1>
             <p className="text-[#475569] text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
               A complete organic growth framework designed to improve search visibility, product
-              discovery, AI-readiness, qualified traffic and conversions — with every activity in
+              discovery, AI-readiness, qualified traffic and conversions, with every activity in
               every tier published in full below.
             </p>
 
@@ -420,7 +420,7 @@ export default function SeoPricePage() {
             </h2>
             <p className="text-[#64748b] text-base mt-4 max-w-2xl mx-auto leading-relaxed">
               Nine disciplines, roughly sixty deliverables. This is the working document behind the
-              plans — no vague line items, no hidden inclusions.
+              plans. No vague line items, no hidden inclusions.
             </p>
           </motion.div>
 
@@ -437,7 +437,7 @@ export default function SeoPricePage() {
                 className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs sm:text-sm font-semibold text-[#1B3172] hover:border-brand-purple hover:text-brand-purple transition-colors"
               >
                 <span className="text-[#94a3b8]">{i + 1}</span>
-                {s.title.split(' — ')[0]}
+                {s.title.split(' (')[0]}
               </a>
             ))}
           </motion.nav>
@@ -461,7 +461,7 @@ export default function SeoPricePage() {
 
                 <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
                   <table className="w-full text-sm text-left min-w-[860px]">
-                    <caption className="sr-only">{section.title} — scope by plan tier</caption>
+                    <caption className="sr-only">{section.title}: scope by plan tier</caption>
                     <thead>
                       <tr className="bg-[#1B3172] text-white">
                         <th scope="col" className="px-5 py-4 font-heading font-700 min-w-[250px]">Activity</th>
@@ -512,7 +512,7 @@ export default function SeoPricePage() {
           <motion.div {...fadeUp()} className="text-center mb-10">
             <div className="section-label mx-auto mb-4">How the Engagement Works</div>
             <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#1B3172]">
-              What We Commit To — and <span className="gradient-text">What We Don't</span>
+              What We Commit To, and <span className="gradient-text">What We Don't</span>
             </h2>
           </motion.div>
 
@@ -551,7 +551,7 @@ export default function SeoPricePage() {
             className="mt-10 rounded-2xl bg-[#EEF2FF] border border-slate-200 p-7 text-center"
           >
             <p className="text-[#1B3172] font-heading font-700 text-lg mb-1.5">
-              Recommended plan: Growth — $499/month
+              Recommended plan: Growth ($499/month)
             </p>
             <p className="text-[#475569] text-sm leading-relaxed max-w-2xl mx-auto">
               Balanced for SEO, AEO, GEO, technical optimisation, e-commerce visibility and ongoing

@@ -17,13 +17,13 @@ const PAIN_POINTS = [
   {
     num: '01',
     title: 'Invisible when Newark residents search for your service',
-    desc: "Google's local pack shows only 3 results. Without proper on-page SEO, location signals, and schema markup, your business simply doesn't appear — no matter how good your product or service is.",
+    desc: "Google's local pack shows only 3 results. Without proper on-page SEO, location signals, and schema markup, your business simply doesn't appear, no matter how good your product or service is.",
     stat: '91% of searchers never click past page one',
   },
   {
     num: '02',
     title: 'Your current website loses visitors before they ever contact you',
-    desc: 'Slow load times, broken mobile layouts, and no clear call-to-action send potential customers straight to your competitors. Visitors decide in under 3 seconds — your site needs to win that moment.',
+    desc: 'Slow load times, broken mobile layouts, and no clear call-to-action send potential customers straight to your competitors. Visitors decide in under 3 seconds: your site needs to win that moment.',
     stat: '53% of users abandon sites that take over 3 seconds to load',
   },
   {
@@ -47,13 +47,13 @@ const STATS = [
   { value: '8,000+', label: 'Small businesses competing in Newark NJ' },
   { value: '23%',    label: 'Have a website that ranks on Google page one locally' },
   { value: '76%',    label: 'Of local searches lead to a visit within 24 hours' },
-  { value: '$150/mo', label: 'Growth plans — website included, demo always first' },
+  { value: '$150/mo', label: 'Growth plans (website included, demo always first)' },
 ];
 
 const FAQS = [
   {
     q: 'How much does a website cost for a Newark NJ business?',
-    a: "Novelio builds your demo website completely free — you see the finished site before any payment is discussed. Your website, SSL, hosting and lead-capture setup are then included with a growth plan starting at $150/month, so there is no $1,500–$3,000 upfront website cost. No hidden fees.",
+    a: "Novelio builds your demo website completely free: you see the finished site before any payment is discussed. Your website, SSL, hosting and lead-capture setup are then included with a growth plan starting at $150/month, so there is no $1,500–$3,000 upfront website cost. No hidden fees.",
   },
   {
     q: 'How long does it take to build a business website in Newark?',
@@ -61,11 +61,11 @@ const FAQS = [
   },
   {
     q: 'Will my Newark business website actually show up on Google?',
-    a: 'Yes. Every Novelio website is built with on-page SEO, local keyword targeting for Newark NJ, Google Business Profile optimisation, and schema markup — all the technical foundations Google needs to rank you for local searches like "best [your service] in Newark NJ."',
+    a: 'Yes. Every Novelio website is built with on-page SEO, local keyword targeting for Newark NJ, Google Business Profile optimisation, and schema markup, all the technical foundations Google needs to rank you for local searches like "best [your service] in Newark NJ."',
   },
   {
     q: 'What makes Novelio the best website developer in Newark NJ?',
-    a: "We build your website before you pay a cent. No other Newark web developer does that. Every site is custom-designed, mobile-first, SEO-structured, and built to generate real leads — not just look good. We also offer ongoing support so your site keeps performing long after launch.",
+    a: "We build your website before you pay a cent. No other Newark web developer does that. Every site is custom-designed, mobile-first, SEO-structured, and built to generate real leads, not just look good. We also offer ongoing support so your site keeps performing long after launch.",
   },
 ];
 
@@ -99,7 +99,7 @@ const schema = {
       '@type': 'WebPage',
       name: 'Best Website Developer in Newark, NJ',
       url: 'https://www.noveliotech.com/best-website-developer-in-newark',
-      description: 'Novelio Technologies builds fast, SEO-ready, lead-generating websites for Newark NJ businesses. Free demo built first — no upfront cost.',
+      description: 'Novelio Technologies builds fast, SEO-ready, lead-generating websites for Newark NJ businesses. Free demo built first, no upfront cost.',
     },
     {
       '@type': 'LocalBusiness',
@@ -126,7 +126,7 @@ export default function BestWebDevNewarkPage() {
     <main className="pt-20">
       <SEO
         title="Best Website Developer in Newark, NJ"
-        description="Looking for the best website developer in Newark NJ? Novelio builds fast, SEO-ready, lead-generating websites — free demo first, no upfront cost."
+        description="Looking for the best website developer in Newark NJ? Novelio builds fast, SEO-ready, lead-generating websites. Free demo first, no upfront cost."
         canonical="/best-website-developer-in-newark"
         keywords={[
           'best website developer in Newark NJ',
@@ -190,7 +190,7 @@ export default function BestWebDevNewarkPage() {
             className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed mb-8"
           >
             Most Newark businesses have websites that are invisible on Google and bleed leads every day.
-            Novelio builds fast, SEO-ready, conversion-focused sites — and you see your free demo before spending a single dollar.
+            Novelio builds fast, SEO-ready, conversion-focused sites, and you see your free demo before spending a single dollar.
           </motion.p>
 
           <motion.div
@@ -224,7 +224,7 @@ export default function BestWebDevNewarkPage() {
             {[
               { value: '$0', label: 'Cost to see your demo' },
               { value: '48h', label: 'Demo turnaround' },
-              { value: '$150/mo', label: 'Growth plan — website included' },
+              { value: '$150/mo', label: 'Growth plan (website included)' },
               { value: '100%', label: 'Pay only if you love it' },
             ].map((stat, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center backdrop-blur-sm">
@@ -245,7 +245,7 @@ export default function BestWebDevNewarkPage() {
               Your Competitors' Websites Are Winning Clients That Should Be Yours
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              Newark has thousands of small businesses competing for the same local customers. The ones winning on Google share one thing — a website built to rank and convert.
+              Newark has thousands of small businesses competing for the same local customers. The ones winning on Google share one thing: a website built to rank and convert.
             </p>
           </motion.div>
 
@@ -281,15 +281,15 @@ export default function BestWebDevNewarkPage() {
                   <span className="gradient-text">You Pay After.</span>
                 </h2>
                 <p className="text-[#475569] text-lg leading-relaxed mb-10">
-                  No deposits, no contracts, no risk. We research your Newark business, your market, and your competitors — then build a real, live demo and walk you through it on a call. Love it, we launch. Don't love it, you owe us nothing.
+                  No deposits, no contracts, no risk. We research your Newark business, your market, and your competitors, then build a real, live demo and walk you through it on a call. Love it, we launch. Don't love it, you owe us nothing.
                 </p>
               </motion.div>
 
               <div className="flex flex-col gap-6">
                 {[
-                  { n: '1', title: 'Quick intake call (15 min)', desc: 'Tell us about your Newark business — services, goals, and what makes you different.' },
+                  { n: '1', title: 'Quick intake call (15 min)', desc: 'Tell us about your Newark business: services, goals, and what makes you different.' },
                   { n: '2', title: 'We build your demo site (48–72 hrs)', desc: 'A fully designed, mobile-first, SEO-structured site built around your business and Newark location.' },
-                  { n: '3', title: 'Review call — you decide', desc: 'See the demo live on a call. Love it → we launch. Don\'t → walk away with no bill.' },
+                  { n: '3', title: 'Review call: you decide', desc: 'See the demo live on a call. Love it → we launch. Don\'t → walk away with no bill.' },
                 ].map((step, i) => (
                   <motion.div key={i} {...fadeUp(0.1 + i * 0.1)} className="flex items-start gap-5">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -309,7 +309,7 @@ export default function BestWebDevNewarkPage() {
               <div className="bg-white border border-[#E2E8F0] rounded-3xl p-10 shadow-lg">
                 <div className="section-label mb-4">What's Included in Your Free Demo</div>
                 <h3 className="text-2xl font-heading font-800 text-[#1B3172] mb-6 leading-snug">
-                  Your Newark business's complete website — built & ready to review
+                  Your Newark business's complete website, built & ready to review
                 </h3>
 
                 <ul className="flex flex-col gap-3 mb-8">
@@ -331,7 +331,7 @@ export default function BestWebDevNewarkPage() {
                   className="btn-primary w-full justify-center text-base py-4 mb-3"
                 >
                   <Phone className="w-4 h-4" />
-                  Call to Start Your Free Demo — (908) 639-5666
+                  Call to Start Your Free Demo: (908) 639-5666
                 </a>
                 <p className="text-center text-xs text-[#64748b]">
                   Or email <a href="mailto:info@noveliotech.com" className="text-[#4338CA] hover:underline">info@noveliotech.com</a> · Response within 2 hours
@@ -390,12 +390,12 @@ export default function BestWebDevNewarkPage() {
               <h3 className="font-heading font-700 text-[#1B3172] mb-4">What most Newark business sites look like</h3>
               <ul className="flex flex-col gap-3">
                 {[
-                  'Hard to find on Google — no local SEO structure',
+                  'Hard to find on Google: no local SEO structure',
                   'Outdated design, broken on mobile',
-                  'No clear CTA — visitors don\'t know what to do',
+                  'No clear CTA: visitors don\'t know what to do',
                   'No social proof or Google reviews displayed',
-                  'Slow load times — losing more than half of visitors',
-                  'No lead capture — traffic vanishes without converting',
+                  'Slow load times, losing more than half of visitors',
+                  'No lead capture: traffic vanishes without converting',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-[#64748b] text-sm">
                     <span className="text-[#DC2626] font-bold mt-0.5 flex-shrink-0">✕</span>
@@ -443,7 +443,7 @@ export default function BestWebDevNewarkPage() {
                 ))}
               </div>
               <blockquote className="text-xl text-[#1B3172] font-medium leading-relaxed mb-8 italic">
-                "We had Instagram followers but no one was booking online. Novelio built us a site with real SEO and a booking integration — within 45 days we were getting appointments through the website every single day."
+                "We had Instagram followers but no one was booking online. Novelio built us a site with real SEO and a booking integration. Within 45 days we were getting appointments through the website every single day."
               </blockquote>
               <div className="flex items-center justify-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center text-white font-heading font-700 text-sm flex-shrink-0">

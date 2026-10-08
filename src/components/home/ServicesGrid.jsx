@@ -125,7 +125,7 @@ export default function ServicesGrid() {
             Every Aspect of Your <span className="gradient-text">Business Growth, Covered</span>
           </h2>
           <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-            From your homepage to your accounting software — we assess, fix, and scale what matters.
+            From your homepage to your accounting software, we assess, fix, and scale what matters.
           </p>
         </motion.div>
 

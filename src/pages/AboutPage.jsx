@@ -66,7 +66,7 @@ export default function AboutPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="About Us — Your Dedicated Business Growth Partner"
+        title="About Us: Your Dedicated Business Growth Partner"
         description="Novelio Technologies LLC is a dedicated business growth partner serving 200+ small businesses worldwide. Learn our story, team, and values."
         canonical="/about"
         schema={ABOUT_SCHEMA}
@@ -86,7 +86,7 @@ export default function AboutPage() {
               Building Business <span className="gradient-text">Growth Systems</span>
             </h1>
             <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed">
-              We're not a marketing agency. We're growth consultants — strategic partners committed to building complete, sustainable growth systems for businesses that want to lead their markets. You see results before you commit financially — no leap of faith required.
+              We're not a marketing agency. We're growth consultants: strategic partners committed to building complete, sustainable growth systems for businesses that want to lead their markets. You see results before you commit financially. No leap of faith required.
             </p>
           </motion.div>
         </div>
@@ -129,7 +129,7 @@ export default function AboutPage() {
                 Ajay Tyagi leads Novelio Technologies as Executive Director. He built the company
                 around a principle most agencies won't offer a small business: prove it first.
                 Novelio designs and builds your website, Google presence, and follow-up systems up
-                front — so you can see the work, and the difference it makes, before you pay for any of it.
+                front, so you can see the work, and the difference it makes, before you pay for any of it.
               </p>
               {/* TODO (Ajay): add 1–2 true sentences of origin story here, e.g. "I started Novelio after…". Keep it specific and real. */}
               <p className="text-[#64748b] text-sm leading-relaxed">
@@ -149,14 +149,14 @@ export default function AboutPage() {
               {
                 label: 'Our Mission',
                 title: 'Democratize Business Growth',
-                desc: 'To make enterprise-level growth strategy accessible to businesses of every size — empowering them to compete and win through data-driven systems, transparency, and genuine partnership.',
+                desc: 'To make enterprise-level growth strategy accessible to businesses of every size, empowering them to compete and win through data-driven systems, transparency, and genuine partnership.',
                 color: 'from-purple-600 to-blue-600',
                 icon: Target,
               },
               {
                 label: 'Our Vision',
                 title: 'The Most Trusted Growth Partner',
-                desc: 'To become the most trusted growth partner globally — known not just for results, but for the integrity, innovation, and client-obsession behind every system we build.',
+                desc: 'To become the most trusted growth partner globally, known not just for results, but for the integrity, innovation, and client-obsession behind every system we build.',
                 color: 'from-pink-600 to-orange-500',
                 icon: Rocket,
               },
@@ -227,7 +227,7 @@ export default function AboutPage() {
               Our 9-Stage <span className="gradient-text">Growth Framework</span>
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto leading-relaxed">
-              We are growth consultants, not just a web shop. A website creates presence — but real
+              We are growth consultants, not just a web shop. A website creates presence, but real
               growth comes from a complete system: traffic → lead capture → follow-up → conversion →
               delivery → reviews → repeat sales.
             </p>

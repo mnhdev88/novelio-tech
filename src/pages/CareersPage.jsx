@@ -16,7 +16,7 @@ const fadeUp = (delay = 0) => ({
 
 const presenceCards = [
   { icon: Building2, label: 'US Headquarters', detail: 'Dover, DE & regional teams across 9 states' },
-  { icon: Users,     label: 'India Operations Hub', detail: 'Gurgaon, Delhi NCR — delivery & growth' },
+  { icon: Users,     label: 'India Operations Hub', detail: 'Gurgaon, Delhi NCR: delivery & growth' },
   { icon: Globe2,    label: 'Who We Serve', detail: 'Small businesses & entrepreneurs across the US' },
   { icon: Zap,       label: 'What We Do', detail: 'AI tools, websites, local SEO & digital growth' },
 ];
@@ -27,7 +27,7 @@ const usJobs = [
     openings: 1,
     tags: [{ label: '🇺🇸 United States', style: 'bg-blue-50 text-blue-700' }, { label: 'Hybrid', style: 'bg-amber-50 text-amber-700' }, { label: '1 Opening', style: 'bg-orange-50 text-orange-600' }],
     locations: 'Dover, DE | Texas | Florida | North Carolina | Tennessee | Idaho | South Dakota | Iowa | Colorado | Utah | Montana',
-    desc: 'You will coordinate between our sales team, clients, and delivery teams — keeping deals moving, follow-ups on track, and every small business owner we work with feeling taken care of. This role sits at the centre of our US operations and reports directly to the US team lead.',
+    desc: 'You will coordinate between our sales team, clients, and delivery teams, keeping deals moving, follow-ups on track, and every small business owner we work with feeling taken care of. This role sits at the centre of our US operations and reports directly to the US team lead.',
     pills: ['CRM Management', 'Client Communication', 'Sales Support', '1–3 Years Experience', 'Full-Time', 'Salary + Incentive'],
     accentColor: 'border-l-orange-500',
     btnStyle: 'bg-orange-500 hover:bg-orange-600 text-white',
@@ -39,7 +39,7 @@ const usJobs = [
     openings: 3,
     tags: [{ label: '🇺🇸 United States', style: 'bg-blue-50 text-blue-700' }, { label: 'Hybrid', style: 'bg-amber-50 text-amber-700' }, { label: '3 Openings', style: 'bg-purple-50 text-purple-700' }],
     locations: 'Dover, DE | Texas | Florida | North Carolina | Tennessee | Idaho | South Dakota | Iowa | Colorado | Utah | Montana',
-    desc: 'Work directly with small business owners and entrepreneurs — understand their growth challenges, present our digital solutions, and close deals. This is a hybrid field + phone role. You will build your own book of business with full support from a senior sales mentor.',
+    desc: 'Work directly with small business owners and entrepreneurs: understand their growth challenges, present our digital solutions, and close deals. This is a hybrid field + phone role. You will build your own book of business with full support from a senior sales mentor.',
     pills: ['B2B Sales', 'Small Business Market', 'Digital Products', '2–4 Years Experience', 'Salary + Commission', 'Full-Time'],
     accentColor: 'border-l-[#1B3172]',
     btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
@@ -49,22 +49,22 @@ const usJobs = [
 
 const indiaJobs = [
   {
-    title: 'Sales Executive — US Market',
+    title: 'Sales Executive (US Market)',
     openings: 2,
     tags: [{ label: '🇮🇳 India', style: 'bg-green-50 text-green-700' }, { label: 'Night Shift', style: 'bg-pink-50 text-pink-700' }, { label: '2 Openings', style: 'bg-purple-50 text-purple-700' }],
     location: 'Gurgaon, Delhi NCR | Work from Office',
-    desc: 'Sell digital growth solutions — websites, AI tools, local SEO — to small business owners and entrepreneurs in the US. Build your pipeline, manage relationships, and close with direct support from a senior sales mentor who has built and scaled teams from scratch.',
+    desc: 'Sell digital growth solutions (websites, AI tools, local SEO) to small business owners and entrepreneurs in the US. Build your pipeline, manage relationships, and close with direct support from a senior sales mentor who has built and scaled teams from scratch.',
     pills: ['International Sales', '2–3 Years Experience', 'Strong Spoken English', 'Night Shift (US EST/PST)', 'Salary + Incentive'],
     subject: 'Application: Sales Executive – India',
     btnLabel: 'Apply Now →',
     btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
   },
   {
-    title: 'Call Setter — US Market',
+    title: 'Call Setter (US Market)',
     openings: 1,
     tags: [{ label: '🇮🇳 India', style: 'bg-green-50 text-green-700' }, { label: 'Night Shift', style: 'bg-pink-50 text-pink-700' }, { label: '1 Opening', style: 'bg-purple-50 text-purple-700' }],
     location: 'Gurgaon, Delhi NCR | Work from Office',
-    desc: 'You are the first voice a US small business owner hears. Reach out to business owners, introduce what we do, qualify their interest, and book appointments for the sales team. Full training provided. This is not a scripted call-centre role — you will be coached to have real conversations. Clear growth path to Sales Executive within 6–12 months.',
+    desc: 'You are the first voice a US small business owner hears. Reach out to business owners, introduce what we do, qualify their interest, and book appointments for the sales team. Full training provided. This is not a scripted call-centre role. You will be coached to have real conversations. Clear growth path to Sales Executive within 6–12 months.',
     pills: ['Outbound Calling', '0–2 Years Experience', 'Freshers Welcome', 'Night Shift', 'Salary + Appointment Incentive'],
     subject: 'Application: Call Setter – India',
     btnLabel: 'Apply Now →',
@@ -76,13 +76,13 @@ const indiaJobs = [
     tags: [{ label: '🇮🇳 India', style: 'bg-green-50 text-green-700' }, { label: 'Day Shift', style: 'bg-amber-50 text-amber-700' }, { label: '1 Opening', style: 'bg-orange-50 text-orange-600' }],
     location: 'Gurgaon, Delhi NCR | Work from Office / Hybrid',
     desc: 'Lead our SEO function for US-based local business clients. You will own keyword strategy, on-page and off-page execution, Google Business Profile optimisation, and monthly reporting. You will also guide and review the work of our SEO interns.',
-    pills: ['3+ Years SEO Experience', 'Local SEO — US Market', 'Google Search Console', 'Ahrefs / SEMrush', 'Team Handling Experience', 'Content Strategy'],
+    pills: ['3+ Years SEO Experience', 'Local SEO (US Market)', 'Google Search Console', 'Ahrefs / SEMrush', 'Team Handling Experience', 'Content Strategy'],
     applyNote: true,
-    applyNoteTitle: '⚠ How to Apply — Please Read Before Sending',
+    applyNoteTitle: '⚠ How to Apply: Please Read Before Sending',
     applyNotePoints: [
       'Your responsibilities in your current or last role.',
       'The exact SEO tasks you personally executed.',
-      'Live URLs of websites you have actively worked on in the last 12 months — with the specific results achieved. Applications without live URLs will not be reviewed.',
+      'Live URLs of websites you have actively worked on in the last 12 months, with the specific results achieved. Applications without live URLs will not be reviewed.',
     ],
     applyNoteFooter: 'CV is optional.',
     subject: 'SEO Team Lead Application – Work Profile',
@@ -96,14 +96,14 @@ const indiaJobs = [
     openings: 2,
     tags: [{ label: '🇮🇳 India', style: 'bg-green-50 text-green-700' }, { label: 'Day Shift', style: 'bg-amber-50 text-amber-700' }, { label: '2 Openings', style: 'bg-purple-50 text-purple-700' }],
     location: 'Gurgaon, Delhi NCR | Work from Office',
-    desc: 'Learn SEO by doing real SEO. You will work on live US client websites under the guidance of our SEO Team Lead — keyword research, on-page fixes, GMB updates, content briefs, and rank tracking. If you have touched even one live website and seen results move, we want to hear from you.',
+    desc: 'Learn SEO by doing real SEO. You will work on live US client websites under the guidance of our SEO Team Lead: keyword research, on-page fixes, GMB updates, content briefs, and rank tracking. If you have touched even one live website and seen results move, we want to hear from you.',
     pills: ['0–1 Year Experience', 'Basic SEO Knowledge', 'Google Search Console', 'Eager to Learn', 'Stipend + Incentive'],
     applyNote: true,
-    applyNoteTitle: '⚠ How to Apply — Please Read Before Sending',
+    applyNoteTitle: '⚠ How to Apply: Please Read Before Sending',
     applyNotePoints: [
-      'What you have done in SEO so far — your exact responsibilities.',
+      'What you have done in SEO so far: your exact responsibilities.',
       'Tools you have used (e.g. Ahrefs, GSC, SEMrush).',
-      'At least one live URL you have worked on and what changed after your work. Even personal projects or college websites count — just show us the work and the result.',
+      'At least one live URL you have worked on and what changed after your work. Even personal projects or college websites count. Just show us the work and the result.',
     ],
     applyNoteFooter: 'CV is optional.',
     subject: 'SEO Intern Application – Work Profile',
@@ -123,17 +123,17 @@ const freelanceJobs = [
       { label: '1 Opening', style: 'bg-orange-50 text-orange-600' },
     ],
     location: 'Remote / Hybrid | Project-wise / Part-time Association',
-    desc: 'Turn our products and services into clean, professional, easy-to-understand content. You will create short reels, explainer videos, product demos, and social creatives for our CRM, websites, apps, and AI tools — content that looks polished but stays simple enough for any small business owner to get. You will work with the content and business team to shape the message, and you are encouraged to suggest ideas, not just execute them.',
+    desc: 'Turn our products and services into clean, professional, easy-to-understand content. You will create short reels, explainer videos, product demos, and social creatives for our CRM, websites, apps, and AI tools, content that looks polished but stays simple enough for any small business owner to get. You will work with the content and business team to shape the message, and you are encouraged to suggest ideas, not just execute them.',
     pills: ['Video Editing', 'Reels & Shorts', 'Canva / Photoshop / Illustrator', 'CapCut / Premiere Pro / DaVinci', 'Basic Motion Graphics', 'Thumbnail Design', 'AI Video & Image Tools'],
     accentColor: 'border-l-purple-500',
     applyNote: true,
-    applyNoteTitle: '⚠ How to Apply — Please Share With Your Application',
+    applyNoteTitle: '⚠ How to Apply: Please Share With Your Application',
     applyNotePoints: [
-      'Your portfolio / sample work — reels, explainer videos, or product demos.',
+      'Your portfolio / sample work: reels, explainer videos, or product demos.',
       'Social media creatives you have already made (posts, carousels, thumbnails, banners).',
       'The tools you use (e.g. Premiere Pro, CapCut, DaVinci, Canva, Photoshop, AI video/image tools).',
     ],
-    applyNoteFooter: 'A CV is optional — your work samples matter most. Experience creating content for software, SaaS, CRM, or digital-marketing brands is a plus.',
+    applyNoteFooter: 'A CV is optional. Your work samples matter most. Experience creating content for software, SaaS, CRM, or digital-marketing brands is a plus.',
     subject: 'Application: Video & Image Creator – Freelance',
     btnLabel: 'Send Portfolio →',
     btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
@@ -191,10 +191,10 @@ function apiJobToCard(job) {
 }
 
 const whyCards = [
-  { icon: Star,       title: 'Real Mentorship',      text: 'Senior leaders who teach, not just manage. You will understand the why behind every task — not just get told what to do.' },
+  { icon: Star,       title: 'Real Mentorship',      text: 'Senior leaders who teach, not just manage. You will understand the why behind every task, not just get told what to do.' },
   { icon: TrendingUp, title: 'Fast Growth Path',      text: 'Performers move up quickly here. No waiting 3 years for a title change that means nothing.' },
   { icon: DollarSign, title: 'Earn What You Deliver', text: 'Competitive fixed salary with performance incentives that actually make a meaningful difference every month.' },
-  { icon: Heart,      title: 'Culture First',         text: 'We track learning and accountability — not just numbers. Good humans do better work here, and we know it.' },
+  { icon: Heart,      title: 'Culture First',         text: 'We track learning and accountability, not just numbers. Good humans do better work here, and we know it.' },
   { icon: Globe2,     title: 'Global Exposure',       text: 'Work with US clients directly. Understand a market, a culture, and a pace of business that sharpens your skills fast.' },
 ];
 
@@ -307,7 +307,7 @@ export default function CareersPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Careers — Join Novelio Technologies"
+        title="Careers: Join Novelio Technologies"
         description="We're hiring across the US, India, and remote. Sales, SEO, content/video, and operations roles at a fast-growing AI-powered digital agency."
         canonical="/careers"
       />
@@ -319,13 +319,13 @@ export default function CareersPage() {
         <div className="dot-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10 text-center">
           <motion.div {...fadeUp(0)}>
-            <div className="section-label mx-auto mb-4 inline-flex items-center gap-1.5"><Flame className="w-4 h-4" /> We Are Hiring — {totalOpenings} Open Position{totalOpenings === 1 ? '' : 's'}</div>
+            <div className="section-label mx-auto mb-4 inline-flex items-center gap-1.5"><Flame className="w-4 h-4" /> We Are Hiring: {totalOpenings} Open Position{totalOpenings === 1 ? '' : 's'}</div>
           </motion.div>
           <motion.h1 {...fadeUp(0.1)} className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
             Grow Your Career at<br /><span className="gradient-text">Novelio Technologies</span>
           </motion.h1>
           <motion.p {...fadeUp(0.2)} className="text-[#475569] text-xl max-w-2xl mx-auto leading-relaxed mb-12">
-            We help small businesses and entrepreneurs across the US grow faster with AI-powered digital tools. Join a team where your work creates real, visible impact — fast.
+            We help small businesses and entrepreneurs across the US grow faster with AI-powered digital tools. Join a team where your work creates real, visible impact, fast.
           </motion.p>
           <motion.div {...fadeUp(0.3)} className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto">
             {[
@@ -379,7 +379,7 @@ export default function CareersPage() {
           <div className="flex flex-col gap-5">
             {usRoles.map((job, i) => <JobCard key={job.id || i} job={job} delay={i * 0.1} onApply={setActiveJob} />)}
             {usRoles.length === 0 && (
-              <p className="text-sm text-[#64748b]">No US openings right now — check back soon.</p>
+              <p className="text-sm text-[#64748b]">No US openings right now. Check back soon.</p>
             )}
           </div>
         </div>
@@ -390,7 +390,7 @@ export default function CareersPage() {
         <div className="orb orb-blue w-96 h-96 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 opacity-10" />
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="mb-6">
-            <p className="text-xs font-700 tracking-widest uppercase text-[#64748b] mb-1">India Operations Hub — Gurgaon, Delhi NCR</p>
+            <p className="text-xs font-700 tracking-widest uppercase text-[#64748b] mb-1">India Operations Hub: Gurgaon, Delhi NCR</p>
             <h2 className="font-heading font-700 text-[#1B3172] text-3xl flex items-center gap-3">
               India Based Roles
               <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">{indiaOpenings} Opening{indiaOpenings === 1 ? '' : 's'}</span>
@@ -401,14 +401,14 @@ export default function CareersPage() {
           <motion.div {...fadeUp(0.1)} className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 border-l-4 border-l-green-600 rounded-2xl p-6 mb-6">
             <h3 className="font-heading font-700 text-green-900 text-base mb-2 flex items-center gap-1.5"><Sparkles className="w-4 h-4 flex-shrink-0" /> Why Our India Team Powers Our US Clients' Success</h3>
             <p className="text-sm text-green-800 leading-relaxed">
-              Our Gurgaon hub is not a back-office — it is the engine. India gives us world-class technical expertise, deep digital knowledge, and an execution speed that delivers outstanding quality for our US clients. This is where strategy gets built, SEO campaigns get executed, and AI-powered growth systems get deployed. If you are sharp, hungry, and want real mentorship — this is the team to be on.
+              Our Gurgaon hub is not a back-office. It is the engine. India gives us world-class technical expertise, deep digital knowledge, and an execution speed that delivers outstanding quality for our US clients. This is where strategy gets built, SEO campaigns get executed, and AI-powered growth systems get deployed. If you are sharp, hungry, and want real mentorship, this is the team to be on.
             </p>
           </motion.div>
 
           <div className="flex flex-col gap-5">
             {indiaRoles.map((job, i) => <JobCard key={job.id || i} job={job} isIndia delay={i * 0.1} onApply={setActiveJob} />)}
             {indiaRoles.length === 0 && (
-              <p className="text-sm text-[#64748b]">No India openings right now — check back soon.</p>
+              <p className="text-sm text-[#64748b]">No India openings right now. Check back soon.</p>
             )}
           </div>
         </div>
@@ -431,7 +431,7 @@ export default function CareersPage() {
           <div className="flex flex-col gap-5">
             {freelanceRoles.map((job, i) => <JobCard key={job.id || i} job={job} delay={i * 0.1} onApply={setActiveJob} />)}
             {freelanceRoles.length === 0 && (
-              <p className="text-sm text-[#64748b]">No freelance openings right now — check back soon.</p>
+              <p className="text-sm text-[#64748b]">No freelance openings right now. Check back soon.</p>
             )}
           </div>
         </div>
@@ -444,7 +444,7 @@ export default function CareersPage() {
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">Life at Novelio</div>
             <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
-              Why People Join — <span className="gradient-text">And Stay</span>
+              Why People Join, <span className="gradient-text">And Stay</span>
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">

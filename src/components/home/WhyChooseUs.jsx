@@ -36,7 +36,7 @@ export default function WhyChooseUs() {
               We Don't Sell Services. <span className="gradient-text">We Build Growth Systems.</span>
             </h2>
             <p className="text-[#475569] text-lg leading-relaxed mb-10">
-              Unlike agencies that hand you a deliverable and disappear, Novelio acts as your ongoing growth partner. We look at every touchpoint your customers experience — and take responsibility for results, not just deliverables.
+              Unlike agencies that hand you a deliverable and disappear, Novelio acts as your ongoing growth partner. We look at every touchpoint your customers experience, and take responsibility for results, not just deliverables.
             </p>
 
             <div className="space-y-5">

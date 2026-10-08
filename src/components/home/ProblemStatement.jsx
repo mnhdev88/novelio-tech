@@ -5,14 +5,14 @@ const PAIN_POINTS = [
   {
     icon: Globe,
     headline: 'Your website looks outdated or doesn\'t convert visitors',
-    sub: 'Customers judge credibility in 3 seconds — an old site loses them forever.',
+    sub: 'Customers judge credibility in 3 seconds. An old site loses them forever.',
     color: 'from-rose-500 to-pink-600',
     stat: '3 sec',
     statLabel: 'to lose a visitor',
   },
   {
     icon: MapPin,
-    headline: 'Your Google listing isn\'t optimized — you\'re invisible in local search',
+    headline: 'Your Google listing isn\'t optimized, so you\'re invisible in local search',
     sub: '76% of people who search locally visit a business within 24 hours.',
     color: 'from-orange-500 to-amber-500',
     stat: '76%',
@@ -28,7 +28,7 @@ const PAIN_POINTS = [
   },
   {
     icon: Puzzle,
-    headline: 'Your tools don\'t talk to each other — you\'re doing double work',
+    headline: 'Your tools don\'t talk to each other, so you\'re doing double work',
     sub: 'Disconnected software costs the average SMB 10+ hours per week.',
     color: 'from-cyan-500 to-blue-600',
     stat: '10+hrs',

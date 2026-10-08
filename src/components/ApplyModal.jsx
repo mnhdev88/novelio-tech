@@ -177,7 +177,7 @@ export default function ApplyModal({ job, onClose }) {
                     <Textarea
                       label="Your Responsibilities in Current / Last Role"
                       required rows={3}
-                      placeholder="Describe what you were responsible for — team size, client types, deliverables..."
+                      placeholder="Describe what you were responsible for: team size, client types, deliverables..."
                       value={form.responsibilities}
                       onChange={set('responsibilities')}
                     />
@@ -191,7 +191,7 @@ export default function ApplyModal({ job, onClose }) {
                     <Textarea
                       label="Live URLs You Have Worked On (Last 12 Months)"
                       required rows={4}
-                      placeholder={"https://example.com — role: on-page + GMB\nhttps://another-site.com — role: full SEO audit + link building\n\nDescribe your specific involvement for each URL."}
+                      placeholder={"https://example.com (role: on-page + GMB)\nhttps://another-site.com (role: full SEO audit + link building)\n\nDescribe your specific involvement for each URL."}
                       value={form.liveUrls}
                       onChange={set('liveUrls')}
                     />

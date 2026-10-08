@@ -97,7 +97,7 @@ export default function FAQSection() {
             <span className="gradient-text">Every Week</span>
           </h2>
           <p className="text-[#475569] text-lg max-w-xl mx-auto">
-            Straight answers — no jargon, no sales spin.
+            Straight answers: no jargon, no sales spin.
           </p>
         </motion.div>
 
@@ -125,7 +125,7 @@ export default function FAQSection() {
             href={PHONE_TEL}
             className="btn-primary inline-flex"
           >
-            Call Us — (908) 639-5666
+            Call Us: (908) 639-5666
           </a>
         </motion.div>
       </div>

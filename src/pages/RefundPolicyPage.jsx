@@ -8,7 +8,7 @@ const LAST_UPDATED = 'September 2, 2026';
 export default function RefundPolicyPage() {
   return (
     <main className="pt-28 pb-20 bg-[#F8FAFF] min-h-screen">
-      <SEO title="Refund Policy" description="Novelio Technologies LLC refund policy — understand our project and retainer refund terms." canonical="/refund-policy" noindex />
+      <SEO title="Refund Policy" description="Novelio Technologies LLC refund policy: understand our project and retainer refund terms." canonical="/refund-policy" noindex />
       <div className="bg-[#0E1E38] py-16 mb-12">
         <div className="container-xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -66,7 +66,7 @@ export default function RefundPolicyPage() {
             <p>This section applies to both Novelio entities.</p>
           </Section>
 
-          <Section title="5. Exceptions — When Refunds Are Granted">
+          <Section title="5. Exceptions: When Refunds Are Granted">
             <p>A full or partial refund may be issued in the following circumstances:</p>
             <ul>
               <li>Novelio fails to deliver agreed services within the specified timeline without client-caused delays.</li>
@@ -85,7 +85,7 @@ export default function RefundPolicyPage() {
             </ul>
           </Section>
 
-          <Section title="7. India Refund Policy — 15-Day Refund Window">
+          <Section title="7. India Refund Policy: 15-Day Refund Window">
             <p>For projects and services purchased from <strong>Novelio Technologies in India</strong>, payments made through Razorpay, UPI, card, net banking, bank transfer, or any other approved payment method are subject to the following refund policy.</p>
 
             <h3 className="font-600 text-[#334155] pt-2">7.1 15-Day Refund Window</h3>

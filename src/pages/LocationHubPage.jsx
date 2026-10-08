@@ -16,7 +16,7 @@ const fadeUp = (delay = 0) => ({
 const hubSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Locations — Novelio Technologies',
+  name: 'Locations | Novelio Technologies',
   description: 'Novelio Technologies serves small businesses across the US. Find your city and see how we can grow your local digital presence.',
   url: 'https://www.noveliotech.com/locations',
   publisher: {
@@ -30,8 +30,8 @@ export default function LocationHubPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Locations — Digital Growth Services Across the US"
-        description="Novelio serves small businesses in Austin, Houston, Miami, Tampa, Denver, and more — AI-powered websites, local SEO, and lead generation."
+        title="Locations: Digital Growth Services Across the US"
+        description="Novelio serves small businesses in Austin, Houston, Miami, Tampa, Denver, and more: AI-powered websites, local SEO, and lead generation."
         canonical="/locations"
         keywords={['local SEO services', 'small business digital marketing', 'website design near me', 'Novelio Technologies locations']}
         schema={hubSchema}
@@ -53,7 +53,7 @@ export default function LocationHubPage() {
               Local Growth, <span className="gradient-text">Everywhere You Are</span>
             </h1>
             <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed mb-10">
-              We help small businesses across the US rank higher on Google, generate more leads, and grow faster — with strategies built specifically for their city and market.
+              We help small businesses across the US rank higher on Google, generate more leads, and grow faster, with strategies built specifically for their city and market.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href={PHONE_TEL} className="btn-primary text-base px-8 py-4">
@@ -83,7 +83,7 @@ export default function LocationHubPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { stat: '46%', desc: 'of all Google searches have local intent — people looking for businesses near them.' },
+              { stat: '46%', desc: 'of all Google searches have local intent: people looking for businesses near them.' },
               { stat: '76%', desc: 'of people who search for a local business on mobile visit that business within 24 hours.' },
               { stat: '28%', desc: 'of local searches result in a purchase. Local SEO is the highest-intent channel available.' },
             ].map((item, i) => (
@@ -183,7 +183,7 @@ export default function LocationHubPage() {
               What We Build for Local Businesses
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              Every city page is backed by the same full-service growth system — tailored to your local market.
+              Every city page is backed by the same full-service growth system, tailored to your local market.
             </p>
           </motion.div>
 

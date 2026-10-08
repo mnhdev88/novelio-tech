@@ -183,10 +183,10 @@ const PRINCIPLES = [
 const FAQS = [
   { q: 'How long does a website build take?', a: 'A basic business site takes 2–4 weeks. A custom multi-page site with advanced features takes 4–8 weeks. We always deliver mobile-first, Core Web Vitals-optimized builds and keep you updated at every milestone.' },
   { q: 'What platform do you build on?', a: 'We build on modern frameworks (React, Next.js) for high-performance custom sites, or WordPress and Webflow for clients who need easy self-management. We recommend the right platform based on your goals, not our preference.' },
-  { q: 'Will my website be mobile-friendly and fast?', a: 'Absolutely — all our sites are mobile-first by design, tested across devices and browsers, and built to pass Core Web Vitals. Page speed and mobile performance directly impact both rankings and conversions.' },
-  { q: 'Do you provide ongoing website maintenance?', a: 'Yes — we offer monthly maintenance plans covering updates, security patches, backups, performance monitoring, and priority support. Most clients find ongoing maintenance pays for itself by preventing costly downtime or security incidents.' },
-  { q: 'Do you write the copy for the website?', a: 'We provide copywriting guidance and structure during the wireframe phase, and many clients find our content brief makes writing much easier. Full copywriting is available as an add-on — ask us during the discovery call.' },
-  { q: 'What if I already have a website and just want improvements?', a: 'We handle redesigns and targeted improvements too. We\'ll audit your current site first, identify what\'s holding it back, and recommend the most impactful changes — whether that\'s a full rebuild or targeted optimization.' },
+  { q: 'Will my website be mobile-friendly and fast?', a: 'Absolutely. All our sites are mobile-first by design, tested across devices and browsers, and built to pass Core Web Vitals. Page speed and mobile performance directly impact both rankings and conversions.' },
+  { q: 'Do you provide ongoing website maintenance?', a: 'Yes, we offer monthly maintenance plans covering updates, security patches, backups, performance monitoring, and priority support. Most clients find ongoing maintenance pays for itself by preventing costly downtime or security incidents.' },
+  { q: 'Do you write the copy for the website?', a: 'We provide copywriting guidance and structure during the wireframe phase, and many clients find our content brief makes writing much easier. Full copywriting is available as an add-on. Ask us during the discovery call.' },
+  { q: 'What if I already have a website and just want improvements?', a: 'We handle redesigns and targeted improvements too. We\'ll audit your current site first, identify what\'s holding it back, and recommend the most impactful changes, whether that\'s a full rebuild or targeted optimization.' },
 ];
 
 function FAQItem({ q, a }) {
@@ -231,7 +231,7 @@ function WebsiteCheck() {
       return {
         tone: 'warn',
         title: 'A few gaps are costing you enquiries.',
-        desc: 'Most of the structure is working. Targeted fixes to messaging, mobile or the next step are usually enough — a full rebuild is probably not necessary.',
+        desc: 'Most of the structure is working. Targeted fixes to messaging, mobile or the next step are usually enough. A full rebuild is probably not necessary.',
         cta: { label: 'Get a Free Website Audit', to: '/free-seo-audit' },
       };
     }
@@ -351,7 +351,7 @@ const schema = {
     {
       '@type': 'Service',
       name: 'Website Development',
-      description: 'Fast, professional, mobile-friendly website development for small businesses — built so visitors understand you, trust you and contact you.',
+      description: 'Fast, professional, mobile-friendly website development for small businesses, built so visitors understand you, trust you and contact you.',
       provider: {
         '@type': 'LocalBusiness',
         '@id': 'https://www.noveliotech.com/#business',

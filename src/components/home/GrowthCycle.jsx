@@ -14,7 +14,7 @@ export default function GrowthCycle() {
             The Full Customer Growth Cycle
           </h2>
           <p className="text-white/70 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            A customer does not buy in one step — they move through a journey. If one step is weak,
+            A customer does not buy in one step; they move through a journey. If one step is weak,
             your business loses money.
           </p>
 

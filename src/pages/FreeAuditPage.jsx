@@ -24,12 +24,12 @@ const CHECK_GROUPS = [
   {
     Icon: Gauge,
     title: 'Speed, measured by Google',
-    body: 'We run your page through Google PageSpeed Insights and report the same Core Web Vitals Google uses as ranking signals — including real visitor data where Chrome has collected enough of it.',
+    body: 'We run your page through Google PageSpeed Insights and report the same Core Web Vitals Google uses as ranking signals, including real visitor data where Chrome has collected enough of it.',
   },
   {
     Icon: MapPin,
     title: 'Local search signals',
-    body: 'Tap-to-call links, whether your address is visible and consistent, LocalBusiness schema and map presence — the signals that decide whether you show up in the map pack.',
+    body: 'Tap-to-call links, whether your address is visible and consistent, LocalBusiness schema and map presence: the signals that decide whether you show up in the map pack.',
   },
 ];
 
@@ -48,7 +48,7 @@ const FAQS = [
   },
   {
     q: 'Does it check my whole site or just one page?',
-    a: 'One page — whichever URL you enter. Most people start with their homepage. Site-wide problems like a missing sitemap or a broken robots.txt are caught from any page, but page-level findings apply only to the page you audited. Run it again on a service page to compare.',
+    a: 'One page: whichever URL you enter. Most people start with their homepage. Site-wide problems like a missing sitemap or a broken robots.txt are caught from any page, but page-level findings apply only to the page you audited. Run it again on a service page to compare.',
   },
   {
     q: 'Will this fix my rankings?',
@@ -56,7 +56,7 @@ const FAQS = [
   },
   {
     q: 'Do I have to talk to someone to get the fixes?',
-    a: 'The emailed summary names every problem we found and what your score is. The fix for each one is what we go through on a call, which takes about half an hour and costs nothing — it is faster than reading thirty pages, and you can hand what you learn to your own developer afterwards. The three problems shown on this page come with their fixes written out, no email needed.',
+    a: 'The emailed summary names every problem we found and what your score is. The fix for each one is what we go through on a call, which takes about half an hour and costs nothing. It is faster than reading thirty pages, and you can hand what you learn to your own developer afterwards. The three problems shown on this page come with their fixes written out, no email needed.',
   },
 ];
 
@@ -108,7 +108,7 @@ export default function FreeAuditPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Free SEO Audit Tool — Check Your Website in 60 Seconds"
+        title="Free SEO Audit Tool: Check Your Website in 60 Seconds"
         description="Run a free SEO audit of any website. See your score, the technical and on-page problems holding it back, Google's own speed data, and exactly how to fix each one."
         canonical="/free-seo-audit"
         keywords={['free SEO audit', 'SEO audit tool', 'website SEO checker', 'free website audit', 'SEO analysis tool']}
@@ -124,7 +124,7 @@ export default function FreeAuditPage() {
           >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brand-purple/20 bg-brand-purple/5 mb-5">
               <Search className="w-3.5 h-3.5 text-brand-purple" aria-hidden="true" />
-              <span className="text-[12.5px] font-600 text-brand-purple">Free tool — no signup</span>
+              <span className="text-[12.5px] font-600 text-brand-purple">Free tool, no signup</span>
             </div>
 
             <h1 className="font-heading font-800 text-[#1B3172] text-[32px] sm:text-[42px] lg:text-[48px] leading-[1.12] mb-4">
@@ -133,7 +133,7 @@ export default function FreeAuditPage() {
             </h1>
 
             <p className="text-[16px] sm:text-[17px] text-[#475569] max-w-2xl mx-auto leading-relaxed">
-              We check the things Google actually measures — then tell you, in plain English, what is
+              We check the things Google actually measures, then tell you, in plain English, what is
               wrong and how to fix it. You see your score before we ask for anything.
             </p>
           </motion.div>
@@ -150,7 +150,7 @@ export default function FreeAuditPage() {
           </h2>
           <p className="text-[15.5px] text-[#64748b] text-center max-w-2xl mx-auto mb-10">
             Around thirty checks across five areas, each one scored and explained. Nothing invented to
-            pad the report — if a check does not apply to your page, we leave it out.
+            pad the report. If a check does not apply to your page, we leave it out.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-5">
@@ -187,7 +187,7 @@ export default function FreeAuditPage() {
               Rather have someone look at the whole site?
             </h2>
             <p className="text-[15px] text-[#475569] max-w-xl mx-auto mb-6 leading-relaxed">
-              The tool covers one page automatically. A 30-minute call covers everything it cannot see —
+              The tool covers one page automatically. A 30-minute call covers everything it cannot see:
               your Google listing, where your leads actually come from, and what your competitors are
               doing that you are not.
             </p>

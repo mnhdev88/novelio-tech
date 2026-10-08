@@ -13,14 +13,14 @@ const SERVICE_FAQS = {
   'website-development': [
     { q: 'How long does a website build take?', a: 'A basic business site takes 2–4 weeks. A custom multi-page site with advanced features takes 4–8 weeks. We always deliver mobile-first, Core Web Vitals-optimized builds and keep you updated at every milestone.' },
     { q: 'What platform do you build on?', a: 'We build on modern frameworks (React, Next.js) for high-performance custom sites, or WordPress and Webflow for clients who need easy self-management. We recommend the right platform based on your goals, not our preference.' },
-    { q: 'Will my website be mobile-friendly and fast?', a: 'Absolutely — all our sites are mobile-first by design, tested across devices and browsers, and built to pass Core Web Vitals. Page speed and mobile performance directly impact both rankings and conversions.' },
-    { q: 'Do you provide ongoing website maintenance?', a: 'Yes — we offer monthly maintenance plans covering updates, security patches, backups, performance monitoring, and priority support. Most clients find ongoing maintenance pays for itself by preventing costly downtime or security incidents.' },
+    { q: 'Will my website be mobile-friendly and fast?', a: 'Absolutely. All our sites are mobile-first by design, tested across devices and browsers, and built to pass Core Web Vitals. Page speed and mobile performance directly impact both rankings and conversions.' },
+    { q: 'Do you provide ongoing website maintenance?', a: 'Yes, we offer monthly maintenance plans covering updates, security patches, backups, performance monitoring, and priority support. Most clients find ongoing maintenance pays for itself by preventing costly downtime or security incidents.' },
   ],
   'search-engine-optimization': [
     { q: 'How long does SEO take to show results?', a: 'SEO is a long-term strategy. Most businesses see meaningful improvements within 3–6 months, with stronger results at 6–12 months. Competitive niches may take longer, but we set clear milestones so you always know where you stand.' },
     { q: 'What is included in your SEO service?', a: 'Our SEO service includes a technical audit, on-page optimization, keyword research and strategy, content recommendations, link building, local SEO (if applicable), and monthly reporting with transparent metrics.' },
-    { q: 'Do you guarantee #1 rankings?', a: 'No ethical SEO agency can guarantee specific rankings — Google\'s algorithm changes constantly. We do guarantee full transparency, best practices, and a measurable improvement in organic visibility, traffic, and leads.' },
-    { q: 'Do you handle local SEO for businesses targeting nearby customers?', a: 'Yes — local SEO is one of our core specializations. We optimize your on-page signals, Google Business Profile, local citations, and location-specific content to help you rank in local searches and Google Maps.' },
+    { q: 'Do you guarantee #1 rankings?', a: 'No ethical SEO agency can guarantee specific rankings. Google\'s algorithm changes constantly. We do guarantee full transparency, best practices, and a measurable improvement in organic visibility, traffic, and leads.' },
+    { q: 'Do you handle local SEO for businesses targeting nearby customers?', a: 'Yes, local SEO is one of our core specializations. We optimize your on-page signals, Google Business Profile, local citations, and location-specific content to help you rank in local searches and Google Maps.' },
   ],
   'google-business-profile': [
     { q: 'What is Google Business Profile optimization?', a: 'GBP optimization covers fully completing your profile, adding photos, setting accurate hours and services, implementing a review generation strategy, posting weekly updates, and building citation consistency so Google ranks you higher in local search.' },
@@ -31,22 +31,22 @@ const SERVICE_FAQS = {
   'lead-generation': [
     { q: 'What does your lead generation service include?', a: 'We build the full system: landing pages, lead capture forms, follow-up automation, CRM integration, and tracking dashboards. We also manage paid campaigns (Google, Meta) to drive qualified traffic.' },
     { q: 'How quickly will I start seeing new leads?', a: 'Paid campaigns can generate leads within days of launch. Organic funnels typically take 30–60 days to build momentum. We set clear expectations at the start based on your budget and market.' },
-    { q: 'Do you handle follow-up automation?', a: 'Yes — we build automated email and SMS follow-up sequences that nurture leads instantly, so you never lose a prospect because of a slow response.' },
+    { q: 'Do you handle follow-up automation?', a: 'Yes, we build automated email and SMS follow-up sequences that nurture leads instantly, so you never lose a prospect because of a slow response.' },
     { q: 'What is a typical cost per lead?', a: 'Cost per lead varies by industry, location, and competition. We analyze your market and set realistic CPA targets before spending any budget. Most clients see CPLs improve 20–40% within 60 days of optimization.' },
   ],
   automation: [
     { q: 'What tools do you integrate and automate?', a: 'We work with CRMs (our in-house Novelio CRM, HubSpot, GoHighLevel, Zoho, Salesforce), email platforms (Mailchimp, ActiveCampaign, Klaviyo), WhatsApp, booking systems, accounting tools, and custom workflows via Zapier or Make.' },
-    { q: 'How much time can automation save my business?', a: 'Most clients reclaim 8–15 hours per week after implementing our automation systems — time previously spent on manual follow-ups, data entry, scheduling, and reporting.' },
-    { q: 'Can you automate invoicing and payment reminders?', a: 'Yes. We set up invoice and payment tracking in your CRM plus an automated reminder workflow — a soft reminder before the due date, a request on the due date, and escalating follow-ups at 3, 7, and 15 days overdue. Revenue on paper is not growth; cash collected is. A reminder system protects your cash flow without awkward manual chasing.' },
+    { q: 'How much time can automation save my business?', a: 'Most clients reclaim 8–15 hours per week after implementing our automation systems, time previously spent on manual follow-ups, data entry, scheduling, and reporting.' },
+    { q: 'Can you automate invoicing and payment reminders?', a: 'Yes. We set up invoice and payment tracking in your CRM plus an automated reminder workflow: a soft reminder before the due date, a request on the due date, and escalating follow-ups at 3, 7, and 15 days overdue. Revenue on paper is not growth; cash collected is. A reminder system protects your cash flow without awkward manual chasing.' },
     { q: 'What is a customer retention automation?', a: 'After delivery, your business should not disappear. We automate the full lifecycle: thank-you and delivery confirmation, a feedback request after 2 days, a review/testimonial request after 5 days, a check-in after 15 days, a referral request after 30 days, plus renewal reminders and business-anniversary or milestone messages that keep customers coming back.' },
-    { q: 'How does the lead follow-up automation work?', a: 'Most sales do not happen on the first call. We build a structured follow-up sequence — first response, day-1 reminder, day-3 value message, day-5 objection handling, day-7 final check-in, then weekly nurture — delivered automatically by email or WhatsApp and tracked in your CRM so no lead is forgotten.' },
+    { q: 'How does the lead follow-up automation work?', a: 'Most sales do not happen on the first call. We build a structured follow-up sequence (first response, day-1 reminder, day-3 value message, day-5 objection handling, day-7 final check-in, then weekly nurture) delivered automatically by email or WhatsApp and tracked in your CRM so no lead is forgotten.' },
     { q: 'Do I need technical knowledge to use the automations?', a: 'Not at all. We build systems that run without technical oversight. We also provide a short onboarding session and documentation so your team can manage day-to-day operations confidently.' },
     { q: 'Can you integrate my existing tools?', a: 'Yes. We audit your current tech stack first and maximize what you already have before recommending new tools. Most businesses can achieve significant automation gains with tools they already pay for.' },
   ],
   branding: [
     { q: 'What does your branding service include?', a: 'We deliver logo design, full brand identity (colors, typography, visual language), brand guidelines, social media templates, business card and print-ready assets, and brand voice and messaging documentation.' },
     { q: 'How long does a full branding project take?', a: 'A complete brand identity project typically takes 3–5 weeks including discovery, concepts, revisions, and final delivery of all assets.' },
-    { q: 'Do you also rebrand existing businesses?', a: 'Yes. We work with businesses that need a full rebrand as well as those needing a brand refresh — updating an existing identity to feel more modern and consistent without losing brand equity.' },
+    { q: 'Do you also rebrand existing businesses?', a: 'Yes. We work with businesses that need a full rebrand as well as those needing a brand refresh, updating an existing identity to feel more modern and consistent without losing brand equity.' },
     { q: 'Will I own all the brand assets?', a: 'Absolutely. All files are delivered in print-ready and digital formats (AI, EPS, PDF, PNG, SVG) and you own 100% of the rights to every asset we create.' },
   ],
   'tech-ops': [
@@ -58,8 +58,8 @@ const SERVICE_FAQS = {
   'email-marketing': [
     { q: 'Which email platforms do you work with?', a: 'We work with Mailchimp, Klaviyo, ActiveCampaign, ConvertKit, HubSpot, and most major platforms. We can migrate between platforms or optimize what you already use.' },
     { q: 'What does your email marketing service include?', a: 'Strategy, list segmentation, campaign design and copywriting, drip sequence setup, A/B testing, deliverability audit (SPF/DKIM/DMARC), and monthly analytics reporting.' },
-    { q: 'What open rates can I expect?', a: 'With proper segmentation and subject line optimization, most clients achieve 25–40% open rates within 60 days — well above the industry average of 20–22%.' },
-    { q: 'Can you set up automated welcome and nurture sequences?', a: 'Yes — welcome sequences, abandoned cart flows, post-purchase follow-ups, re-engagement campaigns, and custom drip sequences are all part of our automation setup service.' },
+    { q: 'What open rates can I expect?', a: 'With proper segmentation and subject line optimization, most clients achieve 25–40% open rates within 60 days, well above the industry average of 20–22%.' },
+    { q: 'Can you set up automated welcome and nurture sequences?', a: 'Yes, welcome sequences, abandoned cart flows, post-purchase follow-ups, re-engagement campaigns, and custom drip sequences are all part of our automation setup service.' },
   ],
   'email-validator': [
     { q: 'Why does email list validation matter?', a: 'Sending to invalid or inactive addresses causes hard bounces, damages your sender reputation, and can get your account suspended by your ESP. A clean list delivers better open rates and protects your deliverability.' },
@@ -71,8 +71,8 @@ const SERVICE_FAQS = {
 
 const DEFAULT_FAQ = [
   { q: 'How do we get started?', a: 'Simply fill out our contact form or call us. We\'ll schedule a free discovery call to understand your goals and recommend the right service mix.' },
-  { q: 'Do you work with international clients?', a: 'Yes — we work with clients across North America, UK, Europe, Middle East, and South Asia. We accommodate different time zones for calls and reporting.' },
-  { q: 'What makes Novelio different from other agencies?', a: 'We focus exclusively on ROI. Every strategy is built around your business goals, not industry benchmarks. And we\'re transparent — you always know exactly what we\'re doing and why.' },
+  { q: 'Do you work with international clients?', a: 'Yes, we work with clients across North America, UK, Europe, Middle East, and South Asia. We accommodate different time zones for calls and reporting.' },
+  { q: 'What makes Novelio different from other agencies?', a: 'We focus exclusively on ROI. Every strategy is built around your business goals, not industry benchmarks. And we\'re transparent: you always know exactly what we\'re doing and why.' },
 ];
 
 function FAQItem({ q, a }) {
@@ -140,7 +140,7 @@ export default function ServiceDetailPage() {
   return (
     <main className="pt-20">
       <SEO
-        title={`${service.title} — ${service.tagline}`}
+        title={`${service.title}: ${service.tagline}`}
         description={service.description}
         canonical={service.slug}
         schema={serviceSchema}

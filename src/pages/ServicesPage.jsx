@@ -19,7 +19,7 @@ export default function ServicesPage() {
     <main className="pt-20">
       <SEO
         title="Digital Growth Services for Small Businesses"
-        description="Website & SEO, Google Business Profile, lead generation, automation, branding, and tech ops — all under one roof. Free 30-min audit."
+        description="Website & SEO, Google Business Profile, lead generation, automation, branding, and tech ops, all under one roof. Free 30-min audit."
         canonical="/services"
         schema={{
           '@context': 'https://schema.org',
@@ -50,7 +50,7 @@ export default function ServicesPage() {
               Full-Service <span className="gradient-text">Digital Solutions</span>
             </h1>
             <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed">
-              From search engine domination to stunning websites and social media growth — we have every digital capability you need under one roof.
+              From search engine domination to stunning websites and social media growth, we have every digital capability you need under one roof.
             </p>
           </motion.div>
         </div>

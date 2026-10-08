@@ -44,7 +44,7 @@ export default function AdminPage() {
 
   return (
     <main className="pt-20">
-      <SEO title="Admin — Back office" canonical="/portal/admin" noindex />
+      <SEO title="Admin: Back office" canonical="/portal/admin" noindex />
       <section className="section-pad-sm bg-[#EEF2FF] relative overflow-hidden min-h-[80vh]">
         <div className="line-grid absolute inset-0 opacity-30" />
         <div className="container-xl relative z-10">
@@ -120,7 +120,7 @@ export default function AdminPage() {
                           <div><p className="text-[#64748b] text-xs">Next renewal</p><p className="font-semibold text-[#1B3172]">{sub.nextRenewal}</p></div>
                           <div><p className="text-[#64748b] text-xs">Add-ons</p><p className="font-semibold text-[#1B3172]">{sub.addonIds.length}</p></div>
                         </div>
-                        <p className="text-xs font-semibold text-[#1B3172] mb-2">Deliverables — click a status to advance it</p>
+                        <p className="text-xs font-semibold text-[#1B3172] mb-2">Deliverables: click a status to advance it</p>
                         <ul className="space-y-2">
                           {sub.deliverables.map((d) => (
                             <li key={d.id} className="flex items-center justify-between gap-3">

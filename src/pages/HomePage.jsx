@@ -37,7 +37,7 @@ export default function HomePage() {
     <main>
       <SEO
         title="Business Growth Partner for Small Businesses"
-        description="Novelio is your dedicated business growth partner. We analyze your website, Google listing, leads, and branding — then build a tailored growth plan."
+        description="Novelio is your dedicated business growth partner. We analyze your website, Google listing, leads, and branding, then build a tailored growth plan."
         canonical="/"
         schema={VIDEO_SCHEMA || undefined}
       />

@@ -39,7 +39,7 @@ export default function DashboardPage() {
   const justSubscribed = params.get('welcome') === '1';
 
   const doLogout = () => { logout(); navigate('/'); };
-  const doCancel = () => { if (confirm('Cancel your subscription? Demo only — no real billing.')) { cancelSubscription(sub.id); rerender(); } };
+  const doCancel = () => { if (confirm('Cancel your subscription? Demo only. No real billing.')) { cancelSubscription(sub.id); rerender(); } };
   const doToggleBilling = () => { changeBilling(sub.id, sub.billing === 'monthly' ? 'yearly' : 'monthly'); rerender(); };
 
   const delivered = sub ? sub.deliverables.filter((d) => d.status === 'delivered').length : 0;

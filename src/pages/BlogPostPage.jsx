@@ -137,7 +137,7 @@ export default function BlogPostPage() {
             <span className="text-xs text-white/70">
               {draft
                 ? 'This is your unpublished draft. Visitors still see the published version.'
-                : 'Showing the published version — no unsaved draft was found.'}
+                : 'Showing the published version. No unsaved draft was found.'}
             </span>
             <div className="flex-1" />
             <Link
@@ -174,7 +174,7 @@ export default function BlogPostPage() {
                     Get a Free 30-Min Website Audit
                   </h3>
                   <p className="text-sm text-white/85 leading-relaxed mb-4">
-                    We analyze your website, SEO, and lead pipeline — then show you exactly what to fix. Zero cost. No commitment.
+                    We analyze your website, SEO, and lead pipeline, then show you exactly what to fix. Zero cost. No commitment.
                   </p>
                   <ul className="space-y-2 mb-5">
                     {CTA_ITEMS.map((item) => (

@@ -79,7 +79,7 @@ function SpeedCard({ state, speed }) {
         <Loader2 className="w-4 h-4 animate-spin text-brand-purple" aria-hidden="true" />
         <div>
           <div className="text-[14.5px] font-600 text-[#1B3172]">Measuring speed with Google PageSpeed</div>
-          <div className="text-[13px] text-[#64748b]">This takes 20–40 seconds — Google loads your page in a real browser.</div>
+          <div className="text-[13px] text-[#64748b]">This takes 20–40 seconds. Google loads your page in a real browser.</div>
         </div>
       </div>
     );
@@ -131,7 +131,7 @@ function SpeedCard({ state, speed }) {
 
       {speed.has_field && (
         <p className="text-[12.5px] text-[#64748b] mt-4 pt-4 border-t border-slate-200/80">
-          Includes real visitor data from Chrome over the last 28 days — not just a lab test.
+          Includes real visitor data from Chrome over the last 28 days, not just a lab test.
         </p>
       )}
     </div>
@@ -362,7 +362,7 @@ export default function AuditRunner() {
                 Nothing broken on this page
               </h3>
               <p className="text-[14.5px] text-[#64748b] max-w-lg mx-auto">
-                Every check passed. That is genuinely uncommon — the opportunity here is content and
+                Every check passed. That is genuinely uncommon. The opportunity here is content and
                 authority rather than fixes.
               </p>
             </div>
@@ -416,7 +416,7 @@ export default function AuditRunner() {
                     It should arrive within a minute.
                   </p>
                   <p className="text-[13.5px] text-[#94a3b8] max-w-lg mx-auto mb-6">
-                    Not there? Check your spam folder — and add us to your contacts so the next one is not missed.
+                    Not there? Check your spam folder, and add us to your contacts so the next one is not missed.
                   </p>
                 </>
               )}

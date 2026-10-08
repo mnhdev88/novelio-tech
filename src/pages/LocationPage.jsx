@@ -56,7 +56,7 @@ function StatePage({ stateData, cities }) {
     <main className="pt-20">
       <SEO
         title={`Digital Marketing for Small Businesses in ${stateData.state}`}
-        description={`Novelio helps ${stateData.state} small businesses grow with AI-powered websites, local SEO, and lead generation. Free growth audit — no obligation.`}
+        description={`Novelio helps ${stateData.state} small businesses grow with AI-powered websites, local SEO, and lead generation. Free growth audit, no obligation.`}
         canonical={`/locations/${stateData.stateSlug}`}
         keywords={[`digital marketing ${stateData.state}`, `SEO services ${stateData.state}`, `small business ${stateData.state}`, `website design ${stateData.state}`]}
         schema={stateSchema}
@@ -72,13 +72,13 @@ function StatePage({ stateData, cities }) {
           <motion.div {...fadeUp(0)}>
             <div className="section-label mx-auto mb-4 flex items-center gap-1.5 justify-center">
               <MapPin className="w-3.5 h-3.5" />
-              {stateData.stateCode} — {stateData.state}
+              {stateData.stateCode} ({stateData.state})
             </div>
             <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
               AI-Powered Growth for <span className="gradient-text">{stateData.state}</span> Small Businesses
             </h1>
             <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed mb-10">
-              {stateData.description} We build and execute tailored digital growth plans — websites, local SEO, lead generation, and automation — that drive real revenue.
+              {stateData.description} We build and execute tailored digital growth plans (websites, local SEO, lead generation, and automation) that drive real revenue.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href={PHONE_TEL} className="btn-primary text-base px-8 py-4">
@@ -176,7 +176,7 @@ function CityPage({ city }) {
     <main className="pt-20">
       <SEO
         title={`Website Design & SEO for Small Businesses in ${city.city}, ${city.stateCode}`}
-        description={`Novelio Technologies helps ${city.city} small businesses grow faster with AI-powered websites and local SEO. Free 30-min growth audit — no obligation.`}
+        description={`Novelio Technologies helps ${city.city} small businesses grow faster with AI-powered websites and local SEO. Free 30-min growth audit, no obligation.`}
         canonical={`/locations/${city.stateSlug}/${city.citySlug}`}
         keywords={[
           `SEO services in ${city.city}`,
@@ -289,7 +289,7 @@ function CityPage({ city }) {
               What's Holding {city.city} Businesses Back?
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              These are the three most common digital growth problems we see in {city.city} — and exactly what our audit uncovers in 30 minutes.
+              These are the three most common digital growth problems we see in {city.city}, and exactly what our audit uncovers in 30 minutes.
             </p>
           </motion.div>
 
@@ -452,7 +452,7 @@ function CityPage({ city }) {
           <motion.div className="text-center mb-14" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">FAQ</div>
             <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-4">
-              Frequently Asked Questions — {city.city}, {city.stateCode}
+              Frequently Asked Questions: {city.city}, {city.stateCode}
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
               Common questions from small business owners in {city.city} about digital marketing and local SEO.

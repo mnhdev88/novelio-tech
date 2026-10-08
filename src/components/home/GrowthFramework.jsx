@@ -22,7 +22,7 @@ export default function GrowthFramework() {
             <span className="gradient-text">Visibility, Trust & Conversion</span>
           </h2>
           <p className="text-[#64748b] text-base sm:text-lg mt-5 max-w-3xl mx-auto leading-relaxed">
-            A normal website is only a brochure. A growth website is part of your sales funnel —
+            A normal website is only a brochure. A growth website is part of your sales funnel:
             it attracts, educates, builds trust, and converts visitors into leads. Here is how we
             make your website support all three.
           </p>
@@ -78,13 +78,13 @@ export default function GrowthFramework() {
           <div className="text-center mt-12">
             <p className="text-[#64748b] text-sm max-w-2xl mx-auto mb-6 leading-relaxed">
               A normal website is only a brochure. A growth website attracts, educates, builds trust,
-              and converts visitors into leads — and it is included free with every Novelio growth plan.
+              and converts visitors into leads, and it is included free with every Novelio growth plan.
             </p>
             <Link
               to="/pricing"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-sm font-semibold transition-all"
             >
-              See Growth Plans — Website Included Free
+              See Growth Plans: Website Included Free
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

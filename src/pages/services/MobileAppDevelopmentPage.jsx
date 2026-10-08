@@ -40,12 +40,12 @@ const PAIN_POINTS = [
   {
     icon: Layers,
     title: 'Two Codebases, Double the Cost',
-    desc: 'Building separate native iOS and Android apps from scratch doubles your budget and timeline — when a shared codebase would have shipped both at once.',
+    desc: 'Building separate native iOS and Android apps from scratch doubles your budget and timeline, when a shared codebase would have shipped both at once.',
   },
   {
     icon: ShieldCheck,
     title: 'Weak Security & Data Handling',
-    desc: 'Insecure APIs, unencrypted storage, and sloppy auth expose user data — and one breach or privacy violation can end an app before it grows.',
+    desc: 'Insecure APIs, unencrypted storage, and sloppy auth expose user data, and one breach or privacy violation can end an app before it grows.',
   },
   {
     icon: RefreshCw,
@@ -73,7 +73,7 @@ const GROWTH_BENEFITS = [
   {
     icon: Layers,
     title: 'Reach Every Device at Once',
-    desc: 'Cross-platform development with React Native ships iOS and Android from a single codebase — one build, two stores, half the maintenance cost.',
+    desc: 'Cross-platform development with React Native ships iOS and Android from a single codebase: one build, two stores, half the maintenance cost.',
     color: 'from-fuchsia-600 to-indigo-600',
   },
   {
@@ -85,25 +85,25 @@ const GROWTH_BENEFITS = [
   {
     icon: Bell,
     title: 'Re-Engage With Push Notifications',
-    desc: 'Bring users back with targeted, well-timed push notifications and in-app messaging — the highest-ROI retention channel a business can own.',
+    desc: 'Bring users back with targeted, well-timed push notifications and in-app messaging, the highest-ROI retention channel a business can own.',
     color: 'from-blue-500 to-cyan-500',
   },
   {
     icon: CreditCard,
     title: 'Monetize From Day One',
-    desc: 'In-app purchases, subscriptions, and secure payment gateways built in — so your app can generate revenue the moment it hits the store.',
+    desc: 'In-app purchases, subscriptions, and secure payment gateways built in, so your app can generate revenue the moment it hits the store.',
     color: 'from-emerald-500 to-teal-600',
   },
   {
     icon: Wifi,
     title: 'Work Online or Offline',
-    desc: 'Offline-first architecture and smart syncing keep your app usable without a signal — essential for field teams, travel, and real-world conditions.',
+    desc: 'Offline-first architecture and smart syncing keep your app usable without a signal, essential for field teams, travel, and real-world conditions.',
     color: 'from-amber-500 to-orange-500',
   },
   {
     icon: BarChart3,
     title: 'Decisions Backed by Data',
-    desc: 'Built-in analytics and crash reporting show exactly how people use your app, so every update is driven by real behavior — not guesswork.',
+    desc: 'Built-in analytics and crash reporting show exactly how people use your app, so every update is driven by real behavior, not guesswork.',
     color: 'from-pink-500 to-rose-500',
   },
   {
@@ -117,15 +117,15 @@ const GROWTH_BENEFITS = [
 const INCLUDED = [
   {
     title: 'iOS & Android Coverage',
-    desc: 'One project delivers both platforms — iPhone, iPad, and the full range of Android devices, tested on real hardware.',
+    desc: 'One project delivers both platforms: iPhone, iPad, and the full range of Android devices, tested on real hardware.',
   },
   {
     title: 'UI/UX App Design',
-    desc: 'Intuitive, platform-native interfaces designed around your users — following Apple Human Interface and Material Design guidelines.',
+    desc: 'Intuitive, platform-native interfaces designed around your users, following Apple Human Interface and Material Design guidelines.',
   },
   {
     title: 'API & Backend Integration',
-    desc: 'Secure connections to your CRM, payment providers, databases, and third-party services — or a full custom backend built to scale.',
+    desc: 'Secure connections to your CRM, payment providers, databases, and third-party services, or a full custom backend built to scale.',
   },
   {
     title: 'Push Notifications',
@@ -141,11 +141,11 @@ const INCLUDED = [
   },
   {
     title: 'App Store Deployment',
-    desc: 'We handle the full submission to the Apple App Store and Google Play — listings, screenshots, review, and approval.',
+    desc: 'We handle the full submission to the Apple App Store and Google Play: listings, screenshots, review, and approval.',
   },
   {
     title: 'Post-Launch Support',
-    desc: 'Bug fixes, OS-update compatibility, and guidance after launch — so your app keeps working as phones and stores evolve.',
+    desc: 'Bug fixes, OS-update compatibility, and guidance after launch, so your app keeps working as phones and stores evolve.',
   },
 ];
 
@@ -154,37 +154,37 @@ const PROCESS = [
     step: '01',
     title: 'Discovery & Strategy',
     time: 'Week 1',
-    desc: 'We define who the app is for, the core problem it solves, and the must-have features for version one. We scope an MVP that ships fast and proves value — nothing gets built until the plan is clear.',
+    desc: 'We define who the app is for, the core problem it solves, and the must-have features for version one. We scope an MVP that ships fast and proves value. Nothing gets built until the plan is clear.',
   },
   {
     step: '02',
     title: 'UX Wireframes & Prototype',
     time: 'Week 1–2',
-    desc: 'We map every screen and user flow, then build an interactive prototype you can tap through on your own phone — so you experience the app before a line of code is written.',
+    desc: 'We map every screen and user flow, then build an interactive prototype you can tap through on your own phone, so you experience the app before a line of code is written.',
   },
   {
     step: '03',
     title: 'UI Design',
     time: 'Week 2–3',
-    desc: 'Pixel-perfect, platform-native visual design in your brand style — screens, states, icons, and animations. You review and we refine until it feels exactly right.',
+    desc: 'Pixel-perfect, platform-native visual design in your brand style: screens, states, icons, and animations. You review and we refine until it feels exactly right.',
   },
   {
     step: '04',
     title: 'Development & Integration',
     time: 'Week 3–8',
-    desc: 'Clean, tested code with your backend, APIs, payments, and notifications wired in. You get regular builds to install and try throughout — never just a big reveal at the end.',
+    desc: 'Clean, tested code with your backend, APIs, payments, and notifications wired in. You get regular builds to install and try throughout, never just a big reveal at the end.',
   },
   {
     step: '05',
     title: 'QA & Device Testing',
     time: 'Week 7–9',
-    desc: 'We test across real iPhones and Android devices, screen sizes, and OS versions — checking performance, edge cases, offline behavior, and security before anything ships.',
+    desc: 'We test across real iPhones and Android devices, screen sizes, and OS versions, checking performance, edge cases, offline behavior, and security before anything ships.',
   },
   {
     step: '06',
     title: 'Launch & Store Submission',
     time: 'Week 9+',
-    desc: 'We prepare store listings, submit to the App Store and Google Play, handle the review process, and go live — then monitor the launch and stand by for support.',
+    desc: 'We prepare store listings, submit to the App Store and Google Play, handle the review process, and go live, then monitor the launch and stand by for support.',
   },
 ];
 
@@ -206,11 +206,11 @@ const STATS = [
 
 const FAQS = [
   { q: 'How much does it cost to build a mobile app?', a: 'It depends on scope. A focused MVP with core features typically starts lower and ships in 6–10 weeks, while a feature-rich app with a custom backend costs more and takes longer. We scope and price your project after a free discovery call, and we recommend starting with an MVP to validate demand before investing in every feature.' },
-  { q: 'Should I build native or cross-platform?', a: 'For most businesses, cross-platform (React Native) is the smart choice — you get both iOS and Android from a single codebase at lower cost and with faster updates. We recommend fully native (Swift/Kotlin) only when an app needs deep hardware access or maximum performance, like heavy graphics or AR. We advise based on your goals, not our convenience.' },
-  { q: 'Do you publish the app to the App Store and Google Play?', a: 'Yes — full store deployment is included. We prepare your listings, screenshots, and metadata, handle the Apple and Google submission process, and manage the review until your app is approved and live. We also guide you on the developer accounts you\'ll need to own.' },
+  { q: 'Should I build native or cross-platform?', a: 'For most businesses, cross-platform (React Native) is the smart choice: you get both iOS and Android from a single codebase at lower cost and with faster updates. We recommend fully native (Swift/Kotlin) only when an app needs deep hardware access or maximum performance, like heavy graphics or AR. We advise based on your goals, not our convenience.' },
+  { q: 'Do you publish the app to the App Store and Google Play?', a: 'Yes, full store deployment is included. We prepare your listings, screenshots, and metadata, handle the Apple and Google submission process, and manage the review until your app is approved and live. We also guide you on the developer accounts you\'ll need to own.' },
   { q: 'How long does it take to build an app?', a: 'A well-scoped MVP usually takes 6–10 weeks from kickoff to store submission. Larger apps with custom backends, complex integrations, or multiple user roles take 3–5 months. We work in milestones and give you installable builds throughout, so you\'re never waiting in the dark.' },
-  { q: 'Will I own the app and its source code?', a: 'Absolutely. You own 100% of the source code, design files, and app store listings. There\'s no platform lock-in and no hostage code — everything transfers to you, and you\'re free to take it anywhere.' },
-  { q: 'Do you maintain the app after launch?', a: 'Yes — we offer maintenance plans covering bug fixes, OS-update compatibility (iOS and Android release major updates every year), security patches, and new features. Mobile apps aren\'t "launch and forget" — ongoing maintenance keeps yours working and in the stores as devices evolve.' },
+  { q: 'Will I own the app and its source code?', a: 'Absolutely. You own 100% of the source code, design files, and app store listings. There\'s no platform lock-in and no hostage code. Everything transfers to you, and you\'re free to take it anywhere.' },
+  { q: 'Do you maintain the app after launch?', a: 'Yes, we offer maintenance plans covering bug fixes, OS-update compatibility (iOS and Android release major updates every year), security patches, and new features. Mobile apps aren\'t "launch and forget." Ongoing maintenance keeps yours working and in the stores as devices evolve.' },
 ];
 
 function FAQItem({ q, a }) {
@@ -238,7 +238,7 @@ const schema = {
     {
       '@type': 'Service',
       name: 'Mobile App Development',
-      description: 'iOS, Android, and cross-platform mobile apps built around your business goals — fast, secure, and designed for real users, from MVP to App Store launch.',
+      description: 'iOS, Android, and cross-platform mobile apps built around your business goals. Fast, secure, and designed for real users, from MVP to App Store launch.',
       provider: {
         '@type': 'LocalBusiness',
         '@id': 'https://www.noveliotech.com/#business',
@@ -272,8 +272,8 @@ export default function MobileAppDevelopmentPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Mobile App Development — Native-Quality Apps, Built to Scale"
-        description="iOS, Android, and cross-platform mobile app development for small and medium businesses. From MVP to App Store launch — fast, secure, and built to convert. Free consultation."
+        title="Mobile App Development: Native-Quality Apps, Built to Scale"
+        description="iOS, Android, and cross-platform mobile app development for small and medium businesses. From MVP to App Store launch. Fast, secure, and built to convert. Free consultation."
         canonical="/services/mobile-app-development"
         schema={schema}
       />
@@ -296,16 +296,16 @@ export default function MobileAppDevelopmentPage() {
               <div className="section-label mb-4">iOS, Android & Cross-Platform</div>
               <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
                 Mobile Apps Built to{' '}
-                <span className="gradient-text">Grow Your Business</span>{' '}
-                — Not Just Launch
+                <span className="gradient-text">Grow Your Business</span>,{' '}
+                Not Just Launch
               </h1>
               <p className="text-[#475569] text-xl leading-relaxed mb-4">
                 We design and build fast, secure, native-quality mobile apps that customers actually
-                use — engineered around your business goals, your users, and real-world growth.
+                use, engineered around your business goals, your users, and real-world growth.
               </p>
               <p className="text-[#475569] text-base leading-relaxed mb-8">
                 From a lean MVP to a full-featured product, we take you from idea to a live app on the
-                App Store and Google Play — with a clear roadmap at every step.
+                App Store and Google Play, with a clear roadmap at every step.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {['iOS & Android', 'Cross-Platform Builds', 'UI/UX App Design', 'API & Backend', 'App Store Launch', 'Ongoing Support'].map((f) => (
@@ -356,7 +356,7 @@ export default function MobileAppDevelopmentPage() {
               <span className="gradient-text">Never Get Traction</span>
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              Most apps fail before they ever grow — not because of a bad idea, but because of how
+              Most apps fail before they ever grow, not because of a bad idea, but because of how
               they were scoped, built, and shipped. The usual culprits:
             </p>
           </motion.div>
@@ -374,7 +374,7 @@ export default function MobileAppDevelopmentPage() {
           </div>
           <motion.div {...fadeUp(0.3)} className="text-center mt-12">
             <p className="text-[#475569] text-lg font-medium max-w-2xl mx-auto">
-              We build around every one of these — so your app launches, performs, and keeps growing.
+              We build around every one of these, so your app launches, performs, and keeps growing.
             </p>
           </motion.div>
         </div>
@@ -387,7 +387,7 @@ export default function MobileAppDevelopmentPage() {
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">Business Growth</div>
             <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
-              Built for <span className="gradient-text">Users & Revenue</span> — Not Just the Store
+              Built for <span className="gradient-text">Users & Revenue</span>, Not Just the Store
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
               A great app should do more than exist. It should:
@@ -407,7 +407,7 @@ export default function MobileAppDevelopmentPage() {
           </div>
           <motion.div {...fadeUp(0.4)} className="text-center mt-12">
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              That's why we build complete, business-ready mobile products —{' '}
+              That's why we build complete, business-ready mobile products,{' '}
               <span className="font-semibold text-[#1B3172]">not just screens on a phone.</span>
             </p>
           </motion.div>
@@ -490,7 +490,7 @@ export default function MobileAppDevelopmentPage() {
                 Built with the <span className="gradient-text">Right Stack for Your App</span>
               </h2>
               <p className="text-[#475569] text-base leading-relaxed mb-8">
-                We match the technology to your product — cross-platform to move fast and save budget,
+                We match the technology to your product: cross-platform to move fast and save budget,
                 or fully native when performance demands it.
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -514,7 +514,7 @@ export default function MobileAppDevelopmentPage() {
                 Principles That <span className="gradient-text">Ship Better Apps</span>
               </h2>
               <p className="text-[#475569] text-base leading-relaxed mb-8">
-                Every app we build is held to the same standards — performance, quality, and a
+                Every app we build is held to the same standards: performance, quality, and a
                 launch-first mindset, regardless of budget.
               </p>
               <div className="grid grid-cols-2 gap-5">
@@ -533,7 +533,7 @@ export default function MobileAppDevelopmentPage() {
                 <div>
                   <p className="text-[#1B3172] font-heading font-600 text-sm mb-1">You Own Your App</p>
                   <p className="text-[#475569] text-xs leading-relaxed">
-                    Full source code, design files, and store listings transfer to you — no platform lock-in, no hostage code, no hidden fees.
+                    Full source code, design files, and store listings transfer to you. No platform lock-in, no hostage code, no hidden fees.
                   </p>
                 </div>
               </motion.div>
@@ -544,7 +544,7 @@ export default function MobileAppDevelopmentPage() {
                 <div>
                   <p className="text-[#1B3172] font-heading font-600 text-sm mb-1">Dedicated Point of Contact</p>
                   <p className="text-[#475569] text-xs leading-relaxed">
-                    You work directly with your project lead — not a ticketing system. Real responses, real accountability.
+                    You work directly with your project lead, not a ticketing system. Real responses, real accountability.
                   </p>
                 </div>
               </motion.div>

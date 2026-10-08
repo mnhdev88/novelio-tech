@@ -10,7 +10,7 @@ import { captureLead } from '../utils/leadCapture';
 const faqs = [
   { q: 'How long does it take to get started?', a: 'After our initial consultation and contract signing, most projects kick off within 3–5 business days.' },
   { q: 'What is your pricing model?', a: 'We offer monthly retainers and project-based pricing depending on the service. Contact us for a custom quote tailored to your goals.' },
-  { q: 'Do you work with international clients?', a: 'Yes — we work with clients across North America, UK, Middle East, and South Asia. We accommodate different time zones.' },
+  { q: 'Do you work with international clients?', a: 'Yes, we work with clients across North America, UK, Middle East, and South Asia. We accommodate different time zones.' },
   { q: 'Is there a minimum contract length?', a: 'Most of our retainer services have a 3-month minimum to give strategies enough time to show results. Project work is one-off.' },
 ];
 
@@ -84,7 +84,7 @@ export default function ContactPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Contact Us — Get Your Free Growth Audit"
+        title="Contact Us: Get Your Free Growth Audit"
         description="Book your free 30-minute Growth Audit with Novelio. No obligation, no credit card. We analyze your website, Google listing, leads, and more."
         canonical="/contact"
       />
@@ -281,7 +281,7 @@ export default function ContactPage() {
                         By submitting this form you agree to our{' '}
                         <a href="/privacy" className="text-brand-purple hover:underline">Privacy Policy</a> and{' '}
                         <a href="/terms" className="text-brand-purple hover:underline">Terms</a>. We never sell or
-                        share your information — including your mobile number — with third parties for marketing.
+                        share your information, including your mobile number, with third parties for marketing.
                       </p>
                     </form>
                   )}

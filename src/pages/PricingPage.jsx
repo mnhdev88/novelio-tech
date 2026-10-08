@@ -30,8 +30,8 @@ export default function PricingPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Pricing — Business Growth Plans with Website Included"
-        description="Your website, SSL, hosting, lead capture, Google setup and growth system — included in one growth plan starting at $150/month. No heavy upfront website cost."
+        title="Pricing: Business Growth Plans with Website Included"
+        description="Your website, SSL, hosting, lead capture, Google setup and growth system, included in one growth plan starting at $150/month. No heavy upfront website cost."
         canonical="/pricing"
         schema={faqSchema}
       />
@@ -48,7 +48,7 @@ export default function PricingPage() {
               Your Growth Partner, <span className="gradient-text">on a Subscription</span>
             </h1>
             <p className="text-[#475569] text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-              Your website, SSL, hosting, lead capture, Google setup and growth tracking — all
+              Your website, SSL, hosting, lead capture, Google setup and growth tracking, all
               included in one predictable growth plan. No $1,500–$3,000 upfront website cost.
             </p>
 
@@ -285,7 +285,7 @@ export default function PricingPage() {
               Everything in Each <span className="gradient-text">Growth Plan</span>
             </h2>
             <p className="text-[#64748b] text-base mt-4 max-w-2xl mx-auto">
-              Every plan includes your website — with SSL, hosting and maintenance.
+              Every plan includes your website, with SSL, hosting and maintenance.
               Higher plans add the lead, sales, payment and retention systems that turn a website into a growth engine.
             </p>
           </div>

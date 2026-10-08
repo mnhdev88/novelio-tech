@@ -141,7 +141,7 @@ export default function CheckoutPage() {
             setRazorpayBusy(false);
             setStatus('idle');
             setPayError(result.status === 'PENDING'
-              ? 'Your payment is still being confirmed. If it went through you’ll get an email shortly — please don’t pay again.'
+              ? 'Your payment is still being confirmed. If it went through you’ll get an email shortly. Please don’t pay again.'
               : (result.error || 'Payment could not be confirmed.'));
           } catch {
             setRazorpayBusy(false);
@@ -233,7 +233,7 @@ export default function CheckoutPage() {
 
   return (
     <main className="pt-20">
-      <SEO title={`Checkout — ${plan.name} plan`} canonical="/checkout" noindex />
+      <SEO title={`Checkout: ${plan.name} plan`} canonical="/checkout" noindex />
       <section className="section-pad bg-[#EEF2FF] relative overflow-hidden min-h-[80vh]">
         <div className="line-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10 max-w-5xl">
@@ -250,12 +250,12 @@ export default function CheckoutPage() {
           ) : sandboxMode ? (
             <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
               <ShieldCheck className="w-4 h-4 shrink-0" />
-              <span><strong>Test mode:</strong> use a test account or test card — no real money moves.</span>
+              <span><strong>Test mode:</strong> use a test account or test card. No real money moves.</span>
             </div>
           ) : (
             <div className="mb-6 flex items-center gap-2.5 rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-green-800 text-sm">
               <ShieldCheck className="w-4 h-4 shrink-0" />
-              <span>Secure checkout. Your payment is processed by {gatewayNames} — we never see your card details.</span>
+              <span>Secure checkout. Your payment is processed by {gatewayNames}. We never see your card details.</span>
             </div>
           )}
 
@@ -386,7 +386,7 @@ export default function CheckoutPage() {
                   <div className="space-y-3">
                     <input required placeholder="Name on card" value={card.name} onChange={setCardField('name')}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
-                    <input required placeholder="Card number — e.g. 4242 4242 4242 4242" value={card.number} onChange={setCardField('number')}
+                    <input required placeholder="Card number (e.g. 4242 4242 4242 4242)" value={card.number} onChange={setCardField('number')}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
                     <div className="grid grid-cols-2 gap-3">
                       <input required placeholder="MM / YY" value={card.exp} onChange={setCardField('exp')}
@@ -474,7 +474,7 @@ export default function CheckoutPage() {
                   {charge.isYearly
                     ? `Your full 12 months, paid once.${charge.addonMinor > 0 ? ' Add-ons continue billing monthly.' : ''}`
                     : charge.isTermPlan
-                      ? `Covers your first ${charge.upfrontMonths} months. The remaining ${12 - charge.upfrontMonths} months are billed at ${formatMinor(charge.monthlyMinor, currency)}/mo — ${formatMinor(charge.termTotalMinor + charge.addonMinor * 12, currency)} total over 12 months${charge.gstMinor > 0 ? ', plus GST' : ''}.`
+                      ? `Covers your first ${charge.upfrontMonths} months. The remaining ${12 - charge.upfrontMonths} months are billed at ${formatMinor(charge.monthlyMinor, currency)}/mo, ${formatMinor(charge.termTotalMinor + charge.addonMinor * 12, currency)} total over 12 months${charge.gstMinor > 0 ? ', plus GST' : ''}.`
                       : 'Billed monthly. 12-month plan.'}
                   {charge.gstMinor > 0 && ' Prices are exclusive of GST.'}
                 </p>
@@ -537,7 +537,7 @@ export default function CheckoutPage() {
                             {/* Named here too: with only one gateway able to take
                                 the chosen currency there are no tabs to carry it. */}
                             <p className="mt-2 text-[11px] text-[#94a3b8] text-center">
-                              Secure checkout by Razorpay — {currency === 'INR' ? 'card, UPI, netbanking and wallets' : 'debit and credit cards'}
+                              Secure checkout by Razorpay: {currency === 'INR' ? 'card, UPI, netbanking and wallets' : 'debit and credit cards'}
                             </p>
                           </>
                         )}

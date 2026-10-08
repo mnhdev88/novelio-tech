@@ -41,10 +41,10 @@ export default function ProcessSection() {
         >
           <div className="section-label mx-auto mb-4">How It Works</div>
           <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
-            Your Growth Journey Starts Here — <span className="gradient-text">Zero Risk</span>
+            Your Growth Journey Starts Here: <span className="gradient-text">Zero Risk</span>
           </h2>
           <p className="text-[#475569] text-lg max-w-xl mx-auto">
-            Three steps from first conversation to measurable results — no obligation, no guesswork.
+            Three steps from first conversation to measurable results, with no obligation, no guesswork.
           </p>
         </motion.div>
 

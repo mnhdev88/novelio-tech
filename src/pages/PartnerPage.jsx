@@ -21,13 +21,13 @@ const PARTNER_TYPES = [
   {
     icon: Percent,
     title: 'Referral Partner',
-    desc: 'Refer businesses that need websites, SEO, or app development and earn a recurring commission on every client you send our way — no delivery work on your side.',
+    desc: 'Refer businesses that need websites, SEO, or app development and earn a recurring commission on every client you send our way, no delivery work on your side.',
     color: 'from-emerald-500 to-teal-600',
   },
   {
     icon: Tag,
     title: 'White-Label / Reseller',
-    desc: 'Resell our services under your own brand. We build behind the scenes, you keep the client relationship — perfect for agencies wanting to expand what they offer.',
+    desc: 'Resell our services under your own brand. We build behind the scenes, you keep the client relationship, perfect for agencies wanting to expand what they offer.',
     color: 'from-fuchsia-600 to-indigo-600',
   },
   {
@@ -48,12 +48,12 @@ const BENEFITS = [
   {
     icon: Percent,
     title: 'Recurring Commissions',
-    desc: 'Earn competitive, recurring payouts on every referred client for the life of the engagement — not just a one-time finder\'s fee.',
+    desc: 'Earn competitive, recurring payouts on every referred client for the life of the engagement, not just a one-time finder\'s fee.',
   },
   {
     icon: Tag,
     title: 'True White-Label Delivery',
-    desc: 'We work invisibly under your brand — your logo, your client relationship. We never contact or poach your clients.',
+    desc: 'We work invisibly under your brand: your logo, your client relationship. We never contact or poach your clients.',
   },
   {
     icon: Headphones,
@@ -68,7 +68,7 @@ const BENEFITS = [
   {
     icon: BarChart3,
     title: 'Transparent Tracking',
-    desc: 'A partner dashboard with real-time visibility into referrals, project status, and commissions — no guessing, no chasing.',
+    desc: 'A partner dashboard with real-time visibility into referrals, project status, and commissions. No guessing, no chasing.',
   },
   {
     icon: ShieldCheck,
@@ -114,10 +114,10 @@ const STEPS = [
 ];
 
 const FAQS = [
-  { q: 'How much can I earn as a referral partner?', a: 'Referral commissions are recurring and competitive, based on the service and deal size. We share exact numbers on the intro call once we understand your model — but partners earn on every referred client for the life of the engagement, not just a one-time fee.' },
+  { q: 'How much can I earn as a referral partner?', a: 'Referral commissions are recurring and competitive, based on the service and deal size. We share exact numbers on the intro call once we understand your model, but partners earn on every referred client for the life of the engagement, not just a one-time fee.' },
   { q: 'Will you contact or take over my clients?', a: 'Never. Under our white-label and referral models, you own the client relationship. We work behind the scenes under your brand and never market to, poach, or bill your clients directly.' },
-  { q: 'What services can I refer or resell?', a: 'Everything we offer — website development, mobile app development, SEO, Google Business Profile, lead generation, automation & CRM, branding, and email marketing. You can partner on one service or our full stack.' },
-  { q: 'Is there a cost to become a partner?', a: 'No. Joining the partner program is free. There are no setup fees or monthly costs — we only succeed when you and your clients do.' },
+  { q: 'What services can I refer or resell?', a: 'Everything we offer: website development, mobile app development, SEO, Google Business Profile, lead generation, automation & CRM, branding, and email marketing. You can partner on one service or our full stack.' },
+  { q: 'Is there a cost to become a partner?', a: 'No. Joining the partner program is free. There are no setup fees or monthly costs. We only succeed when you and your clients do.' },
   { q: 'Do I need technical or design skills?', a: 'Not at all. Referral partners simply introduce clients, and white-label partners let us handle delivery. If you can spot a business that needs a website, app, or marketing help, you can partner with us.' },
   { q: 'How quickly can we get started?', a: 'Most partners are onboarded within a few days of the intro call. Once the agreement is signed and your dashboard is set up, you can start referring or briefing projects immediately.' },
 ];
@@ -153,7 +153,7 @@ const schema = {
     {
       '@type': 'WebPage',
       name: 'Partner With Novelio Technologies',
-      description: 'Join the Novelio partner program — referral, white-label, technology, and agency partnerships for companies that want to grow together.',
+      description: 'Join the Novelio partner program: referral, white-label, technology, and agency partnerships for companies that want to grow together.',
       url: 'https://www.noveliotech.com/partners',
     },
     {
@@ -225,7 +225,7 @@ export default function PartnerPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Become a Partner — Grow With Novelio Technologies"
+        title="Become a Partner: Grow With Novelio Technologies"
         description="Partner with Novelio Technologies through referral, white-label, technology, and agency partnerships. Earn recurring commissions, resell under your brand, and grow together. Free to join."
         canonical="/partners"
         schema={schema}
@@ -249,8 +249,8 @@ export default function PartnerPage() {
                 Let's <span className="gradient-text">Grow Together</span>
               </h1>
               <p className="text-[#475569] text-xl leading-relaxed mb-4">
-                Team up with Novelio Technologies to deliver more to your clients — websites, apps,
-                SEO, and full-stack growth systems — without hiring or building a delivery team.
+                Team up with Novelio Technologies to deliver more to your clients (websites, apps,
+                SEO, and full-stack growth systems) without hiring or building a delivery team.
               </p>
               <p className="text-[#475569] text-base leading-relaxed mb-8">
                 Whether you want to refer, resell under your brand, or co-deliver bigger projects,
@@ -304,7 +304,7 @@ export default function PartnerPage() {
               Find the Partnership <span className="gradient-text">That Fits You</span>
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              Every business partners differently. Pick the model that matches how you work — or tell
+              Every business partners differently. Pick the model that matches how you work, or tell
               us and we'll shape one around you.
             </p>
           </motion.div>
@@ -333,7 +333,7 @@ export default function PartnerPage() {
               Built to Make <span className="gradient-text">Partners Win</span>
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              We treat partners like an extension of our team — with the support, transparency, and
+              We treat partners like an extension of our team, with the support, transparency, and
               reliability your reputation depends on.
             </p>
           </motion.div>
@@ -423,7 +423,7 @@ export default function PartnerPage() {
                 </p>
                 <div className="space-y-5 mb-8">
                   {[
-                    'Free to join — no setup or monthly fees',
+                    'Free to join, no setup or monthly fees',
                     'Recurring commissions on every referral',
                     'We never contact or poach your clients',
                     'Response within 24 hours',

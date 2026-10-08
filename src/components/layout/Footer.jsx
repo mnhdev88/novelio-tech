@@ -112,8 +112,8 @@ export default function Footer() {
             <h4 className="text-white font-heading font-600 mb-5 text-sm uppercase tracking-widest">Industries</h4>
             <ul className="space-y-3">
               {[
-                { label: 'Bookkeeping & Accounting — California', href: '/website-design-california-bookkeeping-accounting/' },
-                { label: 'Bookkeeping & Accounting — Texas', href: '/website-design-texas-bookkeeping-accounting/' },
+                { label: 'Bookkeeping & Accounting, California', href: '/website-design-california-bookkeeping-accounting/' },
+                { label: 'Bookkeeping & Accounting, Texas', href: '/website-design-texas-bookkeeping-accounting/' },
               ].map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">

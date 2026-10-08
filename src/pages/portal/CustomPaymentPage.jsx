@@ -205,7 +205,7 @@ export default function CustomPaymentPage() {
             setRazorpayBusy(false);
             setStatus('idle');
             setPayError(result.status === 'PENDING'
-              ? 'Your payment is still being confirmed. If it went through you’ll get an email shortly — please don’t pay again.'
+              ? 'Your payment is still being confirmed. If it went through you’ll get an email shortly. Please don’t pay again.'
               : (result.error || 'Payment could not be confirmed.'));
           } catch {
             setRazorpayBusy(false);
@@ -325,8 +325,8 @@ export default function CustomPaymentPage() {
           </h1>
           <p className="text-[#64748b] text-sm mb-6">
             {isSubscription
-              ? <>Authorise your monthly plan once and each payment is collected automatically. Processed by Razorpay — we never see your card or bank details.</>
-              : <>Securely pay an invoice, deposit or custom quote. Processed by {gatewayList(' or ')} — we never see your card details.</>}
+              ? <>Authorise your monthly plan once and each payment is collected automatically. Processed by Razorpay. We never see your card or bank details.</>
+              : <>Securely pay an invoice, deposit or custom quote. Processed by {gatewayList(' or ')}. We never see your card details.</>}
           </p>
 
           {status === 'paid' && paid ? (
@@ -336,7 +336,7 @@ export default function CustomPaymentPage() {
                 {paid.subscriptionId ? 'Subscription set up' : 'Payment received'}
               </h2>
               <p className="text-[#475569] text-sm">
-                Thank you — we’ve received <strong>{formatMinor(toMinor(paid.amount), paid.currency || currency, { decimals: true })}</strong>
+                Thank you. We’ve received <strong>{formatMinor(toMinor(paid.amount), paid.currency || currency, { decimals: true })}</strong>
                 {reference ? <> for <strong>{reference}</strong></> : null}.
               </p>
               {paid.subscriptionId && laterCharges > 0 && (
@@ -359,7 +359,7 @@ export default function CustomPaymentPage() {
               {!subLinkValid ? (
                 <div className="flex items-start gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
                   <AlertCircle className="w-4 h-4 shrink-0 mt-px" />
-                  <span>This payment link is incomplete or has expired. Please ask us for a new one — you have not been charged.</span>
+                  <span>This payment link is incomplete or has expired. Please ask us for a new one. You have not been charged.</span>
                 </div>
               ) : !anyGatewayEnabled || currencyOptions.length === 0 ? (
                 <div className="flex items-start gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
@@ -373,7 +373,7 @@ export default function CustomPaymentPage() {
                       <ShieldCheck className="w-4 h-4 shrink-0" />
                       <span>
                         <strong>{activeMethod === 'razorpay' ? 'Razorpay' : 'PayPal'} is in test mode</strong>
-                        {' '}— no real money moves.
+                        . No real money moves.
                       </span>
                     </div>
                   )}
@@ -405,7 +405,7 @@ export default function CustomPaymentPage() {
                   )}
 
                   <label className="block text-sm font-semibold text-[#334155] mb-1.5">
-                    {isSubscription ? 'Monthly amount' : 'Amount'} ({currency}){gstPercent > 0 && gstMode === 'add' ? ' — before GST' : ''}
+                    {isSubscription ? 'Monthly amount' : 'Amount'} ({currency}){gstPercent > 0 && gstMode === 'add' ? ', before GST' : ''}
                   </label>
                   <div className="relative mb-4">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748b] font-semibold">{symbol}</span>
@@ -532,8 +532,8 @@ export default function CustomPaymentPage() {
                           chosen currency there are no tabs to carry the name. */}
                       <p className="mt-2 text-[11px] text-[#94a3b8] text-center">
                         {isSubscription
-                          ? <>Secure recurring checkout by Razorpay — {currency === 'INR' ? 'card, UPI AutoPay or bank mandate' : 'debit and credit cards'}</>
-                          : <>Secure checkout by Razorpay — {currency === 'INR' ? 'card, UPI, netbanking and wallets' : 'debit and credit cards'}</>}
+                          ? <>Secure recurring checkout by Razorpay: {currency === 'INR' ? 'card, UPI AutoPay or bank mandate' : 'debit and credit cards'}</>
+                          : <>Secure checkout by Razorpay: {currency === 'INR' ? 'card, UPI, netbanking and wallets' : 'debit and credit cards'}</>}
                       </p>
                     </>
                   )}
@@ -542,7 +542,7 @@ export default function CustomPaymentPage() {
                       than letting it silently disappear on a currency switch. */}
                   {paypalEnabled && !paypalAvailable && razorpayAvailable && !isSubscription && (
                     <p className="mt-2.5 text-xs text-[#94a3b8] text-center">
-                      PayPal is available for USD payments — switch the currency above to use it.
+                      PayPal is available for USD payments. Switch the currency above to use it.
                     </p>
                   )}
 

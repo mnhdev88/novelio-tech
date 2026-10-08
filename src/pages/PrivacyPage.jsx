@@ -8,7 +8,7 @@ const LAST_UPDATED = 'September 2, 2026';
 export default function PrivacyPage() {
   return (
     <main className="pt-28 pb-20 bg-[#F8FAFF] min-h-screen">
-      <SEO title="Privacy Policy" description="Novelio Technologies LLC privacy policy — how we collect, use, and protect your personal information." canonical="/privacy" noindex />
+      <SEO title="Privacy Policy" description="Novelio Technologies LLC privacy policy: how we collect, use, and protect your personal information." canonical="/privacy" noindex />
       {/* Hero */}
       <div className="bg-[#0E1E38] py-16 mb-12">
         <div className="container-xl text-center">
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
             <p>We may collect the following types of information:</p>
             <ul>
               <li><strong>Personal Identification Information:</strong> Name, email address, phone number, business name, and any information you voluntarily provide via contact forms, audit requests, or newsletter sign-ups.</li>
-              <li><strong>Usage Data:</strong> IP address, browser type, pages visited, time spent on pages, referring URLs, and device information — collected automatically via Google Analytics and Microsoft Clarity.</li>
+              <li><strong>Usage Data:</strong> IP address, browser type, pages visited, time spent on pages, referring URLs, and device information, collected automatically via Google Analytics and Microsoft Clarity.</li>
               <li><strong>Communications:</strong> Emails, messages, and call records when you contact us.</li>
               <li><strong>Business Information:</strong> Details about your business provided during a Growth Audit or onboarding process.</li>
             </ul>

@@ -106,7 +106,7 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
         </h3>
         <p className="text-[14.5px] text-[#475569] leading-relaxed mb-5">
           {lockedCount > 0
-            ? `We will send the full summary for ${host} — your score, every category, and the problems we found — straight to your inbox.`
+            ? `We will send the full summary for ${host} (your score, every category, and the problems we found) straight to your inbox.`
             : `${host} scored well, which is rare. We will email you the full summary so you have it on record, along with where the remaining upside is.`}
         </p>
 
@@ -140,7 +140,7 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
               className="mt-1 w-4 h-4 rounded border-slate-300 text-brand-purple focus:ring-brand-purple/30"
             />
             <span className="text-[13px] text-[#64748b] leading-relaxed">
-              You may contact me about this audit. No newsletter, no list — just this report and a
+              You may contact me about this audit. No newsletter, no list, just this report and a
               follow-up if I want one.
             </span>
           </label>

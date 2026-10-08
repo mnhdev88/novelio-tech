@@ -9,7 +9,7 @@ const LAST_UPDATED = 'September 2, 2026';
 export default function TermsPage() {
   return (
     <main className="pt-28 pb-20 bg-[#F8FAFF] min-h-screen">
-      <SEO title="Terms of Service" description="Novelio Technologies LLC terms of service — your rights and obligations when using our services." canonical="/terms" noindex />
+      <SEO title="Terms of Service" description="Novelio Technologies LLC terms of service: your rights and obligations when using our services." canonical="/terms" noindex />
       <div className="bg-[#0E1E38] py-16 mb-12">
         <div className="container-xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>

@@ -8,7 +8,7 @@ export const CITIES = [
     population: '978,908',
     smallBusinesses: '30,000+',
     industries: ['Tech Startups', 'Food & Hospitality', 'Creative Agencies', 'Music & Entertainment'],
-    localHook: `Austin's small business market is one of the fastest growing in the US — over 30,000 small businesses call the city home, from tech startups on Congress Avenue to food trucks on South Congress. With competition rising alongside the city's booming population, a strong local digital presence isn't optional anymore — it's survival.`,
+    localHook: `Austin's small business market is one of the fastest growing in the US: over 30,000 small businesses call the city home, from tech startups on Congress Avenue to food trucks on South Congress. With competition rising alongside the city's booming population, a strong local digital presence isn't optional anymore. It's survival.`,
     painPoints: [
       { title: 'Buried on Google', desc: "Your competitors in Austin are investing in SEO. If your business isn't on page one, you're invisible to 91% of local searchers." },
       { title: 'Outdated Website', desc: "Austin customers expect fast, mobile-first experiences. A slow or dated site signals distrust before they've read a single word." },
@@ -34,7 +34,7 @@ export const CITIES = [
       },
       {
         q: 'What does a website cost for an Austin small business?',
-        a: 'Our websites for Austin businesses typically range from $1,500 to $5,000 depending on complexity. Every site is custom-built, mobile-first, and SEO-optimized from day one — not templated.',
+        a: 'Our websites for Austin businesses typically range from $1,500 to $5,000 depending on complexity. Every site is custom-built, mobile-first, and SEO-optimized from day one, not templated.',
       },
       {
         q: 'Can Novelio help my Austin business rank on Google Maps?',
@@ -42,7 +42,7 @@ export const CITIES = [
       },
       {
         q: 'Do you work with Austin businesses in specific industries?',
-        a: "We serve all industries — restaurants, home services, healthcare, retail, professional services, and more. We've helped over 200 businesses across Texas improve their digital presence and drive real revenue.",
+        a: "We serve all industries: restaurants, home services, healthcare, retail, professional services, and more. We've helped over 200 businesses across Texas improve their digital presence and drive real revenue.",
       },
     ],
   },
@@ -55,11 +55,11 @@ export const CITIES = [
     population: '2.3M+',
     smallBusinesses: '70,000+',
     industries: ['Energy & Oil', 'Healthcare', 'Food & Dining', 'Retail & E-Commerce'],
-    localHook: `Houston is the 4th largest city in the US and home to over 70,000 small businesses spanning energy, healthcare, food service, and retail. In a market this size, showing up on Google isn't enough — you need to show up first, with a site that converts visitors into customers before your competitors do.`,
+    localHook: `Houston is the 4th largest city in the US and home to over 70,000 small businesses spanning energy, healthcare, food service, and retail. In a market this size, showing up on Google isn't enough. You need to show up first, with a site that converts visitors into customers before your competitors do.`,
     painPoints: [
       { title: 'High Competition', desc: "Houston's size means thousands of competitors are fighting for the same Google real estate. Generic SEO won't cut it here." },
       { title: 'Diverse Market', desc: "Houston's multicultural customer base requires targeted messaging and location-specific digital strategy to convert effectively." },
-      { title: 'Trust Gap', desc: "Houston customers research before they buy. A weak online presence — poor reviews, thin website — costs you sales before you even know it." },
+      { title: 'Trust Gap', desc: "Houston customers research before they buy. A weak online presence (poor reviews, thin website) costs you sales before you even know it." },
     ],
     stats: [
       { value: '2.3M+', label: 'Population' },
@@ -68,7 +68,7 @@ export const CITIES = [
       { value: '29+', label: 'Avg Leads Added/Month' },
     ],
     testimonial: {
-      quote: "They didn't just build us a website — they built us a lead machine. Our booking form now captures 29 more leads every month, automatically followed up by email.",
+      quote: "They didn't just build us a website; they built us a lead machine. Our booking form now captures 29 more leads every month, automatically followed up by email.",
       name: 'Sara T.',
       role: 'Owner',
       company: 'Hair Salon, TX',
@@ -81,7 +81,7 @@ export const CITIES = [
       },
       {
         q: 'What types of Houston businesses does Novelio work with?',
-        a: 'We serve Houston businesses across all sectors — energy sector suppliers, medical practices, restaurants, home service companies, law firms, and retail stores. Our growth strategies are customized per industry.',
+        a: 'We serve Houston businesses across all sectors: energy sector suppliers, medical practices, restaurants, home service companies, law firms, and retail stores. Our growth strategies are customized per industry.',
       },
       {
         q: 'How long until I see results from digital marketing in Houston?',
@@ -102,11 +102,11 @@ export const CITIES = [
     population: '442,241',
     smallBusinesses: '200,000+',
     industries: ['Hospitality & Tourism', 'Real Estate', 'Finance & Fintech', 'Retail & Fashion'],
-    localHook: `Miami's business scene is one of the most diverse and competitive in the country — from Wynwood art galleries and Brickell financial firms to South Beach hotels and Coral Gables boutiques. With over 200,000 registered businesses and a booming hospitality and tech sector, your digital visibility directly determines your revenue.`,
+    localHook: `Miami's business scene is one of the most diverse and competitive in the country, from Wynwood art galleries and Brickell financial firms to South Beach hotels and Coral Gables boutiques. With over 200,000 registered businesses and a booming hospitality and tech sector, your digital visibility directly determines your revenue.`,
     painPoints: [
       { title: 'Multilingual Market', desc: "Miami's customer base spans English, Spanish, and Portuguese speakers. Your digital strategy needs to speak to all of them." },
       { title: 'Tourism Competition', desc: 'Hospitality and service businesses compete with national chains and review aggregators. Standing out requires a strong local Google presence.' },
-      { title: 'Seasonal Fluctuation', desc: 'Miami businesses need digital systems that drive revenue year-round — not just during peak season. Automation and consistent SEO protect your pipeline.' },
+      { title: 'Seasonal Fluctuation', desc: 'Miami businesses need digital systems that drive revenue year-round, not just during peak season. Automation and consistent SEO protect your pipeline.' },
     ],
     stats: [
       { value: '442K+', label: 'Population' },
@@ -128,11 +128,11 @@ export const CITIES = [
       },
       {
         q: 'Does Novelio offer bilingual SEO for Miami businesses?',
-        a: 'Yes. We build bilingual digital strategies for Miami businesses targeting both English and Spanish-speaking customers — from bilingual landing pages to Spanish-language Google Business Profile optimization.',
+        a: 'Yes. We build bilingual digital strategies for Miami businesses targeting both English and Spanish-speaking customers, from bilingual landing pages to Spanish-language Google Business Profile optimization.',
       },
       {
         q: 'How much does digital marketing cost for a Miami small business?',
-        a: "Our services are scalable — whether you need a one-time website build or ongoing SEO and lead generation. We start with a free audit so you know exactly what's holding your business back before spending a dollar.",
+        a: "Our services are scalable, whether you need a one-time website build or ongoing SEO and lead generation. We start with a free audit so you know exactly what's holding your business back before spending a dollar.",
       },
       {
         q: 'What industries does Novelio serve in Miami?',
@@ -149,7 +149,7 @@ export const CITIES = [
     population: '409,458',
     smallBusinesses: '55,000+',
     industries: ['Healthcare', 'Home Services', 'Hospitality & Food', 'Finance & Insurance'],
-    localHook: `Tampa's business community has exploded over the last five years — consistently ranked one of the top cities for small business growth in the Southeast. From Ybor City restaurants to Channelside service businesses and Westshore corporate offices, local Google visibility is what separates the businesses that grow from the ones that stagnate.`,
+    localHook: `Tampa's business community has exploded over the last five years, consistently ranked one of the top cities for small business growth in the Southeast. From Ybor City restaurants to Channelside service businesses and Westshore corporate offices, local Google visibility is what separates the businesses that grow from the ones that stagnate.`,
     painPoints: [
       { title: 'Rapid Market Growth', desc: "Tampa's population boom means new competition enters your market every month. Now is the time to establish digital dominance before the window closes." },
       { title: 'National Chain Competition', desc: 'Large brands are investing heavily in Tampa. Local businesses need hyper-local SEO to compete for neighborhood customers on Google.' },
@@ -175,7 +175,7 @@ export const CITIES = [
       },
       {
         q: 'What does website design cost for a Tampa small business?',
-        a: 'Our websites for Tampa businesses range from $1,500 to $5,000 depending on scope. Every site is mobile-first, fast-loading, and built to generate leads — not just look good.',
+        a: 'Our websites for Tampa businesses range from $1,500 to $5,000 depending on scope. Every site is mobile-first, fast-loading, and built to generate leads, not just look good.',
       },
       {
         q: 'Does Novelio offer local SEO services in Tampa?',
@@ -196,10 +196,10 @@ export const CITIES = [
     population: '311,549',
     smallBusinesses: '8,000+',
     industries: ['Salons & Beauty', 'Food & Dining', 'Retail', 'Healthcare & Wellness'],
-    localHook: `Newark is one of the fastest-growing metros in the Northeast, home to over 8,000 small businesses — from salons and spas in the Ironbound to restaurants and retail along Broad Street. With a thriving beauty and wellness market and fierce local competition, your Google presence isn't a nice-to-have anymore. It's how clients find you — or your competitor instead.`,
+    localHook: `Newark is one of the fastest-growing metros in the Northeast, home to over 8,000 small businesses, from salons and spas in the Ironbound to restaurants and retail along Broad Street. With a thriving beauty and wellness market and fierce local competition, your Google presence isn't a nice-to-have anymore. It's how clients find you, or your competitor instead.`,
     painPoints: [
-      { title: 'Invisible on Google', desc: "Newark has 400+ salons and beauty businesses alone. Google's local pack shows only 3. Without local SEO signals — Newark-specific keywords, schema markup, and Google Business Profile — you're simply not there." },
-      { title: 'Website Loses Clients', desc: "Visitors decide in under 3 seconds. A slow, outdated, or mobile-unfriendly site signals unprofessional before they've read a word — and 88% won't return after a bad experience." },
+      { title: 'Invisible on Google', desc: "Newark has 400+ salons and beauty businesses alone. Google's local pack shows only 3. Without local SEO signals (Newark-specific keywords, schema markup, and Google Business Profile), you're simply not there." },
+      { title: 'Website Loses Clients', desc: "Visitors decide in under 3 seconds. A slow, outdated, or mobile-unfriendly site signals unprofessional before they've read a word, and 88% won't return after a bad experience." },
       { title: 'Social Traffic That Doesn\'t Convert', desc: "Instagram drives curiosity, but your website closes the sale. Without a clear booking path, pricing, and trust signals, potential clients bounce straight to your competition." },
     ],
     stats: [
@@ -209,7 +209,7 @@ export const CITIES = [
       { value: '67%', label: 'Check Website Before Booking' },
     ],
     testimonial: {
-      quote: "We had Instagram followers but no one was booking online. Novelio built us a site with real SEO and a booking integration — within 45 days we were getting appointments through the website every single day.",
+      quote: "We had Instagram followers but no one was booking online. Novelio built us a site with real SEO and a booking integration. Within 45 days we were getting appointments through the website every single day.",
       name: 'Jasmine T.',
       role: 'Owner',
       company: 'Hair Salon, Newark NJ',
@@ -218,7 +218,7 @@ export const CITIES = [
     faqs: [
       {
         q: 'How much does a website cost for a Newark NJ small business?',
-        a: "Novelio builds a fully functional demo website for your Newark business at no cost — you see the finished site before any payment is discussed. Your website, SSL, hosting and lead-capture setup are then included with a growth plan starting at $150/month, so there is no heavy upfront website cost. No hidden fees.",
+        a: "Novelio builds a fully functional demo website for your Newark business at no cost. You see the finished site before any payment is discussed. Your website, SSL, hosting and lead-capture setup are then included with a growth plan starting at $150/month, so there is no heavy upfront website cost. No hidden fees.",
       },
       {
         q: 'How long does it take to build a business website in Newark?',
@@ -226,11 +226,11 @@ export const CITIES = [
       },
       {
         q: 'Will my Newark business show up on Google local search?',
-        a: 'Yes. Every Novelio website is built with on-page SEO, Newark NJ keyword targeting, Google Business Profile optimization, and schema markup — the technical foundations Google needs to rank you for searches like "best salon in Newark NJ" or "[your service] near me."',
+        a: 'Yes. Every Novelio website is built with on-page SEO, Newark NJ keyword targeting, Google Business Profile optimization, and schema markup: the technical foundations Google needs to rank you for searches like "best salon in Newark NJ" or "[your service] near me."',
       },
       {
         q: 'Can clients book appointments or contact me through the website?',
-        a: 'Absolutely. We integrate your preferred booking or contact system — StyleSeat, Vagaro, Booksy, Square, or a custom form — so clients can book or reach you 24/7 without picking up the phone.',
+        a: 'Absolutely. We integrate your preferred booking or contact system (StyleSeat, Vagaro, Booksy, Square, or a custom form) so clients can book or reach you 24/7 without picking up the phone.',
       },
     ],
   },
@@ -243,11 +243,11 @@ export const CITIES = [
     population: '715,522',
     smallBusinesses: '50,000+',
     industries: ['Tech & SaaS', 'Outdoor & Recreation', 'Food & Beverage', 'Healthcare & Wellness'],
-    localHook: `Denver consistently ranks as one of the best cities in the US to start and grow a business — a highly educated population, thriving tech sector, and one of the strongest outdoor lifestyle industries in the country. Over 50,000 small businesses compete for Denver's high-spending customer base, making local digital visibility your single most important growth investment.`,
+    localHook: `Denver consistently ranks as one of the best cities in the US to start and grow a business: a highly educated population, thriving tech sector, and one of the strongest outdoor lifestyle industries in the country. Over 50,000 small businesses compete for Denver's high-spending customer base, making local digital visibility your single most important growth investment.`,
     painPoints: [
-      { title: 'Research-First Buyers', desc: "Denver customers research before they buy. Your Google presence — reviews, website quality, rankings — is your first impression, and first impressions close deals." },
+      { title: 'Research-First Buyers', desc: "Denver customers research before they buy. Your Google presence (reviews, website quality, rankings) is your first impression, and first impressions close deals." },
       { title: 'Tech-Savvy Competition', desc: "Denver's tech ecosystem means your competitors are often more digitally sophisticated. Your strategy needs to match or exceed their investment." },
-      { title: 'High Acquisition Costs', desc: "Denver's competitive market makes every lead valuable. Organic SEO and local visibility drive the lowest cost-per-acquisition — and compound over time." },
+      { title: 'High Acquisition Costs', desc: "Denver's competitive market makes every lead valuable. Organic SEO and local visibility drive the lowest cost-per-acquisition, and compound over time." },
     ],
     stats: [
       { value: '715K+', label: 'Population' },
@@ -269,7 +269,7 @@ export const CITIES = [
       },
       {
         q: 'What digital marketing services does Novelio offer in Denver?',
-        a: "We offer website design, local SEO, Google Business Profile optimization, lead generation, marketing automation, branding, and email marketing — all tailored to Denver's competitive market.",
+        a: "We offer website design, local SEO, Google Business Profile optimization, lead generation, marketing automation, branding, and email marketing, all tailored to Denver's competitive market.",
       },
       {
         q: 'How can I get my Denver business to rank higher on Google Maps?',
@@ -288,7 +288,7 @@ export const STATES = [
     state: 'Texas',
     stateSlug: 'texas',
     stateCode: 'TX',
-    description: "Serving small businesses across Texas's fastest-growing cities — Austin, Houston, Dallas, and beyond.",
+    description: "Serving small businesses across Texas's fastest-growing cities: Austin, Houston, Dallas, and beyond.",
     gradient: 'from-[#6B3FA0] to-[#1D4ED8]',
     cities: ['austin', 'houston'],
   },

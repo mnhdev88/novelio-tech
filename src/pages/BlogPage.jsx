@@ -22,7 +22,7 @@ export default function BlogPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Blog — Digital Marketing Tips for Small Businesses"
+        title="Blog: Digital Marketing Tips for Small Businesses"
         description="Expert guides on SEO, Google Ads, web design, email, and social media for small business owners. Free, actionable advice from Novelio."
         canonical="/blog"
         schema={{

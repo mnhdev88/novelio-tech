@@ -30,7 +30,7 @@ const PAIN_POINTS = [
   {
     icon: AlertCircle,
     title: "You're Not Ranking for Your Keywords",
-    desc: 'Your ideal customers are searching for what you offer every day — but they\'re finding your competitors, not you. That\'s revenue walking out the door before it ever reaches you.',
+    desc: 'Your ideal customers are searching for what you offer every day, but they\'re finding your competitors, not you. That\'s revenue walking out the door before it ever reaches you.',
   },
   {
     icon: TrendingUp,
@@ -40,7 +40,7 @@ const PAIN_POINTS = [
   {
     icon: BarChart3,
     title: 'Paid Ads Stop Working When You Stop Paying',
-    desc: 'PPC gets you in front of people today — but the moment you pause spend, the traffic stops. SEO builds compounding organic visibility that keeps generating leads for years.',
+    desc: 'PPC gets you in front of people today, but the moment you pause spend, the traffic stops. SEO builds compounding organic visibility that keeps generating leads for years.',
   },
   {
     icon: AlertCircle,
@@ -59,13 +59,13 @@ const INCLUDED = [
   {
     icon: Search,
     title: 'Keyword Research & Strategy',
-    desc: 'We identify the exact phrases your ideal customers type when they\'re ready to buy — not just high-volume terms. We map keywords to pages and build a content calendar around commercial intent.',
+    desc: 'We identify the exact phrases your ideal customers type when they\'re ready to buy, not just high-volume terms. We map keywords to pages and build a content calendar around commercial intent.',
     color: 'from-indigo-500 to-blue-600',
   },
   {
     icon: FileText,
     title: 'On-Page Optimization',
-    desc: 'Title tags, meta descriptions, header structure, internal linking, image alt text, and schema markup — all optimized for your target keywords. We touch every ranking signal on the page.',
+    desc: 'Title tags, meta descriptions, header structure, internal linking, image alt text, and schema markup, all optimized for your target keywords. We touch every ranking signal on the page.',
     color: 'from-blue-500 to-cyan-500',
   },
   {
@@ -77,13 +77,13 @@ const INCLUDED = [
   {
     icon: MapPin,
     title: 'Local SEO',
-    desc: 'City-specific landing pages, Google Business Profile signals, local citations, and NAP consistency across the web — so you rank in the local pack and Google Maps for your service area.',
+    desc: 'City-specific landing pages, Google Business Profile signals, local citations, and NAP consistency across the web, so you rank in the local pack and Google Maps for your service area.',
     color: 'from-amber-500 to-orange-500',
   },
   {
     icon: Link2,
     title: 'Link Building',
-    desc: 'White-hat backlink acquisition from relevant, authoritative sites in your industry. We build domain authority the right way — no spammy tactics that put your site at risk.',
+    desc: 'White-hat backlink acquisition from relevant, authoritative sites in your industry. We build domain authority the right way: no spammy tactics that put your site at risk.',
     color: 'from-pink-500 to-rose-500',
   },
   {
@@ -95,7 +95,7 @@ const INCLUDED = [
   {
     icon: Globe,
     title: 'Competitor Analysis',
-    desc: 'We track what your top competitors are doing — their keyword positions, new content, backlink gains — and use that intelligence to stay one step ahead in your niche.',
+    desc: 'We track what your top competitors are doing (their keyword positions, new content, backlink gains) and use that intelligence to stay one step ahead in your niche.',
     color: 'from-teal-500 to-emerald-600',
   },
 ];
@@ -126,14 +126,14 @@ const PROCESS = [
     step: '04',
     phase: 'Month 3+',
     title: 'Authority Building',
-    desc: 'Once the foundation is solid, we build your domain authority through white-hat link acquisition and local citation building. Authority compounds over time — this is where the long-term gains come from.',
+    desc: 'Once the foundation is solid, we build your domain authority through white-hat link acquisition and local citation building. Authority compounds over time. This is where the long-term gains come from.',
     bullets: ['White-hat backlink outreach', 'Local citation building', 'Digital PR & content promotion', 'Guest posting on relevant sites'],
   },
   {
     step: '05',
     phase: 'Ongoing',
     title: 'Monitor, Report & Refine',
-    desc: 'Monthly reporting with clear metrics, algorithm monitoring, and continuous refinement. SEO never stops — and neither do we. Every month we analyze what\'s working and double down on it.',
+    desc: 'Monthly reporting with clear metrics, algorithm monitoring, and continuous refinement. SEO never stops, and neither do we. Every month we analyze what\'s working and double down on it.',
     bullets: ['Monthly ranking & traffic report', 'Algorithm change monitoring', 'Conversion rate tracking', 'Strategy refinement based on data'],
   },
 ];
@@ -147,7 +147,7 @@ const WHY_US = [
   {
     icon: Eye,
     title: 'Full Transparency',
-    desc: 'You see exactly what we do every month. Every action is documented and explained in plain English — no smoke and mirrors.',
+    desc: 'You see exactly what we do every month. Every action is documented and explained in plain English. No smoke and mirrors.',
   },
   {
     icon: Target,
@@ -157,17 +157,17 @@ const WHY_US = [
   {
     icon: MapPin,
     title: 'Local SEO Specialists',
-    desc: 'We specialize in ranking businesses in specific cities and service areas — not just generic national keywords.',
+    desc: 'We specialize in ranking businesses in specific cities and service areas, not just generic national keywords.',
   },
   {
     icon: Clock,
     title: 'No Heavy Upfront Cost',
-    desc: 'Your website, hosting and SEO setup are included in one predictable monthly growth plan — no $3,000 project invoice before results start.',
+    desc: 'Your website, hosting and SEO setup are included in one predictable monthly growth plan. No $3,000 project invoice before results start.',
   },
   {
     icon: TrendingUp,
     title: 'ROI-Focused Reporting',
-    desc: 'We track rankings AND conversions. Higher rankings that don\'t generate leads are vanity metrics — we measure what matters.',
+    desc: 'We track rankings AND conversions. Higher rankings that don\'t generate leads are vanity metrics. We measure what matters.',
   },
 ];
 
@@ -181,10 +181,10 @@ const RESULT_STATS = [
 const FAQS = [
   { q: 'How long does SEO take to show results?', a: 'SEO is a long-term strategy. Most businesses see meaningful improvements within 3–6 months, with stronger results at 6–12 months. Competitive niches may take longer, but we set clear milestones so you always know where you stand.' },
   { q: 'What is included in your SEO service?', a: 'Our SEO service includes a technical audit, on-page optimization, keyword research and strategy, content recommendations, link building, local SEO (if applicable), and monthly reporting with transparent metrics.' },
-  { q: 'Do you guarantee #1 rankings?', a: 'No ethical SEO agency can guarantee specific rankings — Google\'s algorithm changes constantly. We do guarantee full transparency, best practices, and a measurable improvement in organic visibility, traffic, and leads.' },
-  { q: 'Do you handle local SEO for businesses targeting nearby customers?', a: 'Yes — local SEO is one of our core specializations. We optimize your on-page signals, Google Business Profile, local citations, and location-specific content to help you rank in local searches and Google Maps.' },
-  { q: 'What if my industry is very competitive?', a: 'Competitive markets require smarter strategy, not just more effort. We identify keyword opportunities your competitors are missing, build stronger content, and target long-tail phrases that convert well — creating a path to rankings even in crowded spaces.' },
-  { q: 'Will you need access to my website and Google accounts?', a: 'Yes — we\'ll need access to your CMS for on-page changes, Google Search Console for indexation data, and Google Analytics for traffic tracking. We can also create separate view-only access so you can monitor progress anytime.' },
+  { q: 'Do you guarantee #1 rankings?', a: 'No ethical SEO agency can guarantee specific rankings. Google\'s algorithm changes constantly. We do guarantee full transparency, best practices, and a measurable improvement in organic visibility, traffic, and leads.' },
+  { q: 'Do you handle local SEO for businesses targeting nearby customers?', a: 'Yes, local SEO is one of our core specializations. We optimize your on-page signals, Google Business Profile, local citations, and location-specific content to help you rank in local searches and Google Maps.' },
+  { q: 'What if my industry is very competitive?', a: 'Competitive markets require smarter strategy, not just more effort. We identify keyword opportunities your competitors are missing, build stronger content, and target long-tail phrases that convert well, creating a path to rankings even in crowded spaces.' },
+  { q: 'Will you need access to my website and Google accounts?', a: 'Yes, we\'ll need access to your CMS for on-page changes, Google Search Console for indexation data, and Google Analytics for traffic tracking. We can also create separate view-only access so you can monitor progress anytime.' },
 ];
 
 function FAQItem({ q, a }) {
@@ -212,7 +212,7 @@ const schema = {
     {
       '@type': 'Service',
       name: 'Search Engine Optimization',
-      description: 'Data-driven SEO strategies that grow your organic rankings, drive qualified traffic, and convert search visitors into paying customers — month after month.',
+      description: 'Data-driven SEO strategies that grow your organic rankings, drive qualified traffic, and convert search visitors into paying customers, month after month.',
       provider: {
         '@type': 'LocalBusiness',
         '@id': 'https://www.noveliotech.com/#business',
@@ -246,7 +246,7 @@ export default function SearchEngineOptimizationPage() {
   return (
     <main className="pt-20">
       <SEO
-        title="Search Engine Optimization — Rankings Built to Last. Traffic That Converts."
+        title="Search Engine Optimization: Rankings Built to Last. Traffic That Converts."
         description="Data-driven SEO that grows organic rankings, drives qualified traffic, and converts visitors into paying customers. Free SEO audit available."
         canonical="/services/search-engine-optimization"
         schema={schema}
@@ -274,7 +274,7 @@ export default function SearchEngineOptimizationPage() {
               </h1>
               <p className="text-[#475569] text-xl leading-relaxed mb-8">
                 Data-driven SEO strategies that grow your organic rankings, drive qualified traffic,
-                and convert search visitors into paying customers — month after month.
+                and convert search visitors into paying customers, month after month.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {['Technical SEO Audit', 'On-Page Optimization', 'Keyword Research & Strategy', 'Local SEO', 'Link Building', 'Monthly Reporting'].map((f) => (
@@ -371,7 +371,7 @@ export default function SearchEngineOptimizationPage() {
               Every Deliverable in Our <span className="gradient-text">SEO Service</span>
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              We cover every ranking factor — technical, on-page, content, and off-page. Nothing is left on the table.
+              We cover every ranking factor: technical, on-page, content, and off-page. Nothing is left on the table.
             </p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -398,7 +398,7 @@ export default function SearchEngineOptimizationPage() {
               Our Month-by-Month <span className="gradient-text">SEO Process</span>
             </h2>
             <p className="text-[#475569] text-lg max-w-2xl mx-auto">
-              SEO done right is a structured, sequenced process — not random tasks thrown at a wall.
+              SEO done right is a structured, sequenced process, not random tasks thrown at a wall.
               Here's exactly what happens from day one.
             </p>
           </motion.div>
@@ -506,7 +506,7 @@ export default function SearchEngineOptimizationPage() {
                 See the SEO, AEO &amp; GEO plans
               </h3>
               <p className="text-white/70 text-sm sm:text-base max-w-2xl leading-relaxed">
-                Three monthly engagement tiers from $299 — with every line of scope published, from
+                Three monthly engagement tiers from $299, with every line of scope published, from
                 keyword mapping and technical health to answer-engine and AI-search visibility.
               </p>
             </div>
