@@ -4,14 +4,7 @@
       {
         "label": "Services",
         "to": "/services",
-        "hasDropdown": true,
-        "dropdown": "services"
-      },
-      {
-        "label": "Tools",
-        "to": "/free-seo-audit",
-        "hasDropdown": true,
-        "dropdown": "tools"
+        "hasDropdown": true
       },
       {
         "label": "About",
