@@ -39,7 +39,9 @@ au_cache_sweep();
 $urlKey = 'u' . sha1($url);
 $result = au_cache_get($urlKey, AUDIT_CACHE_TTL);
 
-if ($result === null) {
+// A report cached before snapshots existed has no previews to show, so it is
+// rebuilt rather than served for up to a day with that section missing.
+if ($result === null || !array_key_exists('snapshot', $result)) {
     $result = au_build_report($url);
     au_cache_put($urlKey, $result);
 }
@@ -128,6 +130,7 @@ function au_build_report($url) {
         'overall'    => $scores['overall'],
         'categories' => $scores['categories'],
         'issues'     => $issues,
+        'snapshot'   => au_snapshot($page, $ctx),
         'redirects'  => $page['redirects'] ?? [],
         'speed'      => null,          // filled in by speed.php
         'speed_state' => AUDIT_HAS_PSI ? 'pending' : 'unavailable',
@@ -236,6 +239,7 @@ function au_public_view(array $r) {
         'warn_count'   => count(array_filter($problems, function ($i) { return $i['state'] === 'warn'; })),
         'speed_state'  => $r['speed_state'],
         'speed'        => $r['speed'],
+        'snapshot'     => $r['snapshot'] ?? null,
     ];
 }
 

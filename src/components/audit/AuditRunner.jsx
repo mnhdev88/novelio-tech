@@ -6,6 +6,7 @@ import ScoreRing from './ScoreRing';
 import { scoreColor } from './scoreScale';
 import IssueCard from './IssueCard';
 import UnlockGate from './UnlockGate';
+import PageSnapshot, { CheckBreakdown, Note } from './PageSnapshot';
 import { runAudit, fetchSpeed } from '../../utils/auditApi';
 import { trackEvent } from '../../utils/analytics';
 import { CALENDLY_LINK } from '../../data/siteData';
@@ -134,6 +135,8 @@ function SpeedCard({ state, speed }) {
           Includes real visitor data from Chrome over the last 28 days, not just a lab test.
         </p>
       )}
+
+      <Note id="speed" />
     </div>
   );
 }
@@ -210,6 +213,7 @@ export default function AuditRunner() {
                 free: speedData.free ?? prev.free,
                 locked: speedData.locked ?? prev.locked,
                 locked_count: speedData.locked_count ?? prev.locked_count,
+                passed: speedData.passed ?? prev.passed,
                 fail_count: speedData.fail_count ?? prev.fail_count,
                 warn_count: speedData.warn_count ?? prev.warn_count,
               };
@@ -337,6 +341,15 @@ export default function AuditRunner() {
             <SpeedCard state={result.speed_state} speed={result.speed} />
           </div>
 
+          <div className="mt-5">
+            <CheckBreakdown
+              categories={result.categories}
+              passed={result.passed}
+              free={result.free}
+              locked={result.locked}
+            />
+          </div>
+
           {/* The three worst findings, free, before and after the form alike.
               Nothing further is ever revealed here — the rest goes by email. */}
           {shownIssues.length > 0 && (
@@ -367,6 +380,12 @@ export default function AuditRunner() {
               </p>
             </div>
           )}
+
+          {/* Before the form on purpose: they see what the audit found, then get
+              asked for details to receive the fixes. */}
+          <div className="mt-10">
+            <PageSnapshot snapshot={result.snapshot} url={result.final_url} host={result.host} />
+          </div>
 
           {/* ── The form ─────────────────────────────────────────────── */}
           {!submitted && (

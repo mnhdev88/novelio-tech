@@ -176,6 +176,150 @@ function au_collect_types($node, array &$types) {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
+// The page snapshot
+// ═════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Make a URL found on the page absolute, or return '' if it is not http(s).
+ * The browser loads these for the social previews, so a javascript: or data:
+ * value must never get through.
+ */
+function au_abs_url($u, $finalUrl) {
+    $u = trim((string) $u);
+    if ($u === '') return '';
+    if (preg_match('#^https?://#i', $u)) return $u;
+
+    $base = @parse_url($finalUrl);
+    if (!is_array($base) || empty($base['host'])) return '';
+    $scheme = strtolower($base['scheme'] ?? 'https');
+    if (strpos($u, '//') === 0) return $scheme . ':' . $u;
+    if (preg_match('#^[a-z][a-z0-9+.-]*:#i', $u)) return '';
+
+    $origin = $scheme . '://' . $base['host'] . (isset($base['port']) ? ':' . $base['port'] : '');
+    if ($u[0] === '/') return $origin . $u;
+    $dir = preg_replace('#/[^/]*$#', '/', $base['path'] ?? '/');
+    return $origin . $dir . $u;
+}
+
+/** Top-level entities of one JSON-LD block, flattening arrays and @graph. */
+function au_schema_entities($data) {
+    if (isset($data['@graph']) && is_array($data['@graph'])) return au_schema_entities($data['@graph']);
+    if (isset($data['@type'])) return [$data];
+
+    $out = [];
+    foreach ($data as $v) {
+        if (is_array($v)) $out = array_merge($out, au_schema_entities($v));
+    }
+    return $out;
+}
+
+function au_schema_snapshot(DOMXPath $x) {
+    $blocks = [];
+    $invalid = 0;
+
+    foreach ($x->query('//script[@type="application/ld+json"]') as $node) {
+        $data = json_decode(trim($node->textContent), true);
+        if (!is_array($data)) { $invalid++; continue; }
+        if (count($blocks) >= 6) continue;
+
+        $entities = [];
+        foreach (array_slice(au_schema_entities($data), 0, 12) as $e) {
+            $name = $e['name'] ?? ($e['headline'] ?? '');
+            $entities[] = [
+                'type' => au_clean(implode(', ', array_filter((array) $e['@type'], 'is_string')), 80),
+                'name' => is_string($name) ? au_clean($name, 120) : '',
+                'fields' => count(array_filter(array_keys($e), function ($k) { return strpos((string) $k, '@') !== 0; })),
+            ];
+        }
+
+        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        $blocks[] = [
+            'entities'  => $entities,
+            'json'      => mb_substr((string) $json, 0, 4000),
+            'truncated' => mb_strlen((string) $json) > 4000,
+        ];
+    }
+
+    $microdata = [];
+    foreach ($x->query('//*[@itemtype]') as $node) {
+        if (preg_match('#schema\.org/(\w+)#i', $node->getAttribute('itemtype'), $m)) $microdata[] = $m[1];
+    }
+
+    return ['blocks' => $blocks, 'invalid' => $invalid, 'microdata' => array_values(array_unique($microdata))];
+}
+
+/**
+ * What the page actually declares, as opposed to what we think of it. It holds
+ * only values anyone can read in the page source, and no advice, so it is shown
+ * without the email gate: the "why" and "how" in each issue remain the product.
+ */
+function au_snapshot(array $page, array $ctx) {
+    $x = au_dom($page['body'] ?? '');
+    if ($x === null) return null;
+
+    $finalUrl = (string) ($page['final_url'] ?? '');
+
+    $headings = [];
+    foreach (range(1, 6) as $n) $headings["h$n"] = au_count($x, "//h$n");
+
+    $outline = [];
+    foreach ($x->query('//h1|//h2|//h3') as $h) {
+        $text = au_clean($h->textContent, 110);
+        if ($text === '') continue;
+        $outline[] = ['level' => (int) substr($h->nodeName, 1), 'text' => $text];
+        if (count($outline) >= 15) break;
+    }
+
+    $internal = 0;
+    $external = 0;
+    foreach ($x->query('//a[@href]') as $a) {
+        $href = trim($a->getAttribute('href'));
+        if ($href === '' || $href[0] === '#' || preg_match('#^(mailto|tel|javascript|sms):#i', $href)) continue;
+        $abs = au_abs_url($href, $finalUrl);
+        if ($abs === '') continue;
+        $linkHost = (string) @parse_url($abs, PHP_URL_HOST);
+        if (au_same_site($linkHost, $ctx['host'] ?? '')) $internal++; else $external++;
+    }
+
+    return [
+        'meta' => [
+            'title'       => au_text($x, '//title'),
+            'description' => au_meta($x, 'description'),
+            'canonical'   => au_attr($x, '//link[@rel="canonical"]', 'href'),
+            'robots'      => au_meta($x, 'robots'),
+            'viewport'    => au_meta($x, 'viewport'),
+            'lang'        => au_attr($x, '//html', 'lang'),
+        ],
+        'og' => [
+            'title'       => au_meta($x, 'og:title'),
+            'description' => au_meta($x, 'og:description'),
+            'image'       => au_abs_url(au_meta($x, 'og:image'), $finalUrl),
+            'url'         => au_meta($x, 'og:url'),
+            'type'        => au_meta($x, 'og:type'),
+            'site_name'   => au_meta($x, 'og:site_name'),
+        ],
+        'twitter' => [
+            'card'        => au_meta($x, 'twitter:card'),
+            'title'       => au_meta($x, 'twitter:title'),
+            'description' => au_meta($x, 'twitter:description'),
+            'image'       => au_abs_url(au_meta($x, 'twitter:image'), $finalUrl),
+            'site'        => au_meta($x, 'twitter:site'),
+        ],
+        'schema'   => au_schema_snapshot($x),
+        'headings' => $headings,
+        'outline'  => $outline,
+        'stats'    => [
+            'words'          => au_word_count(au_body_text($x)),
+            'images'         => au_count($x, '//img'),
+            'images_alt'     => au_count($x, '//img[@alt and string-length(normalize-space(@alt))>0]'),
+            'links_internal' => $internal,
+            'links_external' => $external,
+            'html_kb'        => (int) round(strlen((string) ($page['body'] ?? '')) / 1024),
+        ],
+    ];
+}
+
+// ═════════════════════════════════════════════════════════════════════════════
 // The checks
 // ═════════════════════════════════════════════════════════════════════════════
 

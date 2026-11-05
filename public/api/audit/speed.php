@@ -336,6 +336,10 @@ function au_speed_view(array $r) {
             return ['id' => $i['id'], 'cat' => $i['cat'], 'state' => $i['state'], 'title' => $i['title']];
         }, $rest),
         'locked_count' => count($rest),
+        // The results chart counts these, and speed checks only exist from here on.
+        'passed'       => array_values(array_map(function ($i) {
+            return ['id' => $i['id'], 'cat' => $i['cat'], 'title' => $i['title']];
+        }, array_filter($r['issues'], function ($i) { return $i['state'] === 'pass'; }))),
         'fail_count'   => count(array_filter($problems, function ($i) { return $i['state'] === 'fail'; })),
         'warn_count'   => count(array_filter($problems, function ($i) { return $i['state'] === 'warn'; })),
     ];
