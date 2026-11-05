@@ -60,16 +60,16 @@ export default function TestimonialsPage() {
               <div className="w-7 h-7 rounded-full bg-gradient-to-br from-brand-purple to-brand-blue grid place-items-center text-white text-[11px] font-bold shrink-0">
                 {t.avatar || initials(t.name) || '?'}
               </div>
-              <span className="text-xs font-semibold text-[#475569] truncate">
+              <span className="text-xs font-semibold text-[#3F4A6B] truncate">
                 {t.name || 'New review'}{t.company ? ` — ${t.company}` : ''}
               </span>
               <div className="flex-1" />
               <button onClick={() => move(i, -1)} disabled={i === 0}
-                className="p-1 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move up">
+                className="p-1 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move up">
                 <ChevronUp className="w-4 h-4" />
               </button>
               <button onClick={() => move(i, 1)} disabled={i === items.length - 1}
-                className="p-1 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move down">
+                className="p-1 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move down">
                 <ChevronDown className="w-4 h-4" />
               </button>
               <button onClick={() => remove(i)}
@@ -138,7 +138,7 @@ export default function TestimonialsPage() {
 
       <button
         onClick={add}
-        className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-slate-300 text-sm font-semibold text-[#64748b] hover:border-[#1B3172] hover:text-[#1B3172] cursor-pointer"
+        className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-slate-300 text-sm font-semibold text-[#5C6685] hover:border-[#0D246A] hover:text-[#0D246A] cursor-pointer"
       >
         <Plus className="w-4 h-4" /> Add a review
       </button>
@@ -146,7 +146,7 @@ export default function TestimonialsPage() {
       {items.length === 0 && (
         <div className="bg-white rounded-2xl border border-slate-200 p-10 text-center">
           <Quote className="w-6 h-6 text-slate-300 mx-auto mb-2" />
-          <p className="text-sm text-[#64748b]">No reviews yet.</p>
+          <p className="text-sm text-[#5C6685]">No reviews yet.</p>
         </div>
       )}
 

@@ -7,7 +7,7 @@ import { useAuth } from '../../portal/AuthContext';
 import { createSubscription } from '../../portal/store';
 
 const inputCls =
-  'w-full pl-11 pr-4 py-3 rounded-xl border border-[rgba(29,78,216,0.15)] bg-[#f8faff] text-[#334155] text-sm placeholder-[#94a3b8] focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)] transition-all';
+  'w-full pl-11 pr-4 py-3 rounded-xl border border-[rgba(19,118,180,0.15)] bg-[#FBFAF6] text-[#2B3557] text-sm placeholder-[#94a3b8] focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)] transition-all';
 
 export default function AuthPage({ mode = 'login' }) {
   const isSignup = mode === 'signup';
@@ -50,13 +50,13 @@ export default function AuthPage({ mode = 'login' }) {
         <div className="container-xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-            className="max-w-md mx-auto bg-white rounded-3xl border border-slate-200 shadow-[0_8px_40px_rgba(27,49,114,0.12)] p-8 sm:p-10"
+            className="max-w-md mx-auto bg-white rounded-3xl border border-slate-200 shadow-[0_8px_40px_rgba(13,36,106,0.12)] p-8 sm:p-10"
           >
             <div className="text-center mb-8">
-              <h1 className="font-heading font-800 text-[#1B3172] text-2xl sm:text-3xl mb-2">
+              <h1 className="font-heading font-800 text-[#0D246A] text-2xl sm:text-3xl mb-2">
                 {isSignup ? 'Create your account' : 'Welcome back'}
               </h1>
-              <p className="text-[#64748b] text-sm">
+              <p className="text-[#5C6685] text-sm">
                 {isSignup ? 'Start your subscription in minutes.' : 'Sign in to manage your subscription.'}
               </p>
             </div>
@@ -64,16 +64,16 @@ export default function AuthPage({ mode = 'login' }) {
             <form onSubmit={handleSubmit} className="space-y-4">
               {isSignup && (
                 <div className="relative">
-                  <User className="w-4 h-4 text-[#64748b] absolute left-4 top-1/2 -translate-y-1/2" />
+                  <User className="w-4 h-4 text-[#5C6685] absolute left-4 top-1/2 -translate-y-1/2" />
                   <input type="text" required placeholder="Full name" value={form.name} onChange={set('name')} className={inputCls} />
                 </div>
               )}
               <div className="relative">
-                <Mail className="w-4 h-4 text-[#64748b] absolute left-4 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-[#5C6685] absolute left-4 top-1/2 -translate-y-1/2" />
                 <input type="email" required placeholder="Email address" value={form.email} onChange={set('email')} className={inputCls} />
               </div>
               <div className="relative">
-                <Lock className="w-4 h-4 text-[#64748b] absolute left-4 top-1/2 -translate-y-1/2" />
+                <Lock className="w-4 h-4 text-[#5C6685] absolute left-4 top-1/2 -translate-y-1/2" />
                 <input type="password" required placeholder="Password" value={form.password} onChange={set('password')} className={inputCls} />
               </div>
 
@@ -84,13 +84,13 @@ export default function AuthPage({ mode = 'login' }) {
                 </div>
               )}
 
-              <button type="submit" className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all cursor-pointer">
+              <button type="submit" className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-[15px] font-semibold transition-all cursor-pointer">
                 {isSignup ? 'Create account' : 'Sign in'}
                 <ArrowRight className="w-4 h-4" />
               </button>
             </form>
 
-            <p className="text-center text-sm text-[#64748b] mt-6">
+            <p className="text-center text-sm text-[#5C6685] mt-6">
               {isSignup ? 'Already have an account? ' : "Don't have an account? "}
               <Link to={otherHref(isSignup ? '/login' : '/signup')} className="text-brand-purple font-semibold hover:underline">
                 {isSignup ? 'Sign in' : 'Sign up'}

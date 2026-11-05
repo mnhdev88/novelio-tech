@@ -46,10 +46,10 @@ export default function ServicesPage() {
         <div className="container-xl relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="section-label mx-auto mb-4">What We Offer</div>
-            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
               Full-Service <span className="gradient-text">Digital Solutions</span>
             </h1>
-            <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-[#3F4A6B] text-xl max-w-3xl mx-auto leading-relaxed">
               From search engine domination to stunning websites and social media growth, we have every digital capability you need under one roof.
             </p>
           </motion.div>
@@ -57,7 +57,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services grid */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="line-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -71,11 +71,11 @@ export default function ServicesPage() {
                     <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-glow`}>
                       <Icon className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-3">{service.title}</h3>
-                    <p className="text-[#64748b] text-sm leading-relaxed flex-1 mb-6">{service.description}</p>
+                    <h3 className="text-[#0D246A] font-heading font-700 text-xl mb-3">{service.title}</h3>
+                    <p className="text-[#5C6685] text-sm leading-relaxed flex-1 mb-6">{service.description}</p>
                     <ul className="space-y-2 mb-6">
                       {service.features.slice(0, 3).map((f, fi) => (
-                        <li key={fi} className="flex items-center gap-2 text-[#475569] text-xs">
+                        <li key={fi} className="flex items-center gap-2 text-[#3F4A6B] text-xs">
                           <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${service.color}`} />
                           {f}
                         </li>

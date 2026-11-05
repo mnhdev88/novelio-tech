@@ -31,7 +31,7 @@ export default function HeaderPage() {
       </Card>
 
       <Card title="Top bar" description="The thin dark strip above the menu.">
-        <p className="text-sm text-[#64748b]">
+        <p className="text-sm text-[#5C6685]">
           It shows your email, phone and office hours, which are edited under{' '}
           <strong>Contact details</strong> so they only have to be changed in one place.
         </p>

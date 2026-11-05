@@ -7,47 +7,47 @@ import NotFoundPage from './NotFoundPage';
 
 const ARTICLE_CSS = `
 .blog-article-root{font-family:'Segoe UI',Arial,sans-serif;color:#1a1a2e;background:#fff;line-height:1.75;font-size:17px}
-.blog-article-root a{color:#0057d9;text-decoration:none}
+.blog-article-root a{color:#1376B4;text-decoration:none}
 .blog-article-root a:hover{text-decoration:underline}
 .blog-article-root .container{max-width:820px;margin:0 auto;padding:40px 24px}
-.blog-article-root header.hero{background:linear-gradient(135deg,#0057d9 0%,#00b4d8 100%);color:#fff;padding:60px 24px;text-align:center}
+.blog-article-root header.hero{background:linear-gradient(135deg,#1376B4 0%,#00b4d8 100%);color:#fff;padding:60px 24px;text-align:center}
 .blog-article-root header.hero h1{font-size:2.2rem;line-height:1.3;max-width:720px;margin:0 auto 16px}
 .blog-article-root header.hero .meta{font-size:.9rem;opacity:.85}
 /* Posts that lead with the featured image instead of the blue hero band put the
    h1 and byline inside .container, so both need styles of their own. */
 .blog-article-root figure.featured{margin:0 0 20px}
 .blog-article-root h1{font-size:2.3rem;line-height:1.25;letter-spacing:-.5px;color:#0f172a;margin:0 0 12px}
-.blog-article-root .container > .meta{font-size:.9rem;color:#64748b;margin-bottom:20px}
-.blog-article-root .toc{background:#f0f7ff;border-left:4px solid #0057d9;padding:20px 24px;border-radius:6px;margin:32px 0}
-.blog-article-root .toc h2{font-size:1.1rem;margin-bottom:12px;color:#0057d9}
+.blog-article-root .container > .meta{font-size:.9rem;color:#5C6685;margin-bottom:20px}
+.blog-article-root .toc{background:#f0f7ff;border-left:4px solid #1376B4;padding:20px 24px;border-radius:6px;margin:32px 0}
+.blog-article-root .toc h2{font-size:1.1rem;margin-bottom:12px;color:#1376B4}
 .blog-article-root .toc ol{padding-left:20px}
 .blog-article-root .toc li{margin:6px 0}
-.blog-article-root h2{font-size:1.55rem;color:#0057d9;margin:48px 0 16px;border-bottom:2px solid #e8f0fe;padding-bottom:8px}
+.blog-article-root h2{font-size:1.55rem;color:#1376B4;margin:48px 0 16px;border-bottom:2px solid #E8E7DF;padding-bottom:8px}
 .blog-article-root h3{font-size:1.2rem;color:#1a1a2e;margin:32px 0 12px}
 .blog-article-root p{margin-bottom:18px}
 .blog-article-root ul,.blog-article-root ol{padding-left:24px;margin-bottom:18px}
 .blog-article-root li{margin:8px 0}
-.blog-article-root .highlight-box{background:#e8f0fe;border-left:4px solid #0057d9;padding:16px 20px;border-radius:4px;margin:24px 0;font-style:italic}
+.blog-article-root .highlight-box{background:#E8E7DF;border-left:4px solid #1376B4;padding:16px 20px;border-radius:4px;margin:24px 0;font-style:italic}
 .blog-article-root .stat-box{background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:16px 20px;margin:24px 0}
 .blog-article-root .stat-box strong{color:#856404}
 .blog-article-root table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.95rem}
-.blog-article-root th{background:#0057d9;color:#fff;padding:12px 14px;text-align:left}
-.blog-article-root td{padding:11px 14px;border-bottom:1px solid #e0e7ff}
-.blog-article-root tr:nth-child(even) td{background:#f8f9ff}
-.blog-article-root .cta-box{background:linear-gradient(135deg,#0057d9 0%,#00b4d8 100%);color:#fff;padding:40px 32px;border-radius:12px;text-align:center;margin:48px 0}
+.blog-article-root th{background:#1376B4;color:#fff;padding:12px 14px;text-align:left}
+.blog-article-root td{padding:11px 14px;border-bottom:1px solid #E8E7DF}
+.blog-article-root tr:nth-child(even) td{background:#FBFAF6}
+.blog-article-root .cta-box{background:linear-gradient(135deg,#1376B4 0%,#00b4d8 100%);color:#fff;padding:40px 32px;border-radius:12px;text-align:center;margin:48px 0}
 .blog-article-root .cta-box h2{color:#fff;border:none;margin:0 0 12px;font-size:1.7rem}
 .blog-article-root .cta-box p{margin-bottom:24px;font-size:1.05rem;opacity:.95}
-.blog-article-root .cta-btn{display:inline-block;background:#fff;color:#0057d9;font-weight:700;font-size:1rem;padding:14px 32px;border-radius:6px;transition:transform .2s}
+.blog-article-root .cta-btn{display:inline-block;background:#fff;color:#1376B4;font-weight:700;font-size:1rem;padding:14px 32px;border-radius:6px;transition:transform .2s}
 .blog-article-root .cta-btn:hover{transform:translateY(-2px);text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.2)}
-.blog-article-root .faq-item{border:1px solid #e0e7ff;border-radius:8px;padding:20px 24px;margin:16px 0}
-.blog-article-root .faq-item h3{margin:0 0 10px;color:#0057d9;font-size:1.05rem}
-.blog-article-root .author-box{display:flex;align-items:center;gap:20px;background:#f8f9ff;border:1px solid #e0e7ff;border-radius:8px;padding:20px 24px;margin:40px 0}
-.blog-article-root .author-avatar{width:64px;height:64px;border-radius:50%;background:#0057d9;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;font-weight:700;flex-shrink:0}
-.blog-article-root .tag{display:inline-block;background:#e8f0fe;color:#0057d9;font-size:.8rem;padding:4px 10px;border-radius:20px;margin:0 4px 8px 0;font-weight:600}
+.blog-article-root .faq-item{border:1px solid #E8E7DF;border-radius:8px;padding:20px 24px;margin:16px 0}
+.blog-article-root .faq-item h3{margin:0 0 10px;color:#1376B4;font-size:1.05rem}
+.blog-article-root .author-box{display:flex;align-items:center;gap:20px;background:#FBFAF6;border:1px solid #E8E7DF;border-radius:8px;padding:20px 24px;margin:40px 0}
+.blog-article-root .author-avatar{width:64px;height:64px;border-radius:50%;background:#1376B4;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;font-weight:700;flex-shrink:0}
+.blog-article-root .tag{display:inline-block;background:#E8E7DF;color:#1376B4;font-size:.8rem;padding:4px 10px;border-radius:20px;margin:0 4px 8px 0;font-weight:600}
 .blog-article-root img{max-width:100%;height:auto}
 .blog-article-root figure{margin:36px 0}
-.blog-article-root figure img{width:100%;display:block;border-radius:10px;border:1px solid #e0e7ff;box-shadow:0 4px 16px rgba(15,23,42,.08)}
-.blog-article-root figcaption{font-size:.85rem;color:#64748b;text-align:center;margin-top:10px;line-height:1.5}
+.blog-article-root figure img{width:100%;display:block;border-radius:10px;border:1px solid #E8E7DF;box-shadow:0 4px 16px rgba(15,23,42,.08)}
+.blog-article-root figcaption{font-size:.85rem;color:#5C6685;text-align:center;margin-top:10px;line-height:1.5}
 @media(max-width:600px){.blog-article-root header.hero h1{font-size:1.6rem}.blog-article-root h1{font-size:1.65rem}.blog-article-root h2{font-size:1.3rem}}
 `;
 
@@ -95,7 +95,7 @@ export default function BlogPostPage() {
   if (isPreview && draftState === 'loading') {
     return (
       <main className="pt-32 pb-32 grid place-items-center">
-        <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#1B3172] animate-spin" />
+        <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#0D246A] animate-spin" />
       </main>
     );
   }
@@ -128,7 +128,7 @@ export default function BlogPostPage() {
       <style>{ARTICLE_CSS}</style>
 
       {isPreview && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#1B3172] text-white px-4 py-2.5">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0D246A] text-white px-4 py-2.5">
           <div className="max-w-[1320px] mx-auto flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="inline-flex items-center gap-2 text-sm font-semibold">
               <Eye className="w-4 h-4" />
@@ -166,7 +166,7 @@ export default function BlogPostPage() {
 
               {/* ── CTA Widget ── */}
               <div className="rounded-2xl overflow-hidden shadow-xl">
-                <div className="bg-gradient-to-br from-[#4f46e5] via-[#7c3aed] to-[#0ea5e9] p-6 text-white">
+                <div className="bg-gradient-to-br from-[#42499D] via-[#5E328C] to-[#1391C4] p-6 text-white">
                   <span className="inline-block text-[10px] font-bold uppercase tracking-widest bg-white/20 text-white px-3 py-1 rounded-full mb-3">
                     Free Offer
                   </span>
@@ -186,15 +186,15 @@ export default function BlogPostPage() {
                   </ul>
                   <a
                     {...CALENDLY_LINK}
-                    className="block w-full text-center bg-white text-[#4f46e5] font-bold text-sm py-3 px-4 rounded-xl hover:bg-white/90 transition-all hover:shadow-lg"
+                    className="block w-full text-center bg-white text-[#42499D] font-bold text-sm py-3 px-4 rounded-xl hover:bg-white/90 transition-all hover:shadow-lg"
                   >
                     Book Your Free Audit →
                   </a>
                 </div>
-                <div className="bg-[#f8f9ff] border border-t-0 border-slate-200 p-4 flex gap-3">
+                <div className="bg-[#FBFAF6] border border-t-0 border-slate-200 p-4 flex gap-3">
                   <a
                     href={PHONE_TEL}
-                    className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-slate-200 rounded-xl py-2.5 text-xs font-semibold text-[#1B3172] hover:border-[#4f46e5] hover:text-[#4f46e5] transition-all"
+                    className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-slate-200 rounded-xl py-2.5 text-xs font-semibold text-[#0D246A] hover:border-[#42499D] hover:text-[#42499D] transition-all"
                   >
                     <Phone className="w-3.5 h-3.5" /> Call Us
                   </a>
@@ -212,8 +212,8 @@ export default function BlogPostPage() {
               {/* ── Recent Posts Widget ── */}
               <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
                 <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
-                  <h3 className="font-bold text-[#1B3172] text-[15px]">Recent Articles</h3>
-                  <Link to="/blog" className="text-[11px] text-[#4f46e5] font-semibold hover:underline">
+                  <h3 className="font-bold text-[#0D246A] text-[15px]">Recent Articles</h3>
+                  <Link to="/blog" className="text-[11px] text-[#42499D] font-semibold hover:underline">
                     View all
                   </Link>
                 </div>
@@ -222,7 +222,7 @@ export default function BlogPostPage() {
                     <Link
                       key={p.slug}
                       to={`/blog/${p.slug}`}
-                      className="flex gap-3 p-4 hover:bg-[#f8f9ff] transition-colors group"
+                      className="flex gap-3 p-4 hover:bg-[#FBFAF6] transition-colors group"
                     >
                       <img
                         src={p.image}
@@ -234,7 +234,7 @@ export default function BlogPostPage() {
                         <span className={`text-[9px] font-bold text-white px-2 py-0.5 rounded-full bg-gradient-to-r ${p.categoryColor} inline-block mb-1`}>
                           {p.category}
                         </span>
-                        <p className="text-[13px] font-semibold text-[#1B3172] leading-snug line-clamp-2 group-hover:text-[#4f46e5] transition-colors">
+                        <p className="text-[13px] font-semibold text-[#0D246A] leading-snug line-clamp-2 group-hover:text-[#42499D] transition-colors">
                           {p.title}
                         </p>
                         <span className="flex items-center gap-1 text-[11px] text-slate-400 mt-1">
@@ -247,7 +247,7 @@ export default function BlogPostPage() {
                 <div className="px-5 py-3 border-t border-slate-100">
                   <Link
                     to="/blog"
-                    className="text-sm text-[#4f46e5] font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+                    className="text-sm text-[#42499D] font-semibold flex items-center gap-1 hover:gap-2 transition-all"
                   >
                     All Articles <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -257,7 +257,7 @@ export default function BlogPostPage() {
               {/* ── Services Widget ── */}
               <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
                 <div className="px-5 py-4 border-b border-slate-100">
-                  <h3 className="font-bold text-[#1B3172] text-[15px]">Our Services</h3>
+                  <h3 className="font-bold text-[#0D246A] text-[15px]">Our Services</h3>
                 </div>
                 <div className="p-2">
                   {SERVICES.slice(0, 6).map((svc) => (
@@ -268,18 +268,18 @@ export default function BlogPostPage() {
                     >
                       <div className="flex items-center gap-2.5">
                         <span className={`w-2 h-2 rounded-full bg-gradient-to-br ${svc.color} shrink-0`} />
-                        <span className="text-[13px] text-[#334155] group-hover:text-[#4f46e5] font-medium transition-colors">
+                        <span className="text-[13px] text-[#2B3557] group-hover:text-[#42499D] font-medium transition-colors">
                           {svc.short}
                         </span>
                       </div>
-                      <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#4f46e5] group-hover:translate-x-0.5 transition-all" />
+                      <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#42499D] group-hover:translate-x-0.5 transition-all" />
                     </Link>
                   ))}
                 </div>
                 <div className="px-5 py-3 border-t border-slate-100">
                   <Link
                     to="/services"
-                    className="text-sm text-[#4f46e5] font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+                    className="text-sm text-[#42499D] font-semibold flex items-center gap-1 hover:gap-2 transition-all"
                   >
                     All Services <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -288,15 +288,15 @@ export default function BlogPostPage() {
 
               {/* ── Category Tags Widget ── */}
               <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
-                <h3 className="font-bold text-[#1B3172] text-[15px] mb-3 flex items-center gap-2">
-                  <Tag className="w-4 h-4 text-[#4f46e5]" /> Browse by Topic
+                <h3 className="font-bold text-[#0D246A] text-[15px] mb-3 flex items-center gap-2">
+                  <Tag className="w-4 h-4 text-[#42499D]" /> Browse by Topic
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {categories.map((cat) => (
                     <Link
                       key={cat}
                       to="/blog"
-                      className="text-xs font-semibold px-3 py-1.5 bg-[#eef2ff] text-[#4f46e5] rounded-full hover:bg-[#4f46e5] hover:text-white transition-all border border-[#c7d2fe] hover:border-[#4f46e5]"
+                      className="text-xs font-semibold px-3 py-1.5 bg-[#F3F2EC] text-[#42499D] rounded-full hover:bg-[#42499D] hover:text-white transition-all border border-[#D9D7CC] hover:border-[#42499D]"
                     >
                       {cat}
                     </Link>

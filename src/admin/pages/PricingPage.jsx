@@ -116,7 +116,7 @@ export default function PricingPage() {
           </div>
 
           <div className="mt-4">
-            <span className="block text-xs font-semibold text-[#475569] mb-1.5">What&rsquo;s included</span>
+            <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">What&rsquo;s included</span>
             <div className="space-y-2">
               {(plan.features || []).map((f, k) => (
                 <div key={k} className="flex gap-2">
@@ -135,7 +135,7 @@ export default function PricingPage() {
               ))}
               <button
                 onClick={() => setPlan(i, { features: [...(plan.features || []), ''] })}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 text-xs font-semibold text-[#64748b] hover:border-[#1B3172] hover:text-[#1B3172] cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 text-xs font-semibold text-[#5C6685] hover:border-[#0D246A] hover:text-[#0D246A] cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" /> Add feature
               </button>
@@ -169,11 +169,11 @@ export default function PricingPage() {
             type="checkbox"
             checked={inrConfirmed}
             onChange={(e) => setInrMeta({ confirmed: e.target.checked })}
-            className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#1B3172] focus:ring-[#1B3172] cursor-pointer shrink-0"
+            className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#0D246A] focus:ring-[#0D246A] cursor-pointer shrink-0"
           />
-          <span className="text-sm text-[#334155]">
+          <span className="text-sm text-[#2B3557]">
             <span className="font-semibold">The ₹ prices above are correct and may be charged.</span>
-            <span className="block text-xs text-[#64748b] mt-1">
+            <span className="block text-xs text-[#5C6685] mt-1">
               Until this is ticked and published, every INR payment attempt is refused by the server
               with a message asking the customer to pay in USD or get in touch. USD is never affected.
             </span>

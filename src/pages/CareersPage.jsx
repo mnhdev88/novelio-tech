@@ -41,8 +41,8 @@ const usJobs = [
     locations: 'Dover, DE | Texas | Florida | North Carolina | Tennessee | Idaho | South Dakota | Iowa | Colorado | Utah | Montana',
     desc: 'Work directly with small business owners and entrepreneurs: understand their growth challenges, present our digital solutions, and close deals. This is a hybrid field + phone role. You will build your own book of business with full support from a senior sales mentor.',
     pills: ['B2B Sales', 'Small Business Market', 'Digital Products', '2–4 Years Experience', 'Salary + Commission', 'Full-Time'],
-    accentColor: 'border-l-[#1B3172]',
-    btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
+    accentColor: 'border-l-[#0D246A]',
+    btnStyle: 'bg-[#0D246A] hover:bg-[#081A52] text-white',
     subject: 'Application: Sales Executive – US',
   },
 ];
@@ -57,7 +57,7 @@ const indiaJobs = [
     pills: ['International Sales', '2–3 Years Experience', 'Strong Spoken English', 'Night Shift (US EST/PST)', 'Salary + Incentive'],
     subject: 'Application: Sales Executive – India',
     btnLabel: 'Apply Now →',
-    btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
+    btnStyle: 'bg-[#0D246A] hover:bg-[#081A52] text-white',
   },
   {
     title: 'Call Setter (US Market)',
@@ -68,7 +68,7 @@ const indiaJobs = [
     pills: ['Outbound Calling', '0–2 Years Experience', 'Freshers Welcome', 'Night Shift', 'Salary + Appointment Incentive'],
     subject: 'Application: Call Setter – India',
     btnLabel: 'Apply Now →',
-    btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
+    btnStyle: 'bg-[#0D246A] hover:bg-[#081A52] text-white',
   },
   {
     title: 'SEO Team Lead',
@@ -108,7 +108,7 @@ const indiaJobs = [
     applyNoteFooter: 'CV is optional.',
     subject: 'SEO Intern Application – Work Profile',
     btnLabel: 'Send Work Profile →',
-    btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
+    btnStyle: 'bg-[#0D246A] hover:bg-[#081A52] text-white',
     footerNote: 'Send your work profile to: ajay@noveliotech.com',
   },
 ];
@@ -136,7 +136,7 @@ const freelanceJobs = [
     applyNoteFooter: 'A CV is optional. Your work samples matter most. Experience creating content for software, SaaS, CRM, or digital-marketing brands is a plus.',
     subject: 'Application: Video & Image Creator – Freelance',
     btnLabel: 'Send Portfolio →',
-    btnStyle: 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white',
+    btnStyle: 'bg-[#0D246A] hover:bg-[#081A52] text-white',
     footerNote: 'Send your portfolio to: ajay@noveliotech.com',
   },
 ];
@@ -201,7 +201,7 @@ const whyCards = [
 // ── Sub-components ────────────────────────────────────────────────────────────
 
 function JobCard({ job, isIndia = false, delay = 0, onApply }) {
-  const accent = isIndia ? 'border-l-green-600' : (job.accentColor || 'border-l-[#1B3172]');
+  const accent = isIndia ? 'border-l-green-600' : (job.accentColor || 'border-l-[#0D246A]');
   return (
     <motion.div
       {...fadeUp(delay)}
@@ -210,9 +210,9 @@ function JobCard({ job, isIndia = false, delay = 0, onApply }) {
       {/* Top */}
       <div className="mb-3">
         <div className="flex flex-wrap items-baseline gap-2 mb-2">
-          <h3 className="font-heading font-700 text-[#1B3172] text-lg leading-tight">{job.title}</h3>
+          <h3 className="font-heading font-700 text-[#0D246A] text-lg leading-tight">{job.title}</h3>
           {job.openingLabel && (
-            <span className="text-[#64748b] text-sm font-normal">{job.openingLabel}</span>
+            <span className="text-[#5C6685] text-sm font-normal">{job.openingLabel}</span>
           )}
         </div>
         <div className="flex flex-wrap gap-2">
@@ -223,18 +223,18 @@ function JobCard({ job, isIndia = false, delay = 0, onApply }) {
       </div>
 
       {/* Location */}
-      <div className="flex items-start gap-1.5 text-xs text-[#64748b] mb-3">
-        <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#64748b]" />
+      <div className="flex items-start gap-1.5 text-xs text-[#5C6685] mb-3">
+        <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#5C6685]" />
         <span className="leading-relaxed">{job.locations || job.location}</span>
       </div>
 
       {/* Desc */}
-      <p className="text-sm text-[#475569] leading-relaxed mb-4">{job.desc}</p>
+      <p className="text-sm text-[#3F4A6B] leading-relaxed mb-4">{job.desc}</p>
 
       {/* Pills */}
       <div className="flex flex-wrap gap-2 mb-4">
         {job.pills.map((p, i) => (
-          <span key={i} className="text-xs px-3 py-1 rounded-full border border-[rgba(29,78,216,0.13)] text-[#64748b] bg-[#f8faff]">{p}</span>
+          <span key={i} className="text-xs px-3 py-1 rounded-full border border-[rgba(19,118,180,0.13)] text-[#5C6685] bg-[#FBFAF6]">{p}</span>
         ))}
       </div>
 
@@ -263,15 +263,15 @@ function JobCard({ job, isIndia = false, delay = 0, onApply }) {
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-between flex-wrap gap-3 pt-4 border-t border-[rgba(29,78,216,0.08)]">
+      <div className="flex items-center justify-between flex-wrap gap-3 pt-4 border-t border-[rgba(19,118,180,0.08)]">
         {job.footerNote
-          ? <span className="text-xs text-[#64748b] italic">{job.footerNote}</span>
+          ? <span className="text-xs text-[#5C6685] italic">{job.footerNote}</span>
           : <span />
         }
         <button
           type="button"
           onClick={() => onApply(job)}
-          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-600 transition-all duration-200 cursor-pointer ${job.btnStyle || 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'}`}
+          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-600 transition-all duration-200 cursor-pointer ${job.btnStyle || 'bg-[#0D246A] hover:bg-[#081A52] text-white'}`}
         >
           {job.btnLabel || 'Apply Now →'}
         </button>
@@ -321,10 +321,10 @@ export default function CareersPage() {
           <motion.div {...fadeUp(0)}>
             <div className="section-label mx-auto mb-4 inline-flex items-center gap-1.5"><Flame className="w-4 h-4" /> We Are Hiring: {totalOpenings} Open Position{totalOpenings === 1 ? '' : 's'}</div>
           </motion.div>
-          <motion.h1 {...fadeUp(0.1)} className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+          <motion.h1 {...fadeUp(0.1)} className="text-5xl lg:text-7xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
             Grow Your Career at<br /><span className="gradient-text">Novelio Technologies</span>
           </motion.h1>
-          <motion.p {...fadeUp(0.2)} className="text-[#475569] text-xl max-w-2xl mx-auto leading-relaxed mb-12">
+          <motion.p {...fadeUp(0.2)} className="text-[#3F4A6B] text-xl max-w-2xl mx-auto leading-relaxed mb-12">
             We help small businesses and entrepreneurs across the US grow faster with AI-powered digital tools. Join a team where your work creates real, visible impact, fast.
           </motion.p>
           <motion.div {...fadeUp(0.3)} className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto">
@@ -335,8 +335,8 @@ export default function CareersPage() {
               { num: 'Fast',   label: 'Growth Stage Company' },
             ].map((s, i) => (
               <div key={i} className="glass-card gradient-border rounded-2xl p-5 text-center">
-                <div className="font-heading font-800 text-[#1B3172] text-2xl">{s.num}</div>
-                <div className="text-[#64748b] text-xs mt-1">{s.label}</div>
+                <div className="font-heading font-800 text-[#0D246A] text-2xl">{s.num}</div>
+                <div className="text-[#5C6685] text-xs mt-1">{s.label}</div>
               </div>
             ))}
           </motion.div>
@@ -344,19 +344,19 @@ export default function CareersPage() {
       </section>
 
       {/* ── Presence Strip ── */}
-      <section className="bg-white border-b border-[rgba(29,78,216,0.08)] py-8">
+      <section className="bg-white border-b border-[rgba(19,118,180,0.08)] py-8">
         <div className="container-xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {presenceCards.map((c, i) => {
               const Icon = c.icon;
               return (
-                <motion.div key={i} {...fadeUp(i * 0.08)} className="flex items-start gap-3 p-4 rounded-xl border border-[rgba(29,78,216,0.1)] bg-[#f8faff]">
+                <motion.div key={i} {...fadeUp(i * 0.08)} className="flex items-start gap-3 p-4 rounded-xl border border-[rgba(19,118,180,0.1)] bg-[#FBFAF6]">
                   <div className="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4 text-[#1B3172]" />
+                    <Icon className="w-4 h-4 text-[#0D246A]" />
                   </div>
                   <div>
-                    <p className="text-sm font-600 text-[#1B3172]">{c.label}</p>
-                    <p className="text-xs text-[#64748b] leading-snug mt-0.5">{c.detail}</p>
+                    <p className="text-sm font-600 text-[#0D246A]">{c.label}</p>
+                    <p className="text-xs text-[#5C6685] leading-snug mt-0.5">{c.detail}</p>
                   </div>
                 </motion.div>
               );
@@ -366,12 +366,12 @@ export default function CareersPage() {
       </section>
 
       {/* ── US Roles ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden" id="us-roles">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden" id="us-roles">
         <div className="line-grid absolute inset-0 opacity-30" />
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="mb-8">
-            <p className="text-xs font-700 tracking-widest uppercase text-[#64748b] mb-1">United States</p>
-            <h2 className="font-heading font-700 text-[#1B3172] text-3xl flex items-center gap-3">
+            <p className="text-xs font-700 tracking-widest uppercase text-[#5C6685] mb-1">United States</p>
+            <h2 className="font-heading font-700 text-[#0D246A] text-3xl flex items-center gap-3">
               US Based Roles
               <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">{usOpenings} Opening{usOpenings === 1 ? '' : 's'}</span>
             </h2>
@@ -379,7 +379,7 @@ export default function CareersPage() {
           <div className="flex flex-col gap-5">
             {usRoles.map((job, i) => <JobCard key={job.id || i} job={job} delay={i * 0.1} onApply={setActiveJob} />)}
             {usRoles.length === 0 && (
-              <p className="text-sm text-[#64748b]">No US openings right now. Check back soon.</p>
+              <p className="text-sm text-[#5C6685]">No US openings right now. Check back soon.</p>
             )}
           </div>
         </div>
@@ -390,8 +390,8 @@ export default function CareersPage() {
         <div className="orb orb-blue w-96 h-96 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 opacity-10" />
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="mb-6">
-            <p className="text-xs font-700 tracking-widest uppercase text-[#64748b] mb-1">India Operations Hub: Gurgaon, Delhi NCR</p>
-            <h2 className="font-heading font-700 text-[#1B3172] text-3xl flex items-center gap-3">
+            <p className="text-xs font-700 tracking-widest uppercase text-[#5C6685] mb-1">India Operations Hub: Gurgaon, Delhi NCR</p>
+            <h2 className="font-heading font-700 text-[#0D246A] text-3xl flex items-center gap-3">
               India Based Roles
               <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">{indiaOpenings} Opening{indiaOpenings === 1 ? '' : 's'}</span>
             </h2>
@@ -408,7 +408,7 @@ export default function CareersPage() {
           <div className="flex flex-col gap-5">
             {indiaRoles.map((job, i) => <JobCard key={job.id || i} job={job} isIndia delay={i * 0.1} onApply={setActiveJob} />)}
             {indiaRoles.length === 0 && (
-              <p className="text-sm text-[#64748b]">No India openings right now. Check back soon.</p>
+              <p className="text-sm text-[#5C6685]">No India openings right now. Check back soon.</p>
             )}
           </div>
         </div>
@@ -419,31 +419,31 @@ export default function CareersPage() {
         <div className="dot-grid absolute inset-0 opacity-20" />
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="mb-8">
-            <p className="text-xs font-700 tracking-widest uppercase text-[#64748b] mb-1">Remote · Worldwide</p>
-            <h2 className="font-heading font-700 text-[#1B3172] text-3xl flex items-center gap-3">
+            <p className="text-xs font-700 tracking-widest uppercase text-[#5C6685] mb-1">Remote · Worldwide</p>
+            <h2 className="font-heading font-700 text-[#0D246A] text-3xl flex items-center gap-3">
               Freelance &amp; Project-Based Roles
               <span className="inline-flex items-center px-3 py-0.5 rounded-full bg-orange-50 text-orange-600 text-sm font-600">{freelanceOpenings} Opening{freelanceOpenings === 1 ? '' : 's'}</span>
             </h2>
-            <p className="text-[#475569] text-sm mt-3 max-w-2xl leading-relaxed">
+            <p className="text-[#3F4A6B] text-sm mt-3 max-w-2xl leading-relaxed">
               Work with us on a project or part-time basis from anywhere. Ideal for creative professionals who want flexible, high-impact work with a fast-growing, US-focused tech brand.
             </p>
           </motion.div>
           <div className="flex flex-col gap-5">
             {freelanceRoles.map((job, i) => <JobCard key={job.id || i} job={job} delay={i * 0.1} onApply={setActiveJob} />)}
             {freelanceRoles.length === 0 && (
-              <p className="text-sm text-[#64748b]">No freelance openings right now. Check back soon.</p>
+              <p className="text-sm text-[#5C6685]">No freelance openings right now. Check back soon.</p>
             )}
           </div>
         </div>
       </section>
 
       {/* ── Why Join ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="line-grid absolute inset-0 opacity-30" />
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">Life at Novelio</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-4">
               Why People Join, <span className="gradient-text">And Stay</span>
             </h2>
           </motion.div>
@@ -456,8 +456,8 @@ export default function CareersPage() {
                   <div className="w-11 h-11 rounded-xl bg-gradient-primary mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="text-[#1B3172] font-heading font-700 text-base mb-2">{c.title}</h4>
-                  <p className="text-[#64748b] text-sm leading-relaxed">{c.text}</p>
+                  <h4 className="text-[#0D246A] font-heading font-700 text-base mb-2">{c.title}</h4>
+                  <p className="text-[#5C6685] text-sm leading-relaxed">{c.text}</p>
                 </motion.div>
               );
             })}
@@ -469,16 +469,16 @@ export default function CareersPage() {
       <section className="section-pad-sm bg-dark">
         <div className="container-xl text-center">
           <motion.div {...fadeUp()}>
-            <h3 className="text-2xl font-heading font-700 text-[#1B3172] mb-3">Ready to apply?</h3>
-            <p className="text-[#64748b] mb-6 text-sm">Drop us a line and we'll get back to you within 48 hours.</p>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-[#475569]">
-              <a href="mailto:ajay@noveliotech.com" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
+            <h3 className="text-2xl font-heading font-700 text-[#0D246A] mb-3">Ready to apply?</h3>
+            <p className="text-[#5C6685] mb-6 text-sm">Drop us a line and we'll get back to you within 48 hours.</p>
+            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-[#3F4A6B]">
+              <a href="mailto:ajay@noveliotech.com" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#0D246A] transition-colors">
                 <Mail className="w-4 h-4" /> ajay@noveliotech.com
               </a>
-              <a href={WHATSAPP_URL} className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
+              <a href={WHATSAPP_URL} className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#0D246A] transition-colors">
                 <Phone className="w-4 h-4" /> +1 (573) 327-0153
               </a>
-              <a href="https://www.noveliotech.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#1B3172] transition-colors">
+              <a href="https://www.noveliotech.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 glass-card gradient-border px-5 py-3 rounded-xl hover:text-[#0D246A] transition-colors">
                 <Globe className="w-4 h-4" /> noveliotech.com
               </a>
             </div>

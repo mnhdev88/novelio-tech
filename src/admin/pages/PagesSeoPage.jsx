@@ -100,7 +100,7 @@ export default function PagesSeoPage() {
                 onClick={() => setOpen(isOpen ? null : path)}
                 className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-[#F8FAFC] cursor-pointer"
               >
-                <span className="font-mono text-sm text-[#1B3172] truncate">{path}</span>
+                <span className="font-mono text-sm text-[#0D246A] truncate">{path}</span>
                 {customised && (
                   <span className="text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded bg-blue-100 text-blue-700">
                     custom
@@ -130,7 +130,7 @@ export default function PagesSeoPage() {
                 return (
                 <div className="px-4 pb-4 space-y-3 bg-[#F8FAFC]">
                   <div>
-                    <span className="block text-xs font-semibold text-[#475569] mb-1.5">Page title</span>
+                    <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">Page title</span>
                     <input
                       value={o.title || ''} onChange={(e) => setRoute(path, { title: e.target.value })}
                       placeholder={loading ? 'Loading the current title…' : (curTitle || 'Add a title')}
@@ -144,7 +144,7 @@ export default function PagesSeoPage() {
                   </div>
 
                   <div>
-                    <span className="block text-xs font-semibold text-[#475569] mb-1.5">
+                    <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">
                       Description{' '}
                       <span className="font-normal text-[#94a3b8]">
                         ({(o.description || curDesc || '').length} characters — aim for under 155)
@@ -188,19 +188,19 @@ export default function PagesSeoPage() {
                         onChange={(e) => setRoute(path, { noindex: e.target.checked })}
                         className="w-4 h-4 rounded"
                       />
-                      <span className="text-sm text-[#475569]">Hide this page from Google</span>
+                      <span className="text-sm text-[#3F4A6B]">Hide this page from Google</span>
                     </label>
 
                     <div className="flex-1" />
 
                     <a href={path} target="_blank" rel="noreferrer"
-                       className="inline-flex items-center gap-1 text-xs font-semibold text-[#475569] hover:text-[#1B3172]">
+                       className="inline-flex items-center gap-1 text-xs font-semibold text-[#3F4A6B] hover:text-[#0D246A]">
                       View page <ExternalLink className="w-3 h-3" />
                     </a>
 
                     {customised && (
                       <button onClick={() => reset(path)}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-[#475569] hover:text-[#1B3172] cursor-pointer">
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-[#3F4A6B] hover:text-[#0D246A] cursor-pointer">
                         <RotateCcw className="w-3 h-3" /> Reset
                       </button>
                     )}

@@ -21,22 +21,22 @@ const html = `<!DOCTYPE html><html><head><meta charset="utf-8"/>
   }
   .wrap { position:absolute; inset:0; padding:84px 90px; display:flex; flex-direction:column; justify-content:space-between; }
   .glow1 { position:absolute; width:620px; height:620px; border-radius:50%; top:-220px; right:-160px;
-    background: radial-gradient(circle, rgba(107,63,160,0.55) 0%, rgba(107,63,160,0) 70%); }
+    background: radial-gradient(circle, rgba(94,50,140,0.55) 0%, rgba(94,50,140,0) 70%); }
   .glow2 { position:absolute; width:560px; height:560px; border-radius:50%; bottom:-240px; left:-160px;
-    background: radial-gradient(circle, rgba(14,165,233,0.40) 0%, rgba(14,165,233,0) 70%); }
+    background: radial-gradient(circle, rgba(19,145,196,0.40) 0%, rgba(19,145,196,0) 70%); }
   .brand { display:flex; align-items:center; gap:18px; font-size:34px; font-weight:800; letter-spacing:-0.5px; }
   .mark { width:54px; height:54px; border-radius:14px; display:flex; align-items:center; justify-content:center;
     font-size:30px; font-weight:800; color:#fff;
-    background: linear-gradient(135deg,#6B3FA0 0%,#1D4ED8 50%,#0EA5E9 100%); }
+    background: linear-gradient(135deg,#5E328C 0%,#1376B4 50%,#1391C4 100%); }
   h1 { font-size:78px; line-height:1.06; font-weight:800; letter-spacing:-1.6px; max-width:1000px; }
-  .grad { background:linear-gradient(135deg,#A78BFA 0%,#60A5FA 50%,#38BDF8 100%);
+  .grad { background:linear-gradient(135deg,#F0D030 0%,#F0D030 100%);
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .sub { font-size:30px; color:#AFC0DC; font-weight:500; }
   .pills { display:flex; gap:14px; flex-wrap:wrap; }
   .pill { font-size:22px; padding:10px 22px; border-radius:999px; background:rgba(255,255,255,0.07);
     border:1px solid rgba(255,255,255,0.15); color:#DCE6F7; }
   .bar { position:absolute; left:0; bottom:0; width:100%; height:10px;
-    background: linear-gradient(90deg,#F97316,#FACC15,#22C55E,#0EA5E9,#1D4ED8,#6B3FA0); }
+    background: linear-gradient(90deg,#F07030,#F0D030,#0A924E,#1391C4,#1376B4,#5E328C); }
 </style></head>
 <body>
   <div class="glow1"></div><div class="glow2"></div>

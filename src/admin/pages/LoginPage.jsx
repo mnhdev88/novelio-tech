@@ -37,7 +37,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen grid place-items-center bg-[#EEF2FF] px-4">
+    <main className="min-h-screen grid place-items-center bg-[#F3F2EC] px-4">
       <SEO title="Sign in" canonical="/admin/login" noindex />
 
       <div className="w-full max-w-sm">
@@ -45,26 +45,26 @@ export default function LoginPage() {
           <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-purple to-brand-blue grid place-items-center text-white mx-auto mb-3">
             <Lock className="w-5 h-5" />
           </div>
-          <h1 className="font-heading font-800 text-[#1B3172] text-xl">Novelio site manager</h1>
-          <p className="text-sm text-[#64748b]">Sign in to edit the website.</p>
+          <h1 className="font-heading font-800 text-[#0D246A] text-xl">Novelio site manager</h1>
+          <p className="text-sm text-[#5C6685]">Sign in to edit the website.</p>
         </div>
 
         <form onSubmit={submit} className="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
           <div>
-            <label htmlFor="email" className="block text-xs font-semibold text-[#475569] mb-1.5">Email</label>
+            <label htmlFor="email" className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">Email</label>
             <input
               id="email" type="email" required autoComplete="username"
               value={email} onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1B3172]"
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0D246A]"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-xs font-semibold text-[#475569] mb-1.5">Password</label>
+            <label htmlFor="password" className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">Password</label>
             <input
               id="password" type="password" required autoComplete="current-password"
               value={password} onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1B3172]"
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0D246A]"
             />
           </div>
 

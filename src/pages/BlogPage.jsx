@@ -47,20 +47,20 @@ export default function BlogPage() {
         <div className="container-xl relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="section-label mx-auto mb-4">Insights & Resources</div>
-            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
               Digital Marketing <span className="gradient-text">Blog</span>
             </h1>
-            <p className="text-[#475569] text-xl max-w-2xl mx-auto mb-10">
+            <p className="text-[#3F4A6B] text-xl max-w-2xl mx-auto mb-10">
               Expert guides, tips, and industry insights to help you grow your business online.
             </p>
             {/* Search */}
             <div className="max-w-lg mx-auto relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#64748b]" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#5C6685]" />
               <input
                 type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search articles..."
                 aria-label="Search articles"
-                className="w-full bg-white border border-slate-200 rounded-2xl pl-12 pr-4 py-4 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:border-brand-purple/60 focus:ring-2 focus:ring-brand-purple/20 transition-colors text-[15px]"
+                className="w-full bg-white border border-slate-200 rounded-2xl pl-12 pr-4 py-4 text-[#0D246A] placeholder-slate-400 focus:outline-none focus:border-brand-purple/60 focus:ring-2 focus:ring-brand-purple/20 transition-colors text-[15px]"
               />
             </div>
           </motion.div>
@@ -68,7 +68,7 @@ export default function BlogPage() {
       </section>
 
       {/* Category filter */}
-      <section className="py-10 bg-[#EEF2FF]">
+      <section className="py-10 bg-[#F3F2EC]">
         <div className="container-xl">
           <div className="flex flex-wrap gap-3 justify-center">
             {CATEGORIES.map((cat) => (
@@ -76,7 +76,7 @@ export default function BlogPage() {
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer ${
                   activeCategory === cat
                     ? 'bg-gradient-primary text-white shadow-glow'
-                    : 'glass-card text-[#475569] hover:text-[#1B3172] border-slate-200'
+                    : 'glass-card text-[#3F4A6B] hover:text-[#0D246A] border-slate-200'
                 }`}>
                 {cat}
               </button>
@@ -86,10 +86,10 @@ export default function BlogPage() {
       </section>
 
       {/* Posts grid */}
-      <section className="section-pad-sm bg-[#EEF2FF] pt-0">
+      <section className="section-pad-sm bg-[#F3F2EC] pt-0">
         <div className="container-xl">
           {filtered.length === 0 ? (
-            <div className="text-center py-16 text-[#64748b]">No articles found matching your search.</div>
+            <div className="text-center py-16 text-[#5C6685]">No articles found matching your search.</div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((post, i) => (
@@ -106,11 +106,11 @@ export default function BlogPage() {
                       </span>
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="text-[#1B3172] font-heading font-600 text-lg mb-3 leading-snug group-hover:gradient-text transition-all line-clamp-2">
+                      <h3 className="text-[#0D246A] font-heading font-600 text-lg mb-3 leading-snug group-hover:gradient-text transition-all line-clamp-2">
                         {post.title}
                       </h3>
-                      <p className="text-[#64748b] text-sm leading-relaxed flex-1 mb-4 line-clamp-3">{post.excerpt}</p>
-                      <div className="flex items-center justify-between text-xs text-[#64748b]">
+                      <p className="text-[#5C6685] text-sm leading-relaxed flex-1 mb-4 line-clamp-3">{post.excerpt}</p>
+                      <div className="flex items-center justify-between text-xs text-[#5C6685]">
                         <div className="flex items-center gap-3">
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
                         </div>

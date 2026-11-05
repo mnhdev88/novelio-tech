@@ -82,10 +82,10 @@ export default function AboutPage() {
             <div className="inline-flex items-center gap-2 mx-auto mb-5 px-4 py-1.5 rounded-full border border-brand-purple/30 bg-white/60 backdrop-blur text-sm font-heading font-700 gradient-text">
               Use Before You Trust. Trust Before You Pay.
             </div>
-            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
               Building Business <span className="gradient-text">Growth Systems</span>
             </h1>
-            <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-[#3F4A6B] text-xl max-w-3xl mx-auto leading-relaxed">
               We're not a marketing agency. We're growth consultants: strategic partners committed to building complete, sustainable growth systems for businesses that want to lead their markets. You see results before you commit financially. No leap of faith required.
             </p>
           </motion.div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
         <div className="container-xl relative z-10 max-w-4xl">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">Who's Behind Novelio</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172]">
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A]">
               Meet the <span className="gradient-text">Founder</span>
             </h2>
           </motion.div>
@@ -116,23 +116,23 @@ export default function AboutPage() {
                 </div>
               )}
               <a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-4 text-sm font-600 text-[#1D4ED8] hover:text-[#1B3172] transition-colors">
+                className="inline-flex items-center gap-2 mt-4 text-sm font-600 text-[#1376B4] hover:text-[#0D246A] transition-colors">
                 <FaLinkedinIn className="w-4 h-4" />
                 Connect on LinkedIn
               </a>
             </div>
 
             <div className="text-center md:text-left">
-              <h3 className="text-[#1B3172] font-heading font-800 text-2xl">{FOUNDER.name}</h3>
+              <h3 className="text-[#0D246A] font-heading font-800 text-2xl">{FOUNDER.name}</h3>
               <div className="section-label mt-2 mb-5">{FOUNDER.title} · {COMPANY.name}</div>
-              <p className="text-[#475569] leading-relaxed mb-4">
+              <p className="text-[#3F4A6B] leading-relaxed mb-4">
                 Ajay Tyagi leads Novelio Technologies as Executive Director. He built the company
                 around a principle most agencies won't offer a small business: prove it first.
                 Novelio designs and builds your website, Google presence, and follow-up systems up
                 front, so you can see the work, and the difference it makes, before you pay for any of it.
               </p>
               {/* TODO (Ajay): add 1–2 true sentences of origin story here, e.g. "I started Novelio after…". Keep it specific and real. */}
-              <p className="text-[#64748b] text-sm leading-relaxed">
+              <p className="text-[#5C6685] text-sm leading-relaxed">
                 That's the standard behind everything the team ships: real results you can verify,
                 not promises you have to take on faith.
               </p>
@@ -142,7 +142,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <div className="grid md:grid-cols-2 gap-8">
             {[
@@ -166,8 +166,8 @@ export default function AboutPage() {
                   <item.icon className="w-7 h-7 text-white" />
                 </div>
                 <div className="section-label mb-3">{item.label}</div>
-                <h3 className="text-[#1B3172] font-heading font-700 text-2xl mb-4">{item.title}</h3>
-                <p className="text-[#475569] leading-relaxed">{item.desc}</p>
+                <h3 className="text-[#0D246A] font-heading font-700 text-2xl mb-4">{item.title}</h3>
+                <p className="text-[#3F4A6B] leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -190,12 +190,12 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="orb orb-pink w-96 h-96 -top-48 right-0 opacity-10" />
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">What We Stand For</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-4">
               Our Core <span className="gradient-text">Values</span>
             </h2>
           </motion.div>
@@ -208,8 +208,8 @@ export default function AboutPage() {
                   <div className="w-12 h-12 rounded-xl bg-gradient-primary mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="text-[#1B3172] font-heading font-700 text-lg mb-2">{v.title}</h4>
-                  <p className="text-[#64748b] text-sm leading-relaxed">{v.desc}</p>
+                  <h4 className="text-[#0D246A] font-heading font-700 text-lg mb-2">{v.title}</h4>
+                  <p className="text-[#5C6685] text-sm leading-relaxed">{v.desc}</p>
                 </motion.div>
               );
             })}
@@ -223,10 +223,10 @@ export default function AboutPage() {
         <div className="container-xl relative z-10 max-w-4xl">
           <motion.div {...fadeUp()} className="text-center mb-14">
             <div className="section-label mx-auto mb-4">How We Grow a Business</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-4">
               Our 9-Stage <span className="gradient-text">Growth Framework</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto leading-relaxed">
               We are growth consultants, not just a web shop. A website creates presence, but real
               growth comes from a complete system: traffic → lead capture → follow-up → conversion →
               delivery → reviews → repeat sales.
@@ -235,15 +235,15 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {FRAMEWORK.map((f, i) => (
               <motion.div key={f.stage} {...fadeUp(i * 0.05)}
-                className="rounded-2xl border border-slate-200 bg-[#f8faff] p-5 hover:border-brand-purple/40 hover:-translate-y-1 transition-all duration-300">
+                className="rounded-2xl border border-slate-200 bg-[#FBFAF6] p-5 hover:border-brand-purple/40 hover:-translate-y-1 transition-all duration-300">
                 <span className="gradient-text font-heading font-800 text-2xl">{f.stage}</span>
-                <h4 className="text-[#1B3172] font-heading font-700 text-base mt-2 mb-1 leading-snug">{f.module}</h4>
-                <p className="text-[#64748b] text-sm">{f.purpose}</p>
+                <h4 className="text-[#0D246A] font-heading font-700 text-base mt-2 mb-1 leading-snug">{f.module}</h4>
+                <p className="text-[#5C6685] text-sm">{f.purpose}</p>
               </motion.div>
             ))}
           </div>
           <motion.div {...fadeUp(0.2)} className="text-center mt-10">
-            <Link to="/pricing" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-sm font-semibold transition-all">
+            <Link to="/pricing" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-sm font-semibold transition-all">
               See How Our Plans Cover Every Stage
               <ArrowRight className="w-4 h-4" />
             </Link>

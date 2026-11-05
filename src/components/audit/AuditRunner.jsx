@@ -38,7 +38,7 @@ function ProgressSteps({ step }) {
             ) : null}
           </div>
           <span className={`text-[14.5px] transition-colors ${
-            i <= step ? 'text-[#1B3172] font-500' : 'text-[#94a3b8]'
+            i <= step ? 'text-[#0D246A] font-500' : 'text-[#94a3b8]'
           }`}>
             {label}
           </span>
@@ -54,7 +54,7 @@ function CategoryBars({ categories }) {
       {categories.map((c) => (
         <div key={c.key}>
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[13.5px] font-500 text-[#334155]">{c.label}</span>
+            <span className="text-[13.5px] font-500 text-[#2B3557]">{c.label}</span>
             <span className="text-[13.5px] font-700" style={{ color: scoreColor(c.score) }}>{c.score}</span>
           </div>
           <div className="h-1.5 rounded-full bg-slate-200/70 overflow-hidden">
@@ -78,8 +78,8 @@ function SpeedCard({ state, speed }) {
       <div className="glass-card rounded-xl p-5 flex items-center gap-3">
         <Loader2 className="w-4 h-4 animate-spin text-brand-purple" aria-hidden="true" />
         <div>
-          <div className="text-[14.5px] font-600 text-[#1B3172]">Measuring speed with Google PageSpeed</div>
-          <div className="text-[13px] text-[#64748b]">This takes 20–40 seconds. Google loads your page in a real browser.</div>
+          <div className="text-[14.5px] font-600 text-[#0D246A]">Measuring speed with Google PageSpeed</div>
+          <div className="text-[13px] text-[#5C6685]">This takes 20–40 seconds. Google loads your page in a real browser.</div>
         </div>
       </div>
     );
@@ -88,8 +88,8 @@ function SpeedCard({ state, speed }) {
   if (state !== 'ready' || !speed) {
     return (
       <div className="glass-card rounded-xl p-5">
-        <div className="text-[14.5px] font-600 text-[#1B3172] mb-0.5">Speed data unavailable</div>
-        <div className="text-[13px] text-[#64748b]">
+        <div className="text-[14.5px] font-600 text-[#0D246A] mb-0.5">Speed data unavailable</div>
+        <div className="text-[13px] text-[#5C6685]">
           Google&rsquo;s PageSpeed service did not return in time. Everything else in this report is unaffected.
         </div>
       </div>
@@ -106,7 +106,7 @@ function SpeedCard({ state, speed }) {
     <div className="glass-card gradient-border rounded-xl p-5 sm:p-6">
       <div className="flex items-center gap-2 mb-4">
         <Gauge className="w-4 h-4 text-brand-purple" aria-hidden="true" />
-        <h3 className="font-heading font-700 text-[#1B3172] text-[16px]">Mobile speed, measured by Google</h3>
+        <h3 className="font-heading font-700 text-[#0D246A] text-[16px]">Mobile speed, measured by Google</h3>
       </div>
 
       <div className="flex flex-wrap items-center gap-6">
@@ -115,22 +115,22 @@ function SpeedCard({ state, speed }) {
             <div className="font-heading font-700 text-[34px] leading-none" style={{ color: scoreColor(speed.score) }}>
               {speed.score}
             </div>
-            <div className="text-[11px] text-[#64748b] mt-1">PageSpeed score</div>
+            <div className="text-[11px] text-[#5C6685] mt-1">PageSpeed score</div>
           </div>
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1 min-w-[200px]">
           {metrics.map((m) => (
             <div key={m.label}>
-              <div className="text-[17px] font-700 text-[#1B3172]">{m.value}</div>
-              <div className="text-[11.5px] text-[#64748b] leading-tight">{m.label}</div>
+              <div className="text-[17px] font-700 text-[#0D246A]">{m.value}</div>
+              <div className="text-[11.5px] text-[#5C6685] leading-tight">{m.label}</div>
             </div>
           ))}
         </div>
       </div>
 
       {speed.has_field && (
-        <p className="text-[12.5px] text-[#64748b] mt-4 pt-4 border-t border-slate-200/80">
+        <p className="text-[12.5px] text-[#5C6685] mt-4 pt-4 border-t border-slate-200/80">
           Includes real visitor data from Chrome over the last 28 days, not just a lab test.
         </p>
       )}
@@ -253,7 +253,7 @@ export default function AuditRunner() {
               placeholder="yourwebsite.com"
               aria-label="Your website address"
               disabled={phase === 'running'}
-              className="w-full bg-white border border-slate-200/80 rounded-xl pl-11 pr-4 py-4 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-brand-purple/60 focus:ring-brand-purple/20 transition-all text-[16px] disabled:opacity-60"
+              className="w-full bg-white border border-slate-200/80 rounded-xl pl-11 pr-4 py-4 text-[#0D246A] placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-brand-purple/60 focus:ring-brand-purple/20 transition-all text-[16px] disabled:opacity-60"
             />
           </div>
 
@@ -281,7 +281,7 @@ export default function AuditRunner() {
         )}
 
         {phase === 'idle' && !error && (
-          <p className="text-[13px] text-[#64748b] text-center mt-3">
+          <p className="text-[13px] text-[#5C6685] text-center mt-3">
             No signup needed. You will see your score before we ask for anything.
           </p>
         )}
@@ -311,8 +311,8 @@ export default function AuditRunner() {
 
               <div className="flex-1 w-full">
                 <div className="mb-5">
-                  <div className="text-[12px] text-[#64748b] mb-0.5">SEO audit for</div>
-                  <h2 className="font-heading font-700 text-[#1B3172] text-[20px] sm:text-[23px] break-all">
+                  <div className="text-[12px] text-[#5C6685] mb-0.5">SEO audit for</div>
+                  <h2 className="font-heading font-700 text-[#0D246A] text-[20px] sm:text-[23px] break-all">
                     {result.host}
                   </h2>
                   <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[13.5px]">
@@ -341,10 +341,10 @@ export default function AuditRunner() {
               Nothing further is ever revealed here — the rest goes by email. */}
           {shownIssues.length > 0 && (
             <div className="mt-8">
-              <h3 className="font-heading font-700 text-[#1B3172] text-[20px] sm:text-[23px] mb-1">
+              <h3 className="font-heading font-700 text-[#0D246A] text-[20px] sm:text-[23px] mb-1">
                 The three biggest problems
               </h3>
-              <p className="text-[14.5px] text-[#64748b] mb-5">
+              <p className="text-[14.5px] text-[#5C6685] mb-5">
                 Ranked by impact. Each one is explained in full below.
               </p>
 
@@ -358,10 +358,10 @@ export default function AuditRunner() {
 
           {shownIssues.length === 0 && (
             <div className="mt-8 glass-card gradient-border rounded-2xl p-7 text-center">
-              <h3 className="font-heading font-700 text-[#1B3172] text-[20px] mb-2">
+              <h3 className="font-heading font-700 text-[#0D246A] text-[20px] mb-2">
                 Nothing broken on this page
               </h3>
-              <p className="text-[14.5px] text-[#64748b] max-w-lg mx-auto">
+              <p className="text-[14.5px] text-[#5C6685] max-w-lg mx-auto">
                 Every check passed. That is genuinely uncommon. The opportunity here is content and
                 authority rather than fixes.
               </p>
@@ -394,10 +394,10 @@ export default function AuditRunner() {
                   <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
                     <AlertCircle className="w-6 h-6 text-amber-600" aria-hidden="true" />
                   </div>
-                  <h3 className="font-heading font-700 text-[#1B3172] text-[21px] sm:text-[24px] mb-2">
+                  <h3 className="font-heading font-700 text-[#0D246A] text-[21px] sm:text-[24px] mb-2">
                     We have your details, but the email did not go through
                   </h3>
-                  <p className="text-[15px] text-[#475569] max-w-lg mx-auto mb-6 leading-relaxed">
+                  <p className="text-[15px] text-[#3F4A6B] max-w-lg mx-auto mb-6 leading-relaxed">
                     Your audit is saved and someone will send it over personally. If you would rather
                     not wait, book a call and we will walk you through it.
                   </p>
@@ -407,12 +407,12 @@ export default function AuditRunner() {
                   <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
                     <MailCheck className="w-6 h-6 text-green-700" aria-hidden="true" />
                   </div>
-                  <h3 className="font-heading font-700 text-[#1B3172] text-[21px] sm:text-[24px] mb-2">
+                  <h3 className="font-heading font-700 text-[#0D246A] text-[21px] sm:text-[24px] mb-2">
                     Your report is on its way
                   </h3>
-                  <p className="text-[15px] text-[#475569] max-w-lg mx-auto mb-2 leading-relaxed">
-                    We have sent the full summary for <strong className="text-[#1B3172]">{result.host}</strong>
-                    {submitted.email ? <> to <strong className="text-[#1B3172]">{submitted.email}</strong></> : null}.
+                  <p className="text-[15px] text-[#3F4A6B] max-w-lg mx-auto mb-2 leading-relaxed">
+                    We have sent the full summary for <strong className="text-[#0D246A]">{result.host}</strong>
+                    {submitted.email ? <> to <strong className="text-[#0D246A]">{submitted.email}</strong></> : null}.
                     It should arrive within a minute.
                   </p>
                   <p className="text-[13.5px] text-[#94a3b8] max-w-lg mx-auto mb-6">
@@ -433,7 +433,7 @@ export default function AuditRunner() {
           )}
 
           <div className="mt-6 text-center">
-            <button onClick={reset} className="inline-flex items-center gap-2 text-[14px] text-[#64748b] hover:text-brand-purple transition-colors">
+            <button onClick={reset} className="inline-flex items-center gap-2 text-[14px] text-[#5C6685] hover:text-brand-purple transition-colors">
               <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" /> Audit a different page
             </button>
           </div>

@@ -40,7 +40,7 @@ function ProgressStrip({ startedAt }) {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <span className="hidden md:inline text-[11px] text-[#64748b] whitespace-nowrap">
+      <span className="hidden md:inline text-[11px] text-[#5C6685] whitespace-nowrap">
         {left > 0 ? `about ${Math.ceil(left / 60)} min left` : 'finishing up'}
       </span>
     </>
@@ -88,8 +88,8 @@ export default function PublishButton() {
   if (building) {
     return (
       <div className="flex items-center gap-2">
-        <Loader2 className="w-3.5 h-3.5 text-[#1B3172] animate-spin shrink-0" />
-        <span className="hidden sm:inline text-xs font-semibold text-[#1B3172]">Publishing…</span>
+        <Loader2 className="w-3.5 h-3.5 text-[#0D246A] animate-spin shrink-0" />
+        <span className="hidden sm:inline text-xs font-semibold text-[#0D246A]">Publishing…</span>
         <ProgressStrip startedAt={deploy.created_at} />
       </div>
     );

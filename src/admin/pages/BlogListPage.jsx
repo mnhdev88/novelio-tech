@@ -84,15 +84,15 @@ export default function BlogListPage() {
   }
 
   if (!index) {
-    return <div className="grid place-items-center py-20"><Loader2 className="w-6 h-6 animate-spin text-[#1B3172]" /></div>;
+    return <div className="grid place-items-center py-20"><Loader2 className="w-6 h-6 animate-spin text-[#0D246A]" /></div>;
   }
 
   return (
     <div>
       <div className="flex flex-wrap items-center gap-3 mb-5">
         <div>
-          <h1 className="font-heading font-800 text-[#1B3172] text-xl">Blog</h1>
-          <p className="text-sm text-[#64748b]">
+          <h1 className="font-heading font-800 text-[#0D246A] text-xl">Blog</h1>
+          <p className="text-sm text-[#5C6685]">
             {index.length} post{index.length === 1 ? '' : 's'} — the order here is the order on the site.
           </p>
         </div>
@@ -120,11 +120,11 @@ export default function BlogListPage() {
             <div key={entry.slug} className="flex items-center gap-3 px-4 py-3 border-b border-slate-100 last:border-0">
               <div className="flex flex-col">
                 <button onClick={() => move(i, -1)} disabled={i === 0}
-                  className="p-0.5 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move up">
+                  className="p-0.5 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move up">
                   <ChevronUp className="w-4 h-4" />
                 </button>
                 <button onClick={() => move(i, 1)} disabled={i === index.length - 1}
-                  className="p-0.5 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move down">
+                  className="p-0.5 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move down">
                   <ChevronDown className="w-4 h-4" />
                 </button>
               </div>
@@ -138,7 +138,7 @@ export default function BlogListPage() {
               )}
 
               <div className="min-w-0 flex-1">
-                <Link to={`/admin/blog/${entry.slug}`} className="block font-semibold text-sm text-[#1B3172] truncate hover:underline">
+                <Link to={`/admin/blog/${entry.slug}`} className="block font-semibold text-sm text-[#0D246A] truncate hover:underline">
                   {post ? post.title : entry.slug}
                   {post?.featured && <Star className="inline w-3.5 h-3.5 ml-1.5 text-amber-500 fill-amber-500" />}
                 </Link>
@@ -168,7 +168,7 @@ export default function BlogListPage() {
 
               {entry.status === 'published' && (
                 <a href={`/blog/${entry.slug}`} target="_blank" rel="noreferrer"
-                   className="p-1.5 text-[#94a3b8] hover:text-[#1B3172]" aria-label="View on the site">
+                   className="p-1.5 text-[#94a3b8] hover:text-[#0D246A]" aria-label="View on the site">
                   <ExternalLink className="w-4 h-4" />
                 </a>
               )}

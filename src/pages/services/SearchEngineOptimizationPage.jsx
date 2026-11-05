@@ -226,14 +226,14 @@ function FAQItem({ q, a }) {
   return (
     <div className="glass-card gradient-border rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-        <span className="text-[#1B3172] font-medium text-[15px]">{q}</span>
+        <span className="text-[#0D246A] font-medium text-[15px]">{q}</span>
         {open
           ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" />
-          : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />}
+          : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />}
       </button>
       {open && (
         <div className="px-5 pb-5 pt-0 border-t border-slate-200">
-          <p className="text-[#475569] text-sm leading-relaxed pt-4">{a}</p>
+          <p className="text-[#3F4A6B] text-sm leading-relaxed pt-4">{a}</p>
         </div>
       )}
     </div>
@@ -304,26 +304,26 @@ export default function SearchEngineOptimizationPage() {
         <div className="container-xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-              <div className="flex items-center gap-2 text-sm text-[#64748b] mb-6">
-                <Link to="/" className="hover:text-[#1B3172] transition-colors">Home</Link>
+              <div className="flex items-center gap-2 text-sm text-[#5C6685] mb-6">
+                <Link to="/" className="hover:text-[#0D246A] transition-colors">Home</Link>
                 <span>/</span>
-                <Link to="/services" className="hover:text-[#1B3172] transition-colors">Services</Link>
+                <Link to="/services" className="hover:text-[#0D246A] transition-colors">Services</Link>
                 <span>/</span>
-                <span className="text-[#1B3172]">Search Engine Optimization</span>
+                <span className="text-[#0D246A]">Search Engine Optimization</span>
               </div>
               <div className="section-label mb-4">SEO Services</div>
-              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
                 Search Engine Optimization Services for{' '}
                 <span className="gradient-text">Small Businesses</span>
               </h1>
-              <p className="text-[#475569] text-xl leading-relaxed mb-8">
+              <p className="text-[#3F4A6B] text-xl leading-relaxed mb-8">
                 Help more customers find your business online. We combine technical fixes, keyword
                 research, content optimization, local SEO, and clear reporting to grow organic
                 visibility and turn searches into inquiries.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {['Technical SEO Audit', 'On-Page Optimization', 'Keyword Research & Strategy', 'Local SEO', 'Link Building', 'Monthly Reporting'].map((f) => (
-                  <div key={f} className="flex items-center gap-2 text-[#475569] text-sm">
+                  <div key={f} className="flex items-center gap-2 text-[#3F4A6B] text-sm">
                     <Check className="w-4 h-4 bg-gradient-to-br from-indigo-500 to-blue-600 text-white rounded-full p-0.5 flex-shrink-0" />
                     {f}
                   </div>
@@ -331,7 +331,7 @@ export default function SearchEngineOptimizationPage() {
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 <a {...CALENDLY_LINK} className="btn-ghost">Prefer to Talk? Book a Call</a>
-                <Link to="/free-seo-audit" className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4338CA] hover:text-[#1B3172] transition-colors">
+                <Link to="/free-seo-audit" className="inline-flex items-center gap-1.5 text-sm font-medium text-[#42499D] hover:text-[#0D246A] transition-colors">
                   Or run our instant SEO audit tool
                   <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -356,14 +356,14 @@ export default function SearchEngineOptimizationPage() {
       </section>
 
       {/* ── Why SEO Matters ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">The Opportunity</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Help More Customers <span className="gradient-text">Find Your Business Online</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               When people search for the products or services you offer, your website needs to be
               visible, relevant, and easy to use. If it doesn't appear for those searches, they find
               a competitor instead. Whether you need a technical audit, stronger service pages, or a
@@ -376,13 +376,13 @@ export default function SearchEngineOptimizationPage() {
               <motion.div key={i} {...fadeUp(i * 0.1)}
                 className="glass-card gradient-border rounded-2xl p-6 text-center group hover:-translate-y-1 hover:shadow-glow transition-all duration-300">
                 <div className="text-4xl font-heading font-800 gradient-text mb-3">{s.number}</div>
-                <p className="text-[#475569] text-sm leading-snug">{s.label}</p>
+                <p className="text-[#3F4A6B] text-sm leading-snug">{s.label}</p>
               </motion.div>
             ))}
           </div>
 
           <motion.div {...fadeUp(0.2)} className="text-center mb-12">
-            <h3 className="text-2xl font-heading font-700 text-[#1B3172] mb-4">
+            <h3 className="text-2xl font-heading font-700 text-[#0D246A] mb-4">
               Sound Familiar? <span className="gradient-text">We've Heard It Before.</span>
             </h3>
           </motion.div>
@@ -394,8 +394,8 @@ export default function SearchEngineOptimizationPage() {
                   <p.icon className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-[#1B3172] font-heading font-600 text-[15px] mb-1">{p.title}</h4>
-                  <p className="text-[#475569] text-sm leading-relaxed">{p.desc}</p>
+                  <h4 className="text-[#0D246A] font-heading font-600 text-[15px] mb-1">{p.title}</h4>
+                  <p className="text-[#3F4A6B] text-sm leading-relaxed">{p.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -409,10 +409,10 @@ export default function SearchEngineOptimizationPage() {
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">What's Included</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Our SEO Services for <span className="gradient-text">Small Businesses</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Technical, on-page, content, local, and off-page SEO, planned as one strategy and
               measured against the inquiries and sales your website generates.
             </p>
@@ -425,14 +425,14 @@ export default function SearchEngineOptimizationPage() {
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
                     <item.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-[#1B3172] font-heading font-600 text-lg leading-snug">{item.title}</h3>
+                  <h3 className="text-[#0D246A] font-heading font-600 text-lg leading-snug">{item.title}</h3>
                 </div>
                 {item.paragraphs.map((p, j) => (
-                  <p key={j} className="text-[#475569] text-sm leading-relaxed mb-3 last:mb-0">{p}</p>
+                  <p key={j} className="text-[#3F4A6B] text-sm leading-relaxed mb-3 last:mb-0">{p}</p>
                 ))}
                 {item.link && (
                   <Link to={item.link.to}
-                    className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-[#4338CA] hover:text-[#1B3172] transition-colors">
+                    className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-[#42499D] hover:text-[#0D246A] transition-colors">
                     {item.link.label}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -444,14 +444,14 @@ export default function SearchEngineOptimizationPage() {
       </section>
 
       {/* ── Our Process ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-lg">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">How We Work</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Our Search Engine <span className="gradient-text">Optimization Process</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               SEO works best as a structured, sequenced process, not a list of random tasks.
               Here's what happens from day one.
             </p>
@@ -468,16 +468,16 @@ export default function SearchEngineOptimizationPage() {
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h3 className="text-[#1B3172] font-heading font-700 text-lg">{step.title}</h3>
-                      <span className="text-xs text-[#4338CA] bg-[#4338CA]/10 border border-[#4338CA]/20 rounded-full px-3 py-0.5 font-medium">
+                      <h3 className="text-[#0D246A] font-heading font-700 text-lg">{step.title}</h3>
+                      <span className="text-xs text-[#42499D] bg-[#42499D]/10 border border-[#42499D]/20 rounded-full px-3 py-0.5 font-medium">
                         {step.phase}
                       </span>
                     </div>
-                    <p className="text-[#475569] text-sm leading-relaxed mb-4">{step.desc}</p>
+                    <p className="text-[#3F4A6B] text-sm leading-relaxed mb-4">{step.desc}</p>
                     <ul className="grid sm:grid-cols-2 gap-2">
                       {step.bullets.map((b, j) => (
-                        <li key={j} className="flex items-center gap-2 text-[#475569] text-xs">
-                          <Check className="w-3.5 h-3.5 text-[#4338CA] flex-shrink-0" />
+                        <li key={j} className="flex items-center gap-2 text-[#3F4A6B] text-xs">
+                          <Check className="w-3.5 h-3.5 text-[#42499D] flex-shrink-0" />
                           {b}
                         </li>
                       ))}
@@ -499,10 +499,10 @@ export default function SearchEngineOptimizationPage() {
             <div>
               <motion.div {...fadeUp()}>
                 <div className="section-label mb-4">Reporting</div>
-                <h2 className="text-3xl font-heading font-700 text-[#1B3172] mb-4">
+                <h2 className="text-3xl font-heading font-700 text-[#0D246A] mb-4">
                   We Measure Progress, <span className="gradient-text">Not Just Rankings</span>
                 </h2>
-                <p className="text-[#475569] text-base leading-relaxed mb-8">
+                <p className="text-[#3F4A6B] text-base leading-relaxed mb-8">
                   Rankings alone don't show whether SEO is working. Each month we review the numbers
                   that connect search visibility to your business, explain them in plain English, and
                   use them to set the next month's priorities.
@@ -513,7 +513,7 @@ export default function SearchEngineOptimizationPage() {
                   <motion.div key={i} {...fadeUp(i * 0.1)}
                     className="glass-card gradient-border rounded-2xl p-6 text-center group hover:-translate-y-1 hover:shadow-glow transition-all duration-300">
                     <div className="text-3xl font-heading font-800 gradient-text mb-1">{s.number}</div>
-                    <div className="text-[#475569] text-xs">{s.label}</div>
+                    <div className="text-[#3F4A6B] text-xs">{s.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -523,10 +523,10 @@ export default function SearchEngineOptimizationPage() {
             <div>
               <motion.div {...fadeUp(0.1)}>
                 <div className="section-label mb-4">Why Novelio</div>
-                <h2 className="text-3xl font-heading font-700 text-[#1B3172] mb-4">
+                <h2 className="text-3xl font-heading font-700 text-[#0D246A] mb-4">
                   Why Choose <span className="gradient-text">Novelio Technologies?</span>
                 </h2>
-                <p className="text-[#475569] text-base leading-relaxed mb-8">
+                <p className="text-[#3F4A6B] text-base leading-relaxed mb-8">
                   There's no shortage of SEO agencies. Here's how we work differently.
                 </p>
               </motion.div>
@@ -538,8 +538,8 @@ export default function SearchEngineOptimizationPage() {
                       <item.icon className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <p className="text-[#1B3172] font-heading font-600 text-sm mb-1">{item.title}</p>
-                      <p className="text-[#475569] text-xs leading-relaxed">{item.desc}</p>
+                      <p className="text-[#0D246A] font-heading font-600 text-sm mb-1">{item.title}</p>
+                      <p className="text-[#3F4A6B] text-xs leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -554,7 +554,7 @@ export default function SearchEngineOptimizationPage() {
         <div className="container-xl">
           <motion.div
             {...fadeUp()}
-            className="rounded-2xl bg-gradient-to-br from-[#1B3172] to-[#091830] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+            className="rounded-2xl bg-gradient-to-br from-[#0D246A] to-[#081648] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
           >
             <div>
               <h3 className="text-white font-heading font-700 text-2xl mb-2">
@@ -567,7 +567,7 @@ export default function SearchEngineOptimizationPage() {
             </div>
             <Link
               to="/services/seo-plans"
-              className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#1B3172] text-sm font-semibold hover:bg-slate-100 transition-all"
+              className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#0D246A] text-sm font-semibold hover:bg-slate-100 transition-all"
             >
               Compare SEO Plans
               <ArrowRight className="w-4 h-4" />
@@ -577,15 +577,15 @@ export default function SearchEngineOptimizationPage() {
       </section>
 
       {/* ── Other Services ── */}
-      <section className="section-pad-sm bg-[#EEF2FF]">
+      <section className="section-pad-sm bg-[#F3F2EC]">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-8">
-            <h3 className="text-2xl font-heading font-700 text-[#1B3172]">Explore Our Other Services</h3>
+            <h3 className="text-2xl font-heading font-700 text-[#0D246A]">Explore Our Other Services</h3>
           </motion.div>
           <div className="flex flex-wrap gap-3 justify-center">
             {SERVICES.filter((s) => s.id !== 'search-engine-optimization').map((s) => (
               <Link key={s.id} to={s.slug}
-                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#475569] hover:text-[#1B3172] hover:shadow-glow transition-all">
+                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#3F4A6B] hover:text-[#0D246A] hover:shadow-glow transition-all">
                 {s.short}
               </Link>
             ))}
@@ -598,7 +598,7 @@ export default function SearchEngineOptimizationPage() {
         <div className="container-lg">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">FAQs</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Frequently Asked Questions <span className="gradient-text">About SEO Services</span>
             </h2>
           </motion.div>
@@ -609,13 +609,13 @@ export default function SearchEngineOptimizationPage() {
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-[#475569] text-sm mt-8 max-w-3xl mx-auto">
+          <p className="text-center text-[#3F4A6B] text-sm mt-8 max-w-3xl mx-auto">
             Want more detail? Read our guides to{' '}
-            <Link to="/blog/small-business-seo-services" className="text-[#4338CA] font-medium hover:text-[#1B3172] transition-colors">
+            <Link to="/blog/small-business-seo-services" className="text-[#42499D] font-medium hover:text-[#0D246A] transition-colors">
               choosing small business SEO services
             </Link>{' '}
             and{' '}
-            <Link to="/blog/seo-for-small-business-websites" className="text-[#4338CA] font-medium hover:text-[#1B3172] transition-colors">
+            <Link to="/blog/seo-for-small-business-websites" className="text-[#42499D] font-medium hover:text-[#0D246A] transition-colors">
               SEO for small business websites
             </Link>.
           </p>
@@ -627,7 +627,7 @@ export default function SearchEngineOptimizationPage() {
         <div className="container-xl">
           <motion.div
             {...fadeUp()}
-            className="rounded-2xl bg-gradient-to-br from-[#1B3172] to-[#091830] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+            className="rounded-2xl bg-gradient-to-br from-[#0D246A] to-[#081648] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
           >
             <div>
               <h2 className="text-white font-heading font-700 text-2xl mb-2">
@@ -642,7 +642,7 @@ export default function SearchEngineOptimizationPage() {
             <div className="shrink-0 flex flex-col sm:flex-row gap-3">
               <Link
                 to="/free-seo-audit"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#1B3172] text-sm font-semibold hover:bg-slate-100 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#0D246A] text-sm font-semibold hover:bg-slate-100 transition-all"
               >
                 Get a Free SEO Audit
                 <ArrowRight className="w-4 h-4" />

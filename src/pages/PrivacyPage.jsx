@@ -7,10 +7,10 @@ const LAST_UPDATED = 'September 2, 2026';
 
 export default function PrivacyPage() {
   return (
-    <main className="pt-28 pb-20 bg-[#F8FAFF] min-h-screen">
+    <main className="pt-28 pb-20 bg-[#FBFAF6] min-h-screen">
       <SEO title="Privacy Policy" description="Novelio Technologies LLC privacy policy: how we collect, use, and protect your personal information." canonical="/privacy" noindex />
       {/* Hero */}
-      <div className="bg-[#0E1E38] py-16 mb-12">
+      <div className="bg-[#081648] py-16 mb-12">
         <div className="container-xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-white/70 mb-5"
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="rounded-3xl p-8 lg:p-12 space-y-10"
-          style={{ background: 'white', border: '1px solid rgba(29,78,216,0.08)', boxShadow: '0 4px 32px rgba(27,49,114,0.07)' }}
+          style={{ background: 'white', border: '1px solid rgba(19,118,180,0.08)', boxShadow: '0 4px 32px rgba(13,36,106,0.07)' }}
         >
 
           <Section title="1. Introduction">
@@ -148,8 +148,8 @@ export default function PrivacyPage() {
 function Section({ title, children }) {
   return (
     <div>
-      <h2 className="text-xl font-heading font-700 text-[#1B3172] mb-4 pb-2 border-b border-slate-100">{title}</h2>
-      <div className="space-y-3 text-[#475569] text-[15px] leading-relaxed [&_ul]:space-y-2 [&_ul]:pl-5 [&_ul]:list-disc [&_strong]:text-[#334155] [&_strong]:font-600">
+      <h2 className="text-xl font-heading font-700 text-[#0D246A] mb-4 pb-2 border-b border-slate-100">{title}</h2>
+      <div className="space-y-3 text-[#3F4A6B] text-[15px] leading-relaxed [&_ul]:space-y-2 [&_ul]:pl-5 [&_ul]:list-disc [&_strong]:text-[#2B3557] [&_strong]:font-600">
         {children}
       </div>
     </div>

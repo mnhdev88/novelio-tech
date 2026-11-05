@@ -59,10 +59,10 @@ export default function ActivityPage() {
           <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
             {data.items.map((row) => (
               <div key={row.id} className="flex flex-wrap items-baseline gap-x-2 gap-y-1 px-4 py-2.5 border-b border-slate-100 last:border-0">
-                <span className="text-sm font-semibold text-[#1B3172]">{row.user_email || 'system'}</span>
-                <span className="text-sm text-[#475569]">{ACTION_LABEL[row.action] || row.action}</span>
+                <span className="text-sm font-semibold text-[#0D246A]">{row.user_email || 'system'}</span>
+                <span className="text-sm text-[#3F4A6B]">{ACTION_LABEL[row.action] || row.action}</span>
                 {row.target && (
-                  <span className="text-xs font-mono text-[#64748b] truncate">
+                  <span className="text-xs font-mono text-[#5C6685] truncate">
                     {String(row.target).replace(/^content\//, '')}
                   </span>
                 )}
@@ -81,12 +81,12 @@ export default function ActivityPage() {
           {data.pages > 1 && (
             <div className="flex items-center gap-3 mt-4">
               <button disabled={page <= 1} onClick={() => setPage((p) => p - 1)}
-                className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#475569] disabled:opacity-40 cursor-pointer">
+                className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#3F4A6B] disabled:opacity-40 cursor-pointer">
                 Previous
               </button>
               <span className="text-xs text-[#94a3b8]">Page {data.page} of {data.pages}</span>
               <button disabled={page >= data.pages} onClick={() => setPage((p) => p + 1)}
-                className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#475569] disabled:opacity-40 cursor-pointer">
+                className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#3F4A6B] disabled:opacity-40 cursor-pointer">
                 Next
               </button>
             </div>

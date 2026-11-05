@@ -65,14 +65,14 @@ function FAQItem({ q, a }) {
   return (
     <div className="glass-card gradient-border rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-        <span className="text-[#1B3172] font-medium text-[15px]">{q}</span>
+        <span className="text-[#0D246A] font-medium text-[15px]">{q}</span>
         {open
           ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" aria-hidden="true" />
-          : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" aria-hidden="true" />}
+          : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" aria-hidden="true" />}
       </button>
       {open && (
         <div className="px-5 pb-5 border-t border-slate-200 pt-4">
-          <p className="text-[#475569] text-sm leading-relaxed">{a}</p>
+          <p className="text-[#3F4A6B] text-sm leading-relaxed">{a}</p>
         </div>
       )}
     </div>
@@ -127,12 +127,12 @@ export default function FreeAuditPage() {
               <span className="text-[12.5px] font-600 text-brand-purple">Free tool, no signup</span>
             </div>
 
-            <h1 className="font-heading font-800 text-[#1B3172] text-[32px] sm:text-[42px] lg:text-[48px] leading-[1.12] mb-4">
+            <h1 className="font-heading font-800 text-[#0D246A] text-[32px] sm:text-[42px] lg:text-[48px] leading-[1.12] mb-4">
               Find out what is holding
               <span className="gradient-text-rainbow"> your website back</span>
             </h1>
 
-            <p className="text-[16px] sm:text-[17px] text-[#475569] max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[16px] sm:text-[17px] text-[#3F4A6B] max-w-2xl mx-auto leading-relaxed">
               We check the things Google actually measures, then tell you, in plain English, what is
               wrong and how to fix it. You see your score before we ask for anything.
             </p>
@@ -145,10 +145,10 @@ export default function FreeAuditPage() {
       {/* ── What gets checked ────────────────────────────────────────── */}
       <section className="section-pad bg-gradient-to-b from-transparent to-brand-purple/[0.03]">
         <div className="max-w-5xl mx-auto px-5">
-          <h2 className="font-heading font-700 text-[#1B3172] text-[26px] sm:text-[32px] text-center mb-3">
+          <h2 className="font-heading font-700 text-[#0D246A] text-[26px] sm:text-[32px] text-center mb-3">
             What the audit actually checks
           </h2>
-          <p className="text-[15.5px] text-[#64748b] text-center max-w-2xl mx-auto mb-10">
+          <p className="text-[15.5px] text-[#5C6685] text-center max-w-2xl mx-auto mb-10">
             Around thirty checks across five areas, each one scored and explained. Nothing invented to
             pad the report. If a check does not apply to your page, we leave it out.
           </p>
@@ -159,8 +159,8 @@ export default function FreeAuditPage() {
                 <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
                   <Icon className="w-5 h-5 text-white" aria-hidden="true" />
                 </div>
-                <h3 className="font-heading font-700 text-[#1B3172] text-[17px] mb-2">{title}</h3>
-                <p className="text-[14.5px] text-[#475569] leading-relaxed">{body}</p>
+                <h3 className="font-heading font-700 text-[#0D246A] text-[17px] mb-2">{title}</h3>
+                <p className="text-[14.5px] text-[#3F4A6B] leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -170,7 +170,7 @@ export default function FreeAuditPage() {
       {/* ── FAQ ──────────────────────────────────────────────────────── */}
       <section className="section-pad">
         <div className="max-w-3xl mx-auto px-5">
-          <h2 className="font-heading font-700 text-[#1B3172] text-[26px] sm:text-[32px] text-center mb-10">
+          <h2 className="font-heading font-700 text-[#0D246A] text-[26px] sm:text-[32px] text-center mb-10">
             Questions people ask first
           </h2>
           <div className="space-y-3">
@@ -183,10 +183,10 @@ export default function FreeAuditPage() {
       <section className="section-pad-sm pb-16">
         <div className="max-w-3xl mx-auto px-5">
           <div className="glass-card gradient-border rounded-2xl p-7 sm:p-9 text-center">
-            <h2 className="font-heading font-700 text-[#1B3172] text-[22px] sm:text-[26px] mb-3">
+            <h2 className="font-heading font-700 text-[#0D246A] text-[22px] sm:text-[26px] mb-3">
               Rather have someone look at the whole site?
             </h2>
-            <p className="text-[15px] text-[#475569] max-w-xl mx-auto mb-6 leading-relaxed">
+            <p className="text-[15px] text-[#3F4A6B] max-w-xl mx-auto mb-6 leading-relaxed">
               The tool covers one page automatically. A 30-minute call covers everything it cannot see:
               your Google listing, where your leads actually come from, and what your competitors are
               doing that you are not.

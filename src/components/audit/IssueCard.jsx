@@ -41,33 +41,33 @@ export default function IssueCard({ issue, index }) {
 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
-            <h3 className="font-heading font-700 text-[#1B3172] text-[16px] sm:text-[17px]">
+            <h3 className="font-heading font-700 text-[#0D246A] text-[16px] sm:text-[17px]">
               {index != null && <span className="text-[#94a3b8] mr-1.5">{index}.</span>}
               {issue.title}
             </h3>
             <span className={`text-[11px] font-600 px-2 py-0.5 rounded-full border ${style.chip}`}>
               {style.label}
             </span>
-            <span className="text-[11px] font-500 px-2 py-0.5 rounded-full border border-slate-200 text-[#64748b]">
+            <span className="text-[11px] font-500 px-2 py-0.5 rounded-full border border-slate-200 text-[#5C6685]">
               {CATEGORY_LABELS[issue.cat] || issue.cat}
             </span>
           </div>
 
           {issue.evidence && (
-            <p className="text-[12.5px] text-[#64748b] font-mono bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 mb-3 break-words">
+            <p className="text-[12.5px] text-[#5C6685] font-mono bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 mb-3 break-words">
               {issue.evidence}
             </p>
           )}
 
           {issue.impact && (
-            <p className="text-[14.5px] text-[#334155] leading-relaxed mb-3">{issue.impact}</p>
+            <p className="text-[14.5px] text-[#2B3557] leading-relaxed mb-3">{issue.impact}</p>
           )}
 
           {issue.detail && (
             <div className="border-l-2 border-brand-purple/40 pl-4 py-0.5">
               <div className="text-[11px] font-700 tracking-wide text-brand-purple mb-1">HOW TO FIX IT</div>
               {/* Speed opportunities arrive as one fix per line. */}
-              <p className="text-[14px] text-[#475569] leading-relaxed whitespace-pre-line">{issue.detail}</p>
+              <p className="text-[14px] text-[#3F4A6B] leading-relaxed whitespace-pre-line">{issue.detail}</p>
             </div>
           )}
         </div>
@@ -83,7 +83,7 @@ export function LockedIssueRow({ issue }) {
   return (
     <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/70 border border-slate-200">
       <style.Icon className={`w-4 h-4 flex-shrink-0 ${style.iconClass}`} aria-hidden="true" />
-      <span className="text-[14px] text-[#1B3172] font-500 flex-1 min-w-0 truncate">{issue.title}</span>
+      <span className="text-[14px] text-[#0D246A] font-500 flex-1 min-w-0 truncate">{issue.title}</span>
       <span className="text-[11px] text-[#94a3b8] hidden sm:inline">
         {CATEGORY_LABELS[issue.cat] || issue.cat}
       </span>

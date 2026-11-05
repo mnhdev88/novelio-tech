@@ -3,12 +3,12 @@
 import { Loader2, Check, AlertTriangle } from 'lucide-react';
 
 export const inputCls =
-  'w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1B3172]';
+  'w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0D246A]';
 
 export function Field({ label, hint, children }) {
   return (
     <label className="block">
-      <span className="block text-xs font-semibold text-[#475569] mb-1.5">{label}</span>
+      <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">{label}</span>
       {children}
       {hint && <span className="block text-[11px] text-[#94a3b8] mt-1">{hint}</span>}
     </label>
@@ -26,8 +26,8 @@ export function Text({ label, hint, value, onChange, ...rest }) {
 export function Card({ title, description, children }) {
   return (
     <section className="bg-white rounded-2xl border border-slate-200 p-5">
-      <h2 className="font-heading font-800 text-[#1B3172] mb-1">{title}</h2>
-      {description && <p className="text-xs text-[#64748b] mb-4">{description}</p>}
+      <h2 className="font-heading font-800 text-[#0D246A] mb-1">{title}</h2>
+      {description && <p className="text-xs text-[#5C6685] mb-4">{description}</p>}
       {children}
     </section>
   );
@@ -55,15 +55,15 @@ export function ErrorNote({ children }) {
 }
 
 export function Spinner() {
-  return <div className="grid place-items-center py-20"><Loader2 className="w-6 h-6 animate-spin text-[#1B3172]" /></div>;
+  return <div className="grid place-items-center py-20"><Loader2 className="w-6 h-6 animate-spin text-[#0D246A]" /></div>;
 }
 
 export function PageHeader({ title, subtitle, children }) {
   return (
     <div className="flex flex-wrap items-center gap-3 mb-5">
       <div>
-        <h1 className="font-heading font-800 text-[#1B3172] text-xl">{title}</h1>
-        {subtitle && <p className="text-sm text-[#64748b]">{subtitle}</p>}
+        <h1 className="font-heading font-800 text-[#0D246A] text-xl">{title}</h1>
+        {subtitle && <p className="text-sm text-[#5C6685]">{subtitle}</p>}
       </div>
       <div className="flex-1" />
       {children}

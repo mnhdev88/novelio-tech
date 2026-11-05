@@ -80,12 +80,12 @@ function FAQItem({ q, a }) {
   return (
     <div className="glass-card gradient-border rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-        <span className="text-[#1B3172] font-medium text-[15px]">{q}</span>
-        {open ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />}
+        <span className="text-[#0D246A] font-medium text-[15px]">{q}</span>
+        {open ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />}
       </button>
       {open && (
         <div className="px-5 pb-5 pt-0 border-t border-slate-200">
-          <p className="text-[#475569] text-sm leading-relaxed pt-4">{a}</p>
+          <p className="text-[#3F4A6B] text-sm leading-relaxed pt-4">{a}</p>
         </div>
       )}
     </div>
@@ -154,26 +154,26 @@ export default function ServiceDetailPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
               {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm text-[#64748b] mb-6">
-                <Link to="/" className="hover:text-[#1B3172] transition-colors">Home</Link>
+              <div className="flex items-center gap-2 text-sm text-[#5C6685] mb-6">
+                <Link to="/" className="hover:text-[#0D246A] transition-colors">Home</Link>
                 <span>/</span>
-                <Link to="/services" className="hover:text-[#1B3172] transition-colors">Services</Link>
+                <Link to="/services" className="hover:text-[#0D246A] transition-colors">Services</Link>
                 <span>/</span>
-                <span className="text-[#1B3172]">{service.title}</span>
+                <span className="text-[#0D246A]">{service.title}</span>
               </div>
 
               <div className="section-label mb-4">Our Services</div>
-              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
                 {service.tagline.split(' ').map((word, i, arr) =>
                   i >= arr.length - 2 ? (
                     <span key={i} className="gradient-text">{word} </span>
                   ) : `${word} `
                 )}
               </h1>
-              <p className="text-[#475569] text-xl leading-relaxed mb-8">{service.description}</p>
+              <p className="text-[#3F4A6B] text-xl leading-relaxed mb-8">{service.description}</p>
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {service.features.map((f, i) => (
-                  <div key={i} className="flex items-center gap-2 text-[#475569] text-sm">
+                  <div key={i} className="flex items-center gap-2 text-[#3F4A6B] text-sm">
                     <Check className={`w-4 h-4 bg-gradient-to-br ${service.color} text-white rounded-full p-0.5 flex-shrink-0`} />
                     {f}
                   </div>
@@ -200,7 +200,7 @@ export default function ServiceDetailPage() {
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}
                 className="absolute -bottom-6 -left-6 glass-card gradient-border rounded-2xl px-5 py-3">
                 <div className="text-2xl font-heading font-800 gradient-text">10x</div>
-                <div className="text-xs text-[#475569]">Average ROI</div>
+                <div className="text-xs text-[#3F4A6B]">Average ROI</div>
               </motion.div>
             </motion.div>
           </div>
@@ -208,11 +208,11 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* Why this service matters */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
             className="text-center mb-16">
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Everything Included in Our <span className="gradient-text">{service.short}</span> Service
             </h2>
           </motion.div>
@@ -224,7 +224,7 @@ export default function ServiceDetailPage() {
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <Check className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="text-[#1B3172] font-heading font-600 text-[15px]">{feature}</h4>
+                <h4 className="text-[#0D246A] font-heading font-600 text-[15px]">{feature}</h4>
               </motion.div>
             ))}
           </div>
@@ -236,12 +236,12 @@ export default function ServiceDetailPage() {
         <div className="container-xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
             className="text-center mb-8">
-            <h3 className="text-2xl font-heading font-700 text-[#1B3172]">Explore Our Other Services</h3>
+            <h3 className="text-2xl font-heading font-700 text-[#0D246A]">Explore Our Other Services</h3>
           </motion.div>
           <div className="flex flex-wrap gap-3 justify-center">
             {SERVICES.filter((s) => s.id !== serviceId).map((s) => (
               <Link key={s.id} to={s.slug}
-                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#475569] hover:text-[#1B3172] hover:shadow-glow transition-all">
+                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#3F4A6B] hover:text-[#0D246A] hover:shadow-glow transition-all">
                 {s.short}
               </Link>
             ))}
@@ -250,12 +250,12 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-lg">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
             className="text-center mb-12">
             <div className="section-label mx-auto mb-4">FAQs</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Common <span className="gradient-text">Questions</span>
             </h2>
           </motion.div>

@@ -135,12 +135,12 @@ function FAQItem({ q, a }) {
   return (
     <div className="glass-card gradient-border rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-        <span className="text-[#1B3172] font-medium text-[15px]">{q}</span>
-        {open ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />}
+        <span className="text-[#0D246A] font-medium text-[15px]">{q}</span>
+        {open ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />}
       </button>
       {open && (
         <div className="px-5 pb-5 border-t border-slate-200 pt-4">
-          <p className="text-[#475569] text-sm leading-relaxed">{a}</p>
+          <p className="text-[#3F4A6B] text-sm leading-relaxed">{a}</p>
         </div>
       )}
     </div>
@@ -218,7 +218,7 @@ export default function PartnerPage() {
   };
 
   const inputClass = (field) =>
-    `w-full bg-white border rounded-xl px-4 py-3.5 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:ring-2 transition-all text-[15px] ${
+    `w-full bg-white border rounded-xl px-4 py-3.5 text-[#0D246A] placeholder-slate-400 focus:outline-none focus:ring-2 transition-all text-[15px] ${
       errors[field] ? 'border-red-500/60 focus:border-red-500 focus:ring-red-500/20' : 'border-slate-200/80 focus:border-brand-purple/60 focus:ring-brand-purple/20'
     }`;
 
@@ -239,26 +239,26 @@ export default function PartnerPage() {
         <div className="container-xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-              <div className="flex items-center gap-2 text-sm text-[#64748b] mb-6">
-                <Link to="/" className="hover:text-[#1B3172] transition-colors">Home</Link>
+              <div className="flex items-center gap-2 text-sm text-[#5C6685] mb-6">
+                <Link to="/" className="hover:text-[#0D246A] transition-colors">Home</Link>
                 <span>/</span>
-                <span className="text-[#1B3172]">Become a Partner</span>
+                <span className="text-[#0D246A]">Become a Partner</span>
               </div>
               <div className="section-label mb-4">Partner Program</div>
-              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
                 Let's <span className="gradient-text">Grow Together</span>
               </h1>
-              <p className="text-[#475569] text-xl leading-relaxed mb-4">
+              <p className="text-[#3F4A6B] text-xl leading-relaxed mb-4">
                 Team up with Novelio Technologies to deliver more to your clients (websites, apps,
                 SEO, and full-stack growth systems) without hiring or building a delivery team.
               </p>
-              <p className="text-[#475569] text-base leading-relaxed mb-8">
+              <p className="text-[#3F4A6B] text-base leading-relaxed mb-8">
                 Whether you want to refer, resell under your brand, or co-deliver bigger projects,
                 we make it simple, transparent, and profitable to partner with us.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {['Recurring Commissions', 'White-Label Delivery', 'Dedicated Manager', 'Free to Join'].map((f) => (
-                  <div key={f} className="flex items-center gap-2 text-[#475569] text-sm">
+                  <div key={f} className="flex items-center gap-2 text-[#3F4A6B] text-sm">
                     <Check className="w-4 h-4 bg-gradient-to-br from-fuchsia-600 to-indigo-600 text-white rounded-full p-0.5 flex-shrink-0" />
                     {f}
                   </div>
@@ -283,12 +283,12 @@ export default function PartnerPage() {
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}
                 className="absolute -bottom-6 -left-6 glass-card gradient-border rounded-2xl px-5 py-3">
                 <div className="text-2xl font-heading font-800 gradient-text">Recurring</div>
-                <div className="text-xs text-[#475569]">Commissions</div>
+                <div className="text-xs text-[#3F4A6B]">Commissions</div>
               </motion.div>
               <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity }}
                 className="absolute -top-6 -right-6 glass-card gradient-border rounded-2xl px-5 py-3">
                 <div className="text-2xl font-heading font-800 gradient-text">White-Label</div>
-                <div className="text-xs text-[#475569]">Under Your Brand</div>
+                <div className="text-xs text-[#3F4A6B]">Under Your Brand</div>
               </motion.div>
             </motion.div>
           </div>
@@ -296,14 +296,14 @@ export default function PartnerPage() {
       </section>
 
       {/* ── Partnership Types ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">Ways to Partner</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Find the Partnership <span className="gradient-text">That Fits You</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Every business partners differently. Pick the model that matches how you work, or tell
               us and we'll shape one around you.
             </p>
@@ -315,8 +315,8 @@ export default function PartnerPage() {
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
                   <p.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-[#1B3172] font-heading font-600 text-lg mb-3">{p.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed">{p.desc}</p>
+                <h3 className="text-[#0D246A] font-heading font-600 text-lg mb-3">{p.title}</h3>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed">{p.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -329,10 +329,10 @@ export default function PartnerPage() {
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">Why Partner With Us</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Built to Make <span className="gradient-text">Partners Win</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               We treat partners like an extension of our team, with the support, transparency, and
               reliability your reputation depends on.
             </p>
@@ -344,8 +344,8 @@ export default function PartnerPage() {
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-600 to-indigo-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-[#1B3172] font-heading font-600 text-lg mb-3">{item.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-[#0D246A] font-heading font-600 text-lg mb-3">{item.title}</h3>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -353,11 +353,11 @@ export default function PartnerPage() {
       </section>
 
       {/* ── Who We Partner With ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">Who We Work With</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Companies We Love to <span className="gradient-text">Partner With</span>
             </h2>
           </motion.div>
@@ -368,7 +368,7 @@ export default function PartnerPage() {
                 <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-fuchsia-600 to-indigo-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <w.icon className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-[#1B3172] font-heading font-600 text-[15px]">{w.label}</span>
+                <span className="text-[#0D246A] font-heading font-600 text-[15px]">{w.label}</span>
               </motion.div>
             ))}
           </div>
@@ -381,10 +381,10 @@ export default function PartnerPage() {
         <div className="container-lg relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">How It Works</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               From Hello to <span className="gradient-text">Growing Together</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Getting started is simple. Most partners are up and running within a few days.
             </p>
           </motion.div>
@@ -396,10 +396,10 @@ export default function PartnerPage() {
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-fuchsia-600 to-indigo-600 flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform">
                     <s.icon className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-3xl font-heading font-800 text-[#1B3172]/10">{s.step}</span>
+                  <span className="text-3xl font-heading font-800 text-[#0D246A]/10">{s.step}</span>
                 </div>
-                <h3 className="text-[#1B3172] font-heading font-700 text-lg mb-2">{s.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed">{s.desc}</p>
+                <h3 className="text-[#0D246A] font-heading font-700 text-lg mb-2">{s.title}</h3>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -407,17 +407,17 @@ export default function PartnerPage() {
       </section>
 
       {/* ── Application Form ── */}
-      <section id="partner-form" className="section-pad bg-[#EEF2FF] relative overflow-hidden scroll-mt-24">
+      <section id="partner-form" className="section-pad bg-[#F3F2EC] relative overflow-hidden scroll-mt-24">
         <div className="container-lg relative z-10">
           <div className="grid lg:grid-cols-5 gap-12">
             {/* Left sidebar */}
             <div className="lg:col-span-2">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
                 <div className="section-label mb-4">Apply Now</div>
-                <h2 className="text-3xl font-heading font-700 text-[#1B3172] mb-4">
+                <h2 className="text-3xl font-heading font-700 text-[#0D246A] mb-4">
                   Ready to <span className="gradient-text">Partner Up?</span>
                 </h2>
-                <p className="text-[#475569] leading-relaxed mb-8">
+                <p className="text-[#3F4A6B] leading-relaxed mb-8">
                   Tell us about your business and how you'd like to work together. We'll review your
                   application and get back to you within 24 hours to set up an intro call.
                 </p>
@@ -432,13 +432,13 @@ export default function PartnerPage() {
                       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-fuchsia-600 to-indigo-600 flex items-center justify-center flex-shrink-0">
                         <Check className="w-4 h-4 text-white" />
                       </div>
-                      <span className="text-[#475569] text-sm">{text}</span>
+                      <span className="text-[#3F4A6B] text-sm">{text}</span>
                     </div>
                   ))}
                 </div>
                 <div className="glass-card gradient-border rounded-2xl p-5">
-                  <h4 className="text-[#1B3172] font-heading font-600 mb-2">Questions first?</h4>
-                  <p className="text-[#475569] text-sm mb-3">
+                  <h4 className="text-[#0D246A] font-heading font-600 mb-2">Questions first?</h4>
+                  <p className="text-[#3F4A6B] text-sm mb-3">
                     Prefer to chat before applying? Reach out any time.
                   </p>
                   <a href={`mailto:${COMPANY.email}`} className="text-brand-purple font-medium text-sm hover:underline break-all">
@@ -457,8 +457,8 @@ export default function PartnerPage() {
                       <div className="w-20 h-20 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto mb-6">
                         <Check className="w-10 h-10 text-emerald-400" />
                       </div>
-                      <h3 className="text-[#1B3172] font-heading font-700 text-2xl mb-3">Application Received!</h3>
-                      <p className="text-[#475569] max-w-xs mx-auto">
+                      <h3 className="text-[#0D246A] font-heading font-700 text-2xl mb-3">Application Received!</h3>
+                      <p className="text-[#3F4A6B] max-w-xs mx-auto">
                         Thanks for your interest in partnering with us. We'll review your application and
                         reach out within 24 hours.
                       </p>
@@ -467,28 +467,28 @@ export default function PartnerPage() {
                     <form onSubmit={handleSubmit} noValidate className="space-y-5">
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Full Name *</label>
+                          <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Full Name *</label>
                           <input type="text" value={form.name} onChange={handleChange('name')} placeholder="John Smith" className={inputClass('name')} />
                           {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Email Address *</label>
+                          <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Email Address *</label>
                           <input type="email" value={form.email} onChange={handleChange('email')} placeholder="john@company.com" className={inputClass('email')} />
                           {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Company Name *</label>
+                          <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Company Name *</label>
                           <input type="text" value={form.company} onChange={handleChange('company')} placeholder="Your Company" className={inputClass('company')} />
                           {errors.company && <p className="text-red-500 text-xs mt-1">{errors.company}</p>}
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Website</label>
+                          <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Website</label>
                           <input type="url" value={form.website} onChange={handleChange('website')} placeholder="https://yourcompany.com" className={inputClass('website')} />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Partnership Type</label>
+                        <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Partnership Type</label>
                         <select value={form.partnershipType} onChange={handleChange('partnershipType')} className={inputClass('partnershipType')}>
                           <option value="">Select a partnership type</option>
                           {PARTNERSHIP_OPTIONS.map((o) => (
@@ -498,7 +498,7 @@ export default function PartnerPage() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Tell Us About Your Business</label>
+                        <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Tell Us About Your Business</label>
                         <textarea rows={4} value={form.message} onChange={handleChange('message')}
                           placeholder="What do you do, and how would you like to partner with us?"
                           className={`${inputClass('message')} resize-none`} />
@@ -521,7 +521,7 @@ export default function PartnerPage() {
                         )}
                       </button>
 
-                      <p className="text-center text-xs text-[#64748b]">
+                      <p className="text-center text-xs text-[#5C6685]">
                         By submitting this form you agree to our{' '}
                         <Link to="/privacy" className="text-brand-purple hover:underline">Privacy Policy</Link>.
                         We never share your information.
@@ -540,7 +540,7 @@ export default function PartnerPage() {
         <div className="container-lg">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">FAQs</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Partner <span className="gradient-text">Questions</span>
             </h2>
           </motion.div>

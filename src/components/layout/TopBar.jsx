@@ -8,7 +8,7 @@ export default function TopBar() {
   const { user } = useAuth();
 
   return (
-    <div className="bg-[#0d1f5c] border-b border-white/10 hidden md:block">
+    <div className="bg-[#081A52] border-b border-white/10 hidden md:block">
       <div className="container-xl">
         <div className="flex items-center justify-between h-9 text-xs">
 

@@ -1,220 +1,144 @@
 import { motion } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { HOMEPAGE } from '../../data/siteData';
+import { spectrumAt } from '../shared/spectrum';
 
 const pillars = HOMEPAGE.whyChooseUs.pillars;
 const metrics = HOMEPAGE.whyChooseUs.metrics;
 
+// Colours for the pillar icons: red, green, blue, violet, spaced across the spectrum.
+const PILLAR_STEPS = [0, 4, 6, 8];
+
 export default function WhyChooseUs() {
   return (
-    <section className="section-pad bg-dark relative overflow-hidden">
-      <div className="orb orb-cyan w-[500px] h-[500px] -bottom-64 -left-64 opacity-8" />
-      <div className="orb orb-purple w-[400px] h-[400px] -top-32 -right-32 opacity-6" />
-
-      {/* Diagonal line grid */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none" preserveAspectRatio="none">
-        <defs>
-          <pattern id="diag" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M0 40 L40 0" stroke="#6B3FA0" strokeWidth="0.8" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#diag)" />
-      </svg>
-
-      <div className="container-xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section className="section-pad bg-[#FBFAF6] overflow-hidden">
+      <div className="container-xl">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
           {/* Left — pillars */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
-            <div className="section-label mb-4">The Novelio Difference</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-6 leading-tight">
-              We Don't Sell Services. <span className="gradient-text">We Build Growth Systems.</span>
+          <div>
+            <div className="section-label">The Novelio Difference</div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-800 mb-6 leading-[1.05]">
+              We Don&apos;t Sell Services. <span className="gradient-text">We Build Growth Systems.</span>
             </h2>
-            <p className="text-[#475569] text-lg leading-relaxed mb-10">
+            <p className="text-[#3F4A6B] text-lg leading-relaxed mb-8">
               Unlike agencies that hand you a deliverable and disappear, Novelio acts as your ongoing growth partner. We look at every touchpoint your customers experience, and take responsibility for results, not just deliverables.
             </p>
 
-            <div className="space-y-5">
+            <div>
               {pillars.map((p, i) => {
                 const Icon = p.icon;
+                const colour = spectrumAt(PILLAR_STEPS[i % PILLAR_STEPS.length]);
                 return (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ x: 4 }}
-                    className="flex gap-4 p-4 rounded-2xl group transition-all duration-300 cursor-default"
-                    style={{
-                      background: 'rgba(255,255,255,0.6)',
-                      border: '1px solid rgba(29,78,216,0.1)',
-                      backdropFilter: 'blur(12px)',
-                      boxShadow: '0 2px 12px rgba(27,49,114,0.05)',
-                    }}
-                  >
-                    <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center flex-shrink-0
-                      group-hover:scale-110 transition-transform duration-300`}
-                      style={{ boxShadow: '0 4px 16px rgba(107,63,160,0.3)' }}>
-                      <Icon className="w-5 h-5 text-white" />
+                  <div key={p.title} className="flex gap-4 py-5 border-t border-[#0D246A]/15">
+                    <div
+                      className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ background: colour.fill, color: colour.fg }}
+                    >
+                      <Icon className="w-5 h-5" aria-hidden="true" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-1.5">
-                        <h4 className="text-[#1B3172] font-heading font-600 text-base">{p.title}</h4>
-                        <span className="text-xs font-700 gradient-text ml-2 flex-shrink-0">{p.bar}%</span>
-                      </div>
-                      <p className="text-[#64748b] text-sm leading-relaxed mb-2">{p.desc}</p>
-                      {/* Mini progress bar */}
-                      <div className="h-1 bg-slate-200 rounded-full overflow-hidden">
-                        <motion.div
-                          className={`h-full w-full origin-left bg-gradient-to-r ${p.color} rounded-full`}
-                          initial={{ scaleX: 0 }}
-                          whileInView={{ scaleX: p.bar / 100 }}
-                          transition={{ duration: 1.1, delay: 0.3 + i * 0.1, ease: 'easeOut' }}
-                          viewport={{ once: true }}
-                        />
-                      </div>
+                    <div className="min-w-0">
+                      <h4 className="font-heading font-700 text-lg mb-1">{p.title}</h4>
+                      <p className="text-[#3F4A6B] text-[15px] leading-relaxed">{p.desc}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
 
           {/* Right — dashboard visual */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative pt-6"
           >
-            {/* Main dashboard card */}
-            <div className="rounded-3xl p-6 relative overflow-hidden"
-              style={{
-                background: 'rgba(255,255,255,0.92)',
-                border: '1px solid rgba(29,78,216,0.13)',
-                boxShadow: '0 20px 64px rgba(27,49,114,0.14)',
-                backdropFilter: 'blur(20px)',
-              }}>
-
+            <div className="rounded-3xl p-6 pb-14 lg:p-8 lg:pb-14 bg-[#0D246A] text-white">
               {/* Window chrome */}
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-3 h-3 rounded-full bg-red-400" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                <div className="w-3 h-3 rounded-full bg-green-400" />
-                <div className="flex-1 ml-3 h-6 rounded-lg bg-slate-100 flex items-center px-3">
-                  <span className="text-xs text-[#64748b]">analytics.noveliotech.com</span>
+              <div className="flex items-center gap-2 mb-7">
+                <div className="w-3 h-3 rounded-full bg-[#E02A2A]" />
+                <div className="w-3 h-3 rounded-full bg-[#F0D030]" />
+                <div className="w-3 h-3 rounded-full bg-[#0A924E]" />
+                <div className="flex-1 ml-3 h-7 rounded-lg bg-white/10 flex items-center px-3 min-w-0">
+                  <span className="text-xs text-white/80 truncate">analytics.noveliotech.com</span>
                 </div>
               </div>
 
-              {/* Mini sparkline SVG */}
-              <div className="mb-5 rounded-xl overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, rgba(107,63,160,0.06) 0%, rgba(29,78,216,0.06) 100%)', border: '1px solid rgba(107,63,160,0.1)' }}>
-                <svg viewBox="0 0 280 80" className="w-full" fill="none">
-                  <defs>
-                    <linearGradient id="sgfill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#6B3FA0" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#6B3FA0" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M0,70 L20,60 L50,55 L80,48 L110,40 L140,32 L170,22 L200,15 L230,10 L260,8 L280,6 L280,80 L0,80 Z"
-                    fill="url(#sgfill)" />
-                  <path d="M0,70 L20,60 L50,55 L80,48 L110,40 L140,32 L170,22 L200,15 L230,10 L260,8 L280,6"
-                    stroke="#6B3FA0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="2s" begin="0.5s" fill="freeze" />
-                  </path>
-                  {/* Endpoint dot */}
-                  <circle cx="280" cy="6" r="5" fill="#6B3FA0">
-                    <animate attributeName="r" values="4;7;4" dur="2s" begin="2.5s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="1;0.5;1" dur="2s" begin="2.5s" repeatCount="indefinite" />
-                  </circle>
-                </svg>
-              </div>
+              <svg viewBox="0 0 280 80" className="w-full mb-7" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="sgfill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#F0D030" stopOpacity="0.35" />
+                    <stop offset="100%" stopColor="#F0D030" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="sgline" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#E02A2A" />
+                    <stop offset="45%" stopColor="#F0D030" />
+                    <stop offset="100%" stopColor="#1391C4" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,70 L20,60 L50,55 L80,48 L110,40 L140,32 L170,22 L200,15 L230,10 L260,8 L276,6 L276,80 L0,80 Z" fill="url(#sgfill)" />
+                <motion.path
+                  d="M0,70 L20,60 L50,55 L80,48 L110,40 L140,32 L170,22 L200,15 L230,10 L260,8 L276,6"
+                  stroke="url(#sgline)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  transition={{ duration: 1.4, ease: 'easeOut' }}
+                  viewport={{ once: true }}
+                />
+                <circle cx="276" cy="6" r="4" fill="#ffffff" />
+              </svg>
 
               {/* Metric bars */}
               <div className="space-y-4">
                 {metrics.map((m, i) => (
                   <div key={m.label} className="flex items-center gap-3">
-                    <span className="text-xs text-[#64748b] w-24 flex-shrink-0">{m.label}</span>
-                    <div className="flex-1 h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                    <span className="text-sm text-white/85 w-28 flex-shrink-0">{m.label}</span>
+                    <div className="flex-1 h-3 bg-white/10 rounded-full overflow-hidden">
                       <motion.div
-                        className={`h-full bg-gradient-to-r ${m.color} rounded-full relative`}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${m.pct}%` }}
-                        transition={{ duration: 1.2, delay: 0.4 + i * 0.12, ease: 'easeOut' }}
+                        className="h-full w-full origin-left rounded-full"
+                        style={{ background: spectrumAt(PILLAR_STEPS[i % PILLAR_STEPS.length] === 8 ? 3 : PILLAR_STEPS[i % PILLAR_STEPS.length]).fill }}
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: m.pct / 100 }}
+                        transition={{ duration: 1, delay: 0.2 + i * 0.1, ease: 'easeOut' }}
                         viewport={{ once: true }}
-                      >
-                        {/* Glow tip */}
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white blur-[2px]" />
-                      </motion.div>
+                      />
                     </div>
-                    <motion.span
-                      className="text-xs font-700 text-emerald-600 w-12 text-right flex-shrink-0"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 1.2 + i * 0.1 }}
-                      viewport={{ once: true }}
-                    >
+                    <span className="font-heading text-base font-700 text-white w-14 text-right flex-shrink-0">
                       {m.val}
-                    </motion.span>
+                    </span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs text-[#64748b]">Average client results after 6 months</span>
-                <span className="text-xs font-600 text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <div className="mt-7 pt-5 border-t border-white/15 flex flex-wrap items-center justify-between gap-3">
+                <span className="text-sm text-white/85">Average client results after 6 months</span>
+                <span className="text-xs font-600 text-[#0D246A] bg-white px-3 py-1 rounded-full">
                   Illustrative
                 </span>
               </div>
             </div>
 
-            {/* Floating rating badge */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute -top-6 -right-6 rounded-2xl px-5 py-3"
-              style={{
-                background: 'rgba(255,255,255,0.96)',
-                border: '1px solid rgba(107,63,160,0.2)',
-                boxShadow: '0 8px 32px rgba(107,63,160,0.2)',
-                backdropFilter: 'blur(20px)',
-              }}
-            >
-              <div className="text-xl font-heading font-800 gradient-text">4.9 / 5</div>
-              <div className="text-xs text-[#64748b]">Client Rating</div>
-            </motion.div>
+            {/* Rating badge */}
+            <div className="absolute top-0 right-4 lg:-right-4 rounded-2xl px-5 py-3 bg-[#F0D030] text-[#0D246A] rotate-2">
+              <div className="text-2xl font-heading font-800 leading-none">4.9 / 5</div>
+              <div className="text-xs font-500 mt-1">Client Rating</div>
+            </div>
 
-            {/* Floating notification */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
-              viewport={{ once: true }}
-              animate={{ y: [0, 6, 0] }}
-              className="absolute -bottom-6 -left-6 rounded-2xl px-4 py-3 flex items-center gap-3"
-              style={{
-                background: 'rgba(255,255,255,0.96)',
-                border: '1px solid rgba(34,197,94,0.25)',
-                boxShadow: '0 8px 24px rgba(34,197,94,0.15)',
-                backdropFilter: 'blur(20px)',
-              }}
-            >
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
-                <ArrowUp className="w-4 h-4 text-white" />
+            {/* Notification */}
+            <div className="absolute -bottom-5 left-4 lg:-left-4 rounded-2xl px-4 py-3 flex items-center gap-3 bg-white border border-[#0D246A]/15 shadow-[0_10px_30px_rgba(8,22,72,0.18)]">
+              <div className="w-8 h-8 rounded-xl bg-[#0A8547] flex items-center justify-center flex-shrink-0">
+                <ArrowUp className="w-4 h-4 text-white" aria-hidden="true" />
               </div>
               <div>
-                <div className="text-[#1B3172] text-xs font-700">New Lead Converted</div>
-                <div className="text-[#64748b] text-[11px]">2 minutes ago</div>
+                <div className="text-[#0D246A] text-xs font-700">New Lead Converted</div>
+                <div className="text-[#5C6685] text-[11px]">2 minutes ago</div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>

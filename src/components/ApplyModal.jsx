@@ -10,7 +10,7 @@ const API_KEY = import.meta.env.VITE_CRM_API_KEY || '059a24cc5a5913069b5a13149f1
 
 function Label({ children, required }) {
   return (
-    <label className="block text-sm font-semibold text-[#1B3172] mb-1.5">
+    <label className="block text-sm font-semibold text-[#0D246A] mb-1.5">
       {children}
       {required && <span className="text-red-500 ml-1">*</span>}
     </label>
@@ -18,7 +18,7 @@ function Label({ children, required }) {
 }
 
 const inputCls =
-  'w-full px-4 py-2.5 rounded-xl border border-[rgba(29,78,216,0.15)] bg-[#f8faff] text-[#334155] text-sm placeholder-[#94a3b8] focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)] transition-all';
+  'w-full px-4 py-2.5 rounded-xl border border-[rgba(19,118,180,0.15)] bg-[#FBFAF6] text-[#2B3557] text-sm placeholder-[#94a3b8] focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)] transition-all';
 
 function Field({ label, required, type = 'text', placeholder, value, onChange }) {
   return (
@@ -126,17 +126,17 @@ export default function ApplyModal({ job, onClose }) {
           transition={{ type: 'spring', damping: 28, stiffness: 320 }}
         >
           {/* Header */}
-          <div className="flex items-start justify-between px-6 pt-6 pb-4 border-b border-[rgba(29,78,216,0.08)] shrink-0">
+          <div className="flex items-start justify-between px-6 pt-6 pb-4 border-b border-[rgba(19,118,180,0.08)] shrink-0">
             <div>
-              <p className="text-[10px] font-bold tracking-widest uppercase text-[#64748b] mb-0.5">
+              <p className="text-[10px] font-bold tracking-widest uppercase text-[#5C6685] mb-0.5">
                 {isSEO ? 'Send Work Profile' : 'Apply Now'}
               </p>
-              <h2 className="font-heading font-bold text-[#1B3172] text-lg leading-tight">{job.title}</h2>
-              <p className="text-xs text-[#64748b] mt-0.5">Novelio Technologies · {isSEO ? 'Gurgaon, India' : 'US / India'}</p>
+              <h2 className="font-heading font-bold text-[#0D246A] text-lg leading-tight">{job.title}</h2>
+              <p className="text-xs text-[#5C6685] mt-0.5">Novelio Technologies · {isSEO ? 'Gurgaon, India' : 'US / India'}</p>
             </div>
             <button
               onClick={onClose}
-              className="w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-[#64748b] hover:text-[#1B3172] hover:border-[#1B3172] transition-all shrink-0 ml-4 cursor-pointer"
+              className="w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-[#5C6685] hover:text-[#0D246A] hover:border-[#0D246A] transition-all shrink-0 ml-4 cursor-pointer"
               aria-label="Close"
             >
               <X className="w-4 h-4" />
@@ -150,10 +150,10 @@ export default function ApplyModal({ job, onClose }) {
                 <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
                   <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="font-heading font-bold text-[#1B3172] text-xl mb-2">
+                <h3 className="font-heading font-bold text-[#0D246A] text-xl mb-2">
                   {isSEO ? 'Work Profile Sent!' : 'Application Submitted!'}
                 </h3>
-                <p className="text-[#64748b] text-sm leading-relaxed max-w-xs mx-auto mb-7">
+                <p className="text-[#5C6685] text-sm leading-relaxed max-w-xs mx-auto mb-7">
                   Your {isSEO ? 'work profile' : 'application'} for <strong>{job.title}</strong> has been sent to the Novelio team. We'll get back to you within 48 hours.
                 </p>
                 <button onClick={onClose} className="btn-primary px-8 py-3 text-sm cursor-pointer">
@@ -211,10 +211,10 @@ export default function ApplyModal({ job, onClose }) {
                     />
                     {isSEO && (
                       <div>
-                        <Label>Resume / CV <span className="font-normal text-[#64748b] text-xs">(Optional · PDF or Word · max 5 MB)</span></Label>
-                        <label className="flex items-center gap-3 w-full px-4 py-3 rounded-xl border-2 border-dashed border-[rgba(29,78,216,0.18)] bg-[#f8faff] cursor-pointer hover:border-[#1B3172] hover:bg-blue-50/30 transition-all group">
-                          <Upload className="w-4 h-4 text-[#64748b] group-hover:text-[#1B3172] transition-colors shrink-0" />
-                          <span className="text-sm text-[#64748b] group-hover:text-[#1B3172] transition-colors truncate">
+                        <Label>Resume / CV <span className="font-normal text-[#5C6685] text-xs">(Optional · PDF or Word · max 5 MB)</span></Label>
+                        <label className="flex items-center gap-3 w-full px-4 py-3 rounded-xl border-2 border-dashed border-[rgba(19,118,180,0.18)] bg-[#FBFAF6] cursor-pointer hover:border-[#0D246A] hover:bg-blue-50/30 transition-all group">
+                          <Upload className="w-4 h-4 text-[#5C6685] group-hover:text-[#0D246A] transition-colors shrink-0" />
+                          <span className="text-sm text-[#5C6685] group-hover:text-[#0D246A] transition-colors truncate">
                             {file ? file.name : 'Attach your CV if you have one'}
                           </span>
                           <input
@@ -247,10 +247,10 @@ export default function ApplyModal({ job, onClose }) {
 
                     {/* File upload */}
                     <div>
-                      <Label>Resume / CV <span className="font-normal text-[#64748b] text-xs">(PDF or Word · max 5 MB)</span></Label>
-                      <label className="flex items-center gap-3 w-full px-4 py-3 rounded-xl border-2 border-dashed border-[rgba(29,78,216,0.18)] bg-[#f8faff] cursor-pointer hover:border-[#1B3172] hover:bg-blue-50/30 transition-all group">
-                        <Upload className="w-4 h-4 text-[#64748b] group-hover:text-[#1B3172] transition-colors shrink-0" />
-                        <span className="text-sm text-[#64748b] group-hover:text-[#1B3172] transition-colors truncate">
+                      <Label>Resume / CV <span className="font-normal text-[#5C6685] text-xs">(PDF or Word · max 5 MB)</span></Label>
+                      <label className="flex items-center gap-3 w-full px-4 py-3 rounded-xl border-2 border-dashed border-[rgba(19,118,180,0.18)] bg-[#FBFAF6] cursor-pointer hover:border-[#0D246A] hover:bg-blue-50/30 transition-all group">
+                        <Upload className="w-4 h-4 text-[#5C6685] group-hover:text-[#0D246A] transition-colors shrink-0" />
+                        <span className="text-sm text-[#5C6685] group-hover:text-[#0D246A] transition-colors truncate">
                           {file ? file.name : 'Click to upload your resume'}
                         </span>
                         <input
@@ -276,11 +276,11 @@ export default function ApplyModal({ job, onClose }) {
 
           {/* Footer actions */}
           {status !== 'success' && (
-            <div className="shrink-0 px-6 py-4 border-t border-[rgba(29,78,216,0.08)] flex items-center justify-between gap-3 bg-white rounded-b-3xl">
+            <div className="shrink-0 px-6 py-4 border-t border-[rgba(19,118,180,0.08)] flex items-center justify-between gap-3 bg-white rounded-b-3xl">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-5 py-2.5 rounded-xl border border-[rgba(29,78,216,0.15)] text-sm font-semibold text-[#64748b] hover:text-[#1B3172] hover:border-[#1B3172] transition-all cursor-pointer"
+                className="px-5 py-2.5 rounded-xl border border-[rgba(19,118,180,0.15)] text-sm font-semibold text-[#5C6685] hover:text-[#0D246A] hover:border-[#0D246A] transition-all cursor-pointer"
               >
                 Cancel
               </button>
@@ -288,7 +288,7 @@ export default function ApplyModal({ job, onClose }) {
                 type="submit"
                 form="apply-form"
                 disabled={status === 'submitting'}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-sm font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-sm font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {status === 'submitting' ? (
                   <><Loader2 className="w-4 h-4 animate-spin" /> Sending…</>

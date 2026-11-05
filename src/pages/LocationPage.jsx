@@ -24,16 +24,16 @@ function FAQItem({ q, a, index }) {
     >
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-[#F8FAFF] transition-colors"
+        className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-[#FBFAF6] transition-colors"
       >
-        <span className="font-heading font-600 text-[#1B3172] text-base pr-4">{q}</span>
+        <span className="font-heading font-600 text-[#0D246A] text-base pr-4">{q}</span>
         {open
-          ? <ChevronUp className="w-5 h-5 text-[#6B3FA0] flex-shrink-0" />
-          : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />
+          ? <ChevronUp className="w-5 h-5 text-[#5E328C] flex-shrink-0" />
+          : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />
         }
       </button>
       {open && (
-        <div className="px-6 pb-6 bg-white text-[#475569] text-sm leading-relaxed border-t border-[#F1F5F9]">
+        <div className="px-6 pb-6 bg-white text-[#3F4A6B] text-sm leading-relaxed border-t border-[#F1F5F9]">
           <p className="pt-4">{a}</p>
         </div>
       )}
@@ -74,10 +74,10 @@ function StatePage({ stateData, cities }) {
               <MapPin className="w-3.5 h-3.5" />
               {stateData.stateCode} ({stateData.state})
             </div>
-            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
               AI-Powered Growth for <span className="gradient-text">{stateData.state}</span> Small Businesses
             </h1>
-            <p className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed mb-10">
+            <p className="text-[#3F4A6B] text-xl max-w-3xl mx-auto leading-relaxed mb-10">
               {stateData.description} We build and execute tailored digital growth plans (websites, local SEO, lead generation, and automation) that drive real revenue.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -98,25 +98,25 @@ function StatePage({ stateData, cities }) {
         <div className="container-xl">
           <motion.div className="text-center mb-12" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">Cities We Serve in {stateData.state}</div>
-            <h2 className="text-4xl font-heading font-800 text-[#1B3172]">Select Your City</h2>
+            <h2 className="text-4xl font-heading font-800 text-[#0D246A]">Select Your City</h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {cities.map((city, i) => (
               <motion.div key={city.citySlug} {...fadeUp(i * 0.1)}>
                 <Link
                   to={`/locations/${city.stateSlug}/${city.citySlug}`}
-                  className="group block bg-[#F8FAFF] border border-[#E2E8F0] rounded-2xl p-7 hover:border-[#6B3FA0] hover:shadow-lg transition-all duration-200"
+                  className="group block bg-[#FBFAF6] border border-[#E2E8F0] rounded-2xl p-7 hover:border-[#5E328C] hover:shadow-lg transition-all duration-200"
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-heading font-700 text-[#1B3172] group-hover:text-[#6B3FA0] transition-colors">
+                    <h3 className="text-xl font-heading font-700 text-[#0D246A] group-hover:text-[#5E328C] transition-colors">
                       {city.city}
                     </h3>
-                    <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                    <ArrowRight className="w-4 h-4 text-[#5C6685] group-hover:text-[#5E328C] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
                   </div>
-                  <p className="text-xs text-[#64748b] mb-3">Pop. {city.population} · {city.smallBusinesses} small businesses</p>
+                  <p className="text-xs text-[#5C6685] mb-3">Pop. {city.population} · {city.smallBusinesses} small businesses</p>
                   <div className="flex flex-wrap gap-1.5">
                     {city.industries.slice(0, 3).map((ind) => (
-                      <span key={ind} className="text-[10px] bg-[#EEF2FF] text-[#4338CA] rounded-full px-2.5 py-0.5 font-medium">{ind}</span>
+                      <span key={ind} className="text-[10px] bg-[#F3F2EC] text-[#42499D] rounded-full px-2.5 py-0.5 font-medium">{ind}</span>
                     ))}
                   </div>
                 </Link>
@@ -203,7 +203,7 @@ function CityPage({ city }) {
             </div>
           </motion.div>
 
-          <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+          <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
             {['AI-Powered', 'Digital', 'Growth', 'for'].map((w, i) => (
               <motion.span key={w}
                 initial={{ opacity: 0, y: 32, filter: 'blur(6px)' }}
@@ -219,7 +219,7 @@ function CityPage({ city }) {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.55, delay: 0.44 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
-                style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+                style={{ background: 'linear-gradient(135deg, #5E328C 0%, #1376B4 50%, #1391C4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
               >{w}</motion.span>
             ))}
             {' '}
@@ -237,7 +237,7 @@ function CityPage({ city }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.82 }}
-            className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed mb-8"
+            className="text-[#3F4A6B] text-xl max-w-3xl mx-auto leading-relaxed mb-8"
           >
             {city.localHook}
           </motion.p>
@@ -273,7 +273,7 @@ function CityPage({ city }) {
             {city.stats.map((stat, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center backdrop-blur-sm">
                 <div className="text-2xl font-heading font-800 gradient-text">{stat.value}</div>
-                <div className="text-xs text-[#64748b] mt-1">{stat.label}</div>
+                <div className="text-xs text-[#5C6685] mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -285,10 +285,10 @@ function CityPage({ city }) {
         <div className="container-xl">
           <motion.div className="text-center mb-14" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">The Challenge</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] mb-4">
               What's Holding {city.city} Businesses Back?
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               These are the three most common digital growth problems we see in {city.city}, and exactly what our audit uncovers in 30 minutes.
             </p>
           </motion.div>
@@ -298,13 +298,13 @@ function CityPage({ city }) {
               <motion.div
                 key={i}
                 {...fadeUp(i * 0.1)}
-                className="bg-[#F8FAFF] border border-[#E2E8F0] rounded-2xl p-8"
+                className="bg-[#FBFAF6] border border-[#E2E8F0] rounded-2xl p-8"
               >
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center mb-5">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#5E328C] to-[#1376B4] flex items-center justify-center mb-5">
                   <span className="text-white font-heading font-700 text-sm">0{i + 1}</span>
                 </div>
-                <h3 className="text-lg font-heading font-700 text-[#1B3172] mb-2">{point.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed">{point.desc}</p>
+                <h3 className="text-lg font-heading font-700 text-[#0D246A] mb-2">{point.title}</h3>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed">{point.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -317,10 +317,10 @@ function CityPage({ city }) {
         <div className="container-xl relative z-10">
           <motion.div className="text-center mb-14" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">Our Services for {city.city}</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] mb-4">
               Everything Your {city.city} Business Needs to Grow
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               We don't sell standalone services. We build a complete digital growth system tailored to your market in {city.city}, {city.stateCode}.
             </p>
           </motion.div>
@@ -330,22 +330,22 @@ function CityPage({ city }) {
               <motion.div key={service.id} {...fadeUp(i * 0.1)}>
                 <Link
                   to={service.slug}
-                  className="group flex items-start gap-5 bg-white border border-[#E2E8F0] rounded-2xl p-7 hover:border-[#6B3FA0] hover:shadow-lg transition-all duration-200"
+                  className="group flex items-start gap-5 bg-white border border-[#E2E8F0] rounded-2xl p-7 hover:border-[#5E328C] hover:shadow-lg transition-all duration-200"
                 >
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center flex-shrink-0`}>
                     <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-lg font-heading font-700 text-[#1B3172] group-hover:text-[#6B3FA0] transition-colors">
+                      <h3 className="text-lg font-heading font-700 text-[#0D246A] group-hover:text-[#5E328C] transition-colors">
                         {service.title} in {city.city}
                       </h3>
-                      <ArrowRight className="w-4 h-4 text-[#64748b] group-hover:text-[#6B3FA0] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1 ml-2" />
+                      <ArrowRight className="w-4 h-4 text-[#5C6685] group-hover:text-[#5E328C] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1 ml-2" />
                     </div>
-                    <p className="text-[#475569] text-sm leading-relaxed mb-3">{service.description}</p>
+                    <p className="text-[#3F4A6B] text-sm leading-relaxed mb-3">{service.description}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {service.features.slice(0, 3).map((f) => (
-                        <span key={f} className="inline-flex items-center gap-1 text-[10px] text-[#4338CA] bg-[#EEF2FF] border border-[#C7D2FE] rounded-full px-2.5 py-0.5">
+                        <span key={f} className="inline-flex items-center gap-1 text-[10px] text-[#42499D] bg-[#F3F2EC] border border-[#D9D7CC] rounded-full px-2.5 py-0.5">
                           <CheckCircle className="w-2.5 h-2.5" />
                           {f}
                         </span>
@@ -372,24 +372,24 @@ function CityPage({ city }) {
           <motion.div {...fadeUp(0)} className="max-w-3xl mx-auto text-center">
             <div className="section-label mx-auto mb-6">What Our Clients Say</div>
 
-            <div className="bg-[#F8FAFF] border border-[#E2E8F0] rounded-3xl p-10">
+            <div className="bg-[#FBFAF6] border border-[#E2E8F0] rounded-3xl p-10">
               <div className="flex justify-center gap-0.5 mb-6">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-amber-500 fill-amber-500" />
                 ))}
               </div>
 
-              <blockquote className="text-xl text-[#1B3172] font-medium leading-relaxed mb-8 italic">
+              <blockquote className="text-xl text-[#0D246A] font-medium leading-relaxed mb-8 italic">
                 "{city.testimonial.quote}"
               </blockquote>
 
               <div className="flex items-center justify-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center text-white font-heading font-700 text-sm flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#5E328C] to-[#1376B4] flex items-center justify-center text-white font-heading font-700 text-sm flex-shrink-0">
                   {city.testimonial.name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div className="text-left">
-                  <div className="font-heading font-700 text-[#1B3172] text-sm">{city.testimonial.name}</div>
-                  <div className="text-[#64748b] text-xs">{city.testimonial.role} · {city.testimonial.company}</div>
+                  <div className="font-heading font-700 text-[#0D246A] text-sm">{city.testimonial.name}</div>
+                  <div className="text-[#5C6685] text-xs">{city.testimonial.role} · {city.testimonial.company}</div>
                 </div>
                 <div className="ml-4 pl-4 border-l border-[#E2E8F0]">
                   <span className="text-xs font-medium text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1">
@@ -408,7 +408,7 @@ function CityPage({ city }) {
         <div className="container-xl relative z-10">
           <motion.div className="text-center mb-12" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">{city.city} Market</div>
-            <h2 className="text-4xl font-heading font-800 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-800 text-[#0D246A] mb-4">
               Why {city.city} Businesses Can't Afford to Ignore Local SEO
             </h2>
           </motion.div>
@@ -416,28 +416,28 @@ function CityPage({ city }) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
             <motion.div {...fadeUp(0)} className="bg-white border border-[#E2E8F0] rounded-2xl p-7 text-center">
               <div className="text-3xl font-heading font-800 gradient-text mb-1">{city.population}</div>
-              <div className="text-sm text-[#64748b]">City Population</div>
+              <div className="text-sm text-[#5C6685]">City Population</div>
             </motion.div>
             <motion.div {...fadeUp(0.1)} className="bg-white border border-[#E2E8F0] rounded-2xl p-7 text-center">
               <div className="text-3xl font-heading font-800 gradient-text mb-1">{city.smallBusinesses}</div>
-              <div className="text-sm text-[#64748b]">Small Businesses</div>
+              <div className="text-sm text-[#5C6685]">Small Businesses</div>
             </motion.div>
             <motion.div {...fadeUp(0.2)} className="bg-white border border-[#E2E8F0] rounded-2xl p-7 text-center">
               <div className="text-3xl font-heading font-800 gradient-text mb-1">91%</div>
-              <div className="text-sm text-[#64748b]">Never Click Past Page 1</div>
+              <div className="text-sm text-[#5C6685]">Never Click Past Page 1</div>
             </motion.div>
             <motion.div {...fadeUp(0.3)} className="bg-white border border-[#E2E8F0] rounded-2xl p-7 text-center">
               <div className="text-3xl font-heading font-800 gradient-text mb-1">76%</div>
-              <div className="text-sm text-[#64748b]">Visit Within 24 Hours</div>
+              <div className="text-sm text-[#5C6685]">Visit Within 24 Hours</div>
             </motion.div>
           </div>
 
           {/* Industry tags */}
           <motion.div {...fadeUp(0.4)} className="text-center">
-            <p className="text-sm text-[#64748b] mb-4">Top industries we serve in {city.city}:</p>
+            <p className="text-sm text-[#5C6685] mb-4">Top industries we serve in {city.city}:</p>
             <div className="flex flex-wrap justify-center gap-3">
               {city.industries.map((ind) => (
-                <span key={ind} className="text-sm text-[#4338CA] bg-[#EEF2FF] border border-[#C7D2FE] rounded-full px-4 py-1.5 font-medium">
+                <span key={ind} className="text-sm text-[#42499D] bg-[#F3F2EC] border border-[#D9D7CC] rounded-full px-4 py-1.5 font-medium">
                   {ind}
                 </span>
               ))}
@@ -451,10 +451,10 @@ function CityPage({ city }) {
         <div className="container-xl">
           <motion.div className="text-center mb-14" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">FAQ</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] mb-4">
               Frequently Asked Questions: {city.city}, {city.stateCode}
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Common questions from small business owners in {city.city} about digital marketing and local SEO.
             </p>
           </motion.div>
@@ -468,27 +468,27 @@ function CityPage({ city }) {
       </section>
 
       {/* ── Internal links ── */}
-      <section className="py-10 bg-[#F8FAFF] border-y border-[#E2E8F0]">
+      <section className="py-10 bg-[#FBFAF6] border-y border-[#E2E8F0]">
         <div className="container-xl">
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
-            <Link to="/locations" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors flex items-center gap-1.5">
+            <Link to="/locations" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />
               All Locations
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to={`/locations/${city.stateSlug}`} className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to={`/locations/${city.stateSlug}`} className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors">
               More in {city.state}
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/services/website-development" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to="/services/website-development" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors">
               Website Development
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/services/google-business-profile" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to="/services/google-business-profile" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors">
               Google Business Profile
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/contact" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to="/contact" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors">
               Contact Us
             </Link>
           </div>

@@ -67,17 +67,17 @@ export default function UnpublishedPage() {
       {building && (
         <div className="bg-white rounded-2xl border border-slate-200 p-5 mb-4">
           <div className="flex items-center gap-3 mb-2">
-            <Loader2 className="w-4 h-4 text-[#1B3172] animate-spin shrink-0" />
-            <p className="font-heading font-800 text-[#1B3172]">Publishing to the live site</p>
+            <Loader2 className="w-4 h-4 text-[#0D246A] animate-spin shrink-0" />
+            <p className="font-heading font-800 text-[#0D246A]">Publishing to the live site</p>
           </div>
-          <p className="text-sm text-[#64748b]">
+          <p className="text-sm text-[#5C6685]">
             The whole site is being rebuilt so every page stays fast and visible to Google. This
             takes about four minutes. You can keep editing — anything you change now goes out with
             the next publish.
           </p>
           {deploy.run_url && (
             <a href={deploy.run_url} target="_blank" rel="noreferrer"
-               className="inline-flex items-center gap-1 text-xs font-semibold text-[#1B3172] mt-3 hover:underline">
+               className="inline-flex items-center gap-1 text-xs font-semibold text-[#0D246A] mt-3 hover:underline">
               Watch the build <ExternalLink className="w-3 h-3" />
             </a>
           )}
@@ -112,8 +112,8 @@ export default function UnpublishedPage() {
           <div className="w-11 h-11 rounded-full bg-green-50 grid place-items-center mx-auto mb-3">
             <Check className="w-5 h-5 text-green-600" />
           </div>
-          <p className="font-heading font-800 text-[#1B3172] mb-1">Everything is published</p>
-          <p className="text-sm text-[#64748b]">
+          <p className="font-heading font-800 text-[#0D246A] mb-1">Everything is published</p>
+          <p className="text-sm text-[#5C6685]">
             The live site matches what is in the panel.
           </p>
           {deploy?.created_at && (
@@ -126,7 +126,7 @@ export default function UnpublishedPage() {
           )}
           <div className="mt-5">
             <Link to="/admin/blog/new"
-              className="text-sm font-semibold text-[#1B3172] hover:underline">
+              className="text-sm font-semibold text-[#0D246A] hover:underline">
               Write a new blog post
             </Link>
           </div>
@@ -139,15 +139,15 @@ export default function UnpublishedPage() {
               return (
                 <div key={p.path} className="flex items-center gap-3 px-4 py-3 border-b border-slate-100 last:border-0">
                   <div className={`w-8 h-8 rounded-lg grid place-items-center shrink-0 ${
-                    p.deleted ? 'bg-red-50 text-red-600' : 'bg-[#EEF2FF] text-[#1B3172]'
+                    p.deleted ? 'bg-red-50 text-red-600' : 'bg-[#F3F2EC] text-[#0D246A]'
                   }`}>
                     {p.deleted ? <Trash2 className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-[#1B3172] truncate">
+                    <p className="text-sm font-semibold text-[#0D246A] truncate">
                       {area}
-                      <span className="font-normal text-[#64748b]"> — {label}</span>
+                      <span className="font-normal text-[#5C6685]"> — {label}</span>
                     </p>
                     <p className="text-xs text-[#94a3b8]">
                       {p.deleted ? 'Will be removed from the site' : 'Edited'}
@@ -165,7 +165,7 @@ export default function UnpublishedPage() {
           {can('content.publish') && !building && (
             <div className="bg-white rounded-2xl border border-slate-200 p-5">
               <label className="block mb-3">
-                <span className="block text-xs font-semibold text-[#475569] mb-1.5">
+                <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">
                   What changed? <span className="font-normal text-[#94a3b8]">(optional)</span>
                 </span>
                 <input
@@ -196,7 +196,7 @@ export default function UnpublishedPage() {
           )}
 
           {!can('content.publish') && (
-            <p className="text-sm text-[#64748b]">
+            <p className="text-sm text-[#5C6685]">
               Your account can edit but not publish. Ask an admin to publish these changes.
             </p>
           )}

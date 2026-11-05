@@ -40,7 +40,7 @@ export default function FooterPage() {
       </Card>
 
       <Card title="Contact block and services list" description="The upper part of the footer.">
-        <p className="text-sm text-[#64748b]">
+        <p className="text-sm text-[#5C6685]">
           Your address, phone and social icons come from <strong>Contact details</strong>, and the
           services column is generated from your services, so both stay correct on their own.
         </p>

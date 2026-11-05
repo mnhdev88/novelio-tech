@@ -234,10 +234,10 @@ export default function CheckoutPage() {
   return (
     <main className="pt-20">
       <SEO title={`Checkout: ${plan.name} plan`} canonical="/checkout" noindex />
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden min-h-[80vh]">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden min-h-[80vh]">
         <div className="line-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10 max-w-5xl">
-          <Link to="/pricing" className="inline-flex items-center gap-1.5 text-sm text-[#64748b] hover:text-[#1B3172] mb-6">
+          <Link to="/pricing" className="inline-flex items-center gap-1.5 text-sm text-[#5C6685] hover:text-[#0D246A] mb-6">
             <ArrowLeft className="w-4 h-4" /> Back to plans
           </Link>
 
@@ -265,13 +265,13 @@ export default function CheckoutPage() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
               className="lg:col-span-3 space-y-6"
             >
-              <h1 className="font-heading font-800 text-[#1B3172] text-2xl sm:text-3xl">Complete your subscription</h1>
+              <h1 className="font-heading font-800 text-[#0D246A] text-2xl sm:text-3xl">Complete your subscription</h1>
 
               {/* Currency — only shown when a gateway can actually take rupees */}
               {currencyOptions.length > 1 && (
                 <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                  <h2 className="font-heading font-700 text-[#1B3172] mb-1">Currency</h2>
-                  <p className="text-sm text-[#64748b] mb-4">
+                  <h2 className="font-heading font-700 text-[#0D246A] mb-1">Currency</h2>
+                  <p className="text-sm text-[#5C6685] mb-4">
                     Pay in rupees to Novelio India (GST applies) or in dollars to Novelio Technologies LLC.
                   </p>
                   <div className="grid grid-cols-2 gap-3">
@@ -282,12 +282,12 @@ export default function CheckoutPage() {
                           key={c}
                           type="button"
                           onClick={() => { setCurrency(c); setPayError(''); }}
-                          className={`text-left p-4 rounded-xl border-2 transition-all cursor-pointer ${active ? 'border-brand-purple bg-[#f5f3ff]' : 'border-slate-200 hover:border-slate-300'}`}
+                          className={`text-left p-4 rounded-xl border-2 transition-all cursor-pointer ${active ? 'border-brand-purple bg-[#F3F2EC]' : 'border-slate-200 hover:border-slate-300'}`}
                         >
-                          <span className="font-semibold text-[#1B3172]">
+                          <span className="font-semibold text-[#0D246A]">
                             {c === 'INR' ? '₹ Indian Rupee' : '$ US Dollar'}
                           </span>
-                          <span className="block text-sm text-[#64748b] mt-1">
+                          <span className="block text-sm text-[#5C6685] mt-1">
                             {c === 'INR' ? 'Cards, UPI, net banking · +18% GST' : 'Cards & PayPal balance'}
                           </span>
                         </button>
@@ -299,7 +299,7 @@ export default function CheckoutPage() {
 
               {/* Billing cycle */}
               <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                <h2 className="font-heading font-700 text-[#1B3172] mb-4">Billing cycle</h2>
+                <h2 className="font-heading font-700 text-[#0D246A] mb-4">Billing cycle</h2>
                 <div className="grid grid-cols-2 gap-3">
                   {['monthly', 'yearly'].map((b) => {
                     const active = billing === b;
@@ -310,17 +310,17 @@ export default function CheckoutPage() {
                       <button
                         key={b}
                         onClick={() => setBilling(b)}
-                        className={`text-left p-4 rounded-xl border-2 transition-all cursor-pointer ${active ? 'border-brand-purple bg-[#f5f3ff]' : 'border-slate-200 hover:border-slate-300'}`}
+                        className={`text-left p-4 rounded-xl border-2 transition-all cursor-pointer ${active ? 'border-brand-purple bg-[#F3F2EC]' : 'border-slate-200 hover:border-slate-300'}`}
                       >
                         <span className="flex items-center justify-between">
-                          <span className="font-semibold text-[#1B3172] capitalize">{b}</span>
+                          <span className="font-semibold text-[#0D246A] capitalize">{b}</span>
                           {b === 'yearly' && saving > 0 && (
                             <span className="text-[11px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">
                               Save {formatMinor(saving, currency)}
                             </span>
                           )}
                         </span>
-                        <span className="block text-sm text-[#64748b] mt-1">
+                        <span className="block text-sm text-[#5C6685] mt-1">
                           {b === 'yearly'
                             ? `${formatMinor(charge.yearlyTotalMinor, currency)} for 12 months`
                             : charge.isTermPlan
@@ -335,20 +335,20 @@ export default function CheckoutPage() {
 
               {/* Add-ons */}
               <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                <h2 className="font-heading font-700 text-[#1B3172] mb-1">Add-ons <span className="font-normal text-[#64748b] text-sm">(optional)</span></h2>
-                <p className="text-sm text-[#64748b] mb-4">Recurring upsells billed monthly alongside your plan.</p>
+                <h2 className="font-heading font-700 text-[#0D246A] mb-1">Add-ons <span className="font-normal text-[#5C6685] text-sm">(optional)</span></h2>
+                <p className="text-sm text-[#5C6685] mb-4">Recurring upsells billed monthly alongside your plan.</p>
                 <div className="space-y-2.5">
                   {PRICING_ADDONS.map((a) => {
                     const checked = addonIds.includes(a.id);
                     return (
-                      <label key={a.id} className={`flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${checked ? 'border-brand-purple bg-[#f5f3ff]' : 'border-slate-200 hover:border-slate-300'}`}>
-                        <input type="checkbox" checked={checked} onChange={() => toggleAddon(a.id)} className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#1B3172] focus:ring-[#1B3172] cursor-pointer shrink-0" />
+                      <label key={a.id} className={`flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${checked ? 'border-brand-purple bg-[#F3F2EC]' : 'border-slate-200 hover:border-slate-300'}`}>
+                        <input type="checkbox" checked={checked} onChange={() => toggleAddon(a.id)} className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#0D246A] focus:ring-[#0D246A] cursor-pointer shrink-0" />
                         <span className="flex-1">
                           <span className="flex items-center justify-between gap-2">
-                            <span className="font-semibold text-[#334155] text-sm">{a.name}</span>
-                            <span className="font-bold text-[#1B3172] text-sm whitespace-nowrap">+{formatAmount(addonPrice(a, currency), currency)}/mo</span>
+                            <span className="font-semibold text-[#2B3557] text-sm">{a.name}</span>
+                            <span className="font-bold text-[#0D246A] text-sm whitespace-nowrap">+{formatAmount(addonPrice(a, currency), currency)}/mo</span>
                           </span>
-                          <span className="block text-xs text-[#64748b] mt-0.5">{a.desc}</span>
+                          <span className="block text-xs text-[#5C6685] mt-0.5">{a.desc}</span>
                         </span>
                       </label>
                     );
@@ -359,18 +359,18 @@ export default function CheckoutPage() {
               {/* Payment */}
               {anyGatewayEnabled ? (
                 <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                  <h2 className="font-heading font-700 text-[#1B3172] mb-2 flex items-center gap-2">
+                  <h2 className="font-heading font-700 text-[#0D246A] mb-2 flex items-center gap-2">
                     <Lock className="w-5 h-5 text-brand-purple" /> Payment
                   </h2>
                   {user ? (
-                    <p className="text-sm text-[#64748b]">
+                    <p className="text-sm text-[#5C6685]">
                       Review your order on the right, then complete your payment securely with
                       {bothMethods ? ' PayPal or Razorpay' : activeMethod === 'razorpay' ? ' Razorpay' : ' PayPal'}
                       {currency === 'INR' ? ' (cards, UPI and net banking accepted)' : ' (debit/credit cards accepted)'}
                       . You’ll confirm the exact amount before paying.
                     </p>
                   ) : (
-                    <p className="text-sm text-[#64748b]">
+                    <p className="text-sm text-[#5C6685]">
                       <Link to={`/login?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`} className="text-brand-purple font-semibold underline">Sign in</Link>{' '}
                       or{' '}
                       <Link to={`/signup?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`} className="text-brand-purple font-semibold underline">create an account</Link>{' '}
@@ -380,19 +380,19 @@ export default function CheckoutPage() {
                 </div>
               ) : (
                 <form id="pay-form" onSubmit={handlePay} className="bg-white rounded-2xl border border-slate-200 p-6">
-                  <h2 className="font-heading font-700 text-[#1B3172] mb-4 flex items-center gap-2">
+                  <h2 className="font-heading font-700 text-[#0D246A] mb-4 flex items-center gap-2">
                     <CreditCard className="w-5 h-5 text-brand-purple" /> Payment details
                   </h2>
                   <div className="space-y-3">
                     <input required placeholder="Name on card" value={card.name} onChange={setCardField('name')}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#FBFAF6] text-sm focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)]" />
                     <input required placeholder="Card number (e.g. 4242 4242 4242 4242)" value={card.number} onChange={setCardField('number')}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#FBFAF6] text-sm focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)]" />
                     <div className="grid grid-cols-2 gap-3">
                       <input required placeholder="MM / YY" value={card.exp} onChange={setCardField('exp')}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#FBFAF6] text-sm focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)]" />
                       <input required placeholder="CVC" value={card.cvc} onChange={setCardField('cvc')}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#FBFAF6] text-sm focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)]" />
                     </div>
                   </div>
                 </form>
@@ -401,7 +401,7 @@ export default function CheckoutPage() {
               {/* Payment aggregators (Razorpay in particular) require the terms
                   and refund policy to be reachable from the payment page itself,
                   not only from the footer. */}
-              <p className="text-xs text-[#64748b] text-center">
+              <p className="text-xs text-[#5C6685] text-center">
                 By completing this payment you agree to our{' '}
                 <Link to="/terms" className="text-brand-purple underline">Terms of Service</Link>{' '}
                 and{' '}
@@ -414,11 +414,11 @@ export default function CheckoutPage() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
               className="lg:col-span-2 lg:sticky lg:top-28"
             >
-              <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_8px_32px_rgba(27,49,114,0.08)]">
-                <h2 className="font-heading font-700 text-[#1B3172] mb-4">Order summary</h2>
+              <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_8px_32px_rgba(13,36,106,0.08)]">
+                <h2 className="font-heading font-700 text-[#0D246A] mb-4">Order summary</h2>
 
                 <div className="flex items-center justify-between text-sm mb-2">
-                  <span className="text-[#475569]">
+                  <span className="text-[#3F4A6B]">
                     {plan.name} plan
                     {charge.isYearly
                       ? ' (12 months)'
@@ -426,12 +426,12 @@ export default function CheckoutPage() {
                         ? ` (${charge.upfrontMonths} months upfront)`
                         : ' (monthly)'}
                   </span>
-                  <span className="font-semibold text-[#1B3172]">{formatMinor(charge.planDueMinor, currency)}</span>
+                  <span className="font-semibold text-[#0D246A]">{formatMinor(charge.planDueMinor, currency)}</span>
                 </div>
                 {addonIds.map((id) => {
                   const a = PRICING_ADDONS.find((x) => x.id === id);
                   return (
-                    <div key={id} className="flex items-center justify-between text-sm mb-2 text-[#64748b]">
+                    <div key={id} className="flex items-center justify-between text-sm mb-2 text-[#5C6685]">
                       <span>{a.name}</span>
                       <span>+{formatAmount(addonPrice(a, currency), currency)}/mo</span>
                     </div>
@@ -444,11 +444,11 @@ export default function CheckoutPage() {
                 {charge.gstMinor > 0 && (
                   <>
                     <div className="border-t border-slate-100 my-3" />
-                    <div className="flex items-center justify-between text-sm mb-2 text-[#64748b]">
+                    <div className="flex items-center justify-between text-sm mb-2 text-[#5C6685]">
                       <span>Subtotal</span>
                       <span>{formatMinor(charge.subtotalMinor, currency)}</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm mb-2 text-[#64748b]">
+                    <div className="flex items-center justify-between text-sm mb-2 text-[#5C6685]">
                       <span>GST ({charge.gstPercent}%)</span>
                       <span>+{formatMinor(charge.gstMinor, currency)}</span>
                     </div>
@@ -457,20 +457,20 @@ export default function CheckoutPage() {
 
                 <div className="border-t border-slate-100 my-4" />
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[#475569] text-sm">
+                  <span className="text-[#3F4A6B] text-sm">
                     {charge.isYearly ? 'Then recurring' : 'Then monthly'}
                   </span>
-                  <span className="font-semibold text-[#1B3172]">
+                  <span className="font-semibold text-[#0D246A]">
                     {charge.isYearly
                       ? (charge.addonMinor > 0 ? `${formatMinor(charge.addonMinor, currency)}/mo` : '—')
                       : `${formatMinor(charge.monthlyMinor, currency)}/mo`}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="font-heading font-700 text-[#1B3172]">Due today</span>
-                  <span className="font-heading font-800 text-[#1B3172] text-xl">{formatMinor(charge.totalMinor, currency)}</span>
+                  <span className="font-heading font-700 text-[#0D246A]">Due today</span>
+                  <span className="font-heading font-800 text-[#0D246A] text-xl">{formatMinor(charge.totalMinor, currency)}</span>
                 </div>
-                <p className="text-xs text-[#64748b] mt-1 leading-relaxed">
+                <p className="text-xs text-[#5C6685] mt-1 leading-relaxed">
                   {charge.isYearly
                     ? `Your full 12 months, paid once.${charge.addonMinor > 0 ? ' Add-ons continue billing monthly.' : ''}`
                     : charge.isTermPlan
@@ -484,14 +484,14 @@ export default function CheckoutPage() {
                     {!user ? (
                       <Link
                         to={`/login?redirect=${encodeURIComponent(`/checkout?plan=${planId}&billing=${billing}`)}`}
-                        className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all cursor-pointer"
+                        className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-[15px] font-semibold transition-all cursor-pointer"
                       >
                         <Lock className="w-4 h-4" /> Sign in to pay {formatMinor(charge.totalMinor, currency)} <ArrowRight className="w-4 h-4" />
                       </Link>
                     ) : (
                       <>
                         {status === 'processing' && (
-                          <div className="mb-3 flex items-center justify-center gap-2 text-sm text-[#475569]">
+                          <div className="mb-3 flex items-center justify-center gap-2 text-sm text-[#3F4A6B]">
                             <Loader2 className="w-4 h-4 animate-spin" /> Confirming your payment…
                           </div>
                         )}
@@ -507,7 +507,7 @@ export default function CheckoutPage() {
                                 key={m}
                                 type="button"
                                 onClick={() => { setPayMethod(m); setPayError(''); }}
-                                className={`py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${activeMethod === m ? 'bg-white text-[#1B3172] shadow-sm' : 'text-[#64748b] hover:text-[#1B3172]'}`}
+                                className={`py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${activeMethod === m ? 'bg-white text-[#0D246A] shadow-sm' : 'text-[#5C6685] hover:text-[#0D246A]'}`}
                               >
                                 {label}
                               </button>
@@ -552,7 +552,7 @@ export default function CheckoutPage() {
                 ) : (
                   <button
                     type="submit" form="pay-form" disabled={status === 'processing'}
-                    className="w-full mt-5 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                    className="w-full mt-5 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-[15px] font-semibold transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
                   >
                     {status === 'processing'
                       ? <><Loader2 className="w-4 h-4 animate-spin" /> Processing…</>
@@ -562,7 +562,7 @@ export default function CheckoutPage() {
 
                 <ul className="mt-5 space-y-2">
                   {['Website included in your plan', 'We confirm scope before billing', 'Full ownership after 12 months'].map((t) => (
-                    <li key={t} className="flex items-center gap-2 text-xs text-[#64748b]">
+                    <li key={t} className="flex items-center gap-2 text-xs text-[#5C6685]">
                       <Check className="w-3.5 h-3.5 text-green-600 shrink-0" /> {t}
                     </li>
                   ))}

@@ -1,36 +1,38 @@
-import { ArrowRight } from 'lucide-react';
 import { HOMEPAGE } from '../../data/siteData';
+import { spectrumAt, SPECTRUM } from '../shared/spectrum';
 
 const CYCLE = HOMEPAGE.growthCycle.steps;
 
 // "A customer does not buy in one step — they move through a journey."
+// Each step walks further along the logo's spectrum, so the journey reads as one
+// unbroken line from the first touch to the referral.
+const colourFor = (i) => spectrumAt(Math.round((i / Math.max(CYCLE.length - 1, 1)) * (SPECTRUM.length - 1)));
 
 export default function GrowthCycle() {
   return (
-    <section className="section-pad-sm bg-[#f8faff]">
+    <section className="on-dark section-pad bg-[#0D246A] text-white">
       <div className="container-xl">
-        <div className="max-w-4xl mx-auto rounded-2xl bg-[#1B3172] text-white p-8 sm:p-12 text-center">
-          <h2 className="text-2xl sm:text-3xl font-heading font-800 mb-3 text-white">
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-6 lg:gap-16 items-end mb-12">
+          <h2 className="text-4xl sm:text-5xl font-heading font-800 text-white leading-[1.05]">
             The Full Customer Growth Cycle
           </h2>
-          <p className="text-white/70 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/85 text-base sm:text-lg leading-relaxed">
             A customer does not buy in one step; they move through a journey. If one step is weak,
             your business loses money.
           </p>
-
-          <div className="flex flex-wrap justify-center gap-2.5 mt-8">
-            {CYCLE.map((step, i) => (
-              <div key={step} className="flex items-center gap-2.5">
-                <span className="rounded-full bg-white/10 border border-white/15 px-3.5 py-1.5 text-xs sm:text-sm">
-                  {step}
-                </span>
-                {i < CYCLE.length - 1 && (
-                  <ArrowRight className="w-3.5 h-3.5 text-white/30 shrink-0" />
-                )}
-              </div>
-            ))}
-          </div>
         </div>
+
+        <ol className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 list-none p-0 m-0">
+          {CYCLE.map((step, i) => {
+            const colour = colourFor(i);
+            return (
+              <li key={step} className="rounded-2xl p-4 lg:p-5 min-h-[112px] flex flex-col justify-between" style={{ background: colour.fill, color: colour.fg }}>
+                <span className="font-heading font-700 text-sm">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-heading font-700 text-lg leading-tight">{step}</span>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

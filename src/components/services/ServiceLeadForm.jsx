@@ -93,10 +93,10 @@ export default function ServiceLeadForm({
   };
 
   const inputClass = (field) =>
-    `w-full bg-white border rounded-xl px-4 py-3 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:ring-2 transition-all text-[15px] ${
+    `w-full bg-white border rounded-xl px-4 py-3 text-[#0D246A] placeholder-slate-400 focus:outline-none focus:ring-2 transition-all text-[15px] ${
       errors[field] ? 'border-red-500/60 focus:border-red-500 focus:ring-red-500/20' : 'border-slate-200/80 focus:border-brand-purple/60 focus:ring-brand-purple/20'
     }`;
-  const labelClass = 'block text-xs font-medium text-[#475569] uppercase tracking-widest mb-1.5';
+  const labelClass = 'block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-1.5';
 
   if (success) {
     return (
@@ -104,8 +104,8 @@ export default function ServiceLeadForm({
         <div className="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center mx-auto mb-4 shadow-glow">
           <Check className="w-7 h-7 text-white" />
         </div>
-        <h2 className="text-2xl font-heading font-700 text-[#1B3172] mb-2">Request received</h2>
-        <p className="text-[#475569] text-sm leading-relaxed">
+        <h2 className="text-2xl font-heading font-700 text-[#0D246A] mb-2">Request received</h2>
+        <p className="text-[#3F4A6B] text-sm leading-relaxed">
           Thanks, {form.name.split(' ')[0] || 'there'}. We'll review your website and get back to you
           by email with the biggest opportunities we find.
         </p>
@@ -115,8 +115,8 @@ export default function ServiceLeadForm({
 
   return (
     <div className="glass-card gradient-border rounded-3xl p-6 sm:p-8">
-      <h2 className="text-2xl font-heading font-700 text-[#1B3172] mb-1">{title}</h2>
-      {subtitle && <p className="text-[#475569] text-sm leading-relaxed mb-5">{subtitle}</p>}
+      <h2 className="text-2xl font-heading font-700 text-[#0D246A] mb-1">{title}</h2>
+      {subtitle && <p className="text-[#3F4A6B] text-sm leading-relaxed mb-5">{subtitle}</p>}
 
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
         {/* Honeypot: hidden from people, filled by bots. */}
@@ -167,7 +167,7 @@ export default function ServiceLeadForm({
               onChange={(e) => { setSmsConsent(e.target.checked); if (errors.consent) setErrors((er) => ({ ...er, consent: '' })); }}
               className="mt-0.5 w-4 h-4 rounded border-slate-300 text-brand-purple focus:ring-brand-purple cursor-pointer shrink-0"
             />
-            <span className="text-xs text-[#64748b] leading-relaxed">
+            <span className="text-xs text-[#5C6685] leading-relaxed">
               I agree to receive phone calls and text messages (SMS) from Novelio Technologies about my
               inquiry. Message frequency varies; message and data rates may apply. Reply STOP to opt out,
               HELP for help.
@@ -191,7 +191,7 @@ export default function ServiceLeadForm({
           )}
         </button>
 
-        <p className="flex items-start justify-center gap-1.5 text-center text-xs text-[#64748b] leading-relaxed">
+        <p className="flex items-start justify-center gap-1.5 text-center text-xs text-[#5C6685] leading-relaxed">
           <Lock className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
           <span>
             No obligation. We never sell or share your details. See our{' '}

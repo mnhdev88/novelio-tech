@@ -3,17 +3,17 @@ import { motion } from 'framer-motion';
 import { PROCESS_STEPS } from '../../data/siteData';
 
 const STEP_COLORS = [
-  { from: '#6B3FA0', to: '#1D4ED8', glow: 'rgba(107,63,160,0.35)' },
-  { from: '#1D4ED8', to: '#0EA5E9', glow: 'rgba(29,78,216,0.35)' },
-  { from: '#0EA5E9', to: '#22C55E', glow: 'rgba(14,165,233,0.35)' },
-  { from: '#22C55E', to: '#FACC15', glow: 'rgba(34,197,94,0.35)' },
+  { from: '#5E328C', to: '#1376B4', glow: 'rgba(94,50,140,0.35)' },
+  { from: '#1376B4', to: '#1391C4', glow: 'rgba(19,118,180,0.35)' },
+  { from: '#1391C4', to: '#0A924E', glow: 'rgba(19,145,196,0.35)' },
+  { from: '#0A924E', to: '#F0D030', glow: 'rgba(10,146,78,0.35)' },
 ];
 
 export default function ProcessSection() {
   const [active, setActive] = useState(null);
 
   return (
-    <section id="how-it-works" className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+    <section id="how-it-works" className="section-pad bg-[#F3F2EC] relative overflow-hidden">
       <div className="dot-grid absolute inset-0 opacity-40" />
       {/* Top orb */}
       <div className="orb orb-purple w-[500px] h-[500px] top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-8" />
@@ -27,7 +27,7 @@ export default function ProcessSection() {
             const a = Math.PI/180*(60*i-30);
             return `${x+24*Math.cos(a)},${y+24*Math.sin(a)}`;
           }).join(' ');
-          return <polygon key={`${row}-${col}`} points={pts} stroke="#6B3FA0" strokeWidth="0.8" fill="none" />;
+          return <polygon key={`${row}-${col}`} points={pts} stroke="#5E328C" strokeWidth="0.8" fill="none" />;
         }))}
       </svg>
 
@@ -40,10 +40,10 @@ export default function ProcessSection() {
           className="text-center mb-16"
         >
           <div className="section-label mx-auto mb-4">How It Works</div>
-          <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
+          <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-4">
             Your Growth Journey Starts Here: <span className="gradient-text">Zero Risk</span>
           </h2>
-          <p className="text-[#475569] text-lg max-w-xl mx-auto">
+          <p className="text-[#3F4A6B] text-lg max-w-xl mx-auto">
             Three steps from first conversation to measurable results, with no obligation, no guesswork.
           </p>
         </motion.div>
@@ -58,7 +58,7 @@ export default function ProcessSection() {
             {/* Animated fill */}
             <motion.div
               className="absolute inset-0 rounded-full"
-              style={{ background: 'linear-gradient(to right, #6B3FA0, #1D4ED8, #0EA5E9, #22C55E)' }}
+              style={{ background: 'linear-gradient(to right, #5E328C, #1376B4, #1391C4, #0A924E)' }}
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
@@ -68,7 +68,7 @@ export default function ProcessSection() {
             {/* Traveling pulse dot */}
             <motion.div
               className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white"
-              style={{ boxShadow: '0 0 12px rgba(107,63,160,0.8), 0 0 4px rgba(107,63,160,1)' }}
+              style={{ boxShadow: '0 0 12px rgba(94,50,140,0.8), 0 0 4px rgba(94,50,140,1)' }}
               initial={{ left: '0%' }}
               whileInView={{ left: '100%' }}
               transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
@@ -111,10 +111,10 @@ export default function ProcessSection() {
                       : 'rgba(255,255,255,0.85)',
                     border: isActive
                       ? `1px solid ${col.from}50`
-                      : '1px solid rgba(29,78,216,0.11)',
+                      : '1px solid rgba(19,118,180,0.11)',
                     boxShadow: isActive
-                      ? `0 20px 60px ${col.glow}, 0 4px 20px rgba(27,49,114,0.1)`
-                      : '0 4px 20px rgba(27,49,114,0.07)',
+                      ? `0 20px 60px ${col.glow}, 0 4px 20px rgba(13,36,106,0.1)`
+                      : '0 4px 20px rgba(13,36,106,0.07)',
                     backdropFilter: 'blur(16px)',
                     transition: 'all 0.3s ease',
                   }}
@@ -150,8 +150,8 @@ export default function ProcessSection() {
                     </div>
                   </div>
 
-                  <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-3 relative z-10">{step.title}</h3>
-                  <p className="text-[#64748b] text-sm leading-relaxed relative z-10">{step.description}</p>
+                  <h3 className="text-[#0D246A] font-heading font-700 text-xl mb-3 relative z-10">{step.title}</h3>
+                  <p className="text-[#5C6685] text-sm leading-relaxed relative z-10">{step.description}</p>
 
                   {/* Bottom accent line */}
                   <motion.div
@@ -178,12 +178,12 @@ export default function ProcessSection() {
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium"
             style={{
               background: 'rgba(255,255,255,0.9)',
-              border: '1px solid rgba(107,63,160,0.2)',
-              boxShadow: '0 4px 20px rgba(107,63,160,0.1)',
+              border: '1px solid rgba(94,50,140,0.2)',
+              boxShadow: '0 4px 20px rgba(94,50,140,0.1)',
               backdropFilter: 'blur(12px)',
             }}>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[#475569]">Most projects launch within</span>
+            <span className="text-[#3F4A6B]">Most projects launch within</span>
             <span className="gradient-text font-700">3–5 business days</span>
           </div>
         </motion.div>

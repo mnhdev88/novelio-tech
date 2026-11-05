@@ -49,13 +49,8 @@ export default function Footer() {
   const footerServices = SERVICES.slice(0, 6);
 
   return (
-    <footer className="relative bg-[#0E1E38] overflow-hidden">
-      {/* gradient top border */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-purple to-transparent" />
-
-      {/* bg orbs */}
-      <div className="orb orb-purple w-96 h-96 -bottom-48 -left-48" style={{ opacity: 0.2 }} />
-      <div className="orb orb-blue w-96 h-96 -bottom-48 -right-48" style={{ opacity: 0.15 }} />
+    <footer className="on-dark relative bg-[#081648] overflow-hidden">
+      <div className="spectrum-strip" style={{ height: 6 }} />
 
       <div className="container-xl relative z-10 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
@@ -64,9 +59,9 @@ export default function Footer() {
           <div className="lg:col-span-1 md:col-span-2">
             <Link to="/" className="inline-flex mb-5">
               <img
-                src="/logo.png"
+                src="/logo-on-dark.png"
                 alt="Novelio Technologies LLC"
-                className="h-10 w-auto object-contain"
+                className="h-12 w-auto object-contain"
                 loading="lazy"
               />
             </Link>
@@ -79,7 +74,7 @@ export default function Footer() {
                 { Icon: FaYoutube, href: COMPANY.social.youtube, label: 'Novelio Technologies on YouTube' },
               ].map(({ Icon, href, label }, i) => (
                 <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-slate-300 hover:text-white hover:border-brand-purple/50 hover:bg-brand-purple/20 transition-all duration-200">
+                  className="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#F0D030] hover:text-[#F0D030] transition-all duration-200">
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
@@ -93,14 +88,14 @@ export default function Footer() {
               {footerServices.map((s) => (
                 <li key={s.id}>
                   <Link to={s.slug} className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-[#F0D030]" />
                     {s.title}
                   </Link>
                 </li>
               ))}
               <li>
                 <Link to="/services/seo-plans" className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
+                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-[#F0D030]" />
                   SEO, AEO &amp; GEO Plans
                 </Link>
               </li>
@@ -117,7 +112,7 @@ export default function Footer() {
               ].map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-[#F0D030]" />
                     {l.label}
                   </a>
                 </li>
@@ -143,7 +138,7 @@ export default function Footer() {
               ].map((l) => (
                 <li key={l.label}>
                   <Link to={l.to} className="text-slate-300 hover:text-white text-sm flex items-center gap-2 group transition-colors">
-                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-brand-purple" />
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-[#F0D030]" />
                     {l.label}
                   </Link>
                 </li>
@@ -156,15 +151,15 @@ export default function Footer() {
             <h4 className="text-white font-heading font-600 mb-5 text-sm uppercase tracking-widest">Get In Touch</h4>
             <ul className="space-y-4 mb-6">
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-brand-purple mt-0.5 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-[#F0D030] mt-0.5 flex-shrink-0" />
                 <a href={`mailto:${COMPANY.email}`} className="text-slate-300 hover:text-white text-sm transition-colors">{COMPANY.email}</a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-brand-purple mt-0.5 flex-shrink-0" />
+                <Phone className="w-4 h-4 text-[#F0D030] mt-0.5 flex-shrink-0" />
                 <a href={PHONE_TEL} className="text-slate-300 hover:text-white text-sm transition-colors">{COMPANY.phone}</a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-brand-purple mt-0.5 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-[#F0D030] mt-0.5 flex-shrink-0" />
                 <span className="text-slate-300 text-sm">{COMPANY.address}</span>
               </li>
             </ul>
@@ -179,14 +174,14 @@ export default function Footer() {
                     type="email" value={email} onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email address"
                     disabled={status === 'loading'}
-                    className="w-full bg-slate-800 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-white/40 transition-colors disabled:opacity-50"
+                    aria-label="Your email address"
+                    className="w-full bg-white/10 border border-white/25 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-300 focus:border-[#F0D030] transition-colors disabled:opacity-50"
                     required
                   />
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white transition-all disabled:opacity-60 hover:brightness-110"
-                    style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #2563EB 100%)' }}
+                    className="btn-primary w-full justify-center text-sm py-2.5"
                   >
                     <Send className="w-4 h-4" />
                     {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
@@ -203,7 +198,7 @@ export default function Footer() {
         {/* Registered-entity block. Razorpay and Twilio reviewers check the
             sitewide footer, not just /terms, so both entities appear on every
             page. Values come from content/settings.json. */}
-        <div className="pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-slate-400 text-xs leading-relaxed">
+        <div className="pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-slate-300 text-xs leading-relaxed">
           <div className="space-y-0.5">
             <p className="text-slate-300 font-600">{US_ENTITY.legalName}</p>
             <p>{US_ENTITY.address}</p>
@@ -213,30 +208,25 @@ export default function Footer() {
               Phone: <a href={`tel:${US_ENTITY.phoneHref}`} className="hover:text-white transition-colors">{US_ENTITY.phone}</a>
             </p>
           </div>
-          <div className="space-y-0.5">
-            <p className="text-slate-300 font-600">{INDIA_ENTITY.legalName}</p>
+          {/* Name and address only: GSTIN, PAN, email and phone stay on /contact and /terms. */}
+          <div className="space-y-0.5 text-[11px] text-slate-400">
+            <p className="font-600">{INDIA_ENTITY.legalName}</p>
             <p>{INDIA_ENTITY.address}</p>
-            <p>GSTIN: {INDIA_ENTITY.gstin} | PAN: {INDIA_ENTITY.pan}</p>
-            <p>
-              Email: <a href={`mailto:${INDIA_ENTITY.email}`} className="hover:text-white transition-colors">{INDIA_ENTITY.email}</a>
-              {' | '}
-              Phone: <a href={`tel:${INDIA_ENTITY.phoneHref}`} className="hover:text-white transition-colors">{INDIA_ENTITY.phone}</a>
-            </p>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 text-sm">
+          <p className="text-slate-300 text-sm">
             {NAVIGATION.footer.copyright}
           </p>
           <div className="flex items-center flex-wrap justify-center gap-x-6 gap-y-2">
             {/* An entry with `href` is an external/static file (the sitemap);
                 everything else is an in-app route. */}
             {NAVIGATION.footer.legal.map((item) => (item.href ? (
-              <a key={item.label} href={item.href} className="text-slate-500 hover:text-white text-xs transition-colors">{item.label}</a>
+              <a key={item.label} href={item.href} className="text-slate-300 hover:text-white text-xs transition-colors">{item.label}</a>
             ) : (
-              <Link key={item.label} to={item.to} className="text-slate-500 hover:text-white text-xs transition-colors">{item.label}</Link>
+              <Link key={item.label} to={item.to} className="text-slate-300 hover:text-white text-xs transition-colors">{item.label}</Link>
             )))}
           </div>
         </div>

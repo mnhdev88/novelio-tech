@@ -19,12 +19,12 @@ function FAQItem({ q, a }) {
   return (
     <div className="glass-card gradient-border rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-        <span className="text-[#1B3172] font-medium text-[15px]">{q}</span>
-        {open ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />}
+        <span className="text-[#0D246A] font-medium text-[15px]">{q}</span>
+        {open ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />}
       </button>
       {open && (
         <div className="px-5 pb-5 border-t border-slate-200 pt-4">
-          <p className="text-[#475569] text-sm leading-relaxed">{a}</p>
+          <p className="text-[#3F4A6B] text-sm leading-relaxed">{a}</p>
         </div>
       )}
     </div>
@@ -77,7 +77,7 @@ export default function ContactPage() {
   };
 
   const inputClass = (field) =>
-    `w-full bg-white border rounded-xl px-4 py-3.5 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:ring-2 transition-all text-[15px] ${
+    `w-full bg-white border rounded-xl px-4 py-3.5 text-[#0D246A] placeholder-slate-400 focus:outline-none focus:ring-2 transition-all text-[15px] ${
       errors[field] ? 'border-red-500/60 focus:border-red-500 focus:ring-red-500/20' : 'border-slate-200/80 focus:border-brand-purple/60 focus:ring-brand-purple/20'
     }`;
 
@@ -95,10 +95,10 @@ export default function ContactPage() {
         <div className="container-xl relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="section-label mx-auto mb-4">Get In Touch</div>
-            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
               Let's Talk About <span className="gradient-text">Your Growth</span>
             </h1>
-            <p className="text-[#475569] text-xl max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-xl max-w-2xl mx-auto">
               Ready to dominate your market? Fill out the form below and we'll be in touch within 24 hours.
             </p>
           </motion.div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact cards */}
-      <section className="py-12 bg-[#EEF2FF]">
+      <section className="py-12 bg-[#F3F2EC]">
         <div className="container-xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
@@ -123,9 +123,9 @@ export default function ContactPage() {
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="text-[#64748b] text-xs uppercase tracking-widest font-medium mb-1">{item.label}</div>
-                    <div className="text-[#1B3172] font-heading font-600 text-[15px] mb-0.5">{item.value}</div>
-                    <div className="text-[#64748b] text-xs">{item.sub}</div>
+                    <div className="text-[#5C6685] text-xs uppercase tracking-widest font-medium mb-1">{item.label}</div>
+                    <div className="text-[#0D246A] font-heading font-600 text-[15px] mb-0.5">{item.value}</div>
+                    <div className="text-[#5C6685] text-xs">{item.sub}</div>
                   </div>
                 </motion.a>
               );
@@ -143,10 +143,10 @@ export default function ContactPage() {
             {/* Left sidebar */}
             <div className="lg:col-span-2">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-                <h2 className="text-3xl font-heading font-700 text-[#1B3172] mb-4">
+                <h2 className="text-3xl font-heading font-700 text-[#0D246A] mb-4">
                   Ready to <span className="gradient-text">Get Started?</span>
                 </h2>
-                <p className="text-[#475569] leading-relaxed mb-8">
+                <p className="text-[#3F4A6B] leading-relaxed mb-8">
                   Tell us about your business and goals. We'll put together a custom strategy and get back to you within 24 hours.
                 </p>
                 <div className="space-y-5 mb-8">
@@ -162,7 +162,7 @@ export default function ContactPage() {
                         <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0">
                           <Icon className="w-4 h-4 text-white" />
                         </div>
-                        <span className="text-[#475569] text-sm">{item.text}</span>
+                        <span className="text-[#3F4A6B] text-sm">{item.text}</span>
                       </div>
                     );
                   })}
@@ -170,10 +170,10 @@ export default function ContactPage() {
 
                 {/* Office hours */}
                 <div className="glass-card gradient-border rounded-2xl p-5">
-                  <h4 className="text-[#1B3172] font-heading font-600 mb-3">Office Hours</h4>
-                  <div className="space-y-2 text-sm text-[#475569]">
-                    <div className="flex justify-between"><span>Monday – Friday</span><span className="text-[#1B3172]">9:00 AM – 6:00 PM EST</span></div>
-                    <div className="flex justify-between"><span>Saturday</span><span className="text-[#1B3172]">10:00 AM – 2:00 PM EST</span></div>
+                  <h4 className="text-[#0D246A] font-heading font-600 mb-3">Office Hours</h4>
+                  <div className="space-y-2 text-sm text-[#3F4A6B]">
+                    <div className="flex justify-between"><span>Monday – Friday</span><span className="text-[#0D246A]">9:00 AM – 6:00 PM EST</span></div>
+                    <div className="flex justify-between"><span>Saturday</span><span className="text-[#0D246A]">10:00 AM – 2:00 PM EST</span></div>
                     <div className="flex justify-between"><span>WhatsApp Support</span><span className="text-emerald-400">24/7</span></div>
                   </div>
                 </div>
@@ -182,25 +182,25 @@ export default function ContactPage() {
                     required on the contact page itself for Razorpay review — the
                     footer alone is not enough. */}
                 <div className="glass-card gradient-border rounded-2xl p-5 mt-5">
-                  <h4 className="text-[#1B3172] font-heading font-600 mb-3">Our Offices</h4>
-                  <div className="space-y-4 text-sm text-[#475569]">
+                  <h4 className="text-[#0D246A] font-heading font-600 mb-3">Our Offices</h4>
+                  <div className="space-y-4 text-sm text-[#3F4A6B]">
                     <div>
-                      <div className="text-[#1B3172] font-600">{US_ENTITY.legalName}</div>
+                      <div className="text-[#0D246A] font-600">{US_ENTITY.legalName}</div>
                       <p>{US_ENTITY.address}</p>
                       <p>
-                        <a href={`tel:${US_ENTITY.phoneHref}`} className="hover:text-[#1D4ED8] transition-colors">{US_ENTITY.phone}</a>
+                        <a href={`tel:${US_ENTITY.phoneHref}`} className="hover:text-[#1376B4] transition-colors">{US_ENTITY.phone}</a>
                         {' · '}
-                        <a href={`mailto:${US_ENTITY.email}`} className="hover:text-[#1D4ED8] transition-colors">{US_ENTITY.email}</a>
+                        <a href={`mailto:${US_ENTITY.email}`} className="hover:text-[#1376B4] transition-colors">{US_ENTITY.email}</a>
                       </p>
                     </div>
                     <div>
-                      <div className="text-[#1B3172] font-600">{INDIA_ENTITY.legalName}</div>
+                      <div className="text-[#0D246A] font-600">{INDIA_ENTITY.legalName}</div>
                       <p>{INDIA_ENTITY.address}</p>
                       <p>GSTIN: {INDIA_ENTITY.gstin} · PAN: {INDIA_ENTITY.pan}</p>
                       <p>
-                        <a href={`tel:${INDIA_ENTITY.phoneHref}`} className="hover:text-[#1D4ED8] transition-colors">{INDIA_ENTITY.phone}</a>
+                        <a href={`tel:${INDIA_ENTITY.phoneHref}`} className="hover:text-[#1376B4] transition-colors">{INDIA_ENTITY.phone}</a>
                         {' · '}
-                        <a href={`mailto:${INDIA_ENTITY.email}`} className="hover:text-[#1D4ED8] transition-colors">{INDIA_ENTITY.email}</a>
+                        <a href={`mailto:${INDIA_ENTITY.email}`} className="hover:text-[#1376B4] transition-colors">{INDIA_ENTITY.email}</a>
                       </p>
                     </div>
                   </div>
@@ -217,8 +217,8 @@ export default function ContactPage() {
                       <div className="w-20 h-20 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto mb-6">
                         <Check className="w-10 h-10 text-emerald-400" />
                       </div>
-                      <h3 className="text-[#1B3172] font-heading font-700 text-2xl mb-3">Message Sent!</h3>
-                      <p className="text-[#475569] max-w-xs mx-auto">
+                      <h3 className="text-[#0D246A] font-heading font-700 text-2xl mb-3">Message Sent!</h3>
+                      <p className="text-[#3F4A6B] max-w-xs mx-auto">
                         Thank you! We'll review your request and get back to you within 24 hours.
                       </p>
                     </div>
@@ -226,21 +226,21 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} noValidate className="space-y-5">
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Full Name *</label>
+                          <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Full Name *</label>
                           <input type="text" value={form.name} onChange={handleChange('name')} placeholder="John Smith" className={inputClass('name')} />
                           {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Email Address *</label>
+                          <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Email Address *</label>
                           <input type="email" value={form.email} onChange={handleChange('email')} placeholder="john@company.com" className={inputClass('email')} />
                           {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Phone Number</label>
+                          <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Phone Number</label>
                           <input type="tel" value={form.phone} onChange={handleChange('phone')} placeholder="+1 (555) 000-0000" className={inputClass('phone')} />
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-[#475569] uppercase tracking-widest mb-2">Company Name</label>
+                          <label className="block text-xs font-medium text-[#3F4A6B] uppercase tracking-widest mb-2">Company Name</label>
                           <input type="text" value={form.company} onChange={handleChange('company')} placeholder="Your Company" className={inputClass('company')} />
                         </div>
                       </div>
@@ -254,7 +254,7 @@ export default function ContactPage() {
                           onChange={(e) => { setConsent(e.target.checked); if (errors.consent) setErrors((er) => ({ ...er, consent: '' })); }}
                           className="mt-0.5 w-4 h-4 rounded border-slate-300 text-brand-purple focus:ring-brand-purple cursor-pointer shrink-0"
                         />
-                        <span className="text-xs text-[#64748b] leading-relaxed">
+                        <span className="text-xs text-[#5C6685] leading-relaxed">
                           I agree to receive phone calls and text messages (SMS) from Novelio Technologies about my
                           inquiry. Message frequency varies; message and data rates may apply. Reply STOP to opt out,
                           HELP for help. *
@@ -277,7 +277,7 @@ export default function ContactPage() {
                         )}
                       </button>
 
-                      <p className="text-center text-xs text-[#64748b]">
+                      <p className="text-center text-xs text-[#5C6685]">
                         By submitting this form you agree to our{' '}
                         <a href="/privacy" className="text-brand-purple hover:underline">Privacy Policy</a> and{' '}
                         <a href="/terms" className="text-brand-purple hover:underline">Terms</a>. We never sell or
@@ -293,12 +293,12 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-lg">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
             className="text-center mb-12">
             <div className="section-label mx-auto mb-4">FAQs</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Quick <span className="gradient-text">Answers</span>
             </h2>
           </motion.div>

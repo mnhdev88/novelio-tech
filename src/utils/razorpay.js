@@ -134,7 +134,7 @@ export async function openRazorpayCheckout(order, { customer = {}, onSuccess, on
       email: customer.email || order.email || '',
     },
     notes: { source: 'noveliotech.com' },
-    theme: { color: '#1B3172' },
+    theme: { color: '#0D246A' },
     modal: {
       ondismiss: () => onDismiss?.(),
       // Razorpay's own confirm-before-closing prompt; without it a stray click on

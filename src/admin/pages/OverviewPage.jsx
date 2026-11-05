@@ -6,14 +6,14 @@ import * as api from '../api';
 
 function Tile({ icon: Icon, label, value, to, hint }) {
   const inner = (
-    <div className="bg-white rounded-2xl border border-slate-200 p-5 h-full hover:border-[#1B3172] transition-colors">
+    <div className="bg-white rounded-2xl border border-slate-200 p-5 h-full hover:border-[#0D246A] transition-colors">
       <div className="flex items-center gap-3 mb-3">
         <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-purple to-brand-blue grid place-items-center text-white shrink-0">
           <Icon className="w-4 h-4" />
         </div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">{label}</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#5C6685]">{label}</p>
       </div>
-      <p className="font-heading font-800 text-[#1B3172] text-2xl leading-none">{value}</p>
+      <p className="font-heading font-800 text-[#0D246A] text-2xl leading-none">{value}</p>
       {hint && <p className="text-xs text-[#94a3b8] mt-1.5">{hint}</p>}
     </div>
   );
@@ -51,10 +51,10 @@ export default function OverviewPage() {
 
   return (
     <div>
-      <h1 className="font-heading font-800 text-[#1B3172] text-xl mb-1">
+      <h1 className="font-heading font-800 text-[#0D246A] text-xl mb-1">
         Welcome back, {user.name.split(' ')[0]}
       </h1>
-      <p className="text-sm text-[#64748b] mb-6">
+      <p className="text-sm text-[#5C6685] mb-6">
         Changes save instantly. They go live when you press <strong>Publish</strong> above.
       </p>
 
@@ -73,7 +73,7 @@ export default function OverviewPage() {
 
       <div className="grid lg:grid-cols-2 gap-4">
         <div className="bg-white rounded-2xl border border-slate-200 p-5">
-          <h2 className="font-heading font-800 text-[#1B3172] mb-3">Common tasks</h2>
+          <h2 className="font-heading font-800 text-[#0D246A] mb-3">Common tasks</h2>
           <div className="space-y-1">
             {[
               { to: '/admin/blog/new', label: 'Write a new blog post' },
@@ -83,7 +83,7 @@ export default function OverviewPage() {
             ].map((t) => (
               <Link
                 key={t.to} to={t.to}
-                className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm text-[#475569] hover:bg-[#F8FAFC] hover:text-[#1B3172]"
+                className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm text-[#3F4A6B] hover:bg-[#F8FAFC] hover:text-[#0D246A]"
               >
                 {t.label}
                 <ChevronRight className="w-4 h-4 shrink-0" />
@@ -93,18 +93,18 @@ export default function OverviewPage() {
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 p-5">
-          <h2 className="font-heading font-800 text-[#1B3172] mb-3">How publishing works</h2>
-          <ol className="space-y-2.5 text-sm text-[#475569]">
+          <h2 className="font-heading font-800 text-[#0D246A] mb-3">How publishing works</h2>
+          <ol className="space-y-2.5 text-sm text-[#3F4A6B]">
             <li className="flex gap-3">
-              <span className="w-5 h-5 rounded-full bg-[#EEF2FF] text-[#1B3172] text-xs font-bold grid place-items-center shrink-0">1</span>
+              <span className="w-5 h-5 rounded-full bg-[#F3F2EC] text-[#0D246A] text-xs font-bold grid place-items-center shrink-0">1</span>
               Edit anything. Your work saves as you go — nothing is live yet.
             </li>
             <li className="flex gap-3">
-              <span className="w-5 h-5 rounded-full bg-[#EEF2FF] text-[#1B3172] text-xs font-bold grid place-items-center shrink-0">2</span>
+              <span className="w-5 h-5 rounded-full bg-[#F3F2EC] text-[#0D246A] text-xs font-bold grid place-items-center shrink-0">2</span>
               Press <strong>Publish</strong>. Every pending change goes out together.
             </li>
             <li className="flex gap-3">
-              <span className="w-5 h-5 rounded-full bg-[#EEF2FF] text-[#1B3172] text-xs font-bold grid place-items-center shrink-0">3</span>
+              <span className="w-5 h-5 rounded-full bg-[#F3F2EC] text-[#0D246A] text-xs font-bold grid place-items-center shrink-0">3</span>
               The site rebuilds and redeploys — about 4 minutes. The bar shows progress.
             </li>
           </ol>

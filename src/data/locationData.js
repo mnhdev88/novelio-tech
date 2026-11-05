@@ -289,7 +289,7 @@ export const STATES = [
     stateSlug: 'texas',
     stateCode: 'TX',
     description: "Serving small businesses across Texas's fastest-growing cities: Austin, Houston, Dallas, and beyond.",
-    gradient: 'from-[#6B3FA0] to-[#1D4ED8]',
+    gradient: 'from-[#5E328C] to-[#1376B4]',
     cities: ['austin', 'houston'],
   },
   {
@@ -297,7 +297,7 @@ export const STATES = [
     stateSlug: 'florida',
     stateCode: 'FL',
     description: 'Helping Florida small businesses dominate local search from Miami to Tampa and Orlando.',
-    gradient: 'from-[#0EA5E9] to-[#1D4ED8]',
+    gradient: 'from-[#1391C4] to-[#1376B4]',
     cities: ['miami', 'tampa'],
   },
   {
@@ -305,7 +305,7 @@ export const STATES = [
     stateSlug: 'colorado',
     stateCode: 'CO',
     description: 'Growing Denver and Colorado businesses with AI-powered digital strategies.',
-    gradient: 'from-emerald-500 to-[#1D4ED8]',
+    gradient: 'from-emerald-500 to-[#1376B4]',
     cities: ['denver'],
   },
   {
@@ -313,7 +313,7 @@ export const STATES = [
     stateSlug: 'new-jersey',
     stateCode: 'NJ',
     description: 'Helping Newark and New Jersey small businesses dominate local search and book more clients online.',
-    gradient: 'from-[#6B3FA0] to-[#0EA5E9]',
+    gradient: 'from-[#5E328C] to-[#1391C4]',
     cities: ['newark'],
   },
 ];

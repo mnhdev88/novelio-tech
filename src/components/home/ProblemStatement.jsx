@@ -44,7 +44,7 @@ export default function ProblemStatement() {
 
       {/* Warning-stripe top accent */}
       <div className="absolute top-0 left-0 right-0 h-0.5"
-        style={{ background: 'linear-gradient(to right, transparent, #F97316, #FACC15, #EC4899, transparent)' }} />
+        style={{ background: 'linear-gradient(to right, transparent, #F07030, #F0D030, #E02A2A, transparent)' }} />
 
       <div className="container-xl relative z-10">
         <motion.div
@@ -54,14 +54,14 @@ export default function ProblemStatement() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <div className="section-label mx-auto mb-4" style={{ background: 'rgba(249,115,22,0.12)', borderColor: 'rgba(249,115,22,0.28)', color: '#F97316' }}>
+          <div className="section-label mx-auto mb-4">
             Sound Familiar?
           </div>
-          <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4 max-w-3xl mx-auto leading-tight">
+          <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-4 max-w-3xl mx-auto leading-tight">
             Most Small Businesses Are Losing Customers Online{' '}
             <span className="gradient-text">Without Knowing It</span>
           </h2>
-          <p className="text-[#475569] text-lg max-w-xl mx-auto">
+          <p className="text-[#3F4A6B] text-lg max-w-xl mx-auto">
             If any of these sound familiar, your digital presence is working against you:
           </p>
         </motion.div>
@@ -79,8 +79,8 @@ export default function ProblemStatement() {
                 className="rounded-2xl p-6 flex gap-4 relative overflow-hidden"
                 style={{
                   background: 'rgba(255,255,255,0.88)',
-                  border: '1px solid rgba(29,78,216,0.1)',
-                  boxShadow: '0 4px 20px rgba(27,49,114,0.07)',
+                  border: '1px solid rgba(19,118,180,0.1)',
+                  boxShadow: '0 4px 20px rgba(13,36,106,0.07)',
                   backdropFilter: 'blur(16px)',
                 }}
               >
@@ -88,19 +88,19 @@ export default function ProblemStatement() {
                 <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${p.color} rounded-l-2xl`} />
 
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center flex-shrink-0 ml-2`}
-                  style={{ boxShadow: '0 4px 16px rgba(107,63,160,0.25)' }}>
+                  style={{ boxShadow: '0 4px 16px rgba(94,50,140,0.25)' }}>
                   <Icon className="w-5 h-5 text-white" />
                 </div>
 
                 <div className="flex-1">
-                  <p className="text-[#1B3172] font-heading font-600 text-[15px] leading-snug mb-1.5">{p.headline}</p>
-                  <p className="text-[#64748b] text-sm leading-relaxed">{p.sub}</p>
+                  <p className="text-[#0D246A] font-heading font-600 text-[15px] leading-snug mb-1.5">{p.headline}</p>
+                  <p className="text-[#5C6685] text-sm leading-relaxed">{p.sub}</p>
                 </div>
 
                 {/* Stat badge */}
                 <div className="flex-shrink-0 text-right">
                   <div className={`text-lg font-heading font-800 bg-gradient-to-r ${p.color} bg-clip-text text-transparent`}>{p.stat}</div>
-                  <div className="text-[#64748b] text-[10px] leading-tight">{p.statLabel}</div>
+                  <div className="text-[#5C6685] text-[10px] leading-tight">{p.statLabel}</div>
                 </div>
               </motion.div>
             );
@@ -118,12 +118,12 @@ export default function ProblemStatement() {
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium"
             style={{
               background: 'rgba(255,255,255,0.9)',
-              border: '1px solid rgba(107,63,160,0.2)',
-              boxShadow: '0 4px 16px rgba(107,63,160,0.1)',
+              border: '1px solid rgba(94,50,140,0.2)',
+              boxShadow: '0 4px 16px rgba(94,50,140,0.1)',
               backdropFilter: 'blur(12px)',
             }}>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[#475569]">We identify and fix all of these in your</span>
+            <span className="text-[#3F4A6B]">We identify and fix all of these in your</span>
             <span className="gradient-text font-700">Free 30-Min Growth Audit</span>
           </div>
         </motion.div>

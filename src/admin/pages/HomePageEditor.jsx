@@ -19,8 +19,8 @@ function Section({ title, description, count, children, defaultOpen = false }) {
         className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-[#F8FAFC] cursor-pointer"
       >
         <div className="min-w-0">
-          <h2 className="font-heading font-800 text-[#1B3172]">{title}</h2>
-          {description && <p className="text-xs text-[#64748b]">{description}</p>}
+          <h2 className="font-heading font-800 text-[#0D246A]">{title}</h2>
+          {description && <p className="text-xs text-[#5C6685]">{description}</p>}
         </div>
         <div className="flex-1" />
         {count !== undefined && (
@@ -50,11 +50,11 @@ function StringList({ items, onChange, placeholder, addLabel }) {
         <div key={i} className="flex items-center gap-2">
           <div className="flex flex-col">
             <button onClick={() => move(i, -1)} disabled={i === 0}
-              className="p-0.5 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move up">
+              className="p-0.5 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move up">
               <ChevronUp className="w-3.5 h-3.5" />
             </button>
             <button onClick={() => move(i, 1)} disabled={i === items.length - 1}
-              className="p-0.5 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move down">
+              className="p-0.5 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move down">
               <ChevronDown className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -67,7 +67,7 @@ function StringList({ items, onChange, placeholder, addLabel }) {
       ))}
       <button
         onClick={() => onChange([...items, ''])}
-        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 text-xs font-semibold text-[#64748b] hover:border-[#1B3172] hover:text-[#1B3172] cursor-pointer"
+        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 text-xs font-semibold text-[#5C6685] hover:border-[#0D246A] hover:text-[#0D246A] cursor-pointer"
       >
         <Plus className="w-3.5 h-3.5" /> {addLabel || 'Add'}
       </button>
@@ -92,16 +92,16 @@ function CardList({ items, onChange, fields, titleKey, allowAdd, blank }) {
         <div key={i} className="rounded-xl border border-slate-200 overflow-hidden">
           <div className="flex items-center gap-2 px-3 py-2 bg-[#F8FAFC] border-b border-slate-100">
             <GripVertical className="w-3.5 h-3.5 text-[#cbd5e1] shrink-0" />
-            <span className="text-xs font-semibold text-[#475569] truncate">
+            <span className="text-xs font-semibold text-[#3F4A6B] truncate">
               {item[titleKey] || `Item ${i + 1}`}
             </span>
             <div className="flex-1" />
             <button onClick={() => move(i, -1)} disabled={i === 0}
-              className="p-1 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move up">
+              className="p-1 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move up">
               <ChevronUp className="w-4 h-4" />
             </button>
             <button onClick={() => move(i, 1)} disabled={i === items.length - 1}
-              className="p-1 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move down">
+              className="p-1 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move down">
               <ChevronDown className="w-4 h-4" />
             </button>
             {allowAdd && (
@@ -117,7 +117,7 @@ function CardList({ items, onChange, fields, titleKey, allowAdd, blank }) {
               if (f.type === 'list') {
                 return (
                   <div key={f.key}>
-                    <span className="block text-xs font-semibold text-[#475569] mb-1.5">{f.label}</span>
+                    <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">{f.label}</span>
                     <StringList
                       items={item[f.key] || []}
                       onChange={(v) => set(i, { [f.key]: v })}
@@ -150,7 +150,7 @@ function CardList({ items, onChange, fields, titleKey, allowAdd, blank }) {
       {allowAdd && (
         <button
           onClick={() => onChange([...items, { ...blank }])}
-          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 text-xs font-semibold text-[#64748b] hover:border-[#1B3172] hover:text-[#1B3172] cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 text-xs font-semibold text-[#5C6685] hover:border-[#0D246A] hover:text-[#0D246A] cursor-pointer"
         >
           <Plus className="w-3.5 h-3.5" /> Add
         </button>
@@ -180,19 +180,19 @@ export default function HomePageEditor() {
           <Text label="Badge above the headline" value={h.hero.badge} onChange={(v) => setHero({ badge: v })} />
 
           <div>
-            <span className="block text-xs font-semibold text-[#475569] mb-1.5">Headline</span>
+            <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">Headline</span>
             <div className="grid sm:grid-cols-3 gap-2">
               <input value={h.hero.headlineBefore} onChange={(e) => setHero({ headlineBefore: e.target.value })}
                 className={inputCls} placeholder="Start" />
               <input value={h.hero.headlineHighlight} onChange={(e) => setHero({ headlineHighlight: e.target.value })}
-                className={`${inputCls} border-[#6B3FA0]`} placeholder="Highlighted" />
+                className={`${inputCls} border-[#5E328C]`} placeholder="Highlighted" />
               <input value={h.hero.headlineAfter} onChange={(e) => setHero({ headlineAfter: e.target.value })}
                 className={inputCls} placeholder="End" />
             </div>
             <p className="text-[11px] text-[#94a3b8] mt-1.5">
               The middle part is the coloured, clickable phrase that opens the offer popup.
             </p>
-            <p className="mt-2 text-sm text-[#1B3172] font-heading font-800">
+            <p className="mt-2 text-sm text-[#0D246A] font-heading font-800">
               {h.hero.headlineBefore}{' '}
               <span className="bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent">
                 {h.hero.headlineHighlight}
@@ -293,7 +293,7 @@ export default function HomePageEditor() {
         />
 
         <div className="mt-5 pt-4 border-t border-slate-100">
-          <span className="block text-xs font-semibold text-[#475569] mb-2">Result bars</span>
+          <span className="block text-xs font-semibold text-[#3F4A6B] mb-2">Result bars</span>
           {h.whyChooseUs.metrics.map((m, i) => (
             <div key={i} className="grid sm:grid-cols-[1fr_100px_90px] gap-2 mb-2">
               <input
@@ -330,15 +330,15 @@ export default function HomePageEditor() {
           the other, so this only points at it. */}
       <section className="bg-white rounded-2xl border border-slate-200 px-5 py-4 flex flex-wrap items-center gap-3">
         <div className="min-w-0">
-          <h2 className="font-heading font-800 text-[#1B3172]">Frequently asked questions</h2>
-          <p className="text-xs text-[#64748b]">
+          <h2 className="font-heading font-800 text-[#0D246A]">Frequently asked questions</h2>
+          <p className="text-xs text-[#5C6685]">
             {h.faq.items.length} question{h.faq.items.length === 1 ? '' : 's'} on the home page.
           </p>
         </div>
         <div className="flex-1" />
         <Link
           to="/admin/faq"
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-[#475569] hover:border-[#1B3172] hover:text-[#1B3172]"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-[#3F4A6B] hover:border-[#0D246A] hover:text-[#0D246A]"
         >
           Edit questions <ArrowRight className="w-3.5 h-3.5" />
         </Link>

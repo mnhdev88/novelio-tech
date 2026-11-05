@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight, Handshake, Gauge, ListChecks } from 'lucide-react';
 import { SERVICES, NAVIGATION } from '../../data/siteData';
 
-// Which services appear in the header dropdown, in this order. SEO, Google
-// Business, and Lead Gen stay out — they remain on /services and in the growth
-// plans — as do Email Marketing and the Email Validator.
+// Which services appear in the header dropdown, in this order. Google Business
+// and Lead Gen stay out — they remain on /services and in the growth plans — as
+// do Email Marketing and the Email Validator.
 //
 // This is an explicit id list rather than a positional slice: content/services.json
 // is reorderable from the admin panel, so a slice would silently pull the wrong
@@ -16,6 +16,7 @@ const NAV_SERVICE_IDS = [
   'automation',
   'branding',
   'tech-ops',
+  'search-engine-optimization',
 ];
 
 // filter(Boolean) guards the case where a service is deleted in the admin panel
@@ -56,7 +57,7 @@ const menuKeyFor = (link) => link.dropdown || 'services';
 
 function ServicesMenu() {
   return (
-    <div className="bg-white rounded-2xl p-2 border border-slate-200 shadow-[0_8px_32px_rgba(27,49,114,0.12)] w-[260px]">
+    <div className="bg-white rounded-2xl p-2 border border-slate-200 shadow-[0_8px_32px_rgba(13,36,106,0.12)] w-[290px]">
       <div className="flex flex-col gap-0.5">
         {NAV_SERVICES.map((s) => (
           <Link
@@ -67,26 +68,15 @@ function ServicesMenu() {
             <div className={`w-8 h-8 rounded-md bg-gradient-to-br ${s.color} flex items-center justify-center flex-shrink-0`}>
               <span className="text-white text-xs font-bold">{s.short[0]}</span>
             </div>
-            <span className="text-[14px] font-medium text-[#334155] group-hover:text-[#1B3172] transition-colors leading-tight">
+            <span className="text-[14px] font-medium text-[#2B3557] group-hover:text-[#0D246A] transition-colors leading-tight">
               {s.title}
             </span>
           </Link>
         ))}
       </div>
       <Link
-        to="/services/seo-plans"
-        className="mt-1 flex items-center gap-2.5 w-full px-2.5 py-1.5 rounded-lg border-t border-slate-100 hover:bg-slate-50 transition-all group"
-      >
-        <div className="w-8 h-8 rounded-md bg-gradient-to-br from-violet-600 to-blue-600 flex items-center justify-center flex-shrink-0">
-          <span className="text-white text-xs font-bold">S</span>
-        </div>
-        <span className="text-[14px] font-medium text-[#334155] group-hover:text-[#1B3172] transition-colors leading-tight">
-          SEO, AEO &amp; GEO Plans
-        </span>
-      </Link>
-      <Link
         to="/services"
-        className="mt-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border-t border-slate-100 text-[13px] font-semibold text-brand-purple hover:bg-slate-50 transition-all"
+        className="mt-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border-t border-slate-100 text-[13px] font-semibold text-[#0D246A] hover:bg-slate-50 transition-all"
       >
         View all services
         <ArrowRight className="w-4 h-4" />
@@ -97,7 +87,7 @@ function ServicesMenu() {
 
 function ToolsMenu() {
   return (
-    <div className="bg-white rounded-2xl p-2 border border-slate-200 shadow-[0_8px_32px_rgba(27,49,114,0.12)] w-[300px]">
+    <div className="bg-white rounded-2xl p-2 border border-slate-200 shadow-[0_8px_32px_rgba(13,36,106,0.12)] w-[300px]">
       <div className="flex flex-col gap-0.5">
         {TOOLS.map(({ to, title, blurb, Icon, color }) => (
           <Link
@@ -109,10 +99,10 @@ function ToolsMenu() {
               <Icon className="w-4 h-4 text-white" aria-hidden="true" />
             </div>
             <span className="min-w-0">
-              <span className="block text-[14px] font-medium text-[#334155] group-hover:text-[#1B3172] transition-colors leading-tight">
+              <span className="block text-[14px] font-medium text-[#2B3557] group-hover:text-[#0D246A] transition-colors leading-tight">
                 {title}
               </span>
-              <span className="block text-[12px] text-[#94a3b8] leading-snug mt-0.5">{blurb}</span>
+              <span className="block text-[12px] text-[#5C6685] leading-snug mt-0.5">{blurb}</span>
             </span>
           </Link>
         ))}
@@ -155,15 +145,13 @@ export default function Navbar() {
       {/* Fixed header: TopBar + Nav stacked together */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <TopBar />
-      <nav
-        className={`transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-[0_4px_24px_rgba(27,49,114,0.08)]'
-            : 'bg-white/80 backdrop-blur-sm'
-        }`}
-      >
-        <div className="container-xl">
-          <div className="flex items-center justify-between h-20">
+      <nav className="px-2 sm:px-3 pt-2">
+        <div
+          className={`max-w-[1280px] mx-auto rounded-2xl bg-white pl-4 pr-2.5 lg:pl-6 lg:pr-3 transition-shadow duration-300 border border-[#0D246A]/10 ${
+            scrolled ? 'shadow-[0_10px_32px_rgba(8,22,72,0.18)]' : 'shadow-[0_4px_16px_rgba(8,22,72,0.08)]'
+          }`}
+        >
+          <div className="flex items-center justify-between h-[68px]">
 
             {/* Logo */}
             <Link to="/" className="flex items-center group">
@@ -172,7 +160,7 @@ export default function Navbar() {
                 alt="Novelio Technologies LLC"
                 className="h-10 w-auto object-contain transition-all duration-300"
                 loading="eager"
-                fetchpriority="high"
+                fetchPriority="high"
                 width="160"
                 height="40"
               />
@@ -187,7 +175,7 @@ export default function Navbar() {
                       onMouseEnter={() => setOpenMenu(menuKeyFor(link))}
                       onMouseLeave={() => setOpenMenu(null)}
                       className={`flex items-center gap-1 px-4 py-2.5 rounded-lg text-[17px] font-semibold transition-all duration-200 ${
-                        isActive(link.to) ? 'text-[#1B3172]' : 'text-[#475569] hover:text-[#1B3172]'
+                        isActive(link.to) ? 'text-[#0D246A]' : 'text-[#3F4A6B] hover:text-[#0D246A]'
                       }`}
                     >
                       {link.label}
@@ -210,7 +198,7 @@ export default function Navbar() {
                   <a
                     key={link.label}
                     href={link.to}
-                    className="px-4 py-2.5 rounded-lg text-[17px] font-semibold transition-all duration-200 text-[#475569] hover:text-[#1B3172]"
+                    className="px-4 py-2.5 rounded-lg text-[17px] font-semibold transition-all duration-200 text-[#3F4A6B] hover:text-[#0D246A]"
                   >
                     {link.label}
                   </a>
@@ -219,7 +207,7 @@ export default function Navbar() {
                     key={link.label}
                     to={link.to}
                     className={`px-4 py-2.5 rounded-lg text-[17px] font-semibold transition-all duration-200 ${
-                      isActive(link.to) ? 'text-[#1B3172]' : 'text-[#475569] hover:text-[#1B3172]'
+                      isActive(link.to) ? 'text-[#0D246A]' : 'text-[#3F4A6B] hover:text-[#0D246A]'
                     }`}
                   >
                     {link.label}
@@ -236,7 +224,7 @@ export default function Navbar() {
               </Link>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="lg:hidden w-11 h-11 rounded-lg border border-slate-200 bg-white flex items-center justify-center text-[#1B3172] cursor-pointer"
+                className="lg:hidden w-11 h-11 rounded-lg border border-slate-200 bg-white flex items-center justify-center text-[#0D246A] cursor-pointer"
                 aria-label="Open menu"
                 aria-expanded={menuOpen}
               >
@@ -264,46 +252,42 @@ export default function Navbar() {
               height="36"
             />
           </Link>
-          <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-[#1B3172] cursor-pointer">
+          <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="w-11 h-11 rounded-lg border border-slate-200 flex items-center justify-center text-[#0D246A] cursor-pointer">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         <div className="flex-1 overflow-y-auto px-6 py-8 space-y-2">
           {navLinks.filter(l => !l.hasDropdown).map((link) => (
-            <Link key={link.label} to={link.to} className="block px-4 py-3 rounded-xl text-lg font-medium text-[#334155] hover:text-[#1B3172] hover:bg-slate-50 transition-all">
+            <Link key={link.label} to={link.to} className="block px-4 py-3 rounded-xl text-lg font-medium text-[#2B3557] hover:text-[#0D246A] hover:bg-slate-50 transition-all">
               {link.label}
             </Link>
           ))}
           <div className="pt-4">
-            <p className="text-xs font-semibold text-[#64748b] uppercase tracking-widest px-4 mb-3">Services</p>
+            <p className="text-xs font-semibold text-[#5C6685] uppercase tracking-widest px-4 mb-3">Services</p>
             <div className="grid grid-cols-2 gap-2">
               {NAV_SERVICES.map((s) => (
                 <Link key={s.id} to={s.slug} className="flex items-center gap-2 p-3 rounded-xl hover:bg-slate-50 transition-all">
                   <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${s.color} flex-shrink-0`} />
-                  <span className="text-sm text-[#475569]">{s.short}</span>
+                  <span className="text-sm text-[#3F4A6B]">{s.short}</span>
                 </Link>
               ))}
             </div>
-            <Link to="/services/seo-plans" className="mt-2 flex items-center gap-2 p-3 rounded-xl hover:bg-slate-50 transition-all">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-blue-600 flex-shrink-0" />
-              <span className="text-sm text-[#475569]">SEO, AEO &amp; GEO Plans</span>
-            </Link>
-            <Link to="/services" className="mt-2 flex items-center gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold text-brand-purple hover:bg-slate-50 transition-all">
+            <Link to="/services" className="mt-2 flex items-center gap-1.5 px-4 py-3 rounded-xl text-sm font-semibold text-[#0D246A] hover:bg-slate-50 transition-all">
               View all services <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           <div className="pt-4">
-            <p className="text-xs font-semibold text-[#64748b] uppercase tracking-widest px-4 mb-3">Tools</p>
+            <p className="text-xs font-semibold text-[#5C6685] uppercase tracking-widest px-4 mb-3">Tools</p>
             {TOOLS.map(({ to, title, blurb, Icon, color }) => (
               <Link key={to} to={to} className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-all">
                 <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center flex-shrink-0`}>
                   <Icon className="w-3.5 h-3.5 text-white" aria-hidden="true" />
                 </div>
                 <span className="min-w-0">
-                  <span className="block text-sm text-[#475569]">{title}</span>
-                  <span className="block text-xs text-[#94a3b8] leading-snug">{blurb}</span>
+                  <span className="block text-sm text-[#3F4A6B]">{title}</span>
+                  <span className="block text-xs text-[#5C6685] leading-snug">{blurb}</span>
                 </span>
               </Link>
             ))}
@@ -311,13 +295,13 @@ export default function Navbar() {
         </div>
 
         <div className="px-6 pb-8 space-y-3">
-          <Link to="/partners" className="flex w-full items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#1B3172]">
+          <Link to="/partners" className="flex w-full items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#0D246A]">
             <Handshake className="w-4 h-4" /> Become a Partner
           </Link>
           {user ? (
             <>
               {user.role === 'admin' && (
-                <Link to="/portal/admin" className="block w-full text-center px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#475569]">
+                <Link to="/portal/admin" className="block w-full text-center px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#3F4A6B]">
                   Admin Back-office
                 </Link>
               )}
@@ -327,7 +311,7 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Link to="/login" className="block w-full text-center px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#475569]">
+              <Link to="/login" className="block w-full text-center px-6 py-3.5 rounded-xl border border-slate-200 text-base font-semibold text-[#3F4A6B]">
                 Sign In
               </Link>
               <Link to="/pricing" className="btn-primary w-full justify-center text-base py-4">

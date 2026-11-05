@@ -33,17 +33,17 @@ function FaqList({ items, onChange, note }) {
         {items.map((f, i) => (
           <div key={i} className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
             <div className="flex items-center gap-2 px-3 py-2 bg-[#F8FAFC] border-b border-slate-100">
-              <HelpCircle className="w-3.5 h-3.5 text-[#64748b] shrink-0" />
-              <span className="text-xs font-semibold text-[#475569] truncate">
+              <HelpCircle className="w-3.5 h-3.5 text-[#5C6685] shrink-0" />
+              <span className="text-xs font-semibold text-[#3F4A6B] truncate">
                 {f.q || `Question ${i + 1}`}
               </span>
               <div className="flex-1" />
               <button onClick={() => move(i, -1)} disabled={i === 0}
-                className="p-1 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move up">
+                className="p-1 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move up">
                 <ChevronUp className="w-4 h-4" />
               </button>
               <button onClick={() => move(i, 1)} disabled={i === items.length - 1}
-                className="p-1 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move down">
+                className="p-1 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move down">
                 <ChevronDown className="w-4 h-4" />
               </button>
               <button onClick={() => remove(i)}
@@ -54,7 +54,7 @@ function FaqList({ items, onChange, note }) {
 
             <div className="p-3 space-y-3">
               <label className="block">
-                <span className="block text-xs font-semibold text-[#475569] mb-1.5">Question</span>
+                <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">Question</span>
                 <input
                   value={f.q || ''} onChange={(e) => set(i, { q: e.target.value })}
                   placeholder="Phrase it the way a customer would ask it"
@@ -62,7 +62,7 @@ function FaqList({ items, onChange, note }) {
                 />
               </label>
               <label className="block">
-                <span className="block text-xs font-semibold text-[#475569] mb-1.5">Answer</span>
+                <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">Answer</span>
                 <textarea
                   value={f.a || ''} rows={4}
                   onChange={(e) => set(i, { a: e.target.value })}
@@ -77,7 +77,7 @@ function FaqList({ items, onChange, note }) {
 
       <button
         onClick={() => onChange([...items, { q: '', a: '' }])}
-        className="mt-3 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-slate-300 text-sm font-semibold text-[#64748b] hover:border-[#1B3172] hover:text-[#1B3172] cursor-pointer"
+        className="mt-3 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-slate-300 text-sm font-semibold text-[#5C6685] hover:border-[#0D246A] hover:text-[#0D246A] cursor-pointer"
       >
         <Plus className="w-4 h-4" /> Add a question
       </button>
@@ -124,7 +124,7 @@ export default function FaqPage() {
             key={t.id}
             onClick={() => setTab(t.id)}
             className={`px-3.5 py-2 rounded-xl text-sm font-semibold cursor-pointer ${
-              tab === t.id ? 'bg-[#1B3172] text-white' : 'bg-white border border-slate-200 text-[#475569]'
+              tab === t.id ? 'bg-[#0D246A] text-white' : 'bg-white border border-slate-200 text-[#3F4A6B]'
             }`}
           >
             {t.label}

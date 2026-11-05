@@ -23,11 +23,11 @@ export default function LinkList({ items, onChange, allowHref, addLabel }) {
         <div key={i} className="flex items-center gap-2">
           <div className="flex flex-col">
             <button onClick={() => move(i, -1)} disabled={i === 0}
-              className="p-0.5 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move up">
+              className="p-0.5 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move up">
               <ChevronUp className="w-3.5 h-3.5" />
             </button>
             <button onClick={() => move(i, 1)} disabled={i === items.length - 1}
-              className="p-0.5 text-[#cbd5e1] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move down">
+              className="p-0.5 text-[#cbd5e1] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move down">
               <ChevronDown className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -54,7 +54,7 @@ export default function LinkList({ items, onChange, allowHref, addLabel }) {
 
       <button
         onClick={() => onChange([...items, { label: 'New link', to: '/' }])}
-        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 text-xs font-semibold text-[#64748b] hover:border-[#1B3172] hover:text-[#1B3172] cursor-pointer"
+        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-dashed border-slate-300 text-xs font-semibold text-[#5C6685] hover:border-[#0D246A] hover:text-[#0D246A] cursor-pointer"
       >
         <Plus className="w-3.5 h-3.5" /> {addLabel || 'Add link'}
       </button>

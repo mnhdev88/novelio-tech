@@ -44,20 +44,20 @@ export default function PricingPage() {
         <div className="container-xl relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="section-label mx-auto mb-4">Simple, Transparent Pricing</div>
-            <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+            <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
               Your Growth Partner, <span className="gradient-text">on a Subscription</span>
             </h1>
-            <p className="text-[#475569] text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-[#3F4A6B] text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
               Your website, SSL, hosting, lead capture, Google setup and growth tracking, all
               included in one predictable growth plan. No $1,500–$3,000 upfront website cost.
             </p>
 
             {/* Billing toggle */}
-            <div className="inline-flex items-center gap-1 mt-10 p-1.5 rounded-2xl bg-white border border-slate-200 shadow-[0_4px_24px_rgba(27,49,114,0.08)]">
+            <div className="inline-flex items-center gap-1 mt-10 p-1.5 rounded-2xl bg-white border border-slate-200 shadow-[0_4px_24px_rgba(13,36,106,0.08)]">
               <button
                 onClick={() => setBilling('monthly')}
                 className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
-                  billing === 'monthly' ? 'bg-[#1B3172] text-white' : 'text-[#475569] hover:text-[#1B3172]'
+                  billing === 'monthly' ? 'bg-[#0D246A] text-white' : 'text-[#3F4A6B] hover:text-[#0D246A]'
                 }`}
               >
                 Monthly
@@ -65,7 +65,7 @@ export default function PricingPage() {
               <button
                 onClick={() => setBilling('yearly')}
                 className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 ${
-                  billing === 'yearly' ? 'bg-[#1B3172] text-white' : 'text-[#475569] hover:text-[#1B3172]'
+                  billing === 'yearly' ? 'bg-[#0D246A] text-white' : 'text-[#3F4A6B] hover:text-[#0D246A]'
                 }`}
               >
                 Pay Yearly
@@ -81,7 +81,7 @@ export default function PricingPage() {
       </section>
 
       {/* Plans */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="line-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
@@ -108,7 +108,7 @@ export default function PricingPage() {
                   className={`relative rounded-2xl p-7 flex flex-col h-full bg-white border transition-all duration-300 hover:-translate-y-2 ${
                     plan.highlight
                       ? 'border-transparent ring-2 ring-brand-purple shadow-glow'
-                      : 'border-slate-200 hover:shadow-[0_8px_32px_rgba(27,49,114,0.12)]'
+                      : 'border-slate-200 hover:shadow-[0_8px_32px_rgba(13,36,106,0.12)]'
                   }`}
                 >
                   {plan.badge && (
@@ -122,31 +122,31 @@ export default function PricingPage() {
                     <span className="text-white font-heading font-bold text-lg">{plan.name[0]}</span>
                   </div>
 
-                  <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-1">{plan.name}</h3>
-                  <p className="text-[#64748b] text-sm leading-relaxed mb-5 min-h-[40px]">{plan.tagline}</p>
+                  <h3 className="text-[#0D246A] font-heading font-700 text-xl mb-1">{plan.name}</h3>
+                  <p className="text-[#5C6685] text-sm leading-relaxed mb-5 min-h-[40px]">{plan.tagline}</p>
 
                   <div className="mb-6 min-h-[104px]">
                     {plan.ctaPhone ? (
                       /* Phone-sold plan: no price shown — pricing is quoted on the call. */
                       <div>
-                        <span className="text-3xl font-heading font-800 text-[#1B3172]">Custom pricing</span>
-                        <p className="text-xs text-[#64748b] mt-1.5 leading-relaxed">
+                        <span className="text-3xl font-heading font-800 text-[#0D246A]">Custom pricing</span>
+                        <p className="text-xs text-[#5C6685] mt-1.5 leading-relaxed">
                           Scoped to your business on a quick call.
                         </p>
                       </div>
                     ) : isFree ? (
-                      <span className="text-4xl font-heading font-800 text-[#1B3172]">Free</span>
+                      <span className="text-4xl font-heading font-800 text-[#0D246A]">Free</span>
                     ) : showYearlyTotal ? (
                       <div className="flex items-end gap-1">
-                        <span className="text-4xl font-heading font-800 text-[#1B3172]">
+                        <span className="text-4xl font-heading font-800 text-[#0D246A]">
                           ${yearlyTotal.toLocaleString()}
                         </span>
-                        <span className="text-[#64748b] text-sm mb-1.5">/year</span>
+                        <span className="text-[#5C6685] text-sm mb-1.5">/year</span>
                       </div>
                     ) : (
                       <div className="flex items-end gap-1">
-                        <span className="text-4xl font-heading font-800 text-[#1B3172]">${price}</span>
-                        <span className="text-[#64748b] text-sm mb-1.5">/mo</span>
+                        <span className="text-4xl font-heading font-800 text-[#0D246A]">${price}</span>
+                        <span className="text-[#5C6685] text-sm mb-1.5">/mo</span>
                       </div>
                     )}
 
@@ -156,13 +156,13 @@ export default function PricingPage() {
                           <span className="inline-block text-[11px] font-bold px-2 py-0.5 rounded-full bg-green-100 text-green-700">
                             Save ${savings} vs monthly
                           </span>
-                          <p className="text-xs text-[#64748b] mt-1.5 leading-relaxed">
+                          <p className="text-xs text-[#5C6685] mt-1.5 leading-relaxed">
                             One payment for the full 12 months · {plan.setupFee > 0 ? `$${plan.setupFee} setup` : 'no setup fee'}
                           </p>
                         </div>
                       ) : (
-                        <p className="text-xs text-[#64748b] mt-1.5 leading-relaxed">
-                          <span className="font-semibold text-[#1B3172]">
+                        <p className="text-xs text-[#5C6685] mt-1.5 leading-relaxed">
+                          <span className="font-semibold text-[#0D246A]">
                             ${upfront} upfront ({plan.upfrontMonths} months)
                           </span>
                           , then {remainingMonths} monthly payments of ${plan.priceMonthly}
@@ -173,7 +173,7 @@ export default function PricingPage() {
                     )}
 
                     {!isFree && !isTermPlan && !plan.ctaPhone && (
-                      <p className="text-xs text-[#64748b] mt-1">
+                      <p className="text-xs text-[#5C6685] mt-1">
                         {billing === 'yearly' ? `Billed yearly ($${yearlyTotal.toLocaleString()}/yr)` : 'Billed monthly · 12-month plan'}
                         {' · '}
                         {plan.setupFee > 0 ? `$${plan.setupFee} setup` : 'no setup fee'}
@@ -187,8 +187,8 @@ export default function PricingPage() {
                       onClick={() => trackEvent('select_plan', { plan_id: plan.id, plan_name: plan.name, billing, cta: 'call' })}
                       className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer mb-6 ${
                         plan.highlight
-                          ? 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'
-                          : 'border border-[rgba(29,78,216,0.2)] text-[#1B3172] hover:bg-[#1B3172] hover:text-white'
+                          ? 'bg-[#0D246A] hover:bg-[#081A52] text-white'
+                          : 'border-2 border-[#0D246A] text-[#0D246A] hover:bg-[#0D246A] hover:text-white'
                       }`}
                     >
                       <Phone className="w-4 h-4" />
@@ -199,8 +199,8 @@ export default function PricingPage() {
                       onClick={() => choosePlan(plan)}
                       className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer mb-6 ${
                         plan.highlight
-                          ? 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'
-                          : 'border border-[rgba(29,78,216,0.2)] text-[#1B3172] hover:bg-[#1B3172] hover:text-white'
+                          ? 'bg-[#0D246A] hover:bg-[#081A52] text-white'
+                          : 'border-2 border-[#0D246A] text-[#0D246A] hover:bg-[#0D246A] hover:text-white'
                       }`}
                     >
                       {plan.cta}
@@ -210,7 +210,7 @@ export default function PricingPage() {
 
                   <ul className="space-y-3 flex-1">
                     {plan.features.map((f, fi) => (
-                      <li key={fi} className="flex items-start gap-2.5 text-[#475569] text-sm leading-snug">
+                      <li key={fi} className="flex items-start gap-2.5 text-[#3F4A6B] text-sm leading-snug">
                         <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
                         <span>{f}</span>
                       </li>
@@ -218,7 +218,7 @@ export default function PricingPage() {
                   </ul>
 
                   {plan.note && (
-                    <p className="text-xs text-[#64748b] mt-6 pt-5 border-t border-slate-100">{plan.note}</p>
+                    <p className="text-xs text-[#5C6685] mt-6 pt-5 border-t border-slate-100">{plan.note}</p>
                   )}
                 </motion.div>
               );
@@ -231,7 +231,7 @@ export default function PricingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="mt-8 rounded-2xl bg-gradient-to-br from-[#1B3172] to-[#091830] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+            className="mt-8 rounded-2xl bg-gradient-to-br from-[#0D246A] to-[#081648] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
           >
             <div>
               <h3 className="text-white font-heading font-700 text-2xl mb-2">Need something custom?</h3>
@@ -241,7 +241,7 @@ export default function PricingPage() {
             </div>
             <a
               {...CALENDLY_LINK}
-              className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#1B3172] text-sm font-semibold hover:bg-slate-100 transition-all cursor-pointer"
+              className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white text-[#0D246A] text-sm font-semibold hover:bg-slate-100 transition-all cursor-pointer"
             >
               Talk to Us
               <ArrowRight className="w-4 h-4" />
@@ -251,11 +251,11 @@ export default function PricingPage() {
           {/* Add-ons + reassurance */}
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="rounded-2xl bg-white border border-slate-200 p-7">
-              <h4 className="font-heading font-700 text-[#1B3172] text-lg mb-4">Optional add-ons</h4>
+              <h4 className="font-heading font-700 text-[#0D246A] text-lg mb-4">Optional add-ons</h4>
               <div className="flex flex-wrap gap-2.5">
                 {PRICING_ADDONS.map((a) => (
-                  <span key={a.id} className="px-3.5 py-1.5 rounded-full bg-[#EEF2FF] text-[#475569] text-sm">
-                    {a.name} <span className="font-semibold text-[#1B3172]">+${a.price}/mo</span>
+                  <span key={a.id} className="px-3.5 py-1.5 rounded-full bg-[#F3F2EC] text-[#3F4A6B] text-sm">
+                    {a.name} <span className="font-semibold text-[#0D246A]">+${a.price}/mo</span>
                   </span>
                 ))}
               </div>
@@ -265,8 +265,8 @@ export default function PricingPage() {
                 <ShieldCheck className="w-6 h-6 text-green-600" />
               </div>
               <div>
-                <h4 className="font-heading font-700 text-[#1B3172] text-base mb-1">Nothing charged until scope is agreed</h4>
-                <p className="text-[#64748b] text-sm leading-relaxed">
+                <h4 className="font-heading font-700 text-[#0D246A] text-base mb-1">Nothing charged until scope is agreed</h4>
+                <p className="text-[#5C6685] text-sm leading-relaxed">
                   Pick a plan and we'll confirm scope and pricing with you before any billing begins.
                   Full website ownership transfers to you after your 12-month term.
                 </p>
@@ -281,10 +281,10 @@ export default function PricingPage() {
         <div className="container-xl max-w-5xl">
           <div className="text-center mb-12">
             <div className="section-label mx-auto mb-4">Compare Plans</div>
-            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#1B3172]">
+            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#0D246A]">
               Everything in Each <span className="gradient-text">Growth Plan</span>
             </h2>
-            <p className="text-[#64748b] text-base mt-4 max-w-2xl mx-auto">
+            <p className="text-[#5C6685] text-base mt-4 max-w-2xl mx-auto">
               Every plan includes your website, with SSL, hosting and maintenance.
               Higher plans add the lead, sales, payment and retention systems that turn a website into a growth engine.
             </p>
@@ -292,7 +292,7 @@ export default function PricingPage() {
           <div className="overflow-x-auto rounded-2xl border border-slate-200">
             <table className="w-full text-sm text-left">
               <thead>
-                <tr className="bg-[#1B3172] text-white">
+                <tr className="bg-[#0D246A] text-white">
                   <th className="px-5 py-4 font-heading font-700 min-w-[180px]">Feature</th>
                   <th className="px-5 py-4 font-heading font-700 min-w-[150px]">Start My Growth<span className="block text-xs font-normal text-white/70 mt-0.5">$150/mo · $1,800 total</span></th>
                   <th className="px-5 py-4 font-heading font-700 min-w-[150px] bg-brand-purple/90">Grow My Leads<span className="block text-xs font-normal text-white/70 mt-0.5">$300/mo · $3,600 total</span></th>
@@ -301,10 +301,10 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 {PRICING_COMPARISON.map((row, i) => (
-                  <tr key={row.feature} className={i % 2 ? 'bg-[#f8faff]' : 'bg-white'}>
-                    <td className="px-5 py-3.5 font-semibold text-[#1B3172]">{row.feature}</td>
+                  <tr key={row.feature} className={i % 2 ? 'bg-[#FBFAF6]' : 'bg-white'}>
+                    <td className="px-5 py-3.5 font-semibold text-[#0D246A]">{row.feature}</td>
                     {row.values.map((v, vi) => (
-                      <td key={vi} className={`px-5 py-3.5 text-[#475569] ${vi === 1 ? 'bg-[#EEF2FF]/60' : ''}`}>
+                      <td key={vi} className={`px-5 py-3.5 text-[#3F4A6B] ${vi === 1 ? 'bg-[#F3F2EC]/60' : ''}`}>
                         {v === '—' ? <span className="text-[#cbd5e1]">—</span> : v}
                       </td>
                     ))}
@@ -317,26 +317,26 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-pad bg-[#EEF2FF]">
+      <section className="section-pad bg-[#F3F2EC]">
         <div className="container-xl max-w-3xl">
           <div className="text-center mb-12">
             <div className="section-label mx-auto mb-4">Questions</div>
-            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#1B3172]">
+            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#0D246A]">
               Pricing <span className="gradient-text">FAQs</span>
             </h2>
           </div>
           <div className="space-y-4">
             {PRICING_FAQ.map((f) => (
-              <details key={f.q} className="group rounded-2xl border border-slate-200 bg-[#f8faff] p-5 open:bg-white open:shadow-[0_4px_24px_rgba(27,49,114,0.08)] transition-all">
-                <summary className="flex items-start gap-3 cursor-pointer list-none font-heading font-700 text-[#1B3172] text-base">
+              <details key={f.q} className="group rounded-2xl border border-slate-200 bg-[#FBFAF6] p-5 open:bg-white open:shadow-[0_4px_24px_rgba(13,36,106,0.08)] transition-all">
+                <summary className="flex items-start gap-3 cursor-pointer list-none font-heading font-700 text-[#0D246A] text-base">
                   <HelpCircle className="w-5 h-5 text-brand-purple shrink-0 mt-0.5" />
                   <span className="flex-1">{f.q}</span>
                 </summary>
-                <p className="text-[#64748b] text-sm leading-relaxed mt-3 pl-8">{f.a}</p>
+                <p className="text-[#5C6685] text-sm leading-relaxed mt-3 pl-8">{f.a}</p>
               </details>
             ))}
           </div>
-          <p className="text-center text-[#64748b] text-sm mt-10">
+          <p className="text-center text-[#5C6685] text-sm mt-10">
             Still not sure which plan fits?{' '}
             <a {...CALENDLY_LINK} className="text-brand-purple font-semibold hover:underline">Get a free 30-min growth audit →</a>
           </p>

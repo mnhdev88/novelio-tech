@@ -10,10 +10,10 @@ function Track({ data, reverse = false }) {
     <div className="overflow-hidden relative">
       {/* edge fade left */}
       <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 z-10"
-        style={{ background: 'linear-gradient(to right, #EEF2FF, transparent)' }} />
+        style={{ background: 'linear-gradient(to right, #F3F2EC, transparent)' }} />
       {/* edge fade right */}
       <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 z-10"
-        style={{ background: 'linear-gradient(to left, #EEF2FF, transparent)' }} />
+        style={{ background: 'linear-gradient(to left, #F3F2EC, transparent)' }} />
 
       <div className={`flex gap-4 py-2 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}
         style={{ width: 'max-content' }}>
@@ -24,16 +24,16 @@ function Track({ data, reverse = false }) {
               className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl flex-shrink-0 group cursor-default"
               style={{
                 background: 'rgba(255,255,255,0.75)',
-                border: '1px solid rgba(29,78,216,0.12)',
-                boxShadow: '0 2px 12px rgba(27,49,114,0.06)',
+                border: '1px solid rgba(19,118,180,0.12)',
+                boxShadow: '0 2px 12px rgba(13,36,106,0.06)',
                 backdropFilter: 'blur(12px)',
               }}>
               <div className={`w-6 h-6 rounded-lg bg-gradient-to-br ${s.color} flex items-center justify-center flex-shrink-0 shadow-sm`}
-                style={{ boxShadow: '0 0 12px rgba(107,63,160,0.25)' }}>
+                style={{ boxShadow: '0 0 12px rgba(94,50,140,0.25)' }}>
                 <Icon className="w-3.5 h-3.5 text-white" />
               </div>
-              <span className="text-[#334155] font-heading font-600 text-xs whitespace-nowrap">{s.title}</span>
-              <span className="text-[#C7D2FE] text-sm ml-0.5">✦</span>
+              <span className="text-[#2B3557] font-heading font-600 text-xs whitespace-nowrap">{s.title}</span>
+              <span className="text-[#D9D7CC] text-sm ml-0.5">✦</span>
             </div>
           );
         })}
@@ -44,7 +44,7 @@ function Track({ data, reverse = false }) {
 
 export default function ServicesMarquee() {
   return (
-    <div className="py-4 bg-[#EEF2FF] border-y border-slate-200/80 space-y-2 overflow-hidden">
+    <div className="py-4 bg-[#F3F2EC] border-y border-slate-200/80 space-y-2 overflow-hidden">
       <Track data={items} />
       <Track data={itemsRev} reverse />
     </div>

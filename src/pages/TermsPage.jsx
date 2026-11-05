@@ -8,9 +8,9 @@ const LAST_UPDATED = 'September 2, 2026';
 
 export default function TermsPage() {
   return (
-    <main className="pt-28 pb-20 bg-[#F8FAFF] min-h-screen">
+    <main className="pt-28 pb-20 bg-[#FBFAF6] min-h-screen">
       <SEO title="Terms of Service" description="Novelio Technologies LLC terms of service: your rights and obligations when using our services." canonical="/terms" noindex />
-      <div className="bg-[#0E1E38] py-16 mb-12">
+      <div className="bg-[#081648] py-16 mb-12">
         <div className="container-xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-white/70 mb-5"
@@ -30,7 +30,7 @@ export default function TermsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="rounded-3xl p-8 lg:p-12 space-y-10"
-          style={{ background: 'white', border: '1px solid rgba(29,78,216,0.08)', boxShadow: '0 4px 32px rgba(27,49,114,0.07)' }}
+          style={{ background: 'white', border: '1px solid rgba(19,118,180,0.08)', boxShadow: '0 4px 32px rgba(13,36,106,0.07)' }}
         >
 
           <Section title="1. Acceptance of Terms">
@@ -209,7 +209,7 @@ export default function TermsPage() {
               <li>Third-party costs, hosting fees, domain fees, software fees, advertising spend, payment processor fees, and purchased tools are non-refundable.</li>
             </ul>
             <p>Approved refunds, if any, may be processed through the original payment method where possible. Processing timelines may depend on the bank, payment processor, or payment method used.</p>
-            <p>For detailed refund rules, please refer to Novelio's <Link to="/refund-policy" className="text-[#1D4ED8] hover:underline">Refund &amp; Cancellation Policy</Link>. For Novelio India clients, refund timelines and mechanics follow the India-specific terms of that policy, including timelines aligned with Razorpay's settlement cycle.</p>
+            <p>For detailed refund rules, please refer to Novelio's <Link to="/refund-policy" className="text-[#1376B4] hover:underline">Refund &amp; Cancellation Policy</Link>. For Novelio India clients, refund timelines and mechanics follow the India-specific terms of that policy, including timelines aligned with Razorpay's settlement cycle.</p>
           </Section>
 
           <Section title="15. Termination">
@@ -266,7 +266,7 @@ export default function TermsPage() {
 
           <Section title="20. Privacy">
             <p>Your use of our website and services may involve the collection and processing of personal information, business information, billing information, and payment-related information.</p>
-            <p>Please review our <Link to="/privacy" className="text-[#1D4ED8] hover:underline">Privacy Policy</Link> to understand how we collect, use, protect, and share information.</p>
+            <p>Please review our <Link to="/privacy" className="text-[#1376B4] hover:underline">Privacy Policy</Link> to understand how we collect, use, protect, and share information.</p>
             <p>For security reasons, clients should not send full bank account details, card details, passwords, or sensitive access credentials through unsecured email, chat, WhatsApp, or social media unless specifically requested through an approved secure method.</p>
           </Section>
 
@@ -303,8 +303,8 @@ export default function TermsPage() {
 function Section({ title, children }) {
   return (
     <div>
-      <h2 className="text-xl font-heading font-700 text-[#1B3172] mb-4 pb-2 border-b border-slate-100">{title}</h2>
-      <div className="space-y-3 text-[#475569] text-[15px] leading-relaxed [&_ul]:space-y-2 [&_ul]:pl-5 [&_ul]:list-disc [&_strong]:text-[#334155] [&_strong]:font-600">
+      <h2 className="text-xl font-heading font-700 text-[#0D246A] mb-4 pb-2 border-b border-slate-100">{title}</h2>
+      <div className="space-y-3 text-[#3F4A6B] text-[15px] leading-relaxed [&_ul]:space-y-2 [&_ul]:pl-5 [&_ul]:list-disc [&_strong]:text-[#2B3557] [&_strong]:font-600">
         {children}
       </div>
     </div>

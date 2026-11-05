@@ -71,7 +71,7 @@ export default function LeadsPage() {
       <PageHeader title="Leads" subtitle="Everything submitted through the website.">
         <a
           href={api.leads.exportUrl(type, { q, status })}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#475569] hover:text-[#1B3172] hover:border-[#1B3172]"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#3F4A6B] hover:text-[#0D246A] hover:border-[#0D246A]"
         >
           <Download className="w-4 h-4" /> Export CSV
         </a>
@@ -85,7 +85,7 @@ export default function LeadsPage() {
             key={t.id}
             onClick={() => { setType(t.id); setStatus(''); setSortByScore(false); }}
             className={`px-3.5 py-2 rounded-xl text-sm font-semibold cursor-pointer ${
-              type === t.id ? 'bg-[#1B3172] text-white' : 'bg-white border border-slate-200 text-[#475569]'
+              type === t.id ? 'bg-[#0D246A] text-white' : 'bg-white border border-slate-200 text-[#3F4A6B]'
             }`}
           >
             {t.label}
@@ -112,7 +112,7 @@ export default function LeadsPage() {
             onClick={() => setSortByScore((v) => !v)}
             title="Worst-scoring sites first"
             className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold cursor-pointer border ${
-              sortByScore ? 'bg-[#1B3172] text-white border-[#1B3172]' : 'bg-white border-slate-200 text-[#475569]'
+              sortByScore ? 'bg-[#0D246A] text-white border-[#0D246A]' : 'bg-white border-slate-200 text-[#3F4A6B]'
             }`}
           >
             <ArrowDownWideNarrow className="w-4 h-4" /> Worst first
@@ -122,7 +122,7 @@ export default function LeadsPage() {
 
       {!data ? <Spinner /> : data.items.length === 0 ? (
         <div className="bg-white rounded-2xl border border-slate-200 p-10 text-center">
-          <p className="text-sm text-[#64748b]">Nothing here yet.</p>
+          <p className="text-sm text-[#5C6685]">Nothing here yet.</p>
           <p className="text-xs text-[#94a3b8] mt-1">
             New submissions appear as soon as they come in — no publishing needed.
           </p>
@@ -134,18 +134,18 @@ export default function LeadsPage() {
               <div key={row.id} className="px-4 py-3 border-b border-slate-100 last:border-0">
                 <div className="flex flex-wrap items-center gap-3">
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-sm text-[#1B3172] truncate">
+                    <p className="font-semibold text-sm text-[#0D246A] truncate">
                       {row.name || row.email || '(no name)'}
-                      {row.role && <span className="font-normal text-[#64748b]"> — {row.role}</span>}
+                      {row.role && <span className="font-normal text-[#5C6685]"> — {row.role}</span>}
                     </p>
                     <div className="flex flex-wrap gap-3 text-xs text-[#94a3b8] mt-0.5">
                       {row.email && (
-                        <a href={`mailto:${row.email}`} className="inline-flex items-center gap-1 hover:text-[#1B3172]">
+                        <a href={`mailto:${row.email}`} className="inline-flex items-center gap-1 hover:text-[#0D246A]">
                           <Mail className="w-3 h-3" /> {row.email}
                         </a>
                       )}
                       {row.phone && (
-                        <a href={`tel:${row.phone}`} className="inline-flex items-center gap-1 hover:text-[#1B3172]">
+                        <a href={`tel:${row.phone}`} className="inline-flex items-center gap-1 hover:text-[#0D246A]">
                           <Phone className="w-3 h-3" /> {row.phone}
                         </a>
                       )}
@@ -175,13 +175,13 @@ export default function LeadsPage() {
                       href={row.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="inline-flex items-center gap-1.5 text-sm text-[#1B3172] font-medium hover:underline break-all"
+                      className="inline-flex items-center gap-1.5 text-sm text-[#0D246A] font-medium hover:underline break-all"
                     >
                       {row.url} <ExternalLink className="w-3 h-3 flex-shrink-0" />
                     </a>
                     {row.top_issues?.length > 0 && (
                       // The opening line for the call, already written.
-                      <p className="text-xs text-[#64748b] mt-1">
+                      <p className="text-xs text-[#5C6685] mt-1">
                         Worst findings: {row.top_issues.join(' · ')}
                       </p>
                     )}
@@ -189,7 +189,7 @@ export default function LeadsPage() {
                 )}
 
                 {row.message && (
-                  <p className="text-sm text-[#475569] mt-2 whitespace-pre-wrap border-l-2 border-slate-200 pl-3">
+                  <p className="text-sm text-[#3F4A6B] mt-2 whitespace-pre-wrap border-l-2 border-slate-200 pl-3">
                     {row.message}
                   </p>
                 )}

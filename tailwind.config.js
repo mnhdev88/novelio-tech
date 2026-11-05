@@ -1,23 +1,61 @@
+// Every colour here is sampled from public/logo.png. The utility hues below are
+// remapped (not just added) because service/industry gradients are stored as
+// Tailwind classes in content/*.json and edited from the admin panel: remapping
+// keeps those on-brand without changing the content schema.
+const logo = {
+  ink: '#0D246A',
+  red: '#E02A2A',
+  orange: '#F07030',
+  amber: '#F0A030',
+  yellow: '#F0D030',
+  green: '#0A924E',
+  teal: '#129880',
+  sky: '#1391C4',
+  blue: '#1376B4',
+  indigo: '#42499D',
+  violet: '#5E328C',
+};
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  // content/*.json is scanned because it holds gradient class names.
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', './content/**/*.json'],
   theme: {
     extend: {
       colors: {
+        logo,
         brand: {
-          purple: '#6B3FA0',
-          blue: '#1D4ED8',
-          cyan: '#0EA5E9',
-          pink: '#FF006E',
-          orange: '#F97316',
-          'cyan-bright': '#00D4FF',
-          dark: '#091830',
-          navy: '#112c52',
-          'logo-navy': '#1B3172',
+          purple: logo.violet,
+          blue: logo.blue,
+          cyan: logo.sky,
+          pink: logo.red,
+          orange: logo.orange,
+          'cyan-bright': logo.sky,
+          dark: '#081648',
+          navy: logo.ink,
+          'logo-navy': logo.ink,
         },
+        paper: { DEFAULT: '#FBFAF6', deep: '#F3F2EC' },
+        red: { 500: logo.red, 600: logo.red },
+        rose: { 500: logo.red, 600: logo.red },
+        pink: { 500: logo.red, 600: logo.red },
+        fuchsia: { 500: logo.violet, 600: logo.violet },
+        orange: { 500: logo.orange },
+        amber: { 400: logo.amber, 500: logo.orange },
+        yellow: { 400: logo.yellow, 500: logo.yellow },
+        lime: { 500: logo.green },
+        green: { 500: logo.green, 600: '#0A8547' },
+        emerald: { 500: logo.green, 600: '#0A8547' },
+        teal: { 500: logo.teal, 600: logo.teal },
+        cyan: { 500: logo.sky, 600: logo.sky },
+        sky: { 500: logo.sky, 600: logo.blue },
+        blue: { 500: logo.sky, 600: logo.blue, 700: logo.blue },
+        indigo: { 500: logo.indigo, 600: logo.indigo, 700: logo.indigo },
+        violet: { 500: logo.violet, 600: logo.violet },
+        purple: { 500: logo.violet, 600: logo.violet },
       },
       fontFamily: {
-        heading: ['"Space Grotesk"', 'sans-serif'],
+        heading: ['Outfit', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
       // Numeric font-weight utilities (font-400 … font-800) are used throughout
@@ -31,15 +69,16 @@ export default {
         800: '800',
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)',
-        'gradient-secondary': 'linear-gradient(135deg, #F97316 0%, #FACC15 50%, #22C55E 100%)',
-        'gradient-vibrant': 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 40%, #00D4FF 100%)',
-        'gradient-rainbow': 'linear-gradient(135deg, #F97316 0%, #FACC15 25%, #22C55E 50%, #0EA5E9 75%, #1D4ED8 100%)',
+        spectrum: 'linear-gradient(90deg, #E02A2A 0%, #F07030 16%, #F0D030 34%, #0A924E 52%, #129880 64%, #1376B4 78%, #42499D 90%, #5E328C 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #5E328C 0%, #42499D 50%, #1376B4 100%)',
+        'gradient-secondary': 'linear-gradient(135deg, #E02A2A 0%, #F07030 50%, #F0D030 100%)',
+        'gradient-vibrant': 'linear-gradient(135deg, #5E328C 0%, #1376B4 60%, #129880 100%)',
+        'gradient-rainbow': 'linear-gradient(135deg, #E02A2A 0%, #F07030 20%, #F0D030 40%, #0A924E 60%, #1391C4 80%, #1376B4 100%)',
       },
       boxShadow: {
-        glow: '0 0 40px rgba(107,63,160,0.45), 0 0 80px rgba(29,78,216,0.25)',
-        'glow-pink': '0 0 40px rgba(255,0,110,0.4)',
-        'glow-cyan': '0 0 40px rgba(0,212,255,0.4)',
+        glow: '0 0 40px rgba(94,50,140,0.45), 0 0 80px rgba(19,118,180,0.25)',
+        'glow-pink': '0 0 40px rgba(224,42,42,0.4)',
+        'glow-cyan': '0 0 40px rgba(19,145,196,0.4)',
         glass: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
         card: '0 4px 24px rgba(0,0,0,0.3)',
       },
@@ -57,8 +96,8 @@ export default {
           '50%': { transform: 'translateY(-20px)' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(107,63,160,0.4)' },
-          '50%': { boxShadow: '0 0 60px rgba(107,63,160,0.8)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(94,50,140,0.4)' },
+          '50%': { boxShadow: '0 0 60px rgba(94,50,140,0.8)' },
         },
         marquee: {
           '0%': { transform: 'translateX(0%)' },

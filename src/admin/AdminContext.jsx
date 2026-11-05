@@ -139,7 +139,7 @@ export function RequireAdmin({ children, cap }) {
   if (loading) {
     return (
       <div className="min-h-screen grid place-items-center bg-[#F8FAFC]">
-        <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#1B3172] animate-spin" />
+        <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#0D246A] animate-spin" />
       </div>
     );
   }
@@ -155,8 +155,8 @@ export function RequireAdmin({ children, cap }) {
     return (
       <div className="p-8">
         <div className="max-w-md mx-auto bg-white border border-slate-200 rounded-2xl p-6 text-center">
-          <h2 className="font-heading font-800 text-[#1B3172] text-lg mb-1">Not available on your account</h2>
-          <p className="text-sm text-[#64748b]">
+          <h2 className="font-heading font-800 text-[#0D246A] text-lg mb-1">Not available on your account</h2>
+          <p className="text-sm text-[#5C6685]">
             This section is limited to admins. Ask an admin to change your role if you need access.
           </p>
         </div>

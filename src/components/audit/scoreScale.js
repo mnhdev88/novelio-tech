@@ -18,7 +18,7 @@ export function scoreBand(score) {
 // Explicit hex rather than Tailwind classes: the same values feed an SVG stroke
 // and an inline style, neither of which can take a class name.
 export function scoreColor(score) {
-  if (score >= 75) return '#16A34A';
-  if (score >= 55) return '#F59E0B';
-  return '#DC2626';
+  if (score >= 75) return '#0A8547';
+  if (score >= 55) return '#F07030';
+  return '#E02A2A';
 }

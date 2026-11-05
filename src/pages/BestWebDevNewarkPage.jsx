@@ -75,16 +75,16 @@ function FAQItem({ q, a, index }) {
     <motion.div {...fadeUp(index * 0.07)} className="border border-[#E2E8F0] rounded-2xl overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-[#F8FAFF] transition-colors"
+        className="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-[#FBFAF6] transition-colors"
         aria-expanded={open}
       >
-        <span className="font-heading font-600 text-[#1B3172] text-base pr-4">{q}</span>
+        <span className="font-heading font-600 text-[#0D246A] text-base pr-4">{q}</span>
         {open
-          ? <ChevronUp className="w-5 h-5 text-[#6B3FA0] flex-shrink-0" />
-          : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />}
+          ? <ChevronUp className="w-5 h-5 text-[#5E328C] flex-shrink-0" />
+          : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />}
       </button>
       {open && (
-        <div className="px-6 pb-6 bg-white text-[#475569] text-sm leading-relaxed border-t border-[#F1F5F9]">
+        <div className="px-6 pb-6 bg-white text-[#3F4A6B] text-sm leading-relaxed border-t border-[#F1F5F9]">
           <p className="pt-4">{a}</p>
         </div>
       )}
@@ -153,7 +153,7 @@ export default function BestWebDevNewarkPage() {
             </div>
           </motion.div>
 
-          <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+          <h1 className="text-5xl lg:text-7xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
             {['The', 'Best', 'Website', 'Developer'].map((w, i) => (
               <motion.span key={w}
                 initial={{ opacity: 0, y: 32, filter: 'blur(6px)' }}
@@ -169,7 +169,7 @@ export default function BestWebDevNewarkPage() {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.55, delay: 0.44 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
-                style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+                style={{ background: 'linear-gradient(135deg, #5E328C 0%, #1376B4 50%, #1391C4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
               >{w}</motion.span>
             ))}
             {' '}
@@ -187,7 +187,7 @@ export default function BestWebDevNewarkPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.95 }}
-            className="text-[#475569] text-xl max-w-3xl mx-auto leading-relaxed mb-8"
+            className="text-[#3F4A6B] text-xl max-w-3xl mx-auto leading-relaxed mb-8"
           >
             Most Newark businesses have websites that are invisible on Google and bleed leads every day.
             Novelio builds fast, SEO-ready, conversion-focused sites, and you see your free demo before spending a single dollar.
@@ -229,7 +229,7 @@ export default function BestWebDevNewarkPage() {
             ].map((stat, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center backdrop-blur-sm">
                 <div className="text-2xl font-heading font-800 gradient-text">{stat.value}</div>
-                <div className="text-xs text-[#64748b] mt-1">{stat.label}</div>
+                <div className="text-xs text-[#5C6685] mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -241,23 +241,23 @@ export default function BestWebDevNewarkPage() {
         <div className="container-xl">
           <motion.div className="text-center mb-14" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">The Real Problem</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] mb-4">
               Your Competitors' Websites Are Winning Clients That Should Be Yours
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Newark has thousands of small businesses competing for the same local customers. The ones winning on Google share one thing: a website built to rank and convert.
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {PAIN_POINTS.map((point, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.1)} className="bg-[#F8FAFF] border border-[#E2E8F0] rounded-2xl p-8">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center mb-5">
+              <motion.div key={i} {...fadeUp(i * 0.1)} className="bg-[#FBFAF6] border border-[#E2E8F0] rounded-2xl p-8">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#5E328C] to-[#1376B4] flex items-center justify-center mb-5">
                   <span className="text-white font-heading font-700 text-sm">{point.num}</span>
                 </div>
-                <h3 className="text-lg font-heading font-700 text-[#1B3172] mb-2">{point.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed mb-4">{point.desc}</p>
-                <span className="inline-block text-xs font-medium text-[#4338CA] bg-[#EEF2FF] border border-[#C7D2FE] rounded-full px-3 py-1">
+                <h3 className="text-lg font-heading font-700 text-[#0D246A] mb-2">{point.title}</h3>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed mb-4">{point.desc}</p>
+                <span className="inline-block text-xs font-medium text-[#42499D] bg-[#F3F2EC] border border-[#D9D7CC] rounded-full px-3 py-1">
                   {point.stat}
                 </span>
               </motion.div>
@@ -276,11 +276,11 @@ export default function BestWebDevNewarkPage() {
             <div>
               <motion.div {...fadeUp(0)}>
                 <div className="section-label mb-3">Zero-Risk Offer</div>
-                <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+                <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
                   We Build Your Newark Website First.{' '}
                   <span className="gradient-text">You Pay After.</span>
                 </h2>
-                <p className="text-[#475569] text-lg leading-relaxed mb-10">
+                <p className="text-[#3F4A6B] text-lg leading-relaxed mb-10">
                   No deposits, no contracts, no risk. We research your Newark business, your market, and your competitors, then build a real, live demo and walk you through it on a call. Love it, we launch. Don't love it, you owe us nothing.
                 </p>
               </motion.div>
@@ -292,12 +292,12 @@ export default function BestWebDevNewarkPage() {
                   { n: '3', title: 'Review call: you decide', desc: 'See the demo live on a call. Love it → we launch. Don\'t → walk away with no bill.' },
                 ].map((step, i) => (
                   <motion.div key={i} {...fadeUp(0.1 + i * 0.1)} className="flex items-start gap-5">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#5E328C] to-[#1376B4] flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-white font-heading font-700 text-sm">{step.n}</span>
                     </div>
                     <div>
-                      <p className="font-heading font-700 text-[#1B3172] mb-1">{step.title}</p>
-                      <p className="text-[#475569] text-sm leading-relaxed">{step.desc}</p>
+                      <p className="font-heading font-700 text-[#0D246A] mb-1">{step.title}</p>
+                      <p className="text-[#3F4A6B] text-sm leading-relaxed">{step.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -308,14 +308,14 @@ export default function BestWebDevNewarkPage() {
             <motion.div {...fadeUp(0.2)}>
               <div className="bg-white border border-[#E2E8F0] rounded-3xl p-10 shadow-lg">
                 <div className="section-label mb-4">What's Included in Your Free Demo</div>
-                <h3 className="text-2xl font-heading font-800 text-[#1B3172] mb-6 leading-snug">
+                <h3 className="text-2xl font-heading font-800 text-[#0D246A] mb-6 leading-snug">
                   Your Newark business's complete website, built & ready to review
                 </h3>
 
                 <ul className="flex flex-col gap-3 mb-8">
                   {DEMO_INCLUDES.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-[#475569] text-sm">
-                      <CheckCircle className="w-4 h-4 text-[#6B3FA0] flex-shrink-0" />
+                    <li key={i} className="flex items-center gap-3 text-[#3F4A6B] text-sm">
+                      <CheckCircle className="w-4 h-4 text-[#5E328C] flex-shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -323,7 +323,7 @@ export default function BestWebDevNewarkPage() {
 
                 <div className="flex items-baseline gap-3 mb-6">
                   <span className="text-5xl font-heading font-900 gradient-text">$0</span>
-                  <span className="text-[#64748b] text-sm">to see your demo · growth plans from $150/mo with website included</span>
+                  <span className="text-[#5C6685] text-sm">to see your demo · growth plans from $150/mo with website included</span>
                 </div>
 
                 <a
@@ -333,8 +333,8 @@ export default function BestWebDevNewarkPage() {
                   <Phone className="w-4 h-4" />
                   Call to Start Your Free Demo: (908) 639-5666
                 </a>
-                <p className="text-center text-xs text-[#64748b]">
-                  Or email <a href="mailto:info@noveliotech.com" className="text-[#4338CA] hover:underline">info@noveliotech.com</a> · Response within 2 hours
+                <p className="text-center text-xs text-[#5C6685]">
+                  Or email <a href="mailto:info@noveliotech.com" className="text-[#42499D] hover:underline">info@noveliotech.com</a> · Response within 2 hours
                 </p>
               </div>
             </motion.div>
@@ -348,19 +348,19 @@ export default function BestWebDevNewarkPage() {
         <div className="container-xl">
           <motion.div className="text-center mb-12" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">Newark Market</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] mb-4">
               Why Newark Businesses Can't Afford to Ignore Their Website
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Newark, NJ is one of the fastest-growing metros in the Northeast. But fewer than 1 in 4 local businesses has a website that ranks on Google's first page. That gap is your opportunity.
             </p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {STATS.map((stat, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.1)} className="bg-[#F8FAFF] border border-[#E2E8F0] rounded-2xl p-7 text-center">
+              <motion.div key={i} {...fadeUp(i * 0.1)} className="bg-[#FBFAF6] border border-[#E2E8F0] rounded-2xl p-7 text-center">
                 <div className="text-3xl font-heading font-800 gradient-text mb-1">{stat.value}</div>
-                <div className="text-sm text-[#64748b]">{stat.label}</div>
+                <div className="text-sm text-[#5C6685]">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -373,10 +373,10 @@ export default function BestWebDevNewarkPage() {
         <div className="container-xl relative z-10">
           <motion.div className="text-center mb-12" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">The Difference</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] mb-4">
               What Changes When Your Newark Business Has the Right Website
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               The difference between a site that sits there and one that actively grows your business.
             </p>
           </motion.div>
@@ -384,10 +384,10 @@ export default function BestWebDevNewarkPage() {
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Before */}
             <motion.div {...fadeUp(0.1)} className="bg-white border border-[#E2E8F0] rounded-2xl p-8">
-              <div className="inline-block text-xs font-medium tracking-widest uppercase bg-[#FEF2F2] text-[#DC2626] border border-[#FECACA] rounded-full px-3 py-1 mb-5">
+              <div className="inline-block text-xs font-medium tracking-widest uppercase bg-[#FEF2F2] text-[#E02A2A] border border-[#FECACA] rounded-full px-3 py-1 mb-5">
                 Without Novelio
               </div>
-              <h3 className="font-heading font-700 text-[#1B3172] mb-4">What most Newark business sites look like</h3>
+              <h3 className="font-heading font-700 text-[#0D246A] mb-4">What most Newark business sites look like</h3>
               <ul className="flex flex-col gap-3">
                 {[
                   'Hard to find on Google: no local SEO structure',
@@ -397,8 +397,8 @@ export default function BestWebDevNewarkPage() {
                   'Slow load times, losing more than half of visitors',
                   'No lead capture: traffic vanishes without converting',
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-[#64748b] text-sm">
-                    <span className="text-[#DC2626] font-bold mt-0.5 flex-shrink-0">✕</span>
+                  <li key={i} className="flex items-start gap-3 text-[#5C6685] text-sm">
+                    <span className="text-[#E02A2A] font-bold mt-0.5 flex-shrink-0">✕</span>
                     {item}
                   </li>
                 ))}
@@ -406,7 +406,7 @@ export default function BestWebDevNewarkPage() {
             </motion.div>
 
             {/* After */}
-            <motion.div {...fadeUp(0.2)} className="bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] rounded-2xl p-8 text-white">
+            <motion.div {...fadeUp(0.2)} className="bg-gradient-to-br from-[#5E328C] to-[#1376B4] rounded-2xl p-8 text-white">
               <div className="inline-block text-xs font-medium tracking-widest uppercase bg-white/15 border border-white/25 rounded-full px-3 py-1 mb-5">
                 With Novelio
               </div>
@@ -436,22 +436,22 @@ export default function BestWebDevNewarkPage() {
         <div className="container-xl">
           <motion.div {...fadeUp(0)} className="max-w-3xl mx-auto text-center">
             <div className="section-label mx-auto mb-6">What Our Clients Say</div>
-            <div className="bg-[#F8FAFF] border border-[#E2E8F0] rounded-3xl p-10">
+            <div className="bg-[#FBFAF6] border border-[#E2E8F0] rounded-3xl p-10">
               <div className="flex justify-center gap-0.5 mb-6">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-amber-500 fill-amber-500" />
                 ))}
               </div>
-              <blockquote className="text-xl text-[#1B3172] font-medium leading-relaxed mb-8 italic">
+              <blockquote className="text-xl text-[#0D246A] font-medium leading-relaxed mb-8 italic">
                 "We had Instagram followers but no one was booking online. Novelio built us a site with real SEO and a booking integration. Within 45 days we were getting appointments through the website every single day."
               </blockquote>
               <div className="flex items-center justify-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center text-white font-heading font-700 text-sm flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#5E328C] to-[#1376B4] flex items-center justify-center text-white font-heading font-700 text-sm flex-shrink-0">
                   JT
                 </div>
                 <div className="text-left">
-                  <div className="font-heading font-700 text-[#1B3172] text-sm">Jasmine T.</div>
-                  <div className="text-[#64748b] text-xs">Owner · Hair Salon, Newark NJ</div>
+                  <div className="font-heading font-700 text-[#0D246A] text-sm">Jasmine T.</div>
+                  <div className="text-[#5C6685] text-xs">Owner · Hair Salon, Newark NJ</div>
                 </div>
                 <div className="ml-4 pl-4 border-l border-[#E2E8F0]">
                   <span className="text-xs font-medium text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1">
@@ -465,14 +465,14 @@ export default function BestWebDevNewarkPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="section-pad bg-[#F8FAFF] border-y border-[#E2E8F0]" id="faq">
+      <section className="section-pad bg-[#FBFAF6] border-y border-[#E2E8F0]" id="faq">
         <div className="container-xl">
           <motion.div className="text-center mb-14" {...fadeUp(0)}>
             <div className="section-label mx-auto mb-3">FAQ</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] mb-4">
               Questions Newark Business Owners Ask Us
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Common questions about web development, cost, and local SEO from Newark business owners.
             </p>
           </motion.div>
@@ -489,24 +489,24 @@ export default function BestWebDevNewarkPage() {
       <section className="py-10 bg-white border-b border-[#E2E8F0]">
         <div className="container-xl">
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
-            <Link to="/locations/new-jersey/newark" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors flex items-center gap-1.5">
+            <Link to="/locations/new-jersey/newark" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />
               Newark, NJ Location Page
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/services/website-development" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to="/services/website-development" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors">
               Website Development Services
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/services/google-business-profile" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to="/services/google-business-profile" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors">
               Google Business Profile
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/locations" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to="/locations" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors">
               All Locations
             </Link>
             <span className="text-[#CBD5E1]">·</span>
-            <Link to="/contact" className="text-[#4338CA] hover:text-[#6B3FA0] font-medium transition-colors">
+            <Link to="/contact" className="text-[#42499D] hover:text-[#5E328C] font-medium transition-colors">
               Contact Us
             </Link>
           </div>

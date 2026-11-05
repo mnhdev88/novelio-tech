@@ -6,21 +6,40 @@
 @font-face {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 400 500;
+  font-weight: 400 700;
   font-display: swap;
   src: url('/fonts/inter-latin.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: 'Outfit';
   font-style: normal;
-  font-weight: 600 800;
+  font-weight: 400 900;
   font-display: swap;
-  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+  src: url('/fonts/outfit-latin.woff2') format('woff2');
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Brand tokens, sampled from public/logo.png. Solid fills carry the colour; the
+   full spectrum is reserved for thin strips and the infinity mark so it stays special.
+   Contrast: white text passes on red, blue, indigo, violet and #0A8547 green.
+   Yellow and orange take navy text only. */
+:root {
+  --ink: #0D246A;
+  --ink-deep: #081648;
+  --paper: #FBFAF6;
+  --red: #E02A2A;
+  --orange: #F07030;
+  --yellow: #F0D030;
+  --green: #0A924E;
+  --teal: #129880;
+  --blue: #1376B4;
+  --indigo: #42499D;
+  --violet: #5E328C;
+  --spectrum: linear-gradient(90deg, #E02A2A 0%, #F07030 16%, #F0D030 34%, #0A924E 52%, #129880 64%, #1376B4 78%, #42499D 90%, #5E328C 100%);
+}
 
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
@@ -33,58 +52,63 @@
 
   body {
     margin: 0;
-    background-color: #F5F7FF;
-    color: #334155;
+    background-color: var(--paper);
+    color: #2B3557;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.1;
     letter-spacing: -0.02em;
-    color: #1B3172;
+    color: var(--ink);
     margin: 0;
   }
 
   p { margin: 0; }
   a { text-decoration: none; color: inherit; }
   img { max-width: 100%; }
-  button { cursor: pointer; border: none; outline: none; background: none; }
+  /* border-width, not `border: none`: that also resets border-style, which silently
+     disables every Tailwind border utility on every button. */
+  button { cursor: pointer; border-width: 0; border-style: solid; outline: none; background: none; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 2px;
+  }
+  .on-dark a:focus-visible, .on-dark button:focus-visible { outline-color: var(--yellow); }
 }
 
 @layer components {
-  /* ── Gradient text ─────────────────────────── */
-  .gradient-text {
-    background: linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+  /* ── Highlighted heading text ──────────────── */
+  .gradient-text,
   .gradient-text-pink {
-    background: linear-gradient(135deg, #FF006E 0%, #F97316 100%);
+    background: linear-gradient(100deg, #E02A2A 0%, #D9591C 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  /* Kept as a name for existing markup. A true rainbow turns muddy and hard to read
+     at text weight, so it shares the warm highlight. */
   .gradient-text-rainbow {
-    background: linear-gradient(135deg, #F97316 0%, #FACC15 25%, #22C55E 50%, #0EA5E9 75%, #1D4ED8 100%);
+    background: linear-gradient(100deg, #E02A2A 0%, #D9591C 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* ── Glass card ────────────────────────────── */
+  /* ── Card ──────────────────────────────────── */
   .glass-card {
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(29, 78, 216, 0.13);
-    box-shadow: 0 4px 24px rgba(27, 49, 114, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    background: #ffffff;
+    border: 1px solid rgba(13, 36, 106, 0.12);
+    box-shadow: 0 4px 24px rgba(13, 36, 106, 0.06);
   }
 
-  /* ── Gradient border card ──────────────────── */
+  /* ── Bordered card ─────────────────────────── */
+  /* The name is historic. This used to be a gradient outline, but on every card the
+     spectrum stops being special, so it is a plain navy hairline now. */
   .gradient-border {
     position: relative;
     border-radius: 16px;
@@ -94,89 +118,92 @@
     position: absolute;
     inset: 0;
     border-radius: 16px;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(107,63,160,0.5), rgba(29,78,216,0.35), rgba(14,165,233,0.25));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    border: 1px solid rgba(13, 36, 106, 0.15);
     pointer-events: none;
   }
 
-  /* ── Primary CTA button ────────────────────── */
+  /* ── Primary CTA: logo yellow, stamped with navy ─ */
   .btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 14px 28px;
-    border-radius: 50px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    background: linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 100%);
-    color: #ffffff;
-    box-shadow: 0 4px 24px rgba(107,63,160,0.35);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    transition: left 0.5s ease;
+    border-radius: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    background: var(--yellow);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
   .btn-primary:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 40px rgba(107,63,160,0.5);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
   }
-  .btn-primary:hover::after { left: 100%; }
+  .btn-primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-  /* ── Ghost button ──────────────────────────── */
+  /* Same button on navy or violet: the stamp turns white so it still reads. */
+  .on-dark .btn-primary {
+    border-color: var(--yellow);
+    box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.28);
+  }
+  .on-dark .btn-primary:hover { box-shadow: 6px 6px 0 rgba(255, 255, 255, 0.4); }
+
+  /* ── Secondary button ──────────────────────── */
   .btn-ghost {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 13px 28px;
-    border-radius: 50px;
-    font-family: 'Space Grotesk', sans-serif;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-family: 'Outfit', sans-serif;
     font-weight: 600;
-    font-size: 15px;
-    color: #1B3172;
-    border: 1px solid rgba(27, 49, 114, 0.25);
-    background: rgba(27, 49, 114, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    font-size: 16px;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    background: transparent;
+    transition: background 0.18s ease, color 0.18s ease;
   }
-  .btn-ghost:hover {
-    border-color: rgba(107,63,160,0.5);
-    background: rgba(107,63,160,0.08);
-    box-shadow: 0 4px 24px rgba(107,63,160,0.15);
-    transform: translateY(-2px);
-  }
+  .btn-ghost:hover { background: var(--ink); color: #ffffff; }
 
-  /* ── Section padding ───────────────────────── */
-  .section-pad { padding: 60px 0; }
-  .section-pad-sm { padding: 40px 0; }
+  /* ── Layout ────────────────────────────────── */
+  .section-pad { padding: 64px 0; }
+  .section-pad-sm { padding: 48px 0; }
+  @media (min-width: 1024px) {
+    .section-pad { padding: 104px 0; }
+    .section-pad-sm { padding: 72px 0; }
+  }
   .container-xl { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
   .container-lg { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-  /* ── Section label ─────────────────────────── */
+  /* ── Eyebrow: a slice of the logo's spectrum ── */
   .section-label {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 16px;
-    border-radius: 50px;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
     font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    background: rgba(107,63,160,0.1);
-    border: 1px solid rgba(107,63,160,0.28);
-    color: #6B3FA0;
+    color: var(--ink);
     margin-bottom: 16px;
   }
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--spectrum);
+    flex-shrink: 0;
+  }
+  .on-dark .section-label { color: #ffffff; }
 
   /* ── Decorative orb ────────────────────────── */
   .orb {
@@ -186,10 +213,10 @@
     pointer-events: none;
     opacity: 0.12;
   }
-  .orb-purple { background: #6B3FA0; }
-  .orb-blue   { background: #1D4ED8; }
-  .orb-cyan   { background: #06b6d4; }
-  .orb-pink   { background: #FF006E; }
+  .orb-purple { background: var(--violet); }
+  .orb-blue   { background: var(--blue); }
+  .orb-cyan   { background: var(--teal); }
+  .orb-pink   { background: var(--red); }
 
   /* ── Noise texture ─────────────────────────── */
   .noise-overlay::after {
@@ -207,18 +234,15 @@
     padding: 24px;
   }
   .stat-number {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 48px;
     font-weight: 800;
     line-height: 1;
-    background: linear-gradient(135deg, #6B3FA0 0%, #0EA5E9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--ink);
   }
   .stat-label {
     font-size: 14px;
-    color: #64748b;
+    color: #5C6685;
     margin-top: 6px;
     font-weight: 500;
     text-transform: uppercase;
@@ -230,9 +254,9 @@
     width: 56px; height: 56px;
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, rgba(107,63,160,0.18), rgba(29,78,216,0.18));
-    border: 1px solid rgba(107,63,160,0.28);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: rgba(13, 36, 106, 0.07);
+    border: 1px solid rgba(13, 36, 106, 0.14);
+    transition: transform 0.3s ease;
     flex-shrink: 0;
   }
 
@@ -241,7 +265,7 @@
     position: fixed;
     top: 0; left: 0;
     height: 3px;
-    background: linear-gradient(90deg, #F97316, #22C55E, #0EA5E9, #1D4ED8, #6B3FA0);
+    background: var(--spectrum);
     z-index: 9999;
     transform-origin: left;
     transition: transform 0.1s linear;
@@ -249,31 +273,33 @@
 }
 
 @layer utilities {
-  .text-muted { color: #64748b; }
-  .text-secondary { color: #475569; }
-  .bg-dark { background-color: #F5F7FF; }
-  .bg-navy { background-color: #EEF2FF; }
+  .text-muted { color: #5C6685; }
+  .text-secondary { color: #3F4A6B; }
+  .bg-dark { background-color: var(--paper); }
+  .bg-navy { background-color: #F3F2EC; }
 
   /* Dot grid background */
   .dot-grid {
-    background-image: radial-gradient(circle, rgba(27,49,114,0.1) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(13,36,106,0.1) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
   /* Line grid */
   .line-grid {
     background-image:
-      linear-gradient(rgba(27,49,114,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(27,49,114,0.07) 1px, transparent 1px);
+      linear-gradient(rgba(13,36,106,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(13,36,106,0.07) 1px, transparent 1px);
     background-size: 48px 48px;
   }
+
+  .spectrum-strip { height: 4px; background: var(--spectrum); }
 }
 
 /* ── Custom scrollbar ──────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #EEF2FF; }
+::-webkit-scrollbar-track { background: #F3F2EC; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6B3FA0, #1D4ED8);
+  background: var(--ink);
   border-radius: 3px;
 }
 

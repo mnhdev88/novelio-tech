@@ -11,9 +11,9 @@ function Modal({ title, onClose, children }) {
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/30 p-4" onClick={onClose}>
       <div className="bg-white rounded-2xl border border-slate-200 w-full max-w-sm p-5" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3 mb-4">
-          <h2 className="font-heading font-800 text-[#1B3172]">{title}</h2>
+          <h2 className="font-heading font-800 text-[#0D246A]">{title}</h2>
           <div className="flex-1" />
-          <button onClick={onClose} className="p-1 text-[#94a3b8] hover:text-[#1B3172] cursor-pointer" aria-label="Close">
+          <button onClick={onClose} className="p-1 text-[#94a3b8] hover:text-[#0D246A] cursor-pointer" aria-label="Close">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -81,7 +81,7 @@ export default function TeamPage() {
         {rows.map((u) => (
           <div key={u.id} className="flex flex-wrap items-center gap-3 px-4 py-3 border-b border-slate-100 last:border-0">
             <div className="min-w-0 flex-1">
-              <p className="font-semibold text-sm text-[#1B3172] truncate">
+              <p className="font-semibold text-sm text-[#0D246A] truncate">
                 {u.name}
                 {u.id === me.id && <span className="text-xs font-normal text-[#94a3b8]"> (you)</span>}
               </p>
@@ -112,7 +112,7 @@ export default function TeamPage() {
             </select>
 
             <button onClick={() => setResetting(u)}
-              className="p-2 text-[#94a3b8] hover:text-[#1B3172] cursor-pointer" aria-label="Set password">
+              className="p-2 text-[#94a3b8] hover:text-[#0D246A] cursor-pointer" aria-label="Set password">
               <KeyRound className="w-4 h-4" />
             </button>
 
@@ -129,8 +129,8 @@ export default function TeamPage() {
       </div>
 
       <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-5">
-        <h2 className="font-heading font-800 text-[#1B3172] mb-2">What the roles mean</h2>
-        <ul className="text-sm text-[#475569] space-y-1.5">
+        <h2 className="font-heading font-800 text-[#0D246A] mb-2">What the roles mean</h2>
+        <ul className="text-sm text-[#3F4A6B] space-y-1.5">
           <li><strong>Editor</strong> — writes and publishes content, uploads images, sees leads.</li>
           <li><strong>Admin</strong> — everything an editor can do, plus pricing, this page, and the activity log.</li>
         </ul>

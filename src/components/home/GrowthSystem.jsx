@@ -31,103 +31,89 @@ function AreaCard({ area, index, onCountChange }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 36 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay: (index % 2) * 0.08, ease: [0.22, 1, 0.36, 1] }}
       viewport={{ once: true }}
-      whileHover={{ y: -8 }}
-      className="group relative flex flex-col rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200/80 p-5 pt-6 overflow-hidden transition-shadow duration-300 hover:shadow-[0_24px_60px_var(--glow)] hover:border-transparent"
-      style={{ ['--glow']: area.glow }}
+      className="flex flex-col rounded-3xl bg-white overflow-hidden border border-[#0D246A]/15"
     >
-      {/* Top gradient accent bar */}
-      <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${area.color}`} />
-
-      {/* Ghost watermark number */}
-      <span
-        className="pointer-events-none absolute -top-1 right-3 font-heading font-800 leading-none select-none transition-all duration-300 group-hover:scale-110"
-        style={{ fontSize: '70px', color: area.accent, opacity: 0.07 }}
-      >
-        {area.num}
-      </span>
-
-      <div className="flex items-center gap-3 mb-3">
-        {/* Icon tile */}
-        <div
-          className={`relative w-11 h-11 rounded-xl bg-gradient-to-br ${area.color} flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-105`}
-          style={{ boxShadow: `0 8px 22px ${area.glow}` }}
+      {/* Solid colour header: this is where the logo's palette does the talking */}
+      <div className="relative p-6 lg:p-7 text-white overflow-hidden" style={{ background: area.accent }}>
+        <span
+          className="pointer-events-none absolute -top-3 right-3 font-heading font-800 leading-none select-none text-white/20"
+          style={{ fontSize: '112px' }}
+          aria-hidden="true"
         >
-          <area.icon className="w-6 h-6 text-white" />
+          {area.num}
+        </span>
+        <area.icon className="relative w-9 h-9 mb-5" strokeWidth={1.75} aria-hidden="true" />
+        <h3 className="relative text-white font-heading font-800 text-2xl lg:text-3xl mb-3">{area.title}</h3>
+        <p className="relative text-[15px] leading-relaxed text-white">
+          <span className="font-700">Main Pain: </span>
+          {area.mainPain}
+        </p>
+      </div>
+
+      <div className="flex flex-col flex-grow p-6 lg:p-7">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-3">
+          <p className="font-heading text-xs font-700 tracking-widest uppercase" style={{ color: area.accent }}>
+            Real Business Pains It Fixes
+          </p>
+          <span
+            className="text-xs whitespace-nowrap transition-colors"
+            style={{ color: isGap ? area.accent : '#5C6685', fontWeight: isGap ? 700 : 500 }}
+          >
+            {counterText}
+          </span>
         </div>
-        <h3 className="text-[#1B3172] font-heading font-800 text-lg">{area.title}</h3>
-      </div>
 
-      <div className="rounded-xl bg-slate-50 border border-slate-200/80 p-3.5 text-[13px] leading-relaxed text-[#475569] mb-4">
-        <span className="font-bold text-[#1B3172]">Main Pain: </span>
-        {area.mainPain}
-      </div>
-
-      <div className="flex items-baseline justify-between gap-2 mb-2">
-        <p className="text-[11px] font-bold tracking-widest uppercase" style={{ color: area.accent }}>
-          Real Business Pains It Fixes
-        </p>
-        <span
-          className="text-[11px] font-semibold whitespace-nowrap transition-colors"
-          style={{ color: isGap ? area.accent : '#94A3B8', fontWeight: isGap ? 700 : 600 }}
-        >
-          {counterText}
-        </span>
-      </div>
-
-      <div className="space-y-0.5 mb-4 flex-grow">
-        {area.problems.map((p, i) => {
-          const on = checked.has(i);
-          return (
-            <button
-              key={p}
-              type="button"
-              onClick={() => toggle(i)}
-              aria-pressed={on}
-              className="flex w-full items-start gap-2.5 text-left rounded-lg px-2 py-1.5 border border-transparent transition-colors cursor-pointer hover:[background:var(--tint)] hover:[border-color:var(--glow)]"
-              style={{ ['--tint']: area.tint, ['--glow']: area.glow }}
-            >
-              <span
-                className="mt-px w-[17px] h-[17px] rounded-md flex items-center justify-center shrink-0 transition-all"
-                style={{
-                  background: on ? area.accent : 'transparent',
-                  border: `1.5px solid ${on ? area.accent : area.glow}`,
-                }}
+        <div className="space-y-1 mb-5 flex-grow">
+          {area.problems.map((p, i) => {
+            const on = checked.has(i);
+            return (
+              <button
+                key={p}
+                type="button"
+                onClick={() => toggle(i)}
+                aria-pressed={on}
+                className="flex w-full items-start gap-3 text-left rounded-lg px-2 py-2 transition-colors duration-150 cursor-pointer hover:[background:var(--tint)]"
+                style={{ ['--tint']: area.tint }}
               >
-                <Check
-                  className="w-2.5 h-2.5 text-white transition-all"
-                  strokeWidth={3}
-                  style={{ opacity: on ? 1 : 0, transform: on ? 'scale(1)' : 'scale(0.5)' }}
-                />
-              </span>
-              <span
-                className="text-[13px] leading-snug text-[#475569] transition-opacity"
-                style={{ opacity: on ? 0.48 : 1 }}
-              >
-                {p}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+                <span
+                  className="mt-px w-5 h-5 rounded-md flex items-center justify-center shrink-0 transition-colors duration-150"
+                  style={{
+                    background: on ? area.accent : 'transparent',
+                    border: `2px solid ${on ? area.accent : 'rgba(13,36,106,0.3)'}`,
+                  }}
+                >
+                  <Check
+                    className="w-3 h-3 text-white"
+                    strokeWidth={3.5}
+                    style={{ opacity: on ? 1 : 0 }}
+                    aria-hidden="true"
+                  />
+                </span>
+                <span className={`text-sm leading-snug ${on ? 'text-[#0D246A] font-500' : 'text-[#3F4A6B]'}`}>
+                  {p}
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
-      {/* Result footer */}
-      <div
-        className="mt-auto rounded-xl p-3.5 flex items-start gap-3"
-        style={{ background: area.tint, border: `1px solid ${area.glow}` }}
-      >
-        <span
-          className={`w-6 h-6 rounded-lg bg-gradient-to-br ${area.color} flex items-center justify-center shrink-0`}
-        >
-          <ArrowRight className="w-3.5 h-3.5 text-white" />
-        </span>
-        <p className="text-[13px] leading-relaxed text-[#475569]">
-          <span className="font-bold" style={{ color: area.accent }}>Result: </span>
-          {area.result}
-        </p>
+        {/* Result footer */}
+        <div className="mt-auto rounded-2xl p-4 flex items-start gap-3" style={{ background: area.tint }}>
+          <span
+            className="w-6 h-6 rounded-lg flex items-center justify-center shrink-0"
+            style={{ background: area.accent }}
+          >
+            <ArrowRight className="w-3.5 h-3.5 text-white" aria-hidden="true" />
+          </span>
+          <p className="text-sm leading-relaxed text-[#2B3557]">
+            <span className="font-700" style={{ color: area.accent }}>Result: </span>
+            {area.result}
+          </p>
+        </div>
       </div>
     </motion.div>
   );
@@ -159,36 +145,31 @@ export default function GrowthSystem() {
   };
 
   return (
-    <section className="section-pad bg-[#f6f8ff] relative overflow-hidden">
-      {/* Decorative background */}
-      <div className="dot-grid absolute inset-0 opacity-[0.35]" />
-      <div className="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%)' }} />
-      <div className="absolute -bottom-32 -right-24 w-[460px] h-[460px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(14,165,233,0.12), transparent 70%)' }} />
-
-      <div className="container-xl relative z-10">
-        <div className="text-center mb-14">
-          <div className="section-label mx-auto mb-4">The Growth System</div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] leading-tight">
-            We Fix the 4 Areas Where Most Small Businesses{' '}
-            <span className="gradient-text">Lose Growth</span>
-          </h2>
-          <p className="text-[#64748b] text-base sm:text-lg mt-5 max-w-3xl mx-auto leading-relaxed">
+    <section className="section-pad bg-[#FBFAF6]">
+      <div className="container-xl">
+        <div className="grid lg:grid-cols-[1.5fr_1fr] gap-6 lg:gap-16 items-end mb-12">
+          <div>
+            <div className="section-label">The Growth System</div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-800 leading-[1.05]">
+              We Fix the 4 Areas Where Most Small Businesses{' '}
+              <span className="gradient-text">Lose Growth</span>
+            </h2>
+          </div>
+          <p className="text-[#3F4A6B] text-base sm:text-lg leading-relaxed">
             A website alone does not grow a business. Visibility, capture, conversion and retention
             all have to work together. Miss one and the others leak revenue. Tap what sounds like you.
           </p>
         </div>
 
         {/* Four areas — 2 up, 2 down */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
           {AREAS.map((a, i) => (
             <AreaCard key={a.title} area={a} index={i} onCountChange={handleCountChange} />
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 mt-12">
           <button
             type="button"
             onClick={() => {
@@ -198,11 +179,11 @@ export default function GrowthSystem() {
               });
               setShowOffer(true);
             }}
-            className="btn-primary inline-flex text-base px-8 py-4 cursor-pointer"
+            className="btn-primary text-base px-8 py-4 justify-center cursor-pointer flex-shrink-0"
           >
             Get Your Free Growth Audit
           </button>
-          <p className="text-[#64748b] text-sm mt-4">
+          <p className="text-[#3F4A6B] text-sm max-w-md">
             See which of the 4 areas is costing you the most, before you spend on any of them.
           </p>
         </div>

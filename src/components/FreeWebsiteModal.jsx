@@ -14,11 +14,11 @@ const INDUSTRIES = [
 ];
 
 const inputCls =
-  'w-full px-4 py-2.5 rounded-xl border border-[rgba(29,78,216,0.15)] bg-[#f8faff] text-[#334155] text-sm placeholder-[#94a3b8] focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)] transition-all';
+  'w-full px-4 py-2.5 rounded-xl border border-[rgba(19,118,180,0.15)] bg-[#FBFAF6] text-[#2B3557] text-sm placeholder-[#94a3b8] focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)] transition-all';
 
 function Label({ children, required }) {
   return (
-    <label className="block text-sm font-semibold text-[#1B3172] mb-1.5">
+    <label className="block text-sm font-semibold text-[#0D246A] mb-1.5">
       {children}
       {required && <span className="text-red-500 ml-1">*</span>}
     </label>
@@ -30,7 +30,7 @@ function Field({ label, required, type = 'text', placeholder, value, onChange, h
     <div>
       <Label required={required}>
         {label}
-        {hint && <span className="font-normal text-[#64748b] text-xs ml-1">{hint}</span>}
+        {hint && <span className="font-normal text-[#5C6685] text-xs ml-1">{hint}</span>}
       </Label>
       <input type={type} placeholder={placeholder} value={value} onChange={onChange} required={required} className={inputCls} />
     </div>
@@ -116,7 +116,7 @@ export default function FreeWebsiteModal({ onClose }) {
           {/* Close button (floating) */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-lg border border-slate-200 bg-white/90 flex items-center justify-center text-[#64748b] hover:text-[#1B3172] hover:border-[#1B3172] transition-all cursor-pointer"
+            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-lg border border-slate-200 bg-white/90 flex items-center justify-center text-[#5C6685] hover:text-[#0D246A] hover:border-[#0D246A] transition-all cursor-pointer"
             aria-label="Close"
           >
             <X className="w-4 h-4" />
@@ -125,27 +125,27 @@ export default function FreeWebsiteModal({ onClose }) {
           {/* ── Step 1: Offer ── */}
           {step === 'offer' && (
             <div className="px-7 py-10 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#5E328C] to-[#1376B4] flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Rocket className="w-8 h-8 text-white" />
               </div>
-              <h2 className="font-heading font-800 text-[#1B3172] text-2xl sm:text-3xl leading-tight mb-3">
+              <h2 className="font-heading font-800 text-[#0D246A] text-2xl sm:text-3xl leading-tight mb-3">
                 Start your business growth with the{' '}
-                <span style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 50%, #0EA5E9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                <span style={{ background: 'linear-gradient(135deg, #5E328C 0%, #1376B4 50%, #1391C4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                   right website
                 </span>
                 .
                 <br />
                 See it live in 24 hours.
               </h2>
-              <p className="text-[#64748b] text-sm leading-relaxed max-w-sm mx-auto mb-6">
+              <p className="text-[#5C6685] text-sm leading-relaxed max-w-sm mx-auto mb-6">
                 Your website, SSL, hosting and lead-capture setup are included free with your
                 monthly growth plan, with no heavy upfront website cost. We build your preview first.
               </p>
               {/* Trust benefits */}
               <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 max-w-xs mx-auto mb-8 text-left">
                 {['No credit card', 'Free live preview', 'Preview in 24 hrs', 'Pay only if you love it'].map((b) => (
-                  <div key={b} className="flex items-center gap-2 text-sm text-[#475569]">
-                    <CheckCircle className="w-4 h-4 text-[#16A34A] shrink-0" />
+                  <div key={b} className="flex items-center gap-2 text-sm text-[#3F4A6B]">
+                    <CheckCircle className="w-4 h-4 text-[#0A8547] shrink-0" />
                     {b}
                   </div>
                 ))}
@@ -154,14 +154,14 @@ export default function FreeWebsiteModal({ onClose }) {
               <div className="flex flex-col gap-3">
                 <button
                   onClick={() => setStep('form')}
-                  className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all cursor-pointer"
+                  className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-[15px] font-semibold transition-all cursor-pointer"
                 >
                   Yes, I'm Ready to Grow
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={onClose}
-                  className="px-6 py-3 rounded-xl text-sm font-medium text-[#64748b] hover:text-[#1B3172] transition-all cursor-pointer"
+                  className="px-6 py-3 rounded-xl text-sm font-medium text-[#5C6685] hover:text-[#0D246A] transition-all cursor-pointer"
                 >
                   No thanks, I'll pass
                 </button>
@@ -172,9 +172,9 @@ export default function FreeWebsiteModal({ onClose }) {
           {/* ── Step 2: Form ── */}
           {step === 'form' && status !== 'success' && (
             <>
-              <div className="px-6 pt-7 pb-4 border-b border-[rgba(29,78,216,0.08)] shrink-0">
-                <p className="text-[10px] font-bold tracking-widest uppercase text-[#64748b] mb-1">Step 2 of 2</p>
-                <h2 className="font-heading font-bold text-[#1B3172] text-lg leading-tight">
+              <div className="px-6 pt-7 pb-4 border-b border-[rgba(19,118,180,0.08)] shrink-0">
+                <p className="text-[10px] font-bold tracking-widest uppercase text-[#5C6685] mb-1">Step 2 of 2</p>
+                <h2 className="font-heading font-bold text-[#0D246A] text-lg leading-tight">
                   Great! Tell us a bit about your business
                 </h2>
               </div>
@@ -211,14 +211,14 @@ export default function FreeWebsiteModal({ onClose }) {
                       checked={consent}
                       onChange={(e) => setConsent(e.target.checked)}
                       required
-                      className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#1B3172] focus:ring-[#1B3172] cursor-pointer shrink-0"
+                      className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#0D246A] focus:ring-[#0D246A] cursor-pointer shrink-0"
                     />
-                    <span className="text-xs text-[#64748b] leading-relaxed">
+                    <span className="text-xs text-[#5C6685] leading-relaxed">
                       I agree to receive phone calls and text messages (SMS) from Novelio Technologies about my
                       inquiry and website preview. Message frequency varies; message and data rates may apply.
                       Reply STOP to opt out, HELP for help. See our{' '}
-                      <a href="/privacy" className="underline text-[#1B3172]">Privacy Policy</a> and{' '}
-                      <a href="/terms" className="underline text-[#1B3172]">Terms</a>. <span className="text-red-500">*</span>
+                      <a href="/privacy" className="underline text-[#0D246A]">Privacy Policy</a> and{' '}
+                      <a href="/terms" className="underline text-[#0D246A]">Terms</a>. <span className="text-red-500">*</span>
                     </span>
                   </label>
 
@@ -232,12 +232,12 @@ export default function FreeWebsiteModal({ onClose }) {
               </div>
 
               {/* Footer */}
-              <div className="shrink-0 px-6 py-4 border-t border-[rgba(29,78,216,0.08)] bg-white rounded-b-3xl">
+              <div className="shrink-0 px-6 py-4 border-t border-[rgba(19,118,180,0.08)] bg-white rounded-b-3xl">
                 <button
                   type="submit"
                   form="free-website-form"
                   disabled={status === 'submitting' || !consent}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-[15px] font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-[15px] font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {status === 'submitting' ? (
                     <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</>
@@ -245,8 +245,8 @@ export default function FreeWebsiteModal({ onClose }) {
                     <>Get My Free Website Preview <ArrowRight className="w-4 h-4" /></>
                   )}
                 </button>
-                <p className="flex items-center justify-center gap-1.5 text-center text-xs text-[#64748b] mt-3">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#16A34A] shrink-0" />
+                <p className="flex items-center justify-center gap-1.5 text-center text-xs text-[#5C6685] mt-3">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#0A8547] shrink-0" />
                   We respect your privacy. No spam, ever. Our team will reach out within a few hours.
                 </p>
               </div>
@@ -259,8 +259,8 @@ export default function FreeWebsiteModal({ onClose }) {
               <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
                 <CheckCircle className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="font-heading font-bold text-[#1B3172] text-xl mb-2">You're all set!</h3>
-              <p className="text-[#64748b] text-sm leading-relaxed max-w-xs mx-auto mb-7">
+              <h3 className="font-heading font-bold text-[#0D246A] text-xl mb-2">You're all set!</h3>
+              <p className="text-[#5C6685] text-sm leading-relaxed max-w-xs mx-auto mb-7">
                 Thanks, <strong>{form.name || 'there'}</strong>! Your request is in. One of our team members
                 will reach out within a few hours to get started on your free website preview.
               </p>

@@ -284,27 +284,27 @@ export default function SeoPricePage() {
         <div className="dot-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div className="flex flex-wrap items-center gap-2 text-sm text-[#64748b] mb-6">
-              <Link to="/" className="hover:text-[#1B3172] transition-colors">Home</Link>
+            <div className="flex flex-wrap items-center gap-2 text-sm text-[#5C6685] mb-6">
+              <Link to="/" className="hover:text-[#0D246A] transition-colors">Home</Link>
               <span>/</span>
-              <Link to="/services" className="hover:text-[#1B3172] transition-colors">Services</Link>
+              <Link to="/services" className="hover:text-[#0D246A] transition-colors">Services</Link>
               <span>/</span>
-              <Link to="/services/seo-plans" className="hover:text-[#1B3172] transition-colors">SEO Plans</Link>
+              <Link to="/services/seo-plans" className="hover:text-[#0D246A] transition-colors">SEO Plans</Link>
               <span>/</span>
-              <span className="text-[#1B3172]">Full Scope</span>
+              <span className="text-[#0D246A]">Full Scope</span>
             </div>
 
             <div className="section-label mb-4">Minimum Recommended Engagement: 6 Months</div>
-            <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight max-w-4xl">
+            <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight max-w-4xl">
               E-commerce SEO, AEO &amp; GEO <span className="gradient-text">Plans</span>
             </h1>
-            <p className="text-[#475569] text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
+            <p className="text-[#3F4A6B] text-lg sm:text-xl leading-relaxed max-w-3xl mb-8">
               A complete organic growth framework designed to improve search visibility, product
               discovery, AI-readiness, qualified traffic and conversions, with every activity in
               every tier published in full below.
             </p>
 
-            <div className="glass-card gradient-border rounded-2xl px-5 py-4 mb-9 inline-flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-[#1B3172]">
+            <div className="glass-card gradient-border rounded-2xl px-5 py-4 mb-9 inline-flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-[#0D246A]">
               {['Visibility', 'Qualified Traffic', 'Product Discovery', 'Trust', 'Conversions', 'Revenue'].map(
                 (step, i, arr) => (
                   <span key={step} className="inline-flex items-center gap-3">
@@ -333,10 +333,10 @@ export default function SeoPricePage() {
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">Plans at a Glance</div>
-            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#1B3172]">
+            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#0D246A]">
               Three Tiers, One <span className="gradient-text">Growth Framework</span>
             </h2>
-            <p className="text-[#64748b] text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#5C6685] text-base mt-4 max-w-2xl mx-auto leading-relaxed">
               Every plan covers search, answer engines and AI search together. Nothing is billed until
               the scope is agreed with you in writing.
             </p>
@@ -350,7 +350,7 @@ export default function SeoPricePage() {
                 className={`relative rounded-2xl p-7 flex flex-col h-full bg-white border transition-all duration-300 hover:-translate-y-2 ${
                   plan.highlight
                     ? 'border-transparent ring-2 ring-brand-purple shadow-glow'
-                    : 'border-slate-200 hover:shadow-[0_8px_32px_rgba(27,49,114,0.12)]'
+                    : 'border-slate-200 hover:shadow-[0_8px_32px_rgba(13,36,106,0.12)]'
                 }`}
               >
                 {plan.badge && (
@@ -364,15 +364,15 @@ export default function SeoPricePage() {
                   <span className="text-white font-heading font-bold text-lg">{plan.name[0]}</span>
                 </div>
 
-                <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-1">{plan.name}</h3>
+                <h3 className="text-[#0D246A] font-heading font-700 text-xl mb-1">{plan.name}</h3>
                 <p className="text-brand-purple text-sm font-semibold mb-5">{plan.strategy}</p>
 
                 <div className="mb-6">
                   <div className="flex items-end gap-1">
-                    <span className="text-4xl font-heading font-800 text-[#1B3172]">${plan.price}</span>
-                    <span className="text-[#64748b] text-sm mb-1.5">/mo</span>
+                    <span className="text-4xl font-heading font-800 text-[#0D246A]">${plan.price}</span>
+                    <span className="text-[#5C6685] text-sm mb-1.5">/mo</span>
                   </div>
-                  <p className="text-xs text-[#64748b] mt-1.5 leading-relaxed">
+                  <p className="text-xs text-[#5C6685] mt-1.5 leading-relaxed">
                     6-month recommended engagement · content writing quoted separately
                   </p>
                 </div>
@@ -381,27 +381,27 @@ export default function SeoPricePage() {
                   {...CALENDLY_LINK}
                   className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer mb-6 ${
                     plan.highlight
-                      ? 'bg-[#1B3172] hover:bg-[#0d1f5c] text-white'
-                      : 'border border-[rgba(29,78,216,0.2)] text-[#1B3172] hover:bg-[#1B3172] hover:text-white'
+                      ? 'bg-[#0D246A] hover:bg-[#081A52] text-white'
+                      : 'border-2 border-[#0D246A] text-[#0D246A] hover:bg-[#0D246A] hover:text-white'
                   }`}
                 >
                   Start With {plan.name}
                   <ArrowRight className="w-4 h-4" />
                 </a>
 
-                <p className="text-[#475569] text-sm leading-relaxed mb-5">{plan.desc}</p>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed mb-5">{plan.desc}</p>
 
                 <ul className="space-y-3 flex-1">
                   {plan.highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-2.5 text-[#475569] text-sm leading-snug">
+                    <li key={h} className="flex items-start gap-2.5 text-[#3F4A6B] text-sm leading-snug">
                       <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </li>
                   ))}
                 </ul>
 
-                <p className="text-xs text-[#64748b] mt-6 pt-5 border-t border-slate-100">
-                  <span className="font-semibold text-[#1B3172]">Best for:</span> {plan.bestFor}
+                <p className="text-xs text-[#5C6685] mt-6 pt-5 border-t border-slate-100">
+                  <span className="font-semibold text-[#0D246A]">Best for:</span> {plan.bestFor}
                 </p>
               </motion.div>
             ))}
@@ -410,15 +410,15 @@ export default function SeoPricePage() {
       </section>
 
       {/* ── Full scope, section by section ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="line-grid absolute inset-0 opacity-40" />
         <div className="container-xl max-w-6xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">Complete Scope of Work</div>
-            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#1B3172]">
+            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#0D246A]">
               Every Activity, <span className="gradient-text">Tier by Tier</span>
             </h2>
-            <p className="text-[#64748b] text-base mt-4 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#5C6685] text-base mt-4 max-w-2xl mx-auto leading-relaxed">
               Nine disciplines, roughly sixty deliverables. This is the working document behind the
               plans. No vague line items, no hidden inclusions.
             </p>
@@ -434,7 +434,7 @@ export default function SeoPricePage() {
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs sm:text-sm font-semibold text-[#1B3172] hover:border-brand-purple hover:text-brand-purple transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-4 py-2 text-xs sm:text-sm font-semibold text-[#0D246A] hover:border-brand-purple hover:text-brand-purple transition-colors"
               >
                 <span className="text-[#94a3b8]">{i + 1}</span>
                 {s.title.split(' (')[0]}
@@ -450,11 +450,11 @@ export default function SeoPricePage() {
                     <section.icon className="w-5 h-5 text-white" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-heading font-800 text-[#1B3172] leading-tight">
+                    <h3 className="text-xl sm:text-2xl font-heading font-800 text-[#0D246A] leading-tight">
                       <span className="text-brand-purple">{i + 1}.</span> {section.title}
                     </h3>
                     {section.intro && (
-                      <p className="text-[#64748b] text-sm mt-2 leading-relaxed max-w-3xl">{section.intro}</p>
+                      <p className="text-[#5C6685] text-sm mt-2 leading-relaxed max-w-3xl">{section.intro}</p>
                     )}
                   </div>
                 </div>
@@ -463,7 +463,7 @@ export default function SeoPricePage() {
                   <table className="w-full text-sm text-left min-w-[860px]">
                     <caption className="sr-only">{section.title}: scope by plan tier</caption>
                     <thead>
-                      <tr className="bg-[#1B3172] text-white">
+                      <tr className="bg-[#0D246A] text-white">
                         <th scope="col" className="px-5 py-4 font-heading font-700 min-w-[250px]">Activity</th>
                         {PLANS.map((p) => (
                           <th
@@ -481,15 +481,15 @@ export default function SeoPricePage() {
                     </thead>
                     <tbody>
                       {section.rows.map((row, ri) => (
-                        <tr key={row[0]} className={ri % 2 ? 'bg-[#f8faff]' : 'bg-white'}>
-                          <th scope="row" className="px-5 py-3.5 align-top text-left font-semibold text-[#1B3172]">
+                        <tr key={row[0]} className={ri % 2 ? 'bg-[#FBFAF6]' : 'bg-white'}>
+                          <th scope="row" className="px-5 py-3.5 align-top text-left font-semibold text-[#0D246A]">
                             {row[0]}
                           </th>
                           {row.slice(1).map((value, vi) => (
                             <td
                               key={vi}
-                              className={`px-5 py-3.5 align-top text-[#475569] leading-snug ${
-                                vi === 1 ? 'bg-[#EEF2FF]/60' : ''
+                              className={`px-5 py-3.5 align-top text-[#3F4A6B] leading-snug ${
+                                vi === 1 ? 'bg-[#F3F2EC]/60' : ''
                               }`}
                             >
                               <ScopeValue value={value} />
@@ -511,7 +511,7 @@ export default function SeoPricePage() {
         <div className="container-xl max-w-4xl">
           <motion.div {...fadeUp()} className="text-center mb-10">
             <div className="section-label mx-auto mb-4">How the Engagement Works</div>
-            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#1B3172]">
+            <h2 className="text-3xl sm:text-4xl font-heading font-800 text-[#0D246A]">
               What We Commit To, and <span className="gradient-text">What We Don't</span>
             </h2>
           </motion.div>
@@ -521,17 +521,17 @@ export default function SeoPricePage() {
               <motion.div
                 key={t.id}
                 {...fadeUp(i * 0.08)}
-                className={`rounded-2xl bg-white border border-slate-200 border-l-4 ${t.accent} p-7 sm:p-8 shadow-[0_4px_24px_rgba(27,49,114,0.08)]`}
+                className={`rounded-2xl bg-white border border-slate-200 border-l-4 ${t.accent} p-7 sm:p-8 shadow-[0_4px_24px_rgba(13,36,106,0.08)]`}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#F3F2EC] flex items-center justify-center shrink-0">
                     <t.icon className="w-5 h-5 text-brand-purple" aria-hidden="true" />
                   </div>
-                  <h3 className="text-lg font-heading font-700 text-[#1B3172]">{t.title}</h3>
+                  <h3 className="text-lg font-heading font-700 text-[#0D246A]">{t.title}</h3>
                 </div>
 
                 {t.body.map((p) => (
-                  <p key={p.slice(0, 40)} className="text-[#475569] text-base leading-relaxed mb-4 last:mb-0">
+                  <p key={p.slice(0, 40)} className="text-[#3F4A6B] text-base leading-relaxed mb-4 last:mb-0">
                     {p}
                   </p>
                 ))}
@@ -539,7 +539,7 @@ export default function SeoPricePage() {
                 {t.warning && (
                   <div className="mt-6 rounded-xl bg-amber-50 border border-amber-100 p-5 flex items-start gap-3">
                     <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
-                    <p className="text-[#64748b] text-sm leading-relaxed">{t.warning}</p>
+                    <p className="text-[#5C6685] text-sm leading-relaxed">{t.warning}</p>
                   </div>
                 )}
               </motion.div>
@@ -548,12 +548,12 @@ export default function SeoPricePage() {
 
           <motion.div
             {...fadeUp(0.1)}
-            className="mt-10 rounded-2xl bg-[#EEF2FF] border border-slate-200 p-7 text-center"
+            className="mt-10 rounded-2xl bg-[#F3F2EC] border border-slate-200 p-7 text-center"
           >
-            <p className="text-[#1B3172] font-heading font-700 text-lg mb-1.5">
+            <p className="text-[#0D246A] font-heading font-700 text-lg mb-1.5">
               Recommended plan: Growth ($499/month)
             </p>
-            <p className="text-[#475569] text-sm leading-relaxed max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-sm leading-relaxed max-w-2xl mx-auto">
               Balanced for SEO, AEO, GEO, technical optimisation, e-commerce visibility and ongoing
               growth. Not sure which tier fits?{' '}
               <Link to="/contact" className="text-brand-purple font-semibold hover:underline">

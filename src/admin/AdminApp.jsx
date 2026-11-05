@@ -28,7 +28,7 @@ const ActivityPage   = lazy(() => import('./pages/ActivityPage'));
 
 const Spinner = (
   <div className="grid place-items-center py-20">
-    <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#1B3172] animate-spin" />
+    <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#0D246A] animate-spin" />
   </div>
 );
 

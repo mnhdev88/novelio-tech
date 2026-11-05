@@ -41,7 +41,7 @@ export default function ScoreRing({ score, size = 168, stroke = 12, animate = tr
         <svg width={size} height={size} className="-rotate-90" aria-hidden="true">
           <circle
             cx={size / 2} cy={size / 2} r={radius}
-            fill="none" stroke="rgba(27,49,114,0.10)" strokeWidth={stroke}
+            fill="none" stroke="rgba(13,36,106,0.10)" strokeWidth={stroke}
           />
           <motion.circle
             cx={size / 2} cy={size / 2} r={radius}
@@ -60,13 +60,13 @@ export default function ScoreRing({ score, size = 168, stroke = 12, animate = tr
           >
             {shown}
           </span>
-          <span className="text-[11px] text-[#64748b] font-500 tracking-wide mt-1">OUT OF 100</span>
+          <span className="text-[11px] text-[#5C6685] font-500 tracking-wide mt-1">OUT OF 100</span>
         </div>
       </div>
 
       <div className="text-center mt-4">
         <div className="font-heading font-700 text-[18px]" style={{ color }}>{band.label}</div>
-        <div className="text-[13px] text-[#64748b] mt-0.5 max-w-[220px]">{band.note}</div>
+        <div className="text-[13px] text-[#5C6685] mt-0.5 max-w-[220px]">{band.note}</div>
       </div>
     </div>
   );

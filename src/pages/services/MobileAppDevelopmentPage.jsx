@@ -218,14 +218,14 @@ function FAQItem({ q, a }) {
   return (
     <div className="glass-card gradient-border rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-        <span className="text-[#1B3172] font-medium text-[15px]">{q}</span>
+        <span className="text-[#0D246A] font-medium text-[15px]">{q}</span>
         {open
           ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" />
-          : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />}
+          : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />}
       </button>
       {open && (
         <div className="px-5 pb-5 pt-0 border-t border-slate-200">
-          <p className="text-[#475569] text-sm leading-relaxed pt-4">{a}</p>
+          <p className="text-[#3F4A6B] text-sm leading-relaxed pt-4">{a}</p>
         </div>
       )}
     </div>
@@ -286,30 +286,30 @@ export default function MobileAppDevelopmentPage() {
         <div className="container-xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-              <div className="flex items-center gap-2 text-sm text-[#64748b] mb-6">
-                <Link to="/" className="hover:text-[#1B3172] transition-colors">Home</Link>
+              <div className="flex items-center gap-2 text-sm text-[#5C6685] mb-6">
+                <Link to="/" className="hover:text-[#0D246A] transition-colors">Home</Link>
                 <span>/</span>
-                <Link to="/services" className="hover:text-[#1B3172] transition-colors">Services</Link>
+                <Link to="/services" className="hover:text-[#0D246A] transition-colors">Services</Link>
                 <span>/</span>
-                <span className="text-[#1B3172]">Mobile App Development</span>
+                <span className="text-[#0D246A]">Mobile App Development</span>
               </div>
               <div className="section-label mb-4">iOS, Android & Cross-Platform</div>
-              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
                 Mobile Apps Built to{' '}
                 <span className="gradient-text">Grow Your Business</span>,{' '}
                 Not Just Launch
               </h1>
-              <p className="text-[#475569] text-xl leading-relaxed mb-4">
+              <p className="text-[#3F4A6B] text-xl leading-relaxed mb-4">
                 We design and build fast, secure, native-quality mobile apps that customers actually
                 use, engineered around your business goals, your users, and real-world growth.
               </p>
-              <p className="text-[#475569] text-base leading-relaxed mb-8">
+              <p className="text-[#3F4A6B] text-base leading-relaxed mb-8">
                 From a lean MVP to a full-featured product, we take you from idea to a live app on the
                 App Store and Google Play, with a clear roadmap at every step.
               </p>
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {['iOS & Android', 'Cross-Platform Builds', 'UI/UX App Design', 'API & Backend', 'App Store Launch', 'Ongoing Support'].map((f) => (
-                  <div key={f} className="flex items-center gap-2 text-[#475569] text-sm">
+                  <div key={f} className="flex items-center gap-2 text-[#3F4A6B] text-sm">
                     <Check className={`w-4 h-4 bg-gradient-to-br ${ACCENT} text-white rounded-full p-0.5 flex-shrink-0`} />
                     {f}
                   </div>
@@ -334,12 +334,12 @@ export default function MobileAppDevelopmentPage() {
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}
                 className="absolute -bottom-6 -left-6 glass-card gradient-border rounded-2xl px-5 py-3">
                 <div className="text-2xl font-heading font-800 gradient-text">iOS + Android</div>
-                <div className="text-xs text-[#475569]">One Codebase</div>
+                <div className="text-xs text-[#3F4A6B]">One Codebase</div>
               </motion.div>
               <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity }}
                 className="absolute -top-6 -right-6 glass-card gradient-border rounded-2xl px-5 py-3">
                 <div className="text-2xl font-heading font-800 gradient-text">60fps</div>
-                <div className="text-xs text-[#475569]">Native Feel</div>
+                <div className="text-xs text-[#3F4A6B]">Native Feel</div>
               </motion.div>
             </motion.div>
           </div>
@@ -347,15 +347,15 @@ export default function MobileAppDevelopmentPage() {
       </section>
 
       {/* ── Pain Points ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">Common Problems</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Why So Many Apps{' '}
               <span className="gradient-text">Never Get Traction</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Most apps fail before they ever grow, not because of a bad idea, but because of how
               they were scoped, built, and shipped. The usual culprits:
             </p>
@@ -367,13 +367,13 @@ export default function MobileAppDevelopmentPage() {
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${ACCENT} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <p.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-[#1B3172] font-heading font-600 text-lg mb-2">{p.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed">{p.desc}</p>
+                <h3 className="text-[#0D246A] font-heading font-600 text-lg mb-2">{p.title}</h3>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed">{p.desc}</p>
               </motion.div>
             ))}
           </div>
           <motion.div {...fadeUp(0.3)} className="text-center mt-12">
-            <p className="text-[#475569] text-lg font-medium max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg font-medium max-w-2xl mx-auto">
               We build around every one of these, so your app launches, performs, and keeps growing.
             </p>
           </motion.div>
@@ -386,10 +386,10 @@ export default function MobileAppDevelopmentPage() {
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">Business Growth</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Built for <span className="gradient-text">Users & Revenue</span>, Not Just the Store
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               A great app should do more than exist. It should:
             </p>
           </motion.div>
@@ -400,29 +400,29 @@ export default function MobileAppDevelopmentPage() {
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-[#1B3172] font-heading font-600 text-lg mb-3">{item.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-[#0D246A] font-heading font-600 text-lg mb-3">{item.title}</h3>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
           <motion.div {...fadeUp(0.4)} className="text-center mt-12">
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               That's why we build complete, business-ready mobile products,{' '}
-              <span className="font-semibold text-[#1B3172]">not just screens on a phone.</span>
+              <span className="font-semibold text-[#0D246A]">not just screens on a phone.</span>
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* ── Everything Included ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">What You Get</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Everything Included in <span className="gradient-text">Every App</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               No surprise add-ons for the essentials. These come standard in every app we ship.
             </p>
           </motion.div>
@@ -433,8 +433,8 @@ export default function MobileAppDevelopmentPage() {
                 <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${ACCENT} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                   <Check className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="text-[#1B3172] font-heading font-600 text-[15px] mb-2">{item.title}</h4>
-                <p className="text-[#475569] text-xs leading-relaxed">{item.desc}</p>
+                <h4 className="text-[#0D246A] font-heading font-600 text-[15px] mb-2">{item.title}</h4>
+                <p className="text-[#3F4A6B] text-xs leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -447,10 +447,10 @@ export default function MobileAppDevelopmentPage() {
         <div className="container-lg relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <div className="section-label mx-auto mb-4">How We Work</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Our <span className="gradient-text">App Build Process</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               A transparent, milestone-driven process that keeps you in control from the first idea
               to a live app in the stores.
             </p>
@@ -466,12 +466,12 @@ export default function MobileAppDevelopmentPage() {
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h3 className="text-[#1B3172] font-heading font-700 text-lg">{step.title}</h3>
-                    <span className="text-xs text-brand-purple bg-[#6B3FA0]/10 border border-[#6B3FA0]/20 rounded-full px-3 py-0.5 font-medium">
+                    <h3 className="text-[#0D246A] font-heading font-700 text-lg">{step.title}</h3>
+                    <span className="text-xs text-brand-purple bg-[#5E328C]/10 border border-[#5E328C]/20 rounded-full px-3 py-0.5 font-medium">
                       {step.time}
                     </span>
                   </div>
-                  <p className="text-[#475569] text-sm leading-relaxed">{step.desc}</p>
+                  <p className="text-[#3F4A6B] text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -480,16 +480,16 @@ export default function MobileAppDevelopmentPage() {
       </section>
 
       {/* ── Tech Stack + Stats ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Tech Stack */}
             <motion.div {...fadeUp()}>
               <div className="section-label mb-4">Technologies</div>
-              <h2 className="text-3xl font-heading font-700 text-[#1B3172] mb-4">
+              <h2 className="text-3xl font-heading font-700 text-[#0D246A] mb-4">
                 Built with the <span className="gradient-text">Right Stack for Your App</span>
               </h2>
-              <p className="text-[#475569] text-base leading-relaxed mb-8">
+              <p className="text-[#3F4A6B] text-base leading-relaxed mb-8">
                 We match the technology to your product: cross-platform to move fast and save budget,
                 or fully native when performance demands it.
               </p>
@@ -499,8 +499,8 @@ export default function MobileAppDevelopmentPage() {
                     className="glass-card gradient-border rounded-xl p-4 flex items-start gap-3">
                     <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${ACCENT} mt-2 flex-shrink-0`} />
                     <div>
-                      <p className="text-[#1B3172] font-heading font-600 text-sm">{t.name}</p>
-                      <p className="text-[#64748b] text-xs">{t.desc}</p>
+                      <p className="text-[#0D246A] font-heading font-600 text-sm">{t.name}</p>
+                      <p className="text-[#5C6685] text-xs">{t.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -510,10 +510,10 @@ export default function MobileAppDevelopmentPage() {
             {/* Stats */}
             <motion.div {...fadeUp(0.15)}>
               <div className="section-label mb-4">How We Build</div>
-              <h2 className="text-3xl font-heading font-700 text-[#1B3172] mb-4">
+              <h2 className="text-3xl font-heading font-700 text-[#0D246A] mb-4">
                 Principles That <span className="gradient-text">Ship Better Apps</span>
               </h2>
-              <p className="text-[#475569] text-base leading-relaxed mb-8">
+              <p className="text-[#3F4A6B] text-base leading-relaxed mb-8">
                 Every app we build is held to the same standards: performance, quality, and a
                 launch-first mindset, regardless of budget.
               </p>
@@ -522,7 +522,7 @@ export default function MobileAppDevelopmentPage() {
                   <motion.div key={i} {...fadeUp(i * 0.1)}
                     className="glass-card gradient-border rounded-2xl p-6 text-center group hover:-translate-y-1 hover:shadow-glow transition-all duration-300">
                     <div className="text-3xl font-heading font-800 gradient-text mb-1">{s.number}</div>
-                    <div className="text-[#475569] text-sm">{s.label}</div>
+                    <div className="text-[#3F4A6B] text-sm">{s.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -531,8 +531,8 @@ export default function MobileAppDevelopmentPage() {
                   <ShieldCheck className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-[#1B3172] font-heading font-600 text-sm mb-1">You Own Your App</p>
-                  <p className="text-[#475569] text-xs leading-relaxed">
+                  <p className="text-[#0D246A] font-heading font-600 text-sm mb-1">You Own Your App</p>
+                  <p className="text-[#3F4A6B] text-xs leading-relaxed">
                     Full source code, design files, and store listings transfer to you. No platform lock-in, no hostage code, no hidden fees.
                   </p>
                 </div>
@@ -542,8 +542,8 @@ export default function MobileAppDevelopmentPage() {
                   <Headphones className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-[#1B3172] font-heading font-600 text-sm mb-1">Dedicated Point of Contact</p>
-                  <p className="text-[#475569] text-xs leading-relaxed">
+                  <p className="text-[#0D246A] font-heading font-600 text-sm mb-1">Dedicated Point of Contact</p>
+                  <p className="text-[#3F4A6B] text-xs leading-relaxed">
                     You work directly with your project lead, not a ticketing system. Real responses, real accountability.
                   </p>
                 </div>
@@ -557,12 +557,12 @@ export default function MobileAppDevelopmentPage() {
       <section className="section-pad-sm bg-dark">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-8">
-            <h3 className="text-2xl font-heading font-700 text-[#1B3172]">Explore Our Other Services</h3>
+            <h3 className="text-2xl font-heading font-700 text-[#0D246A]">Explore Our Other Services</h3>
           </motion.div>
           <div className="flex flex-wrap gap-3 justify-center">
             {SERVICES.filter((s) => s.id !== 'mobile-app-development').map((s) => (
               <Link key={s.id} to={s.slug}
-                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#475569] hover:text-[#1B3172] hover:shadow-glow transition-all">
+                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#3F4A6B] hover:text-[#0D246A] hover:shadow-glow transition-all">
                 {s.short}
               </Link>
             ))}
@@ -571,11 +571,11 @@ export default function MobileAppDevelopmentPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-lg">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">FAQs</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Common <span className="gradient-text">Questions</span>
             </h2>
           </motion.div>

@@ -75,8 +75,8 @@ export default function AdminLayout() {
   const linkClass = ({ isActive }) =>
     `group relative flex items-center gap-3 pl-3 pr-2.5 py-2 rounded-lg text-[13px] transition-colors ${
       isActive
-        ? 'bg-white text-[#1B3172] font-semibold shadow-[0_1px_2px_rgba(27,49,114,0.06)]'
-        : 'text-[#5b6b8c] font-medium hover:bg-white/60 hover:text-[#1B3172]'
+        ? 'bg-white text-[#0D246A] font-semibold shadow-[0_1px_2px_rgba(13,36,106,0.06)]'
+        : 'text-[#5b6b8c] font-medium hover:bg-white/60 hover:text-[#0D246A]'
     }`;
 
   return (
@@ -89,14 +89,14 @@ export default function AdminLayout() {
         <div className="flex items-center gap-3 px-4 h-14">
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="lg:hidden p-2 -ml-2 text-[#475569] cursor-pointer"
+            className="lg:hidden p-2 -ml-2 text-[#3F4A6B] cursor-pointer"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
 
           <img src="/logo.png" alt="" className="h-6 w-auto hidden sm:block" />
-          <span className="font-heading font-800 text-[#1B3172] text-[15px]">Site manager</span>
+          <span className="font-heading font-800 text-[#0D246A] text-[15px]">Site manager</span>
 
           <div className="flex-1" />
 
@@ -104,7 +104,7 @@ export default function AdminLayout() {
             href="/"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#475569] hover:bg-[#F1F5F9] hover:text-[#1B3172] transition-colors"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#3F4A6B] hover:bg-[#F1F5F9] hover:text-[#0D246A] transition-colors"
           >
             View site <ExternalLink className="w-3.5 h-3.5" />
           </a>
@@ -118,14 +118,14 @@ export default function AdminLayout() {
               {user.name.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join('')}
             </div>
             <div className="hidden sm:block leading-tight">
-              <p className="text-xs font-semibold text-[#1B3172]">{user.name}</p>
+              <p className="text-xs font-semibold text-[#0D246A]">{user.name}</p>
               <p className="text-[11px] text-[#94a3b8] capitalize">{user.role}</p>
             </div>
           </div>
 
           <button
             onClick={doLogout}
-            className="p-2 rounded-lg text-[#94a3b8] hover:bg-[#F1F5F9] hover:text-[#1B3172] transition-colors cursor-pointer"
+            className="p-2 rounded-lg text-[#94a3b8] hover:bg-[#F1F5F9] hover:text-[#0D246A] transition-colors cursor-pointer"
             aria-label="Sign out"
             title="Sign out"
           >
@@ -161,7 +161,7 @@ export default function AdminLayout() {
                               isActive ? 'opacity-100' : 'opacity-0'
                             }`}
                           />
-                          <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#1B3172]' : 'text-[#94a3b8] group-hover:text-[#1B3172]'}`} />
+                          <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#0D246A]' : 'text-[#94a3b8] group-hover:text-[#0D246A]'}`} />
                           <span className="truncate flex-1">{label}</span>
                           {badge === 'pending' && pending.length > 0 && (
                             <span className="inline-grid place-items-center min-w-[18px] h-[18px] px-1 rounded-full bg-amber-100 text-amber-700 text-[11px] font-bold leading-none">

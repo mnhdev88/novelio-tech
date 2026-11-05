@@ -22,21 +22,21 @@ const US = {
 };
 const IN = COMPANY.entities.india;
 
-const linkClass = 'text-[#1D4ED8] hover:underline';
+const linkClass = 'text-[#1376B4] hover:underline';
 
 /** US + India address blocks, side by side on desktop. Used in every "Contact Us" section. */
 export function EntityContactBlock({ showTaxIds = false }) {
   return (
     <div className="mt-3 grid sm:grid-cols-2 gap-4">
       <div className="p-5 rounded-2xl space-y-1 text-sm"
-        style={{ background: '#F8FAFF', border: '1px solid rgba(29,78,216,0.1)' }}>
+        style={{ background: '#FBFAF6', border: '1px solid rgba(19,118,180,0.1)' }}>
         <p><strong>{US.legalName}</strong></p>
         <p>{US.address}</p>
         <p>Email: <a href={`mailto:${US.email}`} className={linkClass}>{US.email}</a></p>
         <p>Phone: <a href={`tel:${US.phoneHref}`} className={linkClass}>{US.phone}</a></p>
       </div>
       <div className="p-5 rounded-2xl space-y-1 text-sm"
-        style={{ background: '#F8FAFF', border: '1px solid rgba(29,78,216,0.1)' }}>
+        style={{ background: '#FBFAF6', border: '1px solid rgba(19,118,180,0.1)' }}>
         <p><strong>{IN.legalName}</strong></p>
         <p>{IN.address}</p>
         {showTaxIds && <p>GSTIN: {IN.gstin} | PAN: {IN.pan}</p>}
@@ -53,7 +53,7 @@ export function GrievanceBlock() {
   const g = IN.grievanceOfficer;
   return (
     <div className="mt-3 p-5 rounded-2xl space-y-1 text-sm"
-      style={{ background: '#F8FAFF', border: '1px solid rgba(29,78,216,0.1)' }}>
+      style={{ background: '#FBFAF6', border: '1px solid rgba(19,118,180,0.1)' }}>
       <p><strong>{g.name}</strong>, {g.title}</p>
       <p>Email: <a href={`mailto:${g.email}`} className={linkClass}>{g.email}</a></p>
       <p>Phone: <a href={`tel:${g.phoneHref}`} className={linkClass}>{g.phone}</a></p>

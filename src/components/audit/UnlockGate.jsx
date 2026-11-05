@@ -70,7 +70,7 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
       onChange={(e) => { setForm((f) => ({ ...f, [name]: e.target.value })); if (error) setError(''); }}
       placeholder={placeholder}
       aria-label={placeholder}
-      className="w-full bg-white border border-slate-200/80 rounded-xl px-4 py-3 text-[#1B3172] placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-brand-purple/60 focus:ring-brand-purple/20 transition-all text-[15px]"
+      className="w-full bg-white border border-slate-200/80 rounded-xl px-4 py-3 text-[#0D246A] placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-brand-purple/60 focus:ring-brand-purple/20 transition-all text-[15px]"
       {...extra}
     />
   );
@@ -87,7 +87,7 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
         <div className="p-5 sm:p-7 border-b border-slate-200/80">
           <div className="flex items-center gap-2 mb-4">
             <Lock className="w-4 h-4 text-brand-purple" aria-hidden="true" />
-            <h3 className="font-heading font-700 text-[#1B3172] text-[17px]">
+            <h3 className="font-heading font-700 text-[#0D246A] text-[17px]">
               {lockedCount} more {lockedCount === 1 ? 'issue' : 'issues'} found on {host}
             </h3>
           </div>
@@ -101,10 +101,10 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
       )}
 
       <div className="p-5 sm:p-7 bg-gradient-to-br from-brand-purple/[0.04] to-brand-blue/[0.04]">
-        <h3 className="font-heading font-700 text-[#1B3172] text-[19px] sm:text-[21px] mb-1.5">
+        <h3 className="font-heading font-700 text-[#0D246A] text-[19px] sm:text-[21px] mb-1.5">
           Get your report by email
         </h3>
-        <p className="text-[14.5px] text-[#475569] leading-relaxed mb-5">
+        <p className="text-[14.5px] text-[#3F4A6B] leading-relaxed mb-5">
           {lockedCount > 0
             ? `We will send the full summary for ${host} (your score, every category, and the problems we found) straight to your inbox.`
             : `${host} scored well, which is rare. We will email you the full summary so you have it on record, along with where the remaining upside is.`}
@@ -139,7 +139,7 @@ export default function UnlockGate({ token, lockedIssues, lockedCount, host, onU
               onChange={(e) => { setConsent(e.target.checked); if (error) setError(''); }}
               className="mt-1 w-4 h-4 rounded border-slate-300 text-brand-purple focus:ring-brand-purple/30"
             />
-            <span className="text-[13px] text-[#64748b] leading-relaxed">
+            <span className="text-[13px] text-[#5C6685] leading-relaxed">
               You may contact me about this audit. No newsletter, no list, just this report and a
               follow-up if I want one.
             </span>

@@ -19,9 +19,9 @@ const STATUS_UI = {
 function StatCard({ label, value, sub }) {
   return (
     <div className="bg-white rounded-2xl border border-slate-200 p-5">
-      <p className="text-xs font-semibold uppercase tracking-wide text-[#64748b]">{label}</p>
-      <p className="font-heading font-800 text-[#1B3172] text-2xl mt-1.5">{value}</p>
-      {sub && <p className="text-xs text-[#64748b] mt-0.5">{sub}</p>}
+      <p className="text-xs font-semibold uppercase tracking-wide text-[#5C6685]">{label}</p>
+      <p className="font-heading font-800 text-[#0D246A] text-2xl mt-1.5">{value}</p>
+      {sub && <p className="text-xs text-[#5C6685] mt-0.5">{sub}</p>}
     </div>
   );
 }
@@ -48,7 +48,7 @@ export default function DashboardPage() {
   return (
     <main className="pt-20">
       <SEO title="Your Dashboard" canonical="/dashboard" noindex />
-      <section className="section-pad-sm bg-[#EEF2FF] relative overflow-hidden min-h-[80vh]">
+      <section className="section-pad-sm bg-[#F3F2EC] relative overflow-hidden min-h-[80vh]">
         <div className="line-grid absolute inset-0 opacity-30" />
         <div className="container-xl relative z-10">
 
@@ -59,13 +59,13 @@ export default function DashboardPage() {
                 <LayoutDashboard className="w-6 h-6" />
               </div>
               <div>
-                <h1 className="font-heading font-800 text-[#1B3172] text-xl sm:text-2xl leading-tight">
+                <h1 className="font-heading font-800 text-[#0D246A] text-xl sm:text-2xl leading-tight">
                   Welcome back, {user.name.split(' ')[0]}
                 </h1>
-                <p className="text-[#64748b] text-sm">{user.email}</p>
+                <p className="text-[#5C6685] text-sm">{user.email}</p>
               </div>
             </div>
-            <button onClick={doLogout} className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#475569] hover:text-[#1B3172] hover:border-[#1B3172] transition-all cursor-pointer">
+            <button onClick={doLogout} className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#3F4A6B] hover:text-[#0D246A] hover:border-[#0D246A] transition-all cursor-pointer">
               <LogOut className="w-4 h-4" /> Sign out
             </button>
           </div>
@@ -81,11 +81,11 @@ export default function DashboardPage() {
           {/* No active subscription */}
           {!sub || sub.status !== 'active' ? (
             <div className="bg-white rounded-2xl border border-slate-200 p-10 text-center max-w-xl mx-auto">
-              <h2 className="font-heading font-700 text-[#1B3172] text-xl mb-2">No active subscription</h2>
-              <p className="text-[#64748b] text-sm mb-6">
+              <h2 className="font-heading font-700 text-[#0D246A] text-xl mb-2">No active subscription</h2>
+              <p className="text-[#5C6685] text-sm mb-6">
                 {sub?.status === 'cancelled' ? 'Your subscription was cancelled.' : "You haven't subscribed to a plan yet."} Choose a plan to get started.
               </p>
-              <Link to="/pricing" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-sm font-semibold transition-all">
+              <Link to="/pricing" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-sm font-semibold transition-all">
                 View plans <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -103,10 +103,10 @@ export default function DashboardPage() {
                 {/* Left: deliverables */}
                 <div className="lg:col-span-2 space-y-6">
                   <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                    <h2 className="font-heading font-700 text-[#1B3172] flex items-center gap-2 mb-1">
+                    <h2 className="font-heading font-700 text-[#0D246A] flex items-center gap-2 mb-1">
                       <ListChecks className="w-5 h-5 text-brand-purple" /> Your deliverables
                     </h2>
-                    <p className="text-sm text-[#64748b] mb-4">What our team is delivering on your plan.</p>
+                    <p className="text-sm text-[#5C6685] mb-4">What our team is delivering on your plan.</p>
                     {/* progress bar */}
                     <div className="h-2 rounded-full bg-slate-100 overflow-hidden mb-5">
                       <div className="h-full bg-gradient-to-r from-brand-purple to-brand-blue transition-all" style={{ width: `${progress}%` }} />
@@ -117,7 +117,7 @@ export default function DashboardPage() {
                         const Icon = ui.icon;
                         return (
                           <li key={d.id} className="flex items-center justify-between gap-3 py-1">
-                            <span className="flex items-center gap-3 text-sm text-[#334155]">
+                            <span className="flex items-center gap-3 text-sm text-[#2B3557]">
                               <Icon className={`w-4 h-4 shrink-0 ${ui.cls}`} /> {d.title}
                             </span>
                             <span className={`text-xs font-semibold ${ui.cls}`}>{ui.label}</span>
@@ -129,17 +129,17 @@ export default function DashboardPage() {
 
                   {/* Invoices */}
                   <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                    <h2 className="font-heading font-700 text-[#1B3172] flex items-center gap-2 mb-4">
+                    <h2 className="font-heading font-700 text-[#0D246A] flex items-center gap-2 mb-4">
                       <Receipt className="w-5 h-5 text-brand-purple" /> Invoices
                     </h2>
                     {invoices.length === 0 ? (
-                      <p className="text-sm text-[#64748b]">No invoices yet.</p>
+                      <p className="text-sm text-[#5C6685]">No invoices yet.</p>
                     ) : (
                       <div className="divide-y divide-slate-100">
                         {invoices.map((inv) => (
                           <div key={inv.id} className="flex items-center justify-between py-3 text-sm">
-                            <span className="text-[#475569]">{inv.date}</span>
-                            <span className="font-semibold text-[#1B3172]">${inv.amount}.00</span>
+                            <span className="text-[#3F4A6B]">{inv.date}</span>
+                            <span className="font-semibold text-[#0D246A]">${inv.amount}.00</span>
                             <span className="text-xs font-semibold text-green-700 bg-green-100 px-2.5 py-1 rounded-full capitalize">{inv.status}</span>
                           </div>
                         ))}
@@ -151,26 +151,26 @@ export default function DashboardPage() {
                 {/* Right: manage billing */}
                 <div className="space-y-6">
                   <div className="bg-white rounded-2xl border border-slate-200 p-6">
-                    <h2 className="font-heading font-700 text-[#1B3172] flex items-center gap-2 mb-4">
+                    <h2 className="font-heading font-700 text-[#0D246A] flex items-center gap-2 mb-4">
                       <CreditCard className="w-5 h-5 text-brand-purple" /> Manage billing
                     </h2>
                     <div className="space-y-3">
                       {sub.addonIds.length > 0 && (
                         <div className="text-sm">
-                          <p className="text-[#64748b] text-xs font-semibold uppercase tracking-wide mb-1.5">Active add-ons</p>
+                          <p className="text-[#5C6685] text-xs font-semibold uppercase tracking-wide mb-1.5">Active add-ons</p>
                           <ul className="space-y-1">
                             {sub.addonIds.map((id) => {
                               const a = PRICING_ADDONS.find((x) => x.id === id);
-                              return <li key={id} className="flex justify-between text-[#475569]"><span>{a?.name}</span><span>+${a?.price}</span></li>;
+                              return <li key={id} className="flex justify-between text-[#3F4A6B]"><span>{a?.name}</span><span>+${a?.price}</span></li>;
                             })}
                           </ul>
                           <div className="border-t border-slate-100 my-3" />
                         </div>
                       )}
-                      <Link to={`/checkout?plan=${sub.planId}&billing=${sub.billing}`} className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-sm font-semibold transition-all">
+                      <Link to={`/checkout?plan=${sub.planId}&billing=${sub.billing}`} className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-sm font-semibold transition-all">
                         Change plan / add-ons <ArrowUpRight className="w-4 h-4" />
                       </Link>
-                      <button onClick={doToggleBilling} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-[#475569] hover:text-[#1B3172] hover:border-[#1B3172] transition-all cursor-pointer">
+                      <button onClick={doToggleBilling} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-[#3F4A6B] hover:text-[#0D246A] hover:border-[#0D246A] transition-all cursor-pointer">
                         {sub.billing === 'monthly'
                           ? (() => {
                               // Savings vary per plan, so derive rather than hardcode.
@@ -188,10 +188,10 @@ export default function DashboardPage() {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-[#1B3172] to-[#091830] rounded-2xl p-6 text-white">
+                  <div className="bg-gradient-to-br from-[#0D246A] to-[#081648] rounded-2xl p-6 text-white">
                     <h3 className="font-heading font-700 text-lg mb-1.5">Need a hand?</h3>
                     <p className="text-white/70 text-sm mb-4">Your growth team is one message away.</p>
-                    <Link to="/contact" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-[#1B3172] text-sm font-semibold hover:bg-slate-100 transition-all">
+                    <Link to="/contact" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-[#0D246A] text-sm font-semibold hover:bg-slate-100 transition-all">
                       Contact support <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>

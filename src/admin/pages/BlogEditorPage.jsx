@@ -16,7 +16,7 @@ const AUTOSAVE_MS = 1500;
 const CATEGORIES = ['SEO', 'Web Development', 'Marketing', 'Design', 'Business Growth', 'Social Media'];
 const CATEGORY_COLOR = 'from-purple-600 to-blue-600';
 
-const inputCls = 'w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1B3172]';
+const inputCls = 'w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0D246A]';
 const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 function blankPost() {
@@ -32,7 +32,7 @@ function blankPost() {
 function Field({ label, hint, children }) {
   return (
     <label className="block">
-      <span className="block text-xs font-semibold text-[#475569] mb-1.5">{label}</span>
+      <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">{label}</span>
       {children}
       {hint && <span className="block text-[11px] text-[#94a3b8] mt-1">{hint}</span>}
     </label>
@@ -229,7 +229,7 @@ export default function BlogEditorPage() {
     );
   }
   if (!post) {
-    return <div className="grid place-items-center py-20"><Loader2 className="w-6 h-6 animate-spin text-[#1B3172]" /></div>;
+    return <div className="grid place-items-center py-20"><Loader2 className="w-6 h-6 animate-spin text-[#0D246A]" /></div>;
   }
 
   const metaLen = (post.metaDescription || '').length;
@@ -239,11 +239,11 @@ export default function BlogEditorPage() {
     <div className="max-w-4xl">
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <div className="flex flex-wrap items-center gap-3 mb-5">
-        <Link to="/admin/blog" className="p-2 -ml-2 text-[#475569] hover:text-[#1B3172]" aria-label="Back to posts">
+        <Link to="/admin/blog" className="p-2 -ml-2 text-[#3F4A6B] hover:text-[#0D246A]" aria-label="Back to posts">
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div className="min-w-0">
-          <h1 className="font-heading font-800 text-[#1B3172] text-lg truncate">
+          <h1 className="font-heading font-800 text-[#0D246A] text-lg truncate">
             {isNew ? 'New post' : post.title || post.slug}
           </h1>
           {!isNew && <p className="text-xs text-[#94a3b8]">/blog/{post.slug}</p>}
@@ -268,7 +268,7 @@ export default function BlogEditorPage() {
               if (dirty.current) await save(post, body);
               window.open(`/blog/${post.slug}?preview=1`, '_blank', 'noopener');
             }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-[#475569] hover:text-[#1B3172] hover:border-[#1B3172] cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-[#3F4A6B] hover:text-[#0D246A] hover:border-[#0D246A] cursor-pointer"
           >
             <Eye className="w-4 h-4" /> Preview
           </button>
@@ -293,7 +293,7 @@ export default function BlogEditorPage() {
           </button>
         ) : (
           <button onClick={deletePost}
-            className="p-2 rounded-xl border border-slate-200 text-[#475569] hover:text-red-600 hover:border-red-300 cursor-pointer" aria-label="Delete post">
+            className="p-2 rounded-xl border border-slate-200 text-[#3F4A6B] hover:text-red-600 hover:border-red-300 cursor-pointer" aria-label="Delete post">
             <Trash2 className="w-4 h-4" />
           </button>
         )}
@@ -307,11 +307,11 @@ export default function BlogEditorPage() {
       )}
 
       {justPublished && deployRunning && (
-        <div className="flex items-start gap-2 rounded-xl bg-[#EEF2FF] border border-[#c7d2fe] px-4 py-3 mb-4">
-          <Loader2 className="w-4 h-4 text-[#1B3172] shrink-0 mt-0.5 animate-spin" />
+        <div className="flex items-start gap-2 rounded-xl bg-[#F3F2EC] border border-[#D9D7CC] px-4 py-3 mb-4">
+          <Loader2 className="w-4 h-4 text-[#0D246A] shrink-0 mt-0.5 animate-spin" />
           <div className="flex-1">
-            <p className="text-sm font-semibold text-[#1B3172]">This post is going live</p>
-            <p className="text-xs text-[#475569] mt-0.5">
+            <p className="text-sm font-semibold text-[#0D246A]">This post is going live</p>
+            <p className="text-xs text-[#3F4A6B] mt-0.5">
               The site is rebuilding — about four minutes. Anything you edit from now on will need
               publishing again.
             </p>
@@ -349,7 +349,7 @@ export default function BlogEditorPage() {
         ].map(({ id, label, icon: Icon }) => (
           <button key={id} onClick={() => setTab(id)}
             className={`inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold border-b-2 -mb-px cursor-pointer ${
-              tab === id ? 'border-[#1B3172] text-[#1B3172]' : 'border-transparent text-[#94a3b8] hover:text-[#475569]'
+              tab === id ? 'border-[#0D246A] text-[#0D246A]' : 'border-transparent text-[#94a3b8] hover:text-[#3F4A6B]'
             }`}>
             <Icon className="w-4 h-4" /> {label}
           </button>
@@ -365,7 +365,7 @@ export default function BlogEditorPage() {
 
           {isNew && post.title && (
             <p className="text-xs text-[#94a3b8]">
-              Web address will be <code className="text-[#1B3172]">/blog/{slugify(post.title)}</code>
+              Web address will be <code className="text-[#0D246A]">/blog/{slugify(post.title)}</code>
             </p>
           )}
 
@@ -400,7 +400,7 @@ export default function BlogEditorPage() {
                 <input value={post.image} onChange={(e) => patch({ image: e.target.value })}
                   placeholder="/blog/my-post.jpg" className={inputCls} />
                 <button type="button" onClick={() => uploadImage((url) => patch({ image: url }))}
-                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-[#475569] whitespace-nowrap cursor-pointer">
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-[#3F4A6B] whitespace-nowrap cursor-pointer">
                   <Upload className="w-4 h-4" /> Upload
                 </button>
               </div>
@@ -411,7 +411,7 @@ export default function BlogEditorPage() {
           <label className="sm:col-span-2 flex items-center gap-2.5 cursor-pointer">
             <input type="checkbox" checked={!!post.featured} onChange={(e) => patch({ featured: e.target.checked })}
               className="w-4 h-4 rounded" />
-            <span className="text-sm text-[#475569]">Feature this post at the top of the blog</span>
+            <span className="text-sm text-[#3F4A6B]">Feature this post at the top of the blog</span>
           </label>
         </div>
       )}
@@ -439,7 +439,7 @@ export default function BlogEditorPage() {
 
           {/* Google preview — the client should see what searchers see. */}
           <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <p className="text-xs font-semibold text-[#475569] mb-2">How this looks in Google</p>
+            <p className="text-xs font-semibold text-[#3F4A6B] mb-2">How this looks in Google</p>
             <p className="text-[#1a0dab] text-lg leading-snug truncate">{post.title || 'Post title'} | Novelio Technologies</p>
             <p className="text-[#006621] text-xs">https://www.noveliotech.com/blog/{post.slug || slugify(post.title || '')}</p>
             <p className="text-[#545454] text-sm mt-0.5 line-clamp-2">
@@ -448,8 +448,8 @@ export default function BlogEditorPage() {
           </div>
 
           <div className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4">
-            <p className="text-xs font-semibold text-[#475569] mb-1">Structured data</p>
-            <p className="text-xs text-[#64748b]">
+            <p className="text-xs font-semibold text-[#3F4A6B] mb-1">Structured data</p>
+            <p className="text-xs text-[#5C6685]">
               The Article and FAQ markup Google reads is generated automatically from this post — the
               title, description, author, dates, and every FAQ block in the content.
               {body.blocks.filter((b) => b.type === 'faqItem').length > 0

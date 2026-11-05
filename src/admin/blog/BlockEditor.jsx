@@ -22,13 +22,13 @@ const ADDABLE = ['richtext', 'heading', 'statBox', 'highlight', 'ctaBox', 'faqIt
 function Field({ label, children }) {
   return (
     <label className="block">
-      <span className="block text-xs font-semibold text-[#475569] mb-1.5">{label}</span>
+      <span className="block text-xs font-semibold text-[#3F4A6B] mb-1.5">{label}</span>
       {children}
     </label>
   );
 }
 
-const inputCls = 'w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1B3172]';
+const inputCls = 'w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0D246A]';
 
 function BlockBody({ block, update, onPickImage }) {
   const set = (patch) => update({ ...block, ...patch, dirty: true });
@@ -82,7 +82,7 @@ function BlockBody({ block, update, onPickImage }) {
           <div className="flex gap-2">
             <input value={block.src} onChange={(e) => set({ src: e.target.value })} placeholder="/blog/image.jpg" className={inputCls} />
             <button type="button" onClick={() => onPickImage((url) => set({ src: url }))}
-              className="px-3 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-[#475569] whitespace-nowrap cursor-pointer">
+              className="px-3 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-[#3F4A6B] whitespace-nowrap cursor-pointer">
               Choose
             </button>
           </div>
@@ -108,7 +108,7 @@ function BlockBody({ block, update, onPickImage }) {
 
     case 'toc':
       return (
-        <p className="text-sm text-[#64748b]">
+        <p className="text-sm text-[#5C6685]">
           The table of contents links to the sections below. Edit it as HTML if you add or rename sections.
         </p>
       );
@@ -155,12 +155,12 @@ function AddBar({ at, open, onOpen, onPick }) {
   return (
     <div className="relative py-1">
       {open ? (
-        <div className="flex flex-wrap gap-1.5 p-2 rounded-xl border border-[#1B3172] bg-white">
+        <div className="flex flex-wrap gap-1.5 p-2 rounded-xl border border-[#0D246A] bg-white">
           {ADDABLE.map((type) => {
             const Icon = ICONS[type] || Type;
             return (
               <button key={type} type="button" onClick={() => onPick(at, type)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[#475569] hover:bg-[#EEF2FF] hover:text-[#1B3172] cursor-pointer">
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[#3F4A6B] hover:bg-[#F3F2EC] hover:text-[#0D246A] cursor-pointer">
                 <Icon className="w-3.5 h-3.5" /> {BLOCK_LABELS[type]}
               </button>
             );
@@ -174,11 +174,11 @@ function AddBar({ at, open, onOpen, onPick }) {
           className="group w-full flex items-center gap-2 py-1 cursor-pointer"
           aria-label="Add a block here"
         >
-          <span className="flex-1 h-px bg-slate-200 group-hover:bg-[#1B3172] transition-colors" />
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#94a3b8] group-hover:text-[#1B3172]">
+          <span className="flex-1 h-px bg-slate-200 group-hover:bg-[#0D246A] transition-colors" />
+          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#94a3b8] group-hover:text-[#0D246A]">
             <Plus className="w-3 h-3" /> Add
           </span>
-          <span className="flex-1 h-px bg-slate-200 group-hover:bg-[#1B3172] transition-colors" />
+          <span className="flex-1 h-px bg-slate-200 group-hover:bg-[#0D246A] transition-colors" />
         </button>
       )}
     </div>
@@ -226,15 +226,15 @@ export default function BlockEditor({ blocks, onChange, onPickImage }) {
           <div key={block.id}>
             <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden">
               <div className="flex items-center gap-2 px-3 py-2 border-b border-slate-100 bg-[#F8FAFC]">
-                <Icon className="w-3.5 h-3.5 text-[#64748b] shrink-0" />
-                <span className="text-xs font-semibold text-[#475569]">{BLOCK_LABELS[block.type] || block.type}</span>
+                <Icon className="w-3.5 h-3.5 text-[#5C6685] shrink-0" />
+                <span className="text-xs font-semibold text-[#3F4A6B]">{BLOCK_LABELS[block.type] || block.type}</span>
                 <div className="flex-1" />
                 <button type="button" onClick={() => move(i, -1)} disabled={i === 0}
-                  className="p-1 rounded text-[#94a3b8] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move up">
+                  className="p-1 rounded text-[#94a3b8] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move up">
                   <ChevronUp className="w-4 h-4" />
                 </button>
                 <button type="button" onClick={() => move(i, 1)} disabled={i === blocks.length - 1}
-                  className="p-1 rounded text-[#94a3b8] hover:text-[#1B3172] disabled:opacity-30 cursor-pointer" aria-label="Move down">
+                  className="p-1 rounded text-[#94a3b8] hover:text-[#0D246A] disabled:opacity-30 cursor-pointer" aria-label="Move down">
                   <ChevronDown className="w-4 h-4" />
                 </button>
                 <button type="button" onClick={() => remove(i)}

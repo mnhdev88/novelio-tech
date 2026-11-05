@@ -13,8 +13,8 @@ export default function NotFoundPage() {
       <div className="container-xl relative z-10 text-center py-24">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <div className="text-[180px] font-heading font-800 leading-none gradient-text mb-4 select-none">404</div>
-          <h1 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">Page Not Found</h1>
-          <p className="text-[#475569] text-lg max-w-md mx-auto mb-10">
+          <h1 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">Page Not Found</h1>
+          <p className="text-[#3F4A6B] text-lg max-w-md mx-auto mb-10">
             The page you're looking for doesn't exist or has been moved.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

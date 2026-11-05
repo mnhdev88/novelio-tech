@@ -317,30 +317,30 @@ export default function CustomPaymentPage() {
   return (
     <main className="pt-20">
       <SEO title="Make a payment" canonical="/pay" noindex />
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden min-h-[80vh]">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden min-h-[80vh]">
         <div className="line-grid absolute inset-0 opacity-40" />
         <div className="container-xl relative z-10 max-w-lg">
-          <h1 className="font-heading font-800 text-[#1B3172] text-2xl sm:text-3xl mb-2">
+          <h1 className="font-heading font-800 text-[#0D246A] text-2xl sm:text-3xl mb-2">
             {isSubscription ? 'Set up your monthly payments' : 'Make a payment'}
           </h1>
-          <p className="text-[#64748b] text-sm mb-6">
+          <p className="text-[#5C6685] text-sm mb-6">
             {isSubscription
               ? <>Authorise your monthly plan once and each payment is collected automatically. Processed by Razorpay. We never see your card or bank details.</>
               : <>Securely pay an invoice, deposit or custom quote. Processed by {gatewayList(' or ')}. We never see your card details.</>}
           </p>
 
           {status === 'paid' && paid ? (
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center shadow-[0_8px_32px_rgba(27,49,114,0.08)]">
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center shadow-[0_8px_32px_rgba(13,36,106,0.08)]">
               <CheckCircle2 className="w-14 h-14 text-green-600 mx-auto mb-4" />
-              <h2 className="font-heading font-800 text-[#1B3172] text-xl mb-1">
+              <h2 className="font-heading font-800 text-[#0D246A] text-xl mb-1">
                 {paid.subscriptionId ? 'Subscription set up' : 'Payment received'}
               </h2>
-              <p className="text-[#475569] text-sm">
+              <p className="text-[#3F4A6B] text-sm">
                 Thank you. We’ve received <strong>{formatMinor(toMinor(paid.amount), paid.currency || currency, { decimals: true })}</strong>
                 {reference ? <> for <strong>{reference}</strong></> : null}.
               </p>
               {paid.subscriptionId && laterCharges > 0 && (
-                <p className="text-[#475569] text-sm mt-2">
+                <p className="text-[#3F4A6B] text-sm mt-2">
                   The next {laterCharges === 1 ? 'payment' : `${laterCharges} payments`} of{' '}
                   <strong>{formatMinor(totalMinor, paid.currency || currency, { decimals: true })}</strong> will be collected
                   monthly from {nextChargeDate}. A receipt is emailed each time.
@@ -350,12 +350,12 @@ export default function CustomPaymentPage() {
                 Confirmation: {paid.paymentId}
                 {paid.subscriptionId ? <> · Subscription: {paid.subscriptionId}</> : null}
               </p>
-              <Link to="/" className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#1B3172] hover:bg-[#0d1f5c] text-white text-sm font-semibold">
+              <Link to="/" className="inline-block mt-6 px-6 py-3 rounded-xl bg-[#0D246A] hover:bg-[#081A52] text-white text-sm font-semibold">
                 Back to home
               </Link>
             </div>
           ) : (
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_8px_32px_rgba(27,49,114,0.08)]">
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_8px_32px_rgba(13,36,106,0.08)]">
               {!subLinkValid ? (
                 <div className="flex items-start gap-2.5 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-amber-800 text-sm">
                   <AlertCircle className="w-4 h-4 shrink-0 mt-px" />
@@ -380,22 +380,22 @@ export default function CustomPaymentPage() {
 
                   {reference && (
                     <div className="mb-4 text-sm">
-                      <span className="text-[#64748b]">Reference: </span>
-                      <span className="font-semibold text-[#1B3172]">{reference}</span>
+                      <span className="text-[#5C6685]">Reference: </span>
+                      <span className="font-semibold text-[#0D246A]">{reference}</span>
                     </div>
                   )}
 
                   {/* Currency — only when a gateway can actually take rupees */}
                   {currencyOptions.length > 1 && (
                     <>
-                      <label className="block text-sm font-semibold text-[#334155] mb-1.5">Currency</label>
+                      <label className="block text-sm font-semibold text-[#2B3557] mb-1.5">Currency</label>
                       <div className="grid grid-cols-2 gap-1 mb-4 p-1 bg-slate-100 rounded-xl">
                         {currencyOptions.map((c) => (
                           <button
                             key={c}
                             type="button"
                             onClick={() => { setCurrency(c); setPayError(''); }}
-                            className={`py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currency === c ? 'bg-white text-[#1B3172] shadow-sm' : 'text-[#64748b] hover:text-[#1B3172]'}`}
+                            className={`py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${currency === c ? 'bg-white text-[#0D246A] shadow-sm' : 'text-[#5C6685] hover:text-[#0D246A]'}`}
                           >
                             {c === 'INR' ? '₹ INR' : '$ USD'}
                           </button>
@@ -404,18 +404,18 @@ export default function CustomPaymentPage() {
                     </>
                   )}
 
-                  <label className="block text-sm font-semibold text-[#334155] mb-1.5">
+                  <label className="block text-sm font-semibold text-[#2B3557] mb-1.5">
                     {isSubscription ? 'Monthly amount' : 'Amount'} ({currency}){gstPercent > 0 && gstMode === 'add' ? ', before GST' : ''}
                   </label>
                   <div className="relative mb-4">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748b] font-semibold">{symbol}</span>
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5C6685] font-semibold">{symbol}</span>
                     <input
                       type="number" min="1" step="0.01" inputMode="decimal"
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
                       readOnly={Boolean(urlAmount)}
                       placeholder="0.00"
-                      className={`w-full pl-8 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)] ${urlAmount ? 'bg-slate-50 text-[#1B3172] font-bold' : 'bg-[#f8faff]'}`}
+                      className={`w-full pl-8 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)] ${urlAmount ? 'bg-slate-50 text-[#0D246A] font-bold' : 'bg-[#FBFAF6]'}`}
                     />
                   </div>
 
@@ -423,16 +423,16 @@ export default function CustomPaymentPage() {
                       India (see /terms) — never let it surprise anyone on the
                       Razorpay overlay. */}
                   {gstMinor > 0 && amountNum > 0 && (
-                    <div className="mb-4 rounded-xl bg-[#f8faff] border border-slate-200 px-4 py-3 text-sm">
-                      <div className="flex items-center justify-between text-[#64748b] mb-1">
+                    <div className="mb-4 rounded-xl bg-[#FBFAF6] border border-slate-200 px-4 py-3 text-sm">
+                      <div className="flex items-center justify-between text-[#5C6685] mb-1">
                         <span>Subtotal</span>
                         <span>{formatMinor(subtotalMinor, currency, { decimals: true })}</span>
                       </div>
-                      <div className="flex items-center justify-between text-[#64748b] mb-1">
+                      <div className="flex items-center justify-between text-[#5C6685] mb-1">
                         <span>GST ({gstPercent}%)</span>
                         <span>{gstMode === 'inclusive' ? '' : '+'}{formatMinor(gstMinor, currency, { decimals: true })}</span>
                       </div>
-                      <div className="flex items-center justify-between font-semibold text-[#1B3172] pt-1.5 border-t border-slate-200">
+                      <div className="flex items-center justify-between font-semibold text-[#0D246A] pt-1.5 border-t border-slate-200">
                         <span>{isSubscription ? 'Each month' : 'Total charged'}</span>
                         <span>{formatMinor(totalMinor, currency, { decimals: true })}</span>
                       </div>
@@ -443,8 +443,8 @@ export default function CustomPaymentPage() {
                       understand becomes a chargeback, so nothing about when or
                       how much is left for the overlay to explain. */}
                   {isSubscription && amountNum > 0 && (
-                    <div className="mb-4 rounded-xl bg-[#f8faff] border border-slate-200 px-4 py-3 text-sm">
-                      <div className="flex items-center justify-between font-semibold text-[#1B3172] mb-1">
+                    <div className="mb-4 rounded-xl bg-[#FBFAF6] border border-slate-200 px-4 py-3 text-sm">
+                      <div className="flex items-center justify-between font-semibold text-[#0D246A] mb-1">
                         <span>
                           {hasDeposit ? 'Down payment today' : `Due today${upfront > 1 ? ` (first ${upfront} months)` : ''}`}
                           {hasDeposit && gstPercent > 0 ? ` (incl. ${gstPercent}% GST)` : ''}
@@ -452,12 +452,12 @@ export default function CustomPaymentPage() {
                         <span>{formatMinor(firstChargeMinor, currency, { decimals: true })}</span>
                       </div>
                       {laterCharges > 0 && (
-                        <div className="flex items-start justify-between gap-3 text-[#64748b]">
+                        <div className="flex items-start justify-between gap-3 text-[#5C6685]">
                           <span>Then {laterCharges} monthly {hasDeposit ? (laterCharges === 1 ? 'instalment' : 'instalments') : (laterCharges === 1 ? 'payment' : 'payments')}, from {nextChargeDate}</span>
                           <span className="shrink-0">{formatMinor(totalMinor, currency, { decimals: true })}/mo</span>
                         </div>
                       )}
-                      <div className="flex items-center justify-between text-[#64748b] pt-1.5 mt-1.5 border-t border-slate-200">
+                      <div className="flex items-center justify-between text-[#5C6685] pt-1.5 mt-1.5 border-t border-slate-200">
                         <span>Total{hasDeposit ? '' : ` over ${months} months`}</span>
                         <span>{formatMinor(scheduleTotalMinor, currency, { decimals: true })}</span>
                       </div>
@@ -467,14 +467,14 @@ export default function CustomPaymentPage() {
                   <div className="grid grid-cols-1 gap-3 mb-5">
                     <input
                       required placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#FBFAF6] text-sm focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)]" />
                     <input
                       required type="email" placeholder="Your email (for the receipt)" value={email} onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#f8faff] text-sm focus:outline-none focus:border-[#1B3172] focus:ring-2 focus:ring-[rgba(27,49,114,0.08)]" />
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-[#FBFAF6] text-sm focus:outline-none focus:border-[#0D246A] focus:ring-2 focus:ring-[rgba(13,36,106,0.08)]" />
                   </div>
 
                   {status === 'processing' && (
-                    <div className="mb-3 flex items-center justify-center gap-2 text-sm text-[#475569]">
+                    <div className="mb-3 flex items-center justify-center gap-2 text-sm text-[#3F4A6B]">
                       <Loader2 className="w-4 h-4 animate-spin" /> Confirming your payment…
                     </div>
                   )}
@@ -485,7 +485,7 @@ export default function CustomPaymentPage() {
                       exactly the thing people hesitate over on a payment page. */}
                   {bothMethods && (
                     <>
-                      <p className="text-xs font-semibold text-[#475569] mb-1.5">Choose how to pay</p>
+                      <p className="text-xs font-semibold text-[#3F4A6B] mb-1.5">Choose how to pay</p>
                       <div className="grid grid-cols-2 gap-1 mb-4 p-1 bg-slate-100 rounded-xl">
                         {[
                           ['paypal', 'PayPal', 'PayPal balance or card'],
@@ -497,7 +497,7 @@ export default function CustomPaymentPage() {
                             onClick={() => { setPayMethod(m); setPayError(''); }}
                             className={`py-2 px-2 rounded-lg transition-all cursor-pointer ${activeMethod === m ? 'bg-white shadow-sm' : 'hover:bg-white/50'}`}
                           >
-                            <span className={`block text-sm font-semibold ${activeMethod === m ? 'text-[#1B3172]' : 'text-[#64748b]'}`}>{label}</span>
+                            <span className={`block text-sm font-semibold ${activeMethod === m ? 'text-[#0D246A]' : 'text-[#5C6685]'}`}>{label}</span>
                             <span className="block text-[11px] text-[#94a3b8] mt-0.5">{hint}</span>
                           </button>
                         ))}
@@ -558,7 +558,7 @@ export default function CustomPaymentPage() {
 
                   {/* Aggregators require terms + refund policy to be reachable
                       from the payment page itself, not only from the footer. */}
-                  <p className="mt-3 text-xs text-[#64748b] text-center">
+                  <p className="mt-3 text-xs text-[#5C6685] text-center">
                     {isSubscription && amountNum > 0 && laterCharges > 0 && (
                       <>
                         You authorise Novelio Technologies to collect{' '}

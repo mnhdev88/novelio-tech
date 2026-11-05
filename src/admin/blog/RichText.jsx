@@ -19,7 +19,7 @@ function ToolButton({ active, disabled, onClick, title, children }) {
       onMouseDown={(e) => e.preventDefault()}
       onClick={onClick}
       className={`p-1.5 rounded-lg transition-colors cursor-pointer disabled:opacity-40 ${
-        active ? 'bg-[#1B3172] text-white' : 'text-[#475569] hover:bg-slate-100'
+        active ? 'bg-[#0D246A] text-white' : 'text-[#3F4A6B] hover:bg-slate-100'
       }`}
     >
       {children}
@@ -62,7 +62,7 @@ export default function RichText({ html, onChange, placeholder }) {
   };
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white overflow-hidden focus-within:border-[#1B3172]">
+    <div className="rounded-xl border border-slate-200 bg-white overflow-hidden focus-within:border-[#0D246A]">
       <div className="flex items-center gap-0.5 px-2 py-1.5 border-b border-slate-200 bg-[#F8FAFC]">
         <ToolButton title="Bold" active={editor.isActive('bold')}
           onClick={() => editor.chain().focus().toggleBold().run()}><Bold className="w-3.5 h-3.5" /></ToolButton>

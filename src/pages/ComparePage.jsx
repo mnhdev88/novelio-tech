@@ -12,12 +12,12 @@ function FAQItem({ q, a }) {
   return (
     <div className="glass-card gradient-border rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-        <span className="text-[#1B3172] font-medium text-[15px]">{q}</span>
-        {open ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />}
+        <span className="text-[#0D246A] font-medium text-[15px]">{q}</span>
+        {open ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />}
       </button>
       {open && (
         <div className="px-5 pb-5 pt-0 border-t border-slate-200">
-          <p className="text-[#475569] text-sm leading-relaxed pt-4">{a}</p>
+          <p className="text-[#3F4A6B] text-sm leading-relaxed pt-4">{a}</p>
         </div>
       )}
     </div>
@@ -77,16 +77,16 @@ export default function ComparePage() {
         <div className="container-lg relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
             className="max-w-3xl">
-            <div className="flex items-center gap-2 text-sm text-[#64748b] mb-6">
-              <Link to="/" className="hover:text-[#1B3172] transition-colors">Home</Link>
+            <div className="flex items-center gap-2 text-sm text-[#5C6685] mb-6">
+              <Link to="/" className="hover:text-[#0D246A] transition-colors">Home</Link>
               <span>/</span>
-              <span className="text-[#1B3172]">Compare</span>
+              <span className="text-[#0D246A]">Compare</span>
             </div>
             <div className="section-label mb-4">{data.eyebrow}</div>
-            <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+            <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
               {data.h1Lead} <span className="gradient-text">{data.h1Highlight}</span>
             </h1>
-            <p className="text-[#475569] text-xl leading-relaxed mb-8">{data.intro}</p>
+            <p className="text-[#3F4A6B] text-xl leading-relaxed mb-8">{data.intro}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a {...CALENDLY_LINK} className="btn-primary">
                 Get My Free Growth Audit
@@ -99,11 +99,11 @@ export default function ComparePage() {
       </section>
 
       {/* Comparison matrix */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-lg">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
             className="text-center mb-12">
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172]">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A]">
               Novelio vs <span className="gradient-text">{data.competitor}</span>
             </h2>
           </motion.div>
@@ -111,9 +111,9 @@ export default function ComparePage() {
           <div className="glass-card gradient-border rounded-2xl overflow-hidden max-w-4xl mx-auto">
             {/* Header row */}
             <div className="grid grid-cols-[1.1fr_1fr_1fr] bg-white/60 border-b border-slate-200">
-              <div className="p-4 sm:p-5 text-[#64748b] text-xs sm:text-sm font-medium uppercase tracking-wider">Factor</div>
-              <div className="p-4 sm:p-5 text-center text-[#1B3172] font-heading font-700 text-sm sm:text-base bg-gradient-to-b from-brand-purple/10 to-transparent">Novelio</div>
-              <div className="p-4 sm:p-5 text-center text-[#64748b] font-heading font-600 text-sm sm:text-base">{data.competitor}</div>
+              <div className="p-4 sm:p-5 text-[#5C6685] text-xs sm:text-sm font-medium uppercase tracking-wider">Factor</div>
+              <div className="p-4 sm:p-5 text-center text-[#0D246A] font-heading font-700 text-sm sm:text-base bg-gradient-to-b from-brand-purple/10 to-transparent">Novelio</div>
+              <div className="p-4 sm:p-5 text-center text-[#5C6685] font-heading font-600 text-sm sm:text-base">{data.competitor}</div>
             </div>
             {/* Rows */}
             {data.matrix.map((row, i) => (
@@ -121,14 +121,14 @@ export default function ComparePage() {
                 initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: i * 0.05 }} viewport={{ once: true }}
                 className={`grid grid-cols-[1.1fr_1fr_1fr] ${i % 2 ? 'bg-white/30' : 'bg-white/50'} border-b border-slate-100 last:border-0`}>
-                <div className="p-4 sm:p-5 text-[#1B3172] font-medium text-[13px] sm:text-[15px] flex items-center">{row.factor}</div>
+                <div className="p-4 sm:p-5 text-[#0D246A] font-medium text-[13px] sm:text-[15px] flex items-center">{row.factor}</div>
                 <div className="p-4 sm:p-5 flex gap-2 items-start bg-gradient-to-b from-brand-purple/[0.04] to-transparent">
                   <Check className="w-4 h-4 mt-0.5 text-emerald-500 flex-shrink-0" />
-                  <span className="text-[#475569] text-[12px] sm:text-sm leading-snug">{row.novelio.text}</span>
+                  <span className="text-[#3F4A6B] text-[12px] sm:text-sm leading-snug">{row.novelio.text}</span>
                 </div>
                 <div className="p-4 sm:p-5 flex gap-2 items-start">
                   <X className="w-4 h-4 mt-0.5 text-rose-400 flex-shrink-0" />
-                  <span className="text-[#64748b] text-[12px] sm:text-sm leading-snug">{row.them.text}</span>
+                  <span className="text-[#5C6685] text-[12px] sm:text-sm leading-snug">{row.them.text}</span>
                 </div>
               </motion.div>
             ))}
@@ -143,10 +143,10 @@ export default function ComparePage() {
           <div className="grid md:grid-cols-2 gap-6">
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
               className="glass-card gradient-border rounded-2xl p-7">
-              <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-5">{data.themGood.title}</h3>
+              <h3 className="text-[#0D246A] font-heading font-700 text-xl mb-5">{data.themGood.title}</h3>
               <ul className="space-y-3">
                 {data.themGood.points.map((p, i) => (
-                  <li key={i} className="flex gap-3 text-[#475569] text-sm leading-relaxed">
+                  <li key={i} className="flex gap-3 text-[#3F4A6B] text-sm leading-relaxed">
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 flex-shrink-0" />
                     {p}
                   </li>
@@ -156,10 +156,10 @@ export default function ComparePage() {
             <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
               className="glass-card gradient-border rounded-2xl p-7 relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary" />
-              <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-5">{data.novelioGood.title}</h3>
+              <h3 className="text-[#0D246A] font-heading font-700 text-xl mb-5">{data.novelioGood.title}</h3>
               <ul className="space-y-3">
                 {data.novelioGood.points.map((p, i) => (
-                  <li key={i} className="flex gap-3 text-[#475569] text-sm leading-relaxed">
+                  <li key={i} className="flex gap-3 text-[#3F4A6B] text-sm leading-relaxed">
                     <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
                     {p}
                   </li>
@@ -171,16 +171,16 @@ export default function ComparePage() {
       </section>
 
       {/* Other comparisons */}
-      <section className="section-pad-sm bg-[#EEF2FF]">
+      <section className="section-pad-sm bg-[#F3F2EC]">
         <div className="container-xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
             className="text-center mb-8">
-            <h3 className="text-2xl font-heading font-700 text-[#1B3172]">Other Comparisons</h3>
+            <h3 className="text-2xl font-heading font-700 text-[#0D246A]">Other Comparisons</h3>
           </motion.div>
           <div className="flex flex-wrap gap-3 justify-center">
             {COMPARISONS.filter((c) => c.slug !== slug).map((c) => (
               <Link key={c.slug} to={`/compare/${c.slug}`}
-                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#475569] hover:text-[#1B3172] hover:shadow-glow transition-all">
+                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#3F4A6B] hover:text-[#0D246A] hover:shadow-glow transition-all">
                 Novelio vs {c.competitor}
               </Link>
             ))}
@@ -194,7 +194,7 @@ export default function ComparePage() {
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
             className="text-center mb-12">
             <div className="section-label mx-auto mb-4">FAQs</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172]">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A]">
               Common <span className="gradient-text">Questions</span>
             </h2>
           </motion.div>

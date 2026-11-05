@@ -79,13 +79,13 @@ export default function SubscriptionsPage() {
   return (
     <div>
       <PageHeader title="Subscriptions" subtitle="Monthly payments set up from /pay subscription links, live from Razorpay.">
-        <label className="inline-flex items-center gap-2 text-sm text-[#475569] cursor-pointer">
+        <label className="inline-flex items-center gap-2 text-sm text-[#3F4A6B] cursor-pointer">
           <input type="checkbox" checked={showAll} onChange={(e) => { setData(null); setShowAll(e.target.checked); }} />
           Show unfinished checkouts
         </label>
         <button
           onClick={load}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#475569] hover:text-[#1B3172] hover:border-[#1B3172] cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-[#3F4A6B] hover:text-[#0D246A] hover:border-[#0D246A] cursor-pointer"
         >
           <RefreshCw className="w-4 h-4" /> Refresh
         </button>
@@ -101,7 +101,7 @@ export default function SubscriptionsPage() {
 
       {!data ? <Spinner /> : data.items.length === 0 ? (
         <div className="bg-white rounded-2xl border border-slate-200 p-10 text-center mb-6">
-          <p className="text-sm text-[#64748b]">No subscriptions yet.</p>
+          <p className="text-sm text-[#5C6685]">No subscriptions yet.</p>
           <p className="text-xs text-[#94a3b8] mt-1">Create a link below and send it to a client.</p>
         </div>
       ) : (
@@ -110,13 +110,13 @@ export default function SubscriptionsPage() {
             <div key={row.id} className="px-4 py-3 border-b border-slate-100 last:border-0">
               <div className="flex flex-wrap items-center gap-3">
                 <div className="min-w-0 flex-1">
-                  <p className="font-semibold text-sm text-[#1B3172] truncate">
+                  <p className="font-semibold text-sm text-[#0D246A] truncate">
                     {row.customer_name || row.customer_email || '(no name)'}
-                    {row.reference && <span className="font-normal text-[#64748b]"> — {row.reference}</span>}
+                    {row.reference && <span className="font-normal text-[#5C6685]"> — {row.reference}</span>}
                   </p>
                   <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-[#94a3b8] mt-0.5">
                     {row.customer_email && (
-                      <a href={`mailto:${row.customer_email}`} className="inline-flex items-center gap-1 hover:text-[#1B3172]">
+                      <a href={`mailto:${row.customer_email}`} className="inline-flex items-center gap-1 hover:text-[#0D246A]">
                         <Mail className="w-3 h-3" /> {row.customer_email}
                       </a>
                     )}
@@ -133,7 +133,7 @@ export default function SubscriptionsPage() {
                     <span className="font-mono">{row.id}</span>
                   </div>
                   {row.cancel && (
-                    <p className="text-xs text-[#64748b] mt-1">
+                    <p className="text-xs text-[#5C6685] mt-1">
                       Cancelled by {row.cancel.by || 'an admin'} on {new Date(row.cancel.at).toLocaleDateString(undefined, { dateStyle: 'medium' })}
                       {row.cancel.at_cycle_end && row.cancel.ends_at ? ` — ends ${date(row.cancel.ends_at)}` : ''}
                     </p>
@@ -237,7 +237,7 @@ function LinkBuilder() {
       </Field>
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        <code className={`flex-1 min-w-0 break-all text-xs rounded-xl px-3 py-2.5 border ${valid ? 'bg-[#f8faff] border-slate-200 text-[#1B3172]' : 'bg-slate-50 border-slate-100 text-[#94a3b8]'}`}>
+        <code className={`flex-1 min-w-0 break-all text-xs rounded-xl px-3 py-2.5 border ${valid ? 'bg-[#FBFAF6] border-slate-200 text-[#0D246A]' : 'bg-slate-50 border-slate-100 text-[#94a3b8]'}`}>
           {valid ? link : hasDeposit
             ? 'Fill in the monthly amount, the down payment, and 1–60 EMIs.'
             : 'Fill in the amount, a term of 2–60 months, and fewer upfront months than the term.'}
@@ -245,7 +245,7 @@ function LinkBuilder() {
         <button
           onClick={copy}
           disabled={!valid}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1B3172] text-white text-sm font-semibold disabled:opacity-50 cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0D246A] text-white text-sm font-semibold disabled:opacity-50 cursor-pointer"
         >
           {copied ? <><Check className="w-4 h-4" /> Copied</> : <><Copy className="w-4 h-4" /> Copy link</>}
         </button>

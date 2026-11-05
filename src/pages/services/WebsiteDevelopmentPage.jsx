@@ -194,14 +194,14 @@ function FAQItem({ q, a }) {
   return (
     <div className="glass-card gradient-border rounded-xl overflow-hidden">
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left gap-4">
-        <span className="text-[#1B3172] font-medium text-[15px]">{q}</span>
+        <span className="text-[#0D246A] font-medium text-[15px]">{q}</span>
         {open
           ? <ChevronUp className="w-5 h-5 text-brand-purple flex-shrink-0" />
-          : <ChevronDown className="w-5 h-5 text-[#64748b] flex-shrink-0" />}
+          : <ChevronDown className="w-5 h-5 text-[#5C6685] flex-shrink-0" />}
       </button>
       {open && (
         <div className="px-5 pb-5 pt-0 border-t border-slate-200">
-          <p className="text-[#475569] text-sm leading-relaxed pt-4">{a}</p>
+          <p className="text-[#3F4A6B] text-sm leading-relaxed pt-4">{a}</p>
         </div>
       )}
     </div>
@@ -244,8 +244,8 @@ function WebsiteCheck() {
   }, [answered, yesCount]);
 
   const toneStyles = {
-    good: { border: 'rgba(34,197,94,0.35)', bg: 'rgba(34,197,94,0.08)', color: '#15803d' },
-    warn: { border: 'rgba(249,115,22,0.35)', bg: 'rgba(249,115,22,0.08)', color: '#c2410c' },
+    good: { border: 'rgba(10,146,78,0.35)', bg: 'rgba(10,146,78,0.08)', color: '#15803d' },
+    warn: { border: 'rgba(240,112,48,0.35)', bg: 'rgba(240,112,48,0.08)', color: '#c2410c' },
     bad: { border: 'rgba(244,63,94,0.35)', bg: 'rgba(244,63,94,0.08)', color: '#be123c' },
   };
 
@@ -260,7 +260,7 @@ function WebsiteCheck() {
               {...fadeUp(i * 0.06)}
               className="glass-card gradient-border rounded-2xl p-5 flex items-center justify-between gap-4"
             >
-              <span className="text-[#1B3172] text-[15px] font-medium leading-snug">{q}</span>
+              <span className="text-[#0D246A] text-[15px] font-medium leading-snug">{q}</span>
               <div className="flex gap-2 flex-shrink-0" role="group" aria-label={q}>
                 <button
                   type="button"
@@ -268,8 +268,8 @@ function WebsiteCheck() {
                   onClick={() => setAnswers((a) => ({ ...a, [i]: true }))}
                   className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200"
                   style={value === true
-                    ? { background: 'linear-gradient(135deg,#22C55E,#15803d)', color: '#fff', boxShadow: '0 4px 16px rgba(34,197,94,0.35)' }
-                    : { background: 'rgba(27,49,114,0.05)', color: '#64748b', border: '1px solid rgba(27,49,114,0.12)' }}
+                    ? { background: 'linear-gradient(135deg,#0A924E,#15803d)', color: '#fff', boxShadow: '0 4px 16px rgba(10,146,78,0.35)' }
+                    : { background: 'rgba(13,36,106,0.05)', color: '#5C6685', border: '1px solid rgba(13,36,106,0.12)' }}
                 >
                   <Check className="w-5 h-5" />
                   <span className="sr-only">Yes</span>
@@ -280,8 +280,8 @@ function WebsiteCheck() {
                   onClick={() => setAnswers((a) => ({ ...a, [i]: false }))}
                   className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200"
                   style={value === false
-                    ? { background: 'linear-gradient(135deg,#f43f5e,#be123c)', color: '#fff', boxShadow: '0 4px 16px rgba(244,63,94,0.35)' }
-                    : { background: 'rgba(27,49,114,0.05)', color: '#64748b', border: '1px solid rgba(27,49,114,0.12)' }}
+                    ? { background: 'linear-gradient(135deg,#E02A2A,#be123c)', color: '#fff', boxShadow: '0 4px 16px rgba(244,63,94,0.35)' }
+                    : { background: 'rgba(13,36,106,0.05)', color: '#5C6685', border: '1px solid rgba(13,36,106,0.12)' }}
                 >
                   <X className="w-5 h-5" />
                   <span className="sr-only">No</span>
@@ -294,15 +294,15 @@ function WebsiteCheck() {
 
       {/* Progress + verdict */}
       <div className="mt-8 max-w-2xl mx-auto">
-        <div className="h-1.5 rounded-full bg-[#1B3172]/10 overflow-hidden">
+        <div className="h-1.5 rounded-full bg-[#0D246A]/10 overflow-hidden">
           <motion.div
             className="h-full rounded-full"
-            style={{ background: 'linear-gradient(90deg,#6B3FA0,#1D4ED8,#0EA5E9)' }}
+            style={{ background: 'linear-gradient(90deg,#5E328C,#1376B4,#1391C4)' }}
             animate={{ width: `${(answered / CHECKS.length) * 100}%` }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           />
         </div>
-        <p className="text-center text-[#64748b] text-sm mt-3">
+        <p className="text-center text-[#5C6685] text-sm mt-3">
           {answered} of {CHECKS.length} answered
         </p>
 
@@ -323,8 +323,8 @@ function WebsiteCheck() {
             >
               {yesCount}/6
             </div>
-            <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-2">{verdict.title}</h3>
-            <p className="text-[#475569] text-sm leading-relaxed mb-6 max-w-lg mx-auto">{verdict.desc}</p>
+            <h3 className="text-[#0D246A] font-heading font-700 text-xl mb-2">{verdict.title}</h3>
+            <p className="text-[#3F4A6B] text-sm leading-relaxed mb-6 max-w-lg mx-auto">{verdict.desc}</p>
             {/* The worst-score verdict books a call; the others route to pages
                 that stay inside the app, so this picks the right element. */}
             {verdict.cta.book ? (
@@ -408,29 +408,29 @@ export default function WebsiteDevelopmentPage() {
         <div className="container-xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-              <div className="flex items-center gap-2 text-sm text-[#64748b] mb-6">
-                <Link to="/" className="hover:text-[#1B3172] transition-colors">Home</Link>
+              <div className="flex items-center gap-2 text-sm text-[#5C6685] mb-6">
+                <Link to="/" className="hover:text-[#0D246A] transition-colors">Home</Link>
                 <span>/</span>
-                <Link to="/services" className="hover:text-[#1B3172] transition-colors">Services</Link>
+                <Link to="/services" className="hover:text-[#0D246A] transition-colors">Services</Link>
                 <span>/</span>
-                <span className="text-[#1B3172]">Website Development</span>
+                <span className="text-[#0D246A]">Website Development</span>
               </div>
 
               <div className="section-label mb-4">Website Development Services</div>
 
-              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#1B3172] mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
                 Your Website Should Help You{' '}
                 <span className="gradient-text">Win Business.</span>
               </h1>
 
-              <p className="text-[#475569] text-xl leading-relaxed mb-8">
+              <p className="text-[#3F4A6B] text-xl leading-relaxed mb-8">
                 Novelio Technologies builds fast, professional, mobile-friendly websites designed to
                 help small businesses get understood, trusted and contacted.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {['Mobile-First Build', 'Clear Messaging', 'Conversion-Focused', 'Search-Friendly'].map((f) => (
-                  <div key={f} className="flex items-center gap-2 text-[#475569] text-sm">
+                  <div key={f} className="flex items-center gap-2 text-[#3F4A6B] text-sm">
                     <Check className="w-4 h-4 bg-gradient-to-br from-violet-600 to-purple-600 text-white rounded-full p-0.5 flex-shrink-0" />
                     {f}
                   </div>
@@ -458,7 +458,7 @@ export default function WebsiteDevelopmentPage() {
               <div className="glass-card gradient-border rounded-3xl p-5 relative" aria-hidden="true">
                 <div className="rounded-2xl overflow-hidden bg-white shadow-card">
                   {/* Browser chrome */}
-                  <div className="flex items-center gap-2 px-4 py-3 bg-[#EEF2FF] border-b border-slate-200">
+                  <div className="flex items-center gap-2 px-4 py-3 bg-[#F3F2EC] border-b border-slate-200">
                     <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
@@ -469,7 +469,7 @@ export default function WebsiteDevelopmentPage() {
                   <div className="p-7">
                     <motion.div
                       className="h-2.5 rounded-full w-3/5 mb-3 origin-left"
-                      style={{ background: 'linear-gradient(90deg,#6B3FA0,#1D4ED8)' }}
+                      style={{ background: 'linear-gradient(90deg,#5E328C,#1376B4)' }}
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -481,7 +481,7 @@ export default function WebsiteDevelopmentPage() {
                       {[0, 1, 2].map((i) => (
                         <motion.div
                           key={i}
-                          className="h-20 rounded-xl bg-[#F5F7FF] border border-slate-200"
+                          className="h-20 rounded-xl bg-[#FBFAF6] border border-slate-200"
                           animate={{ y: [0, -6, 0] }}
                           transition={{ duration: 3.5, repeat: Infinity, delay: i * 0.4, ease: 'easeInOut' }}
                         />
@@ -489,7 +489,7 @@ export default function WebsiteDevelopmentPage() {
                     </div>
 
                     <div className="h-9 w-40 rounded-full flex items-center justify-center text-white text-xs font-heading font-600"
-                      style={{ background: 'linear-gradient(135deg,#6B3FA0,#1D4ED8)' }}>
+                      style={{ background: 'linear-gradient(135deg,#5E328C,#1376B4)' }}>
                       Get a Quote
                     </div>
                   </div>
@@ -505,7 +505,7 @@ export default function WebsiteDevelopmentPage() {
                   <Gauge className="w-5 h-5 text-brand-purple" />
                   <div>
                     <div className="text-xl font-heading font-800 gradient-text leading-none">&lt;2s</div>
-                    <div className="text-[11px] text-[#475569] mt-0.5">Target Load Time</div>
+                    <div className="text-[11px] text-[#3F4A6B] mt-0.5">Target Load Time</div>
                   </div>
                 </div>
               </motion.div>
@@ -519,7 +519,7 @@ export default function WebsiteDevelopmentPage() {
                   <Smartphone className="w-5 h-5 text-brand-blue" />
                   <div>
                     <div className="text-xl font-heading font-800 gradient-text leading-none">100%</div>
-                    <div className="text-[11px] text-[#475569] mt-0.5">Mobile-First</div>
+                    <div className="text-[11px] text-[#3F4A6B] mt-0.5">Mobile-First</div>
                   </div>
                 </div>
               </motion.div>
@@ -529,22 +529,21 @@ export default function WebsiteDevelopmentPage() {
       </section>
 
       {/* ── The real problem ────────────────────────────────────────────── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-0.5"
-          style={{ background: 'linear-gradient(to right, transparent, #F97316, #FACC15, #EC4899, transparent)' }} />
+          style={{ background: 'linear-gradient(to right, transparent, #F07030, #F0D030, #E02A2A, transparent)' }} />
 
         <div className="container-xl relative z-10">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
             <motion.div {...fadeUp()} className="lg:sticky lg:top-28">
-              <div className="section-label mb-4"
-                style={{ background: 'rgba(249,115,22,0.12)', borderColor: 'rgba(249,115,22,0.28)', color: '#F97316' }}>
+              <div className="section-label mb-4">
                 The Real Problem
               </div>
-              <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-5 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-5 leading-tight">
                 A Website Can Look Fine And Still{' '}
                 <span className="gradient-text-pink">Lose Business.</span>
               </h2>
-              <p className="text-[#475569] text-lg leading-relaxed">
+              <p className="text-[#3F4A6B] text-lg leading-relaxed">
                 Most business owners do not know why visitors leave. They only see fewer calls,
                 fewer enquiries and too much dependence on referrals.
               </p>
@@ -561,8 +560,8 @@ export default function WebsiteDevelopmentPage() {
                     <p.icon className="w-6 h-6 text-brand-purple" />
                   </div>
                   <div>
-                    <h3 className="text-[#1B3172] font-heading font-600 text-lg mb-1.5">{p.title}</h3>
-                    <p className="text-[#475569] text-sm leading-relaxed">{p.desc}</p>
+                    <h3 className="text-[#0D246A] font-heading font-600 text-lg mb-1.5">{p.title}</h3>
+                    <p className="text-[#3F4A6B] text-sm leading-relaxed">{p.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -574,7 +573,7 @@ export default function WebsiteDevelopmentPage() {
       {/* ── The hidden cost ─────────────────────────────────────────────── */}
       <section
         className="section-pad relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #0E1E38 0%, #1a1050 55%, #0E1E38 100%)' }}
+        style={{ background: 'linear-gradient(135deg, #081648 0%, #2A1A6E 55%, #081648 100%)' }}
       >
         <div className="absolute -top-32 -right-32 w-[420px] h-[420px] rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle, rgba(244,63,94,0.28), transparent 65%)' }} />
@@ -634,10 +633,10 @@ export default function WebsiteDevelopmentPage() {
         <div className="container-xl relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-14">
             <div className="section-label mx-auto mb-4">What A Good Website Should Do</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-4">
               Make The Customer Journey <span className="gradient-text">Easier.</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               A business website should guide a visitor from first impression to enquiry without confusion.
             </p>
           </motion.div>
@@ -645,7 +644,7 @@ export default function WebsiteDevelopmentPage() {
           <div className="relative">
             {/* Connecting line, desktop only */}
             <div className="hidden lg:block absolute top-[38px] left-[10%] right-[10%] h-px"
-              style={{ background: 'linear-gradient(90deg, rgba(107,63,160,0.35), rgba(29,78,216,0.35), rgba(14,165,233,0.35))' }} />
+              style={{ background: 'linear-gradient(90deg, rgba(94,50,140,0.35), rgba(19,118,180,0.35), rgba(19,145,196,0.35))' }} />
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 relative">
               {JOURNEY.map((s, i) => (
@@ -655,11 +654,11 @@ export default function WebsiteDevelopmentPage() {
                   className="glass-card gradient-border rounded-2xl p-6 text-center group hover:-translate-y-1 hover:shadow-glow transition-all duration-300"
                 >
                   <div className="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4 shadow-glow group-hover:scale-110 transition-transform"
-                    style={{ background: 'linear-gradient(135deg,#6B3FA0,#1D4ED8)' }}>
+                    style={{ background: 'linear-gradient(135deg,#5E328C,#1376B4)' }}>
                     <span className="text-white font-heading font-800">{s.n}</span>
                   </div>
-                  <h3 className="text-[#1B3172] font-heading font-700 text-lg mb-2">{s.title}</h3>
-                  <p className="text-[#475569] text-sm leading-relaxed">{s.desc}</p>
+                  <h3 className="text-[#0D246A] font-heading font-700 text-lg mb-2">{s.title}</h3>
+                  <p className="text-[#3F4A6B] text-sm leading-relaxed">{s.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -668,11 +667,11 @@ export default function WebsiteDevelopmentPage() {
       </section>
 
       {/* ── Services ────────────────────────────────────────────────────── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-14">
             <div className="section-label mx-auto mb-4">Website Development Services</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-4">
               Built Around What Your Business <span className="gradient-text">Actually Needs.</span>
             </h2>
           </motion.div>
@@ -690,8 +689,8 @@ export default function WebsiteDevelopmentPage() {
                 <div className="text-[11px] font-heading font-700 uppercase tracking-[0.08em] text-brand-purple mb-2">
                   {o.tag}
                 </div>
-                <h3 className="text-[#1B3172] font-heading font-600 text-lg mb-3">{o.title}</h3>
-                <p className="text-[#475569] text-sm leading-relaxed">{o.desc}</p>
+                <h3 className="text-[#0D246A] font-heading font-600 text-lg mb-3">{o.title}</h3>
+                <p className="text-[#3F4A6B] text-sm leading-relaxed">{o.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -706,11 +705,11 @@ export default function WebsiteDevelopmentPage() {
           <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-14 items-start">
             <motion.div {...fadeUp()} className="lg:sticky lg:top-28">
               <div className="section-label mb-4">Our Approach</div>
-              <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-5 leading-tight">
+              <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-5 leading-tight">
                 We Don&rsquo;t Start With Colors.{' '}
                 <span className="gradient-text">We Start With Your Customer.</span>
               </h2>
-              <p className="text-[#475569] text-lg leading-relaxed mb-8">
+              <p className="text-[#3F4A6B] text-lg leading-relaxed mb-8">
                 Before design starts, we understand the business, customer, services, objections
                 and desired action.
               </p>
@@ -728,17 +727,17 @@ export default function WebsiteDevelopmentPage() {
                   className="glass-card gradient-border rounded-2xl p-6 flex gap-5 items-start group hover:shadow-glow transition-all duration-300"
                 >
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-glow group-hover:scale-110 transition-transform"
-                    style={{ background: 'linear-gradient(135deg,#6B3FA0,#1D4ED8)' }}>
+                    style={{ background: 'linear-gradient(135deg,#5E328C,#1376B4)' }}>
                     <s.icon className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-1.5">
-                      <h3 className="text-[#1B3172] font-heading font-700 text-lg">{s.title}</h3>
-                      <span className="text-[11px] text-brand-purple bg-[#6B3FA0]/10 border border-[#6B3FA0]/20 rounded-full px-2.5 py-0.5 font-medium">
+                      <h3 className="text-[#0D246A] font-heading font-700 text-lg">{s.title}</h3>
+                      <span className="text-[11px] text-brand-purple bg-[#5E328C]/10 border border-[#5E328C]/20 rounded-full px-2.5 py-0.5 font-medium">
                         Step {s.n}
                       </span>
                     </div>
-                    <p className="text-[#475569] text-sm leading-relaxed">{s.desc}</p>
+                    <p className="text-[#3F4A6B] text-sm leading-relaxed">{s.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -748,18 +747,18 @@ export default function WebsiteDevelopmentPage() {
       </section>
 
       {/* ── 30-second website check ─────────────────────────────────────── */}
-      <section id="website-check" className="section-pad bg-[#EEF2FF] relative overflow-hidden scroll-mt-24">
+      <section id="website-check" className="section-pad bg-[#F3F2EC] relative overflow-hidden scroll-mt-24">
         <div className="container-lg relative z-10">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">
               <Sparkles className="w-3.5 h-3.5" />
               30-Second Website Check
             </div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-4 leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-4 leading-tight">
               Would You Confidently Send A New Prospect To{' '}
               <span className="gradient-text">Your Website?</span>
             </h2>
-            <p className="text-[#475569] text-lg max-w-2xl mx-auto">
+            <p className="text-[#3F4A6B] text-lg max-w-2xl mx-auto">
               Answer these six honestly. Your score tells you whether you need a tune-up or a rethink.
             </p>
           </motion.div>
@@ -776,14 +775,14 @@ export default function WebsiteDevelopmentPage() {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <motion.div {...fadeUp()}>
               <div className="section-label mb-4">Why Novelio Technologies</div>
-              <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-5 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-5 leading-tight">
                 Business First. <span className="gradient-text">Technology Second.</span>
               </h2>
-              <p className="text-[#475569] text-lg leading-relaxed mb-6">
+              <p className="text-[#3F4A6B] text-lg leading-relaxed mb-6">
                 There are thousands of companies that can build websites. The harder part is
                 building one that fits the business and supports the customer journey.
               </p>
-              <p className="text-[#1B3172] font-heading font-600 mb-4">
+              <p className="text-[#0D246A] font-heading font-600 mb-4">
                 Novelio approaches website development in this order:
               </p>
 
@@ -791,7 +790,7 @@ export default function WebsiteDevelopmentPage() {
                 {['Business', 'Customer', 'Journey', 'Technology'].map((step, i) => (
                   <div key={step} className="flex items-center gap-2">
                     {i > 0 && <ArrowRight className="w-4 h-4 text-brand-purple/50" />}
-                    <span className="glass-card gradient-border rounded-full px-4 py-2 text-sm font-heading font-600 text-[#1B3172]">
+                    <span className="glass-card gradient-border rounded-full px-4 py-2 text-sm font-heading font-600 text-[#0D246A]">
                       {step}
                     </span>
                   </div>
@@ -807,11 +806,11 @@ export default function WebsiteDevelopmentPage() {
                   className="glass-card gradient-border rounded-2xl p-6 group hover:-translate-y-1 hover:shadow-glow transition-all duration-300"
                 >
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
-                    style={{ background: 'linear-gradient(135deg,#6B3FA0,#1D4ED8)' }}>
+                    style={{ background: 'linear-gradient(135deg,#5E328C,#1376B4)' }}>
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-[#1B3172] font-heading font-600 text-base mb-1.5">{p.title}</h3>
-                  <p className="text-[#475569] text-sm leading-relaxed">{p.desc}</p>
+                  <h3 className="text-[#0D246A] font-heading font-600 text-base mb-1.5">{p.title}</h3>
+                  <p className="text-[#3F4A6B] text-sm leading-relaxed">{p.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -820,11 +819,11 @@ export default function WebsiteDevelopmentPage() {
       </section>
 
       {/* ── FAQ ─────────────────────────────────────────────────────────── */}
-      <section className="section-pad bg-[#EEF2FF] relative overflow-hidden">
+      <section className="section-pad bg-[#F3F2EC] relative overflow-hidden">
         <div className="container-lg">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <div className="section-label mx-auto mb-4">FAQs</div>
-            <h2 className="text-4xl font-heading font-700 text-[#1B3172] mb-4">
+            <h2 className="text-4xl font-heading font-700 text-[#0D246A] mb-4">
               Common <span className="gradient-text">Questions</span>
             </h2>
           </motion.div>
@@ -842,12 +841,12 @@ export default function WebsiteDevelopmentPage() {
       <section className="section-pad-sm bg-dark">
         <div className="container-xl">
           <motion.div {...fadeUp()} className="text-center mb-8">
-            <h3 className="text-2xl font-heading font-700 text-[#1B3172]">Explore Our Other Services</h3>
+            <h3 className="text-2xl font-heading font-700 text-[#0D246A]">Explore Our Other Services</h3>
           </motion.div>
           <div className="flex flex-wrap gap-3 justify-center">
             {SERVICES.filter((s) => s.id !== 'website-development').map((s) => (
               <Link key={s.id} to={s.slug}
-                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#475569] hover:text-[#1B3172] hover:shadow-glow transition-all">
+                className="glass-card gradient-border rounded-full px-5 py-2.5 text-sm font-medium text-[#3F4A6B] hover:text-[#0D246A] hover:shadow-glow transition-all">
                 {s.short}
               </Link>
             ))}

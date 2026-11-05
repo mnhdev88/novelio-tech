@@ -23,10 +23,10 @@ function useCountUp(target, duration = 2000, start = false) {
 }
 
 const STAT_COLORS = [
-  'from-[#6B3FA0] to-[#1D4ED8]',
-  'from-[#F97316] to-[#FACC15]',
-  'from-[#22C55E] to-[#0EA5E9]',
-  'from-[#EC4899] to-[#F97316]',
+  'from-[#5E328C] to-[#1376B4]',
+  'from-[#F07030] to-[#F0D030]',
+  'from-[#0A924E] to-[#1391C4]',
+  'from-[#E02A2A] to-[#F07030]',
 ];
 
 function StatCard({ stat, started, index }) {
@@ -37,12 +37,12 @@ function StatCard({ stat, started, index }) {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       viewport={{ once: true }}
-      whileHover={{ y: -4, boxShadow: '0 16px 48px rgba(107,63,160,0.2)' }}
+      whileHover={{ y: -4, boxShadow: '0 16px 48px rgba(94,50,140,0.2)' }}
       className="rounded-2xl p-6 text-center relative overflow-hidden"
       style={{
         background: 'rgba(255,255,255,0.9)',
-        border: '1px solid rgba(29,78,216,0.13)',
-        boxShadow: '0 4px 24px rgba(27,49,114,0.08)',
+        border: '1px solid rgba(19,118,180,0.13)',
+        boxShadow: '0 4px 24px rgba(13,36,106,0.08)',
         backdropFilter: 'blur(16px)',
       }}
     >
@@ -51,7 +51,7 @@ function StatCard({ stat, started, index }) {
       <div className={`text-3xl font-heading font-800 bg-gradient-to-r ${STAT_COLORS[index]} bg-clip-text text-transparent mb-1`}>
         {count}{stat.suffix}
       </div>
-      <div className="text-[#64748b] text-sm font-medium">{stat.label}</div>
+      <div className="text-[#5C6685] text-sm font-medium">{stat.label}</div>
     </motion.div>
   );
 }
@@ -76,15 +76,15 @@ export default function AboutTeaser() {
       {/* Decorative SVG — orbit rings */}
       <svg className="absolute left-0 top-1/2 -translate-y-1/2 w-[520px] h-[520px] opacity-[0.04] pointer-events-none -translate-x-1/3"
         viewBox="0 0 520 520" fill="none">
-        <circle cx="260" cy="260" r="240" stroke="#6B3FA0" strokeWidth="1.5" strokeDasharray="8 6" />
-        <circle cx="260" cy="260" r="180" stroke="#1D4ED8" strokeWidth="1" strokeDasharray="5 8" />
-        <circle cx="260" cy="260" r="120" stroke="#6B3FA0" strokeWidth="0.8" />
-        <circle cx="260" cy="260" r="60"  stroke="#1D4ED8" strokeWidth="0.6" />
+        <circle cx="260" cy="260" r="240" stroke="#5E328C" strokeWidth="1.5" strokeDasharray="8 6" />
+        <circle cx="260" cy="260" r="180" stroke="#1376B4" strokeWidth="1" strokeDasharray="5 8" />
+        <circle cx="260" cy="260" r="120" stroke="#5E328C" strokeWidth="0.8" />
+        <circle cx="260" cy="260" r="60"  stroke="#1376B4" strokeWidth="0.6" />
         {/* orbiting dot */}
-        <circle cx="260" cy="20" r="7" fill="#6B3FA0">
+        <circle cx="260" cy="20" r="7" fill="#5E328C">
           <animateTransform attributeName="transform" type="rotate" from="0 260 260" to="360 260 260" dur="18s" repeatCount="indefinite" />
         </circle>
-        <circle cx="440" cy="260" r="5" fill="#1D4ED8">
+        <circle cx="440" cy="260" r="5" fill="#1376B4">
           <animateTransform attributeName="transform" type="rotate" from="0 260 260" to="-360 260 260" dur="12s" repeatCount="indefinite" />
         </circle>
       </svg>
@@ -109,26 +109,26 @@ export default function AboutTeaser() {
               className="mt-4 rounded-2xl p-5 flex items-center gap-5 relative overflow-hidden"
               style={{
                 background: 'rgba(255,255,255,0.9)',
-                border: '1px solid rgba(107,63,160,0.2)',
-                boxShadow: '0 8px 32px rgba(107,63,160,0.12)',
+                border: '1px solid rgba(94,50,140,0.2)',
+                boxShadow: '0 8px 32px rgba(94,50,140,0.12)',
                 backdropFilter: 'blur(16px)',
               }}
             >
               <div className="absolute inset-0 opacity-5 pointer-events-none rounded-2xl"
-                style={{ background: 'linear-gradient(135deg, #6B3FA0 0%, #1D4ED8 100%)' }} />
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center flex-shrink-0"
-                style={{ boxShadow: '0 0 24px rgba(107,63,160,0.4)' }}>
+                style={{ background: 'linear-gradient(135deg, #5E328C 0%, #1376B4 100%)' }} />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#5E328C] to-[#1376B4] flex items-center justify-center flex-shrink-0"
+                style={{ boxShadow: '0 0 24px rgba(94,50,140,0.4)' }}>
                 <Zap className="w-6 h-6 text-white" />
               </div>
               <div>
-                <div className="text-[#1B3172] font-heading font-700 text-lg">Results-First Agency</div>
-                <div className="text-[#475569] text-sm mt-0.5">We measure success in revenue, not vanity metrics.</div>
+                <div className="text-[#0D246A] font-heading font-700 text-lg">Results-First Agency</div>
+                <div className="text-[#3F4A6B] text-sm mt-0.5">We measure success in revenue, not vanity metrics.</div>
               </div>
               {/* Animated bar decoration */}
               <div className="ml-auto flex gap-1 items-end h-8 flex-shrink-0">
                 {[40, 65, 50, 80, 60, 90, 75].map((h, i) => (
                   <motion.div key={i}
-                    className="w-1.5 rounded-full bg-gradient-to-t from-[#6B3FA0] to-[#0EA5E9]"
+                    className="w-1.5 rounded-full bg-gradient-to-t from-[#5E328C] to-[#1391C4]"
                     initial={{ height: 0 }}
                     whileInView={{ height: `${h}%` }}
                     transition={{ duration: 0.8, delay: 0.5 + i * 0.06, ease: 'easeOut' }}
@@ -146,13 +146,13 @@ export default function AboutTeaser() {
               className="absolute -top-5 -right-5 rounded-2xl px-4 py-3 z-10"
               style={{
                 background: 'rgba(255,255,255,0.95)',
-                border: '1px solid rgba(107,63,160,0.2)',
-                boxShadow: '0 8px 32px rgba(107,63,160,0.18)',
+                border: '1px solid rgba(94,50,140,0.2)',
+                boxShadow: '0 8px 32px rgba(94,50,140,0.18)',
                 backdropFilter: 'blur(20px)',
               }}
             >
               <div className="text-xl font-heading font-800 gradient-text">4.9/5 ★</div>
-              <div className="text-xs text-[#64748b]">Google Reviews</div>
+              <div className="text-xs text-[#5C6685]">Google Reviews</div>
             </motion.div>
           </div>
 
@@ -164,10 +164,10 @@ export default function AboutTeaser() {
             viewport={{ once: true }}
           >
             <div className="section-label mb-4">About Novelio Technologies</div>
-            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#1B3172] mb-6 leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-heading font-700 text-[#0D246A] mb-6 leading-tight">
               We Are Your <span className="gradient-text">End-To-End</span> Digital Growth Partner
             </h2>
-            <p className="text-[#475569] text-lg leading-relaxed mb-8">
+            <p className="text-[#3F4A6B] text-lg leading-relaxed mb-8">
               Founded with a mission to democratize digital success, Novelio Technologies LLC has helped businesses across industries achieve measurable growth through data-driven strategies and cutting-edge technology.
             </p>
             <ul className="space-y-4 mb-10">
@@ -185,10 +185,10 @@ export default function AboutTeaser() {
                   viewport={{ once: true }}
                   className="flex items-start gap-3"
                 >
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#6B3FA0] to-[#1D4ED8] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#5E328C] to-[#1376B4] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <CheckCircle className="w-3.5 h-3.5 text-white" />
                   </div>
-                  <span className="text-[#475569] text-[15px]">{item}</span>
+                  <span className="text-[#3F4A6B] text-[15px]">{item}</span>
                 </motion.li>
               ))}
             </ul>

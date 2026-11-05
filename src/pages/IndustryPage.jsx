@@ -44,20 +44,20 @@ function SiteCard({ site, index, industryColor }) {
         className="group block rounded-2xl overflow-hidden"
         style={{
           background: 'rgba(255,255,255,0.92)',
-          border: '1px solid rgba(29,78,216,0.11)',
-          boxShadow: '0 4px 20px rgba(27,49,114,0.08)',
+          border: '1px solid rgba(19,118,180,0.11)',
+          boxShadow: '0 4px 20px rgba(13,36,106,0.08)',
           backdropFilter: 'blur(16px)',
           transition: 'all 0.3s ease',
         }}
         onMouseEnter={e => {
           e.currentTarget.style.transform = 'translateY(-6px)';
-          e.currentTarget.style.boxShadow = '0 20px 56px rgba(107,63,160,0.18)';
-          e.currentTarget.style.border = '1px solid rgba(107,63,160,0.25)';
+          e.currentTarget.style.boxShadow = '0 20px 56px rgba(94,50,140,0.18)';
+          e.currentTarget.style.border = '1px solid rgba(94,50,140,0.25)';
         }}
         onMouseLeave={e => {
           e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = '0 4px 20px rgba(27,49,114,0.08)';
-          e.currentTarget.style.border = '1px solid rgba(29,78,216,0.11)';
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(13,36,106,0.08)';
+          e.currentTarget.style.border = '1px solid rgba(19,118,180,0.11)';
         }}
       >
         {/* Thumbnail area */}
@@ -107,13 +107,13 @@ function SiteCard({ site, index, industryColor }) {
                 <Globe className="w-6 h-6 text-white" />
               </div>
               {!blocked && (
-                <div className="flex items-center gap-2 text-xs text-[#64748b]">
+                <div className="flex items-center gap-2 text-xs text-[#5C6685]">
                   <Loader2 className="w-3 h-3 animate-spin" />
                   Loading preview…
                 </div>
               )}
               {blocked && (
-                <div className="text-xs text-[#64748b] text-center px-4">
+                <div className="text-xs text-[#5C6685] text-center px-4">
                   Click to open site
                 </div>
               )}
@@ -132,8 +132,8 @@ function SiteCard({ site, index, industryColor }) {
         {/* Card footer */}
         <div className="px-4 py-3 flex items-center justify-between gap-2">
           <div className="min-w-0">
-            <div className="text-[#1B3172] font-heading font-600 text-sm truncate">{site.label}</div>
-            <div className="text-[#64748b] text-xs truncate mt-0.5">{domain}</div>
+            <div className="text-[#0D246A] font-heading font-600 text-sm truncate">{site.label}</div>
+            <div className="text-[#5C6685] text-xs truncate mt-0.5">{domain}</div>
           </div>
           <div
             className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
@@ -152,21 +152,21 @@ function SiteCard({ site, index, industryColor }) {
 
 // Parse Tailwind gradient class → hex colors for inline use
 const GRADIENT_COLORS = {
-  'from-rose-500 to-pink-600':      { a: '#F43F5E', b: '#DB2777' },
-  'from-orange-500 to-amber-400':   { a: '#F97316', b: '#FBBF24' },
-  'from-emerald-500 to-teal-600':   { a: '#10B981', b: '#0D9488' },
-  'from-yellow-500 to-orange-500':  { a: '#EAB308', b: '#F97316' },
-  'from-blue-600 to-indigo-700':    { a: '#2563EB', b: '#4338CA' },
-  'from-violet-500 to-purple-600':  { a: '#8B5CF6', b: '#9333EA' },
-  'from-cyan-500 to-blue-600':      { a: '#06B6D4', b: '#2563EB' },
-  'from-slate-600 to-slate-800':    { a: '#475569', b: '#1E293B' },
+  'from-rose-500 to-pink-600':      { a: '#E02A2A', b: '#DB2777' },
+  'from-orange-500 to-amber-400':   { a: '#F07030', b: '#FBBF24' },
+  'from-emerald-500 to-teal-600':   { a: '#0A924E', b: '#0D9488' },
+  'from-yellow-500 to-orange-500':  { a: '#F0D030', b: '#F07030' },
+  'from-blue-600 to-indigo-700':    { a: '#1376B4', b: '#42499D' },
+  'from-violet-500 to-purple-600':  { a: '#7A4BB0', b: '#9333EA' },
+  'from-cyan-500 to-blue-600':      { a: '#1391C4', b: '#1376B4' },
+  'from-slate-600 to-slate-800':    { a: '#3F4A6B', b: '#1E293B' },
   'from-gray-500 to-zinc-700':      { a: '#6B7280', b: '#3F3F46' },
-  'from-pink-500 to-rose-500':      { a: '#EC4899', b: '#F43F5E' },
-  'from-amber-600 to-yellow-500':   { a: '#D97706', b: '#EAB308' },
-  'from-indigo-500 to-blue-700':    { a: '#6366F1', b: '#1D4ED8' },
-  'from-fuchsia-500 to-pink-600':   { a: '#D946EF', b: '#DB2777' },
-  'from-red-500 to-rose-600':       { a: '#EF4444', b: '#E11D48' },
-  'from-lime-500 to-green-600':     { a: '#84CC16', b: '#16A34A' },
+  'from-pink-500 to-rose-500':      { a: '#E02A2A', b: '#E02A2A' },
+  'from-amber-600 to-yellow-500':   { a: '#D9591C', b: '#F0D030' },
+  'from-indigo-500 to-blue-700':    { a: '#42499D', b: '#1376B4' },
+  'from-fuchsia-500 to-pink-600':   { a: '#5E328C', b: '#DB2777' },
+  'from-red-500 to-rose-600':       { a: '#E02A2A', b: '#E11D48' },
+  'from-lime-500 to-green-600':     { a: '#84CC16', b: '#0A8547' },
 };
 
 export default function IndustryPage() {
@@ -175,10 +175,10 @@ export default function IndustryPage() {
 
   if (!industry) return <Navigate to="/" replace />;
 
-  const gradColors = GRADIENT_COLORS[industry.color] || { a: '#6B3FA0', b: '#1D4ED8' };
+  const gradColors = GRADIENT_COLORS[industry.color] || { a: '#5E328C', b: '#1376B4' };
 
   return (
-    <main className="pt-20 min-h-screen bg-[#F5F7FF]">
+    <main className="pt-20 min-h-screen bg-[#FBFAF6]">
       <SEO
         title={`${industry.name} Website Design & Digital Marketing`}
         description={`See our ${industry.name} website portfolio. Novelio Technologies builds high-converting, SEO-optimized websites for ${industry.name.toLowerCase()} businesses.`}
@@ -207,7 +207,7 @@ export default function IndustryPage() {
           {/* Back link */}
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-[#64748b] hover:text-[#1B3172] transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#5C6685] hover:text-[#0D246A] transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Home
@@ -232,7 +232,7 @@ export default function IndustryPage() {
             </div>
             <div>
               <div className="section-label mb-2" style={{ display: 'inline-flex' }}>Industry Portfolio</div>
-              <h1 className="text-4xl lg:text-5xl font-heading font-800 text-[#1B3172] leading-tight">
+              <h1 className="text-4xl lg:text-5xl font-heading font-800 text-[#0D246A] leading-tight">
                 {industry.name}
               </h1>
             </div>
@@ -243,7 +243,7 @@ export default function IndustryPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-[#475569] text-lg mt-4 max-w-2xl"
+              className="text-[#3F4A6B] text-lg mt-4 max-w-2xl"
             >
               Showing {industry.sites.length} client website{industry.sites.length !== 1 ? 's' : ''} we've built in the {industry.name} sector.
               Click any card to open the full site.
@@ -262,10 +262,10 @@ export default function IndustryPage() {
             className="text-center py-24"
           >
             <div className="flex justify-center mb-6"><industry.icon className="w-16 h-16" strokeWidth={1.5} style={{ color: gradColors.a }} /></div>
-            <h2 className="text-2xl font-heading font-700 text-[#1B3172] mb-3">
+            <h2 className="text-2xl font-heading font-700 text-[#0D246A] mb-3">
               Coming Soon
             </h2>
-            <p className="text-[#64748b] max-w-sm mx-auto mb-8">
+            <p className="text-[#5C6685] max-w-sm mx-auto mb-8">
               We're building our {industry.name} portfolio. Check back soon or contact us to be featured.
             </p>
             <Link to="/contact" className="btn-primary inline-flex">
@@ -300,10 +300,10 @@ export default function IndustryPage() {
           }}
         >
           <div className="flex justify-center mb-3"><industry.icon className="w-7 h-7" strokeWidth={1.75} style={{ color: gradColors.a }} /></div>
-          <h3 className="text-[#1B3172] font-heading font-700 text-xl mb-2">
+          <h3 className="text-[#0D246A] font-heading font-700 text-xl mb-2">
             Need a Website for Your {industry.name} Business?
           </h3>
-          <p className="text-[#64748b] mb-6 max-w-md mx-auto text-sm">
+          <p className="text-[#5C6685] mb-6 max-w-md mx-auto text-sm">
             We build high-converting, SEO-optimized websites tailored specifically for the {industry.name} sector.
           </p>
           <a {...CALENDLY_LINK} className="btn-primary inline-flex">
