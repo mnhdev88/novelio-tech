@@ -96,6 +96,12 @@ jobs:
             # Local-dev gateway secrets — must never reach the server (prod uses
             # the credentials files ABOVE public_html). Blocked by api/.htaccess too.
             **/credentials.local.php
+            # The service page renamed to /services/google-business-profile on
+            # 2026-09-30. Its old prerendered folder hit the delete bug below and
+            # failed every deploy after it. .htaccess 301s the old URL, so the
+            # stale folder on the server is never served.
+            services/google-business
+            services/google-business/**
             # NOTE for whoever next deletes a folder from public/: this sync's
             # delete step uses an ABSOLUTE server path, which only resolves if the
             # FTP user is chrooted to its home — it is not. Removing
