@@ -582,7 +582,7 @@ function au_check_technical(DOMXPath $x, array $page, array $ctx) {
     if ($lang === '') {
         $out[] = au_issue('lang', 'technical', 3, 'warn',
             'Declared page language',
-            'The <html> tag does not declare a language. Google uses it to decide which country and language results to show your page in, and screen readers use it to pick a pronunciation.',
+            'The <html> tag does not declare a language. Google mostly works out the language from your text, but browsers use the tag to offer translation and screen readers use it to pick a pronunciation.',
             'Set it on the <html> tag — lang="en-US" for United States English, lang="en-IN" for India. One attribute, one line.');
     } else {
         $out[] = au_issue('lang', 'technical', 3, 'pass', 'Declared page language', '', '', $lang);

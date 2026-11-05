@@ -33,11 +33,11 @@ const NOTES = {
   og: { rank: 'none', affects: 'Clicks from shared links', text: 'Search engines do not rank on these tags. They decide how your link looks when shared on social media and messaging apps, which drives visits.' },
   twitter: { rank: 'none', affects: 'Clicks from shared links on X', text: 'Not used for search ranking. They control how your link looks when someone posts it on X.' },
   schema: { rank: 'indirect', affects: 'Rich results and AI answers', text: 'Not a direct ranking factor. It can make your listing eligible for extra details such as prices, ratings or breadcrumbs, which earn more clicks, and it helps search engines and AI assistants understand your business.' },
-  headings: { rank: 'indirect', affects: 'Relevance and readability', text: 'Headings help Google understand the topics on the page and help visitors scan it. One clear H1 states the main topic.' },
-  words: { rank: 'indirect', affects: 'Relevance', text: 'There is no ideal word count. What matters is answering what the searcher needs, but very thin pages rarely have enough to rank on.' },
+  headings: { rank: 'indirect', affects: 'Relevance and readability', text: 'Headings help Google understand the topics on the page and help visitors scan it.' },
+  words: { rank: 'indirect', affects: 'Relevance', text: 'Google does not rank on word count, but very thin pages rarely give it enough to rank on.' },
   alt: { rank: 'direct', affects: 'Image search and accessibility', text: 'Alt text is how Google understands images, so it affects image search rankings. Screen readers read it aloud to blind visitors.' },
   internal: { rank: 'direct', affects: 'Crawling and rankings', text: 'Links between your pages help Google find them and pass ranking strength to the pages you link to.' },
-  external: { rank: 'none', affects: 'Visitor trust', text: 'Linking out does not directly raise rankings, but citing good sources backs up your claims for readers.' },
+  external: { rank: 'none', affects: 'Visitor trust', text: 'Linking out does not directly raise rankings. It mainly affects how far readers trust the page.' },
   html: { rank: 'indirect', affects: 'Speed and crawling', text: 'Heavy HTML is slower to download, especially on mobile data. Google only reads the first 15 MB of a page.' },
   speed: { rank: 'direct', affects: 'Rankings (a small signal) and visitors', text: 'Core Web Vitals are a confirmed ranking signal, but a small one. Their bigger effect is on visitors: slow pages lose people before they load.' },
 };
@@ -158,16 +158,13 @@ function LengthMeter({ length, idealMin, idealMax, okMin, okMax, scale }) {
   const colour = verdict === 'Good length' ? '#0A8547' : verdict === 'Missing' ? '#E02A2A' : '#F0A030';
   const pct = (v) => `${Math.min(100, (v / scale) * 100)}%`;
 
+  // Shows the verdict only. The target range is part of the fix, which is given on a call.
   return (
     <div className="mt-2">
       <div className="relative h-2 rounded bg-[#E8E7DF] overflow-hidden">
-        <div className="absolute inset-y-0 bg-[#0A8547]/25" style={{ left: pct(idealMin), width: `${((idealMax - idealMin) / scale) * 100}%` }} />
         <div className="absolute inset-y-0 left-0 rounded" style={{ width: pct(length), background: colour, opacity: 0.85 }} />
       </div>
-      <div className="flex justify-between gap-3 text-[12px] text-[#5C6685] mt-1">
-        <span>{length} characters · {verdict}</span>
-        <span>Aim for {idealMin}–{idealMax}</span>
-      </div>
+      <div className="text-[12px] text-[#5C6685] mt-1">{length} characters · {verdict}</div>
     </div>
   );
 }

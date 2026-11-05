@@ -206,7 +206,8 @@ function au_fetch_message(array $page, $url) {
  * Split the report into what anyone may see and what an email address buys.
  *
  * Free: the score, the category breakdown, every passing check by name, and the
- * three worst findings complete with why they matter and how to fix them.
+ * three worst findings with what is wrong and why it matters. No fixes: those
+ * are given on a call.
  * Locked: every other finding, reduced to its title and severity.
  */
 function au_public_view(array $r) {
@@ -243,10 +244,15 @@ function au_public_view(array $r) {
     ];
 }
 
+/**
+ * A shown finding: what is wrong and what it costs, never how to fix it. The fix
+ * (`detail`) stays on the server in every response. The fix is what we go
+ * through with them on a call, so it must not be one devtools panel away.
+ */
 function au_full_issue(array $i) {
     return [
         'id' => $i['id'], 'cat' => $i['cat'], 'state' => $i['state'],
         'title' => $i['title'], 'impact' => $i['impact'],
-        'detail' => $i['detail'], 'evidence' => $i['evidence'],
+        'evidence' => $i['evidence'],
     ];
 }

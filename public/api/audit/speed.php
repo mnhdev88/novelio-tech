@@ -310,6 +310,15 @@ function au_speed_issues(array $psi) {
  * are free (the client can read them off PageSpeed anyway), the interpretation
  * and the fixes are not.
  */
+/** A shown finding without its fix. speed.php does not load run.php, so it has its own copy. */
+function au_full_issue_public(array $i) {
+    return [
+        'id' => $i['id'], 'cat' => $i['cat'], 'state' => $i['state'],
+        'title' => $i['title'], 'impact' => $i['impact'],
+        'evidence' => $i['evidence'],
+    ];
+}
+
 function au_speed_view(array $r) {
     $problems = au_rank_problems($r['issues']);
 
@@ -325,13 +334,8 @@ function au_speed_view(array $r) {
         'speed'       => $r['speed'],
         'overall'     => $r['overall'],
         'categories'  => $r['categories'],
-        'free'        => array_map(function ($i) {
-            return [
-                'id' => $i['id'], 'cat' => $i['cat'], 'state' => $i['state'],
-                'title' => $i['title'], 'impact' => $i['impact'],
-                'detail' => $i['detail'], 'evidence' => $i['evidence'],
-            ];
-        }, $free),
+        // Same shape as run.php: what is wrong and why, never the fix.
+        'free'        => array_map('au_full_issue_public', $free),
         'locked' => array_map(function ($i) {
             return ['id' => $i['id'], 'cat' => $i['cat'], 'state' => $i['state'], 'title' => $i['title']];
         }, $rest),

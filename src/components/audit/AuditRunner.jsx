@@ -9,7 +9,30 @@ import UnlockGate from './UnlockGate';
 import PageSnapshot, { CheckBreakdown, Note } from './PageSnapshot';
 import { runAudit, fetchSpeed } from '../../utils/auditApi';
 import { trackEvent } from '../../utils/analytics';
-import { CALENDLY_LINK } from '../../data/siteData';
+import { CALENDLY_LINK, COMPANY, PHONE_TEL } from '../../data/siteData';
+
+// The audit says what is wrong and why. How to fix it is what we go through on a
+// call, so every place that would have shown a fix points here instead.
+function FixCta() {
+  return (
+    <div className="on-dark mt-5 rounded-2xl bg-[#0D246A] text-white p-6 sm:p-7 flex flex-col md:flex-row md:items-center gap-5">
+      <div className="flex-1">
+        <h4 className="font-heading font-700 text-[19px] sm:text-[21px] text-white">Want these fixed?</h4>
+        <p className="text-[14.5px] text-white/85 leading-relaxed mt-1">
+          We go through the fix for each problem on a free 30-minute call, or we fix them for you.
+        </p>
+      </div>
+      <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+        <a {...CALENDLY_LINK} className="btn-primary justify-center">
+          Book a free call <ArrowRight className="w-4 h-4" aria-hidden="true" />
+        </a>
+        <a href={PHONE_TEL} className="inline-flex items-center justify-center px-5 py-3 rounded-[14px] border-2 border-white/40 text-white font-heading font-600 hover:bg-white/10 transition-colors">
+          Call {COMPANY.phone}
+        </a>
+      </div>
+    </div>
+  );
+}
 
 // The visible steps while the audit runs. These are honest about what the server
 // is doing rather than a fake loading bar — the last one genuinely waits on
@@ -358,7 +381,7 @@ export default function AuditRunner() {
                 The three biggest problems
               </h3>
               <p className="text-[14.5px] text-[#5C6685] mb-5">
-                Ranked by impact. Each one is explained in full below.
+                Ranked by impact, with what each one is costing you.
               </p>
 
               <div className="space-y-4">
@@ -366,6 +389,8 @@ export default function AuditRunner() {
                   <IssueCard key={issue.id} issue={issue} index={i + 1} />
                 ))}
               </div>
+
+              <FixCta />
             </div>
           )}
 

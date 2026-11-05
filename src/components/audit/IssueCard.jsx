@@ -24,11 +24,10 @@ const STATE_STYLE = {
 };
 
 /**
- * One finding, fully explained.
+ * One finding: what we saw and what it is costing the business.
  *
- * `impact` and `detail` only ever arrive from the server once the report has
- * been unlocked, so there is no client-side hiding to defeat here — a locked
- * finding genuinely has nothing to reveal.
+ * Deliberately no fix. The server never sends one to the page, because the fix
+ * is what we go through with the visitor on a call.
  */
 export default function IssueCard({ issue, index }) {
   const style = STATE_STYLE[issue.state] || STATE_STYLE.warn;
@@ -42,7 +41,7 @@ export default function IssueCard({ issue, index }) {
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
             <h3 className="font-heading font-700 text-[#0D246A] text-[16px] sm:text-[17px]">
-              {index != null && <span className="text-[#94a3b8] mr-1.5">{index}.</span>}
+              {index != null && <span className="text-[#5C6685] mr-1.5">{index}.</span>}
               {issue.title}
             </h3>
             <span className={`text-[11px] font-600 px-2 py-0.5 rounded-full border ${style.chip}`}>
@@ -60,15 +59,7 @@ export default function IssueCard({ issue, index }) {
           )}
 
           {issue.impact && (
-            <p className="text-[14.5px] text-[#2B3557] leading-relaxed mb-3">{issue.impact}</p>
-          )}
-
-          {issue.detail && (
-            <div className="border-l-2 border-brand-purple/40 pl-4 py-0.5">
-              <div className="text-[11px] font-700 tracking-wide text-brand-purple mb-1">HOW TO FIX IT</div>
-              {/* Speed opportunities arrive as one fix per line. */}
-              <p className="text-[14px] text-[#3F4A6B] leading-relaxed whitespace-pre-line">{issue.detail}</p>
-            </div>
+            <p className="text-[14.5px] text-[#2B3557] leading-relaxed">{issue.impact}</p>
           )}
         </div>
       </div>
@@ -84,10 +75,10 @@ export function LockedIssueRow({ issue }) {
     <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/70 border border-slate-200">
       <style.Icon className={`w-4 h-4 flex-shrink-0 ${style.iconClass}`} aria-hidden="true" />
       <span className="text-[14px] text-[#0D246A] font-500 flex-1 min-w-0 truncate">{issue.title}</span>
-      <span className="text-[11px] text-[#94a3b8] hidden sm:inline">
+      <span className="text-[11px] text-[#5C6685] hidden sm:inline">
         {CATEGORY_LABELS[issue.cat] || issue.cat}
       </span>
-      <Lock className="w-3.5 h-3.5 text-[#94a3b8] flex-shrink-0" aria-hidden="true" />
+      <Lock className="w-3.5 h-3.5 text-[#5C6685] flex-shrink-0" aria-hidden="true" />
     </div>
   );
 }

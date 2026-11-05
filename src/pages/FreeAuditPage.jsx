@@ -52,11 +52,11 @@ const FAQS = [
   },
   {
     q: 'Will this fix my rankings?',
-    a: 'It tells you what is wrong and how to fix each thing. Technical and on-page problems are the part of SEO that is genuinely fixable in an afternoon; rankings also depend on content depth and authority, which take longer. The audit is honest about which is which.',
+    a: 'It tells you what is wrong and what each problem is costing you. Technical and on-page problems are the part of SEO that is genuinely fixable in an afternoon; rankings also depend on content depth and authority, which take longer. The audit is honest about which is which.',
   },
   {
     q: 'Do I have to talk to someone to get the fixes?',
-    a: 'The emailed summary names every problem we found and what your score is. The fix for each one is what we go through on a call, which takes about half an hour and costs nothing. It is faster than reading thirty pages, and you can hand what you learn to your own developer afterwards. The three problems shown on this page come with their fixes written out, no email needed.',
+    a: 'The emailed summary names every problem we found and what your score is. The fix for each one is what we go through on a call, which takes about half an hour and costs nothing. It is faster than reading thirty pages, and you can hand what you learn to your own developer afterwards, or have us fix them for you.',
   },
 ];
 
@@ -90,7 +90,7 @@ export default function FreeAuditPage() {
         applicationCategory: 'BusinessApplication',
         operatingSystem: 'Any',
         description:
-          'Free SEO audit tool that checks a website for technical, on-page, content, speed and local search problems, and explains how to fix each one.',
+          'Free SEO audit tool that checks a website for technical, on-page, content, speed and local search problems, and explains what each one is costing the business.',
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
         provider: { '@type': 'Organization', name: 'Novelio Technologies LLC', url: 'https://www.noveliotech.com' },
       },
@@ -109,7 +109,7 @@ export default function FreeAuditPage() {
     <main className="pt-20">
       <SEO
         title="Free SEO Audit Tool: Check Your Website in 60 Seconds"
-        description="Run a free SEO audit of any website. See your score, the technical and on-page problems holding it back, Google's own speed data, and exactly how to fix each one."
+        description="Run a free SEO audit of any website. See your score, the technical and on-page problems holding it back, Google's own speed data, and what each problem is costing you."
         canonical="/free-seo-audit"
         keywords={['free SEO audit', 'SEO audit tool', 'website SEO checker', 'free website audit', 'SEO analysis tool']}
         schema={schema}
@@ -134,7 +134,7 @@ export default function FreeAuditPage() {
 
             <p className="text-[16px] sm:text-[17px] text-[#3F4A6B] max-w-2xl mx-auto leading-relaxed">
               We check the things Google actually measures, then tell you, in plain English, what is
-              wrong and how to fix it. You see your score before we ask for anything.
+              wrong and what it is costing you. You see your score before we ask for anything.
             </p>
           </motion.div>
 
