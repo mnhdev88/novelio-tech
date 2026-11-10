@@ -100,6 +100,7 @@ export default function ServiceDetailPage() {
 
   const Icon = ICON_MAP[service.icon] || Search;
   const faqs = SERVICE_FAQS[serviceId] || DEFAULT_FAQ;
+  const heading = service.h1 || service.title;
 
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -140,7 +141,7 @@ export default function ServiceDetailPage() {
   return (
     <main className="pt-20">
       <SEO
-        title={`${service.title}: ${service.tagline}`}
+        title={service.h1 || `${service.title}: ${service.tagline}`}
         description={service.description}
         canonical={service.slug}
         schema={serviceSchema}
@@ -162,9 +163,10 @@ export default function ServiceDetailPage() {
                 <span className="text-[#0D246A]">{service.title}</span>
               </div>
 
-              <div className="section-label mb-4">Our Services</div>
+              {/* H1 names the service (the search keyword); the tagline is the hook above it */}
+              <div className="section-label mb-4">{service.tagline}</div>
               <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
-                {service.tagline.split(' ').map((word, i, arr) =>
+                {heading.split(' ').map((word, i, arr) =>
                   i >= arr.length - 2 ? (
                     <span key={i} className="gradient-text">{word} </span>
                   ) : `${word} `

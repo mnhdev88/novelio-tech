@@ -416,11 +416,11 @@ export default function WebsiteDevelopmentPage() {
                 <span className="text-[#0D246A]">Website Development</span>
               </div>
 
-              <div className="section-label mb-4">Website Development Services</div>
+              <div className="section-label mb-4">Your Website Should Help You Win Business</div>
 
               <h1 className="text-4xl lg:text-6xl font-heading font-800 text-[#0D246A] mb-6 leading-tight">
-                Your Website Should Help You{' '}
-                <span className="gradient-text">Win Business.</span>
+                Website Development Services for{' '}
+                <span className="gradient-text">Small Businesses</span>
               </h1>
 
               <p className="text-[#3F4A6B] text-xl leading-relaxed mb-8">
