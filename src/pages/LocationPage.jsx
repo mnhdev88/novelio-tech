@@ -210,7 +210,7 @@ function CityPage({ city }) {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.55, delay: 0.1 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
-              >{w}</motion.span>
+              >{w}{' '}</motion.span>
             ))}
             {' '}
             {[`${city.city},`, city.stateCode].map((w, i) => (
@@ -220,7 +220,7 @@ function CityPage({ city }) {
                 transition={{ duration: 0.55, delay: 0.44 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
                 style={{ background: 'linear-gradient(135deg, #5E328C 0%, #1376B4 50%, #1391C4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
-              >{w}</motion.span>
+              >{w}{' '}</motion.span>
             ))}
             {' '}
             {['Small', 'Businesses'].map((w, i) => (
@@ -229,7 +229,7 @@ function CityPage({ city }) {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.55, delay: 0.62 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-block mr-[0.22em]"
-              >{w}</motion.span>
+              >{w}{' '}</motion.span>
             ))}
           </h1>
 
