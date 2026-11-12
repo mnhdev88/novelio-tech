@@ -7,6 +7,10 @@
         "hasDropdown": true
       },
       {
+        "label": "Industries",
+        "to": "/industries"
+      },
+      {
         "label": "About",
         "to": "/about"
       },

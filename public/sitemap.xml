@@ -276,13 +276,13 @@
 
   <!-- Industry portfolio pages -->
   <url>
-    <loc>https://www.noveliotech.com/industries/healthcare</loc>
-    <lastmod>2026-05-18</lastmod>
+    <loc>https://www.noveliotech.com/industries</loc>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.noveliotech.com/industries/ecommerce</loc>
+    <loc>https://www.noveliotech.com/industries/healthcare</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -330,12 +330,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.noveliotech.com/industries/logistics</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://www.noveliotech.com/industries/automotive</loc>
     <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -356,6 +350,42 @@
   <url>
     <loc>https://www.noveliotech.com/industries/pet-care</loc>
     <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.noveliotech.com/industries/tailoring</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.noveliotech.com/industries/engraving-signs</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.noveliotech.com/industries/fencing</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.noveliotech.com/industries/custom-apparel</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.noveliotech.com/industries/construction</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.noveliotech.com/industries/framing</loc>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

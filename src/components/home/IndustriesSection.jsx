@@ -4,6 +4,10 @@ import { ArrowUpRight } from 'lucide-react';
 import { INDUSTRIES } from '../../data/siteData';
 import { spectrumAt } from '../shared/spectrum';
 
+// The home page shows a taster; the full list lives on /industries.
+// 12 divides evenly into the 2/3/4/6-column grid at every breakpoint.
+const HOME_LIMIT = 12;
+
 function IndustryCard({ industry, index }) {
   const colour = spectrumAt(index);
   const hasSites = industry.sites && industry.sites.length > 0;
@@ -54,13 +58,18 @@ export default function IndustriesSection() {
               Trusted Across <span className="gradient-text">Every Industry</span>
             </h2>
           </div>
-          <p className="text-[#3F4A6B] max-w-sm">
-            Click any sector to view our live client portfolio for that industry.
-          </p>
+          <div className="max-w-sm">
+            <p className="text-[#3F4A6B]">
+              Click any sector to view our live client portfolio for that industry.
+            </p>
+            <Link to="/industries" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#0D246A] hover:text-[#5E328C] transition-colors">
+              View all {INDUSTRIES.length} industries <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3">
-          {INDUSTRIES.map((industry, i) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          {INDUSTRIES.slice(0, HOME_LIMIT).map((industry, i) => (
             <IndustryCard key={industry.slug} industry={industry} index={i} />
           ))}
         </div>

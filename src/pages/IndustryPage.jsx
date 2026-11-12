@@ -173,7 +173,7 @@ export default function IndustryPage() {
   const { sector } = useParams();
   const industry = INDUSTRIES.find(ind => ind.slug === sector);
 
-  if (!industry) return <Navigate to="/" replace />;
+  if (!industry) return <Navigate to="/industries" replace />;
 
   const gradColors = GRADIENT_COLORS[industry.color] || { a: '#5E328C', b: '#1376B4' };
 
@@ -206,11 +206,11 @@ export default function IndustryPage() {
         <div className="container-xl relative z-10">
           {/* Back link */}
           <Link
-            to="/"
+            to="/industries"
             className="inline-flex items-center gap-2 text-sm font-medium text-[#5C6685] hover:text-[#0D246A] transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Back to Home
+            All Industries
           </Link>
 
           <motion.div
