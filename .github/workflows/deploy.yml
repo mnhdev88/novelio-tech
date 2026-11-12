@@ -102,6 +102,16 @@ jobs:
             # stale folder on the server is never served.
             services/google-business
             services/google-business/**
+            # Industries removed on 2026-11-13 (portfolio moved to Cloudflare
+            # Pages). Same delete bug: their prerendered folders failed two
+            # deploys with `550 /industries/ecommerce`. .htaccess 301s all three
+            # old URLs, so the stale folders on the server are never served.
+            industries/ecommerce
+            industries/ecommerce/**
+            industries/logistics
+            industries/logistics/**
+            industries/engraving-signs
+            industries/engraving-signs/**
             # NOTE for whoever next deletes a folder from public/: this sync's
             # delete step uses an ABSOLUTE server path, which only resolves if the
             # FTP user is chrooted to its home — it is not. Removing

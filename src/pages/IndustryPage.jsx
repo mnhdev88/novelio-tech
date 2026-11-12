@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Globe, Loader2 } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -16,18 +16,19 @@ function getDomain(url) {
 
 function SiteCard({ site, index, industryColor }) {
   const [loaded, setLoaded] = useState(false);
-  const [blocked, setBlocked] = useState(false);
-  const timerRef = useRef(null);
+  const [slow, setSlow] = useState(false);
 
-  const handleLoad = () => {
-    setLoaded(true);
-    clearTimeout(timerRef.current);
-  };
-
-  // After 5s, if not loaded, treat as blocked/slow
-  const handleStart = () => {
-    timerRef.current = setTimeout(() => setBlocked(true), 5000);
-  };
+  // If the preview is slow, say so, but never remove the iframe: it keeps
+  // loading behind the placeholder and fades in whenever it is ready. (The old
+  // version unmounted it after 5s, and because the timer was started from an
+  // inline ref callback it restarted on every re-render, including the one
+  // triggered by onLoad, so previews appeared and then vanished. Below-the-fold
+  // lazy iframes were also "timed out" before they had even started loading.)
+  useEffect(() => {
+    if (loaded) return undefined;
+    const t = setTimeout(() => setSlow(true), 8000);
+    return () => clearTimeout(t);
+  }, [loaded]);
 
   const domain = getDomain(site.url);
 
@@ -64,33 +65,30 @@ function SiteCard({ site, index, industryColor }) {
         <div className="relative overflow-hidden bg-slate-50" style={{ height: '185px' }}>
 
           {/* Iframe thumbnail */}
-          {!blocked && (
-            <iframe
-              src={site.url}
-              title={site.label}
-              loading="lazy"
-              scrolling="no"
-              sandbox="allow-scripts allow-same-origin"
-              onLoad={handleLoad}
-              ref={el => { if (el) handleStart(); }}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '960px',
-                height: '540px',
-                border: 'none',
-                transformOrigin: 'top left',
-                transform: 'scale(0.334)',   // 320 / 960 ≈ 0.334
-                pointerEvents: 'none',
-                opacity: loaded ? 1 : 0,
-                transition: 'opacity 0.4s',
-              }}
-            />
-          )}
+          <iframe
+            src={site.url}
+            title={site.label}
+            loading="lazy"
+            scrolling="no"
+            sandbox="allow-scripts allow-same-origin"
+            onLoad={() => setLoaded(true)}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '960px',
+              height: '540px',
+              border: 'none',
+              transformOrigin: 'top left',
+              transform: 'scale(0.334)',   // 320 / 960 ≈ 0.334
+              pointerEvents: 'none',
+              opacity: loaded ? 1 : 0,
+              transition: 'opacity 0.4s',
+            }}
+          />
 
           {/* Fallback / loading state */}
-          {(!loaded || blocked) && (
+          {!loaded && (
             <div
               className="absolute inset-0 flex flex-col items-center justify-center gap-3"
               style={{
@@ -106,13 +104,13 @@ function SiteCard({ site, index, industryColor }) {
               >
                 <Globe className="w-6 h-6 text-white" />
               </div>
-              {!blocked && (
+              {!slow && (
                 <div className="flex items-center gap-2 text-xs text-[#5C6685]">
                   <Loader2 className="w-3 h-3 animate-spin" />
                   Loading preview…
                 </div>
               )}
-              {blocked && (
+              {slow && (
                 <div className="text-xs text-[#5C6685] text-center px-4">
                   Click to open site
                 </div>
