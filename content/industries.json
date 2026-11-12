@@ -1,58 +1,5 @@
 [
   {
-    "name": "Home Services",
-    "icon": "Wrench",
-    "slug": "home-services",
-    "color": "from-cyan-500 to-blue-600",
-    "summary": "Plumbers, HVAC, electricians, landscapers and cleaners. Call-driving sites built to win the local map pack.",
-    "sites": [
-      {
-        "url": "https://wieseplumbing.pages.dev",
-        "label": "Wiese Plumbing, Heating & Drain"
-      },
-      {
-        "url": "https://floaralpark.pages.dev",
-        "label": "Floral Park HVAC"
-      },
-      {
-        "url": "https://rjselectrical.pages.dev",
-        "label": "RJ's Electrical"
-      },
-      {
-        "url": "https://treeserviceraleigh.pages.dev",
-        "label": "Tree Service Raleigh"
-      },
-      {
-        "url": "https://primelandscaping.pages.dev",
-        "label": "Prime Landscaping"
-      },
-      {
-        "url": "https://bpseacrawl.pages.dev",
-        "label": "Crawl Space Encapsulation Asheville"
-      },
-      {
-        "url": "https://floridascreenfix.pages.dev",
-        "label": "Florida Screen Fix"
-      },
-      {
-        "url": "https://nationalbuilding.pages.dev",
-        "label": "National Building Service"
-      },
-      {
-        "url": "https://jjkrolloff.pages.dev",
-        "label": "JJ Roll-Off Dumpsters"
-      },
-      {
-        "url": "https://maderafurniture.pages.dev",
-        "label": "Madera Furniture"
-      },
-      {
-        "url": "https://sanjosecustomupholstery.pages.dev",
-        "label": "San Jose Custom Upholstery"
-      }
-    ]
-  },
-  {
     "name": "Automotive",
     "icon": "Car",
     "slug": "automotive",
@@ -98,6 +45,323 @@
       {
         "url": "https://citylights.pages.dev",
         "label": "City Lights Custom Auto Interiors"
+      },
+      {
+        "url": "https://epicautoglass.pages.dev",
+        "label": "Epic Auto Glass"
+      },
+      {
+        "url": "https://criggsmobile.pages.dev",
+        "label": "Griggs Mobile Repair"
+      },
+      {
+        "url": "https://ktrepair.pages.dev",
+        "label": "KT Truck & Diesel Repair"
+      },
+      {
+        "url": "https://lowafallstowing.pages.dev",
+        "label": "Iowa Falls Towing"
+      },
+      {
+        "url": "https://bbrvrepairs.pages.dev",
+        "label": "BB RV Repairs"
+      },
+      {
+        "url": "https://tonyautoupholstery.pages.dev",
+        "label": "Tony's Auto Upholstery"
+      },
+      {
+        "url": "https://collectiblemotor.pages.dev",
+        "label": "Collectible Motor Cars"
+      }
+    ]
+  },
+  {
+    "name": "Home Services",
+    "icon": "Wrench",
+    "slug": "home-services",
+    "color": "from-cyan-500 to-blue-600",
+    "summary": "Plumbers, HVAC, electricians, landscapers and cleaners. Call-driving sites built to win the local map pack.",
+    "sites": [
+      {
+        "url": "https://wieseplumbing.pages.dev",
+        "label": "Wiese Plumbing, Heating & Drain"
+      },
+      {
+        "url": "https://floaralpark.pages.dev",
+        "label": "Floral Park HVAC"
+      },
+      {
+        "url": "https://rjselectrical.pages.dev",
+        "label": "RJ's Electrical"
+      },
+      {
+        "url": "https://treeserviceraleigh.pages.dev",
+        "label": "Tree Service Raleigh"
+      },
+      {
+        "url": "https://primelandscaping.pages.dev",
+        "label": "Prime Landscaping"
+      },
+      {
+        "url": "https://bpseacrawl.pages.dev",
+        "label": "Crawl Space Encapsulation Asheville"
+      },
+      {
+        "url": "https://floridascreenfix.pages.dev",
+        "label": "Florida Screen Fix"
+      },
+      {
+        "url": "https://jjkrolloff.pages.dev",
+        "label": "JJ Roll-Off Dumpsters"
+      },
+      {
+        "url": "https://maderafurniture.pages.dev",
+        "label": "Madera Furniture"
+      },
+      {
+        "url": "https://sanjosecustomupholstery.pages.dev",
+        "label": "San Jose Custom Upholstery"
+      },
+      {
+        "url": "https://abbassmith.pages.dev",
+        "label": "Abbas Locksmith"
+      },
+      {
+        "url": "https://oakvalleytreeservice.pages.dev",
+        "label": "Oak Valley Tree Service"
+      },
+      {
+        "url": "https://customnew.pages.dev",
+        "label": "Custom Windows & Doors Pasco"
+      },
+      {
+        "url": "https://pattyshannoninteriors.pages.dev",
+        "label": "Patty Shannon Interiors"
+      },
+      {
+        "url": "https://alertservices.pages.dev",
+        "label": "Alert Services Fire Protection"
+      }
+    ]
+  },
+  {
+    "name": "Engraving & Trophies",
+    "icon": "PenTool",
+    "slug": "engraving",
+    "color": "from-amber-600 to-yellow-500",
+    "summary": "Laser engravers, trophy and award shops. Sites that show the work and turn browsers into custom orders.",
+    "sites": [
+      {
+        "url": "https://alaserengraving.pages.dev",
+        "label": "A Laser Engraving"
+      },
+      {
+        "url": "https://laserxpression.pages.dev",
+        "label": "Laser Xpression"
+      },
+      {
+        "url": "https://infinityedges.pages.dev",
+        "label": "Infinity Edges"
+      },
+      {
+        "url": "https://jennyengraving.pages.dev",
+        "label": "Jenny Engraving"
+      },
+      {
+        "url": "https://rodriguez-engraving.pages.dev",
+        "label": "Rodriguez Engraving"
+      },
+      {
+        "url": "https://americantrophy.pages.dev",
+        "label": "American Trophy"
+      },
+      {
+        "url": "https://westerntrophyboise.pages.dev",
+        "label": "Western Trophy"
+      },
+      {
+        "url": "https://mercuryengraving.pages.dev",
+        "label": "Mercury Engraving"
+      },
+      {
+        "url": "https://mdsignengraving.pages.dev",
+        "label": "MD Sign & Engraving"
+      },
+      {
+        "url": "https://atrophybusiness.pages.dev",
+        "label": "A Trophy Business"
+      },
+      {
+        "url": "https://grabados.pages.dev",
+        "label": "Grabados Trophies & Engraving"
+      },
+      {
+        "url": "https://etchtechdenver.pages.dev",
+        "label": "Etch Tech"
+      },
+      {
+        "url": "https://dankzlazer.pages.dev",
+        "label": "Dank'z Lazer"
+      },
+      {
+        "url": "https://f2engraveables.pages.dev",
+        "label": "F2 Engraveables"
+      },
+      {
+        "url": "https://mtrubberstamp.pages.dev",
+        "label": "MT Rubber Stamp"
+      }
+    ]
+  },
+  {
+    "name": "Signs & Graphics",
+    "icon": "Signpost",
+    "slug": "signs",
+    "color": "from-red-500 to-rose-600",
+    "summary": "Sign makers, wrap shops and print studios. Portfolio-led sites that win storefront and fleet projects.",
+    "sites": [
+      {
+        "url": "https://halecustom.pages.dev",
+        "label": "Hale Custom Signs"
+      },
+      {
+        "url": "https://thegreatamericansigncompany.pages.dev",
+        "label": "The Great American Sign Company"
+      },
+      {
+        "url": "https://workcolorsigns.pages.dev",
+        "label": "Work Color Signs"
+      },
+      {
+        "url": "https://expresssignfresno.pages.dev",
+        "label": "Express Sign Fresno"
+      },
+      {
+        "url": "https://smartsigndenever.pages.dev",
+        "label": "Smart Sign Denver"
+      },
+      {
+        "url": "https://coloradocanyonsigns.pages.dev",
+        "label": "Colorado Canyon Signs"
+      },
+      {
+        "url": "https://boydsneon.pages.dev",
+        "label": "Boyd's Neon"
+      },
+      {
+        "url": "https://digiconnection.pages.dev",
+        "label": "Digi Connection LED Signs"
+      },
+      {
+        "url": "https://raycosignshop.pages.dev",
+        "label": "Rayco Sign Shop"
+      },
+      {
+        "url": "https://rmsignsandengraving.pages.dev",
+        "label": "RM Signs & Engraving"
+      },
+      {
+        "url": "https://outlawgraphics.pages.dev",
+        "label": "Outlaw Graphics"
+      },
+      {
+        "url": "https://thewrapfactoryinc.pages.dev",
+        "label": "The Wrap Factory"
+      },
+      {
+        "url": "https://minutemanpress.pages.dev",
+        "label": "Minuteman Press San Antonio"
+      }
+    ]
+  },
+  {
+    "name": "Accounting & Finance",
+    "icon": "Landmark",
+    "slug": "finance",
+    "color": "from-blue-600 to-indigo-700",
+    "summary": "CPAs, bookkeepers, tax consultants and insurance advisors. Credible sites that turn visitors into consultations.",
+    "sites": [
+      {
+        "url": "https://fieldercpa.pages.dev",
+        "label": "Fielder CPA"
+      },
+      {
+        "url": "https://lvcpas.pages.dev",
+        "label": "Ellsworth & Stout CPAs"
+      },
+      {
+        "url": "https://texastaxconsultant.pages.dev",
+        "label": "Texas Tax Consulting Group"
+      },
+      {
+        "url": "https://aaprofessional.pages.dev",
+        "label": "A&A Professional Services"
+      },
+      {
+        "url": "https://accounting786.pages.dev",
+        "label": "Accounting & Tax Services Queens"
+      },
+      {
+        "url": "https://ipsitainsuarance.pages.dev",
+        "label": "Ipsita Insurance Advisory"
+      },
+      {
+        "url": "https://thedebtlifts.pages.dev",
+        "label": "The Debt Lifts"
+      },
+      {
+        "url": "https://freedomfincare.pages.dev",
+        "label": "Freedom FinCare"
+      },
+      {
+        "url": "https://globalmarketingsystes.pages.dev",
+        "label": "Global Marketing Systems"
+      }
+    ]
+  },
+  {
+    "name": "Custom Apparel & Embroidery",
+    "icon": "Shirt",
+    "slug": "custom-apparel",
+    "color": "from-pink-500 to-rose-500",
+    "summary": "Embroidery, screen printing and promo product shops. Sites that collect logos and quote requests online.",
+    "sites": [
+      {
+        "url": "https://royalstitchandprint.pages.dev",
+        "label": "Royal Stitch & Print"
+      },
+      {
+        "url": "https://printwearnj.pages.dev",
+        "label": "PrintWear NJ"
+      },
+      {
+        "url": "https://limitlesscustom.pages.dev",
+        "label": "Limitless Custom"
+      },
+      {
+        "url": "https://ncmembriodery.pages.dev",
+        "label": "NCM Embroidery"
+      },
+      {
+        "url": "https://richscustomembroidery.pages.dev",
+        "label": "Rich's Custom Embroidery"
+      },
+      {
+        "url": "https://stitchzone.pages.dev",
+        "label": "Stitch Zone"
+      },
+      {
+        "url": "https://americanstitched.pages.dev",
+        "label": "American Stitched"
+      },
+      {
+        "url": "https://nextlevelemb.pages.dev",
+        "label": "Next Level Embroidery"
+      },
+      {
+        "url": "https://clevelanduniform.pages.dev",
+        "label": "Cleveland Uniform"
       }
     ]
   },
@@ -135,76 +399,125 @@
       {
         "url": "https://tailoringandalterationcenter.pages.dev",
         "label": "Tailoring & Alteration Center"
+      },
+      {
+        "url": "https://tmsewingalterations.pages.dev",
+        "label": "TM Sewing & Alterations"
       }
     ]
   },
   {
-    "name": "Engraving & Signs",
-    "icon": "PenTool",
-    "slug": "engraving-signs",
-    "color": "from-amber-600 to-yellow-500",
-    "summary": "Laser engravers, trophy shops and sign makers. Portfolio-led sites that turn browsers into custom orders.",
+    "name": "Picture Framing",
+    "icon": "Frame",
+    "slug": "framing",
+    "color": "from-gray-500 to-zinc-700",
+    "summary": "Frame shops and galleries. Elegant sites that show off the work and bring customers to the counter.",
     "sites": [
       {
-        "url": "https://alaserengraving.pages.dev",
-        "label": "A Laser Engraving"
+        "url": "https://nycframeshop.pages.dev",
+        "label": "NYC Frame Shop"
       },
       {
-        "url": "https://laserxpression.pages.dev",
-        "label": "Laser Xpression"
+        "url": "https://onehourframing.pages.dev",
+        "label": "One Hour Framing"
       },
       {
-        "url": "https://infinityedges.pages.dev",
-        "label": "Infinity Edges"
+        "url": "https://westsideframe.pages.dev",
+        "label": "Westside Frame"
       },
       {
-        "url": "https://jennyengraving.pages.dev",
-        "label": "Jenny Engraving"
+        "url": "https://allertoncustomframing.pages.dev",
+        "label": "Allerton Custom Framing"
       },
       {
-        "url": "https://rodriguez-engraving.pages.dev",
-        "label": "Rodriguez Engraving"
+        "url": "https://customart.pages.dev",
+        "label": "Custom Art Framing"
       },
       {
-        "url": "https://halecustom.pages.dev",
-        "label": "Hale Custom Signs"
+        "url": "https://nyframing.pages.dev",
+        "label": "NY Framing"
       },
       {
-        "url": "https://thegreatamericansigncompany.pages.dev",
-        "label": "The Great American Sign Company"
+        "url": "https://frameshop.pages.dev",
+        "label": "The Frame Shop Rock Hill"
+      },
+      {
+        "url": "https://avenuedgallery.pages.dev",
+        "label": "Avenue D Gallery"
       }
     ]
   },
   {
-    "name": "Accounting & Finance",
-    "icon": "Landmark",
-    "slug": "finance",
-    "color": "from-blue-600 to-indigo-700",
-    "summary": "CPAs, bookkeepers, tax consultants and insurance advisors. Credible sites that turn visitors into consultations.",
+    "name": "Health & Wellness",
+    "icon": "HeartPulse",
+    "slug": "healthcare",
+    "color": "from-rose-500 to-pink-600",
+    "summary": "Clinics, surgeons, wellness centres and fitness studios. Sites that build trust and take bookings online.",
     "sites": [
       {
-        "url": "https://fieldercpa.pages.dev",
-        "label": "Fielder CPA"
+        "url": "https://utopiaspa.pages.dev",
+        "label": "Utopia Plastic Surgery & Med Spa"
       },
       {
-        "url": "https://lvcpas.pages.dev",
-        "label": "Ellsworth & Stout CPAs"
+        "url": "https://thehealingroom.pages.dev",
+        "label": "The Healing Room"
       },
       {
-        "url": "https://texastaxconsultant.pages.dev",
-        "label": "Texas Tax Consulting Group"
+        "url": "https://unboundfitlife.pages.dev",
+        "label": "Unbound Fit Life"
       },
       {
-        "url": "https://aaprofessional.pages.dev",
-        "label": "A&A Professional Services"
+        "url": "https://curemymigraine.pages.dev",
+        "label": "Cure My Migraine"
       },
       {
-        "url": "https://accounting786.pages.dev",
-        "label": "Accounting & Tax Services Queens"
+        "url": "https://sonalimittra.pages.dev",
+        "label": "Sonali Mittra Therapy"
       },
       {
-        "url": "https://ipsitainsuarance.pages.dev",
-        "label": "Ipsita Insurance Advisory"
+        "url": "https://tarahomes.pages.dev",
+        "label": "Tara Homes Recovery Housing"
+      },
+      {
+        "url": "https://ithappenspls.pages.dev",
+        "label": "It Happens Lice Removal"
+      }
+    ]
+  },
+  {
+    "name": "Manufacturing & Industrial",
+    "icon": "Factory",
+    "slug": "manufacturing",
+    "color": "from-emerald-500 to-teal-600",
+    "summary": "Manufacturers, suppliers and industrial service firms. Capability-led sites that generate RFQs and B2B leads.",
+    "sites": [
+      {
+        "url": "https://industrialequipments.pages.dev",
+        "label": "Industrial Equipment Service"
+      },
+      {
+        "url": "https://alishatorrentclosure.pages.dev",
+        "label": "Alisha Torrent Closures"
+      },
+      {
+        "url": "https://q1engraving.pages.dev",
+        "label": "Quality One Engravers"
+      },
+      {
+        "url": "https://rfkinetics.pages.dev",
+        "label": "RF Kinetics"
+      },
+      {
+        "url": "https://knickmachining.pages.dev",
+        "label": "Knick Machining"
+      },
+      {
+        "url": "https://14marine.pages.dev",
+        "label": "14 Marine"
+      },
+      {
+        "url": "https://lowaequipment.pages.dev",
+        "label": "Iowa Equipment"
       }
     ]
   },
@@ -242,44 +555,11 @@
     ]
   },
   {
-    "name": "Custom Apparel & Embroidery",
-    "icon": "Shirt",
-    "slug": "custom-apparel",
-    "color": "from-pink-500 to-rose-500",
-    "summary": "Embroidery, screen printing and promo product shops. Sites that collect logos and quote requests online.",
-    "sites": [
-      {
-        "url": "https://royalstitchandprint.pages.dev",
-        "label": "Royal Stitch & Print"
-      },
-      {
-        "url": "https://printwearnj.pages.dev",
-        "label": "PrintWear NJ"
-      },
-      {
-        "url": "https://limitlesscustom.pages.dev",
-        "label": "Limitless Custom"
-      },
-      {
-        "url": "https://ncmembriodery.pages.dev",
-        "label": "NCM Embroidery"
-      },
-      {
-        "url": "https://richscustomembroidery.pages.dev",
-        "label": "Rich's Custom Embroidery"
-      },
-      {
-        "url": "https://stitchzone.pages.dev",
-        "label": "Stitch Zone"
-      }
-    ]
-  },
-  {
     "name": "Professional Services",
     "icon": "Briefcase",
     "slug": "professional-services",
     "color": "from-indigo-500 to-blue-700",
-    "summary": "Consultants, HR firms, notaries and nonprofits. Authority-building sites that turn expertise into enquiries.",
+    "summary": "Consultants, HR firms, realtors, notaries and storage. Authority-building sites that turn expertise into enquiries.",
     "sites": [
       {
         "url": "https://hradvisors.pages.dev",
@@ -298,8 +578,12 @@
         "label": "New York Travel Notary"
       },
       {
-        "url": "https://hersmile.pages.dev",
-        "label": "HerSmile Federation"
+        "url": "https://ajayirealtygroup.pages.dev",
+        "label": "Ajayi Realty Group"
+      },
+      {
+        "url": "https://wickerwaystorage.pages.dev",
+        "label": "Wickerway Storage"
       }
     ]
   },
@@ -329,35 +613,10 @@
       {
         "url": "https://nirmanengineers.pages.dev",
         "label": "Nirman Engineers"
-      }
-    ]
-  },
-  {
-    "name": "Picture Framing",
-    "icon": "Frame",
-    "slug": "framing",
-    "color": "from-gray-500 to-zinc-700",
-    "summary": "Frame shops and galleries. Elegant sites that show off the work and bring customers to the counter.",
-    "sites": [
-      {
-        "url": "https://nycframeshop.pages.dev",
-        "label": "NYC Frame Shop"
       },
       {
-        "url": "https://onehourframing.pages.dev",
-        "label": "One Hour Framing"
-      },
-      {
-        "url": "https://westsideframe.pages.dev",
-        "label": "Westside Frame"
-      },
-      {
-        "url": "https://allertoncustomframing.pages.dev",
-        "label": "Allerton Custom Framing"
-      },
-      {
-        "url": "https://customart.pages.dev",
-        "label": "Custom Art Framing"
+        "url": "https://roosterbuilders.pages.dev",
+        "label": "Rooster Builders"
       }
     ]
   },
@@ -391,23 +650,106 @@
     ]
   },
   {
-    "name": "Health & Wellness",
-    "icon": "HeartPulse",
-    "slug": "healthcare",
-    "color": "from-rose-500 to-pink-600",
-    "summary": "Clinics, surgeons, wellness centres and fitness studios. Sites that build trust and take bookings online.",
+    "name": "Cleaning Services",
+    "icon": "Sparkles",
+    "slug": "cleaning",
+    "color": "from-cyan-500 to-blue-600",
+    "summary": "Janitorial, house cleaning, pressure washing and bin cleaning. Quote-driven sites built to rank locally.",
     "sites": [
       {
-        "url": "https://utopiaspa.pages.dev",
-        "label": "Utopia Plastic Surgery & Med Spa"
+        "url": "https://nationalbuilding.pages.dev",
+        "label": "National Building Service"
       },
       {
-        "url": "https://thehealingroom.pages.dev",
-        "label": "The Healing Room"
+        "url": "https://agtouchcleaning.pages.dev",
+        "label": "AG Touch Cleaning"
       },
       {
-        "url": "https://unboundfitlife.pages.dev",
-        "label": "Unbound Fit Life"
+        "url": "https://dnjanitorialservices.pages.dev",
+        "label": "DN Janitorial Services"
+      },
+      {
+        "url": "https://hunterforcepressurewashing.pages.dev",
+        "label": "Hunter Force Pressure Washing"
+      },
+      {
+        "url": "https://binninja.pages.dev",
+        "label": "Bin Ninja"
+      }
+    ]
+  },
+  {
+    "name": "Food & Beverage",
+    "icon": "UtensilsCrossed",
+    "slug": "food-beverage",
+    "color": "from-yellow-500 to-orange-500",
+    "summary": "Restaurants, roasters and tea houses. Menus, ordering and local SEO that bring people through the door.",
+    "sites": [
+      {
+        "url": "https://hillsandbrookes.pages.dev",
+        "label": "Hill & Brooks Coffees & Teas"
+      },
+      {
+        "url": "https://teaestate.pages.dev",
+        "label": "Gongfu Tea House"
+      },
+      {
+        "url": "https://biharichoolha.pages.dev",
+        "label": "Bihari Choolha"
+      },
+      {
+        "url": "https://brecotea.pages.dev",
+        "label": "Breco Tea Bakery Café"
+      }
+    ]
+  },
+  {
+    "name": "Technology",
+    "icon": "Laptop",
+    "slug": "technology",
+    "color": "from-cyan-500 to-blue-600",
+    "summary": "Software, managed IT and data centre firms. Clear product messaging and sites that feed a sales pipeline.",
+    "sites": [
+      {
+        "url": "https://arthasystem.pages.dev",
+        "label": "Artha System"
+      },
+      {
+        "url": "https://atruent.pages.dev",
+        "label": "Altruent Systems"
+      },
+      {
+        "url": "https://techsoncall.pages.dev",
+        "label": "Techs On Call"
+      },
+      {
+        "url": "https://iactivatetoday.pages.dev",
+        "label": "iActivate Phone Repair"
+      }
+    ]
+  },
+  {
+    "name": "Arts & Creative",
+    "icon": "Palette",
+    "slug": "arts-creative",
+    "color": "from-violet-500 to-purple-600",
+    "summary": "Artists, galleries, studios and authors. Showcase sites that sell work and build a following.",
+    "sites": [
+      {
+        "url": "https://heiditelefer.pages.dev",
+        "label": "Heidi Telefer Fine Art"
+      },
+      {
+        "url": "https://jeromecoop.pages.dev",
+        "label": "Jerome Artists Cooperative Gallery"
+      },
+      {
+        "url": "https://wrigleystudio.pages.dev",
+        "label": "Wrigley Studio"
+      },
+      {
+        "url": "https://secretsareoutnow.pages.dev",
+        "label": "Secrets Are Out Now"
       }
     ]
   },
@@ -433,69 +775,6 @@
     ]
   },
   {
-    "name": "Food & Beverage",
-    "icon": "UtensilsCrossed",
-    "slug": "food-beverage",
-    "color": "from-yellow-500 to-orange-500",
-    "summary": "Restaurants, roasters and tea houses. Menus, ordering and local SEO that bring people through the door.",
-    "sites": [
-      {
-        "url": "https://hillsandbrookes.pages.dev",
-        "label": "Hill & Brooks Coffees & Teas"
-      },
-      {
-        "url": "https://teaestate.pages.dev",
-        "label": "Gongfu Tea House"
-      },
-      {
-        "url": "https://biharichoolha.pages.dev",
-        "label": "Bihari Choolha"
-      }
-    ]
-  },
-  {
-    "name": "Manufacturing & Industrial",
-    "icon": "Factory",
-    "slug": "manufacturing",
-    "color": "from-emerald-500 to-teal-600",
-    "summary": "Manufacturers, suppliers and industrial service firms. Capability-led sites that generate RFQs and B2B leads.",
-    "sites": [
-      {
-        "url": "https://industrialequipments.pages.dev",
-        "label": "Industrial Equipment Service"
-      },
-      {
-        "url": "https://alishatorrentclosure.pages.dev",
-        "label": "Alisha Torrent Closures"
-      },
-      {
-        "url": "https://q1engraving.pages.dev",
-        "label": "Quality One Engravers"
-      }
-    ]
-  },
-  {
-    "name": "Technology",
-    "icon": "Laptop",
-    "slug": "technology",
-    "color": "from-cyan-500 to-blue-600",
-    "summary": "Software, managed IT and data centre firms. Clear product messaging and sites that feed a sales pipeline.",
-    "sites": [
-      {
-        "url": "https://arthasystem.pages.dev",
-        "label": "Artha System"
-      },
-      {
-        "url": "https://atruent.pages.dev",
-        "label": "Altruent Systems"
-      },
-      {
-        "url": "https://techsoncall.pages.dev",
-        "label": "Techs On Call"
-      }
-    ]
-  },
-  {
     "name": "Retail",
     "icon": "ShoppingBag",
     "slug": "retail",
@@ -509,6 +788,31 @@
       {
         "url": "https://morbidmistique.pages.dev",
         "label": "Morbid Mystique"
+      },
+      {
+        "url": "https://citybench.pages.dev",
+        "label": "City Bench"
+      }
+    ]
+  },
+  {
+    "name": "Education & Nonprofit",
+    "icon": "GraduationCap",
+    "slug": "education",
+    "color": "from-blue-600 to-indigo-700",
+    "summary": "Childcare centres, education coaches and NGOs. Warm, trustworthy sites that drive enrolments and support.",
+    "sites": [
+      {
+        "url": "https://hersmile.pages.dev",
+        "label": "HerSmile Federation"
+      },
+      {
+        "url": "https://mommyskidschildcare.pages.dev",
+        "label": "Mommy's Kids Childcare"
+      },
+      {
+        "url": "https://transformeducation.pages.dev",
+        "label": "Transform Education"
       }
     ]
   },

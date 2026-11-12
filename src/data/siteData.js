@@ -16,6 +16,7 @@ import {
   Laptop, Factory, ShoppingBag, Wrench, Briefcase, Truck,
   Flower2, UtensilsCrossed, Car, PawPrint,
   Scissors, PenTool, Fence, Shirt, HardHat, Frame,
+  Signpost, Sparkles, Palette, GraduationCap,
   Globe, Users, Phone, Repeat, Eye, ShieldCheck, MousePointerClick,
   Compass, Layers, Map, FormInput, Search, Star, ChartLine, Zap, Rocket,
   BarChart2, Target,
@@ -42,6 +43,7 @@ const INDUSTRY_ICONS = {
   Laptop, Factory, ShoppingBag, Wrench, Briefcase, Truck,
   Flower2, UtensilsCrossed, Car, PawPrint,
   Scissors, PenTool, Fence, Shirt, HardHat, Frame,
+  Signpost, Sparkles, Palette, GraduationCap,
 };
 
 export const COMPANY = companyJson;
