@@ -1,4 +1,5 @@
-import { Globe, Layers, Activity, Bot, Link2, CheckCircle2, XCircle, AlertTriangle, MinusCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Globe, Layers, Activity, Bot, Link2, CheckCircle2, XCircle, AlertTriangle, MinusCircle, ChevronDown } from 'lucide-react';
 import { Panel, Note } from './PageSnapshot';
 
 // Facts about the domain, the server and the page's links, looked up by the
@@ -424,7 +425,109 @@ function Links({ links }) {
 
 // ── The section ──────────────────────────────────────────────────────────────
 
+// ── At a glance ──────────────────────────────────────────────────────────────
+
+// Which platform to name in the summary when several were detected.
+const PRIMARY_CATS = ['Website builder', 'E-commerce', 'CMS', 'Static site generator', 'Framework'];
+
+function shortAge(days) {
+  if (days == null || days < 0) return null;
+  const years = Math.floor(days / 365.25);
+  if (years >= 1) return `${years} year${years === 1 ? '' : 's'}`;
+  const months = Math.floor(days / 30.44);
+  return months >= 1 ? `${months} month${months === 1 ? '' : 's'}` : 'Under a month';
+}
+
+/** One line per fact: [label, value, tone]. Tone 'good' | 'warn' | 'bad' | null. */
+function summaryItems(site) {
+  const d = site.domain || {};
+  const h = site.hosting || {};
+  const items = [];
+
+  if (d.platform) {
+    items.push(['Domain', `None (uses ${d.platform})`, 'warn']);
+  } else {
+    items.push(['Domain age', shortAge(d.age_days), null]);
+    items.push(['Registrar', d.registrar, null]);
+    const n = d.expires_in_days;
+    items.push(['Domain expires', n == null ? null : n < 0 ? 'Expired' : `In ${n.toLocaleString()} days`,
+      n == null ? null : n < 30 ? 'bad' : n < 60 ? 'warn' : 'good']);
+  }
+
+  items.push(['Hosting', h.behind_cdn ? `Behind ${h.cdn}` : h.provider, null]);
+  items.push(['Server location', h.cdn ? `Worldwide (${h.cdn})` : regionName(h.country), null]);
+
+  const tech = site.tech || [];
+  const primary = PRIMARY_CATS.map((c) => tech.find((t) => t.cat === c)).find(Boolean);
+  items.push(['Built with', primary ? `${primary.name}${primary.version ? ` ${primary.version}` : ''}` : (tech.length ? 'Custom build' : null), null]);
+
+  const tr = site.tracking || [];
+  const found = tr.filter((t) => t.state === 'yes' && t.id !== 'ua' && !['gsc', 'bing', 'meta_pixel', 'google_ads', 'linkedin', 'tiktok'].includes(t.id));
+  const ga4 = tr.find((t) => t.id === 'ga4');
+  let analytics;
+  let analyticsTone;
+  if (found.length) {
+    analytics = found.map((t) => t.name.replace('Google Analytics 4', 'GA4').replace('Google Tag Manager', 'Tag Manager')).slice(0, 2).join(', ');
+    analyticsTone = 'good';
+  } else if (ga4?.state === 'maybe') {
+    analytics = 'Possibly, via Tag Manager';
+    analyticsTone = 'warn';
+  } else if (tr.length) {
+    analytics = tr.some((t) => t.id === 'ua') ? 'Outdated (Universal Analytics)' : 'None found';
+    analyticsTone = 'bad';
+  }
+  items.push(['Analytics', analytics, analyticsTone]);
+
+  if (site.ai) {
+    const bots = site.ai.bots || [];
+    const google = bots.find((b) => b.name === 'Googlebot');
+    const blocked = bots.filter((b) => b.kind !== 'training' && !b.allowed);
+    items.push(['Search and AI crawlers',
+      google && !google.allowed ? 'Google is blocked' : blocked.length ? `${blocked.length} blocked` : 'All allowed',
+      google && !google.allowed ? 'bad' : blocked.length ? 'warn' : 'good']);
+  }
+
+  const { www, mixed, broken } = site.links || {};
+  if (broken && broken.checked > 0) {
+    const n = broken.broken?.length || 0;
+    items.push(['Broken links', n ? `${n} of ${broken.checked} checked` : `None of ${broken.checked} checked`,
+      n === 0 ? 'good' : n === 1 ? 'warn' : 'bad']);
+  }
+  if (www && WWW_TEXT[www.state]) {
+    items.push(['www and non-www', www.state === 'redirects' ? 'Consistent' : www.state === 'elsewhere' ? 'Goes elsewhere' : 'Mismatch',
+      www.state === 'redirects' ? 'good' : www.state === 'elsewhere' ? null : 'warn']);
+  }
+  if (mixed) {
+    const total = mixed.active + mixed.passive;
+    items.push(['Insecure files', total ? `${total} found` : 'None', mixed.active ? 'bad' : mixed.passive ? 'warn' : 'good']);
+  }
+
+  return items;
+}
+
+function AtAGlance({ site }) {
+  const items = summaryItems(site);
+  return (
+    <section className="glass-card gradient-border rounded-2xl p-5 sm:p-6" aria-label="Domain, hosting and technology at a glance">
+      <dl className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 m-0">
+        {items.map(([label, value, tone]) => (
+          <div key={label} className="min-w-0">
+            <dt className="text-[11.5px] font-600 uppercase tracking-wide text-[#5C6685]">{label}</dt>
+            <dd className="m-0 mt-0.5 flex items-start gap-1.5">
+              {value && tone && <StatusIcon state={tone} />}
+              {value
+                ? <span className={`text-[14.5px] font-600 break-words min-w-0 ${tone && tone !== 'good' ? TONE[tone] : 'text-[#0D246A]'}`}>{value}</span>
+                : <span className="text-[14px] text-[#94a3b8]">Not available</span>}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}
+
 export default function SiteDetails({ site }) {
+  const [open, setOpen] = useState(false);
   if (!site) return null;
 
   return (
@@ -439,15 +542,34 @@ export default function SiteDetails({ site }) {
         </p>
       </div>
 
-      <DomainHosting domain={site.domain} dns={site.dns} hosting={site.hosting} />
+      <AtAGlance site={site} />
 
-      <div className="grid md:grid-cols-2 gap-5">
-        <Technology tech={site.tech} />
-        <Tracking tracking={site.tracking} />
+      <div className="text-center">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="site-details-full"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#0D246A]/20 text-[14px] font-600 text-[#0D246A] hover:bg-[#0D246A]/5 transition-colors"
+        >
+          {open ? 'Hide full details' : 'Show full details'}
+          <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+        </button>
       </div>
 
-      <Crawlers ai={site.ai} />
-      <Links links={site.links} />
+      {open && (
+        <div id="site-details-full" className="space-y-5">
+          <DomainHosting domain={site.domain} dns={site.dns} hosting={site.hosting} />
+
+          <div className="grid md:grid-cols-2 gap-5">
+            <Technology tech={site.tech} />
+            <Tracking tracking={site.tracking} />
+          </div>
+
+          <Crawlers ai={site.ai} />
+          <Links links={site.links} />
+        </div>
+      )}
     </div>
   );
 }
