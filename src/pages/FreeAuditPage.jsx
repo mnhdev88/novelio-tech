@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  ChevronDown, ChevronUp, Search, Gauge, FileText, MapPin, ShieldCheck, ArrowRight,
+  ChevronDown, ChevronUp, Search, Gauge, FileText, MapPin, ShieldCheck, ArrowRight, Globe, Bot,
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import AuditRunner from '../components/audit/AuditRunner';
@@ -31,6 +31,16 @@ const CHECK_GROUPS = [
     title: 'Local search signals',
     body: 'Tap-to-call links, whether your address is visible and consistent, LocalBusiness schema and map presence: the signals that decide whether you show up in the map pack.',
   },
+  {
+    Icon: Globe,
+    title: 'Domain and hosting',
+    body: 'How old your domain is, who it is registered with and when it expires, who hosts the site and where, your DNS provider, CDN and server software, and whether the www and non-www addresses agree.',
+  },
+  {
+    Icon: Bot,
+    title: 'AI search, tracking and links',
+    body: 'Whether ChatGPT, Perplexity, Claude and Google can read your site, which analytics and tracking tags are installed, what the site is built with, insecure files and broken links on the page.',
+  },
 ];
 
 const FAQS = [
@@ -44,7 +54,7 @@ const FAQS = [
   },
   {
     q: 'How long does it take?',
-    a: 'The page checks take a few seconds. The speed section takes another 20–40 because Google loads your page in a real browser to measure it, so the whole audit is usually done inside a minute. The emailed summary arrives within a minute of you submitting the form.',
+    a: 'The page, domain and hosting checks usually take under fifteen seconds. The speed section takes another 20–40 because Google loads your page in a real browser to measure it, so the whole audit is usually done inside a minute. The emailed summary arrives within a minute of you submitting the form.',
   },
   {
     q: 'Does it check my whole site or just one page?',
@@ -149,7 +159,8 @@ export default function FreeAuditPage() {
             What the audit actually checks
           </h2>
           <p className="text-[15.5px] text-[#5C6685] text-center max-w-2xl mx-auto mb-10">
-            Around thirty checks across five areas, each one scored and explained. Nothing invented to
+            Close to forty checks, each one scored and explained, plus the facts behind your domain and
+            hosting. Nothing invented to
             pad the report. If a check does not apply to your page, we leave it out.
           </p>
 

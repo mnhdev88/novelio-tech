@@ -202,7 +202,9 @@ public/api/audit/
   speed.php     POST {token} -> the PageSpeed card (a second call; Google is slow)
   unlock.php    POST {token,email,phone} -> records the lead, emails the summary
   _mail.php     the summary email: what goes in it, and the deliverability bits
-  _checks.php   the ~30 checks, each with its own "why it matters" and "how to fix"
+  _checks.php   the ~30 page checks, each with its own "why it matters" and "how to fix"
+  _siteinfo.php domain, hosting, technology, tracking, crawler and link details,
+                plus the 7 checks drawn from them (see "Domain and hosting" below)
   _lib.php      URL safety, fetching, caching
   _config.php   credential loading
 ```
@@ -226,6 +228,35 @@ re-checked rather than letting cURL follow them. See the header comment in
 503 when the CMS is not configured, which would take the audit tool down for a
 reason unrelated to auditing. It writes `audits.jsonl` directly instead, in the
 same format the panel reads.
+
+### Domain and hosting details
+
+`_siteinfo.php` adds the "Domain, hosting and technology" section of the report.
+Like the page snapshot, it is plain facts, so it is shown free; the findings drawn
+from it (robots.txt blocking Google, AI crawlers blocked, domain expiring, www vs
+non-www, insecure files, broken links, no analytics) score and gate like any other.
+
+Where each fact comes from, all free with no keys:
+
+| Fact | Source |
+|---|---|
+| Domain age, registrar, expiry, transfer lock | RDAP: the registry named in IANA's bootstrap file (`data.iana.org/rdap/dns.json`, cached a week), else `rdap.org`; plain WHOIS on port 43 for TLDs with no RDAP |
+| Hosting provider, network country | RDAP for the site's IP via `rdap.org`, reverse DNS, and headers like `platform: hostinger` |
+| DNS provider | the domain's NS records |
+| CDN, web server, PHP version, HTTP/2 or 3 | response headers and the negotiated protocol |
+| Technology and tracking tags | patterns in the page's HTML; Search Console also via DNS TXT |
+| Crawler access | the site's robots.txt, parsed per RFC 9309 |
+| Broken links | HEAD (then GET) on up to 15 links from the page, 4 at a time per host |
+
+All outbound lookups run in one parallel batch with a 6-second cap, so the audit
+gets a few seconds slower at most, and anything that does not answer is shown as
+"Not available" rather than failing the audit. The server needs outbound HTTPS,
+which it already has. If Hostinger blocks port 43, WHOIS-only TLDs simply show no
+domain dates.
+
+Link checks fetch URLs a stranger's page chose, so each host is resolved, must be
+public, and the connection is pinned to that address (`CURLOPT_RESOLVE`) with
+redirects off. No registrant names or contact details are ever read or shown.
 
 ### Changing what the audit says
 

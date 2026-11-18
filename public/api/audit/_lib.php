@@ -320,6 +320,9 @@ function au_fetch_once($url, $method = 'GET') {
     $body = curl_exec($ch);
     $out['ms']     = (int) round((microtime(true) - $started) * 1000);
     $out['status'] = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+    // Which protocol the server actually negotiated with us. Reported in the
+    // site details; older PHP builds lack the constant, so it is optional.
+    if (defined('CURLINFO_HTTP_VERSION')) $out['http_version'] = (int) curl_getinfo($ch, CURLINFO_HTTP_VERSION);
     $errno = curl_errno($ch);
     curl_close($ch);
 

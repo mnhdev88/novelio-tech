@@ -14,6 +14,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 require_once __DIR__ . '/_checks.php';
+require_once __DIR__ . '/_siteinfo.php';
 
 au_method('POST');
 
@@ -39,9 +40,9 @@ au_cache_sweep();
 $urlKey = 'u' . sha1($url);
 $result = au_cache_get($urlKey, AUDIT_CACHE_TTL);
 
-// A report cached before snapshots existed has no previews to show, so it is
-// rebuilt rather than served for up to a day with that section missing.
-if ($result === null || !array_key_exists('snapshot', $result)) {
+// A report cached before snapshots (or the domain and hosting details) existed
+// is rebuilt rather than served for up to a day with that section missing.
+if ($result === null || !array_key_exists('snapshot', $result) || !array_key_exists('site', $result)) {
     $result = au_build_report($url);
     au_cache_put($urlKey, $result);
 }
@@ -76,6 +77,7 @@ function au_build_report($url) {
         'sitemap_ok' => false,
         'sitemap_url' => '',
         'http_redirects' => null,
+        'robots_body' => '',
     ];
 
     // robots.txt, and the sitemap it points at.
@@ -83,6 +85,7 @@ function au_build_report($url) {
     $sitemapCandidates = [];
     if ($robots['ok'] && $robots['status'] === 200 && stripos((string) ($robots['headers']['content-type'] ?? 'text/plain'), 'html') === false) {
         $ctx['robots_ok'] = true;
+        $ctx['robots_body'] = substr((string) $robots['body'], 0, 262144);
         if (preg_match_all('/^\s*sitemap\s*:\s*(\S+)/im', $robots['body'], $m)) {
             foreach ($m[1] as $s) $sitemapCandidates[] = trim($s);
         }
@@ -118,7 +121,22 @@ function au_build_report($url) {
         }
     }
 
+    // Domain, hosting, technology and link details. Its lookups run in one
+    // parallel batch; anything that does not answer in time is left out.
+    // Registry data is other people's JSON; a shape we did not expect must cost
+    // this one section, never the whole audit.
+    try {
+        $site = au_site_info($page, $ctx);
+    } catch (Throwable $e) {
+        @error_log('[audit] site info failed: ' . $e->getMessage());
+        $site = ['info' => au_site_info_empty(), 'issues' => []];
+    }
+
     $issues = au_run_checks($page, $ctx);
+    // An unparseable page has one finding only; the extras would be noise.
+    if (!(count($issues) === 1 && $issues[0]['id'] === 'unparseable')) {
+        $issues = array_merge($issues, $site['issues']);
+    }
     $scores = au_score($issues);
 
     return [
@@ -131,6 +149,7 @@ function au_build_report($url) {
         'categories' => $scores['categories'],
         'issues'     => $issues,
         'snapshot'   => au_snapshot($page, $ctx),
+        'site'       => $site['info'],
         'redirects'  => $page['redirects'] ?? [],
         'speed'      => null,          // filled in by speed.php
         'speed_state' => AUDIT_HAS_PSI ? 'pending' : 'unavailable',
@@ -241,6 +260,9 @@ function au_public_view(array $r) {
         'speed_state'  => $r['speed_state'],
         'speed'        => $r['speed'],
         'snapshot'     => $r['snapshot'] ?? null,
+        // Facts about the domain, host and page, with no advice in them, so
+        // free like the snapshot. The findings drawn from them gate as usual.
+        'site'         => $r['site'] ?? null,
     ];
 }
 

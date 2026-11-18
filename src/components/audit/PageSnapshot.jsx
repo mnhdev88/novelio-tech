@@ -40,6 +40,21 @@ const NOTES = {
   external: { rank: 'none', affects: 'Visitor trust', text: 'Linking out does not directly raise rankings. It mainly affects how far readers trust the page.' },
   html: { rank: 'indirect', affects: 'Speed and crawling', text: 'Heavy HTML is slower to download, especially on mobile data. Google only reads the first 15 MB of a page.' },
   speed: { rank: 'direct', affects: 'Rankings (a small signal) and visitors', text: 'Core Web Vitals are a confirmed ranking signal, but a small one. Their bigger effect is on visitors: slow pages lose people before they load.' },
+  // Domain, hosting and technology (SiteDetails.jsx)
+  domain_age: { rank: 'none', affects: 'Trust', text: 'Google has said domain age is not a ranking factor. Older domains tend to have more links and history, and those do count.' },
+  registrar: { rank: 'none', affects: 'Ownership', text: 'Whoever controls the registrar account controls the website and every email address on the domain. Make sure it is in the business\'s name.' },
+  expiry: { rank: 'gate', affects: 'Whether the site stays online', text: 'If the registration lapses, the website and email stop working and the name can be bought by someone else.' },
+  dns: { rank: 'none', affects: 'Where settings are managed', text: 'The DNS provider decides where your domain points. You need access to it to change host or set up email.' },
+  hosting: { rank: 'indirect', affects: 'Speed and uptime', text: 'Google does not rank by host. A slow or unreliable server hurts speed and uptime, and those do matter.' },
+  location: { rank: 'indirect', affects: 'Speed for distant visitors', text: 'A server far from your customers adds a little delay to every request. Google no longer uses server location to decide which country a site serves.' },
+  protocol: { rank: 'indirect', affects: 'Speed', text: 'HTTP/2 and HTTP/3 load many files at once over one connection, which makes pages faster.' },
+  tech: { rank: 'none', affects: 'Speed and upkeep', text: 'Google does not prefer any platform. What counts is how fast and well built the result is.' },
+  tracking: { rank: 'none', affects: 'Measuring results', text: 'Tracking tools do not change rankings. Without them you cannot tell which pages and searches bring in enquiries.' },
+  crawlers: { rank: 'gate', affects: 'Visibility in search and AI answers', text: 'A crawler that robots.txt blocks cannot read the page, so that search engine or assistant cannot show or quote it.' },
+  llms: { rank: 'none', affects: 'AI assistants', text: 'A proposed file that summarises a site for AI tools. No major search engine or assistant has confirmed using it, so it is optional.' },
+  www: { rank: 'indirect', affects: 'Indexing', text: 'Both spellings of your address should end up on one site, so links and signals build up in one place.' },
+  mixed: { rank: 'indirect', affects: 'Security warnings', text: 'Files loaded over plain HTTP are blocked or flagged by browsers, which breaks parts of the page and costs trust.' },
+  broken: { rank: 'indirect', affects: 'Crawling and visitor trust', text: 'Broken links waste Google\'s crawl and send visitors to dead ends.' },
 };
 
 export function Note({ id }) {
@@ -80,7 +95,7 @@ const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
 const safeImage = (u) => (typeof u === 'string' && /^https?:\/\//i.test(u) ? u : '');
 const clip = (s, n) => (s && s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s);
 
-function Panel({ title, intro, children }) {
+export function Panel({ title, intro, children }) {
   return (
     <section className="glass-card rounded-2xl p-5 sm:p-6">
       <h4 className="font-heading font-700 text-[18px] sm:text-[20px] text-[#0D246A]">{title}</h4>

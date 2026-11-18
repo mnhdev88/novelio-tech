@@ -7,6 +7,7 @@ import { scoreColor } from './scoreScale';
 import IssueCard from './IssueCard';
 import UnlockGate from './UnlockGate';
 import PageSnapshot, { CheckBreakdown, Note } from './PageSnapshot';
+import SiteDetails from './SiteDetails';
 import { runAudit, fetchSpeed } from '../../utils/auditApi';
 import { trackEvent } from '../../utils/analytics';
 import { CALENDLY_LINK, COMPANY, PHONE_TEL } from '../../data/siteData';
@@ -42,6 +43,7 @@ const STEPS = [
   'Checking the technical setup',
   'Reading the content and headings',
   'Checking local search signals',
+  'Looking up the domain, hosting and links',
   'Asking Google for speed data',
 ];
 
@@ -199,18 +201,18 @@ export default function AuditRunner() {
     setStep(0);
     trackEvent('audit_started', { site: typed });
 
-    // Walk the first four steps on a timer. They correspond to work the server
+    // Walk the first five steps on a timer. They correspond to work the server
     // really is doing inside one request, so there is no finer signal to drive
-    // them from; the fifth waits on the actual PageSpeed call.
+    // them from; the last waits on the actual PageSpeed call.
     clearTimers();
-    [700, 1500, 2400, 3300].forEach((ms, i) => {
+    [700, 1500, 2400, 3300, 4500].forEach((ms, i) => {
       timers.current.push(setTimeout(() => setStep(i + 1), ms));
     });
 
     try {
       const data = await runAudit(typed);
       clearTimers();
-      setStep(4);
+      setStep(STEPS.length - 1);
       setResult(data);
       setPhase('done');
       trackEvent('audit_completed', { site: data.host, score: data.overall });
@@ -410,6 +412,10 @@ export default function AuditRunner() {
               asked for details to receive the fixes. */}
           <div className="mt-10">
             <PageSnapshot snapshot={result.snapshot} url={result.final_url} host={result.host} />
+          </div>
+
+          <div className="mt-10">
+            <SiteDetails site={result.site} />
           </div>
 
           {/* ── The form ─────────────────────────────────────────────── */}
